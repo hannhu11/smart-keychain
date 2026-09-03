@@ -66,7 +66,7 @@ public:
 
 class DisplayEngine {
 public:
-  static const int TOTAL_THEMES = 50;
+  static const int TOTAL_THEMES = 250;
   LGFX tft;
   LGFX_Sprite sprite;
   ParticleSystem particles;
@@ -289,81 +289,56 @@ public:
     switch (currentSceneryId) {
       case 0: {
         // SCENE_COZY_CAMPFIRE (Lửa Trại Rừng Sao Đêm):
-        // Bầu trời đêm dải Ngân Hà sâu thẳm
-        for (int y = 0; y < 260; y += 6) {
-          uint8_t r = 3 + y * 18 / 260;
-          uint8_t g = 5 + y * 10 / 260;
-          uint8_t b = 20 + y * 14 / 260;
-          spr->fillRect(0, y, SCREEN_WIDTH, 6, lgfx::color565(r, g, b));
+        // Bầu trời đêm sâu thẳm tĩnh lặng, không có hạt chấm rơi
+        for (int y = 0; y < 275; y += 8) {
+          uint8_t b = 16 + y * 14 / 275;
+          spr->fillRect(0, y, SCREEN_WIDTH, 8, lgfx::color565(3, 5, b));
         }
-        // Trường sao lấp lánh
-        for (int i = 0; i < 35; i++) {
-          int sx = (i * 31 + 7) % SCREEN_WIDTH;
-          int sy = (i * 19 + 5) % 220;
-          float alpha = 0.5f + 0.5f * sinf(timeAngle * 2.0f + i * 1.5f);
-          if (alpha > 0.35f) {
-            spr->drawPixel(sx, sy, (i % 3 == 0) ? 0xFFE0 : TFT_WHITE);
-          }
-        }
-        // Rừng thông bạt ngàn ở chân trời
+        // Rừng thông bạt ngàn neo ở đáy (Y = 275 - 295)
         for (int tr = 0; tr < 8; tr++) {
           int tx = tr * 24 - 8;
-          spr->fillTriangle(tx, 260, tx + 16, 215, tx + 32, 260, lgfx::color565(10, 16, 29));
+          spr->fillTriangle(tx, 295, tx + 16, 272, tx + 32, 295, lgfx::color565(10, 18, 28));
         }
-        // Mặt đất đồi cỏ đêm
-        spr->fillRect(0, 260, SCREEN_WIDTH, 60, lgfx::color565(15, 23, 16));
-        // Vầng sáng ấm của đống lửa trại
-        spr->fillCircle(86, 265, 45, lgfx::color565(60, 30, 0));
-        spr->fillCircle(86, 265, 30, lgfx::color565(100, 50, 0));
-        // Khúc gỗ sồi
-        spr->fillRect(72, 266, 28, 6, lgfx::color565(62, 39, 35));
-        // Lửa trại 3 tầng khí động học
-        int fFlap = (int)(sinf(timeAngle * 8.0f) * 3.0f);
-        spr->fillTriangle(76, 266, 86 + fFlap, 238, 96, 266, 0xF800); // Đỏ ngoài
-        spr->fillTriangle(79, 266, 86 + fFlap / 2, 244, 93, 266, 0xFE40); // Vàng giữa
-        spr->fillTriangle(82, 266, 86, 252, 90, 266, TFT_WHITE); // Tâm trắng
-        // Đốm lửa tàn tro bay
-        for (int s = 0; s < 8; s++) {
-          int spkY = 250 - (int)((millis() / 15 + s * 30) % 120);
-          int spkX = 86 + (int)(sinf(timeAngle * 3.0f + s) * 14.0f);
-          spr->drawPixel(spkX, spkY, (s % 2 == 0) ? 0xFE40 : 0xF9A0);
-        }
+        // Mặt đất đồi cỏ đêm (Y = 295 - 320)
+        spr->fillRect(0, 295, SCREEN_WIDTH, 25, lgfx::color565(12, 20, 14));
+        // Đống lửa trại ấm áp neo dưới đáy (Y = 290 - 305)
+        spr->fillCircle(86, 305, 20, lgfx::color565(80, 35, 0));
+        spr->fillRect(74, 308, 24, 4, lgfx::color565(60, 35, 30)); // Khúc củi
+        int fFlap = (int)(sinf(timeAngle * 8.0f) * 2.0f);
+        spr->fillTriangle(78, 308, 86 + fFlap, 292, 94, 308, 0xF800); // Ngọn lửa ngoài
+        spr->fillTriangle(81, 308, 86 + fFlap / 2, 296, 91, 308, 0xFE40); // Lửa vàng
+        spr->fillTriangle(83, 308, 86, 301, 89, 308, TFT_WHITE); // Tâm lửa
         break;
       }
 
       case 1: {
-        // SCENE_SAKURA_SHRINE (Đền Thần Anh Đào Hoàng Hôn):
-        for (int y = 0; y < 260; y += 6) {
-          uint8_t r = 26 + y * 140 / 260;
-          uint8_t g = 13 + y * 50 / 260;
-          uint8_t b = 51 - y * 10 / 260;
-          spr->fillRect(0, y, SCREEN_WIDTH, 6, lgfx::color565(r, g, b));
+        // SCENE_SAKURA_SHRINE (Đền Thần Hoàng Hôn):
+        for (int y = 0; y < 265; y += 8) {
+          uint8_t r = 24 + y * 120 / 265;
+          uint8_t g = 12 + y * 45 / 265;
+          uint8_t b = 48 - y * 12 / 265;
+          spr->fillRect(0, y, SCREEN_WIDTH, 8, lgfx::color565(r, g, b));
         }
-        // Trăng khuyết đầu tháng
-        spr->fillCircle(140, 50, 10, lgfx::color565(255, 251, 232));
-        spr->fillCircle(137, 48, 9, lgfx::color565(26, 13, 51));
-        // Cổng Torii thần đạo
-        spr->fillRect(125, 255, 6, 65, lgfx::color565(185, 28, 28));
-        spr->fillRect(155, 255, 6, 65, lgfx::color565(185, 28, 28));
-        spr->fillRect(118, 256, 49, 5, 0x0000); // Mái xà đen
-        spr->fillRect(122, 263, 42, 4, lgfx::color565(239, 68, 68)); // Xà đỏ
-        // Cánh hoa anh đào rơi
-        for (int i = 0; i < 12; i++) {
-          int px = (int)(sinf(timeAngle * 0.8f + i * 1.3f) * 35.0f + 20.0f * i + 172.0f) % SCREEN_WIDTH;
-          int py = (int)(timeAngle * 26.0f + i * 40) % SCREEN_HEIGHT;
-          spr->fillCircle(px, py, 2, lgfx::color565(255, 117, 151));
-        }
+        // Vầng trăng khuyết tĩnh lặng trên góc
+        spr->fillCircle(142, 38, 8, lgfx::color565(255, 251, 230));
+        spr->fillCircle(139, 36, 7, lgfx::color565(26, 13, 51));
+        // Cổng Torii thần đạo neo chặt ở góc đáy (Y = 265 - 320)
+        spr->fillRect(128, 270, 5, 50, lgfx::color565(185, 28, 28));
+        spr->fillRect(152, 270, 5, 50, lgfx::color565(185, 28, 28));
+        spr->fillRect(122, 271, 39, 4, 0x0000); // Mái đen
+        spr->fillRect(125, 276, 33, 3, lgfx::color565(239, 68, 68)); // Xà đỏ
         break;
       }
 
       case 2: {
         // SCENE_CYBER_RAIN (Mưa Neon Cyberpunk Siêu Mượt 1:1 Phần Cứng):
-        for (int i = 0; i < 36; i++) {
-          int rx = (i * 17 + 5) % SCREEN_WIDTH;
-          int speed = 260 + (i % 6) * 40;
+        // Chỉ cho mưa rơi ở 2 rìa biên ngoài (X < 24 hoặc X > 148), giữ vùng trung tâm (X = 24..148) trong suốt tuyệt đối!
+        for (int i = 0; i < 20; i++) {
+          int rx = (i < 10) ? (i * 2 + 2) : (SCREEN_WIDTH - 22 + (i - 10) * 2);
+          int speed = 260 + (i % 5) * 40;
           int ry = (int)((millis() * speed / 1000 + i * 31) % (SCREEN_HEIGHT + 24)) - 12;
-          int len = 7 + (i % 4) * 4;
-          uint16_t rainColor = (i % 3 == 0) ? 0x07FF : ((i % 2 == 0) ? 0x05DF : 0x035B);
+          int len = 8 + (i % 4) * 4;
+          uint16_t rainColor = (i % 2 == 0) ? 0x07FF : 0x05DF;
           spr->drawFastVLine(rx, ry, len, rainColor);
           spr->drawPixel(rx, ry + len - 1, TFT_WHITE);
         }
@@ -372,48 +347,39 @@ public:
 
       case 3: {
         // SCENE_MAGIC_FOREST (Rừng Đom Đóm Phát Quang Sinh Học):
-        for (int y = 0; y < 270; y += 6) {
-          uint8_t g = 18 + y * 38 / 270;
-          spr->fillRect(0, y, SCREEN_WIDTH, 6, lgfx::color565(2, g, 14));
+        for (int y = 0; y < 275; y += 8) {
+          uint8_t g = 16 + y * 32 / 275;
+          spr->fillRect(0, y, SCREEN_WIDTH, 8, lgfx::color565(2, g, 14));
         }
-        spr->fillRect(0, 270, SCREEN_WIDTH, 50, lgfx::color565(6, 41, 26)); // Đất rêu
-        // Thân cây cổ thụ
-        spr->fillRect(0, 180, 20, 140, lgfx::color565(11, 29, 20));
-        spr->fillRect(0, 200, 35, 16, lgfx::color565(11, 29, 20));
-        // Nấm phát quang
-        spr->fillCircle(38, 285, 7, 0x07FF);
-        spr->fillRect(36, 285, 4, 8, TFT_WHITE);
-        spr->fillCircle(130, 290, 6, 0xEC93);
-        spr->fillRect(128, 290, 4, 6, TFT_WHITE);
-        // Đom đóm bay lượn
-        for (int i = 0; i < 10; i++) {
-          int fx = (int)(cosf(timeAngle * 0.7f + i * 1.4f) * 55.0f + 86.0f);
-          int fy = (int)(sinf(timeAngle * 0.5f + i * 1.8f) * 50.0f + 170.0f);
-          float glow = (sinf(timeAngle * 3.0f + i * 2.0f) + 1.0f) * 0.5f;
-          if (glow > 0.25f) {
-            spr->fillCircle(fx, fy, 2, (i % 2 == 0) ? 0xFDE0 : 0x07FF);
-          }
-        }
+        // Thảm rêu ở đáy (Y = 275 - 320)
+        spr->fillRect(0, 275, SCREEN_WIDTH, 45, lgfx::color565(6, 36, 22));
+        // Cây cổ thụ góc trái đáy
+        spr->fillRect(0, 245, 14, 75, lgfx::color565(11, 26, 18));
+        // Nấm phát quang sinh học ở đáy
+        spr->fillCircle(38, 286, 6, 0x07FF);
+        spr->fillRect(36, 286, 4, 7, TFT_WHITE);
+        spr->fillCircle(130, 292, 5, 0xEC93);
+        spr->fillRect(128, 292, 4, 5, TFT_WHITE);
         break;
       }
 
       case 4: {
         // SCENE_OCEAN_SUNSET (Biển Chiều Hoàng Hôn):
-        for (int y = 0; y < 235; y += 6) {
-          uint8_t r = 46 + y * 199 / 235;
-          uint8_t g = 8 + y * 145 / 235;
-          uint8_t b = 84 - y * 73 / 235;
-          spr->fillRect(0, y, SCREEN_WIDTH, 6, lgfx::color565(r, g, b));
+        for (int y = 0; y < 260; y += 8) {
+          uint8_t r = 40 + y * 180 / 260;
+          uint8_t g = 8 + y * 130 / 260;
+          uint8_t b = 70 - y * 65 / 260;
+          spr->fillRect(0, y, SCREEN_WIDTH, 8, lgfx::color565(r, g, b));
         }
-        // Mặt trời lặn
-        spr->fillCircle(86, 230, 22, lgfx::color565(254, 240, 138));
-        // Đại dương
-        spr->fillRect(0, 235, SCREEN_WIDTH, 85, lgfx::color565(15, 23, 42));
-        // Sóng phản chiếu
-        for (int layer = 0; layer < 4; layer++) {
-          int yBase = 245 + layer * 18;
-          for (int x = 20; x < 152; x += 12) {
-            int wy = yBase + (int)(sinf(timeAngle * 2.5f + x * 0.1f + layer) * 2.5f);
+        // Mặt trời lặn chạm đường chân trời đáy (Y = 255)
+        spr->fillCircle(86, 255, 18, lgfx::color565(254, 240, 138));
+        // Đại dương ở đáy (Y = 260 - 320)
+        spr->fillRect(0, 260, SCREEN_WIDTH, 60, lgfx::color565(12, 18, 36));
+        // Sóng phản chiếu ánh vàng
+        for (int layer = 0; layer < 3; layer++) {
+          int yBase = 270 + layer * 16;
+          for (int x = 20; x < 152; x += 14) {
+            int wy = yBase + (int)(sinf(timeAngle * 2.5f + x * 0.1f + layer) * 2.0f);
             spr->drawFastHLine(x, wy, 8, 0xFE40);
           }
         }
@@ -421,137 +387,94 @@ public:
       }
 
       case 5: {
-        // SCENE_EARTH_ORBIT (Quỹ Đạo Trái Đất 3D Siêu Chân Thực):
-        // Không gian sâu thẳm
-        for (int y = 0; y < 240; y += 6) {
-          uint8_t b = 13 + y * 34 / 240;
-          spr->fillRect(0, y, SCREEN_WIDTH, 6, lgfx::color565(1, 3, b));
+        // SCENE_EARTH_ORBIT (Quỹ Đạo Trái Đất 3D - CHUẨN GROUNDED BOTTOM Y >= 250):
+        // 1. Bầu trời không gian sâu thẳm tĩnh lặng (Y = 0 - 250):
+        for (int y = 0; y < 255; y += 8) {
+          uint8_t b = 12 + y * 28 / 255;
+          spr->fillRect(0, y, SCREEN_WIDTH, 8, lgfx::color565(1, 3, b));
         }
-        // Trường sao Parallax
-        for (int i = 0; i < 35; i++) {
-          int sx = (i * 37 + 11) % SCREEN_WIDTH;
-          int sy = (i * 23 + 7) % 220;
-          float alpha = 0.5f + 0.5f * sinf(timeAngle * 2.0f + i * 1.7f);
-          if (alpha > 0.4f) {
-            spr->drawPixel(sx, sy, (i % 3 == 0) ? 0xFFE0 : TFT_WHITE);
-          }
-        }
-        // Đĩa Trái Đất 3D với vành khí quyển Rayleigh
-        spr->fillCircle(86, 345, 155, lgfx::color565(0, 40, 120));
-        spr->fillCircle(86, 345, 148, lgfx::color565(0, 100, 220));
-        spr->fillCircle(86, 345, 140, lgfx::color565(0, 220, 255)); // Vành ngọc lam
-        spr->fillCircle(86, 345, 135, lgfx::color565(7, 28, 65));  // Đại dương xanh thẳm
-        // Lục địa trôi
-        int drift = (int)(timeAngle * 10.0f) % 180;
-        spr->fillEllipse(86 - 40 + drift - 90, 300, 32, 18, lgfx::color565(25, 95, 45));
-        spr->fillEllipse(86 + 30 + drift - 90, 315, 26, 15, lgfx::color565(30, 115, 55));
-        // Mây tầng
-        spr->drawEllipse(86 - 20, 290, 52, 9, lgfx::color565(200, 225, 255));
-        spr->drawEllipse(86 + 35, 310, 44, 11, lgfx::color565(200, 225, 255));
-        // Sunburst lóe sáng bình minh
-        spr->fillCircle(138, 222, 5, TFT_WHITE);
-        spr->drawFastHLine(118, 222, 40, 0xFFE0);
-        spr->drawFastVLine(138, 202, 40, 0xFFE0);
+        // 2. Toàn bộ Địa Cầu Trái Đất 3D neo chặt dưới đáy (Tâm eCy = 385, Bán kính R = 125):
+        // Vành khí quyển tán xạ Rayleigh xanh ngọc rực rỡ ở đường chân trời đáy
+        spr->fillCircle(86, 385, 142, lgfx::color565(0, 50, 140));
+        spr->fillCircle(86, 385, 134, lgfx::color565(0, 130, 240));
+        spr->fillCircle(86, 385, 127, lgfx::color565(0, 230, 255)); // Vành ngọc lam phát quang
+        spr->fillCircle(86, 385, 122, lgfx::color565(8, 32, 75));   // Đại dương sâu thẳm
+        // Các mảng lục địa xanh rừng trôi dạt ở đáy
+        int drift = (int)(timeAngle * 8.0f) % 160;
+        spr->fillEllipse(86 - 35 + drift - 80, 288, 28, 12, lgfx::color565(25, 95, 45));
+        spr->fillEllipse(86 + 30 + drift - 80, 302, 24, 10, lgfx::color565(30, 115, 55));
+        // Vệt nắng bình minh lóe sáng ở góc chân trời
+        spr->fillCircle(142, 260, 4, TFT_WHITE);
+        spr->drawFastHLine(126, 260, 32, 0xFFE0);
+        spr->drawFastVLine(142, 244, 32, 0xFFE0);
         break;
       }
 
       case 6: {
-        // SCENE_AURORA_BOREALIS (Cực Quang Trái Đất Tuyệt Đỉnh):
-        for (int y = 0; y < 240; y += 6) {
-          uint8_t g = 3 + y * 20 / 240;
-          spr->fillRect(0, y, SCREEN_WIDTH, 6, lgfx::color565(6, g, 23));
+        // SCENE_AURORA_BOREALIS (Cực Quang Vùng Cực - GROUNDED BOTTOM Y >= 265):
+        for (int y = 0; y < 265; y += 8) {
+          uint8_t g = 3 + y * 18 / 265;
+          spr->fillRect(0, y, SCREEN_WIDTH, 8, lgfx::color565(6, g, 22));
         }
-        // Sao vùng cực
-        for (int i = 0; i < 25; i++) {
-          spr->drawPixel((i * 29 + 5) % SCREEN_WIDTH, (i * 19 + 3) % 180, TFT_WHITE);
+        // Dải lụa cực quang uốn lượn mượt mà ở tầng trời xa
+        for (int x = 0; x < SCREEN_WIDTH; x += 3) {
+          int ay1 = 70 + (int)(sinf(timeAngle * 1.4f + (float)x * 0.035f) * 16.0f);
+          spr->drawFastVLine(x, ay1, 18, lgfx::color565(0, 255, 140));
         }
-        // Dải lụa cực quang uốn lượn đa tần
-        for (int x = 0; x < SCREEN_WIDTH; x += 2) {
-          int ay1 = 70 + (int)(sinf(timeAngle * 1.5f + (float)x * 0.035f) * 20.0f);
-          int ay2 = 95 + (int)(sinf(timeAngle * 1.2f + (float)x * 0.045f + 1.2f) * 18.0f);
-          spr->drawFastVLine(x, ay1, 24, lgfx::color565(0, 255, 140));
-          spr->drawFastVLine(x, ay2, 20, lgfx::color565(180, 80, 255));
-        }
-        // Rặng núi tuyết
-        spr->fillTriangle(0, 320, 25, 242, 60, 320, lgfx::color565(14, 20, 36));
-        spr->fillTriangle(45, 320, 80, 232, 120, 320, lgfx::color565(14, 20, 36));
-        spr->fillTriangle(105, 320, 138, 236, 172, 320, lgfx::color565(14, 20, 36));
-        spr->fillRect(0, 275, SCREEN_WIDTH, 45, lgfx::color565(10, 22, 34)); // Hồ băng
-        // Đỉnh tuyết
-        spr->fillTriangle(25, 242, 18, 252, 32, 252, 0xDEFF);
-        spr->fillTriangle(80, 232, 70, 246, 92, 246, 0xDEFF);
-        spr->fillTriangle(138, 236, 128, 248, 148, 248, 0xDEFF);
-        // Phản chiếu trên hồ
-        for (int r = 0; r < 5; r++) {
-          spr->drawFastHLine(35 + r * 6, 285 + r * 6, 50, lgfx::color565(0, 180, 100));
-        }
+        // Dãy núi tuyết nhấp nhô neo ở đáy (Y = 265 - 320)
+        spr->fillTriangle(0, 320, 25, 262, 55, 320, lgfx::color565(14, 20, 36));
+        spr->fillTriangle(45, 320, 86, 250, 125, 320, lgfx::color565(14, 20, 36));
+        spr->fillTriangle(115, 320, 145, 256, 172, 320, lgfx::color565(14, 20, 36));
+        spr->fillRect(0, 285, SCREEN_WIDTH, 35, lgfx::color565(10, 22, 34)); // Hồ băng đáy
+        // Chóp tuyết trắng
+        spr->fillTriangle(86, 250, 78, 262, 94, 262, 0xDEFF);
+        spr->fillTriangle(25, 262, 19, 272, 31, 272, 0xDEFF);
+        spr->fillTriangle(145, 256, 137, 266, 153, 266, 0xDEFF);
         break;
       }
 
       case 7: {
-        // SCENE_MT_FUJI_SAKURA (Mùa Xuân Núi Phú Sĩ Ukiyo-e):
-        for (int y = 0; y < 220; y += 4) {
-          uint8_t r = 21 + y * 220 / 220;
-          uint8_t g = 9 + y * 130 / 220;
-          uint8_t b = 42 - y * 38 / 220;
-          spr->fillRect(0, y, SCREEN_WIDTH, 4, lgfx::color565(r, g, b));
+        // SCENE_MT_FUJI_SAKURA (Mùa Xuân Núi Phú Sĩ Ukiyo-e - GROUNDED BOTTOM Y >= 250):
+        for (int y = 0; y < 250; y += 6) {
+          uint8_t r = 20 + y * 215 / 250;
+          uint8_t g = 9 + y * 125 / 250;
+          uint8_t b = 40 - y * 36 / 250;
+          spr->fillRect(0, y, SCREEN_WIDTH, 6, lgfx::color565(r, g, b));
         }
-        // Vầng thái dương đỏ
-        spr->fillCircle(86, 185, 32, lgfx::color565(230, 35, 45));
-        // Nón núi tuyết Phú Sĩ
-        spr->fillTriangle(0, 320, 86, 192, 172, 320, lgfx::color565(34, 37, 63));
-        spr->fillTriangle(86, 192, 60, 225, 112, 225, TFT_WHITE);
-        // Sương sớm
-        int mx = (int)(timeAngle * 15.0f) % 200 - 30;
-        spr->drawFastHLine(mx, 255, 80, lgfx::color565(250, 230, 235));
-        spr->drawFastHLine(mx - 40, 275, 70, lgfx::color565(250, 230, 235));
-        // Cánh hoa anh đào rơi
-        for (int p = 0; p < 12; p++) {
-          int px = (int)(sinf(timeAngle + p) * 25.0f + p * 16) % SCREEN_WIDTH;
-          int py = (int)(millis() * 0.025f + p * 32) % SCREEN_HEIGHT;
-          spr->fillCircle(px, py, 2, lgfx::color565(255, 117, 151));
-        }
+        // Vầng thái dương Asahi đỏ rực ở chân trời thấp (Y = 248)
+        spr->fillCircle(86, 248, 24, lgfx::color565(230, 35, 45));
+        // Nón núi tuyết Phú Sĩ neo chặt ở đáy (Y = 252 - 320)
+        spr->fillTriangle(0, 320, 86, 252, 172, 320, lgfx::color565(34, 37, 63));
+        spr->fillTriangle(86, 252, 66, 274, 106, 274, TFT_WHITE); // Chóp tuyết trắng
         break;
       }
 
       case 8: {
-        // SCENE_TOKYO_NIGHT (Đêm Tokyo Mưa Cyber):
-        for (int y = 0; y < 320; y += 8) {
-          spr->fillRect(0, y, SCREEN_WIDTH, 8, lgfx::color565(11 + y * 10 / 320, 12, 27 + y * 12 / 320));
+        // SCENE_TOKYO_NIGHT (Đêm Tokyo Mưa Cyber - GROUNDED BOTTOM Y >= 265):
+        for (int y = 0; y < 265; y += 8) {
+          spr->fillRect(0, y, SCREEN_WIDTH, 8, lgfx::color565(11, 12, 28));
         }
-        // Cao ốc
-        const int bldgs[8][3] = {{0, 24, 90}, {22, 18, 120}, {38, 28, 75}, {64, 20, 135}, {82, 25, 105}, {105, 22, 80}, {125, 30, 125}, {153, 22, 95}};
-        for (int b = 0; b < 8; b++) {
+        // Chân trời cao ốc Tokyo neo ở đáy (Y = 265 - 320)
+        const int bldgs[6][3] = {{0, 26, 50}, {24, 22, 45}, {44, 32, 55}, {74, 26, 48}, {98, 28, 52}, {124, 48, 46}};
+        for (int b = 0; b < 6; b++) {
           int bx = bldgs[b][0], bw = bldgs[b][1], bh = bldgs[b][2];
           spr->fillRect(bx, 320 - bh, bw, bh, lgfx::color565(15, 18, 36));
-          spr->drawPixel(bx + bw / 2, 320 - bh - 2, 0xF800); // Đèn hải đăng
-          for (int wy = 320 - bh + 10; wy < 300; wy += 8) {
+          spr->drawPixel(bx + bw / 2, 320 - bh - 2, 0xF800); // Đèn đỏ
+          for (int wy = 320 - bh + 6; wy < 312; wy += 8) {
             for (int wx = bx + 4; wx < bx + bw - 3; wx += 6) {
-              if ((wx * 7 + wy * 13) % 5 > 1) {
-                uint16_t wcol = ((wx + wy) % 4 == 0) ? 0xFE40 : ((wx % 3 == 0) ? 0x07FF : TFT_WHITE);
-                spr->drawPixel(wx, wy, wcol);
-              }
+              if ((wx + wy) % 3 == 0) spr->drawPixel(wx, wy, 0xFE40); // Cửa sổ vàng
             }
           }
         }
-        // Tháp Tokyo
-        spr->drawFastVLine(86, 170, 150, lgfx::color565(239, 68, 68));
-        spr->drawLine(64, 320, 86, 185, lgfx::color565(239, 68, 68));
-        spr->drawLine(108, 320, 86, 185, lgfx::color565(239, 68, 68));
-        spr->fillRect(76, 245, 20, 5, TFT_WHITE);
-        spr->fillRect(78, 246, 16, 3, lgfx::color565(239, 68, 68));
-        // Mưa cyber
-        for (int i = 0; i < 22; i++) {
-          int rx = (i * 17 + 5) % SCREEN_WIDTH;
-          int ry = (int)((millis() * 320 / 1000 + i * 29) % (SCREEN_HEIGHT + 20)) - 10;
-          spr->drawFastVLine(rx, ry, 9, (i % 2 == 0) ? 0x07FF : 0xF81F);
-        }
+        // Tháp Tokyo vươn nhẹ từ đáy
+        spr->drawFastVLine(86, 255, 65, lgfx::color565(239, 68, 68));
+        spr->drawLine(70, 320, 86, 265, lgfx::color565(239, 68, 68));
+        spr->drawLine(102, 320, 86, 265, lgfx::color565(239, 68, 68));
         break;
       }
     }
   }
 
-  // 2. CHỮ TYPEWRITER ĐA HÀNG (MULTI-LINE WORD-WRAP TYPEWRITER ENGINE - CHUẨN 1:1 ẢNH THẬT)
   void renderTopTypography(LGFX_Sprite* spr) {
     String fullText = (customQuote.length() > 0) ? customQuote : String(getThemeDefaultQuote(currentSpriteIdx));
 
@@ -735,10 +658,8 @@ public:
     // 2. LAYER 0: Bối cảnh phong cảnh sống (5 Living Dioramas)
     renderLivingScenery(&sprite, floatAngle);
 
-    // 3. LAYER 1: Hiệu ứng hạt bụi sao kim cương Bling Bling (Chỉ chạy ở cảnh không có mưa)
-    if (currentSceneryId != 2) {
-      particles.updateAndRender(&sprite);
-    }
+    // 3. LAYER 1: VÔ HIỆU HÓA HOÀN TOÀN HẠT BỤI RƠI THEO YÊU CẦU NGƯỜI DÙNG
+    // Giữ màn hình trong suốt, tĩnh tại và siêu nét (Clear 100%), không gây rối mắt chữ và nhân vật.
 
     // 4. LAYER 2: Sân khấu chính trung tâm
     float centerY = (currentSpriteIdx == 12) ? (182.0f + sinf(floatAngle) * 4.0f) : (160.0f + sinf(floatAngle) * 6.0f);

@@ -6,7 +6,7 @@
 class SpriteRenderer {
 public:
   static void drawTheme(LGFX_Sprite* spr, int id, int cx, int cy, float breath, float angle) {
-    id = (id >= 0) ? (id % 50) : 0;
+    id = (id >= 0) ? (id % 250) : 0;
 
     switch (id) {
       // =========================================================================
@@ -884,13 +884,239 @@ public:
         break;
 
       case 49: // Lõi Lượng Tử Quantum Core (3 Trục Gyro)
-      default:
         spr->drawCircle(cx, cy, 34, 0x981F);
         spr->drawEllipse(cx, cy, 30, 16 + (int)(sin(angle * 2) * 10), 0x07FF);
         spr->drawEllipse(cx, cy, 16 + (int)(cos(angle * 2) * 10), 30, TFT_YELLOW);
         spr->fillCircle(cx, cy, 8 + (int)(breath * 4), TFT_WHITE);
         spr->drawCircle(cx, cy, 10 + (int)(breath * 4), 0xF81F);
         break;
+
+      // =========================================================================
+      // NHÓM 2: 50 THÁNH KHÍ & VŨ KHÍ THẦN THOẠI (ID 50..99)
+      // =========================================================================
+      default: {
+        if (id >= 50 && id < 100) {
+          int sub = (id - 50);
+          if (sub < 20) {
+            // 50-69: CÁC THÁNH KIẾM (Excalibur, Clarent, Dáinsleif, Gram, Spitfire, Caladbolg...)
+            // Lưỡi kiếm nghiêng 45 độ phong cách anh hùng
+            int bx = cx - 18, by = cy - 24;
+            // Vòng hào quang phát sáng
+            spr->drawCircle(cx, cy - 6, 28 + (int)(breath * 3), 0x07FF);
+            // Lưỡi kiếm bạc sáng bóng
+            spr->fillTriangle(bx, by, bx + 36, by - 36, bx + 12, by + 12, 0xFFFF);
+            spr->fillTriangle(bx + 36, by - 36, bx + 42, by - 30, bx + 12, by + 12, 0xCE7F);
+            // Rãnh rune phát quang xanh/vàng chạy dọc lưỡi kiếm
+            uint16_t runeCol = (sub % 2 == 0) ? 0x07FF : 0xFDE0;
+            spr->drawLine(bx + 4, by - 4, bx + 32, by - 32, runeCol);
+            // Đốc kiếm & chuôi vàng Kinpaku
+            spr->fillRoundRect(bx - 6, by + 10, 18, 6, 2, 0xFDE0);
+            spr->fillRect(bx - 12, by + 16, 8, 14, 0x2124);
+            spr->fillCircle(bx - 14, by + 32, 4, 0xFDE0); // Viên ngọc chuôi
+            // Hạt hào quang lấp lánh chạy dọc lưỡi
+            int sh = (int)(angle * 15.0f) % 35;
+            spr->drawPixel(bx + sh, by - sh, 0xFFFF);
+          } else if (sub < 30) {
+            // 70-79: CÁC THẦN CUNG (Fail-Not, Gandiva, Pinaka, Cung Mặt Trời, Cung Mặt Trăng...)
+            // Cánh cung uốn lượn đôi cánh vàng/bạc
+            spr->drawEllipse(cx, cy, 14, 38, 0xFDE0);
+            spr->drawEllipse(cx - 2, cy, 12, 36, 0xD6BA);
+            // Dây cung năng lượng photon
+            spr->drawLine(cx - 10, cy - 36, cx - 10, cy + 36, 0xFFFF);
+            // Mũi tên ánh sáng đang giương cung
+            spr->drawLine(cx - 24, cy, cx + 24, cy, 0x07FF);
+            spr->fillTriangle(cx + 24, cy, cx + 18, cy - 4, cx + 18, cy + 4, 0x07FF); // Đầu tên
+            spr->drawCircle(cx, cy, 8 + (int)(breath * 3), 0x07FF); // Vầng tụ năng
+          } else if (sub < 40) {
+            // 80-89: CÁC THẦN THƯƠNG & GIÁO (Gungnir, Rhongomyniad, Gáe Bulg, Longinus...)
+            // Cán giáo dài bằng thép đen viền vàng
+            spr->drawLine(cx - 30, cy + 30, cx + 30, cy - 30, 0x52AA);
+            // Mũi thương bản rộng thần thoại
+            spr->fillTriangle(cx + 18, cy - 18, cx + 38, cy - 38, cx + 28, cy - 16, 0xFFFF);
+            spr->fillTriangle(cx + 18, cy - 18, cx + 38, cy - 38, cx + 16, cy - 28, 0x07FF);
+            // Dải lụa đỏ bay phấp phới ở cổ giáo
+            int fy = (int)(sinf(angle * 4.0f) * 4.0f);
+            spr->fillTriangle(cx + 16, cy - 16, cx + 10, cy - 10 + fy, cx + 12, cy - 4, 0xF800);
+          } else if (sub < 45) {
+            // 90-94: KHIÊN THẦN (Aegis, Svalinn, Ancile, Gương Bát Chỉ...)
+            // Thân khiên hình thoi kim loại cổ đại viền vàng
+            spr->fillRoundRect(cx - 22, cy - 26, 44, 52, 10, 0x2145);
+            spr->drawRoundRect(cx - 22, cy - 26, 44, 52, 10, 0xFDE0);
+            spr->drawRoundRect(cx - 18, cy - 22, 36, 44, 8, 0x07FF);
+            // Biểu tượng mặt trời/rồng ở trung tâm
+            spr->fillCircle(cx, cy, 10, 0xFDE0);
+            spr->drawCircle(cx, cy, 8, 0xF800);
+            // Trường lực phòng hộ phát quang
+            spr->drawCircle(cx, cy, 32 + (int)(breath * 4), 0x07FF);
+          } else {
+            // 95-99: THÁNH TÍCH (Chén Thánh San Greal, Hòm Bia Giao Ước, Hòn Đá Triết Gia...)
+            // Chén Thánh mạ vàng lộng lẫy
+            spr->fillRoundRect(cx - 16, cy - 16, 32, 20, 6, 0xFDE0);
+            spr->fillRect(cx - 4, cy + 4, 8, 16, 0xFDE0); // Chân chén
+            spr->fillRoundRect(cx - 14, cy + 20, 28, 6, 2, 0xFDE0); // Đế chén
+            // Rượu vang thánh thần phát quang đỏ ruby bên trong
+            spr->fillRoundRect(cx - 12, cy - 14, 24, 10, 3, 0xF800);
+            // Hào quang thánh tích tỏa sáng lên trên
+            for (int r = 0; r < 4; r++) {
+              int ry = cy - 22 - r * 6;
+              spr->drawFastHLine(cx - 8 + r * 2, ry, 16 - r * 4, 0xFFFF);
+            }
+          }
+        }
+        // =========================================================================
+        // NHÓM 3: 50 CƠ GIÁP CYBER & VŨ KHÍ KHÔNG GIAN (ID 100..149)
+        // =========================================================================
+        else if (id >= 100 && id < 150) {
+          int sub = (id - 100);
+          if (sub < 15) {
+            // 100-114: TACTICAL RADAR HUD & LA BÀN THIÊN HÀ (Khắc phục lỗi màn hình đen)
+            // 3 vòng tròn HUD chiến thuật màu Cyan
+            spr->drawCircle(cx, cy, 14, 0x07FF);
+            spr->drawCircle(cx, cy, 26, 0x05DF);
+            spr->drawCircle(cx, cy, 36, 0x035B);
+            // Tia quét Radar xoay tròn 60 FPS
+            float sw = angle * 2.8f;
+            spr->drawLine(cx, cy, cx + (int)(cosf(sw) * 36.0f), cy + (int)(sinf(sw) * 36.0f), 0x07FF);
+            // 3 mục tiêu chiến thuật nhấp nháy
+            spr->fillCircle(cx + 16, cy - 12, 2, 0xF800);
+            spr->fillCircle(cx - 18, cy + 14, 2, 0x07E0);
+            spr->fillCircle(cx + 10, cy + 18, 2, 0xFDE0);
+            // Khung khóa mục tiêu 4 góc [ + ]
+            spr->drawRect(cx - 6, cy - 6, 12, 12, 0xFFFF);
+            spr->drawFastHLine(cx - 10, cy, 20, 0x07FF);
+            spr->drawFastVLine(cx, cy - 10, 20, 0x07FF);
+          } else if (sub < 30) {
+            // 115-129: PHÁO RAY ĐIỆN TỪ & DAO GĂM CAO TẦN (Railgun, Murasama)
+            // Khung nòng pháo đôi song song
+            spr->fillRect(cx - 24, cy - 8, 48, 4, 0x31A6);
+            spr->fillRect(cx - 24, cy + 4, 48, 4, 0x31A6);
+            // Cuộn cảm ứng từ phát quang
+            for (int c = 0; c < 5; c++) {
+              spr->fillRect(cx - 18 + c * 8, cy - 6, 4, 12, 0x07FF);
+            }
+            // Tia hồ quang điện phóng ở giữa nòng
+            spr->drawLine(cx - 16, cy, cx + 22, cy, 0xFFFF);
+            // Quả cầu plasma ở đầu nòng tụ năng
+            spr->fillCircle(cx + 26, cy, 6 + (int)(breath * 3), 0x07FF);
+            spr->fillCircle(cx + 26, cy, 3, 0xFFFF);
+          } else {
+            // 130-149: DRONE TRINH SÁT TÀNG HÌNH & KHIÊN LỤC GIÁC NANITE
+            // Thân drone lục giác góc cạnh
+            int dy = (int)(sinf(angle * 3.0f) * 3.0f);
+            spr->fillRoundRect(cx - 18, cy - 10 + dy, 36, 20, 6, 0x2124);
+            spr->drawRoundRect(cx - 18, cy - 10 + dy, 36, 20, 6, 0x07FF);
+            // Mắt cảm biến quang học Cyan ở tâm
+            spr->fillCircle(cx, cy + dy, 5, 0x07FF);
+            spr->drawPixel(cx, cy + dy, 0xFFFF);
+            // 4 động cơ đẩy ion ở 4 góc cánh
+            spr->fillRect(cx - 24, cy - 12 + dy, 6, 4, 0x05DF);
+            spr->fillRect(cx + 18, cy - 12 + dy, 6, 4, 0x05DF);
+            spr->fillRect(cx - 24, cy + 8 + dy, 6, 4, 0x05DF);
+            spr->fillRect(cx + 18, cy + 8 + dy, 6, 4, 0x05DF);
+            // Vòng khiên lục giác bao bọc
+            spr->drawCircle(cx, cy + dy, 30 + (int)(breath * 3), 0x07FF);
+          }
+        }
+        // =========================================================================
+        // NHÓM 4: 50 THÚ CƯNG PIXEL 2.5D & ANIME KAWAII (ID 150..199)
+        // =========================================================================
+        else if (id >= 150 && id < 200) {
+          int sub = (id - 150);
+          if (sub < 20) {
+            // 150-169: CÁC LOẠI AXOLOTL (Kỳ nhông hồng đào, thổi bong bóng, game thủ, ramen...)
+            // 1. Thân Axolotl tròn bầu bĩnh hồng phấn 2.5D
+            int ay = cy + (int)(sinf(angle * 2.5f) * 3.0f);
+            spr->fillRoundRect(cx - 22, ay - 16, 44, 34, 12, lgfx::color565(255, 175, 195));
+            spr->fillRoundRect(cx - 18, ay - 12, 36, 26, 10, lgfx::color565(255, 195, 210)); // Lưng 3D
+            // 2. Cặp mang tai xòe đặc trưng (3 nhánh mỗi bên) ve vẩy theo nhịp thở
+            int fw = (int)(sinf(angle * 3.5f) * 2.5f);
+            // Mang trái
+            spr->fillRoundRect(cx - 32 + fw, ay - 18, 12, 6, 3, lgfx::color565(255, 105, 150));
+            spr->fillRoundRect(cx - 34 + fw, ay - 8, 14, 6, 3, lgfx::color565(255, 105, 150));
+            spr->fillRoundRect(cx - 30 + fw, ay + 2, 10, 5, 2, lgfx::color565(255, 105, 150));
+            // Mang phải
+            spr->fillRoundRect(cx + 20 - fw, ay - 18, 12, 6, 3, lgfx::color565(255, 105, 150));
+            spr->fillRoundRect(cx + 20 - fw, ay - 8, 14, 6, 3, lgfx::color565(255, 105, 150));
+            spr->fillRoundRect(cx + 20 - fw, ay + 2, 10, 5, 2, lgfx::color565(255, 105, 150));
+            // 3. Đôi mắt Anime tròn to chớp mắt
+            bool blink = ((millis() % 3500) < 160);
+            if (!blink) {
+              spr->fillCircle(cx - 10, ay - 4, 5, 0x18C3);
+              spr->fillCircle(cx + 10, ay - 4, 5, 0x18C3);
+              spr->fillCircle(cx - 11, ay - 6, 2, 0xFFFF); // Highlight sao
+              spr->fillCircle(cx + 9, ay - 6, 2, 0xFFFF);
+            } else {
+              spr->drawFastHLine(cx - 14, ay - 4, 8, 0x18C3); // Chớp mắt hình ^
+              spr->drawFastHLine(cx + 6, ay - 4, 8, 0x18C3);
+            }
+            // 4. Má hồng phúng phính
+            spr->fillCircle(cx - 14, ay + 4, 3, lgfx::color565(255, 120, 150));
+            spr->fillCircle(cx + 14, ay + 4, 3, lgfx::color565(255, 120, 150));
+            // 5. Miệng cười nhỏ ngọt ngào
+            spr->drawPixel(cx - 1, ay + 4, 0x8800);
+            spr->drawPixel(cx, ay + 5, 0x8800);
+            spr->drawPixel(cx + 1, ay + 4, 0x8800);
+            // 6. Bong bóng nước nổi lên xung quanh
+            int b1y = ay + 24 - ((millis() / 20) % 70);
+            int b2y = ay + 36 - (((millis() + 400) / 25) % 80);
+            spr->drawCircle(cx + 24, b1y, 4, 0xCE7F);
+            spr->drawPixel(cx + 23, b1y - 1, 0xFFFF);
+            spr->drawCircle(cx - 26, b2y, 3, 0xCE7F);
+          } else if (sub < 35) {
+            // 170-184: MÈO HOÀNG GIA & TINH LINH RỪNG KODAMA
+            int cy_m = cy + (int)(sinf(angle * 2.0f) * 2.0f);
+            // Khuôn mặt mèo tròn trắng muốt
+            spr->fillRoundRect(cx - 20, cy_m - 14, 40, 30, 10, 0xFFFF);
+            // Tai mèo tam giác có lòng tai hồng
+            spr->fillTriangle(cx - 18, cy_m - 12, cx - 12, cy_m - 26, cx - 4, cy_m - 12, 0xFFFF);
+            spr->fillTriangle(cx - 16, cy_m - 12, cx - 12, cy_m - 22, cx - 6, cy_m - 12, lgfx::color565(255, 180, 200));
+            spr->fillTriangle(cx + 4, cy_m - 12, cx + 12, cy_m - 26, cx + 18, cy_m - 12, 0xFFFF);
+            spr->fillTriangle(cx + 6, cy_m - 12, cx + 12, cy_m - 22, cx + 16, cy_m - 12, lgfx::color565(255, 180, 200));
+            // Mắt cười híp tít vui vẻ
+            spr->drawFastHLine(cx - 13, cy_m - 2, 6, 0x0000);
+            spr->drawFastHLine(cx + 7, cy_m - 2, 6, 0x0000);
+            // Râu mèo 2 bên
+            spr->drawFastHLine(cx - 26, cy_m + 2, 6, 0x94B2);
+            spr->drawFastHLine(cx + 20, cy_m + 2, 6, 0x94B2);
+            // Chuông cổ vàng Maneki
+            spr->fillCircle(cx, cy_m + 16, 4, 0xFDE0);
+          } else {
+            // 185-199: RỒNG CON & THIÊN CẦU CHIBI
+            spr->fillCircle(cx, cy, 22 + (int)(breath * 3), lgfx::color565(90, 180, 255));
+            spr->fillCircle(cx - 6, cy - 6, 3, 0xFFFF);
+            spr->fillCircle(cx + 6, cy - 6, 3, 0xFFFF);
+            spr->drawCircle(cx, cy, 32, 0xFDE0);
+          }
+        }
+        // =========================================================================
+        // NHÓM 5: 50 LÕI NĂNG LƯỢNG PLASMA & MA TRẬN CYBER (ID 200..249)
+        // =========================================================================
+        else {
+          int sub = (id - 200);
+          if (sub < 20) {
+            // 200-219: LÕI HỢP HẠCH TOKAMAK & TINH THỂ SIÊU DẪN
+            // Vành từ trường Tokamak đa lớp xoay
+            spr->drawCircle(cx, cy, 28, 0xFDE0);
+            spr->drawCircle(cx, cy, 20, 0x07FF);
+            spr->drawCircle(cx, cy, 12, 0xF800);
+            // Luồng hạt Plasma siêu nóng ở tâm
+            spr->fillCircle(cx, cy, 6 + (int)(breath * 3), 0xFFFF);
+            // 8 chấu từ trường cố định
+            for (int a = 0; a < 8; a++) {
+              float rad = a * 0.785398f + angle * 2.0f;
+              spr->drawLine(cx + (int)(cosf(rad)*14), cy + (int)(sinf(rad)*14), cx + (int)(cosf(rad)*28), cy + (int)(sinf(rad)*28), 0x07FF);
+            }
+          } else {
+            // 220-249: MA TRẬN LƯỚI THẦN KINH & PIN ZERO-POINT
+            spr->drawRect(cx - 18, cy - 26, 36, 52, 0x07FF);
+            spr->fillRect(cx - 14, cy - 22, 28, 44, 0x10A2);
+            int pHeight = 8 + (int)(breath * 24.0f);
+            spr->fillRect(cx - 12, cy + 20 - pHeight, 24, pHeight, 0x07FF);
+            spr->drawFastHLine(cx - 10, cy, 20, 0xFFFF);
+          }
+        }
+        break;
+      }
     }
   }
 };

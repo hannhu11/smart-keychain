@@ -48,4 +48,5 @@ tools/test_*.js
 tools/perfect_*.png
 tools/*.tmp
 tools/*.txt
+*.mp4
 tools/__pycache__/
