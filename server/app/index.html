@@ -1002,7 +1002,20 @@
 
   <script>
     const CATALOG = __CATALOG_JSON__;
-    let currentSpriteId = 12;
+    const EN_QUOTES = [{"id": 1, "quote": "Stay hungry, stay foolish.", "author": "Steve Jobs", "category": "Ambition"}, {"id": 2, "quote": "The only way to do great work is to love what you do.", "author": "Steve Jobs", "category": "Passion"}, {"id": 3, "quote": "Believe you can and you're halfway there.", "author": "Theodore Roosevelt", "category": "Confidence"}, {"id": 4, "quote": "In the middle of difficulty lies opportunity.", "author": "Albert Einstein", "category": "Resilience"}, {"id": 5, "quote": "Difficulties strengthen the mind, as labor does the body.", "author": "Seneca", "category": "Stoicism"}, {"id": 6, "quote": "It always seems impossible until it is done.", "author": "Nelson Mandela", "category": "Perseverance"}, {"id": 7, "quote": "Do what you can, with what you have, where you are.", "author": "Theodore Roosevelt", "category": "Action"}, {"id": 8, "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts.", "author": "Winston Churchill", "category": "Courage"}, {"id": 9, "quote": "Turn your wounds into wisdom.", "author": "Oprah Winfrey", "category": "Growth"}, {"id": 10, "quote": "Dream big and dare to fail.", "author": "Norman Vaughan", "category": "Vision"}, {"id": 11, "quote": "Act as if what you do makes a difference. It does.", "author": "William James", "category": "Impact"}, {"id": 12, "quote": "Happiness depends upon ourselves.", "author": "Aristotle", "category": "Wisdom"}, {"id": 13, "quote": "Focus on being productive instead of busy.", "author": "Tim Ferriss", "category": "Focus"}, {"id": 14, "quote": "Your time is limited, don't waste it living someone else's life.", "author": "Steve Jobs", "category": "Purpose"}, {"id": 15, "quote": "Small daily improvements over time lead to stunning results.", "author": "Robin Sharma", "category": "Mastery"}, {"id": 16, "quote": "Don't watch the clock; do what it does. Keep going.", "author": "Sam Levenson", "category": "Persistence"}, {"id": 17, "quote": "Everything you've ever wanted is sitting on the other side of fear.", "author": "George Addair", "category": "Courage"}, {"id": 18, "quote": "Hardships often prepare ordinary people for an extraordinary destiny.", "author": "C.S. Lewis", "category": "Strength"}, {"id": 19, "quote": "You are never too old to set another goal or to dream a new dream.", "author": "C.S. Lewis", "category": "Aspiration"}, {"id": 20, "quote": "Magic is believing in yourself. If you can make that happen, you can make anything happen.", "author": "Johann Wolfgang von Goethe", "category": "Belief"}, {"id": 21, "quote": "Limit your always and your nevers.", "author": "Amy Poehler", "category": "Mindfulness"}, {"id": 22, "quote": "Nothing is impossible. The word itself says 'I'm possible'!", "author": "Audrey Hepburn", "category": "Optimism"}, {"id": 23, "quote": "The future belongs to those who believe in the beauty of their dreams.", "author": "Eleanor Roosevelt", "category": "Vision"}, {"id": 24, "quote": "You don't have to be great to start, but you have to start to be great.", "author": "Zig Ziglar", "category": "Initiative"}, {"id": 25, "quote": "Continuous effort, not strength or intelligence, is the key to unlocking our potential.", "author": "Winston Churchill", "category": "Effort"}, {"id": 26, "quote": "Rise above the storm and you will find the sunshine.", "author": "Mario Fernandez", "category": "Hope"}, {"id": 27, "quote": "Fall seven times and stand up eight.", "author": "Japanese Proverb", "category": "Grit"}, {"id": 28, "quote": "Doubt kills more dreams than failure ever will.", "author": "Suzy Kassem", "category": "Bravery"}, {"id": 29, "quote": "Be so good they can't ignore you.", "author": "Steve Martin", "category": "Excellence"}, {"id": 30, "quote": "The mind is everything. What you think you become.", "author": "Buddha", "category": "Mindset"}];
+
+    window.localSettings = {
+      spriteScale: 1.4,          // 140%
+      typewriterSpeed: 65,       // ms
+      holdTime: 4000,            // ms
+      freezeText: false,         // Freeze after typing
+      autoQuoteCycle: true,      // 2-min auto cycle
+      quoteCycleInterval: 120,   // seconds
+      hasPendingChanges: false
+    };
+    let localSettings = window.localSettings;
+
+    let currentSpriteId = 1;
     let currentPaletteId = 0;
     let currentQuote = "Dù ở thế giới nào, anh vẫn luôn tìm thấy em.";
     let currentTextColor = "#FFFFFF";
@@ -2307,8 +2320,8 @@
 
       const maxLineWidth = 156;
       const maxLines = 4;
-      const lineHeight = 15;
-      const startY = 22;
+      const lineHeight = 14;
+      const startY = 16;
 
       let words = topText.split(' ');
       let lines = [];
@@ -2320,7 +2333,7 @@
         } else {
           if (curLine.length > 0) lines.push(curLine);
           curLine = w;
-          if (lines.length >= maxLines - 1) break;
+          if (lines.length >= maxLines) break;
         }
       }
       if (curLine.length > 0 && lines.length < maxLines) lines.push(curLine);
@@ -2344,6 +2357,9 @@
         visibleCount = (charDelay === 0) ? totalChars : ((progress < totalChars * charDelay) ? Math.floor(progress / charDelay) : totalChars);
       }
 
+      let isTyping = (visibleCount < totalChars);
+      let blinkCursor = (Math.floor(Date.now() / 320) % 2 === 0);
+
       let charsDrawn = 0;
       for (let i = 0; i < lines.length; i++) {
         if (charsDrawn >= visibleCount) break;
@@ -2351,14 +2367,17 @@
         let lineToDraw = lines[i].substring(0, charsLeft);
         charsDrawn += lineToDraw.length;
 
-        let lw = heroCtx.measureText(lineToDraw).width;
+        let isCurrentTypingLine = (charsDrawn === visibleCount);
+        let textToRender = (isTyping && isCurrentTypingLine && blinkCursor) ? (lineToDraw + '|') : lineToDraw;
+
+        let lw = heroCtx.measureText(textToRender).width;
         let lx = 8 + (156 - lw) / 2;
         let ly = startY + i * lineHeight;
 
         heroCtx.fillStyle = '#000000';
-        heroCtx.fillText(lineToDraw, lx + 1, ly + 1);
+        heroCtx.fillText(textToRender, lx + 1, ly + 1);
         heroCtx.fillStyle = currentTextColor;
-        heroCtx.fillText(lineToDraw, lx, ly);
+        heroCtx.fillText(textToRender, lx, ly);
       }
 
       // 6. RENDER ALL 250 MINI CANVASES CHUẨN XÁC 100%

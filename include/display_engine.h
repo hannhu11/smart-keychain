@@ -112,7 +112,7 @@ public:
   unsigned long lastQuoteCycleTime = 0;
   unsigned long quoteStartTime = 0;
   int currentEnQuoteIdx = 0;
-  LGFX_Sprite heroSprite;
+
 
   DisplayEngine() : sprite(&tft) {}
 
@@ -125,11 +125,7 @@ public:
     sprite.setColorDepth(16);
     void* buffer = sprite.createSprite(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    // Khởi tạo Hero SubSprite 96x96 để Zoom 3D 80% - 200% siêu mượt
-    heroSprite.setPsram(false);
-    heroSprite.setColorDepth(16);
-    heroSprite.createSprite(96, 96);
-    heroSprite.setPivot(48, 48);
+
     if (!buffer) {
       Serial.println("[LỖI] Không đủ RAM tạo Framebuffer 172x320!");
     } else {
@@ -605,6 +601,7 @@ public:
 
       // Gom từ vào tối đa 4 dòng theo độ rộng pixel thực tế
       String curLine = "";
+      const int MAX_LINES = 4;
       for (size_t i = 0; i < words.size(); i++) {
         String testLine = (curLine.length() == 0) ? words[i] : (curLine + " " + words[i]);
         if (spr->textWidth(testLine.c_str()) <= maxLineWidth) {
@@ -612,10 +609,10 @@ public:
         } else {
           if (curLine.length() > 0) lines.push_back(curLine);
           curLine = words[i];
-          if (lines.size() >= (size_t)(maxLines - 1)) break;
+          if (lines.size() >= (size_t)MAX_LINES) break;
         }
       }
-      if (curLine.length() > 0 && lines.size() < (size_t)maxLines) {
+      if (curLine.length() > 0 && lines.size() < (size_t)MAX_LINES) {
         lines.push_back(curLine);
       }
     }
@@ -674,14 +671,23 @@ public:
       int lw = spr->textWidth(lineToDraw.c_str());
       int lx = (SCREEN_WIDTH - lw) / 2;
 
-      // Đổ bóng đen phía sau (Vẽ trong suốt, không đè hộp đen lên chân dòng trên)
+      // Kiểm tra nếu dòng này đang được gõ thì thêm con trỏ gõ phím '|'
+      bool isTyping = (visibleCount < totalChars);
+      bool isCurrentTypingLine = (charsDrawn == visibleCount);
+      bool showCursor = ((millis() / 320) % 2 == 0);
+      String textWithCursor = lineToDraw;
+      if (isTyping && isCurrentTypingLine && showCursor) {
+        textWithCursor += "|";
+      }
+
+      // Đổ bóng đen phía sau
       spr->setTextDatum(textdatum_t::top_left);
       spr->setTextColor(0x0000);
-      spr->drawString(lineToDraw.c_str(), lx + 1, lineY + 1);
+      spr->drawString(textWithCursor.c_str(), lx + 1, lineY + 1);
 
-      // Chữ màu chính (Vẽ trong suốt)
+      // Chữ màu chính (gõ bàn phím chân thực)
       spr->setTextColor(currentTextColor);
-      spr->drawString(lineToDraw.c_str(), lx, lineY);
+      spr->drawString(textWithCursor.c_str(), lx, lineY);
     }
   }
 
@@ -788,14 +794,8 @@ public:
       sprite.fillEllipse(cx, 202, rx, ry, shadowCol);
     }
 
-    // Vẽ Theme Animation 2.5D Volumetric phóng to 80% - 200% qua SubSprite
-    if (fabsf(currentSpriteScale - 1.0f) < 0.05f) {
-      SpriteRenderer::drawTheme(&sprite, currentSpriteIdx, cx, cy, breath, floatAngle);
-    } else {
-      heroSprite.clear(0x0001); // Màu trong suốt Chroma Key
-      SpriteRenderer::drawTheme(&heroSprite, currentSpriteIdx, 48, 48, breath, floatAngle);
-      heroSprite.pushRotateZoom(&sprite, cx, cy, 0, currentSpriteScale, currentSpriteScale, 0x0001);
-    }
+    // Vẽ Theme Animation 2.5D Volumetric phóng to 80% - 200% TRỰC TIẾP (45-60 FPS MƯỢT MÀ)
+    SpriteRenderer::drawTheme(&sprite, currentSpriteIdx, cx, cy, breath, floatAngle, currentSpriteScale);
 
     // 5. LAYER 3: CHỮ NỔI Ở ĐỈNH (Y = 8 - 28) CÓ DẤU 100%
     renderTopTypography(&sprite);

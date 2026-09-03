@@ -5,7 +5,9 @@
 
 class SpriteRenderer {
 public:
-  static void drawTheme(LGFX_Sprite* spr, int id, int cx, int cy, float breath, float angle) {
+  static void drawTheme(LGFX_Sprite* spr, int id, int cx, int cy, float breath, float angle, float scale = 1.0f) {
+    if (scale < 0.5f) scale = 0.5f;
+    if (scale > 2.2f) scale = 2.2f;
     id = (id >= 0) ? (id % 50) : 0;
     bool blink = (millis() % 3500 < 160);
 
