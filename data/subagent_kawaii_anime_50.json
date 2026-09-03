@@ -1,0 +1,1896 @@
+[
+  {
+    "id": 0,
+    "name_vi": "Axolotl Hồng Đào Ngọt Ngào",
+    "name_en": "Sweet Sakura Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#FF69B4",
+      "accent_hex": "#FFF0F5",
+      "shadow_hex": "#D1477A",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xFD98",
+      "rgb565_secondary": "0xFB56",
+      "rgb565_accent": "0xFFDF",
+      "rgb565_shadow": "0xD24F",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.32,
+      "amplitude_px": 3.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.45
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3500,
+      "blink_duration_ms": 130,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        },
+        {
+          "dx": 2,
+          "dy": 1,
+          "r": 1,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Ellipsoid Head with 6-frill plume gills and beveled chub body",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 12.0,
+      "rim_light_color": "0xFFDF"
+    },
+    "quote": "Nụ cười của em làm tan chảy cả đại dương trong lòng anh.",
+    "shader_effect": "Sakura Petal Wave & Soft Floating Shimmer"
+  },
+  {
+    "id": 1,
+    "name_vi": "Axolotl Thổi Bong Bóng",
+    "name_en": "Bubble Blower Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#7FE5D9",
+      "secondary_hex": "#38BDF8",
+      "accent_hex": "#E0F2FE",
+      "shadow_hex": "#0284C7",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0x7F3B",
+      "rgb565_secondary": "0x3DFE",
+      "rgb565_accent": "0xE79F",
+      "rgb565_shadow": "0x0438",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.28,
+      "amplitude_px": 2.5,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.5
+    },
+    "eye_specs": {
+      "eye_type": "star_glint",
+      "blink_interval_ms": 3800,
+      "blink_duration_ms": 140,
+      "pupil_tracking_range_px": {
+        "max_x": 5,
+        "max_y": 4
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -1,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Toroid mouth puffing with refractive sphere bubbles",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 16.0,
+      "rim_light_color": "0x07FF"
+    },
+    "quote": "Mỗi bong bóng nước là một điều ước anh gửi đến bên em.",
+    "shader_effect": "Bioluminescent Rainbow Bubble Orbit"
+  },
+  {
+    "id": 2,
+    "name_vi": "Axolotl Ngủ Mơ Kẹo Bông",
+    "name_en": "Sleeping Pastel Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#E0C3FC",
+      "secondary_hex": "#8EC5FC",
+      "accent_hex": "#FEE140",
+      "shadow_hex": "#7B68EE",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xE63F",
+      "rgb565_secondary": "0x8E3F",
+      "rgb565_accent": "0xFEA8",
+      "rgb565_shadow": "0x7B5D",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.22,
+      "amplitude_px": 4.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.6
+    },
+    "eye_specs": {
+      "eye_type": "curved_sleep_arc",
+      "blink_interval_ms": 6000,
+      "blink_duration_ms": 100,
+      "pupil_tracking_range_px": {
+        "max_x": 2,
+        "max_y": 1
+      },
+      "catchlight_shine": []
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Curled crescent spine with drooped gills and floating snot-bubble",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 8.0,
+      "rim_light_color": "0xFEA8"
+    },
+    "quote": "Chúc thiên thần nhỏ ngủ ngoan, trong mơ anh vẫn nắm tay em.",
+    "shader_effect": "Zzz Sleep Dust & Star Cloud Ripple"
+  },
+  {
+    "id": 3,
+    "name_vi": "Axolotl Hoàng Tử Vương Giả",
+    "name_en": "Royal Prince Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#FFD166",
+      "secondary_hex": "#EF476F",
+      "accent_hex": "#06D6A0",
+      "shadow_hex": "#B8860B",
+      "highlight_hex": "#FFFBEB",
+      "rgb565_primary": "0xFE8C",
+      "rgb565_secondary": "0xEE8D",
+      "rgb565_accent": "0x06B4",
+      "rgb565_shadow": "0xB441",
+      "rgb565_highlight": "0xFFFA"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.35,
+      "amplitude_px": 2.2,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.35
+    },
+    "eye_specs": {
+      "eye_type": "cat_slit_oval",
+      "blink_interval_ms": 3200,
+      "blink_duration_ms": 120,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -2,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Isometric gold crown with ruby facet inlays and silk neck ruff",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 24.0,
+      "rim_light_color": "0xFFE0"
+    },
+    "quote": "Vương miện này anh không cần, anh chỉ muốn làm kỵ sĩ của riêng em.",
+    "shader_effect": "Golden Shimmer & Royal Gem Gleam"
+  },
+  {
+    "id": 4,
+    "name_vi": "Axolotl Vòng Hoa Tinh Khôi",
+    "name_en": "Floral Crown Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#A7F3D0",
+      "secondary_hex": "#F472B6",
+      "accent_hex": "#FDE047",
+      "shadow_hex": "#059669",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xAF7A",
+      "rgb565_secondary": "0xF396",
+      "rgb565_accent": "0xF6E8",
+      "rgb565_shadow": "0x04B3",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.3,
+      "amplitude_px": 3.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.4
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3600,
+      "blink_duration_ms": 130,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Woven flower tiara with 5 independent petal blossoms",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 10.0,
+      "rim_light_color": "0x07E0"
+    },
+    "quote": "Đóa hoa đẹp nhất trần gian cũng nghiêng mình trước nụ cười em.",
+    "shader_effect": "Floating Petals & Forest Dewdrop Pulse"
+  },
+  {
+    "id": 5,
+    "name_vi": "Axolotl Game Thủ Neon",
+    "name_en": "Cyber Gamer Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#06B6D4",
+      "secondary_hex": "#F43F5E",
+      "accent_hex": "#A855F7",
+      "shadow_hex": "#0F172A",
+      "highlight_hex": "#38BDF8",
+      "rgb565_primary": "0x05B6",
+      "rgb565_secondary": "0xF1E8",
+      "rgb565_accent": "0xA2BF",
+      "rgb565_shadow": "0x08C5",
+      "rgb565_highlight": "0x3DFE"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.36,
+      "amplitude_px": 2.5,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.3
+    },
+    "eye_specs": {
+      "eye_type": "chibi_pupil",
+      "blink_interval_ms": 3400,
+      "blink_duration_ms": 120,
+      "pupil_tracking_range_px": {
+        "max_x": 5,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#06B6D4"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Curved RGB over-ear headset with glowing cat-ear cups",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 18.0,
+      "rim_light_color": "0xF81F"
+    },
+    "quote": "Dù game over bao nhiêu lần, anh vẫn chọn hồi sinh bên em.",
+    "shader_effect": "Cyber Neon Wave & Equalizer Bar Bounce"
+  },
+  {
+    "id": 6,
+    "name_vi": "Axolotl Bát Mì Ramen",
+    "name_en": "Ramen Slurper Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#FB923C",
+      "secondary_hex": "#FEE685",
+      "accent_hex": "#DC2626",
+      "shadow_hex": "#9A3412",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xFC87",
+      "rgb565_secondary": "0xFF30",
+      "rgb565_accent": "0xD924",
+      "rgb565_shadow": "0x99A2",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.34,
+      "amplitude_px": 3.2,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.4
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3300,
+      "blink_duration_ms": 125,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -1,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Ceramic bowl with naruto fishcake and curling steam vector ribbons",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 14.0,
+      "rim_light_color": "0xFD20"
+    },
+    "quote": "Gói trọn ấm áp thế gian vào một bát mì tình yêu cho em.",
+    "shader_effect": "Steam Heart Float & Noodle Swirl"
+  },
+  {
+    "id": 7,
+    "name_vi": "Axolotl Thiên Sứ Đôi Cánh",
+    "name_en": "Angelic Feather Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#E2E8F0",
+      "secondary_hex": "#38BDF8",
+      "accent_hex": "#FCD34D",
+      "shadow_hex": "#64748B",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xE71C",
+      "rgb565_secondary": "0x3DFE",
+      "rgb565_accent": "0xFE69",
+      "rgb565_shadow": "0x63B1",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.28,
+      "amplitude_px": 3.5,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.55
+    },
+    "eye_specs": {
+      "eye_type": "anime_tear_glossy",
+      "blink_interval_ms": 3700,
+      "blink_duration_ms": 135,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -2,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        },
+        {
+          "dx": 2,
+          "dy": 2,
+          "r": 1,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Layered feathered wings with yaw flap and orbiting golden halo torus",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 20.0,
+      "rim_light_color": "0xFFFF"
+    },
+    "quote": "Đôi cánh thiên sứ này sẽ che chở cho em suốt bốn mùa bình yên.",
+    "shader_effect": "Holy Feather Drift & Divine Halo Orbit"
+  },
+  {
+    "id": 8,
+    "name_vi": "Axolotl Du Hành Không Gian",
+    "name_en": "Cosmo Float Axolotl",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#818CF8",
+      "secondary_hex": "#C084FC",
+      "accent_hex": "#F472B6",
+      "shadow_hex": "#312E81",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0x847F",
+      "rgb565_secondary": "0xC43F",
+      "rgb565_accent": "0xF396",
+      "rgb565_shadow": "0x3170",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.25,
+      "amplitude_px": 3.8,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.6
+    },
+    "eye_specs": {
+      "eye_type": "star_glint",
+      "blink_interval_ms": 3900,
+      "blink_duration_ms": 140,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 4
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -1,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Spherical bubble helmet with specular curved reflections and oxygen backpack",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 32.0,
+      "rim_light_color": "0x7DFF"
+    },
+    "quote": "Vũ trụ bao la ngàn tinh tú, nhưng em là ngôi sao sáng nhất của anh.",
+    "shader_effect": "Zero-G Float & Stardust Nebula Trail"
+  },
+  {
+    "id": 9,
+    "name_vi": "Axolotl Pháp Sư Ngọc Thần",
+    "name_en": "Mage Axolotl & Mana Orbs",
+    "category": "Axolotl Biểu Cảm",
+    "species": "Ambystoma mexicanum",
+    "palette": {
+      "primary_hex": "#C4B5FD",
+      "secondary_hex": "#6EE7B7",
+      "accent_hex": "#FDE047",
+      "shadow_hex": "#4C1D95",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xC5BF",
+      "rgb565_secondary": "0x6F36",
+      "rgb565_accent": "0xF6E8",
+      "rgb565_shadow": "0x48F2",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.3,
+      "amplitude_px": 2.8,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.4
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3500,
+      "blink_duration_ms": 130,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Wizard pointed cone hat with 3 orbiting mana crystal dodecahedrons",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 18.0,
+      "rim_light_color": "0xD81F"
+    },
+    "quote": "Phép màu kỳ diệu nhất trần gian là khoảnh khắc anh gặp em.",
+    "shader_effect": "Mana Orb Lissajous Orbit & Magic Sparkles"
+  },
+  {
+    "id": 10,
+    "name_vi": "Mèo Ba Tư Hoàng Đế",
+    "name_en": "Persian Emperor Cat",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus imperialis",
+    "palette": {
+      "primary_hex": "#F8FAFC",
+      "secondary_hex": "#991B1B",
+      "accent_hex": "#F59E0B",
+      "shadow_hex": "#94A3B8",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xF7BE",
+      "rgb565_secondary": "0x98E3",
+      "rgb565_accent": "0xF4E1",
+      "rgb565_shadow": "0x9537",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.28,
+      "amplitude_px": 3.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.35
+    },
+    "eye_specs": {
+      "eye_type": "cat_slit_oval",
+      "blink_interval_ms": 3600,
+      "blink_duration_ms": 125,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 2
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Fluffy spherical mane with gold filigree scepter and velvet mantle",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 15.0,
+      "rim_light_color": "0xFEA0"
+    },
+    "quote": "Cả vương quốc này của trẫm, nhưng trẫm lại hoàn toàn thuộc về em.",
+    "shader_effect": "Velvet Shimmer & Gold Filigree Glow"
+  },
+  {
+    "id": 11,
+    "name_vi": "Mèo Tam Thể Nữ Hoàng",
+    "name_en": "Calico Queen & Golden Tiara",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus calico",
+    "palette": {
+      "primary_hex": "#F97316",
+      "secondary_hex": "#1E293B",
+      "accent_hex": "#FBBF24",
+      "shadow_hex": "#9A3412",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xFBA2",
+      "rgb565_secondary": "0x1967",
+      "rgb565_accent": "0xFDC4",
+      "rgb565_shadow": "0x99A2",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.32,
+      "amplitude_px": 2.6,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.4
+    },
+    "eye_specs": {
+      "eye_type": "cat_slit_oval",
+      "blink_interval_ms": 3300,
+      "blink_duration_ms": 120,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Tri-color patchwork coat with emerald encrusted crown tiara",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 16.0,
+      "rim_light_color": "0x07E0"
+    },
+    "quote": "Nữ hoàng tam thể kiêu sa cũng chịu ngoan ngoãn dụi đầu vào tay em.",
+    "shader_effect": "Tiara Sparkle & Tail Sinuous Sway"
+  },
+  {
+    "id": 12,
+    "name_vi": "Mèo Xiêm Pháp Sư Bí Ẩn",
+    "name_en": "Siamese Arcane Wizard",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus siamensis",
+    "palette": {
+      "primary_hex": "#451A03",
+      "secondary_hex": "#E2E8F0",
+      "accent_hex": "#0284C7",
+      "shadow_hex": "#1C1917",
+      "highlight_hex": "#38BDF8",
+      "rgb565_primary": "0x40E0",
+      "rgb565_secondary": "0xE71C",
+      "rgb565_accent": "0x0438",
+      "rgb565_shadow": "0x18C3",
+      "rgb565_highlight": "0x3DFE"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.3,
+      "amplitude_px": 2.4,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.35
+    },
+    "eye_specs": {
+      "eye_type": "anime_tear_glossy",
+      "blink_interval_ms": 3500,
+      "blink_duration_ms": 130,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -1,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Seal-point contrast mask with glowing sapphire irises and spell rune ring",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 22.0,
+      "rim_light_color": "0x05FF"
+    },
+    "quote": "Đôi mắt xanh sapphire này đã bị bùa yêu của em phong ấn.",
+    "shader_effect": "Arcane Blue Fire Ring & Eye Pulse"
+  },
+  {
+    "id": 13,
+    "name_vi": "Mèo Sphynx Cyber Ai Cập",
+    "name_en": "Cyberpunk Sphinx Pharaohess",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus sphinx cyber",
+    "palette": {
+      "primary_hex": "#D4D4D8",
+      "secondary_hex": "#06B6D4",
+      "accent_hex": "#F59E0B",
+      "shadow_hex": "#27272A",
+      "highlight_hex": "#22D3EE",
+      "rgb565_primary": "0xD69A",
+      "rgb565_secondary": "0x05B6",
+      "rgb565_accent": "0xF4E1",
+      "rgb565_shadow": "0x2124",
+      "rgb565_highlight": "0x269D"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.34,
+      "amplitude_px": 2.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.25
+    },
+    "eye_specs": {
+      "eye_type": "cat_slit_oval",
+      "blink_interval_ms": 3100,
+      "blink_duration_ms": 115,
+      "pupil_tracking_range_px": {
+        "max_x": 5,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#06B6D4"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Angular beveled jaw with gold Nemes headdress and glowing PCB circuits",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 26.0,
+      "rim_light_color": "0x07FF"
+    },
+    "quote": "Mật mã 4000 năm cổ đại giải mã ra duy nhất tên em.",
+    "shader_effect": "Hologram Hieroglyphs & Neon Edge Trace"
+  },
+  {
+    "id": 14,
+    "name_vi": "Mèo Thần Tài Phát Lộc",
+    "name_en": "Lucky Fortune Maneki Neko",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus maneki",
+    "palette": {
+      "primary_hex": "#FFFFFF",
+      "secondary_hex": "#DC2626",
+      "accent_hex": "#EAB308",
+      "shadow_hex": "#E2E8F0",
+      "highlight_hex": "#FDE047",
+      "rgb565_primary": "0xFFFF",
+      "rgb565_secondary": "0xD924",
+      "rgb565_accent": "0xEB21",
+      "rgb565_shadow": "0xE71C",
+      "rgb565_highlight": "0xF6E8"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.36,
+      "amplitude_px": 3.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.3
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3400,
+      "blink_duration_ms": 120,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 2
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Porcelain chubby cat holding oval gold Koban coin with animated waving paw",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 18.0,
+      "rim_light_color": "0xFFE0"
+    },
+    "quote": "Vẫy tay rước may mắn, tài lộc và ngập tràn hạnh phúc đến cho em!",
+    "shader_effect": "Gold Coin Sparkle & Paw Wave Pendulum"
+  },
+  {
+    "id": 15,
+    "name_vi": "Mèo Hầu Gái Kawaii",
+    "name_en": "Maid Café Kitty Neko",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus domesticus",
+    "palette": {
+      "primary_hex": "#18181B",
+      "secondary_hex": "#FFFFFF",
+      "accent_hex": "#EC4899",
+      "shadow_hex": "#09090B",
+      "highlight_hex": "#F472B6",
+      "rgb565_primary": "0x18C3",
+      "rgb565_secondary": "0xFFFF",
+      "rgb565_accent": "0xEC93",
+      "rgb565_shadow": "0x0841",
+      "rgb565_highlight": "0xF396"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.32,
+      "amplitude_px": 2.8,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.45
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3300,
+      "blink_duration_ms": 120,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        },
+        {
+          "dx": 2,
+          "dy": 1,
+          "r": 1,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Frilled lace headband with twitching cat ears and pink silk ribbon bowtie",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 12.0,
+      "rim_light_color": "0xFCAE"
+    },
+    "quote": "Goshujin-sama! Bữa tiệc tình yêu hôm nay chỉ phục vụ một mình em.",
+    "shader_effect": "Heart Sparkle Burst & Ear Twitch Wobble"
+  },
+  {
+    "id": 16,
+    "name_vi": "Mèo Kỵ Sĩ Giáp Bạc",
+    "name_en": "Silver Knight Paladin Cat",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus miles",
+    "palette": {
+      "primary_hex": "#E2E8F0",
+      "secondary_hex": "#3B82F6",
+      "accent_hex": "#F59E0B",
+      "shadow_hex": "#475569",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xE71C",
+      "rgb565_secondary": "0x3C1E",
+      "rgb565_accent": "0xF4E1",
+      "rgb565_shadow": "0x4AA9",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.35,
+      "amplitude_px": 2.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.25
+    },
+    "eye_specs": {
+      "eye_type": "chibi_pupil",
+      "blink_interval_ms": 3500,
+      "blink_duration_ms": 130,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Polished steel cuirass with golden crossguard shortsword and ear visors",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 24.0,
+      "rim_light_color": "0x7DDF"
+    },
+    "quote": "Thề trên thanh gươm danh dự, anh sẽ bảo vệ em trọn kiếp.",
+    "shader_effect": "Steel Specular Sheen & Holy Blade Glow"
+  },
+  {
+    "id": 17,
+    "name_vi": "Mèo Cheshire Tím Mơ Mộng",
+    "name_en": "Cheshire Velvet Dreamer",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus cheshire",
+    "palette": {
+      "primary_hex": "#7C3AED",
+      "secondary_hex": "#F43F5E",
+      "accent_hex": "#A78BFA",
+      "shadow_hex": "#2E1065",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0x79F5",
+      "rgb565_secondary": "0xF1E8",
+      "rgb565_accent": "0xA47F",
+      "rgb565_shadow": "0x288C",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.26,
+      "amplitude_px": 3.6,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.5
+    },
+    "eye_specs": {
+      "eye_type": "cat_slit_oval",
+      "blink_interval_ms": 4000,
+      "blink_duration_ms": 150,
+      "pupil_tracking_range_px": {
+        "max_x": 5,
+        "max_y": 4
+      },
+      "catchlight_shine": [
+        {
+          "dx": -2,
+          "dy": -1,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Striped purple velvet body with wide crescent glowing smile mesh",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 14.0,
+      "rim_light_color": "0xF81F"
+    },
+    "quote": "Nụ cười này có thể biến mất, nhưng tình yêu anh thì vĩnh cửu.",
+    "shader_effect": "Hypnotic Spiral Eye & Fading Invisibility"
+  },
+  {
+    "id": 18,
+    "name_vi": "Mèo Phi Công Đồng Thau",
+    "name_en": "Steampunk Aviator Cat",
+    "category": "Mèo Hoàng Gia",
+    "species": "Felis catus steampunk",
+    "palette": {
+      "primary_hex": "#78350F",
+      "secondary_hex": "#D97706",
+      "accent_hex": "#059669",
+      "shadow_hex": "#451A03",
+      "highlight_hex": "#FDE68A",
+      "rgb565_primary": "0x79A1",
+      "rgb565_secondary": "0xD3A0",
+      "rgb565_accent": "0x04B3",
+      "rgb565_shadow": "0x40E0",
+      "rgb565_highlight": "0xFF31"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.33,
+      "amplitude_px": 2.5,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.35
+    },
+    "eye_specs": {
+      "eye_type": "chibi_pupil",
+      "blink_interval_ms": 3400,
+      "blink_duration_ms": 120,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Brass rimmed dual flight goggles with fluttering silk aviation scarf",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 20.0,
+      "rim_light_color": "0xFE40"
+    },
+    "quote": "Kính phi công định hướng đưa con tàu tình yêu bay thẳng vào tim em.",
+    "shader_effect": "Rotating Brass Gears & Flying Scarf Wind"
+  },
+  {
+    "id": 19,
+    "name_vi": "Báo Đen Hoàng Gia Quý Tộc",
+    "name_en": "Black Panther Royal Cub",
+    "category": "Mèo Hoàng Gia",
+    "species": "Panthera pardus melanica",
+    "palette": {
+      "primary_hex": "#0F172A",
+      "secondary_hex": "#312E81",
+      "accent_hex": "#FACC15",
+      "shadow_hex": "#020617",
+      "highlight_hex": "#818CF8",
+      "rgb565_primary": "0x08C5",
+      "rgb565_secondary": "0x3170",
+      "rgb565_accent": "0xFE62",
+      "rgb565_shadow": "0x0002",
+      "rgb565_highlight": "0x847F"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.29,
+      "amplitude_px": 2.6,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.3
+    },
+    "eye_specs": {
+      "eye_type": "cat_slit_oval",
+      "blink_interval_ms": 3500,
+      "blink_duration_ms": 125,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FACC15"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Sleek obsidian muscular torso with gold torque collar and glowing yellow gaze",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 28.0,
+      "rim_light_color": "0x633E"
+    },
+    "quote": "Chúa tể bóng đêm dũng mãnh chỉ chịu đầu hàng trước nụ cười em.",
+    "shader_effect": "Shadow Cloak Aura & Golden Eye Flash"
+  },
+  {
+    "id": 20,
+    "name_vi": "Tinh Linh Gỗ Phát Quang",
+    "name_en": "Luminescent Kodama",
+    "category": "Tinh Linh Rừng",
+    "species": "Spiritus arboris",
+    "palette": {
+      "primary_hex": "#ECFDF5",
+      "secondary_hex": "#10B981",
+      "accent_hex": "#6EE7B7",
+      "shadow_hex": "#047857",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xEE7E",
+      "rgb565_secondary": "0x15D0",
+      "rgb565_accent": "0x6F36",
+      "rgb565_shadow": "0x03C0",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.35,
+      "amplitude_px": 2.8,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.2
+    },
+    "eye_specs": {
+      "eye_type": "chibi_pupil",
+      "blink_interval_ms": 3800,
+      "blink_duration_ms": 140,
+      "pupil_tracking_range_px": {
+        "max_x": 3,
+        "max_y": 2
+      },
+      "catchlight_shine": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "r": 1,
+          "color": "#6EE7B7"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Smooth tilted bobble head with 3 hollow oval face holes and wobbly neck",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 10.0,
+      "rim_light_color": "0x07E0"
+    },
+    "quote": "Lách cách lách cách, tinh linh rừng thì thầm lời yêu em theo gió.",
+    "shader_effect": "Head Click Wobble & Forest Firefly Float"
+  },
+  {
+    "id": 21,
+    "name_vi": "Tinh Linh Hoa Anh Đào",
+    "name_en": "Sakura Blossom Fairy",
+    "category": "Tinh Linh Rừng",
+    "species": "Spiritus sakura",
+    "palette": {
+      "primary_hex": "#FDF2F8",
+      "secondary_hex": "#EC4899",
+      "accent_hex": "#FDE047",
+      "shadow_hex": "#BE185D",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xF7BE",
+      "rgb565_secondary": "0xEC93",
+      "rgb565_accent": "0xF6E8",
+      "rgb565_shadow": "0xBD0B",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.3,
+      "amplitude_px": 3.4,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.45
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3400,
+      "blink_duration_ms": 125,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "5-lobed cherry petal skirt with translucent capillary wings",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 14.0,
+      "rim_light_color": "0xFDB8"
+    },
+    "quote": "Cánh hoa rơi nghiêng bóng nước, như nỗi nhớ em rơi đầy trong lòng anh.",
+    "shader_effect": "Sakura Blizzard Spiral & Pollen Glow"
+  },
+  {
+    "id": 22,
+    "name_vi": "Người Đá Rêu Phong Tí Hon",
+    "name_en": "Mossy Stone Golem Sprout",
+    "category": "Tinh Linh Rừng",
+    "species": "Golem silva",
+    "palette": {
+      "primary_hex": "#64748B",
+      "secondary_hex": "#22C55E",
+      "accent_hex": "#FACC15",
+      "shadow_hex": "#334155",
+      "highlight_hex": "#94A3B8",
+      "rgb565_primary": "0x63B1",
+      "rgb565_secondary": "0x262B",
+      "rgb565_accent": "0xFE62",
+      "rgb565_shadow": "0x322A",
+      "rgb565_highlight": "0x9537"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.22,
+      "amplitude_px": 2.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.15
+    },
+    "eye_specs": {
+      "eye_type": "chibi_pupil",
+      "blink_interval_ms": 4200,
+      "blink_duration_ms": 150,
+      "pupil_tracking_range_px": {
+        "max_x": 3,
+        "max_y": 2
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -1,
+          "r": 2,
+          "color": "#22C55E"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Faceted basalt rocks with green moss caps and twin leaf sprout on head",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 6.0,
+      "rim_light_color": "0x07E0"
+    },
+    "quote": "Trái tim người đá tuy cứng cỏi nhưng mềm lòng mỗi khi thấy em cười.",
+    "shader_effect": "Leaf Swaying & Ancient Rune Pulsation"
+  },
+  {
+    "id": 23,
+    "name_vi": "Giọt Sương Tinh Khiết",
+    "name_en": "Dewdrop Pixie",
+    "category": "Tinh Linh Rừng",
+    "species": "Elementalis aqua",
+    "palette": {
+      "primary_hex": "#E0F2FE",
+      "secondary_hex": "#0284C7",
+      "accent_hex": "#38BDF8",
+      "shadow_hex": "#0369A1",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xE79F",
+      "rgb565_secondary": "0x0438",
+      "rgb565_accent": "0x3DFE",
+      "rgb565_shadow": "0x0354",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.38,
+      "amplitude_px": 3.6,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.5
+    },
+    "eye_specs": {
+      "eye_type": "anime_tear_glossy",
+      "blink_interval_ms": 3600,
+      "blink_duration_ms": 130,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Teardrop glass prism body with caustic bottom reflections",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 32.0,
+      "rim_light_color": "0x07FF"
+    },
+    "quote": "Trong trẻo như giọt sương ban mai, tình yêu anh tinh khôi tặng riêng em.",
+    "shader_effect": "Prismatic Caustic Rays & Water Ripple"
+  },
+  {
+    "id": 24,
+    "name_vi": "Sóc Hạt Dẻ Thần Kỳ",
+    "name_en": "Acorn Sprite Squirreling",
+    "category": "Tinh Linh Rừng",
+    "species": "Sciurus mystica",
+    "palette": {
+      "primary_hex": "#B45309",
+      "secondary_hex": "#FDE68A",
+      "accent_hex": "#EF4444",
+      "shadow_hex": "#78350F",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xB2A1",
+      "rgb565_secondary": "0xFF31",
+      "rgb565_accent": "0xEE88",
+      "rgb565_shadow": "0x79A1",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.42,
+      "amplitude_px": 3.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.45
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3100,
+      "blink_duration_ms": 110,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Cross-hatched acorn beret hat with giant curly bushy tail in rear",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 12.0,
+      "rim_light_color": "0xFEA0"
+    },
+    "quote": "Gom hết những hạt dẻ ngọt ngào nhất rừng sâu về tặng cho em.",
+    "shader_effect": "Bushy Tail S-Wave & Cheerful Nut Nibble"
+  },
+  {
+    "id": 25,
+    "name_vi": "Nấm Dạ Quang Sinh Học",
+    "name_en": "Bioluminescent Mushroom Imp",
+    "category": "Tinh Linh Rừng",
+    "species": "Mycena chlorophos imp",
+    "palette": {
+      "primary_hex": "#8B5CF6",
+      "secondary_hex": "#06D6A0",
+      "accent_hex": "#F472B6",
+      "shadow_hex": "#4C1D95",
+      "highlight_hex": "#EDE9FE",
+      "rgb565_primary": "0x8AEF",
+      "rgb565_secondary": "0x06B4",
+      "rgb565_accent": "0xF396",
+      "rgb565_shadow": "0x48F2",
+      "rgb565_highlight": "0xEE7F"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.28,
+      "amplitude_px": 3.2,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.3
+    },
+    "eye_specs": {
+      "eye_type": "star_glint",
+      "blink_interval_ms": 3700,
+      "blink_duration_ms": 135,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 2
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -1,
+          "r": 2,
+          "color": "#06D6A0"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Hemispherical cap with glowing spore dots and soft rubbery stalk",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 16.0,
+      "rim_light_color": "0x07FF"
+    },
+    "quote": "Thắp sáng màn đêm tăm tối bằng ánh nấm tình yêu rực rỡ bên em.",
+    "shader_effect": "Bioluminescent Spore Dispersion & Pulse"
+  },
+  {
+    "id": 26,
+    "name_vi": "Bướm Đêm Ánh Trăng",
+    "name_en": "Lunar Moth Silk Fairy",
+    "category": "Tinh Linh Rừng",
+    "species": "Actias luna fae",
+    "palette": {
+      "primary_hex": "#F1F5F9",
+      "secondary_hex": "#6366F1",
+      "accent_hex": "#FDE047",
+      "shadow_hex": "#3730A3",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xF0BE",
+      "rgb565_secondary": "0x633E",
+      "rgb565_accent": "0xF6E8",
+      "rgb565_shadow": "0x3974",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.34,
+      "amplitude_px": 3.5,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.5
+    },
+    "eye_specs": {
+      "eye_type": "chibi_pupil",
+      "blink_interval_ms": 3600,
+      "blink_duration_ms": 125,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Twin long-tailed moon wings with glowing eyespots and feathery antennae",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 18.0,
+      "rim_light_color": "0x981F"
+    },
+    "quote": "Đôi cánh lụa dệt ánh trăng bạc đưa em vào giấc mộng êm đềm nhất.",
+    "shader_effect": "Moonlight Powder Shimmer & Wing Flap"
+  },
+  {
+    "id": 27,
+    "name_vi": "Đốm Lửa Ma Trơi Rừng Sâu",
+    "name_en": "Will-o'-the-Wisp Wisp",
+    "category": "Tinh Linh Rừng",
+    "species": "Ignis fatuus sylvestris",
+    "palette": {
+      "primary_hex": "#06B6D4",
+      "secondary_hex": "#3B82F6",
+      "accent_hex": "#A5F3FC",
+      "shadow_hex": "#083344",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0x05B6",
+      "rgb565_secondary": "0x3C1E",
+      "rgb565_accent": "0xA79F",
+      "rgb565_shadow": "0x0988",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.45,
+      "amplitude_px": 4.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.6
+    },
+    "eye_specs": {
+      "eye_type": "kawaii_sparkle",
+      "blink_interval_ms": 3200,
+      "blink_duration_ms": 110,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": 0,
+          "dy": -1,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Deforming spherical plasma flame with spiraling tail tip",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 25.0,
+      "rim_light_color": "0x07FF"
+    },
+    "quote": "Ngọn lửa ma trơi dẫn lối đưa em vượt qua mọi bão giông cuộc đời.",
+    "shader_effect": "Plasma Flame Lick & Dancing Blue Spark"
+  },
+  {
+    "id": 28,
+    "name_vi": "Hồ Ly 3 Đuôi Tinh Linh",
+    "name_en": "Little Kitsune 3-Tails Spirit",
+    "category": "Tinh Linh Rừng",
+    "species": "Vulpes kitsune triplex",
+    "palette": {
+      "primary_hex": "#FFFFFF",
+      "secondary_hex": "#EA580C",
+      "accent_hex": "#DC2626",
+      "shadow_hex": "#CBD5E1",
+      "highlight_hex": "#FEF08A",
+      "rgb565_primary": "0xFFFF",
+      "rgb565_secondary": "0xEAA1",
+      "rgb565_accent": "0xD924",
+      "rgb565_shadow": "0xCE59",
+      "rgb565_highlight": "0xFF71"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.32,
+      "amplitude_px": 2.8,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.4
+    },
+    "eye_specs": {
+      "eye_type": "cat_slit_oval",
+      "blink_interval_ms": 3400,
+      "blink_duration_ms": 120,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Pointed snout with scarlet ear tips and 3 fan-waving plush tails",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 16.0,
+      "rim_light_color": "0xFD20"
+    },
+    "quote": "Hồ ly nhỏ hóa phép mang bình an và nụ cười rạng rỡ đến bên em.",
+    "shader_effect": "Fox Fire Wisps & Triple Tail Fan Dance"
+  },
+  {
+    "id": 29,
+    "name_vi": "Nàng Tiên Hoa Sen Nước",
+    "name_en": "Lotus Water Nymph",
+    "category": "Tinh Linh Rừng",
+    "species": "Nymphaea lotus fae",
+    "palette": {
+      "primary_hex": "#FBCFE8",
+      "secondary_hex": "#059669",
+      "accent_hex": "#FBBF24",
+      "shadow_hex": "#DB2777",
+      "highlight_hex": "#FFFFFF",
+      "rgb565_primary": "0xFDE7",
+      "rgb565_secondary": "0x04B3",
+      "rgb565_accent": "0xFDC4",
+      "rgb565_shadow": "0xD936",
+      "rgb565_highlight": "0xFFFF"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.27,
+      "amplitude_px": 3.0,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.35
+    },
+    "eye_specs": {
+      "eye_type": "anime_tear_glossy",
+      "blink_interval_ms": 3600,
+      "blink_duration_ms": 130,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 2
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Floating lotus petal chalice with water ring ripple below",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 14.0,
+      "rim_light_color": "0xFC00"
+    },
+    "quote": "Búp sen thơm ngát dâng hương, như tấm chân tình anh trao gửi em.",
+    "shader_effect": "Water Ripple Waves & Sacred Lotus Glow"
+  },
+  {
+    "id": 30,
+    "name_vi": "Kỳ Lân Cưỡi Mây",
+    "name_en": "Cloud Qilin Chibi",
+    "category": "Thú Cưỡi Thần Thoại",
+    "species": "Qilin nimbus",
+    "palette": {
+      "primary_hex": "#38BDF8",
+      "secondary_hex": "#FFFFFF",
+      "accent_hex": "#FACC15",
+      "shadow_hex": "#0284C7",
+      "highlight_hex": "#E0F2FE",
+      "rgb565_primary": "0x3DFE",
+      "rgb565_secondary": "0xFFFF",
+      "rgb565_accent": "0xFE62",
+      "rgb565_shadow": "0x0438",
+      "rgb565_highlight": "0xE79F"
+    },
+    "breathing_specs": {
+      "frequency_hz": 0.32,
+      "amplitude_px": 3.4,
+      "wave_type": "asymmetric_sine",
+      "ear_tail_lag_rad": 0.4
+    },
+    "eye_specs": {
+      "eye_type": "star_glint",
+      "blink_interval_ms": 3500,
+      "blink_duration_ms": 125,
+      "pupil_tracking_range_px": {
+        "max_x": 4,
+        "max_y": 3
+      },
+      "catchlight_shine": [
+        {
+          "dx": -1,
+          "dy": -2,
+          "r": 2,
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "volumetric_3d_specs": {
+      "mesh_topology": "Curved golden unicorn horn with cloud fluff hooves and mane crest",
+      "light_direction": [
+        -0.577,
+        -0.577,
+        0.577
+      ],
+      "specular_power": 22.0,
+      "rim_light_color": "0xFFE0"
+    },
+    "quote": "Kỳ lân đạp mây ngũ sắc mang điềm lành và phúc khí đến cho em.",
+    "shader_effect": "Rainbow Cloud Swirl & Hoof Sparkle"
+  },
+  {
+    "id": 31,
+    "name_vi": "Linh Thú Kawaii 31",
+    "name_en": "Kawaii Spirit Pet 31",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 32,
+    "name_vi": "Linh Thú Kawaii 32",
+    "name_en": "Kawaii Spirit Pet 32",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 33,
+    "name_vi": "Linh Thú Kawaii 33",
+    "name_en": "Kawaii Spirit Pet 33",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 34,
+    "name_vi": "Linh Thú Kawaii 34",
+    "name_en": "Kawaii Spirit Pet 34",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 35,
+    "name_vi": "Linh Thú Kawaii 35",
+    "name_en": "Kawaii Spirit Pet 35",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 36,
+    "name_vi": "Linh Thú Kawaii 36",
+    "name_en": "Kawaii Spirit Pet 36",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 37,
+    "name_vi": "Linh Thú Kawaii 37",
+    "name_en": "Kawaii Spirit Pet 37",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 38,
+    "name_vi": "Linh Thú Kawaii 38",
+    "name_en": "Kawaii Spirit Pet 38",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 39,
+    "name_vi": "Linh Thú Kawaii 39",
+    "name_en": "Kawaii Spirit Pet 39",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 40,
+    "name_vi": "Linh Thú Kawaii 40",
+    "name_en": "Kawaii Spirit Pet 40",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 41,
+    "name_vi": "Linh Thú Kawaii 41",
+    "name_en": "Kawaii Spirit Pet 41",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 42,
+    "name_vi": "Linh Thú Kawaii 42",
+    "name_en": "Kawaii Spirit Pet 42",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 43,
+    "name_vi": "Linh Thú Kawaii 43",
+    "name_en": "Kawaii Spirit Pet 43",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 44,
+    "name_vi": "Linh Thú Kawaii 44",
+    "name_en": "Kawaii Spirit Pet 44",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 45,
+    "name_vi": "Linh Thú Kawaii 45",
+    "name_en": "Kawaii Spirit Pet 45",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 46,
+    "name_vi": "Linh Thú Kawaii 46",
+    "name_en": "Kawaii Spirit Pet 46",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 47,
+    "name_vi": "Linh Thú Kawaii 47",
+    "name_en": "Kawaii Spirit Pet 47",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 48,
+    "name_vi": "Linh Thú Kawaii 48",
+    "name_en": "Kawaii Spirit Pet 48",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  },
+  {
+    "id": 49,
+    "name_vi": "Linh Thú Kawaii 49",
+    "name_en": "Kawaii Spirit Pet 49",
+    "category": "Thú Cưng & Anime",
+    "palette": {
+      "primary_hex": "#FFB7C5",
+      "secondary_hex": "#38BDF8"
+    },
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh."
+  }
+]

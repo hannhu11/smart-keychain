@@ -1,0 +1,1202 @@
+[
+  {
+    "global_id": 0,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Excalibur - Thánh Kiếm Bàn Tròn (The Holy Claymore)",
+    "quote": "Kẻ xứng đáng rút thanh kiếm này là vị vua đích thực của ánh sáng.",
+    "palette": "Kinpaku Gold (#FFB800), Cyan Magic (#00F0FF), Royal Navy (#10172A), Diamond White (#FFFFFF)."
+  },
+  {
+    "global_id": 1,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Clarent - Hỏa Nguyệt Thánh Kiếm (Sword of Peace & Treason)",
+    "quote": "Ngọn lửa này thanh tẩy tội lỗi và soi tỏ tâm can chính nghĩa.",
+    "palette": "Vermilion Red (#FF2A4D), Solar Crimson (#E60039), Platinum Silver (#E2E8F0)."
+  },
+  {
+    "global_id": 2,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Dáinsleif - Ma Kiếm Đoạt Mệnh (The Cursed Ruinblade)",
+    "quote": "Một khi đã tuốt khỏi vỏ, máu quân thù phải nhuộm đỏ lưỡi kiếm.",
+    "palette": "Abyssal Purple (#7C3AED), Void Violet (#A855F7), Obsidian (#09090B)."
+  },
+  {
+    "global_id": 3,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Gram - Long Diệt Trảm Đao (Sigurd's Dragon Cleaver)",
+    "quote": "Huyết mạch loài rồng ngàn năm rèn nên nhát chém vô song.",
+    "palette": "Dragon Gold (#D97706), Amber Blaze (#F59E0B), Charcoal Carbon (#18181B)."
+  },
+  {
+    "global_id": 4,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Kusanagi-no-Tsurugi - Thiên Tòng Vân Kiếm (Grass-Cutting Divine Katana)",
+    "quote": "Gió bão ngàn trùng rẽ lối, ngọc kiếm xuất thế chấn yên non sông.",
+    "palette": "Verdigris Jade (#10B981), Storm Cyan (#06B6D4), Mist White (#F8FAFC)."
+  },
+  {
+    "global_id": 5,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Tyrfing - Thần Kiếm Hoàng Kim Của Người Lùn (Dwarven Golden Blade)",
+    "quote": "Hoàng kim bất hoại tôi luyện trong lòng hỏa sơn sâu thẳm.",
+    "palette": "Kinpaku Gold (#EAB308), Molten Brass (#F59E0B), Deep Bronze (#78350F)."
+  },
+  {
+    "global_id": 6,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Caladbolg - Thiên Lôi Trọng Kiếm (The Spiral Rainbow Lightning Sword)",
+    "quote": "Một nhát vung gươm, sấm chớp rạch trời san phẳng vạn ngọn núi.",
+    "palette": "Lightning Cyan (#00FFFF), Plasma Blue (#2563EB), Aurora Violet (#8B5CF6)."
+  },
+  {
+    "global_id": 7,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Joyeuse - Thần Kiếm Charlemagne (The Sword of Thirty Colors)",
+    "quote": "Biểu tượng vương quyền vĩnh cửu của những bậc đế vương chân chính.",
+    "palette": "Imperial Gold (#F59E0B), Royal Lapis (#1D4ED8), Pearl White (#FFFFFF)."
+  },
+  {
+    "global_id": 8,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Durandal - Bất Diệt Thánh Đao (The Indestructible Paladin Sword)",
+    "quote": "Lời thề bất diệt trước đấng tối cao, lưỡi gươm không bao giờ gãy vụn.",
+    "palette": "Seraphic Gold (#FBBF24), Angelic Azure (#38BDF8), Marble White (#F1F5F9)."
+  },
+  {
+    "global_id": 9,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Photon Sabre - Lưỡi Kiếm Quang Tử Thái Dương (Sunfire Plasma Saber)",
+    "quote": "Chùm năng lượng nguyên thủy thiêu rụi màn đêm hư vô.",
+    "palette": "Solar Plasma (#FF5500), Hyper Cyan (#00E5FF), White Hot (#FFFFFF)."
+  },
+  {
+    "global_id": 10,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Fail-Not - Vô Hụt Thần Cung (The Infallible Bow of Tristan)",
+    "quote": "Mũi tên rời cung, mục tiêu định đoạt không bao giờ trệch hướng.",
+    "palette": "Glacial Cyan (#22D3EE), Frost White (#F0FDF4), Silver Birch (#E2E8F0)."
+  },
+  {
+    "global_id": 11,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Gandiva - Thần Cung Thiên Giới Arjuna (Brahma's Cosmic Bow)",
+    "quote": "Uy lực chấn động tam giới, mũi tên xé toạc màn sương u tối.",
+    "palette": "Celestial Gold (#F59E0B), Solar Orange (#EA580C), Astral Purple (#6366F1)."
+  },
+  {
+    "global_id": 12,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Skadi's Frostbite - Hàn Băng Cốt Cung (Jotunheim Ice Longbow)",
+    "quote": "Cơn bão tuyết vĩnh cửu của Cực Bắc đóng băng vạn vật sống.",
+    "palette": "Absolute Zero Cyan (#06B6D4), Glacial Ice (#A5F3FC), Frost White (#FFFFFF)."
+  },
+  {
+    "global_id": 13,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Pinaka - Hủy Diệt Thần Cung Shiva (Shiva's Bow of Dissolution)",
+    "quote": "Mũi tên hủy diệt vũ trụ khi chu kỳ luân hồi chấm dứt.",
+    "palette": "Cosmic Teal (#0D9488), Mystic Indigo (#4338CA), Pure Ember (#F97316)."
+  },
+  {
+    "global_id": 14,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Gungnir - Ngọn Giáo Tối Cao Odin (The Spear of Heaven)",
+    "quote": "Lời thề của Đấng Toàn Năng khắc sâu trên mũi giáo chân lý.",
+    "palette": "Asgard Gold (#EAB308), Runestone Cyan (#38BDF8), Yggdrasil Ash (#71717A)."
+  },
+  {
+    "global_id": 15,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Gayebolg - Ma Giáo Huyết Kích Cu Chulainn (The Barbed Spear of Mortal Ruin)",
+    "quote": "Ngọn giáo xé toạc không gian mang theo cơn ác mộng ngàn gai nhọn.",
+    "palette": "Crimson Red (#DC2626), Abyssal Indigo (#312E81), Bone White (#F8FAFC)."
+  },
+  {
+    "global_id": 16,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Trishula - Tam Xoa Kích Shiva (The Trident of the Triad)",
+    "quote": "Ba mũi nhọn chế ngự ba cõi, dẹp tan dục vọng và vô minh.",
+    "palette": "Sacred Saffron (#D97706), Electric Azure (#0284C7), Flame Gold (#FBBF24)."
+  },
+  {
+    "global_id": 17,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Astrape - Cung Thần Điện Quang Zeus (The Lightning Bolt Recurve)",
+    "quote": "Tia chớp giáng trần định đoạt số phận của các vị thần.",
+    "palette": "Electric Blue (#00D2FF), Supercharged White (#FFFFFF), Deep Sky (#0040AA)."
+  },
+  {
+    "global_id": 18,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Artemis' Moonbow - Nguyệt Quang Bạc Cung (Silver Crescent Huntress Bow)",
+    "quote": "Ánh trăng huyền ảo dẫn đường cho nữ thợ săn trong đêm tịch mịch.",
+    "palette": "Moonlight Silver (#E2E8F0), Pearl Teal (#99F6E4), Twilight Slate (#334155)."
+  },
+  {
+    "global_id": 19,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Boreas' Tempest - Bắc Phong Nỏ Tiễn (The Blizzard Heavy Crossbow)",
+    "quote": "Gió lạnh Bắc Bực cuốn phăng mọi rào cản ngăn bước.",
+    "palette": "Glacial Blue (#38BDF8), Deep Ocean (#0C4A6E), Frosted Platinum (#F1F5F9)."
+  },
+  {
+    "global_id": 20,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Staff of Moses - Thần Trượng Tách Biển (The Miracle Shepherd Staff)",
+    "quote": "Giơ ngọn trượng lên trời, đại dương rẽ lối cho đoàn người chính trực.",
+    "palette": "Sacred Cedar Wood (#78350F), Celestial Gold (#F59E0B), Divine Light (#FFFFFF)."
+  },
+  {
+    "global_id": 21,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Caduceus of Hermes - Thần Trượng Song Xà (The Herald's Winged Wand)",
+    "quote": "Sự hòa giải của hai thái cực mở ra cánh cửa tri thức vĩnh cửu.",
+    "palette": "Hermes Gold (#EAB308), Emerald Green (#10B981), Wing Ivory (#F8FAFC)."
+  },
+  {
+    "global_id": 22,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Thyrsus of Dionysus - Trượng Thông Say Đắm (The Ivy Pinecone Scepter)",
+    "quote": "Men say của đất trời đánh thức niềm hân hoan sâu kín nhất.",
+    "palette": "Forest Emerald (#059669), Wine Ruby (#9F1239), Golden Amber (#F59E0B)."
+  },
+  {
+    "global_id": 23,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Scepter of Osiris - Quyền Trượng Phục Sinh (The Crook and Flail of Rebirth)",
+    "quote": "Sự sống tái sinh từ cõi vĩnh hằng soi sáng ngai vàng chân lý.",
+    "palette": "Lapis Lazuli (#1E40AF), Egyptian Gold (#F59E0B), Turquoise (#06B6D4)."
+  },
+  {
+    "global_id": 24,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Eye of Agamotto Staff - Trượng Pháp Nhãn Thời Gian (The Eye of Eternity Scepter)",
+    "quote": "Thời gian chảy ngược như dòng sông vô tận dưới ánh mắt thấu suốt.",
+    "palette": "Mystic Emerald (#10B981), Ancient Brass (#B45309), Time Rune Green (#6EE7B7)."
+  },
+  {
+    "global_id": 25,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Staff of Archangel Michael - Thánh Trượng Trảm Tà (Michael's Holy Scepter)",
+    "quote": "Ai sánh bằng Thiên Chúa! Ánh sáng xua tan bóng tối muôn đời.",
+    "palette": "Heavenly Gold (#FBBF24), Radiant Sapphire (#2563EB), Pure White (#FFFFFF)."
+  },
+  {
+    "global_id": 26,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Ruyi Jingu Bang - Định Hải Thần Châm (The Sea-Settling Golden Cudgel)",
+    "quote": "Biến hóa khôn lường tựa mây trời, dẹp yên bão tố khắp bốn biển.",
+    "palette": "Emperor Gold (#F59E0B), Dragon Red (#DC2626), Black Iron (#171717)."
+  },
+  {
+    "global_id": 27,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Staff of Ra - Thái Dương Thần Trượng (The Solar Obelisk Wand)",
+    "quote": "Bình minh xé toạc màn đêm, ban phát sinh khí cho muôn loài.",
+    "palette": "Solar Flare Gold (#F59E0B), Ruby Flare (#EF4444), Ra Yellow (#FEF08A)."
+  },
+  {
+    "global_id": 28,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Staff of Hecate - Nguyệt Linh Trượng Ba Ngã (The Strophalos Triad Staff)",
+    "quote": "Đứng giữa ngã ba định mệnh, ngọn đuốc thần soi tỏ mọi ngả đường.",
+    "palette": "Moon Violet (#8B5CF6), Deep Obsidian (#030712), Ghostly Cyan (#67E8F9)."
+  },
+  {
+    "global_id": 29,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Primordial Yggdrasil Branch - Cành Cổ Thụ Thế Giới (Branch of the World Tree)",
+    "quote": "Cội rễ đâm sâu vào lòng đất, tán lá chở che chín cõi ngân hà.",
+    "palette": "Life Green (#22C55E), World Sap Amber (#F59E0B), Bark Brown (#451A03)."
+  },
+  {
+    "global_id": 30,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Aegis - Thần Khiên Đầu Rắn Medusa (Athena's Gorgoneion Shield)",
+    "quote": "Bất cứ ánh nhìn ngạo mạn nào đối diện thần khiên đều hóa thành đá tảng.",
+    "palette": "Athena Gold (#EAB308), Gorgon Bronze (#78350F), Petrification Emerald (#10B981)."
+  },
+  {
+    "global_id": 31,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Shield of Achilles - Khiên Vũ Trụ Tinh Tú (Hephaestus' Masterpiece)",
+    "quote": "Mang cả vũ trụ thu nhỏ trên tay, vững vàng trước mọi ngọn thương mũi kiếm.",
+    "palette": "Hephaestus Bronze (#B45309), Ocean Deep Blue (#1E3A8A), Star Gold (#FBBF24)."
+  },
+  {
+    "global_id": 32,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Pridwen - Thánh Khiên Đức Mẹ Đồng Trinh (King Arthur's Divine Shield)",
+    "quote": "Bảo hộ công lý và kẻ yếu thế dưới bóng mát của đức tin thiêng liêng.",
+    "palette": "Marian Blue (#2563EB), Pure Lily White (#FFFFFF), Chivalric Gold (#F59E0B)."
+  },
+  {
+    "global_id": 33,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Svalinn - Tấm Khiên Chắn Mặt Trời (The Sun-Cooling Norse Shield)",
+    "quote": "Lá chắn lạnh giá giữ cho trái đất xanh tươi trước ngọn lửa thái dương.",
+    "palette": "Glacial White (#F8FAFC), Ice Cyan (#38BDF8), Solar Orange Edge (#F97316)."
+  },
+  {
+    "global_id": 34,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Ancile of Mars - Thánh Khiên Thiên Giáng La Mã (The Sacred Shield of Rome)",
+    "quote": "Bảo vật rơi từ chín tầng mây, giữ gìn đế chế trường tồn cùng thời gian.",
+    "palette": "Imperial Crimson (#DC2626), Roman Brass (#D97706), Eagle Gold (#FBBF24)."
+  },
+  {
+    "global_id": 35,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Mirror of Yata - Bát Chỉ Kính Nhật Bản (Yata no Kagami)",
+    "quote": "Mặt gương chân thật soi tỏ hư thực, nơi ngự trị của nữ thần Mặt Trời.",
+    "palette": "Solar White (#FFFFFF), Mirror Bronze (#B45309), Amaterasu Gold (#F59E0B)."
+  },
+  {
+    "global_id": 36,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Ouroboros Aegis - Khiên Vĩnh Hằng Luân Hồi (The Infinity Serpent Guard)",
+    "quote": "Điểm khởi đầu cũng là hồi kết, vòng tròn bất diệt vượt qua thời gian.",
+    "palette": "Emerald Green (#10B981), Ancient Gold (#F59E0B), Scaled Teal (#14B8A6)."
+  },
+  {
+    "global_id": 37,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Gorgon's Eye Pavise - Đại Khiên Cấm Kỵ (The Abyssal Golem Shield)",
+    "quote": "Bức tường thành bất khả xâm phạm che chắn cho đồng đội phía sau.",
+    "palette": "Deep Granite (#334155), Demonic Crimson (#EF4444), Dark Iron (#0F172A)."
+  },
+  {
+    "global_id": 38,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Valkyrie's Wings Shield - Khiên Cánh Chiến Trận (Shield of the Chooser of Slain)",
+    "quote": "Đôi cánh rạng ngời đón đưa anh hùng về cõi trường sinh bất tử.",
+    "palette": "Valhalla Silver (#E2E8F0), Sky Blue (#38BDF8), Aurora Rose (#FB7185)."
+  },
+  {
+    "global_id": 39,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Titanium Hex-Barrier - Khiên Lục Giác Từ Trường (Cyber Energy Deflector)",
+    "quote": "Hàng rào năng lượng tối tân không một xung lực nào có thể xuyên thủng.",
+    "palette": "Neon Cyan (#00F0FF), Matrix Green (#00FF88), Carbon Gray (#1E293B)."
+  },
+  {
+    "global_id": 40,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "The Holy Grail - Chén Thánh San Greal (The Chalice of Eternal Life)",
+    "quote": "Giọt máu thanh khiết ban tặng sự sống đời đời cho kẻ có lòng trong sạch.",
+    "palette": "Chalice Gold (#F59E0B), Blood Red Wine (#991B1B), Pearl White (#FFFFFF)."
+  },
+  {
+    "global_id": 41,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "The Ark of the Covenant - Rương Giao Ước (The Mercy Seat Ark)",
+    "quote": "Nơi hiện diện của đấng tối cao, uy nghiêm rúng động khắp nhân gian.",
+    "palette": "Ark Pure Gold (#EAB308), Cherubim Gold (#FDE047), Shekinah Fire (#FF5500)."
+  },
+  {
+    "global_id": 42,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Philosopher's Stone - Hòn Đá Triết Gia (The Magnum Opus Elixir)",
+    "quote": "Đỉnh cao giả kim thuật: biến chì thành vàng, hồi sinh sự sống từ cát bụi.",
+    "palette": "Pure Alchemical Ruby (#E11D48), Transmutation Gold (#F59E0B), Mercury Silver (#E2E8F0)."
+  },
+  {
+    "global_id": 43,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Pandora's Box - Chiếc Hộp Hy Vọng (The Pithos of Hope)",
+    "quote": "Dù muôn vàn giông bão ập đến, niềm hy vọng sẽ mãi ở lại cùng ta.",
+    "palette": "Ancient Clay (#9A3412), Miasma Purple (#7C3AED), Radiant Hope Gold (#FBBF24)."
+  },
+  {
+    "global_id": 44,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Crown of Thorns & Halo - Vương Miện Gai & Vòng Thánh (The Passion Crown)",
+    "quote": "Nỗi đau tôi luyện nên sự vĩ đại, tình yêu thương vượt lên trên mọi gian nan.",
+    "palette": "Sacred Blood Crimson (#B91C1C), Thorn Wood (#451A03), Halo Gold (#F59E0B)."
+  },
+  {
+    "global_id": 45,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Gjallarhorn - Tù Và Tận Thế Heimdall (The Resounding Horn of Ragnarok)",
+    "quote": "Tiếng tù và ngân vang chín cõi, đánh thức các dũng sĩ nghênh đón định mệnh.",
+    "palette": "Bifrost Opal (#06B6D4), Horn Ivory (#FEF3C7), Gold Rim (#F59E0B)."
+  },
+  {
+    "global_id": 46,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Mjölnir - Thần Búa Sét Thor (The Crusher of Giants - Mythic Forge Edition)",
+    "quote": "Sức mạnh sấm sét bảo hộ người ngay thẳng, đập tan mọi áp bức bất công.",
+    "palette": "Uru Gray (#64748B), Lightning Blue (#00F0FF), Rune Silver (#F1F5F9)."
+  },
+  {
+    "global_id": 47,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Seal of Solomon - Con Dấu Thần Bí Solomon (The Hexagram King's Signet)",
+    "quote": "Trí tuệ tối cao thấu hiểu quy luật đất trời, dẹp yên mọi hỗn loạn trần gian.",
+    "palette": "Solomon Gold (#EAB308), Sapphire Blue (#1E40AF), Ruby Accent (#DC2626)."
+  },
+  {
+    "global_id": 48,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Brísingamen - Chuỗi Vòng Hổ Phách Freyja (The Flaming Amber Torc)",
+    "quote": "Vẻ đẹp thuần khiết và ngọn lửa ấm áp sưởi ấm tâm hồn trong đêm đông dài.",
+    "palette": "Honey Amber (#D97706), Fiery Gold (#F59E0B), Sunfire Red (#EA580C)."
+  },
+  {
+    "global_id": 49,
+    "category": "Thánh Khí & Vũ Khí Thần Thoại",
+    "subagent": "Weapons Relics Designer",
+    "name": "Chintamani Stone - Như Ý Bảo Châu (The Wish-Fulfilling Mani Jewel)",
+    "quote": "Tâm sáng như ngọc bích, muôn ngàn ước nguyện thiện lành đều thành hiện thực.",
+    "palette": "Lotus Pink (#EC4899), Dharma Gold (#F59E0B), Aurora Cyan (#06B6D4)."
+  },
+  {
+    "global_id": 50,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Cơ Giáp Cánh Lượng Tử Cực Quang",
+    "quote": "Cánh bay lượng tử kích hoạt. Mục tiêu bảo vệ duy nhất là em.",
+    "palette": "#00f0ff"
+  },
+  {
+    "global_id": 51,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Tháp Pháo Điện Từ Song Nòng",
+    "quote": "Hệ thống nạp đạn hoàn tất. Bắn tan mọi ưu phiền của em.",
+    "palette": "#00f0ff"
+  },
+  {
+    "global_id": 52,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Huyết Đao Dao Động Sóng Cao Tần",
+    "quote": "Tần số dao động hòa cùng nhịp đập con tim em.",
+    "palette": "#ff1744"
+  },
+  {
+    "global_id": 53,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Đại Bác Nén Trọng Lực Không Gian",
+    "quote": "Trọng lực cả vũ trụ hút trọn tâm trí anh về phía em.",
+    "palette": "#a855f7"
+  },
+  {
+    "global_id": 54,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Khiên Hộ Thể Lục Giác Nanite",
+    "quote": "Lá chắn vững chắc nhất là sự chân thành anh trao em.",
+    "palette": "#00ff88"
+  },
+  {
+    "global_id": 55,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Dao Găm Nhiệt Đơn Phân Tử",
+    "quote": "Hơi ấm này đủ làm tan chảy mọi khoảng cách đôi ta.",
+    "palette": "#f59e0b"
+  },
+  {
+    "global_id": 56,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Lõi Khủng Hạm Thiết Giáp Hạng Nặng",
+    "quote": "Dù trước vạn quân thù, anh vẫn là lá chắn chở che em.",
+    "palette": "#f5c842"
+  },
+  {
+    "global_id": 57,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Kích Năng Lượng Lưỡng Cực Photon",
+    "quote": "Đường kích phá tan màn đêm, đưa em về miền rực rỡ.",
+    "palette": "#3b82f6"
+  },
+  {
+    "global_id": 58,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Đàn Drone Trinh Sát Mini Quỹ Đạo",
+    "quote": "Từng tín hiệu truyền về đều xác nhận: Anh yêu em.",
+    "palette": "#2dd4bf"
+  },
+  {
+    "global_id": 59,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Hệ Thống Khóa Mục Tiêu Đa Điểm Cyber",
+    "quote": "Hệ thống đã khóa chặt: Trái tim anh chỉ hướng về em.",
+    "palette": "#ef4444"
+  },
+  {
+    "global_id": 60,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Radar Quét Vòm Phân Lớp Không Gian",
+    "quote": "Radar quét cả dải ngân hà chỉ tìm kiếm nụ cười em.",
+    "palette": "#22c55e"
+  },
+  {
+    "global_id": 61,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Chỉ Báo Góc Chúi & Đường Chân Trời Giả Lập",
+    "quote": "Dù phi thuyền chao đảo, tình yêu anh vẫn giữ thăng bằng.",
+    "palette": "#00f0ff"
+  },
+  {
+    "global_id": 62,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Giám Sát Sinh Trắc Học Cyborg & Nhiệt Tạng",
+    "quote": "Chỉ số sinh tồn báo cáo: Anh không thể thiếu em một giây nào.",
+    "palette": "#06b6d4"
+  },
+  {
+    "global_id": 63,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Dòng Dữ Liệu Mã Hóa Lượng Tử Khối 3D",
+    "quote": "Khóa mã lượng tử 1024-bit cũng không ngăn được tình anh.",
+    "palette": "#00ff88"
+  },
+  {
+    "global_id": 64,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Đường Đạn Động Học Dự Đoán AI",
+    "quote": "Mọi quỹ đạo cuộc đời anh đều hội tụ về phía em.",
+    "palette": "#f97316"
+  },
+  {
+    "global_id": 65,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Cảnh Báo Lỗi Nhiễu Hệ Thống Hư Cấu",
+    "quote": "Lỗi hệ thống: Quá tải vì tương tư nụ cười em.",
+    "palette": "#00f0ff"
+  },
+  {
+    "global_id": 66,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Bản Đồ Thiên Hà & Hải Đăng Điều Hướng",
+    "quote": "Giữa tỷ vì sao lạc lối, em là hải đăng dẫn đường anh.",
+    "palette": "#a855f7"
+  },
+  {
+    "global_id": 67,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Biểu Đồ Sóng Âm Phổ Tác Chiến 3D",
+    "quote": "Mọi tần số âm thanh tuyệt vời nhất hội tụ nơi giọng em.",
+    "palette": "#ec4899"
+  },
+  {
+    "global_id": 68,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Vòng Thu Hoạch Năng Lượng Dyson",
+    "quote": "Năng lượng cả ngôi sao gom lại sưởi ấm tim em.",
+    "palette": "#f5c842"
+  },
+  {
+    "global_id": 69,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Vòng Quay Trọng Lực Trạm Torus",
+    "quote": "Giữa vũ trụ bao la, nơi em ở chính là bến đỗ bình yên.",
+    "palette": "#94a3b8"
+  },
+  {
+    "global_id": 70,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Đường Hầm Siêu Không Gian Bước Nhảy Warp",
+    "quote": "Bước nhảy không gian vượt ngàn năm ánh sáng để bên em.",
+    "palette": "#00f0ff"
+  },
+  {
+    "global_id": 71,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Tấm Pin Vệ Tinh Quỹ Đạo Bám Nhật",
+    "quote": "Hấp thu từng tia nắng mặt trời để thắp sáng giấc mơ em.",
+    "palette": "#f5c842"
+  },
+  {
+    "global_id": 72,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Vòi Phun Động Cơ Hợp Hạch Ion",
+    "quote": "Gia tốc tối đa đưa anh vượt mọi bão giông tìm em.",
+    "palette": "#00f0ff"
+  },
+  {
+    "global_id": 73,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 23",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 74,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 24",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 75,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 25",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 76,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 26",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 77,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 27",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 78,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 28",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 79,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 29",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 80,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 30",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 81,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 31",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 82,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 32",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 83,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 33",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 84,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 34",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 85,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 35",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 86,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 36",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 87,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 37",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 88,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 38",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 89,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 39",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 90,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 40",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 91,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 41",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 92,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 42",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 93,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 43",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 94,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 44",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 95,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 45",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 96,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 46",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 97,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 47",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 98,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 48",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 99,
+    "category": "Cơ Giáp Cyber & Không Gian",
+    "subagent": "SciFi Mecha Motion Engineer",
+    "name": "Module Lượng Tử Quỹ Đạo 49",
+    "quote": "Năng lượng lượng tử bảo vệ tình yêu chúng mình.",
+    "palette": "#00F0FF"
+  },
+  {
+    "global_id": 100,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Hồng Đào Ngọt Ngào",
+    "quote": "Nụ cười của em làm tan chảy cả đại dương trong lòng anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 101,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Thổi Bong Bóng",
+    "quote": "Mỗi bong bóng nước là một điều ước anh gửi đến bên em.",
+    "palette": "#7FE5D9"
+  },
+  {
+    "global_id": 102,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Ngủ Mơ Kẹo Bông",
+    "quote": "Chúc thiên thần nhỏ ngủ ngoan, trong mơ anh vẫn nắm tay em.",
+    "palette": "#E0C3FC"
+  },
+  {
+    "global_id": 103,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Hoàng Tử Vương Giả",
+    "quote": "Vương miện này anh không cần, anh chỉ muốn làm kỵ sĩ của riêng em.",
+    "palette": "#FFD166"
+  },
+  {
+    "global_id": 104,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Vòng Hoa Tinh Khôi",
+    "quote": "Đóa hoa đẹp nhất trần gian cũng nghiêng mình trước nụ cười em.",
+    "palette": "#A7F3D0"
+  },
+  {
+    "global_id": 105,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Game Thủ Neon",
+    "quote": "Dù game over bao nhiêu lần, anh vẫn chọn hồi sinh bên em.",
+    "palette": "#06B6D4"
+  },
+  {
+    "global_id": 106,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Bát Mì Ramen",
+    "quote": "Gói trọn ấm áp thế gian vào một bát mì tình yêu cho em.",
+    "palette": "#FB923C"
+  },
+  {
+    "global_id": 107,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Thiên Sứ Đôi Cánh",
+    "quote": "Đôi cánh thiên sứ này sẽ che chở cho em suốt bốn mùa bình yên.",
+    "palette": "#E2E8F0"
+  },
+  {
+    "global_id": 108,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Du Hành Không Gian",
+    "quote": "Vũ trụ bao la ngàn tinh tú, nhưng em là ngôi sao sáng nhất của anh.",
+    "palette": "#818CF8"
+  },
+  {
+    "global_id": 109,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Axolotl Pháp Sư Ngọc Thần",
+    "quote": "Phép màu kỳ diệu nhất trần gian là khoảnh khắc anh gặp em.",
+    "palette": "#C4B5FD"
+  },
+  {
+    "global_id": 110,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Ba Tư Hoàng Đế",
+    "quote": "Cả vương quốc này của trẫm, nhưng trẫm lại hoàn toàn thuộc về em.",
+    "palette": "#F8FAFC"
+  },
+  {
+    "global_id": 111,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Tam Thể Nữ Hoàng",
+    "quote": "Nữ hoàng tam thể kiêu sa cũng chịu ngoan ngoãn dụi đầu vào tay em.",
+    "palette": "#F97316"
+  },
+  {
+    "global_id": 112,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Xiêm Pháp Sư Bí Ẩn",
+    "quote": "Đôi mắt xanh sapphire này đã bị bùa yêu của em phong ấn.",
+    "palette": "#451A03"
+  },
+  {
+    "global_id": 113,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Sphynx Cyber Ai Cập",
+    "quote": "Mật mã 4000 năm cổ đại giải mã ra duy nhất tên em.",
+    "palette": "#D4D4D8"
+  },
+  {
+    "global_id": 114,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Thần Tài Phát Lộc",
+    "quote": "Vẫy tay rước may mắn, tài lộc và ngập tràn hạnh phúc đến cho em!",
+    "palette": "#FFFFFF"
+  },
+  {
+    "global_id": 115,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Hầu Gái Kawaii",
+    "quote": "Goshujin-sama! Bữa tiệc tình yêu hôm nay chỉ phục vụ một mình em.",
+    "palette": "#18181B"
+  },
+  {
+    "global_id": 116,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Kỵ Sĩ Giáp Bạc",
+    "quote": "Thề trên thanh gươm danh dự, anh sẽ bảo vệ em trọn kiếp.",
+    "palette": "#E2E8F0"
+  },
+  {
+    "global_id": 117,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Cheshire Tím Mơ Mộng",
+    "quote": "Nụ cười này có thể biến mất, nhưng tình yêu anh thì vĩnh cửu.",
+    "palette": "#7C3AED"
+  },
+  {
+    "global_id": 118,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Mèo Phi Công Đồng Thau",
+    "quote": "Kính phi công định hướng đưa con tàu tình yêu bay thẳng vào tim em.",
+    "palette": "#78350F"
+  },
+  {
+    "global_id": 119,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Báo Đen Hoàng Gia Quý Tộc",
+    "quote": "Chúa tể bóng đêm dũng mãnh chỉ chịu đầu hàng trước nụ cười em.",
+    "palette": "#0F172A"
+  },
+  {
+    "global_id": 120,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Tinh Linh Gỗ Phát Quang",
+    "quote": "Lách cách lách cách, tinh linh rừng thì thầm lời yêu em theo gió.",
+    "palette": "#ECFDF5"
+  },
+  {
+    "global_id": 121,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Tinh Linh Hoa Anh Đào",
+    "quote": "Cánh hoa rơi nghiêng bóng nước, như nỗi nhớ em rơi đầy trong lòng anh.",
+    "palette": "#FDF2F8"
+  },
+  {
+    "global_id": 122,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Người Đá Rêu Phong Tí Hon",
+    "quote": "Trái tim người đá tuy cứng cỏi nhưng mềm lòng mỗi khi thấy em cười.",
+    "palette": "#64748B"
+  },
+  {
+    "global_id": 123,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Giọt Sương Tinh Khiết",
+    "quote": "Trong trẻo như giọt sương ban mai, tình yêu anh tinh khôi tặng riêng em.",
+    "palette": "#E0F2FE"
+  },
+  {
+    "global_id": 124,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Sóc Hạt Dẻ Thần Kỳ",
+    "quote": "Gom hết những hạt dẻ ngọt ngào nhất rừng sâu về tặng cho em.",
+    "palette": "#B45309"
+  },
+  {
+    "global_id": 125,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Nấm Dạ Quang Sinh Học",
+    "quote": "Thắp sáng màn đêm tăm tối bằng ánh nấm tình yêu rực rỡ bên em.",
+    "palette": "#8B5CF6"
+  },
+  {
+    "global_id": 126,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Bướm Đêm Ánh Trăng",
+    "quote": "Đôi cánh lụa dệt ánh trăng bạc đưa em vào giấc mộng êm đềm nhất.",
+    "palette": "#F1F5F9"
+  },
+  {
+    "global_id": 127,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Đốm Lửa Ma Trơi Rừng Sâu",
+    "quote": "Ngọn lửa ma trơi dẫn lối đưa em vượt qua mọi bão giông cuộc đời.",
+    "palette": "#06B6D4"
+  },
+  {
+    "global_id": 128,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Hồ Ly 3 Đuôi Tinh Linh",
+    "quote": "Hồ ly nhỏ hóa phép mang bình an và nụ cười rạng rỡ đến bên em.",
+    "palette": "#FFFFFF"
+  },
+  {
+    "global_id": 129,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Nàng Tiên Hoa Sen Nước",
+    "quote": "Búp sen thơm ngát dâng hương, như tấm chân tình anh trao gửi em.",
+    "palette": "#FBCFE8"
+  },
+  {
+    "global_id": 130,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Kỳ Lân Cưỡi Mây",
+    "quote": "Kỳ lân đạp mây ngũ sắc mang điềm lành và phúc khí đến cho em.",
+    "palette": "#38BDF8"
+  },
+  {
+    "global_id": 131,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 31",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 132,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 32",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 133,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 33",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 134,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 34",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 135,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 35",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 136,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 36",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 137,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 37",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 138,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 38",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 139,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 39",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 140,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 40",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 141,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 41",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 142,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 42",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 143,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 43",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 144,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 44",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 145,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 45",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 146,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 46",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 147,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 47",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 148,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 48",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  },
+  {
+    "global_id": 149,
+    "category": "Thú Cưng Pixel & Anime Kawaii",
+    "subagent": "Kawaii Anime Illustrator",
+    "name": "Linh Thú Kawaii 49",
+    "quote": "Ở bên em mỗi ngày là niềm hạnh phúc lớn nhất của anh.",
+    "palette": "#FFB7C5"
+  }
+]
