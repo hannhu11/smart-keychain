@@ -1055,299 +1055,476 @@
       id = (id >= 0) ? (id % 50) : 0;
       const breath = Math.sin(t * 3.5);
       const angle = t * 2.0;
+      const blink = (Date.now() % 3500 < 160);
 
-      // =======================================================================
-      // NHÓM 1: THÁNH KHÍ HUYỀN THOẠI (ID 0)
-      // =======================================================================
-      if (id === 0) {
-        // Dynamic Contact Shadow
-        ctx.fillStyle = 'rgba(5, 10, 20, 0.45)';
-        ctx.beginPath();
-        ctx.ellipse(0, 54, 32 - Math.sin(angle * 2.5) * 4, 6, 0, 0, Math.PI * 2);
-        ctx.fill();
+      switch (id) {
+        // =====================================================================
+        // ID 0: THE HOLY CLAYMORE (EXCALIBUR 1:1)
+        // =====================================================================
+        case 0: {
+          const cosA = 0.70710678, sinA = -0.70710678;
+          const tX = (u, v) => Math.round(u * cosA - v * sinA);
+          const tY = (u, v) => Math.round(u * sinA + v * cosA) - 4;
+          const dPoly = (pts, fill) => {
+            ctx.fillStyle = fill;
+            ctx.beginPath();
+            ctx.moveTo(tX(pts[0][0], pts[0][1]), tY(pts[0][0], pts[0][1]));
+            for (let p = 1; p < pts.length; p++) ctx.lineTo(tX(pts[p][0], pts[p][1]), tY(pts[p][0], pts[p][1]));
+            ctx.closePath();
+            ctx.fill();
+          };
 
-        const cosA = 0.70710678, sinA = -0.70710678;
-        const tX = (u, v) => Math.round(u * cosA - v * sinA);
-        const tY = (u, v) => Math.round(u * sinA + v * cosA) - 4;
-        const dPoly = (pts, fill) => {
-          ctx.fillStyle = fill;
+          dPoly([[-16, -18], [52, -18], [66, 0], [52, 18], [-16, 18]], "#ffffff");
+          dPoly([[-26, -30], [-16, -30], [-16, 30], [-26, 30]], "#ffffff");
+          dPoly([[-50, -7], [-26, -7], [-26, 7], [-50, 7]], "#ffffff");
+          dPoly([[-62, -12], [-48, -12], [-48, 12], [-62, 12], [-66, 0]], "#ffffff");
+
+          dPoly([[-15, -15], [50, -15], [62, 0], [50, 15], [-15, 15]], "#00f0ff");
+          dPoly([[-24, -27], [-17, -27], [-17, 27], [-24, 27]], "#00f0ff");
+
+          dPoly([[-14, -10], [46, -10], [54, 0], [46, 10], [-14, 10]], "#2c365e");
+
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 2;
           ctx.beginPath();
-          ctx.moveTo(tX(pts[0][0], pts[0][1]), tY(pts[0][0], pts[0][1]));
-          for (let p = 1; p < pts.length; p++) ctx.lineTo(tX(pts[p][0], pts[p][1]), tY(pts[p][0], pts[p][1]));
-          ctx.closePath();
-          ctx.fill();
-        };
+          ctx.moveTo(tX(-12, 0), tY(-12, 0));
+          ctx.lineTo(tX(48, 0), tY(48, 0));
+          ctx.stroke();
 
-        dPoly([[-16, -18], [52, -18], [66, 0], [52, 18], [-16, 18]], "#ffffff");
-        dPoly([[-26, -30], [-16, -30], [-16, 30], [-26, 30]], "#ffffff");
-        dPoly([[-50, -7], [-26, -7], [-26, 7], [-50, 7]], "#ffffff");
-        dPoly([[-62, -12], [-48, -12], [-48, 12], [-62, 12], [-66, 0]], "#ffffff");
+          for (let ru of [-4, 14, 30]) {
+            dPoly([[ru - 3, 0], [ru, -4], [ru + 3, 0], [ru, 4]], "#ffffff");
+          }
 
-        dPoly([[-15, -15], [50, -15], [62, 0], [50, 15], [-15, 15]], "#00f0ff");
-        dPoly([[-24, -27], [-17, -27], [-17, 27], [-24, 27]], "#00f0ff");
+          dPoly([[-22, -6], [-17, 0], [-22, 6], [-27, 0]], "#ffffff");
+          dPoly([[-22, -3], [-19, 0], [-22, 3], [-25, 0]], "#00f0ff");
 
-        dPoly([[-14, -10], [46, -10], [54, 0], [46, 10], [-14, 10]], "#2c365e");
-
-        ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(tX(-12, 0), tY(-12, 0));
-        ctx.lineTo(tX(48, 0), tY(48, 0));
-        ctx.stroke();
-
-        for (let ru of [-4, 14, 30]) {
-          dPoly([[ru - 3, 0], [ru, -4], [ru + 3, 0], [ru, 4]], "#ffffff");
+          dPoly([[-48, -4], [-26, -4], [-26, 4], [-48, 4]], "#14192d");
+          dPoly([[-58, -8], [-50, -8], [-50, 8], [-58, 8]], "#00f0ff");
+          dPoly([[-56, -4], [-52, -4], [-52, 4], [-56, 4]], "#ffffff");
+          break;
         }
 
-        dPoly([[-22, -6], [-17, 0], [-22, 6], [-27, 0]], "#ffffff");
-        dPoly([[-22, -3], [-19, 0], [-22, 3], [-25, 0]], "#00f0ff");
-
-        dPoly([[-48, -4], [-26, -4], [-26, 4], [-48, 4]], "#14192d");
-
-        dPoly([[-58, -8], [-50, -8], [-50, 8], [-58, 8]], "#00f0ff");
-        dPoly([[-56, -4], [-52, -4], [-52, 4], [-56, 4]], "#ffffff");
-        ctx.restore();
-        return;
-      }
-
-      // =======================================================================
-      // NHÓM 2: SIÊU THÚ CƯNG 3D ART-TOY & POP MART (IDs 1..15)
-      // =======================================================================
-      if (id === 1) { // Yobao - Bé Hoa Cải Vàng (Mô phỏng 1:1 Hubei Rapeseed Festival)
-        let by = Math.sin(angle * 2.5) * 3;
-        ctx.fillStyle = 'rgba(25, 20, 5, 0.4)';
-        ctx.beginPath(); ctx.ellipse(0, by + 34, 24, 5, 0, 0, Math.PI * 2); ctx.fill();
-
-        // 1. Mũ cánh hoa cải vàng nở 3D
-        ctx.fillStyle = '#f9d038';
-        ctx.beginPath(); ctx.arc(0, by - 24, 13, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(-18, by - 18, 11, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(18, by - 18, 11, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(-24, by - 8, 9, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(24, by - 8, 9, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#22c55e'; // Cuống lá xanh
-        ctx.fillRect(-2, by - 36, 4, 12);
-        ctx.beginPath(); ctx.arc(2, by - 36, 3, 0, Math.PI * 2); ctx.fill();
-
-        // 2. Thân vàng phúng phính & bụng 3D
-        ctx.fillStyle = '#f9d038';
-        ctx.beginPath(); ctx.roundRect(-18, by - 12, 36, 32, 10); ctx.fill();
-        ctx.fillStyle = '#fef08a';
-        ctx.beginPath(); ctx.roundRect(-14, by - 8, 28, 24, 8); ctx.fill();
-
-        // 3. Mắt đen hạt tiêu & đốm sáng
-        ctx.fillStyle = '#451a03';
-        ctx.beginPath(); ctx.arc(-8, by - 2, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(8, by - 2, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(-9, by - 4, 2, 2); ctx.fillRect(7, by - 4, 2, 2);
-
-        // 4. Má hồng cam đào & miệng cười
-        ctx.fillStyle = '#fb923c';
-        ctx.beginPath(); ctx.arc(-13, by + 4, 4, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(13, by + 4, 4, 0, Math.PI * 2); ctx.fill();
-        ctx.strokeStyle = '#451a03'; ctx.lineWidth = 1.2;
-        ctx.beginPath(); ctx.arc(0, by + 2, 3, 0.2, Math.PI - 0.2); ctx.stroke();
-
-        // 5. Hai tay ôm bông hoa vàng
-        ctx.fillStyle = '#eab308';
-        ctx.beginPath(); ctx.arc(0, by + 14, 6, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#f97316'; ctx.fillRect(-1, by + 13, 2, 2);
-        ctx.fillStyle = '#22c55e'; ctx.fillRect(-1, by + 19, 2, 8);
-        ctx.restore(); return;
-      }
-
-      if (id === 2) { // Raya - Tinh Linh Rừng Xanh (Mô phỏng 1:1 Raya Forest Heart)
-        let ry = Math.sin(angle * 3.0) * 3;
-        ctx.fillStyle = 'rgba(5, 20, 15, 0.45)';
-        ctx.beginPath(); ctx.ellipse(0, ry + 36, 26, 5, 0, 0, Math.PI * 2); ctx.fill();
-
-        // 1. Cánh lá sau lưng
-        let lFlap = Math.sin(angle * 4.5) * 3;
-        ctx.fillStyle = '#10b981';
-        ctx.beginPath(); ctx.moveTo(-16, ry + 2); ctx.lineTo(-28, ry - 14 + lFlap); ctx.lineTo(-12, ry + 12); ctx.closePath(); ctx.fill();
-        ctx.beginPath(); ctx.moveTo(16, ry + 2); ctx.lineTo(28, ry - 14 + lFlap); ctx.lineTo(12, ry + 12); ctx.closePath(); ctx.fill();
-
-        // 2. Thân xanh mint & tóc lá
-        ctx.fillStyle = '#a7f3d0';
-        ctx.beginPath(); ctx.roundRect(-18, ry - 14, 36, 34, 12); ctx.fill();
-        ctx.fillStyle = '#34d399';
-        ctx.beginPath(); ctx.moveTo(-12, ry - 14); ctx.lineTo(0, ry - 32); ctx.lineTo(12, ry - 14); ctx.closePath(); ctx.fill();
-        ctx.beginPath(); ctx.moveTo(-22, ry - 8); ctx.lineTo(-14, ry - 24); ctx.lineTo(-6, ry - 8); ctx.closePath(); ctx.fill();
-        ctx.beginPath(); ctx.moveTo(6, ry - 8); ctx.lineTo(14, ry - 24); ctx.lineTo(22, ry - 8); ctx.closePath(); ctx.fill();
-
-        // 3. Họa tiết dạ quang neon trắng
-        ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.moveTo(0, ry - 22); ctx.lineTo(0, ry - 12); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(-6, ry - 18); ctx.lineTo(-2, ry - 10); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(6, ry - 18); ctx.lineTo(2, ry - 10); ctx.stroke();
-
-        // 4. Mắt to đen & chớp
-        let blink = (Date.now() % 3500 < 160);
-        ctx.fillStyle = '#0f172a';
-        if (!blink) {
-          ctx.beginPath(); ctx.arc(-8, ry - 4, 4, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.arc(8, ry - 4, 4, 0, Math.PI * 2); ctx.fill();
+        // =====================================================================
+        // NHÓM 2: BÉ CƯNG POP MART 3D (IDs 1..15)
+        // =====================================================================
+        case 1: { // Yobao - Bé Hoa Cải Vàng
+          let by = Math.sin(angle * 2.5) * 3;
+          // Mũ cánh hoa vàng nở 3D
+          ctx.fillStyle = '#f9d038';
+          ctx.beginPath(); ctx.arc(0, by - 24, 13, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(-18, by - 18, 11, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(18, by - 18, 11, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(-24, by - 8, 9, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(24, by - 8, 9, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#22c55e';
+          ctx.fillRect(-2, by - 36, 4, 12);
+          ctx.beginPath(); ctx.arc(2, by - 36, 3, 0, Math.PI * 2); ctx.fill();
+          // Thân vàng phúng phính & bụng 3D
+          ctx.fillStyle = '#f9d038';
+          ctx.beginPath(); ctx.roundRect(-18, by - 12, 36, 32, 10); ctx.fill();
+          ctx.fillStyle = '#fef08a';
+          ctx.beginPath(); ctx.roundRect(-14, by - 8, 28, 24, 8); ctx.fill();
+          // Mắt đen long lanh
+          ctx.fillStyle = '#451a03';
+          ctx.beginPath(); ctx.arc(-8, by - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(8, by - 2, 3, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#ffffff';
-          ctx.fillRect(-10, ry - 6, 2, 2); ctx.fillRect(6, ry - 6, 2, 2);
-        } else {
-          ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(-11, ry - 4); ctx.lineTo(-5, ry - 4); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(5, ry - 4); ctx.lineTo(11, ry - 4); ctx.stroke();
+          ctx.fillRect(-9, by - 4, 2, 2); ctx.fillRect(7, by - 4, 2, 2);
+          // Má hồng cam & miệng
+          ctx.fillStyle = '#fb923c';
+          ctx.beginPath(); ctx.arc(-13, by + 4, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(13, by + 4, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#451a03'; ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.arc(0, by + 2, 3, 0.2, Math.PI - 0.2); ctx.stroke();
+          // Hoa vàng cầm tay
+          ctx.fillStyle = '#eab308';
+          ctx.beginPath(); ctx.arc(0, by + 14, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#f97316'; ctx.fillRect(-1, by + 13, 2, 2);
+          ctx.fillStyle = '#22c55e'; ctx.fillRect(-1, by + 19, 2, 8);
+          break;
         }
 
-        // 5. Miệng cười tươi rộng mở & má hồng
-        ctx.fillStyle = '#ef4444';
-        ctx.beginPath(); ctx.arc(0, ry + 4, 4, 0, Math.PI); ctx.fill();
-        ctx.fillStyle = '#fda4af';
-        ctx.beginPath(); ctx.arc(-12, ry + 3, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(12, ry + 3, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.restore(); return;
-      }
+        case 2: { // Raya - Tinh Linh Rừng Xanh
+          let ry = Math.sin(angle * 3.0) * 3;
+          let lFlap = Math.sin(angle * 4.5) * 3;
+          ctx.fillStyle = '#10b981';
+          ctx.beginPath(); ctx.moveTo(-16, ry + 2); ctx.lineTo(-28, ry - 14 + lFlap); ctx.lineTo(-12, ry + 12); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(16, ry + 2); ctx.lineTo(28, ry - 14 + lFlap); ctx.lineTo(12, ry + 12); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#a7f3d0';
+          ctx.beginPath(); ctx.roundRect(-18, ry - 14, 36, 34, 12); ctx.fill();
+          ctx.fillStyle = '#34d399';
+          ctx.beginPath(); ctx.moveTo(-12, ry - 14); ctx.lineTo(0, ry - 32); ctx.lineTo(12, ry - 14); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(-22, ry - 8); ctx.lineTo(-14, ry - 24); ctx.lineTo(-6, ry - 8); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(6, ry - 8); ctx.lineTo(14, ry - 24); ctx.lineTo(22, ry - 8); ctx.closePath(); ctx.fill();
+          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(0, ry - 22); ctx.lineTo(0, ry - 12); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(-6, ry - 18); ctx.lineTo(-2, ry - 10); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(6, ry - 18); ctx.lineTo(2, ry - 10); ctx.stroke();
+          ctx.fillStyle = '#0f172a';
+          if (!blink) {
+            ctx.beginPath(); ctx.arc(-8, ry - 4, 4, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(8, ry - 4, 4, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(-10, ry - 6, 2, 2); ctx.fillRect(6, ry - 6, 2, 2);
+          } else {
+            ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(-11, ry - 4); ctx.lineTo(-5, ry - 4); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(5, ry - 4); ctx.lineTo(11, ry - 4); ctx.stroke();
+          }
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath(); ctx.arc(0, ry + 4, 4, 0, Math.PI); ctx.fill();
+          ctx.fillStyle = '#fda4af';
+          ctx.beginPath(); ctx.arc(-12, ry + 3, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(12, ry + 3, 3, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
 
-      if (id === 3) { // Bloomy [Yoona] - Ong Bắp Cày Hoa Anh Đào
-        let by = Math.sin(angle * 3.5) * 3;
-        ctx.fillStyle = 'rgba(15, 12, 10, 0.45)';
-        ctx.beginPath(); ctx.ellipse(0, by + 34, 28, 5, 0, 0, Math.PI * 2); ctx.fill();
+        case 3: { // Bloomy [Yoona] - Ong Bắp Cày Hoa Anh Đào
+          let by = Math.sin(angle * 3.5) * 3;
+          let wShimmer = Math.sin(angle * 12.0) * 4;
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+          ctx.beginPath(); ctx.ellipse(-24, by - 8 + wShimmer, 12, 6, -0.2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(24, by - 8 - wShimmer, 12, 6, 0.2, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.roundRect(-20, by - 16, 40, 36, 14); ctx.fill();
+          ctx.fillStyle = '#78350f';
+          ctx.beginPath(); ctx.roundRect(-19, by + 4, 38, 7, 3); ctx.fill();
+          ctx.beginPath(); ctx.roundRect(-17, by + 14, 34, 5, 2); ctx.fill();
+          const fX = [-16, -8, 0, 8, 16], fY = [-4, 2, 5, 2, -4];
+          for (let i = 0; i < 5; i++) {
+            ctx.fillStyle = '#f472b6';
+            ctx.beginPath(); ctx.arc(fX[i], by + fY[i], 4, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(fX[i] - 1, by + fY[i] - 1, 2, 2);
+          }
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-8, by - 6, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(8, by - 6, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-10, by - 8, 2, 2); ctx.fillRect(6, by - 8, 2, 2);
+          ctx.fillStyle = '#fb7185';
+          ctx.beginPath(); ctx.arc(-13, by - 1, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(13, by - 1, 3, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
 
-        // Cánh ong trắng mờ
-        let wShimmer = Math.sin(angle * 12.0) * 4;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-        ctx.beginPath(); ctx.ellipse(-24, by - 8 + wShimmer, 12, 6, -0.2, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(24, by - 8 - wShimmer, 12, 6, 0.2, 0, Math.PI * 2); ctx.fill();
+        case 4: { // Ember [Chae-on] - Cáo Lửa Pha Lê Có Cánh
+          let fy = Math.sin(angle * 2.5) * 3;
+          ctx.fillStyle = '#fb923c';
+          ctx.beginPath(); ctx.moveTo(-14, fy); ctx.lineTo(-34, fy - 16); ctx.lineTo(-14, fy - 22); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(14, fy); ctx.lineTo(34, fy - 16); ctx.lineTo(14, fy - 22); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.roundRect(-18, fy - 14, 36, 34, 10); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-10, fy + 2, 20, 16, 6); ctx.fill();
+          ctx.fillStyle = '#78350f';
+          ctx.beginPath(); ctx.moveTo(-16, fy - 12); ctx.lineTo(-12, fy - 30); ctx.lineTo(-4, fy - 12); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(4, fy - 12); ctx.lineTo(12, fy - 30); ctx.lineTo(16, fy - 12); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.moveTo(-6, fy - 16); ctx.lineTo(0, fy - 24); ctx.lineTo(6, fy - 16); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-7, fy - 4, 3.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(7, fy - 4, 3.5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-8, fy - 6, 2, 2); ctx.fillRect(6, fy - 6, 2, 2);
+          ctx.fillStyle = '#fb7185';
+          ctx.beginPath(); ctx.arc(-12, fy + 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(12, fy + 2, 3, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
 
-        // Thân ong vàng sọc nâu
-        ctx.fillStyle = '#fde047';
-        ctx.beginPath(); ctx.roundRect(-20, by - 16, 40, 36, 14); ctx.fill();
-        ctx.fillStyle = '#78350f';
-        ctx.beginPath(); ctx.roundRect(-19, by + 4, 38, 7, 3); ctx.fill();
-        ctx.beginPath(); ctx.roundRect(-17, by + 14, 34, 5, 2); ctx.fill();
-
-        // Vòng hoa anh đào pha lê
-        const fX = [-16, -8, 0, 8, 16], fY = [-4, 2, 5, 2, -4];
-        for (let i = 0; i < 5; i++) {
+        case 5: { // Aurelle [Seorin] - Sư Tử Nhí Vương Giả
+          let ly = Math.sin(angle * 2.0) * 2.5;
+          ctx.fillStyle = '#fca5a5';
+          ctx.beginPath(); ctx.arc(0, ly, 25, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          for (let a = 0; a < 6; a++) {
+            let rad = a * 1.047;
+            ctx.fillRect(Math.cos(rad) * 23 - 1, ly + Math.sin(rad) * 23 - 1, 2, 2);
+          }
+          ctx.fillStyle = '#fed7aa';
+          ctx.beginPath(); ctx.arc(0, ly + 2, 16, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.moveTo(-6, ly - 18); ctx.lineTo(0, ly - 26); ctx.lineTo(6, ly - 18); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#78350f';
+          ctx.beginPath(); ctx.arc(-6, ly + 1, 3.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, ly + 1, 3.5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-7, ly - 1, 2, 2); ctx.fillRect(5, ly - 1, 2, 2);
+          ctx.fillRect(-3, ly + 8, 2, 2); ctx.fillRect(1, ly + 8, 2, 2); // Răng khểnh
           ctx.fillStyle = '#f472b6';
-          ctx.beginPath(); ctx.arc(fX[i], by + fY[i], 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(-11, ly + 6, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(11, ly + 6, 3, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 6: { // Kairo [Yiseo] - Rồng Dơi Hồng Tinh Nghịch
+          let ky = Math.sin(angle * 2.8) * 3;
+          ctx.fillStyle = '#fb7185';
+          ctx.beginPath(); ctx.moveTo(-12, ky); ctx.lineTo(-36, ky - 10); ctx.lineTo(-18, ky - 20); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(12, ky); ctx.lineTo(36, ky - 10); ctx.lineTo(18, ky - 20); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#f472b6';
+          ctx.beginPath(); ctx.roundRect(-18, ky - 14, 36, 34, 12); ctx.fill();
+          ctx.fillStyle = '#fef08a';
+          ctx.beginPath(); ctx.moveTo(-14, ky - 14); ctx.lineTo(-18, ky - 26); ctx.lineTo(-8, ky - 14); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(8, ky - 14); ctx.lineTo(18, ky - 26); ctx.lineTo(14, ky - 14); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-7, ky - 2, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(7, ky - 2, 4, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#ffffff';
-          ctx.fillRect(fX[i] - 1, by + fY[i] - 1, 2, 2);
+          ctx.fillRect(-8, ky - 4, 2, 2); ctx.fillRect(6, ky - 4, 2, 2);
+          ctx.fillRect(-3, ky + 6, 2, 2); ctx.fillRect(1, ky + 6, 2, 2);
+          break;
         }
 
-        // Mắt đen to long lanh
-        ctx.fillStyle = '#0f172a';
-        ctx.beginPath(); ctx.arc(-8, by - 6, 4, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(8, by - 6, 4, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(-10, by - 8, 2, 2); ctx.fillRect(6, by - 8, 2, 2);
-        ctx.fillStyle = '#fb7185';
-        ctx.beginPath(); ctx.arc(-13, by - 1, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(13, by - 1, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.restore(); return;
-      }
-
-      if (id === 9) { // Cute Bunny - Thỏ Hoodie Mint Pastel
-        let by = Math.sin(angle * 2.4) * 3;
-        ctx.fillStyle = 'rgba(12, 18, 16, 0.45)';
-        ctx.beginPath(); ctx.ellipse(0, by + 36, 26, 5, 0, 0, Math.PI * 2); ctx.fill();
-
-        // Tai cọc cạch
-        ctx.fillStyle = '#f472b6';
-        ctx.beginPath(); ctx.roundRect(-14, by - 36, 8, 22, 4); ctx.fill();
-        ctx.fillStyle = '#a7f3d0';
-        ctx.beginPath(); ctx.roundRect(6, by - 36, 8, 22, 4); ctx.fill();
-
-        // Mũ hoodie mint & mặt trắng
-        ctx.fillStyle = '#a7f3d0';
-        ctx.beginPath(); ctx.roundRect(-20, by - 16, 40, 34, 14); ctx.fill();
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath(); ctx.roundRect(-14, by - 10, 28, 24, 10); ctx.fill();
-
-        // Mắt & má hồng
-        ctx.fillStyle = '#0f172a';
-        ctx.beginPath(); ctx.arc(-7, by - 2, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(7, by - 2, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#f472b6';
-        ctx.fillRect(-1, by, 2, 2); // Mũi
-        ctx.beginPath(); ctx.arc(-10, by + 4, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(10, by + 4, 3, 0, Math.PI * 2); ctx.fill();
-        ctx.restore(); return;
-      }
-
-      // =======================================================================
-      // NHÓM 3: AXOLOTL KỲ NHÔNG KAWAII 2.5D (IDs 16..25)
-      // =======================================================================
-      if (id >= 16 && id <= 25) {
-        let sub = id - 16;
-        let ay = Math.sin(angle * 2.5) * 3;
-        ctx.fillStyle = 'rgba(12, 10, 16, 0.45)';
-        ctx.beginPath(); ctx.ellipse(0, ay + 36, 28, 5, 0, 0, Math.PI * 2); ctx.fill();
-
-        let bodyCol = (sub === 9) ? '#86efac' : '#ff7597';
-        let gillCol = (sub === 9) ? '#22c55e' : '#ff2a70';
-
-        // 1. Thân 2.5D
-        ctx.fillStyle = bodyCol;
-        ctx.beginPath(); ctx.ellipse(0, ay, 22, 17, 0, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#ffb6c1';
-        ctx.beginPath(); ctx.ellipse(0, ay - 2, 18, 13, 0, 0, Math.PI * 2); ctx.fill();
-
-        // 2. 6 mang xòe
-        let fw = Math.sin(angle * 3.5) * 2.5;
-        ctx.fillStyle = gillCol;
-        ctx.beginPath(); ctx.ellipse(-24 + fw, ay - 10, 8, 4, -0.3, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(-26 + fw, ay, 9, 4, 0, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(-22 + fw, ay + 10, 7, 3.5, 0.3, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(24 - fw, ay - 10, 8, 4, 0.3, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(26 - fw, ay, 9, 4, 0, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(22 - fw, ay + 10, 7, 3.5, -0.3, 0, Math.PI * 2); ctx.fill();
-
-        // 3. Mắt chớp
-        let blink = ((Date.now() % 3500) < 160) || (sub === 2);
-        ctx.fillStyle = '#111827';
-        if (!blink) {
-          ctx.beginPath(); ctx.arc(-10, ay - 2, 5, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.arc(10, ay - 2, 5, 0, Math.PI * 2); ctx.fill();
+        case 7: { // Lumori - Nấm Rừng Phát Quang
+          let my = Math.sin(angle * 2.2) * 2.5;
+          ctx.fillStyle = '#38bdf8';
+          ctx.beginPath(); ctx.arc(0, my - 14, 20, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(-16, my - 16); ctx.lineTo(22, my - 34); ctx.lineTo(14, my - 14); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.arc(22, my - 34, 4, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#ffffff';
-          ctx.fillRect(-12, ay - 5, 2.5, 2.5); ctx.fillRect(8, ay - 5, 2.5, 2.5);
-        } else {
-          ctx.strokeStyle = '#111827'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(-14, ay - 2); ctx.lineTo(-6, ay - 2); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(6, ay - 2); ctx.lineTo(14, ay - 2); ctx.stroke();
+          ctx.beginPath(); ctx.roundRect(-16, my - 6, 32, 28, 10); ctx.fill();
+          ctx.fillStyle = '#fbbf24';
+          ctx.beginPath(); ctx.arc(0, my + 10, 7, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-7, my + 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(7, my + 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-8, my, 2, 2); ctx.fillRect(6, my, 2, 2);
+          ctx.fillStyle = '#fda4af';
+          ctx.beginPath(); ctx.arc(-11, my + 6, 2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(11, my + 6, 2, 0, Math.PI * 2); ctx.fill();
+          break;
         }
 
-        ctx.fillStyle = gillCol;
-        ctx.beginPath(); ctx.arc(-13, ay + 5, 3.5, 0, Math.PI * 2); ctx.fill();
-        ctx.beginPath(); ctx.arc(13, ay + 5, 3.5, 0, Math.PI * 2); ctx.fill();
-
-        if (sub === 1) { // Thổi bong bóng
-          let by1 = ay - ((Date.now() / 20) % 50);
-          ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.arc(16, by1, 4, 0, Math.PI * 2); ctx.stroke();
-        } else if (sub === 3) { // Hoàng tử
-          ctx.fillStyle = '#f5c842';
-          ctx.beginPath(); ctx.moveTo(-8, ay - 18); ctx.lineTo(0, ay - 26); ctx.lineTo(8, ay - 18); ctx.closePath(); ctx.fill();
+        case 8: { // Lumio - Ngọn Lửa Vũ Trụ
+          let ly = Math.sin(angle * 2.8) * 3;
+          ctx.fillStyle = '#ec4899';
+          ctx.beginPath(); ctx.moveTo(-14, ly - 8); ctx.lineTo(0, ly - 34); ctx.lineTo(14, ly - 8); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#00f0ff';
+          ctx.beginPath(); ctx.moveTo(-10, ly - 8); ctx.lineTo(2, ly - 32); ctx.lineTo(10, ly - 8); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#1e1b4b';
+          ctx.beginPath(); ctx.roundRect(-14, ly - 10, 28, 30, 8); ctx.fill();
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.arc(0, ly + 8, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#00f0ff';
+          ctx.beginPath(); ctx.arc(-6, ly - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, ly - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-7, ly - 4, 2, 2); ctx.fillRect(5, ly - 4, 2, 2);
+          break;
         }
-        ctx.restore(); return;
-      }
 
-      // =======================================================================
-      // NHÓM 4: THÚ CƯNG ĐÁNG YÊU & LÃNG MẠN (IDs 26..39)
-      // =======================================================================
-      if (id >= 26 && id <= 39) {
-        let sub = id - 26;
-        let my = Math.sin(angle * 2.0) * 2.5;
-        ctx.fillStyle = 'rgba(12, 12, 16, 0.45)';
-        ctx.beginPath(); ctx.ellipse(0, my + 36, 28, 5, 0, 0, Math.PI * 2); ctx.fill();
+        case 9: { // Cute Bunny - Thỏ Hoodie Mint Pastel
+          let by = Math.sin(angle * 2.4) * 3;
+          ctx.fillStyle = '#f472b6';
+          ctx.beginPath(); ctx.roundRect(-14, by - 36, 8, 22, 4); ctx.fill();
+          ctx.fillStyle = '#a7f3d0';
+          ctx.beginPath(); ctx.roundRect(6, by - 36, 8, 22, 4); ctx.fill();
+          ctx.beginPath(); ctx.roundRect(-20, by - 16, 40, 34, 14); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-14, by - 10, 28, 24, 10); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-7, by - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(7, by - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#f472b6';
+          ctx.fillRect(-1, by, 2, 2);
+          ctx.beginPath(); ctx.arc(-10, by + 4, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(10, by + 4, 3, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
 
-        if (sub === 0) { // Mèo Ba Tư (Heterochromia)
+        case 10: { // Star Sprite
+          let sy = Math.sin(angle * 2.5) * 3;
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.arc(0, sy - 6, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fef9c3';
+          ctx.beginPath(); ctx.roundRect(-14, sy - 2, 28, 20, 8); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-6, sy + 4, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, sy + 4, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fb923c';
+          ctx.beginPath(); ctx.arc(-10, sy + 8, 2.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(10, sy + 8, 2.5, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 11: { // Lotus Frog
+          let fy = Math.sin(angle * 2.0) * 2.5;
+          ctx.fillStyle = '#22c55e';
+          ctx.beginPath(); ctx.ellipse(0, fy - 26, 24, 8, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#15803d'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(12, fy - 26); ctx.lineTo(12, fy - 2); ctx.stroke();
+          ctx.fillStyle = '#4ade80';
+          ctx.beginPath(); ctx.arc(0, fy + 6, 18, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(-10, fy - 8, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(10, fy - 8, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-10, fy - 8, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(10, fy - 8, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-11, fy - 10, 2, 2); ctx.fillRect(9, fy - 10, 2, 2);
+          break;
+        }
+
+        case 12: { // Spore Fairy
+          let ny = Math.sin(angle * 2.6) * 3;
+          ctx.fillStyle = '#fb7185';
+          ctx.beginPath(); ctx.arc(0, ny - 10, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.arc(-10, ny - 16, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(8, ny - 18, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.roundRect(-12, ny, 24, 20, 8); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-5, ny + 6, 2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(5, ny + 6, 2, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 13: { // Clover Sprout
+          let cy_s = Math.sin(angle * 2.2) * 2.5;
+          let ro = Math.sin(angle * 4.0) * 2;
+          ctx.fillStyle = '#22c55e';
+          ctx.beginPath(); ctx.arc(-5 + ro, cy_s - 26, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(5 - ro, cy_s - 26, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(0, cy_s - 31, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(0, cy_s - 21, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#15803d'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(0, cy_s - 21); ctx.lineTo(0, cy_s - 13); ctx.stroke();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-16, cy_s - 6, 32, 28, 10); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-6, cy_s + 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, cy_s + 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-7, cy_s + 1, 1.5, 1.5); ctx.fillRect(5, cy_s + 1, 1.5, 1.5);
+          ctx.fillStyle = '#fda4af';
+          ctx.beginPath(); ctx.arc(-10, cy_s + 6, 2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(10, cy_s + 6, 2, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 14: { // Berry Fox
+          let by = Math.sin(angle * 2.5) * 3;
+          ctx.fillStyle = '#22c55e';
+          ctx.beginPath(); ctx.moveTo(-8, by - 24); ctx.lineTo(0, by - 34); ctx.lineTo(8, by - 24); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#f43f5e';
+          ctx.beginPath(); ctx.roundRect(-18, by - 16, 36, 34, 12); ctx.fill();
+          ctx.fillStyle = '#fde047';
+          ctx.fillRect(-8, by - 6, 2, 2); ctx.fillRect(8, by - 6, 2, 2); ctx.fillRect(0, by + 8, 2, 2);
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-7, by, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(7, by, 3, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 15: { // Cloud Sheep
+          let sy = Math.sin(angle * 2.0) * 3;
+          ctx.fillStyle = '#c084fc';
+          ctx.beginPath(); ctx.arc(0, sy - 2, 20, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(-14, sy - 2, 10, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(14, sy - 2, 10, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fef08a';
+          ctx.beginPath(); ctx.roundRect(-10, sy + 2, 20, 16, 6); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-5, sy + 6, 2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(5, sy + 6, 2, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        // =====================================================================
+        // NHÓM 3: AXOLOTL KỲ NHÔNG KAWAII 2.5D (IDs 16..25)
+        // =====================================================================
+        case 16: case 17: case 18: case 19: case 20:
+        case 21: case 22: case 23: case 24: case 25: {
+          let sub = id - 16;
+          let ay = Math.sin(angle * 2.5) * 3;
+          let bodyCol = (sub === 9) ? '#86efac' : '#ff7597';
+          let gillCol = (sub === 9) ? '#22c55e' : '#ff2a70';
+
+          ctx.fillStyle = bodyCol;
+          ctx.beginPath(); ctx.ellipse(0, ay, 22, 17, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffb6c1';
+          ctx.beginPath(); ctx.ellipse(0, ay - 2, 18, 13, 0, 0, Math.PI * 2); ctx.fill();
+
+          let fw = Math.sin(angle * 3.5) * 2.5;
+          ctx.fillStyle = gillCol;
+          ctx.beginPath(); ctx.ellipse(-24 + fw, ay - 10, 8, 4, -0.3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(-26 + fw, ay, 9, 4, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(-22 + fw, ay + 10, 7, 3.5, 0.3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(24 - fw, ay - 10, 8, 4, 0.3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(26 - fw, ay, 9, 4, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(22 - fw, ay + 10, 7, 3.5, -0.3, 0, Math.PI * 2); ctx.fill();
+
+          if (!blink && sub !== 2) {
+            ctx.fillStyle = '#111827';
+            ctx.beginPath(); ctx.arc(-10, ay - 2, 5, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(10, ay - 2, 5, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(-12, ay - 5, 2.5, 2.5); ctx.fillRect(8, ay - 5, 2.5, 2.5);
+          } else {
+            ctx.strokeStyle = '#111827'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(-14, ay - 2); ctx.lineTo(-6, ay - 2); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(6, ay - 2); ctx.lineTo(14, ay - 2); ctx.stroke();
+          }
+
+          ctx.fillStyle = gillCol;
+          ctx.beginPath(); ctx.arc(-13, ay + 5, 3.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(13, ay + 5, 3.5, 0, Math.PI * 2); ctx.fill();
+
+          if (sub === 1) { // Bong bóng
+            let by1 = ay - ((Date.now() / 20) % 50);
+            ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.arc(16, by1, 4, 0, Math.PI * 2); ctx.stroke();
+          } else if (sub === 3) { // Hoàng tử
+            ctx.fillStyle = '#f5c842';
+            ctx.beginPath(); ctx.moveTo(-8, ay - 18); ctx.lineTo(0, ay - 26); ctx.lineTo(8, ay - 18); ctx.closePath(); ctx.fill();
+          } else if (sub === 4) { // Gamer
+            ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.arc(0, ay - 4, 22, Math.PI, 0); ctx.stroke();
+            ctx.fillStyle = '#ec4899';
+            ctx.fillRect(-24, ay - 9, 4, 10); ctx.fillRect(20, ay - 9, 4, 10);
+          } else if (sub === 6) { // Thiên sứ
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.ellipse(0, ay - 22, 10, 4, 0, 0, Math.PI * 2); ctx.stroke();
+          }
+          break;
+        }
+
+        // =====================================================================
+        // NHÓM 4: THÚ CƯNG ĐÁNG YÊU & LÃNG MẠN (IDs 26..39)
+        // =====================================================================
+        case 26: { // Mèo Ba Tư (Heterochromia)
+          let my = Math.sin(angle * 2.0) * 2.5;
           ctx.fillStyle = '#ffffff';
           ctx.beginPath(); ctx.roundRect(-20, my - 14, 40, 32, 12); ctx.fill();
           ctx.beginPath(); ctx.moveTo(-18, my - 12); ctx.lineTo(-12, my - 26); ctx.lineTo(-4, my - 12); ctx.closePath(); ctx.fill();
           ctx.beginPath(); ctx.moveTo(4, my - 12); ctx.lineTo(12, my - 26); ctx.lineTo(18, my - 12); ctx.closePath(); ctx.fill();
-          // Mắt 2 màu: Trái Cyan, Phải Vàng
           ctx.fillStyle = '#00f0ff'; ctx.beginPath(); ctx.arc(-8, my - 2, 4, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#f5c842'; ctx.beginPath(); ctx.arc(8, my - 2, 4, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(0, my + 16, 4, 0, Math.PI * 2); ctx.fill(); // Vòng ruby
-        } else if (sub === 2) { // Maneki Neko
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-9, my - 4, 1.5, 1.5); ctx.fillRect(7, my - 4, 1.5, 1.5);
+          ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(0, my + 16, 4, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 27: { // Mèo Tam Thể
+          let my = Math.sin(angle * 2.0) * 2.5;
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-20, my - 14, 40, 32, 12); ctx.fill();
+          ctx.fillStyle = '#ea580c';
+          ctx.beginPath(); ctx.arc(-10, my - 8, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#1e293b';
+          ctx.beginPath(); ctx.arc(10, my - 8, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(-13, my - 2); ctx.lineTo(-7, my - 2); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(7, my - 2); ctx.lineTo(13, my - 2); ctx.stroke();
+          break;
+        }
+
+        case 28: { // Maneki Neko (Vẫy tay 60 FPS)
+          let my = Math.sin(angle * 2.0) * 2.0;
           ctx.fillStyle = '#ffffff';
           ctx.beginPath(); ctx.roundRect(-18, my - 14, 36, 32, 10); ctx.fill();
           ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
@@ -1357,57 +1534,270 @@
           ctx.fillStyle = '#ffffff';
           ctx.beginPath(); ctx.roundRect(-24, my - 2 + wWave, 8, 16, 4); ctx.fill();
           ctx.fillStyle = '#f5c842'; ctx.beginPath(); ctx.arc(0, my + 16, 4, 0, Math.PI * 2); ctx.fill();
-        } else { // Generic Cuddle Mascot
-          ctx.fillStyle = '#f59e0b';
-          ctx.beginPath(); ctx.arc(0, my, 20, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#0f172a';
-          ctx.beginPath(); ctx.arc(-6, my - 2, 3, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.arc(6, my - 2, 3, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#fda4af';
-          ctx.beginPath(); ctx.arc(-11, my + 4, 3, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.arc(11, my + 4, 3, 0, Math.PI * 2); ctx.fill();
+          break;
         }
-        ctx.restore(); return;
-      }
 
-      // =======================================================================
-      // NHÓM 5: ĐỊA CẦU & THIÊN VĂN 3D (IDs 40..49)
-      // =======================================================================
-      if (id >= 40 && id <= 49) {
-        let sub = id - 40;
-        if (sub === 0) { // Địa Cầu ISS Blue Marble 3D
+        case 29: { // Mèo Con Trong Hộp Giấy Cạc-tông
+          let ky = Math.sin(angle * 2.0) * 2.0;
+          ctx.fillStyle = '#b45309';
+          ctx.beginPath(); ctx.roundRect(-22, ky, 44, 28, 4); ctx.fill();
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath(); ctx.roundRect(-16, ky - 14, 32, 20, 8); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-7, ky - 4, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(7, ky - 4, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-8, ky - 6, 1.5, 1.5); ctx.fillRect(6, ky - 6, 1.5, 1.5);
+          break;
+        }
+
+        case 30: { // Shiba Inu Má Bánh Bao
+          let sy = Math.sin(angle * 2.2) * 2.5;
+          ctx.fillStyle = '#d97706';
+          ctx.beginPath(); ctx.roundRect(-22, sy - 14, 44, 32, 12); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.arc(-12, sy + 4, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(12, sy + 4, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-8, sy - 4, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(8, sy - 4, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(0, sy + 2, 2.5, 0, Math.PI * 2); ctx.fill();
+          let tw = Math.sin(angle * 6.0) * 4;
+          ctx.fillStyle = '#d97706';
+          ctx.beginPath(); ctx.arc(20, sy - 8 + tw, 6, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 31: { // Corgi Mông Trái Tim
+          let cy_c = Math.sin(angle * 2.5) * 2.5;
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath(); ctx.arc(0, cy_c + 4, 18, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.arc(-4, cy_c + 4, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(4, cy_c + 4, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(-10, cy_c + 6); ctx.lineTo(0, cy_c + 16); ctx.lineTo(10, cy_c + 6); ctx.closePath(); ctx.fill();
+          break;
+        }
+
+        case 32: { // Thỏ Mặt Trăng Ngọc Thỏ
+          let ty = Math.sin(angle * 2.2) * 2.5;
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-14, ty - 28, 6, 18, 3); ctx.fill();
+          ctx.beginPath(); ctx.roundRect(8, ty - 28, 6, 18, 3); ctx.fill();
+          ctx.beginPath(); ctx.roundRect(-16, ty - 12, 32, 26, 10); ctx.fill();
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath(); ctx.arc(-6, ty - 2, 2.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, ty - 2, 2.5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#94a3b8';
+          ctx.fillRect(14, ty + 4, 16, 14);
+          break;
+        }
+
+        case 33: { // Gấu Trúc Gặm Trúc Non
+          let py = Math.sin(angle * 2.0) * 2.0;
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-18, py - 14, 36, 32, 10); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-14, py - 14, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(14, py - 14, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(-7, py - 2, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(7, py - 2, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-8, py - 3, 1.5, 1.5); ctx.fillRect(6, py - 3, 1.5, 1.5);
+          ctx.fillStyle = '#22c55e';
+          ctx.fillRect(-2, py, 4, 20);
+          break;
+        }
+
+        case 34: { // Chim Cánh Cụt Khăn Len Đỏ
+          let cy_p = Math.sin(angle * 2.4) * 2.5;
+          ctx.fillStyle = '#0284c7';
+          ctx.beginPath(); ctx.roundRect(-16, cy_p - 14, 32, 32, 12); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-10, cy_p - 8, 20, 24, 8); ctx.fill();
+          ctx.fillStyle = '#ef4444';
+          ctx.fillRect(-16, cy_p + 4, 32, 6);
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-5, cy_p - 4, 2, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(5, cy_p - 4, 2, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.moveTo(-3, cy_p); ctx.lineTo(0, cy_p + 3); ctx.lineTo(3, cy_p); ctx.closePath(); ctx.fill();
+          break;
+        }
+
+        case 35: { // Rái Cá Biển Nắm Tay
+          let oy = Math.sin(angle * 2.0) * 2.5;
+          ctx.fillStyle = '#78350f';
+          ctx.beginPath(); ctx.roundRect(-18, oy - 12, 36, 28, 10); ctx.fill();
+          ctx.fillStyle = '#fed7aa';
+          ctx.beginPath(); ctx.roundRect(-12, oy - 6, 24, 20, 8); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-6, oy - 2, 2.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, oy - 2, 2.5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-7, oy - 3, 1.5, 1.5); ctx.fillRect(5, oy - 3, 1.5, 1.5);
+          ctx.fillStyle = '#94a3b8';
+          ctx.beginPath(); ctx.arc(0, oy + 8, 5, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 36: { // Rồng Con Sấm Sét
+          let dy = Math.sin(angle * 2.6) * 3;
+          ctx.fillStyle = '#3b82f6';
+          ctx.beginPath(); ctx.arc(0, dy, 18, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-6, dy - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, dy - 2, 3, 0, Math.PI * 2); ctx.fill();
+          let wFlap = Math.sin(angle * 6.0) * 3;
+          ctx.fillStyle = '#00f0ff';
+          ctx.beginPath(); ctx.moveTo(-16, dy); ctx.lineTo(-26, dy - 8 + wFlap); ctx.lineTo(-12, dy + 6); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(16, dy); ctx.lineTo(26, dy - 8 + wFlap); ctx.lineTo(12, dy + 6); ctx.closePath(); ctx.fill();
+          break;
+        }
+
+        case 37: { // Kỳ Lân Cầu Vồng Nhí
+          let uy = Math.sin(angle * 2.4) * 3;
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-16, uy - 12, 32, 28, 10); ctx.fill();
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.moveTo(-3, uy - 12); ctx.lineTo(0, uy - 28); ctx.lineTo(3, uy - 12); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#c084fc';
+          ctx.beginPath(); ctx.arc(-6, uy - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, uy - 2, 3, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 38: { // Đôi Mèo Uyên Ương
+          let my = Math.sin(angle * 2.0) * 2;
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.arc(-8, my, 12, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(8, my, 12, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath(); ctx.arc(0, my - 14, 6, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 39: { // Cún Saint Bernard
+          let by = Math.sin(angle * 2.0) * 2;
+          ctx.fillStyle = '#b45309';
+          ctx.beginPath(); ctx.roundRect(-20, by - 14, 40, 32, 10); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-12, by - 6, 24, 24, 8); ctx.fill();
+          ctx.fillStyle = '#78350f';
+          ctx.fillRect(-6, by + 14, 12, 8);
+          break;
+        }
+
+        // =====================================================================
+        // NHÓM 5: ĐỊA CẦU & THIÊN VĂN 3D (IDs 40..49)
+        // =====================================================================
+        case 40: { // Quỹ Đạo ISS Blue Marble 3D
           let atmo = ctx.createRadialGradient(0, 0, 24, 0, 0, 38);
           atmo.addColorStop(0, 'rgba(0, 220, 255, 0.9)');
           atmo.addColorStop(0.5, 'rgba(0, 120, 255, 0.4)');
           atmo.addColorStop(1, 'rgba(0, 20, 80, 0)');
           ctx.fillStyle = atmo;
           ctx.beginPath(); ctx.arc(0, 0, 38, 0, Math.PI * 2); ctx.fill();
-
           ctx.fillStyle = '#08204b';
           ctx.beginPath(); ctx.arc(0, 0, 28, 0, Math.PI * 2); ctx.fill();
-
           let dX = (t * 12) % 60;
           ctx.fillStyle = '#1e683b';
           ctx.beginPath(); ctx.ellipse(-18 + dX - 30, -6, 12, 8, 0, 0, Math.PI * 2); ctx.fill();
           ctx.beginPath(); ctx.ellipse(10 + dX - 30, 8, 14, 7, 0, 0, Math.PI * 2); ctx.fill();
-
           ctx.fillStyle = '#ffffff';
           ctx.beginPath(); ctx.arc(20, -16, 3, 0, Math.PI * 2); ctx.fill();
           ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 1;
           ctx.beginPath(); ctx.moveTo(12, -16); ctx.lineTo(28, -16); ctx.stroke();
           ctx.beginPath(); ctx.moveTo(20, -24); ctx.lineTo(20, -8); ctx.stroke();
-        } else if (sub === 6) { // Hố đen Gargantua
-          ctx.fillStyle = '#d97706';
-          ctx.beginPath(); ctx.arc(0, 0, 22, 0, Math.PI * 2); ctx.fill();
-          ctx.strokeStyle = '#f5c842'; ctx.lineWidth = 3;
-          ctx.beginPath(); ctx.ellipse(0, 0, 42, 14, -0.2, 0, Math.PI * 2); ctx.stroke();
-          ctx.fillStyle = '#000000';
-          ctx.beginPath(); ctx.arc(0, 0, 16, 0, Math.PI * 2); ctx.fill();
-        } else {
-          ctx.fillStyle = '#e0f2fe';
-          ctx.beginPath(); ctx.arc(0, 0, 24, 0, Math.PI * 2); ctx.fill();
+          break;
         }
-        ctx.restore(); return;
+
+        case 41: { // Bão Xoáy Nam Cực
+          ctx.fillStyle = '#08204b';
+          ctx.beginPath(); ctx.arc(0, 0, 32, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+          for (let a = 0; a < 4; a++) {
+            let rad = a * 1.57 + angle * 2.0;
+            ctx.beginPath(); ctx.ellipse(Math.cos(rad) * 8, Math.sin(rad) * 8, 16, 8, 0, 0, Math.PI * 2); ctx.stroke();
+          }
+          break;
+        }
+
+        case 42: { // Mariana Bioluminescence
+          ctx.fillStyle = '#0284c7';
+          ctx.fillRect(-24, 12, 48, 20);
+          ctx.fillStyle = '#ec4899';
+          ctx.beginPath(); ctx.arc(-12, 6, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#00f0ff';
+          ctx.beginPath(); ctx.arc(12, 4, 10, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 43: { // Sahara Sunset
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath(); ctx.arc(0, -10, 18, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#f97316';
+          ctx.beginPath(); ctx.moveTo(-36, 28); ctx.lineTo(0, 8); ctx.lineTo(36, 28); ctx.closePath(); ctx.fill();
+          break;
+        }
+
+        case 44: { // Amazon Rainforest
+          ctx.fillStyle = '#15803d';
+          ctx.beginPath(); ctx.arc(-14, 8, 16, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(14, 6, 18, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-20, -4, 40, 8, 4); ctx.fill();
+          break;
+        }
+
+        case 45: { // Aurora
+          ctx.strokeStyle = '#10b981'; ctx.lineWidth = 3;
+          for (let x = -28; x <= 28; x += 4) {
+            let ay = -10 + Math.sin(angle * 3.0 + x * 0.1) * 12;
+            ctx.beginPath(); ctx.moveTo(x, ay); ctx.lineTo(x, ay + 18); ctx.stroke();
+          }
+          break;
+        }
+
+        case 46: { // Gargantua Black Hole
+          ctx.strokeStyle = '#f5c842'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.ellipse(0, 0, 40, 12, 0, 0, Math.PI * 2); ctx.stroke();
+          ctx.fillStyle = '#000000';
+          ctx.beginPath(); ctx.arc(0, 0, 18, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.arc(0, 0, 19, 0, Math.PI * 2); ctx.stroke();
+          break;
+        }
+
+        case 47: { // Saturn 3D
+          ctx.fillStyle = '#fde047';
+          ctx.beginPath(); ctx.arc(0, 0, 20, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#d97706'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.ellipse(0, 0, 38, 12, 0, 0, Math.PI * 2); ctx.stroke();
+          ctx.beginPath(); ctx.ellipse(0, 0, 34, 10, 0, 0, Math.PI * 2); ctx.stroke();
+          break;
+        }
+
+        case 48: { // Sun Plasma
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath(); ctx.arc(0, 0, 26, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#f97316';
+          ctx.beginPath(); ctx.arc(0, 0, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fef08a';
+          ctx.beginPath(); ctx.arc(0, 0, 16, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
+
+        case 49: default: { // Moon Craters
+          ctx.fillStyle = '#cbd5e1';
+          ctx.beginPath(); ctx.arc(0, 0, 26, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#94a3b8';
+          ctx.beginPath(); ctx.arc(-8, -6, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(10, 4, 7, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(-4, 12, 4, 0, Math.PI * 2); ctx.fill();
+          break;
+        }
       }
 
       ctx.restore();
@@ -1625,7 +2015,7 @@
           break;
       }
       // 3. LAYER 1: BÓNG TIẾP XÚC (Nếu không phải kiếm hoặc mưa cyber)
-      if (currentSpriteId !== 12 && currentSceneryId !== 2) {
+      if (currentSpriteId !== 0 && currentSceneryId !== 2) {
         let hover = -Math.sin(time);
         let rx = 22 - hover * 5;
         let ry = 5 - hover * 1.5;
@@ -1636,7 +2026,7 @@
       }
 
       // 4. LAYER 2: ANIMATION TRUNG TÂM
-      let cy = (currentSpriteId === 12) ? (182 + Math.sin(time) * 4.0) : (160 + Math.sin(time) * 6.0);
+      let cy = (currentSpriteId === 0) ? (182 + Math.sin(time) * 4.0) : (160 + Math.sin(time) * 6.0);
       renderSpecificAnimation(heroCtx, currentSpriteId, 86, cy, 1.0, time);
 
       // 5. LAYER 3: TYPEWRITER ĐA HÀNG KHÔNG CHE KHUẤT

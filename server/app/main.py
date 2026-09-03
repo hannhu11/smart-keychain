@@ -228,7 +228,10 @@ async def serve_index():
     with open(index_path, "r", encoding="utf-8") as f:
         html_data = f.read()
     catalog_json = json.dumps(ANIMATIONS, ensure_ascii=False)
-    return HTMLResponse(html_data.replace("__CATALOG_JSON__", catalog_json))
+    return HTMLResponse(
+        html_data.replace("__CATALOG_JSON__", catalog_json),
+        headers={"Cache-Control": "no-cache, no-store, must-revalidate", "Pragma": "no-cache", "Expires": "0"}
+    )
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)

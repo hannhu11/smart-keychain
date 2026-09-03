@@ -669,7 +669,7 @@ public:
     int cy = (int)centerY;
 
     // Bóng tiếp xúc chỉ vẽ khi nhân vật đứng đất (không vẽ cho kiếm thánh hoặc mưa cyber)
-    if (currentSpriteIdx != 12 && currentSceneryId != 2) {
+    if (currentSpriteIdx != 0 && currentSceneryId != 2) {
       float hover = -sinf(floatAngle); // > 0 khi bay cao
       int rx = (int)(22.0f - hover * 5.0f);
       int ry = (int)(5.0f - hover * 1.5f);
