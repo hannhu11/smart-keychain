@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mahoukarp Ocean Galaxy - Interactive 60FPS Simulator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #060B18;
+      color: #E0F2FE;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+      background: linear-gradient(135deg, #72CEFC, #C5A3E0, #FFB8D6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.subtitle {
+      margin: 0 0 20px 0;
+      font-size: 14px;
+      color: #94A3B8;
+    }
+    .viewport-container {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .keychain-frame {
+      width: 212px;
+      height: 380px;
+      background: #1E293B;
+      border-radius: 28px;
+      padding: 16px 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .keychain-hole {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #060B18;
+      margin-bottom: 8px;
+      border: 2px solid #334155;
+    }
+    canvas {
+      width: 172px;
+      height: 320px;
+      background: #081024;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    }
+    .controls {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 600px;
+    }
+    button {
+      background: #1E293B;
+      color: #BAE6FD;
+      border: 1px solid #38BDF8;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    button:hover, button.active {
+      background: #0284C7;
+      color: #FFFFFF;
+      box-shadow: 0 0 12px #38BDF8;
+    }
+    .quote-box {
+      margin-top: 14px;
+      max-width: 500px;
+      text-align: center;
+      font-style: italic;
+      color: #FBCFE8;
+      font-size: 14px;
+      min-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mahoukarp Ocean Galaxy Simulator</h1>
+  <p class="subtitle">ESP32 ST7789 (172x320) Locked 60FPS Anti-Aliased Vector Engine</p>
+
+  <div class="viewport-container">
+    <div class="keychain-frame">
+      <div class="keychain-hole"></div>
+      <canvas id="screen" width="172" height="320"></canvas>
+    </div>
+  </div>
+
+  <div class="quote-box" id="quoteText">...</div>
+
+  <div class="controls" id="btnGroup"></div>
+
+  <script>
+function drawMahoukarpBlueWhale(ctx, cx, cy, breath, angle, scale, time) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  // Squash & Stretch 5% volume conservation
+  const sy = 1.0 + 0.05 * Math.sin(angle);
+  const sx = 1.0 / Math.sqrt(sy);
+  const by = Math.sin(angle) * 3.5;
+
+  const tailLag = Math.sin(angle - 0.75);
+  const finLag  = Math.sin(angle - 0.40);
+
+  // Tail Fluke
+  ctx.save();
+  ctx.translate(46 * sx, by - 2 * sy + tailLag * 6.0);
+  const tailGrad = ctx.createLinearGradient(0, -15, 15, 15);
+  tailGrad.addColorStop(0, '#BFA6EC');
+  tailGrad.addColorStop(1, '#9C9DE8');
+  ctx.fillStyle = tailGrad;
+  ctx.beginPath();
+  ctx.ellipse(8, -8, 11, 7, -0.2, 0, Math.PI * 2);
+  ctx.ellipse(8, 8, 11, 7, 0.2, 0, Math.PI * 2);
+  ctx.fill();
+  // Notch cut
+  ctx.fillStyle = '#060B18'; // Dark bg cut
+  ctx.beginPath();
+  ctx.moveTo(11, 0);
+  ctx.lineTo(20, -6);
+  ctx.lineTo(20, 6);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+
+  // Whale Body Gradient
+  const bodyGrad = ctx.createLinearGradient(-48 * sx, by - 26 * sy, 48 * sx, by + 26 * sy);
+  bodyGrad.addColorStop(0, '#A6D2F7');
+  bodyGrad.addColorStop(0.4, '#C5A3E0');
+  bodyGrad.addColorStop(1, '#8E89D6');
+
+  ctx.fillStyle = bodyGrad;
+  ctx.beginPath();
+  ctx.ellipse(-2 * sx, by, 48 * sx, 25 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Underbelly Creamy White
+  ctx.fillStyle = '#F3F8FE';
+  ctx.beginPath();
+  ctx.ellipse(-10 * sx, by + 10 * sy, 36 * sx, 15 * sy, 0.05, 0, Math.PI);
+  ctx.fill();
+
+  // Throat Pleat Grooves
+  ctx.strokeStyle = '#D2E4F9';
+  ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.ellipse(-10 * sx, by + 10 * sy, 32 * sx, 10 * sy, 0.05, 0.1, Math.PI - 0.1);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.ellipse(-12 * sx, by + 13 * sy, 27 * sx, 7 * sy, 0.05, 0.15, Math.PI - 0.15);
+  ctx.stroke();
+
+  // Pectoral Fin
+  ctx.save();
+  ctx.translate(-12 * sx, by + 12 * sy + finLag * 3.0);
+  ctx.fillStyle = '#9C9DE8';
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 11 * sx, 5 * sy, 0.3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // Star Blossom Flowers on Dorsal Back
+  function drawFlower(fx, fy, colPetal, colCenter) {
+    ctx.fillStyle = colPetal;
+    for (let r = 0; r < 4; r++) {
+      const ang = (r * Math.PI) / 2;
+      ctx.beginPath();
+      ctx.arc(fx + Math.cos(ang) * 2.6, fy + Math.sin(ang) * 2.6, 2.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.fillStyle = colCenter;
+    ctx.beginPath();
+    ctx.arc(fx, fy, 2.0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  drawFlower(8 * sx, by - 14 * sy, '#FFB8D6', '#FFFFFF');
+  drawFlower(24 * sx, by - 9 * sy, '#FFD2E5', '#FFFFFF');
+  drawFlower(18 * sx, by - 3 * sy, '#FFFFFF', '#FFAEC9');
+
+  // Cheek Glow & Blush
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+  ctx.beginPath();
+  ctx.arc(-22 * sx, by + 4 * sy, 7.5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#FFAEC9';
+  ctx.beginPath();
+  ctx.ellipse(-22 * sx, by + 4 * sy, 5.5, 4.0, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Crystal Eye with 3 Catchlights
+  const eyeX = -32 * sx, eyeY = by + 2 * sy;
+  const blink = (time % 4000 < 140);
+  if (blink) {
+    ctx.strokeStyle = '#0B1220';
+    ctx.lineWidth = 2.0;
+    ctx.beginPath();
+    ctx.arc(eyeX, eyeY + 2, 4, Math.PI * 1.1, Math.PI * 1.9);
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = '#0B1220';
+    ctx.beginPath();
+    ctx.arc(eyeX, eyeY, 4.2, 0, Math.PI * 2);
+    ctx.fill();
+    // Catchlight 1: Main top-left
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(eyeX - 1.2, eyeY - 1.8, 1.8, 0, Math.PI * 2);
+    ctx.fill();
+    // Catchlight 2: Secondary bounce bottom-right
+    ctx.beginPath();
+    ctx.arc(eyeX + 1.6, eyeY + 1.2, 1.0, 0, Math.PI * 2);
+    ctx.fill();
+    // Catchlight 3: Micro twinkle
+    ctx.fillStyle = '#D8E2FD';
+    ctx.beginPath();
+    ctx.arc(eyeX + 1.8, eyeY - 1.0, 0.6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Cute mouth smile
+  ctx.strokeStyle = '#706DB3';
+  ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.arc(-38 * sx, by + 6 * sy, 3, 0.1, Math.PI * 0.8);
+  ctx.stroke();
+
+  // Spout bubbles
+  const spoutLag = Math.sin(angle - 0.90);
+  ctx.fillStyle = '#A6D2F7';
+  ctx.beginPath();
+  ctx.arc(-18 * sx, by - 28 * sy + spoutLag * 2, 2.5, 0, Math.PI * 2);
+  ctx.arc(-14 * sx, by - 33 * sy + spoutLag * 2, 3.2, 0, Math.PI * 2);
+  ctx.arc(-10 * sx, by - 30 * sy + spoutLag * 2, 2.0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+}
+function drawMahoukarpWhaleShark(ctx, cx, cy, breath, angle, scale, time) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const sx = 1.0 + 0.05 * Math.cos(angle);
+  const sy = 1.0 / Math.sqrt(sx);
+  const by = Math.sin(angle) * 3.0;
+
+  const tailLag = Math.sin(angle - 1.10);
+  const finLag  = Math.sin(angle - 0.45);
+
+  // Caudal Tail Fin
+  ctx.save();
+  ctx.translate(-36 * sx, by - 16 * sy + tailLag * 7.0);
+  ctx.fillStyle = '#3D6CB3';
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(-18, -14);
+  ctx.lineTo(-6, 2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(-14, 12);
+  ctx.lineTo(-4, -2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+
+  // Dorsal Fin
+  ctx.fillStyle = '#3D6CB3';
+  ctx.beginPath();
+  ctx.moveTo(-12 * sx - 10, by - 22 * sy + 8 + finLag * 2);
+  ctx.lineTo(-12 * sx + 4, by - 22 * sy + 8 + finLag * 2);
+  ctx.lineTo(-12 * sx - 2, by - 22 * sy - 8 + finLag * 2);
+  ctx.closePath();
+  ctx.fill();
+
+  // Body Gradient
+  const bodyGrad = ctx.createLinearGradient(-40 * sx, by - 20 * sy, 40 * sx, by + 20 * sy);
+  bodyGrad.addColorStop(0, '#3D6CB3');
+  bodyGrad.addColorStop(0.5, '#68B8F6');
+  bodyGrad.addColorStop(1, '#9BD0F5');
+  ctx.fillStyle = bodyGrad;
+  ctx.beginPath();
+  ctx.ellipse(0, by, 44 * sx, 27 * sy, 0.1, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Wide Pectoral Wings
+  ctx.fillStyle = '#4B74B5';
+  ctx.beginPath();
+  ctx.ellipse(-18 * sx, by - 6 * sy + finLag * 3.5, 14, 7, -0.3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#68B8F6';
+  ctx.beginPath();
+  ctx.ellipse(32 * sx, by + 14 * sy - finLag * 3.5, 14, 8, 0.4, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Open Pink Chibi Mouth
+  const mX = 24 * sx, mY = by + 10 * sy;
+  ctx.fillStyle = '#FFFFFF';
+  ctx.beginPath();
+  ctx.ellipse(mX, mY, 16 * sx, 10 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#FFA3BF';
+  ctx.beginPath();
+  ctx.ellipse(mX, mY, 14 * sx, 8 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#E85D88';
+  ctx.beginPath();
+  ctx.ellipse(mX, mY + 1, 11 * sx, 6 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Diamond Stars Constellation
+  function drawDiamondStar(px, py, col, sz) {
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    ctx.moveTo(px, py - sz);
+    ctx.lineTo(px + sz * 0.6, py);
+    ctx.lineTo(px, py + sz);
+    ctx.lineTo(px - sz * 0.6, py);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(px - 0.7, py - 0.7, 1.4, 1.4);
+  }
+  const stars = [
+    [-16, -8, '#FFFFFF', 4], [-6, -14, '#FFDCF0', 4.5], [6, -10, '#FFFFFF', 4],
+    [-8, 0, '#FFFFFF', 3.5], [4, -2, '#FFDCF0', 4], [14, -6, '#FFFFFF', 3.5],
+    [-22, -2, '#FFDCF0', 3], [-2, 8, '#FFFFFF', 3]
+  ];
+  for (const s of stars) {
+    drawDiamondStar(cx_s = s[0] * sx, cy_s = by + s[1] * sy, s[2], s[3]);
+  }
+
+  // Crystal Eye 3 Catchlights
+  const eyeX = 34 * sx, eyeY = by - 2 * sy;
+  const blink = (time % 3800 < 130);
+  if (blink) {
+    ctx.strokeStyle = '#0A1324';
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    ctx.moveTo(eyeX - 3, eyeY);
+    ctx.lineTo(eyeX + 3, eyeY);
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = '#0A1324';
+    ctx.beginPath();
+    ctx.arc(eyeX, eyeY, 3.8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(eyeX - 1.2, eyeY - 1.5, 1.6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(eyeX + 1.2, eyeY + 1.0, 0.9, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#9BD0F5';
+    ctx.beginPath();
+    ctx.arc(eyeX + 1.5, eyeY - 0.8, 0.6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Cheek
+  ctx.fillStyle = '#FFAEC9';
+  ctx.beginPath();
+  ctx.arc(38 * sx, by + 6 * sy, 4.0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+}
+function drawMahoukarpMoonJelly(ctx, cx, cy, breath, angle, scale, time) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const pulse = Math.sin(angle);
+  const sy = (pulse > 0) ? (1.0 + 0.06 * pulse) : (1.0 + 0.12 * pulse);
+  const sx = 1.0 / Math.sqrt(sy);
+  const by = Math.sin(angle) * 4.0;
+
+  // Outer Bell Glow
+  const bellGrad = ctx.createRadialGradient(0, by - 6 * sy, 5, 0, by - 6 * sy, 36 * sx);
+  bellGrad.addColorStop(0, '#D5F6FF');
+  bellGrad.addColorStop(0.5, '#72CEFC');
+  bellGrad.addColorStop(1, '#356FB6');
+
+  ctx.fillStyle = bellGrad;
+  ctx.beginPath();
+  ctx.ellipse(0, by - 6 * sy, 35 * sx, 27 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Crescent Moon Crown
+  const mY = by - 16 * sy;
+  ctx.save();
+  ctx.fillStyle = '#FFFFFF';
+  ctx.shadowColor = '#00F0FF';
+  ctx.shadowBlur = 10;
+  ctx.beginPath();
+  ctx.arc(0, mY, 9, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#72CEFC';
+  ctx.shadowBlur = 0;
+  ctx.beginPath();
+  ctx.arc(0, mY - 3, 8, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Side moons
+  ctx.fillStyle = '#D5F6FF';
+  ctx.beginPath();
+  ctx.arc(-15, mY + 3, 6, 0, Math.PI * 2);
+  ctx.arc(15, mY + 3, 6, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#72CEFC';
+  ctx.beginPath();
+  ctx.arc(-15, mY + 1, 5, 0, Math.PI * 2);
+  ctx.arc(15, mY + 1, 5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // Bell Scalloped Margin
+  const rimY = by + 12 * sy;
+  ctx.fillStyle = '#356FB6';
+  ctx.fillRect(-30 * sx, rimY - 2, 60 * sx, 4);
+  ctx.fillStyle = '#72CEFC';
+  for (let rx = -24; rx <= 24; rx += 8) {
+    ctx.beginPath();
+    ctx.arc(rx * sx, rimY + 2, 4.5, 0, Math.PI);
+    ctx.fill();
+  }
+
+  // Kawaii Face: Crystal Eyes (3 catchlights)
+  const eyeL = -12 * sx, eyeR = 12 * sx, eyeY = by + 2 * sy;
+  const blink = (time % 3500 < 130);
+  function renderEye(ex) {
+    if (blink) {
+      ctx.strokeStyle = '#0C1630';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.arc(ex, eyeY + 1, 3.5, Math.PI * 1.1, Math.PI * 1.9);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = '#0C1630';
+      ctx.beginPath();
+      ctx.arc(ex, eyeY, 3.8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(ex - 1.2, eyeY - 1.5, 1.6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(ex + 1.2, eyeY + 1.0, 0.9, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#D5F6FF';
+      ctx.beginPath();
+      ctx.arc(ex + 1.5, eyeY - 0.7, 0.6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  renderEye(eyeL);
+  renderEye(eyeR);
+
+  // w-mouth
+  ctx.strokeStyle = '#0C1630';
+  ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.arc(-2.5, eyeY + 4, 2.5, 0, Math.PI);
+  ctx.arc(2.5, eyeY + 4, 2.5, 0, Math.PI);
+  ctx.stroke();
+
+  // Pink Blush
+  ctx.fillStyle = '#FF85A2';
+  ctx.beginPath();
+  ctx.arc(-18 * sx, eyeY + 3, 4.2, 0, Math.PI * 2);
+  ctx.arc(18 * sx, eyeY + 3, 4.2, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 6 Ribbon Tentacles with Sine-wave Lag
+  const tOffsets = [-20, -12, -4, 4, 12, 20];
+  const tPhase = [0.0, 0.4, 0.8, 1.2, 1.6, 2.0];
+  for (let t = 0; t < 6; t++) {
+    ctx.strokeStyle = (t % 2 === 0) ? '#72CEFC' : '#827FE4';
+    ctx.lineWidth = 2.0;
+    ctx.beginPath();
+    let curX = tOffsets[t] * sx;
+    ctx.moveTo(curX, rimY + 4);
+    for (let seg = 1; seg <= 18; seg++) {
+      const segLag = Math.sin(angle - seg * 0.22 + tPhase[t]);
+      const nextX = tOffsets[t] * sx + segLag * 6.5;
+      const nextY = rimY + 4 + seg * 2.2;
+      ctx.lineTo(nextX, nextY);
+      curX = nextX;
+    }
+    ctx.stroke();
+    // Glowing pearl tip
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(curX, rimY + 44, 2.2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+function drawMahoukarpAbyssalAngler(ctx, cx, cy, breath, angle, scale, time) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const sy = 1.0 + 0.05 * Math.sin(angle);
+  const sx = 1.0 / Math.sqrt(sy);
+  const by = Math.sin(angle) * 3.0;
+
+  const lanternLag = Math.sin(angle - 1.20);
+  const lanternX = 32 * sx + lanternLag * 5.0;
+  const lanternY = -24 * sy + lanternLag * 4.0;
+  const tailLag = Math.sin(angle - 0.80);
+
+  // Caudal Tail Fin
+  ctx.save();
+  ctx.translate(-32 * sx, by);
+  ctx.fillStyle = '#2B3B6F';
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(-16, -12 + tailLag * 5.0);
+  ctx.lineTo(-16, 12 + tailLag * 5.0);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = '#94E4FF';
+  ctx.lineWidth = 1.2;
+  ctx.stroke();
+  ctx.restore();
+
+  // Radiating Dorsal Spines
+  for (let s = 0; s < 5; s++) {
+    const spBaseX = (-14 + s * 7) * sx;
+    const spBaseY = by - 18 * sy;
+    const spTipX  = spBaseX - 3;
+    const spTipY  = spBaseY - (8 + s * 2.2);
+    ctx.strokeStyle = '#4D68B3';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(spBaseX, spBaseY);
+    ctx.lineTo(spTipX, spTipY);
+    ctx.stroke();
+    // Glowing Tip
+    ctx.fillStyle = '#54F0E8';
+    ctx.beginPath();
+    ctx.arc(spTipX, spTipY, 2.2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Chubby Midnight Hull
+  const bodyGrad = ctx.createRadialGradient(-4, by - 4, 4, 0, by, 26 * sx);
+  bodyGrad.addColorStop(0, '#4D68B3');
+  bodyGrad.addColorStop(0.6, '#2B3B6F');
+  bodyGrad.addColorStop(1, '#182046');
+  ctx.fillStyle = bodyGrad;
+  ctx.beginPath();
+  ctx.arc(0, by, 26 * sx, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Pastel Cyan Jaw & Zigzag Teeth
+  const jawY = by + 8 * sy;
+  ctx.fillStyle = '#94E4FF';
+  ctx.beginPath();
+  ctx.ellipse(8 * sx, jawY, 18 * sx, 12 * sy, 0, 0, Math.PI);
+  ctx.fill();
+  // Teeth
+  ctx.fillStyle = '#FFFFFF';
+  for (let t = 0; t < 4; t++) {
+    const tx = (-2 + t * 6) * sx;
+    ctx.beginPath();
+    ctx.moveTo(tx - 2.5, jawY);
+    ctx.lineTo(tx, jawY - 4.5);
+    ctx.lineTo(tx + 2.5, jawY);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // Flexible Illucium Stalk
+  ctx.strokeStyle = '#63D6F6';
+  ctx.lineWidth = 2.2;
+  ctx.beginPath();
+  ctx.moveTo(4 * sx, by - 24 * sy);
+  ctx.quadraticCurveTo(22 * sx, by - 40 * sy, lanternX, by + lanternY);
+  ctx.stroke();
+
+  // Glowing Esca Lantern Orb
+  ctx.save();
+  ctx.shadowColor = '#00F0FF';
+  ctx.shadowBlur = 16;
+  ctx.fillStyle = '#00F0FF';
+  ctx.beginPath();
+  ctx.arc(lanternX, by + lanternY, 7.5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#FFFFFF';
+  ctx.beginPath();
+  ctx.arc(lanternX, by + lanternY, 3.2, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // Lateral Bioluminescent Dots
+  const dots = [[-14, -2], [-8, 4], [0, -6], [8, -2], [14, -8]];
+  ctx.fillStyle = '#54F0E8';
+  for (const d of dots) {
+    ctx.beginPath();
+    ctx.arc(d[0] * sx, by + d[1] * sy, 2.2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Crystal Eye 3 Catchlights
+  const eyeX = 16 * sx, eyeY = by - 4 * sy;
+  const blink = (time % 3600 < 130);
+  if (blink) {
+    ctx.strokeStyle = '#0A1028';
+    ctx.lineWidth = 2.0;
+    ctx.beginPath();
+    ctx.moveTo(eyeX - 4, eyeY);
+    ctx.lineTo(eyeX + 4, eyeY);
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = '#0A1028';
+    ctx.beginPath();
+    ctx.arc(eyeX, eyeY, 4.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(eyeX - 1.2, eyeY - 1.8, 1.8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(eyeX + 1.6, eyeY + 1.2, 1.0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#54F0E8';
+    ctx.beginPath();
+    ctx.arc(eyeX + 1.8, eyeY - 1.0, 0.6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Cheek
+  ctx.fillStyle = '#FFAFC5';
+  ctx.beginPath();
+  ctx.arc(22 * sx, by + 4 * sy, 4.2, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+}
+function drawMahoukarpStingray(ctx, cx, cy, breath, angle, scale, time) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const sx = 1.0 + 0.05 * Math.sin(angle);
+  const sy = 1.0 / Math.sqrt(sx);
+  const by = Math.sin(angle) * 3.5;
+
+  const wingFlap = Math.sin(angle - 0.50);
+  const wingTipY = wingFlap * 6.5;
+
+  // Slender Kinematic Whip Tail
+  const tailBaseX = 32 * sx, tailBaseY = by + 6 * sy;
+  ctx.strokeStyle = '#77CBF7';
+  ctx.lineWidth = 2.0;
+  ctx.beginPath();
+  ctx.moveTo(tailBaseX, tailBaseY);
+  for (let seg = 1; seg <= 16; seg++) {
+    const nextX = tailBaseX + seg * 3.2;
+    const nextY = tailBaseY + Math.sin(angle - seg * 0.28) * 5.0;
+    ctx.lineTo(nextX, nextY);
+  }
+  ctx.stroke();
+
+  // Fairy Wings Kite Hull
+  const wLX = -36 * sx, wLY = by - 12 * sy + wingTipY;
+  const wRX = 34 * sx, wRY = by - 16 * sy - wingTipY;
+
+  const wingGrad = ctx.createLinearGradient(-36 * sx, by, 34 * sx, by);
+  wingGrad.addColorStop(0, '#F6A9CF');
+  wingGrad.addColorStop(0.3, '#787BD6');
+  wingGrad.addColorStop(0.7, '#77CBF7');
+  wingGrad.addColorStop(1, '#F6A9CF');
+
+  ctx.fillStyle = wingGrad;
+  ctx.beginPath();
+  ctx.moveTo(0, by - 18 * sy);
+  ctx.lineTo(wLX, wLY);
+  ctx.lineTo(0, by + 14 * sy);
+  ctx.lineTo(wRX, wRY);
+  ctx.closePath();
+  ctx.fill();
+
+  // Pearl White Underbelly
+  ctx.fillStyle = '#FFFFFF';
+  ctx.beginPath();
+  ctx.ellipse(-4 * sx, by + 2 * sy, 26 * sx, 19 * sy, 0.05, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Smiling Chibi Mouth
+  const mX = -14 * sx, mY = by - 2 * sy;
+  ctx.fillStyle = '#FF9CB8';
+  ctx.beginPath();
+  ctx.ellipse(mX, mY, 7 * sx, 5 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#E85D88';
+  ctx.beginPath();
+  ctx.arc(mX, mY + 1, 3.0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 3 Gill Slits
+  ctx.strokeStyle = '#96D4F8';
+  ctx.lineWidth = 1.5;
+  for (let g = 0; g < 3; g++) {
+    const gx = (-2 + g * 4.5) * sx;
+    ctx.beginPath();
+    ctx.moveTo(gx, by - 4 * sy);
+    ctx.lineTo(gx, by + 2 * sy);
+    ctx.stroke();
+  }
+
+  // Cephalic Flaps
+  ctx.fillStyle = '#77CBF7';
+  ctx.beginPath();
+  ctx.arc(-26 * sx, by - 12 * sy, 4.0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Crystal Eye 3 Catchlights
+  const eyeX = -4 * sx, eyeY = by - 8 * sy;
+  const blink = (time % 3700 < 130);
+  if (blink) {
+    ctx.strokeStyle = '#101432';
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    ctx.moveTo(eyeX - 3, eyeY);
+    ctx.lineTo(eyeX + 3, eyeY);
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = '#101432';
+    ctx.beginPath();
+    ctx.arc(eyeX, eyeY, 3.8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(eyeX - 1.2, eyeY - 1.5, 1.6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(eyeX + 1.2, eyeY + 1.0, 0.9, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#77CBF7';
+    ctx.beginPath();
+    ctx.arc(eyeX + 1.5, eyeY - 0.7, 0.6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Cheek Blush
+  ctx.fillStyle = '#FFAAC2';
+  ctx.beginPath();
+  ctx.ellipse(-18 * sx, by + 4 * sy, 4.5, 3.2, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+}
+function drawMahoukarpPearlClam(ctx, cx, cy, breath, angle, scale, time) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const sy = 1.0 + 0.05 * Math.sin(angle);
+  const sx = 1.0 / Math.sqrt(sy);
+  const by = Math.sin(angle) * 3.0;
+
+  const hingeAngle = Math.sin(angle - 0.30);
+  const shellLift = hingeAngle * 5.0;
+
+  // Lower Base Shell
+  ctx.fillStyle = '#617BC8';
+  ctx.beginPath();
+  ctx.ellipse(0, by + 18 * sy, 36 * sx, 16 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#7DB4F5';
+  ctx.beginPath();
+  ctx.ellipse(0, by + 17 * sy, 34 * sx, 14 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Velvet Nacre Cushion
+  ctx.fillStyle = '#FFB8DA';
+  ctx.beginPath();
+  ctx.ellipse(0, by + 14 * sy, 28 * sx, 9 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#FFE6F4';
+  ctx.beginPath();
+  ctx.ellipse(0, by + 13 * sy, 24 * sx, 7 * sy, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Upper Fan Shell with 7 Fluted Ribs
+  const upY = by - 10 * sy - shellLift;
+  const ribAngles = [-30, -20, -10, 0, 10, 20, 30];
+  const ribHeights = [20, 26, 30, 32, 30, 26, 20];
+  for (let r = 0; r < 7; r++) {
+    const rx = ribAngles[r] * 1.1 * sx;
+    const ry = upY - ribHeights[r] * 0.4 * sy;
+    ctx.fillStyle = (r % 2 === 0) ? '#ACC3EA' : '#7DB4F5';
+    ctx.beginPath();
+    ctx.ellipse(rx, ry, 8 * sx, 18 * sy, (ribAngles[r] * Math.PI) / 180, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.strokeStyle = '#FFFFFF';
+  ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.ellipse(0, upY - 8, 32 * sx, 16 * sy, 0, 0, Math.PI);
+  ctx.stroke();
+
+  // Living Pearl
+  const pY = by + 8 * sy - Math.sin(angle - 0.60) * 2.0;
+  const pRadius = 17 * sx;
+  const pearlGrad = ctx.createRadialGradient(-3, pY - 3, 2, 0, pY, pRadius);
+  pearlGrad.addColorStop(0, '#FFFFFF');
+  pearlGrad.addColorStop(0.7, '#FFEBF6');
+  pearlGrad.addColorStop(1, '#E2EFF9');
+
+  ctx.fillStyle = pearlGrad;
+  ctx.beginPath();
+  ctx.arc(0, pY, pRadius, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Forehead Star Sparkle
+  const sX = -6, sY = pY - 9;
+  ctx.fillStyle = '#FFFFFF';
+  ctx.beginPath();
+  ctx.moveTo(sX, sY - 3.5);
+  ctx.lineTo(sX + 2, sY);
+  ctx.lineTo(sX, sY + 3.5);
+  ctx.lineTo(sX - 2, sY);
+  ctx.closePath();
+  ctx.fill();
+
+  // Pearl Kawaii Face (3 Catchlights)
+  const eyeL = -6, eyeR = 6, eyeY = pY - 1;
+  const blink = (time % 3400 < 130);
+  function renderPearlEye(ex) {
+    if (blink) {
+      ctx.strokeStyle = '#151035';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(ex - 2.5, eyeY);
+      ctx.lineTo(ex + 2.5, eyeY);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = '#151035';
+      ctx.beginPath();
+      ctx.arc(ex, eyeY, 3.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(ex - 1.0, eyeY - 1.2, 1.3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(ex + 1.0, eyeY + 0.8, 0.7, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#FFE6F4';
+      ctx.beginPath();
+      ctx.arc(ex + 1.2, eyeY - 0.6, 0.4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  renderPearlEye(eyeL);
+  renderPearlEye(eyeR);
+
+  // Tiny Smile
+  ctx.strokeStyle = '#151035';
+  ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.arc(0, eyeY + 2.5, 2.5, 0.1, Math.PI - 0.1);
+  ctx.stroke();
+
+  // Cheeks
+  ctx.fillStyle = '#FF7AA2';
+  ctx.beginPath();
+  ctx.arc(-10, eyeY + 2, 3.2, 0, Math.PI * 2);
+  ctx.arc(10, eyeY + 2, 3.2, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Shimmering Pearl Bubbles
+  const bubLag = Math.sin(angle - 1.40);
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.arc(-22 * sx, by - 20 * sy + bubLag * 4.0, 3.2, 0, Math.PI * 2);
+  ctx.arc(24 * sx, by - 26 * sy - bubLag * 3.0, 2.4, 0, Math.PI * 2);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+    const quotes = [
+      "Dù đại dương có bao la, anh vẫn luôn tìm thấy nụ cười của em giữa ngàn vì sao.",
+      "Miệng anh luôn cười thật tươi, vì trong tim anh đã có trọn cả biển sao của em.",
+      "Như vầng trăng trôi êm dưới đáy biển sâu, anh sẽ luôn là ánh sáng dịu dàng soi bước em.",
+      "Dù nơi tăm tối sâu thẳm nhất, ngọn đèn này chỉ thắp lên để soi lối em về.",
+      "Dang rộng đôi cánh tiên, anh muốn che chở và cùng em bay qua mọi bão giông.",
+      "Em là viên ngọc quý giá nhất mà cả biển khơi này trao tặng cho cuộc đời anh."
+    ];
+
+    const names = [
+      "Cá Voi Xanh", "Cá Mập Sao", "Sứa Mặt Trăng", "Cá Lồng Đèn", "Cá Đuối Tiên", "Sò Ngọc Cười"
+    ];
+
+    let currentId = 0;
+    const canvas = document.getElementById('screen');
+    const ctx = canvas.getContext('2d');
+    const btnGroup = document.getElementById('btnGroup');
+    const quoteEl = document.getElementById('quoteText');
+
+    names.forEach((name, i) => {
+      const btn = document.createElement('button');
+      btn.innerText = name;
+      if (i === 0) btn.classList.add('active');
+      btn.onclick = () => {
+        currentId = i;
+        document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        quoteEl.innerText = quotes[i];
+      };
+      btnGroup.appendChild(btn);
+    });
+    quoteEl.innerText = quotes[0];
+
+    // Background Particle Stars
+    const particles = [];
+    for (let p = 0; p < 35; p++) {
+      particles.push({
+        x: Math.random() * 172,
+        y: Math.random() * 320,
+        vy: 0.3 + Math.random() * 0.8,
+        r: 0.5 + Math.random() * 1.5,
+        alpha: 0.2 + Math.random() * 0.6
+      });
+    }
+
+    let startTime = performance.now();
+
+    function render() {
+      const now = performance.now();
+      const elapsed = (now - startTime) / 1000;
+      const angle = elapsed * 2.2;
+
+      ctx.fillStyle = '#081024';
+      ctx.fillRect(0, 0, 172, 320);
+
+      // Render Falling Bioluminescent Stardust
+      particles.forEach(pt => {
+        pt.y -= pt.vy;
+        if (pt.y < 0) pt.y = 320;
+        ctx.fillStyle = `rgba(186, 230, 253, ${pt.alpha})`;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Render Active Creature centered at cx=86, cy=150
+      const cx = 86, cy = 150, scale = 1.0;
+      switch (currentId) {
+        case 0: drawMahoukarpBlueWhale(ctx, cx, cy, 1.0, angle, scale, now); break;
+        case 1: drawMahoukarpWhaleShark(ctx, cx, cy, 1.0, angle, scale, now); break;
+        case 2: drawMahoukarpMoonJelly(ctx, cx, cy, 1.0, angle, scale, now); break;
+        case 3: drawMahoukarpAbyssalAngler(ctx, cx, cy, 1.0, angle, scale, now); break;
+        case 4: drawMahoukarpStingray(ctx, cx, cy, 1.0, angle, scale, now); break;
+        case 5: drawMahoukarpPearlClam(ctx, cx, cy, 1.0, angle, scale, now); break;
+      }
+
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+  </script>
+</body>
+</html>

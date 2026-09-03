@@ -3,9 +3,9 @@
 #define LGFX_USE_V1
 #include <LovyanGFX.hpp>
 
-class SpriteRenderer {
-public:
-  struct ScaledCanvas {
+namespace SpriteRenderer {
+
+struct ScaledCanvas {
   LGFX_Sprite* target;
   int originX, originY;
   float scale;
@@ -56,6 +56,14 @@ public:
     target->fillTriangle(sx(x0), sy(y0), sx(x1), sy(y1), sx(x2), sy(y2), col);
   }
 };
+
+} // namespace SpriteRenderer
+
+#include "jelly_celestial_sprites.h"
+#include "mahoukarp_ocean_sprites.h"
+#include "fantasy_beasts_sprites.h"
+
+namespace SpriteRenderer {
 
   static void drawTheme(LGFX_Sprite* target_spr, int id, int cx, int cy, float breath, float angle, float scale = 1.0f) {
     if (scale < 0.6f) scale = 0.6f;
@@ -315,217 +323,126 @@ public:
       // -------------------------------------------------------------
       // ID 7: LUMORI - NẤM RỪNG PHÁT QUANG CỔ ĐẠI (LUMORI)
       // -------------------------------------------------------------
+            // -------------------------------------------------------------
+      // ID 7: THẠCH LONG TÍM LAVENDER (LAVENDER JELLY DRAGON - 젤리드레곤)
+      // -------------------------------------------------------------
       case 7: {
-        int my = cy + (int)(sinf(angle * 2.2f) * 2.5f);
-        // Mũ ngủ nấm chóp dài màu lam
-        spr->fillCircle(cx, my - 14, 20, 0x3CF7);
-        spr->fillTriangle(cx - 16, my - 16, cx + 22, my - 34, cx + 14, my - 14, 0x3CF7);
-        spr->fillCircle(cx + 22, my - 34, 4, 0xFDE0);
-        // Thân trắng & bụng phát sáng xoắn ốc
-        spr->fillRoundRect(cx - 16, my - 6, 32, 28, 10, TFT_WHITE);
-        spr->fillCircle(cx, my + 10, 7, 0xFDE0);
-        spr->drawPixel(cx, my + 10, 0xFA60);
-        // Mắt & má hồng
-        spr->fillCircle(cx - 7, my + 2, 3, 0x1082);
-        spr->fillCircle(cx + 7, my + 2, 3, 0x1082);
-        spr->drawPixel(cx - 8, my + 1, TFT_WHITE);
-        spr->drawPixel(cx + 6, my + 1, TFT_WHITE);
-        spr->fillCircle(cx - 11, my + 6, 2, 0xFCE0);
-        spr->fillCircle(cx + 11, my + 6, 2, 0xFCE0);
+        JellyCelestial::drawJellyDragonLavender(spr, cx, cy, angle, blink);
         break;
       }
 
       // -------------------------------------------------------------
-      // ID 8: LUMIO - NGỌN LỬA VŨ TRỤ TINH NGHỊCH (LUMIO)
+      // ID 8: THẠCH LONG HỒNG DÂU (STRAWBERRY JELLY DRAGON - 젤리드레곤)
       // -------------------------------------------------------------
       case 8: {
-        int ly = cy + (int)(sinf(angle * 2.8f) * 3.0f);
-        // Mái tóc ngọn lửa gradient hồng - cyan
-        spr->fillTriangle(cx - 14, ly - 8, cx, ly - 34, cx + 14, ly - 8, 0xF81F);
-        spr->fillTriangle(cx - 10, ly - 8, cx + 2, ly - 32, cx + 10, ly - 8, 0x07FF);
-        // Thân áo choàng tím sao đêm
-        spr->fillRoundRect(cx - 14, ly - 10, 28, 30, 8, 0x2124);
-        spr->fillCircle(cx, ly + 8, 5, 0xFDE0);
-        // Mắt xanh sapphire
-        spr->fillCircle(cx - 6, ly - 2, 3, 0x07FF);
-        spr->fillCircle(cx + 6, ly - 2, 3, 0x07FF);
-        spr->drawPixel(cx - 7, ly - 3, TFT_WHITE);
-        spr->drawPixel(cx + 5, ly - 3, TFT_WHITE);
+        JellyCelestial::drawJellyDragonStrawberry(spr, cx, cy, angle, blink);
         break;
       }
 
       // -------------------------------------------------------------
-      // ID 9: CUTE BUNNY - THỎ HOODIE MINT PASTEL (CUTE BUNNY)
+      // ID 9: THẠCH LONG LAM SODA (SODA BLUE JELLY DRAGON - 젤리드레곤)
       // -------------------------------------------------------------
       case 9: {
-        int by = cy + (int)(sinf(angle * 2.4f) * 3.0f);
-        // Tai cọc cạch (hồng & mint)
-        spr->fillRoundRect(cx - 14, by - 36, 8, 22, 4, 0xFCDE);
-        spr->fillRoundRect(cx + 6, by - 36, 8, 22, 4, 0x87F5);
-        // Mũ hoodie mint & mặt trắng
-        spr->fillRoundRect(cx - 20, by - 16, 40, 34, 14, 0x87F5);
-        spr->fillRoundRect(cx - 14, by - 10, 28, 24, 10, TFT_WHITE);
-        // Mắt, mũi hồng, má hồng
-        spr->fillCircle(cx - 7, by - 2, 3, 0x1082);
-        spr->fillCircle(cx + 7, by - 2, 3, 0x1082);
-        spr->drawPixel(cx, by + 1, 0xFBAE);
-        spr->fillCircle(cx - 10, by + 4, 3, 0xFBAE);
-        spr->fillCircle(cx + 10, by + 4, 3, 0xFBAE);
+        JellyCelestial::drawJellyDragonSoda(spr, cx, cy, angle, blink);
         break;
       }
 
       // -------------------------------------------------------------
-      // ID 10: STAR SPRITE - BÉ SAO BĂNG ÁO CHOÀNG VÀNG
+      // ID 10: SÊN THẦN 5 NGỌC NGUYÊN TỐ (ELEMENTAL CELESTIAL SNAIL - 1:1 download (7).jpg)
       // -------------------------------------------------------------
       case 10: {
-        int sy = cy + (int)(sinf(angle * 2.5f) * 3.0f);
-        spr->fillCircle(cx, sy - 6, 22, 0xFDE0);
-        spr->fillRoundRect(cx - 14, sy - 2, 28, 20, 8, 0xFFF2);
-        spr->fillCircle(cx - 6, sy + 4, 3, 0x1082);
-        spr->fillCircle(cx + 6, sy + 4, 3, 0x1082);
-        spr->fillCircle(cx - 10, sy + 8, 2, 0xFCE0);
-        spr->fillCircle(cx + 10, sy + 8, 2, 0xFCE0);
+        JellyCelestial::drawCelestialElementalSnail(spr, cx, cy, angle, blink);
         break;
       }
 
       // -------------------------------------------------------------
-      // ID 11: LOTUS FROG - ẾCH XANH ĐỘI LÁ SEN
+      // ID 11: CÁ VOI XANH THIÊN HÀ MAHOUKARP (GALAXY BLUE WHALE - download (9).jpg)
       // -------------------------------------------------------------
       case 11: {
-        int fy = cy + (int)(sinf(angle * 2.0f) * 2.5f);
-        spr->fillEllipse(cx, fy - 26, 24, 8, 0x2DE4);
-        spr->drawFastVLine(cx + 12, fy - 26, 24, 0x1AE2);
-        spr->fillCircle(cx, fy + 6, 18, 0x56E8);
-        spr->fillCircle(cx - 10, fy - 8, 6, 0x56E8);
-        spr->fillCircle(cx + 10, fy - 8, 6, 0x56E8);
-        spr->fillCircle(cx - 10, fy - 8, 3, 0x1082);
-        spr->fillCircle(cx + 10, fy - 8, 3, 0x1082);
-        spr->drawPixel(cx - 11, fy - 9, TFT_WHITE);
-        spr->drawPixel(cx + 9, fy - 9, TFT_WHITE);
+        MahoukarpOcean::drawMahoukarpBlueWhale(spr, cx, cy, breath, angle, scale);
         break;
       }
 
       // -------------------------------------------------------------
-      // ID 12: SPORE FAIRY - NẤM HỒNG DẠO PHỐ
+      // ID 12: CÁ MẬP ĐỐM SAO WHALE SHARK (MAHOUKARP CELESTIAL SEA)
       // -------------------------------------------------------------
       case 12: {
-        int ny = cy + (int)(sinf(angle * 2.6f) * 3.0f);
-        spr->fillCircle(cx, ny - 10, 22, 0xFBAE);
-        spr->fillCircle(cx - 10, ny - 16, 3, TFT_WHITE);
-        spr->fillCircle(cx + 8, ny - 18, 4, TFT_WHITE);
-        spr->fillRoundRect(cx - 12, ny, 24, 20, 8, TFT_WHITE);
-        spr->fillCircle(cx - 5, ny + 6, 2, 0x1082);
-        spr->fillCircle(cx + 5, ny + 6, 2, 0x1082);
+        MahoukarpOcean::drawMahoukarpWhaleShark(spr, cx, cy, breath, angle, scale);
         break;
       }
 
       // -------------------------------------------------------------
-      // ID 13: CLOVER SPROUT - MẦM CÂY MAY MẮN 4 LÁ
+      // ID 13: SỨA MẶT TRĂNG VƯƠNG MIỆN PHÁT QUANG (MOON JELLYFISH)
       // -------------------------------------------------------------
       case 13: {
-        int cy_s = cy + (int)(sinf(angle * 2.2f) * 2.5f);
-        // Cỏ 4 lá xoay nhẹ
-        int ro = (int)(sinf(angle * 4.0f) * 2.0f);
-        spr->fillCircle(cx - 5 + ro, cy_s - 26, 4, 0x2DE4);
-        spr->fillCircle(cx + 5 - ro, cy_s - 26, 4, 0x2DE4);
-        spr->fillCircle(cx, cy_s - 31, 4, 0x2DE4);
-        spr->fillCircle(cx, cy_s - 21, 4, 0x2DE4);
-        spr->drawFastVLine(cx, cy_s - 21, 8, 0x1AE2);
-        // Thân mầm cây trắng tròn
-        spr->fillRoundRect(cx - 16, cy_s - 6, 32, 28, 10, TFT_WHITE);
-        spr->fillCircle(cx - 6, cy_s + 2, 3, 0x1082);
-        spr->fillCircle(cx + 6, cy_s + 2, 3, 0x1082);
-        spr->drawPixel(cx - 7, cy_s + 1, TFT_WHITE);
-        spr->drawPixel(cx + 5, cy_s + 1, TFT_WHITE);
-        spr->fillCircle(cx - 10, cy_s + 6, 2, 0xFBAE);
-        spr->fillCircle(cx + 10, cy_s + 6, 2, 0xFBAE);
+        MahoukarpOcean::drawMahoukarpMoonJelly(spr, cx, cy, breath, angle, scale);
         break;
       }
 
       // -------------------------------------------------------------
-      // ID 14: BERRY FOX - CÁO DÂU TÂY NGỌT NGÀO
+      // ID 14: CÁ LỒNG ĐÈN NƯỚC SÂU ANGLER (ABYSSAL ANGLER)
       // -------------------------------------------------------------
       case 14: {
-        int by = cy + (int)(sinf(angle * 2.5f) * 3.0f);
-        spr->fillTriangle(cx - 8, by - 24, cx, by - 34, cx + 8, by - 24, 0x2DE4);
-        spr->fillRoundRect(cx - 18, by - 16, 36, 34, 12, 0xF800);
-        spr->drawPixel(cx - 8, by - 6, TFT_YELLOW);
-        spr->drawPixel(cx + 8, by - 6, TFT_YELLOW);
-        spr->drawPixel(cx, by + 8, TFT_YELLOW);
-        spr->fillCircle(cx - 7, by, 3, TFT_WHITE);
-        spr->fillCircle(cx + 7, by, 3, TFT_WHITE);
-        spr->fillCircle(cx - 7, by, 2, 0x1082);
-        spr->fillCircle(cx + 7, by, 2, 0x1082);
+        MahoukarpOcean::drawMahoukarpAbyssalAngler(spr, cx, cy, breath, angle, scale);
         break;
       }
 
       // -------------------------------------------------------------
-      // ID 15: CLOUD SHEEP - CỪU MÂY BỒNG BỀNH
+      // ID 15: CÁ ĐUỐI CÁNH TIÊN STINGRAY (FAIRY-WING STINGRAY)
       // -------------------------------------------------------------
       case 15: {
-        int sy = cy + (int)(sinf(angle * 2.0f) * 3.0f);
-        spr->fillCircle(cx, sy - 2, 20, 0xCE5F);
-        spr->fillCircle(cx - 14, sy - 2, 10, 0xCE5F);
-        spr->fillCircle(cx + 14, sy - 2, 10, 0xCE5F);
-        spr->fillRoundRect(cx - 10, sy + 2, 20, 16, 6, 0xFFE0);
-        spr->fillCircle(cx - 5, sy + 6, 2, 0x1082);
-        spr->fillCircle(cx + 5, sy + 6, 2, 0x1082);
+        MahoukarpOcean::drawMahoukarpStingray(spr, cx, cy, breath, angle, scale);
         break;
       }
 
       // -------------------------------------------------------------
-      // IDs 16..25: AXOLOTL KỲ NHÔNG KAWAII 2.5D (10 PHÂN LOẠI)
+      // ID 16: SÒ NGỌC BIỂN CƯỜI (SMILING PEARL CLAM)
       // -------------------------------------------------------------
-      case 16: case 17: case 18: case 19: case 20:
-      case 21: case 22: case 23: case 24: case 25: {
-        int sub = id - 16;
-        int ay = cy + (int)(sinf(angle * 2.5f) * 3.0f);
-        uint16_t bodyCol = (sub == 9) ? lgfx::color565(134, 239, 172) : lgfx::color565(255, 175, 195);
-        uint16_t gillCol = (sub == 9) ? lgfx::color565(34, 197, 94) : lgfx::color565(255, 105, 150);
-
-        spr->fillRoundRect(cx - 22, ay - 16, 44, 34, 12, bodyCol);
-        spr->fillRoundRect(cx - 18, ay - 12, 36, 26, 10, bodyCol + 0x0821);
-
-        int fw = (int)(sinf(angle * 3.5f) * 2.5f);
-        spr->fillRoundRect(cx - 32 + fw, ay - 18, 12, 6, 3, gillCol);
-        spr->fillRoundRect(cx - 34 + fw, ay - 8, 14, 6, 3, gillCol);
-        spr->fillRoundRect(cx - 30 + fw, ay + 2, 10, 5, 2, gillCol);
-        spr->fillRoundRect(cx + 20 - fw, ay - 18, 12, 6, 3, gillCol);
-        spr->fillRoundRect(cx + 20 - fw, ay - 8, 14, 6, 3, gillCol);
-        spr->fillRoundRect(cx + 20 - fw, ay + 2, 10, 5, 2, gillCol);
-
-        if (!blink && sub != 2) {
-          spr->fillCircle(cx - 10, ay - 4, 5, 0x18C3);
-          spr->fillCircle(cx + 10, ay - 4, 5, 0x18C3);
-          spr->fillCircle(cx - 11, ay - 6, 2, TFT_WHITE);
-          spr->fillCircle(cx + 9, ay - 6, 2, TFT_WHITE);
-        } else {
-          spr->drawFastHLine(cx - 14, ay - 4, 8, 0x18C3);
-          spr->drawFastHLine(cx + 6, ay - 4, 8, 0x18C3);
-        }
-
-        spr->fillCircle(cx - 14, ay + 4, 3, gillCol);
-        spr->fillCircle(cx + 14, ay + 4, 3, gillCol);
-        spr->drawPixel(cx, ay + 4, 0x8800);
-
-        if (sub == 1) { // Bong bóng
-          int by1 = ay - ((millis() / 20) % 50);
-          spr->drawCircle(cx + 16, by1, 4, 0x07FF);
-        } else if (sub == 3) { // Hoàng tử
-          spr->fillTriangle(cx - 8, ay - 20, cx, ay - 28, cx + 8, ay - 20, 0xFDE0);
-        } else if (sub == 4) { // Gamer RGB
-          spr->drawCircle(cx, ay - 4, 22, 0x07FF);
-          spr->fillRect(cx - 24, ay - 9, 4, 10, 0xF81F);
-          spr->fillRect(cx + 20, ay - 9, 4, 10, 0xF81F);
-        } else if (sub == 6) { // Thiên sứ
-          spr->drawCircle(cx, ay - 22, 10, 0xFDE0);
-        }
+      case 16: {
+        MahoukarpOcean::drawMahoukarpPearlClam(spr, cx, cy, breath, angle, scale);
         break;
       }
 
       // -------------------------------------------------------------
-      // IDs 26..39: THÚ CƯNG ĐÁNG YÊU & LÃNG MẠN (14 TÁC PHẨM ĐỘC BẢN)
+      // ID 17: THẦN THÚ TAI DÀI RỪNG THIÊNG (LOP-EARED GOLDEN GUARDIAN - download (00).jpg)
       // -------------------------------------------------------------
+      case 17: {
+        FantasyBestiary::drawLopEaredGuardian(spr, cx, cy, breath, angle, scale);
+        break;
+      }
+
+      // -------------------------------------------------------------
+      // ID 18: CÁO TUYẾT ÁNH SÁNG LUMININE (LUMININE SNOW FOX - 판타지 동물 도감)
+      // -------------------------------------------------------------
+      case 18: {
+        FantasyBestiary::drawLuminineSnowFox(spr, cx, cy, breath, angle, scale);
+        break;
+      }
+
+      // -------------------------------------------------------------
+      // ID 19: CÁO LỬA RỰC RỠ PYROKI (PYROKI FLAME FOX)
+      // -------------------------------------------------------------
+      case 19: {
+        FantasyBestiary::drawPyrokiFlameFox(spr, cx, cy, breath, angle, scale);
+        break;
+      }
+
+      // -------------------------------------------------------------
+      // ID 20: THỎ LINH THÚ DỊ SẮC (HETEROCHROMIA SPIRIT RABBIT - download (8).jpg)
+      // -------------------------------------------------------------
+      case 20: {
+        FantasyBestiary::drawHeterochromiaFairyRabbit(spr, cx, cy, breath, angle, scale);
+        break;
+      }
+
+      // -------------------------------------------------------------
+      // ID 21: KỲ LÂN SAO STAR KIRIN (STARLIGHT KIRIN)
+      // -------------------------------------------------------------
+      case 21: {
+        FantasyBestiary::drawStarKirin(spr, cx, cy, breath, angle, scale);
+        break;
+      }
+
       case 26: { // Mèo Ba Tư Hoàng Đế (Heterochromia)
         int my = cy + (int)(sinf(angle * 2.0f) * 2.5f);
         spr->fillRoundRect(cx - 20, my - 14, 40, 32, 12, TFT_WHITE);
@@ -762,4 +679,4 @@ public:
       }
     }
   }
-};
+} // namespace SpriteRenderer

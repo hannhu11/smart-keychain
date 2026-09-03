@@ -1,0 +1,679 @@
+{
+  "metadata": {
+    "agent_name": "Nghệ Sĩ Điêu Khắc Thạch Long & Linh Thú Thiên Hà (Jelly Dragon & Celestial Sculptor)",
+    "version": "2.0.0-PRO-MAX",
+    "created_date": "2026-09-04",
+    "target_display": "ST7789 240x280 / 172x320 16-bit RGB565 IPS Display & Modern HTML5 Canvas 2D",
+    "references": [
+      "젤리드레곤 동물도감💜.jpg (Korean Jelly Dragon Illustrated Guide: Lavender, Strawberry, Soda, Lemon, Space variants)",
+      "download (7).jpg (5-Element Celestial Snail God: Nacre Silver Body, 5 Orb Crown, Alchemy Magic Seal, Stardust Halo)",
+      "Reffernce/NHOM_1_FRONTEND_UIUX/ui-ux-pro-max-skill-main (High-fidelity design intelligence, micro-interactions, anti-cheap-icon)",
+      "Reffernce/NHOM_1_FRONTEND_UIUX/impeccable-main (Craft floor, material fidelity, organic depth)"
+    ],
+    "core_design_rules": {
+      "eye_rule": "Mắt Pha Lê 3 Điểm Sáng (3-Point Specular Crystal Eyes: Primary direct keylight, secondary ambient ground bounce, tertiary surface wetness glint + internal diamond twinkle).",
+      "breathing_rule": "Squash & Stretch 5% Harmonic Breathing (Vertical expansion sY = 1.0 + 0.05*sin(t), Horizontal compression sX = 1.0 - 0.03*sin(t) preserving volume).",
+      "kinematics_rule": "Trễ pha cánh/sừng/anten (Viscoelastic phase lag: Wing flap sin(t - 0.45), Horn sway sin(t - 0.25), Antenna drift sin(t - 0.20)).",
+      "subsurface_scattering_rule": "SSS Gelatin Illusion (Concentric Fresnel rim, luminous core depth, and embedded glowing diamond star sparkles ✨ under translucent belly).",
+      "craft_floor_rule": "Không sử dụng icon phẳng thô sơ rẻ tiền. Toàn bộ hình thể được điêu khắc thủ công đa lớp (polygonal faceting, layered caustics, soft blushes, prismatic gems)."
+    }
+  },
+  "characters": [
+    {
+      "id": 50,
+      "code": "JELLY_DRAGON_LAVENDER",
+      "name_vi": "Thạch Long Tím Lavender (Bé Rồng Thạch Nho Pháp)",
+      "name_en": "Lavender Jelly Dragon (Grape Jelly Dragon)",
+      "korean_original_name": "젤리드레곤 (포도맛)",
+      "species": "Draco Gelatinus Celestia",
+      "category": "Linh Thú Thạch Dẻo Thần Thoại",
+      "element": "Amethyst Starlight / Arcane Nectar",
+      "quote": "Cơ thể em mềm mại như thạch rau câu, khi ngủ bụng sẽ phát sáng lấp lánh bụi sao.",
+      "korean_lore_excerpts": [
+        "몸이 말랑말랑 젤리처럼 말랑함 (Cơ thể núng nính mềm mại như thạch jelly)",
+        "꼭 누르면 통통 튕김 (Nhấn vào sẽ nảy tưng tưng đàn hồi)",
+        "투명한 몸 안에 반짝이가 떠다님 (Bên trong cơ thể trong suốt có bụi sao lấp lánh trôi nổi)",
+        "날개는 젤리라 햇빛 받으면 반투명하게 빛남 (Cánh làm từ thạch nên dưới ánh nắng sẽ tỏa sáng bán trong suốt)",
+        "잠잘 때 배 부분이 은은하게 빛남 (Khi ngủ phần bụng phát ra ánh sáng lung linh dịu dàng)",
+        "아기 드래곤은 달빛 아래에서 투명해져요 (Bé rồng dưới ánh trăng sẽ trở nên trong suốt)"
+      ],
+      "palette": [
+        {
+          "name": "col_fresnel_rim",
+          "hex": "#F5F3FF",
+          "rgb565": "0xF79F",
+          "optical_function": "Viền phản xạ Fresnel trắng tím băng lấp lánh ngoài cùng"
+        },
+        {
+          "name": "col_jelly_body",
+          "hex": "#C084FC",
+          "rgb565": "0xC43F",
+          "optical_function": "Thân thạch tím lavender bán trong suốt chính"
+        },
+        {
+          "name": "col_jelly_core",
+          "hex": "#7E22CE",
+          "rgb565": "0x7919",
+          "optical_function": "Lõi thạch tím đậm tạo độ sâu thể tích SSS"
+        },
+        {
+          "name": "col_jelly_deep",
+          "hex": "#4C1D95",
+          "rgb565": "0x48F2",
+          "optical_function": "Vùng đổ bóng che khuất tối dưới nếp gấp đùi"
+        },
+        {
+          "name": "col_belly_glow",
+          "hex": "#E9D5FF",
+          "rgb565": "0xEEBF",
+          "optical_function": "Vùng phát quang trong suốt khoang bụng"
+        },
+        {
+          "name": "col_horn_base",
+          "hex": "#DDD6FE",
+          "rgb565": "0xDEBF",
+          "optical_function": "Đế sừng pha lê tím nhạt"
+        },
+        {
+          "name": "col_horn_tip",
+          "hex": "#9333EA",
+          "rgb565": "0x919D",
+          "optical_function": "Chóp sừng ngọc thạch tím đậm sắc cạnh"
+        },
+        {
+          "name": "col_wing_strut",
+          "hex": "#A855F7",
+          "rgb565": "0xAABE",
+          "optical_function": "Khung xương cánh dẻo thạch"
+        },
+        {
+          "name": "col_wing_mem",
+          "hex": "#E9D5FF",
+          "rgb565": "0xEEBF",
+          "optical_function": "Màng cánh thạch bán trong suốt đón sáng"
+        },
+        {
+          "name": "col_blush_pink",
+          "hex": "#F472B6",
+          "rgb565": "0xF396",
+          "optical_function": "Má hồng đào phúng phính squishy"
+        },
+        {
+          "name": "col_eye_socket",
+          "hex": "#1E1035",
+          "rgb565": "0x1886",
+          "optical_function": "Hốc mắt thạch tím đêm sâu thẳm"
+        },
+        {
+          "name": "col_eye_iris_glow",
+          "hex": "#C084FC",
+          "rgb565": "0xC43F",
+          "optical_function": "Vòng phản quang iris tím thạch anh lung linh"
+        },
+        {
+          "name": "col_eye_caustic",
+          "hex": "#F3E8FF",
+          "rgb565": "0xF75F",
+          "optical_function": "Tia khúc xạ ánh sáng đáy mắt"
+        },
+        {
+          "name": "col_star_diamond",
+          "hex": "#FFFFFF",
+          "rgb565": "0xFFFF",
+          "optical_function": "Hạt sao kim cương phát quang chìm dưới bụng ✨"
+        },
+        {
+          "name": "col_star_gold",
+          "hex": "#FEF08A",
+          "rgb565": "0xFF91",
+          "optical_function": "Bụi sao vàng hoàng kim trôi nổi"
+        },
+        {
+          "name": "col_star_cyan",
+          "hex": "#A5F3FC",
+          "rgb565": "0xA79F",
+          "optical_function": "Bụi sao lam ngọc dạ quang"
+        }
+      ],
+      "volumetric_anatomy": {
+        "body_and_silhouette": "Hình thể giọt nước tròn trịa (teardrop chub form). Tỷ lệ đầu/thân 1:1 phong cách Chibi Kawaii. Cơ thể tạo bởi 4 lớp elip đồng tâm bù trừ để mô phỏng vật liệu thạch (Jelly SSS) có độ tụ quang.",
+        "crystal_horns": "Cặp sừng ngọc thạch đa diện vát cạnh (faceted crystals). Khi rồng hít thở, sừng có độ lắc lư uốn nhẹ trễ pha 0.25 radian so với nhịp nâng lồng ngực.",
+        "wings": "Cánh rồng thạch mềm mại 2 nan cong. Màng cánh chuyển màu trong suốt. Đập cánh khẽ nhịp nhàng với độ trễ 0.45 radian.",
+        "internal_stardust_belly": "Khoang bụng chứa các hạt vi tinh thể kim cương và bụi sao (4-point diamond sparkles). Các hạt này phát quang rực rỡ từ bên trong khối thạch.",
+        "crystal_eyes": {
+          "type": "3-Point Specular Crystal Eyes",
+          "description": "Mắt ngọc pha lê tím thạch anh. Đồng tử đen tím sâu thẳm, mống mắt viền quang tím sáng. 3 điểm bắt sáng vật lý:",
+          "point_1_primary": {
+            "role": "Direct Keylight Specular",
+            "dx": -2,
+            "dy": -3,
+            "radius": 2,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "point_2_secondary": {
+            "role": "Caustic Ground Bounce Reflection",
+            "dx": 2,
+            "dy": 3,
+            "radius": 1.5,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "point_3_tertiary": {
+            "role": "Surface Wetness Sparkle",
+            "dx": 2,
+            "dy": -2,
+            "radius": 1,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "center_star": {
+            "role": "Inner Diamond Glint Cross",
+            "pattern": "4-point pixel cross centered at pupil",
+            "color": "0xA79F (#A5F3FC) + 0xFFFF"
+          }
+        },
+        "forehead_sparkle": "Vết phản quang ngôi sao 4 cánh đặc trưng trên trán (theo poster gốc) tỏa ra 4 tia sáng trắng tinh khiết."
+      },
+      "kinematics": {
+        "breath_frequency_hz": 0.35,
+        "squash_and_stretch_vertical_pct": 5.0,
+        "squash_and_stretch_horizontal_pct": -3.0,
+        "wing_flap_lag_rad": 0.45,
+        "horn_sway_lag_rad": 0.25,
+        "blink_interval_ms": 3800,
+        "blink_duration_ms": 140,
+        "stardust_pulse_frequency_hz": 1.2
+      },
+      "cpp_scaled_canvas_code": "// =========================================================================\n// THẠCH LONG TÍM LAVENDER (LAVENDER JELLY DRAGON - 젤리드레곤 포도맛)\n// ScaledCanvas C++ Implementation - 100% Hardware Compatible\n// =========================================================================\nvoid drawJellyDragonLavender(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float angle, bool blink) {\n  // 1. Nhịp thở Squash & Stretch 5%\n  float breathPhase = angle * 2.2f;\n  int by = cy + (int)(sinf(breathPhase) * 3.0f);\n  float sY = 1.0f + 0.05f * sinf(breathPhase);\n  float sX = 1.0f - 0.03f * sinf(breathPhase);\n\n  // 2. Bảng màu 16-bit RGB565 chuẩn xác\n  const uint16_t C_RIM       = 0xF79F; // #F5F3FF Viền Fresnel trắng tím\n  const uint16_t C_BODY      = 0xC43F; // #C084FC Thạch tím lavender\n  const uint16_t C_CORE      = 0x7919; // #7E22CE Lõi thạch SSS sâu\n  const uint16_t C_SHADOW    = 0x48F2; // #4C1D95 Vùng đổ bóng khuất\n  const uint16_t C_BELLY     = 0xEEBF; // #E9D5FF Bụng thạch trong suốt\n  const uint16_t C_HORN_BASE = 0xDEBF; // #DDD6FE Sừng ngọc nhạt\n  const uint16_t C_HORN_TIP  = 0x919D; // #9333EA Chóp sừng pha lê\n  const uint16_t C_BLUSH     = 0xF396; // #F472B6 Má hồng squishy\n  const uint16_t C_EYE_DARK  = 0x1886; // #1E1035 Đáy mắt tím đen\n  const uint16_t C_EYE_IRIS  = 0xC43F; // #C084FC Mống mắt thạch anh\n  const uint16_t C_STAR_GOLD = 0xFF91; // #FEF08A Bụi sao vàng\n  const uint16_t C_STAR_CYAN = 0xA79F; // #A5F3FC Bụi sao lam ngọc\n  const uint16_t C_WHITE     = 0xFFFF; // #FFFFFF Ánh sáng kim cương\n\n  // 3. Cánh trái (phía sau) với trễ pha 0.45 rad\n  float wLag = breathPhase - 0.45f;\n  int wFlapL = (int)(sinf(wLag) * 4.0f);\n  spr->fillTriangle(cx - 12, by - 4, cx - 28, by - 18 + wFlapL, cx - 22, by - 6 + wFlapL, C_CORE);\n  spr->fillTriangle(cx - 22, by - 6 + wFlapL, cx - 34, by - 8 + wFlapL, cx - 18, by + 2, C_BODY);\n  spr->drawLine(cx - 28, by - 18 + wFlapL, cx - 22, by - 6 + wFlapL, C_RIM);\n  spr->drawLine(cx - 22, by - 6 + wFlapL, cx - 34, by - 8 + wFlapL, C_RIM);\n\n  // 4. Đuôi thạch uốn lượn bên hông\n  spr->fillCircle(cx + 16, by + 12, (int)(8 * sX), C_BODY);\n  spr->fillCircle(cx + 22, by + 8, (int)(6 * sX), C_BODY);\n  spr->fillCircle(cx + 26, by + 3, (int)(4 * sX), C_RIM);\n  // Gai đuôi mềm mại\n  spr->fillTriangle(cx + 17, by + 6, cx + 20, by + 1, cx + 22, by + 6, C_HORN_BASE);\n  spr->fillTriangle(cx + 23, by + 3, cx + 27, by - 1, cx + 26, by + 5, C_HORN_BASE);\n\n  // 5. Thân thạch chính (Khối SSS Gelatinous Body)\n  int bRy = (int)(18 * sY);\n  int bRx = (int)(22 * sX);\n  spr->fillEllipse(cx, by + 4, bRx + 2, bRy + 2, C_RIM);   // Lớp Fresnel ngoài\n  spr->fillEllipse(cx, by + 4, bRx, bRy, C_BODY);           // Lớp thạch bán trong\n  spr->fillEllipse(cx - 2, by + 5, (int)(14 * sX), (int)(11 * sY), C_CORE); // Lõi thạch sâu\n  spr->fillEllipse(cx, by + 7, (int)(12 * sX), (int)(8 * sY), C_BELLY);    // Khoang sáng bụng\n\n  // 6. Hạt sao kim cương phát quang chìm dưới bụng ✨ (Embedded Stardust)\n  // Ngôi sao 4 cánh 1 (Lam ngọc)\n  spr->drawFastHLine(cx - 5, by + 5, 5, C_STAR_CYAN);\n  spr->drawFastVLine(cx - 3, by + 3, 5, C_STAR_CYAN);\n  spr->drawPixel(cx - 3, by + 5, C_WHITE);\n  // Ngôi sao 4 cánh 2 (Hoàng kim)\n  spr->drawFastHLine(cx + 2, by + 7, 5, C_STAR_GOLD);\n  spr->drawFastVLine(cx + 4, by + 5, 5, C_STAR_GOLD);\n  spr->drawPixel(cx + 4, by + 7, C_WHITE);\n  // Hạt lấp lánh phụ\n  spr->drawFastHLine(cx - 1, by + 10, 3, C_WHITE);\n  spr->drawFastVLine(cx, by + 9, 3, C_WHITE);\n  spr->drawPixel(cx - 7, by + 8, C_STAR_GOLD);\n  spr->drawPixel(cx + 7, by + 4, C_STAR_CYAN);\n\n  // 7. Chân & Bàn chân bánh bao squishy\n  spr->fillCircle(cx - 16, by + 12, (int)(8 * sX), C_BODY); // Đùi trái\n  spr->fillCircle(cx + 14, by + 13, (int)(9 * sX), C_BODY); // Đùi phải\n  spr->fillRoundRect(cx - 10, by + 14, (int)(8 * sX), (int)(7 * sY), 3, C_RIM); // Bàn chân trước L\n  spr->fillRoundRect(cx + 2, by + 14, (int)(8 * sX), (int)(7 * sY), 3, C_RIM);  // Bàn chân trước R\n  spr->drawPixel(cx - 9, by + 19, C_WHITE); // Đệm ngón lấp lánh\n  spr->drawPixel(cx - 7, by + 20, C_WHITE);\n  spr->drawPixel(cx + 4, by + 20, C_WHITE);\n  spr->drawPixel(cx + 6, by + 19, C_WHITE);\n\n  // 8. Cánh phải (phía trước) đón sáng\n  int wFlapR = (int)(sinf(wLag + 0.1f) * 4.0f);\n  spr->fillTriangle(cx + 10, by - 2, cx + 28, by - 16 + wFlapR, cx + 22, by - 4 + wFlapR, C_BODY);\n  spr->fillTriangle(cx + 22, by - 4 + wFlapR, cx + 33, by - 6 + wFlapR, cx + 18, by + 4, C_BELLY);\n  spr->drawLine(cx + 10, by - 2, cx + 28, by - 16 + wFlapR, C_RIM);\n  spr->fillCircle(cx + 28, by - 16 + wFlapR, 2, C_WHITE); // Giọt pha lê chóp cánh\n\n  // 9. Đầu rồng thạch Chibi (Head & Cheeks)\n  int hy = by - 12;\n  spr->fillEllipse(cx - 1, hy, (int)(18 * sX), (int)(16 * sY), C_RIM);\n  spr->fillEllipse(cx - 1, hy, (int)(16 * sX), (int)(14 * sY), C_BODY);\n  spr->fillCircle(cx - 12, hy + 4, (int)(7 * sX), C_BODY); // Má trái phúng phính\n  spr->fillCircle(cx + 9, hy + 4, (int)(7 * sX), C_BODY);  // Má phải phúng phính\n\n  // 10. Cặp sừng pha lê đa diện (Faceted Crystal Horns - Trễ pha 0.25 rad)\n  float hLag = breathPhase - 0.25f;\n  int hTilt = (int)(sinf(hLag) * 2.0f);\n  // Sừng trái\n  spr->fillTriangle(cx - 13, hy - 8, cx - 16 + hTilt, hy - 24, cx - 6, hy - 11, C_HORN_TIP);\n  spr->fillTriangle(cx - 11, hy - 8, cx - 16 + hTilt, hy - 24, cx - 7, hy - 11, C_HORN_BASE);\n  spr->drawLine(cx - 16 + hTilt, hy - 24, cx - 9, hy - 9, C_WHITE); // Cạnh vát lóa sáng\n  // Sừng phải\n  spr->fillTriangle(cx + 4, hy - 10, cx + 14 + hTilt, hy - 25, cx + 11, hy - 8, C_HORN_TIP);\n  spr->fillTriangle(cx + 6, hy - 10, cx + 14 + hTilt, hy - 25, cx + 10, hy - 8, C_HORN_BASE);\n  spr->drawLine(cx + 14 + hTilt, hy - 25, cx + 8, hy - 9, C_WHITE);\n  // Gai vương miện nhỏ giữa trán\n  spr->fillTriangle(cx - 3, hy - 13, cx - 1, hy - 17, cx + 1, hy - 13, C_HORN_BASE);\n\n  // 11. Má hồng squishy & Miệng cười ngọt ngào\n  spr->fillCircle(cx - 11, hy + 4, 4, C_BLUSH);\n  spr->fillCircle(cx + 8, hy + 4, 4, C_BLUSH);\n  // Mũi nhỏ xíu\n  spr->drawPixel(cx - 3, hy + 3, C_CORE);\n  spr->drawPixel(cx + 1, hy + 3, C_CORE);\n  // Nụ cười bé bỏng\n  spr->drawPixel(cx - 2, hy + 6, C_CORE);\n  spr->drawPixel(cx - 1, hy + 7, C_CORE);\n  spr->drawPixel(cx, hy + 7, C_CORE);\n  spr->drawPixel(cx + 1, hy + 6, C_CORE);\n\n  // 12. MẮT PHA LÊ 3 ĐIỂM SÁNG (3-Point Specular Crystal Eyes)\n  int ey = hy - 1;\n  int exL = cx - 8;\n  int exR = cx + 5;\n\n  if (blink) {\n    // Mắt chớp cong hình lưỡi liềm hạnh phúc\n    spr->drawEllipse(exL, ey + 2, 5, 2, C_EYE_DARK);\n    spr->drawEllipse(exR, ey + 2, 5, 2, C_EYE_DARK);\n  } else {\n    // Vẽ từng bên mắt với chiều sâu quang học\n    for (int eyeIdx = 0; eyeIdx < 2; eyeIdx++) {\n      int ex = (eyeIdx == 0) ? exL : exR;\n      // 12.1 Hốc mắt tối thẳm\n      spr->fillEllipse(ex, ey, 6, 8, C_EYE_DARK);\n      // 12.2 Mống mắt thạch anh phát quang đáy (Caustic Crescent)\n      spr->fillEllipse(ex, ey + 3, 5, 4, C_EYE_IRIS);\n      spr->fillEllipse(ex, ey + 4, 3, 2, C_RIM);\n      // 12.3 Đồng tử đen\n      spr->fillCircle(ex, ey, 4, C_EYE_DARK);\n      // 12.4 Ngôi sao 4 cánh chìm trong đồng tử (Inner Diamond Star)\n      spr->drawPixel(ex, ey - 1, C_STAR_CYAN);\n      spr->drawPixel(ex, ey + 1, C_STAR_CYAN);\n      spr->drawPixel(ex - 1, ey, C_STAR_CYAN);\n      spr->drawPixel(ex + 1, ey, C_STAR_CYAN);\n      spr->drawPixel(ex, ey, C_WHITE);\n      // 12.5 ĐIỂM SÁNG 1 (Primary Keylight Specular - Góc trên trái lớn)\n      spr->fillCircle(ex - 2, ey - 3, 2, C_WHITE);\n      // 12.6 ĐIỂM SÁNG 2 (Secondary Caustic Bounce - Góc dưới phải vừa)\n      spr->fillCircle(ex + 2, ey + 3, 1, C_WHITE);\n      // 12.7 ĐIỂM SÁNG 3 (Tertiary Surface Sparkle - Điểm bắt sáng ướt góc trên phải)\n      spr->drawPixel(ex + 2, ey - 2, C_WHITE);\n    }\n  }\n\n  // 13. Ngôi sao phản quang 4 cánh trên trán (Đặc trưng poster gốc ✨)\n  int starX = cx - 6;\n  int starY = hy - 8;\n  spr->drawFastHLine(starX - 4, starY, 9, C_WHITE);\n  spr->drawFastVLine(starX, starY - 4, 9, C_WHITE);\n  spr->drawPixel(starX, starY, C_WHITE);\n  spr->drawPixel(starX - 1, starY - 1, C_RIM);\n  spr->drawPixel(starX + 1, starY + 1, C_RIM);\n  spr->drawPixel(starX - 1, starY + 1, C_RIM);\n  spr->drawPixel(starX + 1, starY - 1, C_RIM);\n}\n",
+      "js_canvas_code": "// =========================================================================\n// THẠCH LONG TÍM LAVENDER - Modern HTML5 Canvas 2D Implementation\n// =========================================================================\nfunction drawJellyDragonLavender(ctx, cx, cy, scale, t) {\n  ctx.save();\n  // 1. Nhịp thở Squash & Stretch 5%\n  const breathFreq = 2.2;\n  const breathSin = Math.sin(t * breathFreq);\n  const by = cy + breathSin * 3.0;\n  const sY = 1.0 + 0.05 * breathSin;\n  const sX = 1.0 - 0.03 * breathSin;\n\n  ctx.translate(cx, by);\n  ctx.scale(scale, scale);\n\n  const blink = (Math.sin(t * 1.5) > 0.96); // Chớp mắt tự nhiên\n  const wLag = t * breathFreq - 0.45;\n  const wFlap = Math.sin(wLag) * 4.0;\n  const hLag = t * breathFreq - 0.25;\n  const hTilt = Math.sin(hLag) * 2.0;\n\n  // 2. Cánh sau\n  ctx.save();\n  ctx.fillStyle = \"rgba(126, 34, 206, 0.75)\"; // #7E22CE\n  ctx.beginPath();\n  ctx.moveTo(-12, -4);\n  ctx.lineTo(-28, -18 + wFlap);\n  ctx.lineTo(-22, -6 + wFlap);\n  ctx.lineTo(-34, -8 + wFlap);\n  ctx.lineTo(-18, 2);\n  ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"#F5F3FF\";\n  ctx.lineWidth = 1.2;\n  ctx.stroke();\n  ctx.restore();\n\n  // 3. Đuôi uốn lượn bên hông\n  ctx.save();\n  const tailGrad = ctx.createRadialGradient(22, 8, 2, 20, 10, 14);\n  tailGrad.addColorStop(0, \"#E9D5FF\");\n  tailGrad.addColorStop(0.6, \"#C084FC\");\n  tailGrad.addColorStop(1, \"#7E22CE\");\n  ctx.fillStyle = tailGrad;\n  ctx.beginPath();\n  ctx.ellipse(16, 12, 8 * sX, 7 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(22, 8, 6 * sX, 5 * sY, 0.3, 0, Math.PI * 2);\n  ctx.ellipse(26, 3, 4 * sX, 3 * sY, 0.6, 0, Math.PI * 2);\n  ctx.fill();\n  // Gai đuôi\n  ctx.fillStyle = \"#DDD6FE\";\n  ctx.beginPath();\n  ctx.moveTo(17, 6); ctx.lineTo(20, 1); ctx.lineTo(22, 6);\n  ctx.moveTo(23, 3); ctx.lineTo(27, -1); ctx.lineTo(26, 5);\n  ctx.fill();\n  ctx.restore();\n\n  // 4. Thân thạch SSS (Gelatinous Torso)\n  ctx.save();\n  // Vầng hào quang Fresnel ngoài cùng\n  ctx.shadowColor = \"rgba(192, 132, 252, 0.6)\";\n  ctx.shadowBlur = 12;\n  const bodyGrad = ctx.createRadialGradient(-2, 2, 4, 0, 4, 24);\n  bodyGrad.addColorStop(0, \"#F5F3FF\"); // Lõi sáng bên trong\n  bodyGrad.addColorStop(0.3, \"#E9D5FF\");\n  bodyGrad.addColorStop(0.7, \"#C084FC\");\n  bodyGrad.addColorStop(1, \"#7E22CE\"); // Viền thạch dày\n  ctx.fillStyle = bodyGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, 4, 22 * sX, 18 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 5. Bụng thạch phát quang & Hạt sao kim cương chìm dưới bụng ✨\n  ctx.save();\n  const bellyGrad = ctx.createRadialGradient(0, 7, 1, 0, 7, 12);\n  bellyGrad.addColorStop(0, \"rgba(255, 255, 255, 0.85)\");\n  bellyGrad.addColorStop(0.5, \"rgba(233, 213, 255, 0.6)\");\n  bellyGrad.addColorStop(1, \"rgba(192, 132, 252, 0)\");\n  ctx.fillStyle = bellyGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, 7, 12 * sX, 8 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n\n  // Vẽ hạt sao kim cương ✨\n  function drawDiamondStar(x, y, size, color) {\n    ctx.save();\n    ctx.fillStyle = color;\n    ctx.beginPath();\n    ctx.moveTo(x, y - size);\n    ctx.quadraticCurveTo(x, y, x + size, y);\n    ctx.quadraticCurveTo(x, y, x, y + size);\n    ctx.quadraticCurveTo(x, y, x - size, y);\n    ctx.quadraticCurveTo(x, y, x, y - size);\n    ctx.fill();\n    ctx.fillStyle = \"#FFFFFF\";\n    ctx.beginPath();\n    ctx.arc(x, y, size * 0.25, 0, Math.PI * 2);\n    ctx.fill();\n    ctx.restore();\n  }\n  const sparkAnim = Math.sin(t * 4.0);\n  drawDiamondStar(-4, 5, 3.5 + sparkAnim * 0.5, \"#A5F3FC\"); // Lam ngọc\n  drawDiamondStar(4, 7, 3.0 - sparkAnim * 0.5, \"#FEF08A\");  // Hoàng kim\n  drawDiamondStar(0, 10, 2.0, \"#FFFFFF\");                  // Kim cương trắng\n  ctx.restore();\n\n  // 6. Chân & Bàn chân\n  ctx.save();\n  ctx.fillStyle = \"#C084FC\";\n  ctx.beginPath();\n  ctx.ellipse(-16, 12, 8 * sX, 8 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(14, 13, 9 * sX, 9 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.fillStyle = \"#F5F3FF\";\n  ctx.beginPath();\n  ctx.roundRect(-10, 14, 8 * sX, 7 * sY, 3);\n  ctx.roundRect(2, 14, 8 * sX, 7 * sY, 3);\n  ctx.fill();\n  ctx.restore();\n\n  // 7. Cánh trước đón sáng\n  ctx.save();\n  ctx.fillStyle = \"rgba(192, 132, 252, 0.85)\";\n  ctx.beginPath();\n  ctx.moveTo(10, -2);\n  ctx.lineTo(28, -16 + wFlap);\n  ctx.lineTo(22, -4 + wFlap);\n  ctx.lineTo(33, -6 + wFlap);\n  ctx.lineTo(18, 4);\n  ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\";\n  ctx.lineWidth = 1.0;\n  ctx.stroke();\n  ctx.fillStyle = \"#FFFFFF\";\n  ctx.beginPath();\n  ctx.arc(28, -16 + wFlap, 2, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 8. Đầu Chibi & Má phúng phính\n  ctx.save();\n  const hy = -12;\n  const headGrad = ctx.createRadialGradient(-3, hy - 3, 3, -1, hy, 18);\n  headGrad.addColorStop(0, \"#F5F3FF\");\n  headGrad.addColorStop(0.3, \"#E9D5FF\");\n  headGrad.addColorStop(0.7, \"#C084FC\");\n  headGrad.addColorStop(1, \"#7E22CE\");\n  ctx.fillStyle = headGrad;\n  ctx.beginPath();\n  ctx.ellipse(-1, hy, 17 * sX, 15 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n  // Má tròn\n  ctx.beginPath();\n  ctx.ellipse(-12, hy + 4, 7 * sX, 6 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(9, hy + 4, 7 * sX, 6 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 9. Cặp sừng pha lê vát cạnh\n  ctx.save();\n  // Sừng trái\n  ctx.fillStyle = \"#9333EA\";\n  ctx.beginPath();\n  ctx.moveTo(-13, hy - 8); ctx.lineTo(-16 + hTilt, hy - 24); ctx.lineTo(-6, hy - 11);\n  ctx.closePath(); ctx.fill();\n  ctx.fillStyle = \"#DDD6FE\";\n  ctx.beginPath();\n  ctx.moveTo(-11, hy - 8); ctx.lineTo(-16 + hTilt, hy - 24); ctx.lineTo(-7, hy - 11);\n  ctx.closePath(); ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.2;\n  ctx.beginPath(); ctx.moveTo(-16 + hTilt, hy - 24); ctx.lineTo(-9, hy - 9); ctx.stroke();\n  // Sừng phải\n  ctx.fillStyle = \"#9333EA\";\n  ctx.beginPath();\n  ctx.moveTo(4, hy - 10); ctx.lineTo(14 + hTilt, hy - 25); ctx.lineTo(11, hy - 8);\n  ctx.closePath(); ctx.fill();\n  ctx.fillStyle = \"#DDD6FE\";\n  ctx.beginPath();\n  ctx.moveTo(6, hy - 10); ctx.lineTo(14 + hTilt, hy - 25); ctx.lineTo(10, hy - 8);\n  ctx.closePath(); ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.2;\n  ctx.beginPath(); ctx.moveTo(14 + hTilt, hy - 25); ctx.lineTo(8, hy - 9); ctx.stroke();\n  ctx.restore();\n\n  // 10. Má hồng đào & nụ cười\n  ctx.save();\n  ctx.fillStyle = \"rgba(244, 114, 182, 0.55)\";\n  ctx.beginPath();\n  ctx.arc(-11, hy + 4, 4.5, 0, Math.PI * 2);\n  ctx.arc(8, hy + 4, 4.5, 0, Math.PI * 2);\n  ctx.fill();\n  // Miệng cười\n  ctx.strokeStyle = \"#4C1D95\";\n  ctx.lineWidth = 1.4;\n  ctx.beginPath();\n  ctx.arc(-0.5, hy + 5, 2.5, 0.1, Math.PI - 0.1);\n  ctx.stroke();\n  ctx.restore();\n\n  // 11. MẮT PHA LÊ 3 ĐIỂM SÁNG (3-Point Specular Crystal Eyes)\n  const ey = hy - 1;\n  const eyes = [-8, 5];\n  if (blink) {\n    ctx.strokeStyle = \"#1E1035\";\n    ctx.lineWidth = 2.0;\n    ctx.lineCap = \"round\";\n    eyes.forEach(ex => {\n      ctx.beginPath();\n      ctx.arc(ex, ey + 2, 5, Math.PI * 0.15, Math.PI * 0.85);\n      ctx.stroke();\n    });\n  } else {\n    eyes.forEach(ex => {\n      ctx.save();\n      // Socket & iris\n      ctx.fillStyle = \"#1E1035\";\n      ctx.beginPath();\n      ctx.ellipse(ex, ey, 6, 8, 0, 0, Math.PI * 2);\n      ctx.fill();\n\n      const eyeGrad = ctx.createLinearGradient(ex, ey - 6, ex, ey + 8);\n      eyeGrad.addColorStop(0, \"#1E1035\");\n      eyeGrad.addColorStop(0.5, \"#581C87\");\n      eyeGrad.addColorStop(0.85, \"#C084FC\");\n      eyeGrad.addColorStop(1, \"#F3E8FF\");\n      ctx.fillStyle = eyeGrad;\n      ctx.beginPath();\n      ctx.ellipse(ex, ey + 1, 5, 6, 0, 0, Math.PI * 2);\n      ctx.fill();\n\n      // Đồng tử đen\n      ctx.fillStyle = \"#120624\";\n      ctx.beginPath();\n      ctx.ellipse(ex, ey - 0.5, 3.5, 4.5, 0, 0, Math.PI * 2);\n      ctx.fill();\n\n      // Ngôi sao bên trong đồng tử\n      drawDiamondStar(ex, ey, 2.0, \"#A5F3FC\");\n\n      // 3 ĐIỂM SÁNG PHA LÊ\n      // Điểm 1: Keylight chính\n      ctx.fillStyle = \"#FFFFFF\";\n      ctx.beginPath();\n      ctx.arc(ex - 2, ey - 3, 2.2, 0, Math.PI * 2);\n      ctx.fill();\n      // Điểm 2: Caustic phản xạ đáy\n      ctx.beginPath();\n      ctx.arc(ex + 2, ey + 3, 1.4, 0, Math.PI * 2);\n      ctx.fill();\n      // Điểm 3: Bắt sáng bề mặt ướt\n      ctx.beginPath();\n      ctx.arc(ex + 2, ey - 2, 0.9, 0, Math.PI * 2);\n      ctx.fill();\n      ctx.restore();\n    });\n  }\n\n  // 12. Ngôi sao 4 cánh phản quang trán\n  drawDiamondStar(-6, hy - 8, 4.5, \"#FFFFFF\");\n\n  ctx.restore();\n}\n"
+    },
+    {
+      "id": 51,
+      "code": "JELLY_DRAGON_STRAWBERRY",
+      "name_vi": "Thạch Long Hồng Dâu (Bé Rồng Thạch Dâu Tây)",
+      "name_en": "Strawberry Jelly Dragon",
+      "korean_original_name": "젤리드레곤 (딸기맛)",
+      "species": "Draco Gelatinus Fragaria",
+      "category": "Linh Thú Thạch Dẻo Thần Thoại",
+      "element": "Strawberry Nectar / Rose Quartz Sparkle",
+      "quote": "Vị dâu tây ngọt ngào và trái tim ấm áp, ai chạm vào cũng thấy yêu đời.",
+      "korean_lore_excerpts": [
+        "딸기맛 젤리드레곤: 달콤한 딸기 향기가 솔솔 풍겨옴 (Rồng vị dâu: Tỏa ra hương dâu ngọt ngào thoang thoảng)",
+        "기분 좋으면 온몸이 핑크빛으로 반짝임 (Khi vui toàn thân sẽ lấp lánh sắc hồng rực rỡ)",
+        "화나면 볼이 딸기처럼 빨갛게 부풀어 오름 (Khi giận đôi má phồng to đỏ mọng như quả dâu chín)"
+      ],
+      "palette": [
+        {
+          "name": "col_fresnel_rim",
+          "hex": "#FFF1F2",
+          "rgb565": "0xFF9E",
+          "optical_function": "Viền Fresnel kem dâu sữa trắng hồng lấp lánh"
+        },
+        {
+          "name": "col_jelly_body",
+          "hex": "#FB7185",
+          "rgb565": "0xFB90",
+          "optical_function": "Thân thạch dâu tây hồng tươi trong mọng"
+        },
+        {
+          "name": "col_jelly_core",
+          "hex": "#BE123C",
+          "rgb565": "0xB887",
+          "optical_function": "Lõi thạch si-rô dâu đỏ đậm SSS"
+        },
+        {
+          "name": "col_jelly_deep",
+          "hex": "#881337",
+          "rgb565": "0x8886",
+          "optical_function": "Độ sâu bóng tối hồng mận"
+        },
+        {
+          "name": "col_belly_glow",
+          "hex": "#FFE4E6",
+          "rgb565": "0xFF3C",
+          "optical_function": "Vùng bụng thạch dâu sữa phát quang"
+        },
+        {
+          "name": "col_horn_base",
+          "hex": "#FECDD3",
+          "rgb565": "0xFE7A",
+          "optical_function": "Sừng ngọc thạch hồng phấn pastel"
+        },
+        {
+          "name": "col_horn_tip",
+          "hex": "#E11D48",
+          "rgb565": "0xE0E9",
+          "optical_function": "Chóp sừng hồng ngọc ruby"
+        },
+        {
+          "name": "col_wing_strut",
+          "hex": "#F43F5E",
+          "rgb565": "0xF1EB",
+          "optical_function": "Khung nan cánh thạch hồng"
+        },
+        {
+          "name": "col_wing_mem",
+          "hex": "#FFE4E6",
+          "rgb565": "0xFF3C",
+          "optical_function": "Màng cánh thạch dâu bán trong suốt"
+        },
+        {
+          "name": "col_blush_red",
+          "hex": "#F43F5E",
+          "rgb565": "0xF1EB",
+          "optical_function": "Đôi má ửng đỏ vị dâu tây"
+        },
+        {
+          "name": "col_eye_socket",
+          "hex": "#4C0519",
+          "rgb565": "0x4823",
+          "optical_function": "Hốc mắt ruby đậm thẳm"
+        },
+        {
+          "name": "col_eye_iris_glow",
+          "hex": "#FB7185",
+          "rgb565": "0xFB90",
+          "optical_function": "Mống mắt ngọc hồng lựu rực rỡ"
+        },
+        {
+          "name": "col_eye_caustic",
+          "hex": "#FFF1F2",
+          "rgb565": "0xFF9E",
+          "optical_function": "Khúc xạ đáy mắt kem đào"
+        },
+        {
+          "name": "col_star_diamond",
+          "hex": "#FFFFFF",
+          "rgb565": "0xFFFF",
+          "optical_function": "Hạt sao kim cương chìm dưới bụng ✨"
+        },
+        {
+          "name": "col_star_gold",
+          "hex": "#FDE047",
+          "rgb565": "0xFF08",
+          "optical_function": "Bụi phấn hoa dâu hoàng kim"
+        },
+        {
+          "name": "col_star_rose",
+          "hex": "#FDA4AF",
+          "rgb565": "0xFD35",
+          "optical_function": "Bụi sao thạch anh hồng"
+        }
+      ],
+      "volumetric_anatomy": {
+        "body_and_silhouette": "Cơ thể thạch dâu tây ngọt ngào, mềm núng nính, cấu trúc SSS chuyển màu từ đỏ si-rô dâu chín đến trắng hồng kem sữa.",
+        "crystal_horns": "Cặp sừng ngọc thạch Rose Quartz vát cạnh phản xạ ánh sáng hồng ngọc lấp lánh.",
+        "wings": "Cánh thạch màng dâu tây bán trong suốt, chóp cánh đọng giọt sương ngọc.",
+        "internal_stardust_belly": "Dưới bụng chìm các hạt sao kim cương trắng và bụi phấn hoa hoàng kim lấp lánh.",
+        "crystal_eyes": {
+          "type": "3-Point Specular Crystal Eyes",
+          "description": "Mắt ngọc Ruby Garnet quý phái. Đồng tử đỏ mận, mống mắt viền quang hồng dâu. 3 điểm bắt sáng vật lý:",
+          "point_1_primary": {
+            "role": "Direct Keylight Specular",
+            "dx": -2,
+            "dy": -3,
+            "radius": 2,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "point_2_secondary": {
+            "role": "Caustic Ground Bounce",
+            "dx": 2,
+            "dy": 3,
+            "radius": 1.5,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "point_3_tertiary": {
+            "role": "Surface Wetness Sparkle",
+            "dx": 2,
+            "dy": -2,
+            "radius": 1,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "center_star": {
+            "role": "Inner Rose Diamond Glint",
+            "pattern": "4-point pixel cross",
+            "color": "0xFE19 (#FDA4AF) + 0xFFFF"
+          }
+        },
+        "forehead_sparkle": "Ngôi sao 4 cánh trắng hồng trên trán phản xạ ánh sáng lộng lẫy."
+      },
+      "kinematics": {
+        "breath_frequency_hz": 0.36,
+        "squash_and_stretch_vertical_pct": 5.0,
+        "squash_and_stretch_horizontal_pct": -3.0,
+        "wing_flap_lag_rad": 0.45,
+        "horn_sway_lag_rad": 0.25,
+        "blink_interval_ms": 3600,
+        "blink_duration_ms": 135
+      },
+      "cpp_scaled_canvas_code": "// =========================================================================\n// THẠCH LONG HỒNG DÂU (STRAWBERRY JELLY DRAGON - 젤리드레곤 딸기맛)\n// ScaledCanvas C++ Implementation - 100% Hardware Compatible\n// =========================================================================\nvoid drawJellyDragonStrawberry(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float angle, bool blink) {\n  // 1. Nhịp thở Squash & Stretch 5%\n  float breathPhase = angle * 2.2f;\n  int by = cy + (int)(sinf(breathPhase) * 3.0f);\n  float sY = 1.0f + 0.05f * sinf(breathPhase);\n  float sX = 1.0f - 0.03f * sinf(breathPhase);\n\n  // 2. Bảng màu 16-bit RGB565 Dâu Tây chuẩn xác\n  const uint16_t C_RIM       = 0xFF9E; // #FFF1F2 Viền kem dâu trắng hồng\n  const uint16_t C_BODY      = 0xFB8F; // #FB7185 Thạch dâu tây hồng tươi\n  const uint16_t C_CORE      = 0xBE07; // #BE123C Lõi si-rô dâu đậm SSS\n  const uint16_t C_SHADOW    = 0x8886; // #881337 Bóng mận tối\n  const uint16_t C_BELLY     = 0xFF3C; // #FFE4E6 Bụng thạch dâu sữa\n  const uint16_t C_HORN_BASE = 0xFE7A; // #FECDD3 Sừng hồng phấn pastel\n  const uint16_t C_HORN_TIP  = 0xE0E9; // #E11D48 Chóp sừng ruby\n  const uint16_t C_BLUSH     = 0xF20B; // #F43F5E Má hồng đỏ dâu\n  const uint16_t C_EYE_DARK  = 0x4823; // #4C0519 Đáy mắt mận ruby\n  const uint16_t C_EYE_IRIS  = 0xFB8F; // #FB7185 Mống mắt hồng tươi\n  const uint16_t C_STAR_GOLD = 0xFEA8; // #FDE047 Bụi sao hoàng kim\n  const uint16_t C_STAR_ROSE = 0xFE19; // #FDA4AF Bụi sao thạch anh\n  const uint16_t C_WHITE     = 0xFFFF; // #FFFFFF Kim cương trắng\n\n  // 3. Cánh sau\n  float wLag = breathPhase - 0.45f;\n  int wFlapL = (int)(sinf(wLag) * 4.0f);\n  spr->fillTriangle(cx - 12, by - 4, cx - 28, by - 18 + wFlapL, cx - 22, by - 6 + wFlapL, C_CORE);\n  spr->fillTriangle(cx - 22, by - 6 + wFlapL, cx - 34, by - 8 + wFlapL, cx - 18, by + 2, C_BODY);\n  spr->drawLine(cx - 28, by - 18 + wFlapL, cx - 22, by - 6 + wFlapL, C_RIM);\n  spr->drawLine(cx - 22, by - 6 + wFlapL, cx - 34, by - 8 + wFlapL, C_RIM);\n\n  // 4. Đuôi uốn lượn\n  spr->fillCircle(cx + 16, by + 12, (int)(8 * sX), C_BODY);\n  spr->fillCircle(cx + 22, by + 8, (int)(6 * sX), C_BODY);\n  spr->fillCircle(cx + 26, by + 3, (int)(4 * sX), C_RIM);\n  spr->fillTriangle(cx + 17, by + 6, cx + 20, by + 1, cx + 22, by + 6, C_HORN_BASE);\n  spr->fillTriangle(cx + 23, by + 3, cx + 27, by - 1, cx + 26, by + 5, C_HORN_BASE);\n\n  // 5. Thân thạch SSS Dâu Tây\n  int bRy = (int)(18 * sY);\n  int bRx = (int)(22 * sX);\n  spr->fillEllipse(cx, by + 4, bRx + 2, bRy + 2, C_RIM);\n  spr->fillEllipse(cx, by + 4, bRx, bRy, C_BODY);\n  spr->fillEllipse(cx - 2, by + 5, (int)(14 * sX), (int)(11 * sY), C_CORE);\n  spr->fillEllipse(cx, by + 7, (int)(12 * sX), (int)(8 * sY), C_BELLY);\n\n  // 6. Hạt sao kim cương phát quang chìm dưới bụng ✨\n  spr->drawFastHLine(cx - 5, by + 5, 5, C_STAR_ROSE);\n  spr->drawFastVLine(cx - 3, by + 3, 5, C_STAR_ROSE);\n  spr->drawPixel(cx - 3, by + 5, C_WHITE);\n  spr->drawFastHLine(cx + 2, by + 7, 5, C_STAR_GOLD);\n  spr->drawFastVLine(cx + 4, by + 5, 5, C_STAR_GOLD);\n  spr->drawPixel(cx + 4, by + 7, C_WHITE);\n  spr->drawFastHLine(cx - 1, by + 10, 3, C_WHITE);\n  spr->drawFastVLine(cx, by + 9, 3, C_WHITE);\n  spr->drawPixel(cx - 7, by + 8, C_STAR_GOLD);\n  spr->drawPixel(cx + 7, by + 4, C_STAR_ROSE);\n\n  // 7. Chân & Bàn chân\n  spr->fillCircle(cx - 16, by + 12, (int)(8 * sX), C_BODY);\n  spr->fillCircle(cx + 14, by + 13, (int)(9 * sX), C_BODY);\n  spr->fillRoundRect(cx - 10, by + 14, (int)(8 * sX), (int)(7 * sY), 3, C_RIM);\n  spr->fillRoundRect(cx + 2, by + 14, (int)(8 * sX), (int)(7 * sY), 3, C_RIM);\n  spr->drawPixel(cx - 9, by + 19, C_WHITE);\n  spr->drawPixel(cx - 7, by + 20, C_WHITE);\n  spr->drawPixel(cx + 4, by + 20, C_WHITE);\n  spr->drawPixel(cx + 6, by + 19, C_WHITE);\n\n  // 8. Cánh trước\n  int wFlapR = (int)(sinf(wLag + 0.1f) * 4.0f);\n  spr->fillTriangle(cx + 10, by - 2, cx + 28, by - 16 + wFlapR, cx + 22, by - 4 + wFlapR, C_BODY);\n  spr->fillTriangle(cx + 22, by - 4 + wFlapR, cx + 33, by - 6 + wFlapR, cx + 18, by + 4, C_BELLY);\n  spr->drawLine(cx + 10, by - 2, cx + 28, by - 16 + wFlapR, C_RIM);\n  spr->fillCircle(cx + 28, by - 16 + wFlapR, 2, C_WHITE);\n\n  // 9. Đầu Chibi\n  int hy = by - 12;\n  spr->fillEllipse(cx - 1, hy, (int)(18 * sX), (int)(16 * sY), C_RIM);\n  spr->fillEllipse(cx - 1, hy, (int)(16 * sX), (int)(14 * sY), C_BODY);\n  spr->fillCircle(cx - 12, hy + 4, (int)(7 * sX), C_BODY);\n  spr->fillCircle(cx + 9, hy + 4, (int)(7 * sX), C_BODY);\n\n  // 10. Sừng Rose Quartz\n  float hLag = breathPhase - 0.25f;\n  int hTilt = (int)(sinf(hLag) * 2.0f);\n  spr->fillTriangle(cx - 13, hy - 8, cx - 16 + hTilt, hy - 24, cx - 6, hy - 11, C_HORN_TIP);\n  spr->fillTriangle(cx - 11, hy - 8, cx - 16 + hTilt, hy - 24, cx - 7, hy - 11, C_HORN_BASE);\n  spr->drawLine(cx - 16 + hTilt, hy - 24, cx - 9, hy - 9, C_WHITE);\n  spr->fillTriangle(cx + 4, hy - 10, cx + 14 + hTilt, hy - 25, cx + 11, hy - 8, C_HORN_TIP);\n  spr->fillTriangle(cx + 6, hy - 10, cx + 14 + hTilt, hy - 25, cx + 10, hy - 8, C_HORN_BASE);\n  spr->drawLine(cx + 14 + hTilt, hy - 25, cx + 8, hy - 9, C_WHITE);\n  spr->fillTriangle(cx - 3, hy - 13, cx - 1, hy - 17, cx + 1, hy - 13, C_HORN_BASE);\n\n  // 11. Má hồng dâu tây & Miệng cười\n  spr->fillCircle(cx - 11, hy + 4, 4, C_BLUSH);\n  spr->fillCircle(cx + 8, hy + 4, 4, C_BLUSH);\n  spr->drawPixel(cx - 3, hy + 3, C_CORE);\n  spr->drawPixel(cx + 1, hy + 3, C_CORE);\n  spr->drawPixel(cx - 2, hy + 6, C_CORE);\n  spr->drawPixel(cx - 1, hy + 7, C_CORE);\n  spr->drawPixel(cx, hy + 7, C_CORE);\n  spr->drawPixel(cx + 1, hy + 6, C_CORE);\n\n  // 12. MẮT PHA LÊ RUBY 3 ĐIỂM SÁNG\n  int ey = hy - 1;\n  int exL = cx - 8;\n  int exR = cx + 5;\n\n  if (blink) {\n    spr->drawEllipse(exL, ey + 2, 5, 2, C_EYE_DARK);\n    spr->drawEllipse(exR, ey + 2, 5, 2, C_EYE_DARK);\n  } else {\n    for (int eyeIdx = 0; eyeIdx < 2; eyeIdx++) {\n      int ex = (eyeIdx == 0) ? exL : exR;\n      spr->fillEllipse(ex, ey, 6, 8, C_EYE_DARK);\n      spr->fillEllipse(ex, ey + 3, 5, 4, C_EYE_IRIS);\n      spr->fillEllipse(ex, ey + 4, 3, 2, C_RIM);\n      spr->fillCircle(ex, ey, 4, C_EYE_DARK);\n      spr->drawPixel(ex, ey - 1, C_STAR_ROSE);\n      spr->drawPixel(ex, ey + 1, C_STAR_ROSE);\n      spr->drawPixel(ex - 1, ey, C_STAR_ROSE);\n      spr->drawPixel(ex + 1, ey, C_STAR_ROSE);\n      spr->drawPixel(ex, ey, C_WHITE);\n      // ĐIỂM SÁNG 1\n      spr->fillCircle(ex - 2, ey - 3, 2, C_WHITE);\n      // ĐIỂM SÁNG 2\n      spr->fillCircle(ex + 2, ey + 3, 1, C_WHITE);\n      // ĐIỂM SÁNG 3\n      spr->drawPixel(ex + 2, ey - 2, C_WHITE);\n    }\n  }\n\n  // 13. Ngôi sao 4 cánh trán\n  int starX = cx - 6;\n  int starY = hy - 8;\n  spr->drawFastHLine(starX - 4, starY, 9, C_WHITE);\n  spr->drawFastVLine(starX, starY - 4, 9, C_WHITE);\n  spr->drawPixel(starX, starY, C_WHITE);\n  spr->drawPixel(starX - 1, starY - 1, C_RIM);\n  spr->drawPixel(starX + 1, starY + 1, C_RIM);\n  spr->drawPixel(starX - 1, starY + 1, C_RIM);\n  spr->drawPixel(starX + 1, starY - 1, C_RIM);\n}\n",
+      "js_canvas_code": "// =========================================================================\n// THẠCH LONG HỒNG DÂU - Modern HTML5 Canvas 2D Implementation\n// =========================================================================\nfunction drawJellyDragonStrawberry(ctx, cx, cy, scale, t) {\n  ctx.save();\n  const breathFreq = 2.2;\n  const breathSin = Math.sin(t * breathFreq);\n  const by = cy + breathSin * 3.0;\n  const sY = 1.0 + 0.05 * breathSin;\n  const sX = 1.0 - 0.03 * breathSin;\n\n  ctx.translate(cx, by);\n  ctx.scale(scale, scale);\n\n  const blink = (Math.sin(t * 1.5) > 0.96);\n  const wLag = t * breathFreq - 0.45;\n  const wFlap = Math.sin(wLag) * 4.0;\n  const hLag = t * breathFreq - 0.25;\n  const hTilt = Math.sin(hLag) * 2.0;\n\n  // Cánh sau\n  ctx.save();\n  ctx.fillStyle = \"rgba(190, 18, 60, 0.75)\";\n  ctx.beginPath();\n  ctx.moveTo(-12, -4); ctx.lineTo(-28, -18 + wFlap); ctx.lineTo(-22, -6 + wFlap);\n  ctx.lineTo(-34, -8 + wFlap); ctx.lineTo(-18, 2); ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"#FFF1F2\"; ctx.lineWidth = 1.2; ctx.stroke();\n  ctx.restore();\n\n  // Đuôi\n  ctx.save();\n  const tailGrad = ctx.createRadialGradient(22, 8, 2, 20, 10, 14);\n  tailGrad.addColorStop(0, \"#FFE4E6\"); tailGrad.addColorStop(0.6, \"#FB7185\"); tailGrad.addColorStop(1, \"#BE123C\");\n  ctx.fillStyle = tailGrad;\n  ctx.beginPath();\n  ctx.ellipse(16, 12, 8 * sX, 7 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(22, 8, 6 * sX, 5 * sY, 0.3, 0, Math.PI * 2);\n  ctx.ellipse(26, 3, 4 * sX, 3 * sY, 0.6, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.fillStyle = \"#FECDD3\";\n  ctx.beginPath();\n  ctx.moveTo(17, 6); ctx.lineTo(20, 1); ctx.lineTo(22, 6);\n  ctx.moveTo(23, 3); ctx.lineTo(27, -1); ctx.lineTo(26, 5);\n  ctx.fill();\n  ctx.restore();\n\n  // Thân SSS Dâu Tây\n  ctx.save();\n  ctx.shadowColor = \"rgba(251, 113, 133, 0.6)\"; ctx.shadowBlur = 12;\n  const bodyGrad = ctx.createRadialGradient(-2, 2, 4, 0, 4, 24);\n  bodyGrad.addColorStop(0, \"#FFF1F2\"); bodyGrad.addColorStop(0.3, \"#FFE4E6\");\n  bodyGrad.addColorStop(0.7, \"#FB7185\"); bodyGrad.addColorStop(1, \"#BE123C\");\n  ctx.fillStyle = bodyGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, 4, 22 * sX, 18 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // Bụng & Hạt sao\n  ctx.save();\n  const bellyGrad = ctx.createRadialGradient(0, 7, 1, 0, 7, 12);\n  bellyGrad.addColorStop(0, \"rgba(255, 255, 255, 0.85)\");\n  bellyGrad.addColorStop(0.5, \"rgba(255, 228, 230, 0.6)\");\n  bellyGrad.addColorStop(1, \"rgba(251, 113, 133, 0)\");\n  ctx.fillStyle = bellyGrad;\n  ctx.beginPath(); ctx.ellipse(0, 7, 12 * sX, 8 * sY, 0, 0, Math.PI * 2); ctx.fill();\n\n  function drawDiamondStar(x, y, size, color) {\n    ctx.save(); ctx.fillStyle = color; ctx.beginPath();\n    ctx.moveTo(x, y - size); ctx.quadraticCurveTo(x, y, x + size, y);\n    ctx.quadraticCurveTo(x, y, x, y + size); ctx.quadraticCurveTo(x, y, x - size, y);\n    ctx.quadraticCurveTo(x, y, x, y - size); ctx.fill();\n    ctx.fillStyle = \"#FFFFFF\"; ctx.beginPath(); ctx.arc(x, y, size * 0.25, 0, Math.PI * 2); ctx.fill();\n    ctx.restore();\n  }\n  const sparkAnim = Math.sin(t * 4.0);\n  drawDiamondStar(-4, 5, 3.5 + sparkAnim * 0.5, \"#FDA4AF\");\n  drawDiamondStar(4, 7, 3.0 - sparkAnim * 0.5, \"#FDE047\");\n  drawDiamondStar(0, 10, 2.0, \"#FFFFFF\");\n  ctx.restore();\n\n  // Chân\n  ctx.save();\n  ctx.fillStyle = \"#FB7185\"; ctx.beginPath();\n  ctx.ellipse(-16, 12, 8 * sX, 8 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(14, 13, 9 * sX, 9 * sY, 0, 0, Math.PI * 2); ctx.fill();\n  ctx.fillStyle = \"#FFF1F2\"; ctx.beginPath();\n  ctx.roundRect(-10, 14, 8 * sX, 7 * sY, 3); ctx.roundRect(2, 14, 8 * sX, 7 * sY, 3); ctx.fill();\n  ctx.restore();\n\n  // Cánh trước\n  ctx.save();\n  ctx.fillStyle = \"rgba(251, 113, 133, 0.85)\"; ctx.beginPath();\n  ctx.moveTo(10, -2); ctx.lineTo(28, -16 + wFlap); ctx.lineTo(22, -4 + wFlap);\n  ctx.lineTo(33, -6 + wFlap); ctx.lineTo(18, 4); ctx.closePath(); ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.0; ctx.stroke();\n  ctx.fillStyle = \"#FFFFFF\"; ctx.beginPath(); ctx.arc(28, -16 + wFlap, 2, 0, Math.PI * 2); ctx.fill();\n  ctx.restore();\n\n  // Đầu\n  ctx.save();\n  const hy = -12;\n  const headGrad = ctx.createRadialGradient(-3, hy - 3, 3, -1, hy, 18);\n  headGrad.addColorStop(0, \"#FFF1F2\"); headGrad.addColorStop(0.3, \"#FFE4E6\");\n  headGrad.addColorStop(0.7, \"#FB7185\"); headGrad.addColorStop(1, \"#BE123C\");\n  ctx.fillStyle = headGrad;\n  ctx.beginPath(); ctx.ellipse(-1, hy, 17 * sX, 15 * sY, 0, 0, Math.PI * 2); ctx.fill();\n  ctx.beginPath();\n  ctx.ellipse(-12, hy + 4, 7 * sX, 6 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(9, hy + 4, 7 * sX, 6 * sY, 0, 0, Math.PI * 2); ctx.fill();\n  ctx.restore();\n\n  // Sừng\n  ctx.save();\n  ctx.fillStyle = \"#E11D48\"; ctx.beginPath();\n  ctx.moveTo(-13, hy - 8); ctx.lineTo(-16 + hTilt, hy - 24); ctx.lineTo(-6, hy - 11);\n  ctx.fill();\n  ctx.fillStyle = \"#FECDD3\"; ctx.beginPath();\n  ctx.moveTo(-11, hy - 8); ctx.lineTo(-16 + hTilt, hy - 24); ctx.lineTo(-7, hy - 11);\n  ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.2;\n  ctx.beginPath(); ctx.moveTo(-16 + hTilt, hy - 24); ctx.lineTo(-9, hy - 9); ctx.stroke();\n  ctx.fillStyle = \"#E11D48\"; ctx.beginPath();\n  ctx.moveTo(4, hy - 10); ctx.lineTo(14 + hTilt, hy - 25); ctx.lineTo(11, hy - 8);\n  ctx.fill();\n  ctx.fillStyle = \"#FECDD3\"; ctx.beginPath();\n  ctx.moveTo(6, hy - 10); ctx.lineTo(14 + hTilt, hy - 25); ctx.lineTo(10, hy - 8);\n  ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.2;\n  ctx.beginPath(); ctx.moveTo(14 + hTilt, hy - 25); ctx.lineTo(8, hy - 9); ctx.stroke();\n  ctx.restore();\n\n  // Má hồng dâu & Miệng\n  ctx.save();\n  ctx.fillStyle = \"rgba(244, 63, 94, 0.55)\"; ctx.beginPath();\n  ctx.arc(-11, hy + 4, 4.5, 0, Math.PI * 2); ctx.arc(8, hy + 4, 4.5, 0, Math.PI * 2); ctx.fill();\n  ctx.strokeStyle = \"#881337\"; ctx.lineWidth = 1.4; ctx.beginPath();\n  ctx.arc(-0.5, hy + 5, 2.5, 0.1, Math.PI - 0.1); ctx.stroke();\n  ctx.restore();\n\n  // MẮT PHA LÊ RUBY 3 ĐIỂM SÁNG\n  const ey = hy - 1;\n  const eyes = [-8, 5];\n  if (blink) {\n    ctx.strokeStyle = \"#4C0519\"; ctx.lineWidth = 2.0; ctx.lineCap = \"round\";\n    eyes.forEach(ex => { ctx.beginPath(); ctx.arc(ex, ey + 2, 5, Math.PI * 0.15, Math.PI * 0.85); ctx.stroke(); });\n  } else {\n    eyes.forEach(ex => {\n      ctx.save();\n      ctx.fillStyle = \"#4C0519\"; ctx.beginPath(); ctx.ellipse(ex, ey, 6, 8, 0, 0, Math.PI * 2); ctx.fill();\n      const eyeGrad = ctx.createLinearGradient(ex, ey - 6, ex, ey + 8);\n      eyeGrad.addColorStop(0, \"#4C0519\"); eyeGrad.addColorStop(0.5, \"#9F1239\");\n      eyeGrad.addColorStop(0.85, \"#FB7185\"); eyeGrad.addColorStop(1, \"#FFF1F2\");\n      ctx.fillStyle = eyeGrad; ctx.beginPath(); ctx.ellipse(ex, ey + 1, 5, 6, 0, 0, Math.PI * 2); ctx.fill();\n      ctx.fillStyle = \"#2D030F\"; ctx.beginPath(); ctx.ellipse(ex, ey - 0.5, 3.5, 4.5, 0, 0, Math.PI * 2); ctx.fill();\n      drawDiamondStar(ex, ey, 2.0, \"#FDA4AF\");\n      // 3 ĐIỂM SÁNG\n      ctx.fillStyle = \"#FFFFFF\";\n      ctx.beginPath(); ctx.arc(ex - 2, ey - 3, 2.2, 0, Math.PI * 2); ctx.fill();\n      ctx.beginPath(); ctx.arc(ex + 2, ey + 3, 1.4, 0, Math.PI * 2); ctx.fill();\n      ctx.beginPath(); ctx.arc(ex + 2, ey - 2, 0.9, 0, Math.PI * 2); ctx.fill();\n      ctx.restore();\n    });\n  }\n\n  // Ngôi sao trán\n  drawDiamondStar(-6, hy - 8, 4.5, \"#FFFFFF\");\n  ctx.restore();\n}\n"
+    },
+    {
+      "id": 52,
+      "code": "JELLY_DRAGON_SODA",
+      "name_vi": "Thạch Long Lam Soda (Bé Rồng Thạch Kem Soda)",
+      "name_en": "Soda Blue Jelly Dragon",
+      "korean_original_name": "젤리드레곤 (소다맛)",
+      "species": "Draco Gelatinus Carbonatus",
+      "category": "Linh Thú Thạch Dẻo Thần Thoại",
+      "element": "Sparkling Soda / Blue Topaz Glitz",
+      "quote": "Tươi mát như một ly soda sủi bọt ngày hè, bên trong luôn rộn rã những bọt khí lấp lánh.",
+      "korean_lore_excerpts": [
+        "소다맛 젤리드레곤: 상쾌하고 시원한 소다 거품이 보글보글 (Rồng vị soda: Bọt soda tươi mát sủi tăm lục bục)",
+        "하늘을 날 때 젤리 조각 같은 빛이 떨어짐 (Khi bay trên bầu trời, những hạt sáng như mảnh thạch rơi rụng)",
+        "재채기하면 젤리방울이 톡! 튀어나와요 (Khi hắt hơi thì bong bóng thạch nổ tách một cái văng ra)"
+      ],
+      "palette": [
+        {
+          "name": "col_fresnel_rim",
+          "hex": "#ECFEFF",
+          "rgb565": "0xEFFF",
+          "optical_function": "Viền Fresnel đá tuyết trắng băng lấp lánh"
+        },
+        {
+          "name": "col_jelly_body",
+          "hex": "#22D3EE",
+          "rgb565": "0x269D",
+          "optical_function": "Thân thạch lam soda thanh mát trong veo"
+        },
+        {
+          "name": "col_jelly_core",
+          "hex": "#0891B2",
+          "rgb565": "0x0C96",
+          "optical_function": "Lõi thạch lam đại dương sâu SSS"
+        },
+        {
+          "name": "col_jelly_deep",
+          "hex": "#155E75",
+          "rgb565": "0x12EE",
+          "optical_function": "Bóng tối lam biển thẳm"
+        },
+        {
+          "name": "col_belly_glow",
+          "hex": "#CFFAFE",
+          "rgb565": "0xCFDF",
+          "optical_function": "Vùng bụng thạch bọt soda phát quang"
+        },
+        {
+          "name": "col_horn_base",
+          "hex": "#A5F3FC",
+          "rgb565": "0xA79F",
+          "optical_function": "Sừng ngọc thạch Aquamarine lam nhạt"
+        },
+        {
+          "name": "col_horn_tip",
+          "hex": "#0284C7",
+          "rgb565": "0x0438",
+          "optical_function": "Chóp sừng ngọc bích lam đậm"
+        },
+        {
+          "name": "col_wing_strut",
+          "hex": "#06B6D4",
+          "rgb565": "0x05BA",
+          "optical_function": "Nan cánh thạch lam soda"
+        },
+        {
+          "name": "col_wing_mem",
+          "hex": "#CFFAFE",
+          "rgb565": "0xCFDF",
+          "optical_function": "Màng cánh thạch lam băng trong suốt"
+        },
+        {
+          "name": "col_blush_coral",
+          "hex": "#FDA4AF",
+          "rgb565": "0xFD35",
+          "optical_function": "Má hồng cam đào ấm áp tương phản nền xanh"
+        },
+        {
+          "name": "col_eye_socket",
+          "hex": "#082F49",
+          "rgb565": "0x0969",
+          "optical_function": "Hốc mắt vực sâu đại dương"
+        },
+        {
+          "name": "col_eye_iris_glow",
+          "hex": "#00D8F6",
+          "rgb565": "0x06DE",
+          "optical_function": "Mống mắt Sapphire biển đảo lộng lẫy"
+        },
+        {
+          "name": "col_eye_caustic",
+          "hex": "#ECFEFF",
+          "rgb565": "0xEFFF",
+          "optical_function": "Khúc xạ đáy mắt bọt sóng trắng"
+        },
+        {
+          "name": "col_star_diamond",
+          "hex": "#FFFFFF",
+          "rgb565": "0xFFFF",
+          "optical_function": "Bọt khí kim cương phát quang chìm dưới bụng ✨"
+        },
+        {
+          "name": "col_star_gold",
+          "hex": "#FEF08A",
+          "rgb565": "0xFF91",
+          "optical_function": "Bụi nắng vàng hạ nhiệt đới"
+        },
+        {
+          "name": "col_star_cyan",
+          "hex": "#67E8F9",
+          "rgb565": "0x675F",
+          "optical_function": "Bọt khí soda sủi tăm"
+        }
+      ],
+      "volumetric_anatomy": {
+        "body_and_silhouette": "Cơ thể thạch lam soda trong vắt như một ly cocktail đá bào. Cấu trúc SSS mô phỏng bọt khí li ti khúc xạ ánh sáng mặt trời.",
+        "crystal_horns": "Cặp sừng ngọc thạch Aquamarine xanh biếc, khúc xạ ánh sáng như hai tảng băng vĩnh cửu.",
+        "wings": "Cánh thạch lam mỏng nhẹ như cánh chuồn chuồn băng giá, chóp cánh đọng giọt nước pha lê.",
+        "internal_stardust_belly": "Khoang bụng chứa những bọt khí soda và hạt sao kim cương trắng xanh sủi tăm bập bùng.",
+        "crystal_eyes": {
+          "type": "3-Point Specular Crystal Eyes",
+          "description": "Mắt ngọc Sapphire biển khơi lấp lánh bọt sóng. 3 điểm bắt sáng vật lý:",
+          "point_1_primary": {
+            "role": "Direct Keylight Specular",
+            "dx": -2,
+            "dy": -3,
+            "radius": 2,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "point_2_secondary": {
+            "role": "Caustic Ground Bounce",
+            "dx": 2,
+            "dy": 3,
+            "radius": 1.5,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "point_3_tertiary": {
+            "role": "Surface Wetness Sparkle",
+            "dx": 2,
+            "dy": -2,
+            "radius": 1,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "center_star": {
+            "role": "Inner Aqua Star Glint",
+            "pattern": "4-point pixel cross",
+            "color": "0x675F (#67E8F9) + 0xFFFF"
+          }
+        },
+        "forehead_sparkle": "Ngôi sao băng 4 cánh xanh băng tuyết trên trán tỏa sáng lấp lánh."
+      },
+      "kinematics": {
+        "breath_frequency_hz": 0.35,
+        "squash_and_stretch_vertical_pct": 5.0,
+        "squash_and_stretch_horizontal_pct": -3.0,
+        "wing_flap_lag_rad": 0.45,
+        "horn_sway_lag_rad": 0.25,
+        "blink_interval_ms": 4000,
+        "blink_duration_ms": 140
+      },
+      "cpp_scaled_canvas_code": "// =========================================================================\n// THẠCH LONG LAM SODA (SODA BLUE JELLY DRAGON - 젤리드레곤 소다맛)\n// ScaledCanvas C++ Implementation - 100% Hardware Compatible\n// =========================================================================\nvoid drawJellyDragonSoda(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float angle, bool blink) {\n  // 1. Nhịp thở Squash & Stretch 5%\n  float breathPhase = angle * 2.2f;\n  int by = cy + (int)(sinf(breathPhase) * 3.0f);\n  float sY = 1.0f + 0.05f * sinf(breathPhase);\n  float sX = 1.0f - 0.03f * sinf(breathPhase);\n\n  // 2. Bảng màu 16-bit RGB565 Lam Soda chuẩn xác\n  const uint16_t C_RIM       = 0xEF7F; // #ECFEFF Viền băng tuyết trắng lam\n  const uint16_t C_BODY      = 0x269D; // #22D3EE Thạch lam soda thanh mát\n  const uint16_t C_CORE      = 0x0496; // #0891B2 Lõi lam đại dương SSS\n  const uint16_t C_SHADOW    = 0x12F2; // #155E75 Vùng bóng sâu đại dương\n  const uint16_t C_BELLY     = 0xC7DF; // #CFFAFE Bụng thạch bọt khí soda\n  const uint16_t C_HORN_BASE = 0xA7BF; // #A5F3FC Sừng Aquamarine nhạt\n  const uint16_t C_HORN_TIP  = 0x0438; // #0284C7 Chóp sừng Sapphire\n  const uint16_t C_BLUSH     = 0xFE19; // #FDA4AF Má hồng cam đào ấm áp\n  const uint16_t C_EYE_DARK  = 0x0969; // #082F49 Đáy mắt vực sâu\n  const uint16_t C_EYE_IRIS  = 0x06DD; // #00D8F6 Mống mắt ngọc lam\n  const uint16_t C_STAR_GOLD = 0xFF91; // #FEF08A Bụi sao hoàng kim\n  const uint16_t C_STAR_CYAN = 0x675F; // #67E8F9 Bọt khí soda sủi tăm\n  const uint16_t C_WHITE     = 0xFFFF; // #FFFFFF Kim cương trắng\n\n  // 3. Cánh sau\n  float wLag = breathPhase - 0.45f;\n  int wFlapL = (int)(sinf(wLag) * 4.0f);\n  spr->fillTriangle(cx - 12, by - 4, cx - 28, by - 18 + wFlapL, cx - 22, by - 6 + wFlapL, C_CORE);\n  spr->fillTriangle(cx - 22, by - 6 + wFlapL, cx - 34, by - 8 + wFlapL, cx - 18, by + 2, C_BODY);\n  spr->drawLine(cx - 28, by - 18 + wFlapL, cx - 22, by - 6 + wFlapL, C_RIM);\n  spr->drawLine(cx - 22, by - 6 + wFlapL, cx - 34, by - 8 + wFlapL, C_RIM);\n\n  // 4. Đuôi uốn lượn\n  spr->fillCircle(cx + 16, by + 12, (int)(8 * sX), C_BODY);\n  spr->fillCircle(cx + 22, by + 8, (int)(6 * sX), C_BODY);\n  spr->fillCircle(cx + 26, by + 3, (int)(4 * sX), C_RIM);\n  spr->fillTriangle(cx + 17, by + 6, cx + 20, by + 1, cx + 22, by + 6, C_HORN_BASE);\n  spr->fillTriangle(cx + 23, by + 3, cx + 27, by - 1, cx + 26, by + 5, C_HORN_BASE);\n\n  // 5. Thân thạch SSS Lam Soda\n  int bRy = (int)(18 * sY);\n  int bRx = (int)(22 * sX);\n  spr->fillEllipse(cx, by + 4, bRx + 2, bRy + 2, C_RIM);\n  spr->fillEllipse(cx, by + 4, bRx, bRy, C_BODY);\n  spr->fillEllipse(cx - 2, by + 5, (int)(14 * sX), (int)(11 * sY), C_CORE);\n  spr->fillEllipse(cx, by + 7, (int)(12 * sX), (int)(8 * sY), C_BELLY);\n\n  // 6. Hạt sao & Bọt khí kim cương chìm dưới bụng ✨\n  spr->drawFastHLine(cx - 5, by + 5, 5, C_STAR_CYAN);\n  spr->drawFastVLine(cx - 3, by + 3, 5, C_STAR_CYAN);\n  spr->drawPixel(cx - 3, by + 5, C_WHITE);\n  spr->drawFastHLine(cx + 2, by + 7, 5, C_STAR_GOLD);\n  spr->drawFastVLine(cx + 4, by + 5, 5, C_STAR_GOLD);\n  spr->drawPixel(cx + 4, by + 7, C_WHITE);\n  spr->drawFastHLine(cx - 1, by + 10, 3, C_WHITE);\n  spr->drawFastVLine(cx, by + 9, 3, C_WHITE);\n  spr->drawPixel(cx - 7, by + 8, C_STAR_GOLD);\n  spr->drawPixel(cx + 7, by + 4, C_STAR_CYAN);\n\n  // 7. Chân & Bàn chân\n  spr->fillCircle(cx - 16, by + 12, (int)(8 * sX), C_BODY);\n  spr->fillCircle(cx + 14, by + 13, (int)(9 * sX), C_BODY);\n  spr->fillRoundRect(cx - 10, by + 14, (int)(8 * sX), (int)(7 * sY), 3, C_RIM);\n  spr->fillRoundRect(cx + 2, by + 14, (int)(8 * sX), (int)(7 * sY), 3, C_RIM);\n  spr->drawPixel(cx - 9, by + 19, C_WHITE);\n  spr->drawPixel(cx - 7, by + 20, C_WHITE);\n  spr->drawPixel(cx + 4, by + 20, C_WHITE);\n  spr->drawPixel(cx + 6, by + 19, C_WHITE);\n\n  // 8. Cánh trước\n  int wFlapR = (int)(sinf(wLag + 0.1f) * 4.0f);\n  spr->fillTriangle(cx + 10, by - 2, cx + 28, by - 16 + wFlapR, cx + 22, by - 4 + wFlapR, C_BODY);\n  spr->fillTriangle(cx + 22, by - 4 + wFlapR, cx + 33, by - 6 + wFlapR, cx + 18, by + 4, C_BELLY);\n  spr->drawLine(cx + 10, by - 2, cx + 28, by - 16 + wFlapR, C_RIM);\n  spr->fillCircle(cx + 28, by - 16 + wFlapR, 2, C_WHITE);\n\n  // 9. Đầu Chibi\n  int hy = by - 12;\n  spr->fillEllipse(cx - 1, hy, (int)(18 * sX), (int)(16 * sY), C_RIM);\n  spr->fillEllipse(cx - 1, hy, (int)(16 * sX), (int)(14 * sY), C_BODY);\n  spr->fillCircle(cx - 12, hy + 4, (int)(7 * sX), C_BODY);\n  spr->fillCircle(cx + 9, hy + 4, (int)(7 * sX), C_BODY);\n\n  // 10. Sừng Aquamarine\n  float hLag = breathPhase - 0.25f;\n  int hTilt = (int)(sinf(hLag) * 2.0f);\n  spr->fillTriangle(cx - 13, hy - 8, cx - 16 + hTilt, hy - 24, cx - 6, hy - 11, C_HORN_TIP);\n  spr->fillTriangle(cx - 11, hy - 8, cx - 16 + hTilt, hy - 24, cx - 7, hy - 11, C_HORN_BASE);\n  spr->drawLine(cx - 16 + hTilt, hy - 24, cx - 9, hy - 9, C_WHITE);\n  spr->fillTriangle(cx + 4, hy - 10, cx + 14 + hTilt, hy - 25, cx + 11, hy - 8, C_HORN_TIP);\n  spr->fillTriangle(cx + 6, hy - 10, cx + 14 + hTilt, hy - 25, cx + 10, hy - 8, C_HORN_BASE);\n  spr->drawLine(cx + 14 + hTilt, hy - 25, cx + 8, hy - 9, C_WHITE);\n  spr->fillTriangle(cx - 3, hy - 13, cx - 1, hy - 17, cx + 1, hy - 13, C_HORN_BASE);\n\n  // 11. Má hồng cam đào & Miệng\n  spr->fillCircle(cx - 11, hy + 4, 4, C_BLUSH);\n  spr->fillCircle(cx + 8, hy + 4, 4, C_BLUSH);\n  spr->drawPixel(cx - 3, hy + 3, C_CORE);\n  spr->drawPixel(cx + 1, hy + 3, C_CORE);\n  spr->drawPixel(cx - 2, hy + 6, C_CORE);\n  spr->drawPixel(cx - 1, hy + 7, C_CORE);\n  spr->drawPixel(cx, hy + 7, C_CORE);\n  spr->drawPixel(cx + 1, hy + 6, C_CORE);\n\n  // 12. MẮT PHA LÊ SAPPHIRE 3 ĐIỂM SÁNG\n  int ey = hy - 1;\n  int exL = cx - 8;\n  int exR = cx + 5;\n\n  if (blink) {\n    spr->drawEllipse(exL, ey + 2, 5, 2, C_EYE_DARK);\n    spr->drawEllipse(exR, ey + 2, 5, 2, C_EYE_DARK);\n  } else {\n    for (int eyeIdx = 0; eyeIdx < 2; eyeIdx++) {\n      int ex = (eyeIdx == 0) ? exL : exR;\n      spr->fillEllipse(ex, ey, 6, 8, C_EYE_DARK);\n      spr->fillEllipse(ex, ey + 3, 5, 4, C_EYE_IRIS);\n      spr->fillEllipse(ex, ey + 4, 3, 2, C_RIM);\n      spr->fillCircle(ex, ey, 4, C_EYE_DARK);\n      spr->drawPixel(ex, ey - 1, C_STAR_CYAN);\n      spr->drawPixel(ex, ey + 1, C_STAR_CYAN);\n      spr->drawPixel(ex - 1, ey, C_STAR_CYAN);\n      spr->drawPixel(ex + 1, ey, C_STAR_CYAN);\n      spr->drawPixel(ex, ey, C_WHITE);\n      // ĐIỂM SÁNG 1\n      spr->fillCircle(ex - 2, ey - 3, 2, C_WHITE);\n      // ĐIỂM SÁNG 2\n      spr->fillCircle(ex + 2, ey + 3, 1, C_WHITE);\n      // ĐIỂM SÁNG 3\n      spr->drawPixel(ex + 2, ey - 2, C_WHITE);\n    }\n  }\n\n  // 13. Ngôi sao trán\n  int starX = cx - 6;\n  int starY = hy - 8;\n  spr->drawFastHLine(starX - 4, starY, 9, C_WHITE);\n  spr->drawFastVLine(starX, starY - 4, 9, C_WHITE);\n  spr->drawPixel(starX, starY, C_WHITE);\n  spr->drawPixel(starX - 1, starY - 1, C_RIM);\n  spr->drawPixel(starX + 1, starY + 1, C_RIM);\n  spr->drawPixel(starX - 1, starY + 1, C_RIM);\n  spr->drawPixel(starX + 1, starY - 1, C_RIM);\n}\n",
+      "js_canvas_code": "// =========================================================================\n// THẠCH LONG LAM SODA - Modern HTML5 Canvas 2D Implementation\n// =========================================================================\nfunction drawJellyDragonSoda(ctx, cx, cy, scale, t) {\n  ctx.save();\n  const breathFreq = 2.2;\n  const breathSin = Math.sin(t * breathFreq);\n  const by = cy + breathSin * 3.0;\n  const sY = 1.0 + 0.05 * breathSin;\n  const sX = 1.0 - 0.03 * breathSin;\n\n  ctx.translate(cx, by);\n  ctx.scale(scale, scale);\n\n  const blink = (Math.sin(t * 1.5) > 0.96);\n  const wLag = t * breathFreq - 0.45;\n  const wFlap = Math.sin(wLag) * 4.0;\n  const hLag = t * breathFreq - 0.25;\n  const hTilt = Math.sin(hLag) * 2.0;\n\n  // Cánh sau\n  ctx.save();\n  ctx.fillStyle = \"rgba(8, 145, 178, 0.75)\";\n  ctx.beginPath();\n  ctx.moveTo(-12, -4); ctx.lineTo(-28, -18 + wFlap); ctx.lineTo(-22, -6 + wFlap);\n  ctx.lineTo(-34, -8 + wFlap); ctx.lineTo(-18, 2); ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"#ECFEFF\"; ctx.lineWidth = 1.2; ctx.stroke();\n  ctx.restore();\n\n  // Đuôi\n  ctx.save();\n  const tailGrad = ctx.createRadialGradient(22, 8, 2, 20, 10, 14);\n  tailGrad.addColorStop(0, \"#CFFAFE\"); tailGrad.addColorStop(0.6, \"#22D3EE\"); tailGrad.addColorStop(1, \"#0891B2\");\n  ctx.fillStyle = tailGrad;\n  ctx.beginPath();\n  ctx.ellipse(16, 12, 8 * sX, 7 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(22, 8, 6 * sX, 5 * sY, 0.3, 0, Math.PI * 2);\n  ctx.ellipse(26, 3, 4 * sX, 3 * sY, 0.6, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.fillStyle = \"#A5F3FC\";\n  ctx.beginPath();\n  ctx.moveTo(17, 6); ctx.lineTo(20, 1); ctx.lineTo(22, 6);\n  ctx.moveTo(23, 3); ctx.lineTo(27, -1); ctx.lineTo(26, 5);\n  ctx.fill();\n  ctx.restore();\n\n  // Thân SSS Lam Soda\n  ctx.save();\n  ctx.shadowColor = \"rgba(34, 211, 238, 0.6)\"; ctx.shadowBlur = 12;\n  const bodyGrad = ctx.createRadialGradient(-2, 2, 4, 0, 4, 24);\n  bodyGrad.addColorStop(0, \"#ECFEFF\"); bodyGrad.addColorStop(0.3, \"#CFFAFE\");\n  bodyGrad.addColorStop(0.7, \"#22D3EE\"); bodyGrad.addColorStop(1, \"#0891B2\");\n  ctx.fillStyle = bodyGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, 4, 22 * sX, 18 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // Bụng & Bọt khí soda\n  ctx.save();\n  const bellyGrad = ctx.createRadialGradient(0, 7, 1, 0, 7, 12);\n  bellyGrad.addColorStop(0, \"rgba(255, 255, 255, 0.85)\");\n  bellyGrad.addColorStop(0.5, \"rgba(207, 250, 254, 0.6)\");\n  bellyGrad.addColorStop(1, \"rgba(34, 211, 238, 0)\");\n  ctx.fillStyle = bellyGrad;\n  ctx.beginPath(); ctx.ellipse(0, 7, 12 * sX, 8 * sY, 0, 0, Math.PI * 2); ctx.fill();\n\n  function drawDiamondStar(x, y, size, color) {\n    ctx.save(); ctx.fillStyle = color; ctx.beginPath();\n    ctx.moveTo(x, y - size); ctx.quadraticCurveTo(x, y, x + size, y);\n    ctx.quadraticCurveTo(x, y, x, y + size); ctx.quadraticCurveTo(x, y, x - size, y);\n    ctx.quadraticCurveTo(x, y, x, y - size); ctx.fill();\n    ctx.fillStyle = \"#FFFFFF\"; ctx.beginPath(); ctx.arc(x, y, size * 0.25, 0, Math.PI * 2); ctx.fill();\n    ctx.restore();\n  }\n  const sparkAnim = Math.sin(t * 4.0);\n  drawDiamondStar(-4, 5, 3.5 + sparkAnim * 0.5, \"#67E8F9\");\n  drawDiamondStar(4, 7, 3.0 - sparkAnim * 0.5, \"#FEF08A\");\n  drawDiamondStar(0, 10, 2.0, \"#FFFFFF\");\n  ctx.restore();\n\n  // Chân\n  ctx.save();\n  ctx.fillStyle = \"#22D3EE\"; ctx.beginPath();\n  ctx.ellipse(-16, 12, 8 * sX, 8 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(14, 13, 9 * sX, 9 * sY, 0, 0, Math.PI * 2); ctx.fill();\n  ctx.fillStyle = \"#ECFEFF\"; ctx.beginPath();\n  ctx.roundRect(-10, 14, 8 * sX, 7 * sY, 3); ctx.roundRect(2, 14, 8 * sX, 7 * sY, 3); ctx.fill();\n  ctx.restore();\n\n  // Cánh trước\n  ctx.save();\n  ctx.fillStyle = \"rgba(34, 211, 238, 0.85)\"; ctx.beginPath();\n  ctx.moveTo(10, -2); ctx.lineTo(28, -16 + wFlap); ctx.lineTo(22, -4 + wFlap);\n  ctx.lineTo(33, -6 + wFlap); ctx.lineTo(18, 4); ctx.closePath(); ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.0; ctx.stroke();\n  ctx.fillStyle = \"#FFFFFF\"; ctx.beginPath(); ctx.arc(28, -16 + wFlap, 2, 0, Math.PI * 2); ctx.fill();\n  ctx.restore();\n\n  // Đầu\n  ctx.save();\n  const hy = -12;\n  const headGrad = ctx.createRadialGradient(-3, hy - 3, 3, -1, hy, 18);\n  headGrad.addColorStop(0, \"#ECFEFF\"); headGrad.addColorStop(0.3, \"#CFFAFE\");\n  headGrad.addColorStop(0.7, \"#22D3EE\"); headGrad.addColorStop(1, \"#0891B2\");\n  ctx.fillStyle = headGrad;\n  ctx.beginPath(); ctx.ellipse(-1, hy, 17 * sX, 15 * sY, 0, 0, Math.PI * 2); ctx.fill();\n  ctx.beginPath();\n  ctx.ellipse(-12, hy + 4, 7 * sX, 6 * sY, 0, 0, Math.PI * 2);\n  ctx.ellipse(9, hy + 4, 7 * sX, 6 * sY, 0, 0, Math.PI * 2); ctx.fill();\n  ctx.restore();\n\n  // Sừng\n  ctx.save();\n  ctx.fillStyle = \"#0284C7\"; ctx.beginPath();\n  ctx.moveTo(-13, hy - 8); ctx.lineTo(-16 + hTilt, hy - 24); ctx.lineTo(-6, hy - 11);\n  ctx.fill();\n  ctx.fillStyle = \"#A5F3FC\"; ctx.beginPath();\n  ctx.moveTo(-11, hy - 8); ctx.lineTo(-16 + hTilt, hy - 24); ctx.lineTo(-7, hy - 11);\n  ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.2;\n  ctx.beginPath(); ctx.moveTo(-16 + hTilt, hy - 24); ctx.lineTo(-9, hy - 9); ctx.stroke();\n  ctx.fillStyle = \"#0284C7\"; ctx.beginPath();\n  ctx.moveTo(4, hy - 10); ctx.lineTo(14 + hTilt, hy - 25); ctx.lineTo(11, hy - 8);\n  ctx.fill();\n  ctx.fillStyle = \"#A5F3FC\"; ctx.beginPath();\n  ctx.moveTo(6, hy - 10); ctx.lineTo(14 + hTilt, hy - 25); ctx.lineTo(10, hy - 8);\n  ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.2;\n  ctx.beginPath(); ctx.moveTo(14 + hTilt, hy - 25); ctx.lineTo(8, hy - 9); ctx.stroke();\n  ctx.restore();\n\n  // Má hồng cam đào\n  ctx.save();\n  ctx.fillStyle = \"rgba(253, 164, 175, 0.65)\"; ctx.beginPath();\n  ctx.arc(-11, hy + 4, 4.5, 0, Math.PI * 2); ctx.arc(8, hy + 4, 4.5, 0, Math.PI * 2); ctx.fill();\n  ctx.strokeStyle = \"#0E7490\"; ctx.lineWidth = 1.4; ctx.beginPath();\n  ctx.arc(-0.5, hy + 5, 2.5, 0.1, Math.PI - 0.1); ctx.stroke();\n  ctx.restore();\n\n  // MẮT PHA LÊ SAPPHIRE 3 ĐIỂM SÁNG\n  const ey = hy - 1;\n  const eyes = [-8, 5];\n  if (blink) {\n    ctx.strokeStyle = \"#082F49\"; ctx.lineWidth = 2.0; ctx.lineCap = \"round\";\n    eyes.forEach(ex => { ctx.beginPath(); ctx.arc(ex, ey + 2, 5, Math.PI * 0.15, Math.PI * 0.85); ctx.stroke(); });\n  } else {\n    eyes.forEach(ex => {\n      ctx.save();\n      ctx.fillStyle = \"#082F49\"; ctx.beginPath(); ctx.ellipse(ex, ey, 6, 8, 0, 0, Math.PI * 2); ctx.fill();\n      const eyeGrad = ctx.createLinearGradient(ex, ey - 6, ex, ey + 8);\n      eyeGrad.addColorStop(0, \"#082F49\"); eyeGrad.addColorStop(0.5, \"#0E7490\");\n      eyeGrad.addColorStop(0.85, \"#00D8F6\"); eyeGrad.addColorStop(1, \"#ECFEFF\");\n      ctx.fillStyle = eyeGrad; ctx.beginPath(); ctx.ellipse(ex, ey + 1, 5, 6, 0, 0, Math.PI * 2); ctx.fill();\n      ctx.fillStyle = \"#041B2D\"; ctx.beginPath(); ctx.ellipse(ex, ey - 0.5, 3.5, 4.5, 0, 0, Math.PI * 2); ctx.fill();\n      drawDiamondStar(ex, ey, 2.0, \"#67E8F9\");\n      // 3 ĐIỂM SÁNG\n      ctx.fillStyle = \"#FFFFFF\";\n      ctx.beginPath(); ctx.arc(ex - 2, ey - 3, 2.2, 0, Math.PI * 2); ctx.fill();\n      ctx.beginPath(); ctx.arc(ex + 2, ey + 3, 1.4, 0, Math.PI * 2); ctx.fill();\n      ctx.beginPath(); ctx.arc(ex + 2, ey - 2, 0.9, 0, Math.PI * 2); ctx.fill();\n      ctx.restore();\n    });\n  }\n\n  // Ngôi sao trán\n  drawDiamondStar(-6, hy - 8, 4.5, \"#FFFFFF\");\n  ctx.restore();\n}\n"
+    },
+    {
+      "id": 53,
+      "code": "CELESTIAL_ELEMENTAL_SNAIL",
+      "name_vi": "Sên Thần 5 Ngọc Nguyên Tố (Linh Quy Thần Sên Thiên Hà)",
+      "name_en": "Elemental Celestial Snail (Sacred Pentagram Snail God)",
+      "source_image": "download (7).jpg",
+      "species": "Gastropoda Celestia Quintessentia",
+      "category": "Linh Thú Thượng Cổ Vũ Trụ",
+      "element": "Ngũ Hành Thiên Cung: Thủy (Lam), Hỏa (Đỏ), Thái Dương (Vàng), Mộc (Lục), Khí Linh (Trắng)",
+      "quote": "Mang theo ngũ hành tương sinh và ấn chú vũ trụ, mỗi bước chân lướt đi đều gieo mầm ánh sáng và sự sống bất tận.",
+      "visual_lore_excerpts": [
+        "Thân thể trắng bạc xà cừ (Nacre Iridescent Body) óng ánh ánh trăng với đường cong vương giả thanh thoát.",
+        "Vương miện 5 sừng anten vươn cao, trên đỉnh ngự 5 viên ngọc nguyên tố tỏa hào quang rực rỡ.",
+        "Ngọc trung tâm (Thái Dương - Solar Topaz) ngự trên đỉnh cao nhất, phát ra vầng hào quang 8 tia sáng thiên giới chói lọi.",
+        "Ngực đeo huy hiệu mạ vàng hình giọt nước ôm trọn viên ngọc cầu vồng Prismatic Celestial Pearl tỏa hào quang thần thánh.",
+        "Bên hông mai mang Vòng Tròn Ma Thuật Ấn Chú Nguyên Tố (Rotating Alchemy Mandala) với ngôi sao ngũ giác và 5 biểu tượng nguyên tố xoay vần.",
+        "Đáy thân lơ lửng trên Vòng Hào Quang Stardust lấp lánh bụi sao ngân hà quay tròn."
+      ],
+      "palette": [
+        {
+          "name": "col_nacre_pure_white",
+          "hex": "#FFFFFF",
+          "rgb565": "0xFFFF",
+          "optical_function": "Bạch ngọc xà cừ tinh khiết đỉnh phản quang"
+        },
+        {
+          "name": "col_nacre_silver_light",
+          "hex": "#F1F5F9",
+          "rgb565": "0xF7BF",
+          "optical_function": "Bạc xà cừ ánh sáng mặt"
+        },
+        {
+          "name": "col_nacre_silver_mid",
+          "hex": "#CBD5E1",
+          "rgb565": "0xCEBC",
+          "optical_function": "Bạc kim loại phản xạ thân sên"
+        },
+        {
+          "name": "col_nacre_shadow",
+          "hex": "#94A3B8",
+          "rgb565": "0x9517",
+          "optical_function": "Bóng đổ thân dưới xà cừ"
+        },
+        {
+          "name": "col_gold_radiance",
+          "hex": "#F59E0B",
+          "rgb565": "0xF4E1",
+          "optical_function": "Vàng hoàng kim huy hiệu ngực & viền ấn chú"
+        },
+        {
+          "name": "col_gold_bright",
+          "hex": "#FDE047",
+          "rgb565": "0xFF08",
+          "optical_function": "Vàng chói lọi vương miện & vầng hào quang ngọc giữa"
+        },
+        {
+          "name": "col_gold_faint",
+          "hex": "#FEF3C7",
+          "rgb565": "0xFF98",
+          "optical_function": "Tia sáng god-rays tỏa từ ngực"
+        },
+        {
+          "name": "col_orb_blue",
+          "hex": "#00B4D8",
+          "rgb565": "0x05BB",
+          "optical_function": "Ngọc Thủy (Sapphire/Water) - Sừng 1 ngoài cùng bên trái"
+        },
+        {
+          "name": "col_orb_red",
+          "hex": "#EF4444",
+          "rgb565": "0xEA28",
+          "optical_function": "Ngọc Hỏa (Ruby/Fire) - Sừng 2 bên trái"
+        },
+        {
+          "name": "col_orb_sun",
+          "hex": "#FACC15",
+          "rgb565": "0xFE62",
+          "optical_function": "Ngọc Thái Dương (Sun/Solar Topaz) - Sừng 3 trung tâm cao nhất"
+        },
+        {
+          "name": "col_orb_green",
+          "hex": "#22C55E",
+          "rgb565": "0x262B",
+          "optical_function": "Ngọc Mộc (Emerald/Earth) - Sừng 4 bên phải"
+        },
+        {
+          "name": "col_orb_white",
+          "hex": "#FFFFFF",
+          "rgb565": "0xFFFF",
+          "optical_function": "Ngọc Khí Linh (Spirit/White Pearl) - Sừng 5 ngoài cùng bên phải"
+        },
+        {
+          "name": "col_eye_amber_dark",
+          "hex": "#2D1802",
+          "rgb565": "0x28C0",
+          "optical_function": "Hốc mắt hổ phách nâu thẳm"
+        },
+        {
+          "name": "col_eye_amber_iris",
+          "hex": "#F59E0B",
+          "rgb565": "0xF4E1",
+          "optical_function": "Mống mắt hổ phách hoàng kim nóng chảy"
+        },
+        {
+          "name": "col_eye_amber_glow",
+          "hex": "#FDE047",
+          "rgb565": "0xFF08",
+          "optical_function": "Quang luồng đáy mắt hổ phách"
+        },
+        {
+          "name": "col_stardust_aura",
+          "hex": "#E2E8F0",
+          "rgb565": "0xE75E",
+          "optical_function": "Vòng bụi sao lơ lửng quanh đáy"
+        }
+      ],
+      "volumetric_anatomy": {
+        "body_and_silhouette": "Dáng dấp thanh nhã, quý phái của linh thú sên thần thoại. Thân thể trắng bạc xà cừ (Nacre Iridescent Body) có các nếp gấp sinh học mềm mại.",
+        "crown_horns_and_orbs": "5 sừng vương miện cong duyên dáng vươn lên bầu trời: Stalk 1 (Blue Water), Stalk 2 (Red Fire), Stalk 3 (Highest Sun Topaz với 8 tia hào quang), Stalk 4 (Green Earth), Stalk 5 (White Spirit Pearl với chữ thập lấp lánh).",
+        "chest_amulet": "Huy hiệu vàng hình giọt lệ chạm trổ ôm lấy viên ngọc Prismatic Pearl đa sắc (Đỏ, Vàng, Lục, Lam, Tím) phóng ra các tia hào quang thần thánh (god-rays).",
+        "alchemy_magic_seal": "Ấn chú ma thuật bên hông thân: 2 vòng tròn đồng tâm mạ vàng, bên trong chứa ngôi sao ngũ giác (Pentagram) kết nối 5 hòn ngọc nguyên tố thu nhỏ đang xoay tròn vĩnh cửu theo vận tốc góc theta = t * 0.5 rad/s.",
+        "stardust_ground_aura": "Vòng elip hào quang vũ trụ dưới đáy thân sên, bên trong gồm 8-12 hạt sao lấp lánh quay quanh quỹ đạo.",
+        "crystal_eyes": {
+          "type": "Molten Golden Amber 3-Point Specular Eyes",
+          "description": "Đôi mắt ngọc hổ phách to tròn, hiền từ đầy trí tuệ vũ trụ:",
+          "point_1_primary": {
+            "role": "Crescent Keylight Specular",
+            "dx": -2,
+            "dy": -3,
+            "radius": 2.2,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "point_2_secondary": {
+            "role": "Caustic Amber Warm Bounce",
+            "dx": 2,
+            "dy": 3,
+            "radius": 1.4,
+            "color": "0xFF91 (#FDE047)"
+          },
+          "point_3_tertiary": {
+            "role": "Surface Wetness Sparkle",
+            "dx": 2,
+            "dy": -2,
+            "radius": 1.0,
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "center_star": {
+            "role": "Solar Core Glint",
+            "pattern": "Golden central pinhead",
+            "color": "0xFFFF (#FFFFFF)"
+          }
+        }
+      },
+      "kinematics": {
+        "breath_frequency_hz": 0.28,
+        "squash_and_stretch_vertical_pct": 4.5,
+        "squash_and_stretch_horizontal_pct": -2.5,
+        "horn_sway_lag_rad": 0.2,
+        "magic_seal_rotation_speed_rad_per_sec": 0.5,
+        "stardust_ring_rotation_speed_rad_per_sec": 0.8,
+        "blink_interval_ms": 4200,
+        "blink_duration_ms": 150
+      },
+      "cpp_scaled_canvas_code": "// =========================================================================\n// SÊN THẦN 5 NGỌC NGUYÊN TỐ (ELEMENTAL CELESTIAL SNAIL - 1:1 download (7).jpg)\n// ScaledCanvas C++ Implementation - 100% Hardware Compatible\n// =========================================================================\nvoid drawCelestialElementalSnail(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float angle, bool blink) {\n  // 1. Nhịp thở linh thú Squash & Stretch\n  float breathPhase = angle * 1.8f;\n  int by = cy + (int)(sinf(breathPhase) * 2.5f);\n  float sY = 1.0f + 0.045f * sinf(breathPhase);\n  float sX = 1.0f - 0.025f * sinf(breathPhase);\n\n  // 2. Bảng màu 16-bit RGB565 Thần Thánh chuẩn xác\n  const uint16_t C_WHITE      = 0xFFFF; // #FFFFFF Bạch ngọc xà cừ tinh khiết\n  const uint16_t C_SILVER_L   = 0xF7BE; // #F1F5F9 Bạc xà cừ sáng\n  const uint16_t C_SILVER_M   = 0xCE79; // #CBD5E1 Bạc kim loại\n  const uint16_t C_SILVER_D   = 0x9536; // #94A3B8 Bóng nacre xám bạc\n  const uint16_t C_GOLD_DARK  = 0xF4E0; // #F59E0B Vàng hoàng kim đậm\n  const uint16_t C_GOLD_BRT   = 0xFF91; // #FDE047 Vàng chói lọi\n  const uint16_t C_ORB_BLUE   = 0x05BF; // #00B4D8 Ngọc Thủy (Water)\n  const uint16_t C_ORB_RED    = 0xF224; // #EF4444 Ngọc Hỏa (Fire)\n  const uint16_t C_ORB_SUN    = 0xFE60; // #FACC15 Ngọc Thái Dương (Sun)\n  const uint16_t C_ORB_GREEN  = 0x262B; // #22C55E Ngọc Mộc (Earth)\n  const uint16_t C_EYE_DARK   = 0x28A0; // #2D1802 Đáy mắt hổ phách\n  const uint16_t C_EYE_IRIS   = 0xF4E0; // #F59E0B Mống mắt hoàng kim\n  const uint16_t C_AURA_SILV  = 0xE71C; // #E2E8F0 Vòng hào quang bụi sao\n\n  // 3. VÒNG HÀO QUANG STARDUST QUANH ĐÁY (Cosmic Stardust Base Ring)\n  int auraY = by + 22;\n  spr->drawEllipse(cx, auraY, (int)(38 * sX), (int)(10 * sY), C_AURA_SILV);\n  spr->drawEllipse(cx, auraY, (int)(34 * sX), (int)(8 * sY), C_GOLD_BRT);\n  // Các hạt bụi sao xoay quanh quỹ đạo\n  for (int i = 0; i < 8; i++) {\n    float a = i * 0.7853f + angle * 1.5f;\n    int px = cx + (int)(cosf(a) * 36.0f * sX);\n    int py = auraY + (int)(sinf(a) * 9.0f * sY);\n    spr->drawPixel(px, py, C_WHITE);\n    if (i % 2 == 0) {\n      spr->drawPixel(px - 1, py, C_GOLD_BRT);\n      spr->drawPixel(px + 1, py, C_GOLD_BRT);\n    }\n  }\n\n  // 4. THÂN SÊN BẠC XÀ CỪ (Pearlescent Nacre Body Silhouette)\n  // Bụng dưới tiếp đất\n  spr->fillEllipse(cx + 6, by + 14, (int)(26 * sX), (int)(10 * sY), C_SILVER_D);\n  spr->fillEllipse(cx + 4, by + 12, (int)(24 * sX), (int)(8 * sY), C_SILVER_M);\n  spr->fillEllipse(cx + 2, by + 10, (int)(22 * sX), (int)(6 * sY), C_SILVER_L);\n  // Đuôi sên uốn lượn nhọn thanh thoát\n  spr->fillTriangle(cx + 20, by + 14, cx + 36, by + 14, cx + 28, by + 8, C_SILVER_M);\n  spr->drawLine(cx + 24, by + 10, cx + 36, by + 14, C_WHITE);\n\n  // Thân vươn cao & Nếp gấp cổ xà cừ\n  spr->fillRoundRect(cx - 14, by - 12, (int)(24 * sX), (int)(26 * sY), 12, C_SILVER_M);\n  spr->fillRoundRect(cx - 12, by - 10, (int)(20 * sX), (int)(24 * sY), 10, C_SILVER_L);\n  spr->fillRoundRect(cx - 10, by - 8, (int)(16 * sX), (int)(20 * sY), 8, C_WHITE);\n\n  // 5. ẤN CHÚ PHÉP THUẬT NGUYÊN TỐ XOAY VẦN (Rotating Alchemy Magic Seal trên mai)\n  int mx = cx + 14;\n  int my = by + 4;\n  int mr = 13;\n  spr->drawCircle(mx, my, mr, C_GOLD_DARK);\n  spr->drawCircle(mx, my, mr - 3, C_GOLD_BRT);\n  // 5 đỉnh ngôi sao ngũ giác xoay vĩnh cửu\n  float sealRot = angle * 0.5f;\n  int pX[5], pY[5];\n  const uint16_t elemCol[5] = { C_ORB_RED, C_ORB_SUN, C_ORB_GREEN, C_WHITE, C_ORB_BLUE };\n  for (int k = 0; k < 5; k++) {\n    float th = sealRot + k * 1.2566f;\n    pX[k] = mx + (int)(cosf(th) * 8.5f);\n    pY[k] = my + (int)(sinf(th) * 8.5f);\n  }\n  // Nối các đỉnh ngũ giác (Pentagram lines)\n  for (int k = 0; k < 5; k++) {\n    int nextK = (k + 2) % 5;\n    spr->drawLine(pX[k], pY[k], pX[nextK], pY[nextK], C_GOLD_DARK);\n  }\n  // 5 viên ngọc nguyên tố xoay quanh ấn chú\n  for (int k = 0; k < 5; k++) {\n    spr->fillCircle(pX[k], pY[k], 2, elemCol[k]);\n    spr->drawPixel(pX[k], pY[k], C_WHITE);\n  }\n  spr->fillCircle(mx, my, 2, C_WHITE); // Tâm phát sáng của ấn chú\n\n  // 6. HUY HIỆU NGỰC NGỌC CẦU VỒNG (Rainbow Prismatic Chest Amulet)\n  int ax = cx - 3;\n  int ay = by + 4;\n  // Khung vàng giọt lệ\n  spr->fillTriangle(ax - 5, ay - 1, ax + 3, ay - 1, ax - 1, ay + 8, C_GOLD_DARK);\n  spr->fillCircle(ax - 1, ay + 2, 4, C_GOLD_BRT);\n  // Ngọc cầu vồng khúc xạ đa sắc\n  spr->fillCircle(ax - 1, ay + 2, 3, C_SILVER_M);\n  spr->drawPixel(ax - 2, ay + 1, C_ORB_RED);\n  spr->drawPixel(ax - 1, ay + 1, C_ORB_SUN);\n  spr->drawPixel(ax, ay + 2, C_ORB_GREEN);\n  spr->drawPixel(ax - 1, ay + 3, C_ORB_BLUE);\n  spr->drawPixel(ax - 2, ay + 2, C_WHITE); // Specular highlight\n  // Tia sáng tỏa ra ngực\n  spr->drawLine(ax - 1, ay + 2, ax - 7, ay - 2, C_GOLD_BRT);\n  spr->drawLine(ax - 1, ay + 2, ax + 5, ay - 2, C_GOLD_BRT);\n  spr->drawLine(ax - 1, ay + 2, ax - 1, ay - 4, C_WHITE);\n\n  // 7. ĐẦU VƯƠNG GIẢ & NỤ CƯỜI BÁNH MÌ HIỀN TỪ\n  int hy = by - 12;\n  spr->fillCircle(cx - 4, hy, (int)(14 * sX), C_SILVER_M);\n  spr->fillCircle(cx - 3, hy + 1, (int)(12 * sX), C_WHITE);\n  // Nụ cười thần thái\n  spr->drawPixel(cx - 4, hy + 8, C_SILVER_D);\n  spr->drawPixel(cx - 3, hy + 9, C_SILVER_D);\n  spr->drawPixel(cx - 2, hy + 9, C_SILVER_D);\n  spr->drawPixel(cx - 1, hy + 8, C_SILVER_D);\n\n  // 8. 5 SỪNG VƯƠNG MIỆN & 5 VIÊN NGỌC THẦN (5 Horn Stalks & 5 Elemental Orbs)\n  float hLag = breathPhase - 0.20f;\n  int hSway = (int)(sinf(hLag) * 2.0f);\n\n  // Stalk 1 (Ngoài cùng trái: Ngọc Thủy Blue)\n  int ox1 = cx - 25 + hSway, oy1 = by - 26;\n  spr->drawLine(cx - 8, by - 20, ox1, oy1, C_WHITE);\n  spr->drawLine(cx - 7, by - 20, ox1 + 1, oy1, C_SILVER_M);\n  spr->fillCircle(ox1, oy1, 4, C_ORB_BLUE);\n  spr->fillCircle(ox1, oy1, 2, 0x56BF); // Cyan glow\n  spr->drawPixel(ox1 - 1, oy1 - 1, C_WHITE);\n\n  // Stalk 2 (Trái trên: Ngọc Hỏa Red)\n  int ox2 = cx - 15 + hSway, oy2 = by - 38;\n  spr->drawLine(cx - 6, by - 22, ox2, oy2, C_WHITE);\n  spr->drawLine(cx - 5, by - 22, ox2 + 1, oy2, C_SILVER_M);\n  spr->fillCircle(ox2, oy2, 4, C_ORB_RED);\n  spr->fillCircle(ox2, oy2, 2, 0xFC08); // Fiery glow\n  spr->drawPixel(ox2 - 1, oy2 - 1, C_WHITE);\n\n  // Stalk 3 (Trung tâm cao nhất: Ngọc Thái Dương Sun Topaz có Hào Quang 8 Tia)\n  int ox3 = cx - 2 + hSway, oy3 = by - 46;\n  spr->drawLine(cx - 3, by - 24, ox3, oy3, C_WHITE);\n  spr->drawLine(cx - 2, by - 24, ox3 + 1, oy3, C_SILVER_M);\n  spr->fillCircle(ox3, oy3, 5, C_GOLD_DARK);\n  spr->fillCircle(ox3, oy3, 3, C_GOLD_BRT);\n  spr->fillCircle(ox3, oy3, 1, C_WHITE);\n  // Hào quang 8 tia sáng thiên giới chói lọi\n  spr->drawFastHLine(ox3 - 7, oy3, 15, C_GOLD_BRT);\n  spr->drawFastVLine(ox3, oy3 - 7, 15, C_GOLD_BRT);\n  spr->drawLine(ox3 - 4, oy3 - 4, ox3 + 4, oy3 + 4, C_WHITE);\n  spr->drawLine(ox3 + 4, oy3 - 4, ox3 - 4, oy3 + 4, C_WHITE);\n\n  // Stalk 4 (Phải trên: Ngọc Mộc Green)\n  int ox4 = cx + 13 + hSway, oy4 = by - 38;\n  spr->drawLine(cx - 1, by - 22, ox4, oy4, C_WHITE);\n  spr->drawLine(cx, by - 22, ox4 + 1, oy4, C_SILVER_M);\n  spr->fillCircle(ox4, oy4, 4, C_ORB_GREEN);\n  spr->fillCircle(ox4, oy4, 2, 0x67E8); // Emerald glow\n  spr->drawPixel(ox4 - 1, oy4 - 1, C_WHITE);\n\n  // Stalk 5 (Ngoài cùng phải: Ngọc Khí Linh White Pearl có chữ thập lấp lánh)\n  int ox5 = cx + 24 + hSway, oy5 = by - 26;\n  spr->drawLine(cx + 2, by - 20, ox5, oy5, C_WHITE);\n  spr->drawLine(cx + 3, by - 20, ox5 + 1, oy5, C_SILVER_M);\n  spr->fillCircle(ox5, oy5, 4, C_SILVER_M);\n  spr->fillCircle(ox5, oy5, 3, C_WHITE);\n  spr->drawFastHLine(ox5 - 4, oy5, 9, C_WHITE);\n  spr->drawFastVLine(ox5, oy5 - 4, 9, C_WHITE);\n\n  // 9. MẮT PHA LÊ HỔ PHÁCH 3 ĐIỂM SÁNG (Molten Amber Crystal Eyes)\n  int ey = hy - 2;\n  int exL = cx - 8;\n  int exR = cx + 3;\n\n  if (blink) {\n    spr->drawEllipse(exL, ey + 2, 5, 2, C_EYE_DARK);\n    spr->drawEllipse(exR, ey + 2, 5, 2, C_EYE_DARK);\n  } else {\n    for (int eyeIdx = 0; eyeIdx < 2; eyeIdx++) {\n      int ex = (eyeIdx == 0) ? exL : exR;\n      // 9.1 Hốc mắt hổ phách thẳm\n      spr->fillEllipse(ex, ey, 6, 8, C_EYE_DARK);\n      // 9.2 Mống mắt hoàng kim nóng chảy\n      spr->fillEllipse(ex, ey + 2, 5, 6, C_EYE_IRIS);\n      spr->fillEllipse(ex, ey + 4, 4, 3, C_GOLD_BRT);\n      // 9.3 Đồng tử\n      spr->fillCircle(ex, ey, 3, C_EYE_DARK);\n      // 9.4 ĐIỂM SÁNG 1 (Primary Specular - Lưỡi liềm ánh sáng lớn trên)\n      spr->fillCircle(ex - 2, ey - 3, 2, C_WHITE);\n      // 9.5 ĐIỂM SÁNG 2 (Secondary Caustic - Bắt sáng ấm đáy mắt)\n      spr->fillCircle(ex + 2, ey + 3, 1, C_GOLD_BRT);\n      // 9.6 ĐIỂM SÁNG 3 (Tertiary Wetness - Bắt sáng góc trên phải)\n      spr->drawPixel(ex + 2, ey - 2, C_WHITE);\n      // Tia sáng tâm\n      spr->drawPixel(ex, ey, C_WHITE);\n    }\n  }\n}\n",
+      "js_canvas_code": "// =========================================================================\n// SÊN THẦN 5 NGỌC NGUYÊN TỐ - Modern HTML5 Canvas 2D Implementation\n// =========================================================================\nfunction drawCelestialElementalSnail(ctx, cx, cy, scale, t) {\n  ctx.save();\n  const breathFreq = 1.8;\n  const breathSin = Math.sin(t * breathFreq);\n  const by = cy + breathSin * 2.5;\n  const sY = 1.0 + 0.045 * breathSin;\n  const sX = 1.0 - 0.025 * breathSin;\n\n  ctx.translate(cx, by);\n  ctx.scale(scale, scale);\n\n  const blink = (Math.sin(t * 1.4) > 0.96);\n  const hLag = t * breathFreq - 0.20;\n  const hSway = Math.sin(hLag) * 2.0;\n\n  // 1. Vòng hào quang Stardust quanh đáy\n  ctx.save();\n  ctx.shadowColor = \"rgba(253, 224, 71, 0.7)\";\n  ctx.shadowBlur = 10;\n  ctx.strokeStyle = \"rgba(226, 232, 240, 0.8)\";\n  ctx.lineWidth = 1.5;\n  ctx.beginPath();\n  ctx.ellipse(0, 22, 38 * sX, 10 * sY, 0, 0, Math.PI * 2);\n  ctx.stroke();\n  ctx.strokeStyle = \"rgba(253, 224, 71, 0.85)\";\n  ctx.lineWidth = 1.0;\n  ctx.beginPath();\n  ctx.ellipse(0, 22, 34 * sX, 8 * sY, 0, 0, Math.PI * 2);\n  ctx.stroke();\n\n  // Các hạt bụi sao lơ lửng xoay tròn\n  for (let i = 0; i < 10; i++) {\n    const a = i * (Math.PI * 2 / 10) + t * 1.5;\n    const px = Math.cos(a) * 36.0 * sX;\n    const py = 22 + Math.sin(a) * 9.0 * sY;\n    ctx.fillStyle = (i % 2 === 0) ? \"#FFFFFF\" : \"#FDE047\";\n    ctx.beginPath();\n    ctx.arc(px, py, (i % 3 === 0) ? 1.6 : 1.0, 0, Math.PI * 2);\n    ctx.fill();\n  }\n  ctx.restore();\n\n  // 2. Thân sên Bạc Xà Cừ (Nacre Body)\n  ctx.save();\n  // Bụng dưới\n  const footGrad = ctx.createLinearGradient(0, 8, 10, 22);\n  footGrad.addColorStop(0, \"#F8FAFC\");\n  footGrad.addColorStop(0.5, \"#CBD5E1\");\n  footGrad.addColorStop(1, \"#94A3B8\");\n  ctx.fillStyle = footGrad;\n  ctx.beginPath();\n  ctx.ellipse(6, 14, 26 * sX, 10 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n  // Đuôi nhọn uốn lượn\n  ctx.beginPath();\n  ctx.moveTo(20, 14); ctx.lineTo(38, 14); ctx.lineTo(28, 8); ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.2; ctx.stroke();\n\n  // Thân vươn cao & Nếp gấp cổ xà cừ\n  const neckGrad = ctx.createLinearGradient(-14, -12, 10, 14);\n  neckGrad.addColorStop(0, \"#FFFFFF\");\n  neckGrad.addColorStop(0.4, \"#F1F5F9\");\n  neckGrad.addColorStop(0.8, \"#CBD5E1\");\n  neckGrad.addColorStop(1, \"#94A3B8\");\n  ctx.fillStyle = neckGrad;\n  ctx.beginPath();\n  ctx.roundRect(-14, -12, 24 * sX, 26 * sY, 12);\n  ctx.fill();\n  ctx.strokeStyle = \"rgba(255, 255, 255, 0.9)\";\n  ctx.lineWidth = 1.0;\n  ctx.stroke();\n  ctx.restore();\n\n  // 3. Ấn Chú Phép Thuật Xoay Vần (Rotating Alchemy Magic Seal)\n  ctx.save();\n  const mx = 14, my = 4, mr = 13;\n  ctx.translate(mx, my);\n  ctx.rotate(t * 0.5); // Xoay ấn chú\n\n  ctx.strokeStyle = \"#F59E0B\"; ctx.lineWidth = 1.4;\n  ctx.beginPath(); ctx.arc(0, 0, mr, 0, Math.PI * 2); ctx.stroke();\n  ctx.strokeStyle = \"#FDE047\"; ctx.lineWidth = 1.0;\n  ctx.beginPath(); ctx.arc(0, 0, mr - 3, 0, Math.PI * 2); ctx.stroke();\n\n  // 5 đỉnh ngôi sao ngũ giác\n  const pPts = [];\n  const elemColors = [\"#EF4444\", \"#FACC15\", \"#22C55E\", \"#FFFFFF\", \"#00B4D8\"];\n  for (let k = 0; k < 5; k++) {\n    const th = k * (Math.PI * 2 / 5);\n    pPts.push({ x: Math.cos(th) * 8.5, y: Math.sin(th) * 8.5 });\n  }\n  ctx.strokeStyle = \"rgba(245, 158, 11, 0.7)\"; ctx.lineWidth = 1.0;\n  ctx.beginPath();\n  for (let k = 0; k < 5; k++) {\n    const nK = (k + 2) % 5;\n    ctx.moveTo(pPts[k].x, pPts[k].y);\n    ctx.lineTo(pPts[nK].x, pPts[nK].y);\n  }\n  ctx.stroke();\n\n  // 5 hạt ngọc nguyên tố\n  for (let k = 0; k < 5; k++) {\n    ctx.fillStyle = elemColors[k];\n    ctx.beginPath(); ctx.arc(pPts[k].x, pPts[k].y, 2.2, 0, Math.PI * 2); ctx.fill();\n    ctx.fillStyle = \"#FFFFFF\";\n    ctx.beginPath(); ctx.arc(pPts[k].x - 0.5, pPts[k].y - 0.5, 0.8, 0, Math.PI * 2); ctx.fill();\n  }\n  ctx.fillStyle = \"#FFFFFF\";\n  ctx.beginPath(); ctx.arc(0, 0, 2.0, 0, Math.PI * 2); ctx.fill();\n  ctx.restore();\n\n  // 4. Huy Hiệu Ngực Ngọc Cầu Vồng (Rainbow Prismatic Chest Amulet)\n  ctx.save();\n  const ax = -3, ay = 4;\n  // Khung vàng\n  ctx.fillStyle = \"#F59E0B\"; ctx.beginPath();\n  ctx.moveTo(ax - 5, ay - 1); ctx.lineTo(ax + 3, ay - 1); ctx.lineTo(ax - 1, ay + 8); ctx.closePath(); ctx.fill();\n  ctx.fillStyle = \"#FDE047\"; ctx.beginPath(); ctx.arc(ax - 1, ay + 2, 4.2, 0, Math.PI * 2); ctx.fill();\n\n  // Ngọc cầu vồng khúc xạ\n  const pearlGrad = ctx.createConicGradient(0, ax - 1, ay + 2);\n  pearlGrad.addColorStop(0, \"#EF4444\");\n  pearlGrad.addColorStop(0.2, \"#FACC15\");\n  pearlGrad.addColorStop(0.4, \"#22C55E\");\n  pearlGrad.addColorStop(0.6, \"#00B4D8\");\n  pearlGrad.addColorStop(0.8, \"#8B5CF6\");\n  pearlGrad.addColorStop(1, \"#EF4444\");\n  ctx.fillStyle = pearlGrad;\n  ctx.beginPath(); ctx.arc(ax - 1, ay + 2, 3.2, 0, Math.PI * 2); ctx.fill();\n  ctx.fillStyle = \"#FFFFFF\"; ctx.beginPath(); ctx.arc(ax - 2, ay + 1, 1.2, 0, Math.PI * 2); ctx.fill();\n\n  // God-rays\n  ctx.strokeStyle = \"rgba(253, 224, 71, 0.7)\"; ctx.lineWidth = 1.0;\n  ctx.beginPath();\n  ctx.moveTo(ax - 1, ay + 2); ctx.lineTo(ax - 7, ay - 2);\n  ctx.moveTo(ax - 1, ay + 2); ctx.lineTo(ax + 5, ay - 2);\n  ctx.moveTo(ax - 1, ay + 2); ctx.lineTo(ax - 1, ay - 4);\n  ctx.stroke();\n  ctx.restore();\n\n  // 5. Đầu Bạch Ngọc & Nụ cười\n  ctx.save();\n  const hy = -12;\n  const headGrad = ctx.createRadialGradient(-5, hy - 4, 3, -4, hy, 16);\n  headGrad.addColorStop(0, \"#FFFFFF\");\n  headGrad.addColorStop(0.6, \"#F1F5F9\");\n  headGrad.addColorStop(1, \"#CBD5E1\");\n  ctx.fillStyle = headGrad;\n  ctx.beginPath(); ctx.arc(-4, hy, 14 * sX, 0, Math.PI * 2); ctx.fill();\n\n  ctx.strokeStyle = \"#64748B\"; ctx.lineWidth = 1.2;\n  ctx.beginPath(); ctx.arc(-2.5, hy + 6, 3, 0.2, Math.PI - 0.2); ctx.stroke();\n  ctx.restore();\n\n  // 6. 5 SỪNG VƯƠNG MIỆN & 5 VIÊN NGỌC NGUYÊN TỐ\n  ctx.save();\n  const horns = [\n    { bx: -8, by: -20, ox: -25 + hSway, oy: -26, r: 4.5, color: \"#00B4D8\", glow: \"#7DD3FC\", name: \"Water\" },\n    { bx: -6, by: -22, ox: -15 + hSway, oy: -38, r: 4.5, color: \"#EF4444\", glow: \"#FCA5A5\", name: \"Fire\" },\n    { bx: -3, by: -24, ox: -2 + hSway,  oy: -46, r: 5.5, color: \"#FACC15\", glow: \"#FEF08A\", name: \"Sun\", isSun: true },\n    { bx: -1, by: -22, ox: 13 + hSway,  oy: -38, r: 4.5, color: \"#22C55E\", glow: \"#86EFAC\", name: \"Earth\" },\n    { bx: 2,  by: -20, ox: 24 + hSway,  oy: -26, r: 4.5, color: \"#FFFFFF\", glow: \"#E2E8F0\", name: \"Spirit\", isPearl: true }\n  ];\n\n  horns.forEach(h => {\n    // Cuống sừng\n    ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 2.0;\n    ctx.beginPath(); ctx.moveTo(h.bx, h.by); ctx.quadraticCurveTo(h.bx, h.oy + 8, h.ox, h.oy); ctx.stroke();\n\n    // Ngọc nguyên tố tỏa sáng\n    ctx.save();\n    ctx.shadowColor = h.color; ctx.shadowBlur = 10;\n    const orbGrad = ctx.createRadialGradient(h.ox - 1, h.oy - 1, 1, h.ox, h.oy, h.r);\n    orbGrad.addColorStop(0, \"#FFFFFF\");\n    orbGrad.addColorStop(0.4, h.glow);\n    orbGrad.addColorStop(1, h.color);\n    ctx.fillStyle = orbGrad;\n    ctx.beginPath(); ctx.arc(h.ox, h.oy, h.r, 0, Math.PI * 2); ctx.fill();\n    ctx.restore();\n\n    // Hào quang đặc biệt\n    if (h.isSun) {\n      // Hào quang 8 tia của Ngọc Thái Dương\n      ctx.strokeStyle = \"#FDE047\"; ctx.lineWidth = 1.2;\n      ctx.beginPath();\n      ctx.moveTo(h.ox - 8, h.oy); ctx.lineTo(h.ox + 8, h.oy);\n      ctx.moveTo(h.ox, h.oy - 8); ctx.lineTo(h.ox, h.oy + 8);\n      ctx.moveTo(h.ox - 5, h.oy - 5); ctx.lineTo(h.ox + 5, h.oy + 5);\n      ctx.moveTo(h.ox + 5, h.oy - 5); ctx.lineTo(h.ox - 5, h.oy + 5);\n      ctx.stroke();\n    }\n    if (h.isPearl) {\n      // Ngôi sao lấp lánh của Ngọc Khí Linh\n      ctx.strokeStyle = \"#FFFFFF\"; ctx.lineWidth = 1.2;\n      ctx.beginPath();\n      ctx.moveTo(h.ox - 5, h.oy); ctx.lineTo(h.ox + 5, h.oy);\n      ctx.moveTo(h.ox, h.oy - 5); ctx.lineTo(h.ox, h.oy + 5);\n      ctx.stroke();\n    }\n  });\n  ctx.restore();\n\n  // 7. MẮT PHA LÊ HỔ PHÁCH 3 ĐIỂM SÁNG (Molten Golden Amber Eyes)\n  const ey = hy - 2;\n  const eyes = [-8, 3];\n  if (blink) {\n    ctx.strokeStyle = \"#2D1802\"; ctx.lineWidth = 2.2; ctx.lineCap = \"round\";\n    eyes.forEach(ex => { ctx.beginPath(); ctx.arc(ex, ey + 2, 5, Math.PI * 0.15, Math.PI * 0.85); ctx.stroke(); });\n  } else {\n    eyes.forEach(ex => {\n      ctx.save();\n      // Socket & Amber Iris\n      ctx.fillStyle = \"#2D1802\"; ctx.beginPath(); ctx.ellipse(ex, ey, 6, 8, 0, 0, Math.PI * 2); ctx.fill();\n      const eyeGrad = ctx.createLinearGradient(ex, ey - 6, ex, ey + 8);\n      eyeGrad.addColorStop(0, \"#2D1802\");\n      eyeGrad.addColorStop(0.4, \"#78350F\");\n      eyeGrad.addColorStop(0.8, \"#F59E0B\");\n      eyeGrad.addColorStop(1, \"#FDE047\");\n      ctx.fillStyle = eyeGrad; ctx.beginPath(); ctx.ellipse(ex, ey + 1, 5, 6, 0, 0, Math.PI * 2); ctx.fill();\n\n      // Đồng tử đen\n      ctx.fillStyle = \"#180A00\"; ctx.beginPath(); ctx.ellipse(ex, ey - 0.5, 3.5, 4.5, 0, 0, Math.PI * 2); ctx.fill();\n\n      // 3 ĐIỂM SÁNG PHA LÊ HỔ PHÁCH\n      // Điểm 1: Lưỡi liềm ánh sáng lớn trên\n      ctx.fillStyle = \"#FFFFFF\"; ctx.beginPath(); ctx.arc(ex - 2, ey - 3, 2.2, 0, Math.PI * 2); ctx.fill();\n      // Điểm 2: Phản xạ ấm vàng dưới\n      ctx.fillStyle = \"#FDE047\"; ctx.beginPath(); ctx.arc(ex + 2, ey + 3, 1.4, 0, Math.PI * 2); ctx.fill();\n      // Điểm 3: Bắt sáng ướt góc trên\n      ctx.fillStyle = \"#FFFFFF\"; ctx.beginPath(); ctx.arc(ex + 2, ey - 2, 1.0, 0, Math.PI * 2); ctx.fill();\n      ctx.restore();\n    });\n  }\n\n  ctx.restore();\n}\n"
+    }
+  ]
+}
