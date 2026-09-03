@@ -1635,19 +1635,24 @@
     }
 
     function sendBrightness(val) {
-      document.getElementById('brightVal').innerText = Math.round((val / 255) * 100) + '%';
+      currentBrightness = parseInt(val);
+      const bEl = document.getElementById('brightVal');
+      if (bEl) bEl.innerText = Math.round((currentBrightness / 255) * 100) + '%';
       if (ws && ws.readyState === WebSocket.OPEN) {
-        ws.send(JSON.stringify({action: 'SET_BRIGHTNESS', value: parseInt(val)}));
+        ws.send(JSON.stringify({action: 'SET_BRIGHTNESS', value: currentBrightness}));
       }
-      fetch('/api/brightness', { method: 'POST', body: new URLSearchParams({value: val})});
+      fetch('/api/brightness', { method: 'POST', body: new URLSearchParams({value: currentBrightness})});
+      markPendingChanges();
     }
 
+    window.isQrActive = false;
     function triggerRemoteQR() {
+      window.isQrActive = !window.isQrActive;
       if (ws && ws.readyState === WebSocket.OPEN) {
-        ws.send(JSON.stringify({action: 'SET_QR', value: true}));
+        ws.send(JSON.stringify({action: 'SET_QR', value: window.isQrActive}));
       }
       fetch('/api/qr', { method: 'POST' });
-      showToast('Đang bật mã QR trên móc khóa...');
+      showToast(window.isQrActive ? '📱 Đang BẬT mã QR trên móc khóa...' : '✨ Đang TẮT mã QR, quay lại hoạt ảnh!');
     }
 
     function sendCustomQuoteFromInput() {

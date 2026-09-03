@@ -5,7 +5,63 @@
 
 class SpriteRenderer {
 public:
-  static void drawTheme(LGFX_Sprite* spr, int id, int cx, int cy, float breath, float angle, float scale = 1.0f) {
+  struct ScaledCanvas {
+  LGFX_Sprite* target;
+  int originX, originY;
+  float scale;
+
+  inline int sx(int x) const { return originX + (int)roundf((x - originX) * scale); }
+  inline int sy(int y) const { return originY + (int)roundf((y - originY) * scale); }
+  inline int sr(int r) const { return max(1, (int)roundf(r * scale)); }
+
+  void fillCircle(int x, int y, int r, uint16_t col) {
+    target->fillCircle(sx(x), sy(y), sr(r), col);
+  }
+  void drawCircle(int x, int y, int r, uint16_t col) {
+    target->drawCircle(sx(x), sy(y), sr(r), col);
+  }
+  void fillRoundRect(int x, int y, int w, int h, int r, uint16_t col) {
+    target->fillRoundRect(sx(x), sy(y), sr(w), sr(h), sr(r), col);
+  }
+  void drawRoundRect(int x, int y, int w, int h, int r, uint16_t col) {
+    target->drawRoundRect(sx(x), sy(y), sr(w), sr(h), sr(r), col);
+  }
+  void fillRect(int x, int y, int w, int h, uint16_t col) {
+    target->fillRect(sx(x), sy(y), sr(w), sr(h), col);
+  }
+  void drawPixel(int x, int y, uint16_t col) {
+    if (scale <= 1.2f) {
+      target->drawPixel(sx(x), sy(y), col);
+    } else {
+      int s = sr(1);
+      target->fillRect(sx(x), sy(y), s, s, col);
+    }
+  }
+  void drawLine(int x0, int y0, int x1, int y1, uint16_t col) {
+    target->drawLine(sx(x0), sy(y0), sx(x1), sy(y1), col);
+  }
+  void drawFastVLine(int x, int y, int h, uint16_t col) {
+    target->drawFastVLine(sx(x), sy(y), sr(h), col);
+  }
+  void drawFastHLine(int x, int y, int w, uint16_t col) {
+    target->drawFastHLine(sx(x), sy(y), sr(w), col);
+  }
+  void fillEllipse(int x, int y, int rx, int ry, uint16_t col) {
+    target->fillEllipse(sx(x), sy(y), sr(rx), sr(ry), col);
+  }
+  void drawEllipse(int x, int y, int rx, int ry, uint16_t col) {
+    target->drawEllipse(sx(x), sy(y), sr(rx), sr(ry), col);
+  }
+  void fillTriangle(int x0, int y0, int x1, int y1, int x2, int y2, uint16_t col) {
+    target->fillTriangle(sx(x0), sy(y0), sx(x1), sy(y1), sx(x2), sy(y2), col);
+  }
+};
+
+  static void drawTheme(LGFX_Sprite* target_spr, int id, int cx, int cy, float breath, float angle, float scale = 1.0f) {
+    if (scale < 0.6f) scale = 0.6f;
+    if (scale > 2.2f) scale = 2.2f;
+    ScaledCanvas canvas{target_spr, cx, cy, scale};
+    ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
     id = (id >= 0) ? (id % 50) : 0;
@@ -17,8 +73,8 @@ public:
       // -------------------------------------------------------------
       case 0: {
         const float cosA = 0.70710678f, sinA = -0.70710678f;
-        auto tX = [&](int u, int v) -> int { return cx + (int)roundf(u * cosA - v * sinA); };
-        auto tY = [&](int u, int v) -> int { return (cy - 4) + (int)roundf(u * sinA + v * cosA); };
+        auto tX = [&](int u, int v) -> int { return cx + (int)roundf((u * cosA - v * sinA) * scale); };
+        auto tY = [&](int u, int v) -> int { return (cy - 4) + (int)roundf((u * sinA + v * cosA) * scale); };
 
         auto dPoly = [&](const int pts[][2], int n, uint16_t fill) {
           if (n == 4) {

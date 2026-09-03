@@ -226,6 +226,16 @@ void loop() {
     } else if (cmd.startsWith("#SET_SCALE ")) {
       float sc = cmd.substring(11).toFloat();
       engine.setSpriteScale(sc);
+    } else if (cmd.startsWith("#SET_TEXT_SIZE ")) {
+      uint8_t sz = cmd.substring(15).toInt();
+      engine.setTextSize(sz);
+    } else if (cmd.startsWith("#SET_QR ")) {
+      bool qr = (cmd.substring(8).toInt() != 0);
+      engine.setQRMode(qr);
+      btnManager.setState(qr ? STATE_QR_CONFIG : STATE_ANIMATION);
+    } else if (cmd.startsWith("#SET_BRIGHTNESS ")) {
+      int br = cmd.substring(16).toInt();
+      engine.setBrightness(br);
     } else if (cmd.startsWith("#SET_FREEZE ")) {
       bool frz = (cmd.substring(12).toInt() != 0);
       engine.setFreezeText(frz);

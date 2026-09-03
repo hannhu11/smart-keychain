@@ -245,6 +245,10 @@ public:
   void setBrightness(int b) {
     currentBrightness = constrain(b, 10, 255);
     tft.setBrightness(currentBrightness);
+#if defined(TFT_BL_PIN) && TFT_BL_PIN >= 0
+    pinMode(TFT_BL_PIN, OUTPUT);
+    analogWrite(TFT_BL_PIN, currentBrightness);
+#endif
   }
 
   static const char* getMotivationalQuote(int idx) {
@@ -563,13 +567,14 @@ public:
     String fullText = (customQuote.length() > 0) ? customQuote : String(getThemeDefaultQuote(currentSpriteIdx));
 
     spr->setFont(&fonts::fontVietnamese);
-    spr->setTextSize(1);
+    uint8_t tSize = (currentTextSize >= 2) ? 2 : 1;
+    spr->setTextSize(tSize);
     spr->setTextDatum(textdatum_t::top_left);
 
     const int maxLineWidth = SCREEN_WIDTH - 16; // 156px (x=8 đến 164)
-    const int maxLines = 4;
-    const int lineHeight = 15;
-    const int startY = 14;
+    const int maxLines = (currentTextSize >= 2) ? 3 : 4;
+    const int lineHeight = (currentTextSize >= 2) ? 22 : 15;
+    const int startY = (currentTextSize >= 2) ? 8 : 14;
 
     std::vector<String> lines;
     if (fullText.indexOf('\n') != -1) {
