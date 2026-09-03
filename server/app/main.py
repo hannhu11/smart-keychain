@@ -1419,17 +1419,54 @@ INDEX_HTML = """<!DOCTYPE html>
         }
 
         case 12: {
-          // Thanh Kiếm Thánh Excalibur
-          // Lưỡi kiếm 3D Bevel: Mặt sáng Vàng Bạch Kim, mặt tối Vàng Đồng
-          fTri(ctx, 0, -58, -7, 20, 0, 20, "#ffffff");
-          fTri(ctx, 0, -58, 0, 20, 7, 20, "#cdca00");
-          dLine(ctx, 0, -56, 0, -56 + 74, "#00ffff");
-          
-          // Chuôi kiếm cánh chim mạ vàng hoàng gia
-          frRect(ctx, -20, 20, 40, 10, 3, "#ffff00");
-          fCirc(ctx, 0, 25, 4, "#0000ff");
-          fRect(ctx, -4, 30, 8, 22, "#4a4c4a");
-          fCirc(ctx, 0, 54, 6, "#ffff00");
+          // Thần Kiếm Tuyệt Phẩm (The Holy Claymore - Chuẩn 1:1 Ảnh Thật)
+          const cosA = 0.70710678, sinA = -0.70710678;
+          const tX = (u, v) => Math.round(u * cosA - v * sinA);
+          const tY = (u, v) => Math.round(u * sinA + v * cosA);
+          const dPoly = (pts, fill) => {
+            ctx.fillStyle = fill;
+            ctx.beginPath();
+            ctx.moveTo(tX(pts[0][0], pts[0][1]), tY(pts[0][0], pts[0][1]));
+            for (let p = 1; p < pts.length; p++) ctx.lineTo(tX(pts[p][0], pts[p][1]), tY(pts[p][0], pts[p][1]));
+            ctx.closePath();
+            ctx.fill();
+          };
+
+          // 1. Hào quang Aura trắng viền ngoài
+          dPoly([[-16, -18], [52, -18], [66, 0], [52, 18], [-16, 18]], "#ffffff");
+          dPoly([[-26, -30], [-16, -30], [-16, 30], [-26, 30]], "#ffffff");
+          dPoly([[-50, -7], [-26, -7], [-26, 7], [-50, 7]], "#ffffff");
+          dPoly([[-62, -12], [-48, -12], [-48, 12], [-62, 12], [-66, 0]], "#ffffff");
+
+          // 2. Viền Neon Cyan
+          dPoly([[-15, -15], [50, -15], [62, 0], [50, 15], [-15, 15]], "#00f0ff");
+          dPoly([[-24, -27], [-17, -27], [-17, 27], [-24, 27]], "#00f0ff");
+
+          // 3. Thân kiếm Thép Tím Chàm
+          dPoly([[-14, -10], [46, -10], [54, 0], [46, 10], [-14, 10]], "#2c365e");
+
+          // 4. Sống kiếm Fuller & 3 Cổ tự Runic
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(tX(-12, 0), tY(-12, 0));
+          ctx.lineTo(tX(48, 0), tY(48, 0));
+          ctx.stroke();
+
+          for (let ru of [-4, 14, 30]) {
+            dPoly([[ru - 3, 0], [ru, -4], [ru + 3, 0], [ru, 4]], "#ffffff");
+          }
+
+          // 5. Chuôi kiếm & Ngọc trung tâm
+          dPoly([[-22, -6], [-17, 0], [-22, 6], [-27, 0]], "#ffffff");
+          dPoly([[-22, -3], [-19, 0], [-22, 3], [-25, 0]], "#00f0ff");
+
+          // 6. Cán kiếm
+          dPoly([[-48, -4], [-26, -4], [-26, 4], [-48, 4]], "#14192d");
+
+          // 7. Quả táo Pommel
+          dPoly([[-58, -8], [-50, -8], [-50, 8], [-58, 8]], "#00f0ff");
+          dPoly([[-56, -4], [-52, -4], [-52, 4], [-56, 4]], "#ffffff");
           break;
         }
 
@@ -1658,7 +1695,7 @@ INDEX_HTML = """<!DOCTYPE html>
         case 29: {
           // Chòm Sao Đôi Tình Nhân (Lovers Constellation)
           {
-          const pts = {{-30, -20}, {-10, -32}, {16, -26}, {32, -8}, {10, 14}, {-18, 18}};
+          const pts = [[-30, -20], [-10, -32], [16, -26], [32, -8], [10, 14], [-18, 18]];
           for (let i = 0; i < 5; i++) {
           dLine(ctx, pts[i][0], pts[i][1], pts[i+1][0], pts[i+1][1], "#4a4c4a");
           }
@@ -1986,16 +2023,16 @@ INDEX_HTML = """<!DOCTYPE html>
           let px = -36 + col * 12;
           for (let row = 0; row < 6; row++) {
           let py = -36 + ((row * 14 + (angle * 20.0 + col * 15)) % 80);
-          uint16_t clr = (row == 5) ? TFT_WHITE : (row > 3 ? 0x07E0 : 0x03E0);
-          dRect(ctx, px, py, 4, 6, "clr");
+          let clr = (row === 5) ? "#ffffff" : (row > 3 ? "#00ff88" : "#008844");
+          dRect(ctx, px, py, 4, 6, clr);
           }
           }
           break;
         }
 
-        case 49: {
+        case 49:
+        default: {
           // Lõi Lượng Tử Quantum Core (3 Trục Gyro)
-          default:
           dCirc(ctx, 0, 0, 34, "#9c00ff");
           dEllip(ctx, 0, 0, 30, 16 + (Math.sin(angle * 2) * 10), "#00ffff");
           dEllip(ctx, 0, 0, 16 + (Math.cos(angle * 2) * 10), 30, "#ffee00");
@@ -2093,21 +2130,18 @@ INDEX_HTML = """<!DOCTYPE html>
           }
           break;
 
-        case 2: // SCENE_CYBER_RAIN
-          heroCtx.fillStyle = '#084141';
-          heroCtx.fillRect(6, 275, 26, 45); heroCtx.fillRect(76, 280, 24, 40); heroCtx.fillRect(142, 285, 24, 35);
-          heroCtx.fillStyle = '#108282';
-          heroCtx.fillRect(38, 258, 32, 62); heroCtx.fillRect(106, 262, 30, 58);
-          heroCtx.fillStyle = '#00f0ff';
-          heroCtx.fillRect(46, 268, 2, 2); heroCtx.fillRect(114, 270, 2, 2);
-          heroCtx.fillStyle = '#ffb800';
-          heroCtx.fillRect(54, 278, 2, 2);
-          heroCtx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
+        case 2: // SCENE_CYBER_RAIN (Mưa Cyberpunk Siêu Mượt - Chuẩn 1:1 Móc Khóa Thật)
           heroCtx.lineWidth = 1;
-          for (let i = 0; i < 10; i++) {
-            let rx = (i * 18 + Math.floor(Date.now() / 8)) % 172;
-            let ry = (i * 37 + Math.floor(Date.now() / 2)) % 320;
-            heroCtx.beginPath(); heroCtx.moveTo(rx, ry); heroCtx.lineTo(rx - 3, ry + 7); heroCtx.stroke();
+          for (let i = 0; i < 36; i++) {
+            let rx = (i * 17 + 5) % 172;
+            let speed = 260 + (i % 6) * 40;
+            let ry = Math.floor((Date.now() * speed / 1000 + i * 31) % 344) - 12;
+            let len = 7 + (i % 4) * 4;
+            let col = (i % 3 === 0) ? '#00f0ff' : ((i % 2 === 0) ? '#00b8d4' : '#00838f');
+            heroCtx.strokeStyle = col;
+            heroCtx.beginPath(); heroCtx.moveTo(rx, ry); heroCtx.lineTo(rx, ry + len); heroCtx.stroke();
+            heroCtx.fillStyle = '#ffffff';
+            heroCtx.fillRect(rx, ry + len - 1, 1, 1);
           }
           break;
 
@@ -2149,60 +2183,71 @@ INDEX_HTML = """<!DOCTYPE html>
           break;
       }
 
-      // 3. LAYER 1: VẬT LÝ BÓNG TIẾP XÚC CO GIÃN (CONTACT SHADOW MICRO-PHYSICS) TỶ LỆ NGHỊCH
-      let hover = -Math.sin(time); // > 0 khi bay cao
-      let rx = 22 - hover * 5;
-      let ry = 5 - hover * 1.5;
-      heroCtx.fillStyle = (hover > 0.1) ? 'rgba(8, 12, 20, 0.4)' : 'rgba(2, 4, 8, 0.85)';
-      heroCtx.beginPath();
-      heroCtx.ellipse(86, 202, Math.max(12, rx), Math.max(3, ry), 0, 0, Math.PI * 2);
-      heroCtx.fill();
+      // 3. LAYER 1: VẬT LÝ BÓNG TIẾP XÚC (Không vẽ cho kiếm thánh hoặc mưa cyber)
+      if (currentSpriteId !== 12 && currentSceneryId !== 2) {
+        let hover = -Math.sin(time);
+        let rx = 22 - hover * 5;
+        let ry = 5 - hover * 1.5;
+        heroCtx.fillStyle = (hover > 0.1) ? 'rgba(8, 12, 20, 0.4)' : 'rgba(2, 4, 8, 0.85)';
+        heroCtx.beginPath();
+        heroCtx.ellipse(86, 202, Math.max(12, rx), Math.max(3, ry), 0, 0, Math.PI * 2);
+        heroCtx.fill();
+      }
 
-      // 4. LAYER 2: ANIMATION 2.5D VOLUMETRIC TẠI TRUNG TÂM (86, 160 + sin*6)
-      let cy = 160 + Math.sin(time) * 6.0;
+      // 4. LAYER 2: ANIMATION TẠI TRUNG TÂM SÂN KHẤU
+      let cy = (currentSpriteId === 12) ? (182 + Math.sin(time) * 4.0) : (160 + Math.sin(time) * 6.0);
       renderSpecificAnimation(heroCtx, currentSpriteId, 86, cy, 1.0, time);
 
-      // 5. LAYER 3: CHỮ TIẾNG VIỆT CÓ DẤU 100% VỚI WINDOW CLIPPING & MARQUEE 3 PHA
-      heroCtx.save();
-      heroCtx.beginPath();
-      heroCtx.rect(8, 8, 156, 26);
-      heroCtx.clip();
-
+      // 5. LAYER 3: CHỮ TYPEWRITER ĐA HÀNG (MULTI-LINE WORD-WRAP TYPEWRITER ENGINE - CHUẨN 1:1 ẢNH THẬT)
       let topText = currentQuote || (CATALOG[currentSpriteId] ? CATALOG[currentSpriteId].quote : 'Dù ở thế giới nào, anh vẫn luôn tìm thấy em.');
-      let fontSize = (currentTextSize >= 2) ? 14 : 11;
-      heroCtx.font = `bold ${fontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
-      let textW = heroCtx.measureText(topText).width;
-      let viewW = 156;
-      let topY = 22;
+      let fontSize = (currentTextSize >= 2) ? 12 : 10.5;
+      heroCtx.font = `600 ${fontSize}px "SF Pro Text", "Segoe UI", Roboto, sans-serif`;
 
-      if (textW <= viewW) {
-        let x = 8 + (viewW - textW) / 2;
-        heroCtx.fillStyle = '#000000';
-        heroCtx.fillText(topText, x + 1, topY + 1);
-        heroCtx.fillStyle = currentTextColor;
-        heroCtx.fillText(topText, x, topY);
-      } else {
-        let maxScroll = textW - viewW + 36;
-        let scrollDur = maxScroll * 35;
-        let cycle = 2000 + scrollDur + 2000 + 200;
-        let t = Date.now() % cycle;
-        let xOffset = 0;
-        if (t < 2000) {
-          xOffset = 0;
-        } else if (t < 2000 + scrollDur) {
-          xOffset = Math.floor((t - 2000) / 35);
-        } else if (t < 2000 + scrollDur + 2000) {
-          xOffset = maxScroll;
+      const maxLineWidth = 156;
+      const maxLines = 4;
+      const lineHeight = 13;
+      const startY = 22;
+
+      // Tách dòng thông minh Word Wrap
+      let words = topText.split(' ');
+      let lines = [];
+      let curLine = '';
+      for (let w of words) {
+        let testLine = curLine.length === 0 ? w : curLine + ' ' + w;
+        if (heroCtx.measureText(testLine).width <= maxLineWidth) {
+          curLine = testLine;
         } else {
-          xOffset = 0;
+          if (curLine.length > 0) lines.push(curLine);
+          curLine = w;
+          if (lines.length >= maxLines - 1) break;
         }
-        let x = 8 - xOffset;
-        heroCtx.fillStyle = '#000000';
-        heroCtx.fillText(topText, x + 1, topY + 1);
-        heroCtx.fillStyle = currentTextColor;
-        heroCtx.fillText(topText, x, topY);
       }
-      heroCtx.restore();
+      if (curLine.length > 0 && lines.length < maxLines) lines.push(curLine);
+
+      // Tính toán Typewriter
+      let totalChars = lines.reduce((acc, l) => acc + l.length, 0);
+      let charDelay = 40;
+      let holdTime = 3500;
+      let cycle = (totalChars * charDelay) + holdTime;
+      let progress = cycle > 0 ? (Date.now() % cycle) : 0;
+      let visibleCount = (progress < totalChars * charDelay) ? Math.floor(progress / charDelay) : totalChars;
+
+      let charsDrawn = 0;
+      for (let i = 0; i < lines.length; i++) {
+        if (charsDrawn >= visibleCount) break;
+        let charsLeft = visibleCount - charsDrawn;
+        let lineToDraw = lines[i].substring(0, charsLeft);
+        charsDrawn += lineToDraw.length;
+
+        let lw = heroCtx.measureText(lineToDraw).width;
+        let lx = 8 + (156 - lw) / 2;
+        let ly = startY + i * lineHeight;
+
+        heroCtx.fillStyle = '#000000';
+        heroCtx.fillText(lineToDraw, lx + 1, ly + 1);
+        heroCtx.fillStyle = currentTextColor;
+        heroCtx.fillText(lineToDraw, lx, ly);
+      }
 
       // 6. RENDER 50 MINI CARDS
       CATALOG.forEach(item => {

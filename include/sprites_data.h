@@ -290,40 +290,64 @@ public:
       // 2. VŨ KHÍ & CYBERPUNK (12..21) - REAL 3D ISOMETRIC BEVELS & LIGHT GLOW
       // =========================================================================
 
-      case 12: // Thanh Kiếm Thánh Excalibur 3D Bevel Metal
+      case 12: // Thần Kiếm Tuyệt Phẩm (The Holy Claymore / Excalibur - Chuẩn 1:1 Ảnh Chụp Thật)
         {
-          float shineY = (cy - 45) + (int)((millis() / 25) % 65);
+          float cosA = 0.70710678f;
+          float sinA = -0.70710678f;
           
-          // Lưỡi kiếm 3D Bevel hai nửa sáng/tối
-          spr->fillRect(cx - 5, cy - 35, 5, 55, TFT_WHITE);    // Nửa trái bắt sáng (Highlight)
-          spr->fillRect(cx, cy - 35, 5, 55, 0x8410);          // Nửa phải đổ bóng kim loại (Shadow)
-          spr->fillTriangle(cx - 5, cy - 35, cx, cy - 52, cx, cy - 35, TFT_WHITE);
-          spr->fillTriangle(cx, cy - 35, cx, cy - 52, cx + 5, cy - 35, 0x8410);
+          auto toX = [=](float u, float v) -> int {
+            return (int)roundf(cx + u * cosA - v * sinA);
+          };
+          auto toY = [=](float u, float v) -> int {
+            return (int)roundf(cy + u * sinA + v * cosA);
+          };
 
-          // Rãnh sống kiếm phát quang xanh ngọc
-          spr->drawFastVLine(cx, cy - 48, 65, 0x07FF);
+          auto drawTiltedQuad = [&](float u1, float v1, float u2, float v2, float u3, float v3, float u4, float v4, uint16_t col) {
+            spr->fillTriangle(toX(u1,v1), toY(u1,v1), toX(u2,v2), toY(u2,v2), toX(u3,v3), toY(u3,v3), col);
+            spr->fillTriangle(toX(u1,v1), toY(u1,v1), toX(u3,v3), toY(u3,v3), toX(u4,v4), toY(u4,v4), col);
+          };
 
-          // Vệt sáng kim cương quét dọc thân kiếm (Bling Flare)
-          if (shineY >= cy - 48 && shineY <= cy + 18) {
-            spr->fillCircle(cx, (int)shineY, 4, TFT_WHITE);
-            spr->drawPixel(cx - 2, (int)shineY, 0xFFE0);
-            spr->drawPixel(cx + 2, (int)shineY, 0xFFE0);
-            spr->drawPixel(cx, (int)shineY - 2, 0xFFE0);
-            spr->drawPixel(cx, (int)shineY + 2, 0xFFE0);
+          uint16_t colAura = TFT_WHITE;
+          uint16_t colCyan = lgfx::color565(0, 240, 255);
+          uint16_t colBlade = lgfx::color565(44, 54, 94);
+          uint16_t colGrip = lgfx::color565(20, 25, 45);
+
+          // 1. Hào quang Aura trắng phát sáng viền ngoài (Outer White Aura)
+          drawTiltedQuad(-16, -18, 52, -18, 52, 18, -16, 18, colAura);
+          spr->fillTriangle(toX(52, -18), toY(52, -18), toX(66, 0), toY(66, 0), toX(52, 18), toY(52, 18), colAura);
+          drawTiltedQuad(-26, -30, -16, -30, -16, 30, -26, 30, colAura);
+          drawTiltedQuad(-50, -7, -26, -7, -26, 7, -50, 7, colAura);
+          drawTiltedQuad(-62, -12, -48, -12, -48, 12, -62, 12, colAura);
+          spr->fillTriangle(toX(-62, -12), toY(-62, -12), toX(-66, 0), toY(-66, 0), toX(-62, 12), toY(-62, 12), colAura);
+
+          // 2. Viền lưỡi Neon Cyan
+          drawTiltedQuad(-15, -15, 50, -15, 50, 15, -15, 15, colCyan);
+          spr->fillTriangle(toX(50, -15), toY(50, -15), toX(62, 0), toY(62, 0), toX(50, 15), toY(50, 15), colCyan);
+          drawTiltedQuad(-24, -27, -17, -27, -17, 27, -24, 27, colCyan);
+
+          // 3. Thân kiếm Thép Tím Chàm (Deep Slate Indigo)
+          drawTiltedQuad(-14, -10, 46, -10, 46, 10, -14, 10, colBlade);
+          spr->fillTriangle(toX(46, -10), toY(46, -10), toX(54, 0), toY(54, 0), toX(46, 10), toY(46, 10), colBlade);
+
+          // 4. Sống kiếm Fuller & 3 Cổ tự Kim Cương Runic phát sáng
+          spr->drawLine(toX(-12, 0), toY(-12, 0), toX(48, 0), toY(48, 0), colAura);
+          for (float ru : {-4.0f, 14.0f, 30.0f}) {
+            drawTiltedQuad(ru - 3, 0, ru, -4, ru + 3, 0, ru, 4, colAura);
           }
 
-          // Chuôi kiếm mạ vàng hoàng gia & Viên ngọc Ruby bảo vệ
-          spr->fillRoundRect(cx - 20, cy + 20, 40, 8, 3, 0xFFE0);
-          spr->fillRect(cx - 16, cy + 22, 32, 2, 0xFBE0);
-          spr->fillCircle(cx, cy + 24, 4, TFT_RED);
-          spr->drawCircle(cx, cy + 24, 4, 0xFFE0);
+          // 5. Chuôi kiếm hoa văn cánh chim & Ngọc trung tâm
+          drawTiltedQuad(-22, -6, -17, 0, -22, 6, -27, 0, colAura);
+          drawTiltedQuad(-22, -3, -19, 0, -22, 3, -25, 0, colCyan);
 
-          // Cán kiếm quấn dây da xanh hoàng gia
-          spr->fillRect(cx - 3, cy + 28, 6, 20, 0x0014);
-          for (int r = 0; r < 4; r++) {
-            spr->drawFastHLine(cx - 3, cy + 30 + r * 5, 6, 0xFFE0);
+          // 6. Cán kiếm quấn dây da xanh hoàng gia
+          drawTiltedQuad(-48, -4, -26, -4, -26, 4, -48, 4, colGrip);
+          for (float gu = -46; gu <= -26; gu += 4.5f) {
+            spr->drawLine(toX(gu, -4), toY(gu, -4), toX(gu + 2, 4), toY(gu + 2, 4), colCyan);
           }
-          spr->fillCircle(cx, cy + 50, 6, 0xFFE0);
+
+          // 7. Quả táo đuôi Pommel & Ngọc Lam Bảo
+          drawTiltedQuad(-58, -8, -50, -8, -50, 8, -58, 8, colCyan);
+          drawTiltedQuad(-56, -4, -52, -4, -52, 4, -56, 4, colAura);
         }
         break;
 

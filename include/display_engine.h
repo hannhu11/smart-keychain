@@ -80,9 +80,9 @@ public:
   float breathAngle = 0.0f;
 
   // Cấu hình Kiểu chữ & Bối cảnh trực tiếp từ Web Designer
-  uint16_t currentTextColor = 0xFDC0; // Vàng Kim #FFB800 (RGB565 chuẩn)
-  uint8_t currentTextSize = 1;         // 1: 16px Chuẩn, 2: To 24-32px
-  uint8_t currentSceneryId = 0;        // 0: Phòng ngủ, 1: Anh đào, 2: Mưa Cyber, 3: Rừng đom đóm, 4: Biển chiều
+  uint16_t currentTextColor = TFT_WHITE; // Trắng Kim Cương #FFFFFF chuẩn ảnh chụp thật
+  uint8_t currentTextSize = 1;         // 1: 16px Chuẩn
+  uint8_t currentSceneryId = 2;        // Mặc định: Mưa Cyberpunk siêu mượt chuẩn ảnh thật 100%
 
   String customQuote = "";
 
@@ -146,7 +146,7 @@ public:
       "Dù đi lạc khắp thế gian, anh vẫn sẽ tìm về bên em.",
       "Tự do lớn nhất của anh là được yêu em.",
       "Mọi nhẫn thuật đều vô nghĩa trước nụ cười của em.",
-      "Thanh gươm này chỉ vung lên để bảo vệ một mình em.",
+      "Hold me long enough\nand you will feel what\nI have already decided\nabout you.",
       "Lời nguyền ngọt ngào nhất là được bên em trọn kiếp.",
       "Ngọn lửa này sẽ sưởi ấm cho em suốt mùa đông dài.",
       "Năng lượng vô hạn cũng không sáng bằng mắt em.",
@@ -287,9 +287,6 @@ public:
     switch (currentSceneryId) {
       case 0: {
         // SCENE_COZY_BEDROOM (Phòng ngủ ấm áp):
-        // Nền ánh đèn ngủ vàng dịu khuếch tán ở góc phòng đáy (Y = 270 - 320)
-        spr->fillRect(0, 270, SCREEN_WIDTH, 50, 0x18C1);
-        spr->fillRect(0, 290, SCREEN_WIDTH, 30, 0x2122);
 
 
         // Hạt bụi nắng ấm & làn khói trà thơm bay lượn từ dưới lên
@@ -329,32 +326,17 @@ public:
       }
 
       case 2: {
-        // SCENE_CYBER_RAIN (Mưa Neon Cyberpunk):
-        // Skyline các tòa nhà chọc trời Obsidian ở chân trời (Y = 265 - 320)
-        spr->fillRect(6, 275, 26, 45, 0x0841);
-        spr->fillRect(38, 258, 32, 62, 0x1082);
-        spr->fillRect(76, 280, 24, 40, 0x0841);
-        spr->fillRect(106, 262, 30, 58, 0x1082);
-        spr->fillRect(142, 285, 24, 35, 0x0841);
-
-        // Cột ăng-ten phát sóng & đèn đỏ định vị
-        spr->drawFastVLine(20, 267, 8, 0x07FF);
-        spr->drawPixel(20, 266, TFT_RED);
-        spr->drawFastVLine(120, 254, 8, 0x001F);
-        spr->drawPixel(120, 253, TFT_RED);
-
-        // Các ô cửa sổ lit pixel phát sáng cyberpunk
-        spr->drawPixel(46, 268, TFT_CYAN);
-        spr->drawPixel(54, 278, TFT_YELLOW);
-        spr->drawPixel(114, 270, TFT_CYAN);
-        spr->drawPixel(122, 284, 0x07E0);
-        spr->drawFastHLine(0, 319, SCREEN_WIDTH, 0x07FF);
-
-        // Vệt mưa rơi chéo tốc độ cao mờ nhòe Alpha
-        for (int i = 0; i < 10; i++) {
-          int rx = (i * 18 + (int)(millis() / 8)) % SCREEN_WIDTH;
-          int ry = ((i * 37) + (int)(millis() / 2)) % SCREEN_HEIGHT;
-          spr->drawLine(rx, ry, rx - 3, ry + 7, 0x4A69);
+        // SCENE_CYBER_RAIN (Mưa Neon Cyberpunk Siêu Mượt - Chuẩn 1:1 Ảnh Móc Khóa Thật):
+        // Mưa số rơi thẳng đứng xuyên suốt toàn màn hình (Y = 0 -> 320), không có thanh chân trời chắn đáy
+        for (int i = 0; i < 36; i++) {
+          int rx = (i * 17 + 5) % SCREEN_WIDTH;
+          int speed = 260 + (i % 6) * 40; // 260 - 460 px/s
+          int ry = (int)((millis() * speed / 1000 + i * 31) % (SCREEN_HEIGHT + 24)) - 12;
+          int len = 7 + (i % 4) * 4; // 7 - 19px
+          
+          uint16_t rainColor = (i % 3 == 0) ? 0x07FF : ((i % 2 == 0) ? 0x05DF : 0x035B);
+          spr->drawFastVLine(rx, ry, len, rainColor);
+          spr->drawPixel(rx, ry + len - 1, TFT_WHITE); // Giọt đầu mưa sáng trắng rực rỡ
         }
         break;
       }
@@ -412,61 +394,112 @@ public:
     }
   }
 
-  // 2. CHỮ TYPEWRITER / LỜI NHẮN UNICODE CÓ DẤU 100% VỚI WINDOW CLIPPING & MARQUEE 3 PHA
+  // 2. CHỮ TYPEWRITER ĐA HÀNG (MULTI-LINE WORD-WRAP TYPEWRITER ENGINE - CHUẨN 1:1 ẢNH THẬT)
   void renderTopTypography(LGFX_Sprite* spr) {
-    String topText = (customQuote.length() > 0) ? customQuote : String(getThemeDefaultQuote(currentSpriteIdx));
+    String fullText = (customQuote.length() > 0) ? customQuote : String(getThemeDefaultQuote(currentSpriteIdx));
 
-    // Kích hoạt font Unicode U8g2 tiếng Việt có dấu đầy đủ
     spr->setFont(&fonts::fontVietnamese);
-    spr->setTextSize(currentTextSize);
+    spr->setTextSize(1);
 
-    // Đo bề rộng thực tế của chuỗi ký tự UTF-8 bằng pixel
-    int textW = spr->textWidth(topText.c_str());
-    int viewW = SCREEN_WIDTH - 16; // 156px (từ x=8 đến x=164)
-    int viewH = (currentTextSize >= 2) ? 32 : 22;
-    int topY = 8;
+    const int maxLineWidth = SCREEN_WIDTH - 16; // 156px (x=8 đến 164)
+    const int maxLines = 4;
+    const int lineHeight = 13;
+    const int startY = 16;
 
-    // Giới hạn vùng vẽ an toàn (Window Clipping) chống tràn ra ngoài
-    spr->setClipRect(8, topY, viewW, viewH);
-
-    if (textW <= viewW) {
-      // Câu ngắn: Căn giữa hoàn hảo, không cần cuộn
-      int x = 8 + (viewW - textW) / 2;
-      spr->setTextColor(TFT_BLACK, TFT_BLACK);
-      spr->drawString(topText.c_str(), x + 1, topY + 1);
-      spr->setTextColor(currentTextColor, TFT_BLACK);
-      spr->drawString(topText.c_str(), x, topY);
+    std::vector<String> lines;
+    if (fullText.indexOf('\n') != -1) {
+      int lineStart = 0;
+      int tLen = fullText.length();
+      for (int i = 0; i <= tLen; i++) {
+        if (i == tLen || fullText[i] == '\n') {
+          if (lines.size() < (size_t)maxLines) {
+            String l = fullText.substring(lineStart, i);
+            l.trim();
+            lines.push_back(l);
+          }
+          lineStart = i + 1;
+        }
+      }
     } else {
-      // Câu dài: Thuật toán Marquee 3 Pha (Dừng 2s đầu -> Cuộn êm -> Dừng 2s cuối -> Mờ nhẹ)
-      int maxScroll = textW - viewW + 36; // khoảng đệm 36px
-      uint32_t scrollDuration = maxScroll * 35; // 35ms mỗi pixel
-      uint32_t cycleTime = 2000 + scrollDuration + 2000 + 200; // Tổng chu kỳ
-      uint32_t t = millis() % cycleTime;
-
-      int xOffset = 0;
-      if (t < 2000) {
-        // Pha 1: Dừng 2.0s ở đầu câu để đọc
-        xOffset = 0;
-      } else if (t < 2000 + scrollDuration) {
-        // Pha 2: Cuộn chữ êm ái
-        xOffset = (int)((t - 2000) / 35);
-      } else if (t < 2000 + scrollDuration + 2000) {
-        // Pha 3: Dừng 2.0s ở cuối câu
-        xOffset = maxScroll;
-      } else {
-        // Điểm nối: Reset về đầu
-        xOffset = 0;
+      // Tách chuỗi thành các từ (Word-Wrap)
+      std::vector<String> words;
+      int strLen = fullText.length();
+      int wordStart = 0;
+      for (int i = 0; i <= strLen; i++) {
+        if (i == strLen || fullText[i] == ' ') {
+          if (i > wordStart) {
+            words.push_back(fullText.substring(wordStart, i));
+          }
+          wordStart = i + 1;
+        }
       }
 
-      int drawX = 8 - xOffset;
-      spr->setTextColor(TFT_BLACK, TFT_BLACK);
-      spr->drawString(topText.c_str(), drawX + 1, topY + 1);
-      spr->setTextColor(currentTextColor, TFT_BLACK);
-      spr->drawString(topText.c_str(), drawX, topY);
+      // Gom từ vào tối đa 4 dòng theo độ rộng pixel thực tế
+      String curLine = "";
+      for (size_t i = 0; i < words.size(); i++) {
+        String testLine = (curLine.length() == 0) ? words[i] : (curLine + " " + words[i]);
+        if (spr->textWidth(testLine.c_str()) <= maxLineWidth) {
+          curLine = testLine;
+        } else {
+          if (curLine.length() > 0) lines.push_back(curLine);
+          curLine = words[i];
+          if (lines.size() >= (size_t)(maxLines - 1)) break;
+        }
+      }
+      if (curLine.length() > 0 && lines.size() < (size_t)maxLines) {
+        lines.push_back(curLine);
+      }
     }
 
-    // Xóa vùng kẹp sau khi hoàn tất hiển thị
-    spr->clearClipRect();
+    // Đếm tổng số ký tự UTF-8 để tính toán chu kỳ Typewriter
+    int totalChars = 0;
+    for (size_t i = 0; i < lines.size(); i++) {
+      int bIdx = 0, lBytes = lines[i].length();
+      const char* raw = lines[i].c_str();
+      while (bIdx < lBytes) {
+        uint8_t c = (uint8_t)raw[bIdx];
+        bIdx += ((c & 0xE0) == 0xC0) ? 2 : (((c & 0xF0) == 0xE0) ? 3 : (((c & 0xF8) == 0xF0) ? 4 : 1));
+        totalChars++;
+      }
+    }
+
+    // Tốc độ đánh máy: 40ms/ký tự, dừng 3500ms sau khi gõ xong
+    uint32_t charDelay = 40;
+    uint32_t holdTime = 3500;
+    uint32_t cycle = (totalChars * charDelay) + holdTime;
+    uint32_t progress = (cycle > 0) ? (millis() % cycle) : 0;
+    int visibleCount = (progress < (uint32_t)(totalChars * charDelay)) ? (int)(progress / charDelay) : totalChars;
+
+    // Vẽ từng dòng chữ (Căn giữa mỗi dòng cân đối)
+    int charsDrawn = 0;
+    for (size_t i = 0; i < lines.size(); i++) {
+      if (charsDrawn >= visibleCount) break;
+
+      int charsLeft = visibleCount - charsDrawn;
+      int bIdx = 0, charCount = 0, lBytes = lines[i].length();
+      const char* raw = lines[i].c_str();
+
+      while (bIdx < lBytes && charCount < charsLeft) {
+        uint8_t c = (uint8_t)raw[bIdx];
+        bIdx += ((c & 0xE0) == 0xC0) ? 2 : (((c & 0xF0) == 0xE0) ? 3 : (((c & 0xF8) == 0xF0) ? 4 : 1));
+        charCount++;
+      }
+
+      String lineToDraw = lines[i].substring(0, bIdx);
+      charsDrawn += charCount;
+
+      int lineY = startY + (int)i * lineHeight;
+      int lw = spr->textWidth(lineToDraw.c_str());
+      int lx = (SCREEN_WIDTH - lw) / 2;
+
+      // Đổ bóng đen phía sau
+      spr->setTextColor(TFT_BLACK, TFT_BLACK);
+      spr->drawString(lineToDraw.c_str(), lx + 1, lineY + 1);
+
+      // Chữ màu chính (Trắng/Vàng kim/Cyan)
+      spr->setTextColor(currentTextColor, TFT_BLACK);
+      spr->drawString(lineToDraw.c_str(), lx, lineY);
+    }
   }
 
   // MÀN HÌNH CẤU HÌNH WI-FI & THÔNG TIN HỆ THỐNG (Chỉ hiện khi giữ nút >= 2.5s)
@@ -543,26 +576,28 @@ public:
     // 2. LAYER 0: Bối cảnh phong cảnh sống (5 Living Dioramas)
     renderLivingScenery(&sprite, floatAngle);
 
-    // 3. LAYER 1: Hiệu ứng hạt bụi sao kim cương Bling Bling
-    particles.updateAndRender(&sprite);
+    // 3. LAYER 1: Hiệu ứng hạt bụi sao kim cương Bling Bling (Chỉ chạy ở cảnh không có mưa)
+    if (currentSceneryId != 2) {
+      particles.updateAndRender(&sprite);
+    }
 
-    // 4. LAYER 2: Sân khấu chính trung tâm (cy = 160)
-    float floatY = 160.0f + sinf(floatAngle) * 6.0f;
+    // 4. LAYER 2: Sân khấu chính trung tâm
+    float centerY = (currentSpriteIdx == 12) ? (182.0f + sinf(floatAngle) * 4.0f) : (160.0f + sinf(floatAngle) * 6.0f);
     float breath = (sinf(breathAngle) + 1.0f) * 0.5f;
 
     int cx = SCREEN_WIDTH / 2; // 86
-    int cy = (int)floatY;
+    int cy = (int)centerY;
 
-    // VẬT LÝ BÓNG TIẾP XÚC (CONTACT SHADOW MICRO-PHYSICS) TỶ LỆ NGHỊCH VỚI ĐỘ CAO
-    // Khi nhân vật bay lên cao (floatAngle sin < 0): bóng chân thu nhỏ và mờ dần
-    // Khi nhân vật hạ sát mặt đất (floatAngle sin > 0): bóng to ra và đậm đen
-    float hover = -sinf(floatAngle); // > 0 khi bay cao
-    int rx = (int)(22.0f - hover * 5.0f);
-    int ry = (int)(5.0f - hover * 1.5f);
-    uint16_t shadowCol = (hover > 0.1f) ? 0x0841 : 0x18C3;
-    sprite.fillEllipse(cx, 202, rx, ry, shadowCol);
+    // Bóng tiếp xúc chỉ vẽ khi nhân vật đứng đất (không vẽ cho kiếm thánh hoặc mưa cyber)
+    if (currentSpriteIdx != 12 && currentSceneryId != 2) {
+      float hover = -sinf(floatAngle); // > 0 khi bay cao
+      int rx = (int)(22.0f - hover * 5.0f);
+      int ry = (int)(5.0f - hover * 1.5f);
+      uint16_t shadowCol = (hover > 0.1f) ? 0x0841 : 0x18C3;
+      sprite.fillEllipse(cx, 202, rx, ry, shadowCol);
+    }
 
-    // Vẽ Theme Animation 2.5D Volumetric
+    // Vẽ Theme Animation 2.5D Volumetric Hero Scale
     SpriteRenderer::drawTheme(&sprite, currentSpriteIdx, cx, cy, breath, floatAngle);
 
     // 5. LAYER 3: CHỮ NỔI Ở ĐỈNH (Y = 8 - 28) CÓ DẤU 100%

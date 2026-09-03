@@ -121,12 +121,12 @@
   },
   {
     "id": 12,
-    "name": "Thanh Kiếm Thánh Excalibur",
+    "name": "Thần Kiếm Tuyệt Phẩm (The Holy Claymore)",
     "category": "Vũ Khí & Cyberpunk",
     "tab": "weapons",
     "icon_type": "sword",
-    "palette": "Golden Holy",
-    "quote": "Thanh kiếm ánh sáng thề bảo vệ em trọn đời.",
+    "palette": "Obsidian Neon Cyan",
+    "quote": "Hold me long enough and you will feel what I have already decided about you.",
     "shader": "Holy Light Radiance Beam"
   },
   {

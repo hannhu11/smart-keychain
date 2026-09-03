@@ -29,3 +29,8 @@
 - [x] **Tiêu chuẩn 3 (Card Cyber Glass):** Viền sáng neon, nhãn "ĐANG CHIẾU" nổi bật khi theme được kích hoạt.
 - [x] **Tiêu chuẩn 4 (Tương Tác Chạm Trên Simulator):** Click vào màn hình mô phỏng tự động nhảy Theme kế tiếp.
 - [x] **Tiêu chuẩn 5 (Deploy VPS Hoàn Tất):** Server VPS `161.118.196.170` đã chạy bản Studio mới nhất 100%.
+- [x] **Tiêu chuẩn 6 (Bộ Chữ Đa Hàng Typewriter 1:1 Ảnh Thật):** Xuống dòng tự động 3–4 hàng, gõ chữ Typewriter sống động $40\text{ms}$/chữ, dừng đọc $3.5\text{s}$, căn giữa cân đối, hỗ trợ đầy đủ tiếng Việt có dấu Unicode U8g2.
+- [x] **Tiêu chuẩn 7 (Thần Kiếm Tuyệt Phẩm The Holy Claymore):** Tái tạo chuẩn xác 1:1 theo ảnh thực tế của người dùng: Nghiêng $45^\circ$, hào quang Aura trắng phát sáng viền ngoài, cạnh ngọc Neon Cyan, sống kiếm 3 cổ tự kim cương runic phát sáng, chuôi kiếm cánh chim.
+- [x] **Tiêu chuẩn 8 (Mưa Kỹ Thuật Số Cyberpunk Siêu Mượt):** 36 vệt mưa Cyan rơi thẳng đứng siêu tốc ($260 - 460\text{px/s}$) từ đỉnh xuống đáy màn hình AMOLED, loại bỏ triệt để các khối hộp sàn cắt ngang.
+- [x] **Tiêu chuẩn 9 (Khắc Phục Dứt Điểm Web Trắng Xóa):** Loại bỏ hàm rỗng `serve_index()` trùng lặp trên FastAPI; sửa các lỗi cú pháp C++ trong Canvas JS (`{{...}}`, `uint16_t`, `default:`); Canvas Studio và 50 cards chạy mượt mà 60 FPS trên `https://app.signsafevn.online`.
+- [x] **Tiêu chuẩn 10 (Mã Nguồn Sạch Trên GitHub):** Đẩy toàn bộ source code sạch (loại trừ 100% private keys, ssh keys, token bí mật) lên repository `https://github.com/hannhu11/smart-keychain`.

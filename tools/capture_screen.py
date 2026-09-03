@@ -63,7 +63,7 @@ def capture():
     for y in range(HEIGHT):
         for x in range(WIDTH):
             idx = (y * WIDTH + x) * 2
-            pixel565 = raw_data[idx] | (raw_data[idx + 1] << 8)
+            pixel565 = (raw_data[idx] << 8) | raw_data[idx + 1]
             r = ((pixel565 >> 11) & 0x1F) * 255 // 31
             g = ((pixel565 >> 5) & 0x3F) * 255 // 63
             b = (pixel565 & 0x1F) * 255 // 31

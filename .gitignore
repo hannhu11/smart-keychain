@@ -44,5 +44,8 @@ Thumbs.db
 # Screen capture dumps & temp files
 tools/screen_dump.png
 tools/test_*.png
+tools/test_*.js
+tools/perfect_*.png
 tools/*.tmp
+tools/*.txt
 tools/__pycache__/
