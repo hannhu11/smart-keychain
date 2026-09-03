@@ -448,5 +448,40 @@
     "palette": "#cbd5e1",
     "quote": "Ánh trăng soi sáng ước thề đôi ta mãi bền lâu.",
     "description": "Mặt trăng tròn đầy màu bạc với các biển bazan sẫm màu và miệng hố thiên thạch Tycho nổi khối 3D rõ nét trong đêm huyền ảo."
+  },
+  {
+    "id": 50,
+    "name": "Celebi - Tinh Linh Rừng Xanh Thời Gian",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Thân củ hành men sứ trong suốt SSS, cánh tiên lụa phản quang, ăng-ten ngọc bích chóp lam dạ quang.",
+    "quote": "Bảo vệ từng mầm xanh của rừng già, chở che thời gian bình yên."
+  },
+  {
+    "id": 51,
+    "name": "Jirachi - Ngôi Sao Ban Điều Ước Thiên Hà",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Mũ ngôi sao 3 cánh vàng hoàng kim, 3 dải bùa Tanzaku lụa xanh ngọc, mắt thứ ba thanh tịnh trên bụng.",
+    "quote": "Ngôi sao băng thắp sáng ước nguyện triệu năm trong đêm thiên hà."
+  },
+  {
+    "id": 52,
+    "name": "Shaymin - Nhím Hoa Cỏ Gracidea",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Lưng cỏ ngọc mướt mát, hai đóa hoa hồng Gracidea nở rộ hai bên tai tỏa ngát hương thơm.",
+    "quote": "Lòng biết ơn chân thành sẽ nở rộ ngàn hoa thơm ngát."
+  },
+  {
+    "id": 53,
+    "name": "Victini - Tinh Linh Chiến Thắng Tai Chữ V",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Đôi tai chữ V cam rực lửa kiêu hãnh, cánh dơi nhí sau lưng, bàn tay giơ biểu tượng chữ V chiến thắng.",
+    "quote": "Chiến thắng vinh quang thuộc về những trái tim kiên định và quả cảm."
+  },
+  {
+    "id": 54,
+    "name": "Manaphy - Hoàng Tử Biển Sâu",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Thân nước xanh lam ngọc trong suốt men sứ, ăng-ten chữ S uốn lượn, viên hồng ngọc Ruby rực sáng trước ngực.",
+    "quote": "Trái tim đại dương bao la xoa dịu mọi giông bão cuộc đời."
   }
 ]

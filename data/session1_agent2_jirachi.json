@@ -1,0 +1,308 @@
+{
+  "metadata": {
+    "session": "session1_agent2",
+    "agent_role": "Nghệ Sĩ Điêu Khắc Jirachi Ngôi Sao Ban Điều Ước Thiên Hà (Jirachi Wish Maker 3D Sculptor)",
+    "version": "2.0.0-PRO-MAX",
+    "created_date": "2026-09-04",
+    "target_display": "ST7789 240x280 / 172x320 16-bit RGB565 IPS Display & Modern HTML5 Canvas 2D",
+    "reference_image": "02_Mythic_Jirachi_Wish_Maker.png",
+    "references": [
+      "02_Mythic_Jirachi_Wish_Maker.png (Official Master Artwork 100% Fidelity)",
+      "Reffernce/NHOM_1_FRONTEND_UIUX/ui-ux-pro-max-skill-main (High-fidelity design intelligence, micro-interactions, anti-cheap-icon)",
+      "Reffernce/NHOM_1_FRONTEND_UIUX/react-bits-main (Viscoelastic spring physics, fluid canvas motion, particle sparkles)",
+      "Reffernce/NHOM_1_FRONTEND_UIUX/impeccable-main (Craft floor, material fidelity, organic depth)"
+    ],
+    "core_design_rules": {
+      "eye_rule": "Mắt Pha Lê 3 Điểm Sáng (3-Point Specular Crystal Eyes: Điểm 1 direct keylight 2x2 góc 10h, Điểm 2 ground bounce 1x1 góc 4h, Điểm 3 surface wetness glint + vệt tụ quang đáy mắt ngọc lam).",
+      "breathing_rule": "Squash & Stretch 5% Harmonic Breathing (sY = 1.0 + 0.05*sin(t), sX = 1.0 - 0.03*sin(t) bảo toàn thể tích thực tế).",
+      "tanzaku_flutter_rule": "3 Dải bùa xanh ngọc bay phất phơ trễ pha Delta Phi = 0.45 rad mềm mại như lụa.",
+      "third_eye_rule": "Mắt thứ ba (True Eye of Truth) nhắm khép thành đường cong tinh tế trên bụng.",
+      "popmart_vinyl_rule": "Toàn bộ hình thể được điêu khắc 3D Pop Mart Vinyl với độ chuyển bóng đa lớp, bề mặt trắng sứ bóng mịn SSS và vát cạnh đa diện mũ sao.",
+      "contact_shadow_rule": "Bóng tiếp xúc mặt sàn co giãn biến thiên ngược pha với chu kỳ lơ lửng."
+    }
+  },
+  "characters": [
+    {
+      "id": 202,
+      "code": "MYTHIC_JIRACHI_WISH_MAKER",
+      "name_vi": "Jirachi Ngôi Sao Ban Điều Ước Thiên Hà (Thần Thú Nguyện Ước Nghìn Năm)",
+      "name_en": "Mythic Jirachi the Celestial Wish Maker (Millennium Comet Guardian)",
+      "japanese_original_name": "ジラーチ (Jirachi - 千年の願い星)",
+      "species": "Stella Desiderium Divina (Wish Pokémon)",
+      "category": "Linh Thú Thần Thoại Tối Cao (Mythical Celestial Deity)",
+      "element": "Steel / Psychic / Celestial Starlight (Thiên Thể Ánh Kim & Tâm Linh Tinh Tú)",
+      "quote": "Cứ mỗi một nghìn năm, khi sao chổi thiên niên kỷ lướt qua bầu trời đêm, em sẽ thức giấc bảy ngày để ban điều ước cho những tâm hồn thuần khiết nhất.",
+      "mythology_lore_excerpts": [
+        "千年に一度、7日間だけ目を覚まし、清らかな声で歌う者に願いを叶える伝説のポケモン (Cứ mỗi nghìn năm, em thức giấc trong 7 ngày và ban điều ước cho người sở hữu trái tim thuần khiết).",
+        "頭の星の角についた3枚の短冊に願い事を書くと、目覚めたジラーチがその願いを現実にする (Viết điều ước lên 3 dải bùa xanh ngọc treo trên 3 đỉnh sao, Jirachi sẽ biến điều ước thành hiện thực).",
+        "お腹にある『真実の目』は普段は閉じており、千年の彗星のエネルギーを吸収するときだけ開かれる (Mắt thứ ba 'True Eye of Truth' trên bụng luôn nhắm nghiền thanh tịnh, chỉ mở ra để hấp thu năng lượng sao chổi nghìn năm).",
+        "その体は星屑のように軽く、天の羽衣のような布をなびかせて銀河を優雅に漂う (Thân thể nhẹ như bụi sao, tà áo lụa bay phấp phới lơ lửng khắp dải ngân hà)."
+      ],
+      "palette": [
+        {
+          "name": "col_star_gold_highlight",
+          "hex": "#FFF7A0",
+          "rgb565": "0xFFB4",
+          "optical_function": "Viền phản xạ lóa sáng Fresnel vàng hoàng kim đỉnh mũ"
+        },
+        {
+          "name": "col_star_gold_light",
+          "hex": "#FEF08A",
+          "rgb565": "0xFF91",
+          "optical_function": "Vùng diện đón sáng chính của mũ ngôi sao 3 cánh"
+        },
+        {
+          "name": "col_star_gold_main",
+          "hex": "#FACC15",
+          "rgb565": "0xFE62",
+          "optical_function": "Sắc vàng hoàng kim nguyên bản của mũ ngôi sao"
+        },
+        {
+          "name": "col_star_gold_warm",
+          "hex": "#EAB308",
+          "rgb565": "0xED81",
+          "optical_function": "Màu vàng hổ phách trung gian tạo khối thể tích 3D Pop Mart"
+        },
+        {
+          "name": "col_star_gold_shadow",
+          "hex": "#CA8A04",
+          "rgb565": "0xCC40",
+          "optical_function": "Bóng đổ nếp gấp khối mũ sao và sườn dưới cánh"
+        },
+        {
+          "name": "col_star_gold_deep",
+          "hex": "#854D0E",
+          "rgb565": "0x8261",
+          "optical_function": "Bóng sâu gầm mũ sao giáp ranh đỉnh đầu"
+        },
+        {
+          "name": "col_lappet_gold_main",
+          "hex": "#FACC15",
+          "rgb565": "0xFE62",
+          "optical_function": "Tai mũ rủ hai bên má - diện đón sáng"
+        },
+        {
+          "name": "col_lappet_gold_shadow",
+          "hex": "#CA8A04",
+          "rgb565": "0xCC40",
+          "optical_function": "Tai mũ rủ hai bên má - diện đổ bóng khối trụ tròn"
+        },
+        {
+          "name": "col_tanzaku_cyan_bright",
+          "hex": "#A5F3FC",
+          "rgb565": "0xA79F",
+          "optical_function": "Chóp viền đón sáng lấp lánh dải bùa nguyện ước"
+        },
+        {
+          "name": "col_tanzaku_cyan_main",
+          "hex": "#06B6D4",
+          "rgb565": "0x05BA",
+          "optical_function": "Sắc xanh ngọc lam bích Tanzaku Wish Tag chủ đạo"
+        },
+        {
+          "name": "col_tanzaku_cyan_deep",
+          "hex": "#0E7490",
+          "rgb565": "0x0BB2",
+          "optical_function": "Vùng bóng đổ nếp uốn lượn dải bùa ngọc lam"
+        },
+        {
+          "name": "col_tanzaku_glyph",
+          "hex": "#CFFAFE",
+          "rgb565": "0xCFDF",
+          "optical_function": "Ký tự ước nguyện cổ thiên hà chạm nổi trên dải bùa"
+        },
+        {
+          "name": "col_body_porcelain",
+          "hex": "#FFFFFF",
+          "rgb565": "0xFFFF",
+          "optical_function": "Sắc trắng sữa sứ tinh khiết thân Pop Mart Vinyl"
+        },
+        {
+          "name": "col_body_creamy",
+          "hex": "#F8FAFC",
+          "rgb565": "0xFFDF",
+          "optical_function": "Thân trắng kem phản quang tán xạ dưới bề mặt SSS"
+        },
+        {
+          "name": "col_body_soft_shadow",
+          "hex": "#E2E8F0",
+          "rgb565": "0xE75E",
+          "optical_function": "Bóng đổ thể tích 3D thân tròn mũm mĩm phúng phính"
+        },
+        {
+          "name": "col_body_deep_crease",
+          "hex": "#CBD5E1",
+          "rgb565": "0xCEBC",
+          "optical_function": "Rãnh khớp nối cằm, nách tay và háng chân"
+        },
+        {
+          "name": "col_third_eye_seam",
+          "hex": "#0F172A",
+          "rgb565": "0x08A5",
+          "optical_function": "Đường cong mắt thứ ba khép kín tĩnh lặng trên bụng"
+        },
+        {
+          "name": "col_third_eye_crease",
+          "hex": "#94A3B8",
+          "rgb565": "0x9517",
+          "optical_function": "Viền rãnh mí mắt thứ ba hòa vào lớp da trắng sứ"
+        },
+        {
+          "name": "col_tear_mark_cyan",
+          "hex": "#0284C7",
+          "rgb565": "0x0438",
+          "optical_function": "Vết bùa lệ ước xanh ngọc lam hình tam giác dưới khóe mắt"
+        },
+        {
+          "name": "col_eye_black_gloss",
+          "hex": "#020617",
+          "rgb565": "0x0022",
+          "optical_function": "Hốc mắt và đồng tử đen pha lê sâu thẳm"
+        },
+        {
+          "name": "col_eye_iris_navy",
+          "hex": "#1E1B4B",
+          "rgb565": "0x18C9",
+          "optical_function": "Mống mắt tím chàm sâu thẳm vũ trụ"
+        },
+        {
+          "name": "col_eye_caustic_cyan",
+          "hex": "#38BDF8",
+          "rgb565": "0x3DFF",
+          "optical_function": "Vệt tụ quang khúc xạ ngọc lam đáy mắt"
+        },
+        {
+          "name": "col_eye_spec_primary",
+          "hex": "#FFFFFF",
+          "rgb565": "0xFFFF",
+          "optical_function": "Điểm bắt sáng chính 2x2 góc 10h"
+        },
+        {
+          "name": "col_eye_spec_secondary",
+          "hex": "#E0F2FE",
+          "rgb565": "0xE79F",
+          "optical_function": "Điểm bắt sáng phụ 1x1 góc 4h"
+        },
+        {
+          "name": "col_blush_powder_pink",
+          "hex": "#F472B6",
+          "rgb565": "0xF396",
+          "optical_function": "Má hồng phấn Chibi phúng phính ngọt ngào"
+        },
+        {
+          "name": "col_blush_soft_pink",
+          "hex": "#FBCFE8",
+          "rgb565": "0xFE7D",
+          "optical_function": "Vầng hào quang má hồng tán mịn tự nhiên"
+        },
+        {
+          "name": "col_mouth_smile",
+          "hex": "#334155",
+          "rgb565": "0x320A",
+          "optical_function": "Khóe miệng cười tí hon tinh nghịch"
+        },
+        {
+          "name": "col_sash_silk_light",
+          "hex": "#FEF9C3",
+          "rgb565": "0xFFD8",
+          "optical_function": "Tà áo lụa thiên hà mỏng manh đón nắng sao"
+        },
+        {
+          "name": "col_sash_silk_main",
+          "hex": "#FDE047",
+          "rgb565": "0xFF08",
+          "optical_function": "Tà áo lụa vàng hoàng kim bay bổng sau lưng"
+        },
+        {
+          "name": "col_sash_silk_shadow",
+          "hex": "#EAB308",
+          "rgb565": "0xED81",
+          "optical_function": "Nếp lượn sóng tà áo lụa bóng đổ phía sau"
+        },
+        {
+          "name": "col_contact_shadow",
+          "hex": "#94A3B8",
+          "rgb565": "0x9517",
+          "optical_function": "Bóng tiếp xúc mặt sàn co giãn theo chu kỳ lơ lửng"
+        },
+        {
+          "name": "col_stardust_gold",
+          "hex": "#FDE047",
+          "rgb565": "0xFF08",
+          "optical_function": "Bụi sao vàng hoàng kim lơ lửng quanh đỉnh sao"
+        },
+        {
+          "name": "col_stardust_cyan",
+          "hex": "#67E8F9",
+          "rgb565": "0x675F",
+          "optical_function": "Bụi sao lam ngọc phát quang ✨"
+        },
+        {
+          "name": "col_diamond_sparkle",
+          "hex": "#FFFFFF",
+          "rgb565": "0xFFFF",
+          "optical_function": "Tia sáng kim cương 4 cánh thuần khiết"
+        }
+      ],
+      "volumetric_anatomy": {
+        "style_archetype": "High-End Pop Mart / Vinyl Blind Box 3D Figurine with Subsurface Scattering & Ceramic Sheen",
+        "star_helm": {
+          "description": "Mũ ngôi sao 3 cánh vàng hoàng kim (Golden 3-Pointed Star Helm). Cấu trúc nón đỉnh cao chót vót và 2 cánh sừng dang rộng hai bên. Diện vát 3D đa góc (faceted polygonal bevels) đón sáng rực rỡ từ góc 10h. Hai tai mũ tròn rủ hai bên má tạo đường cong bầu bĩnh ôm lấy khuôn mặt.",
+          "proportions": "Đỉnh nón y = -46px, cánh trái x = -46px, cánh phải x = +46px. Tỷ lệ cân xứng vàng thiên thể."
+        },
+        "tanzaku_wish_tags": {
+          "description": "3 Dải bùa nguyện ước xanh ngọc lam (Tanzaku Wish Tags) đung đưa nhẹ nhàng tại 3 đỉnh sao. Bề mặt mang sắc ngọc lam bích (Cyan Turquoise) với ký tự thiên hà cổ đại chạm nổi bằng ánh sáng stardust trắng tinh.",
+          "flutter_physics": "Mô hình dải lụa mềm hai đoạn (dual-segment cloth wave) với góc lệch pha Delta Phi = 0.45 rad."
+        },
+        "porcelain_chubby_body": {
+          "description": "Thân trắng sữa tròn vo phúng phính (Chubby Teardrop Silhouette). Hiệu ứng nhựa dẻo Vinyl Pop Mart mịn màng, bề mặt phản xạ ánh sáng trắng kem dịu (SSS Porcelain Sheen). Hai chân bánh bao và hai tay xòe tí hon mũm mĩm.",
+          "squash_and_stretch": "Đàn hồi hữu cơ 5% theo trục đứng, co 3% theo trục ngang để bảo toàn thể tích thực tế."
+        },
+        "third_eye_of_truth": {
+          "description": "Mắt thứ ba (True Eye of Truth / Senrigan) trên bụng. Trong trạng thái ban điều ước hàng ngày, mắt khép thành đường cong lưỡi liềm tinh tế, thanh tịnh như đang thiền định.",
+          "location": "Tâm bụng y = +16px, cung cong bán nguyệt ngược với khóe mí sắc sảo."
+        },
+        "crystal_eyes": {
+          "archetype": "Mắt Pha Lê 3 Điểm Bắt Sáng (3-Point Specular Crystal Eyes)",
+          "description": "Đôi mắt to tròn đen tuyền sâu thẳm của dòng đồ chơi Pop Mart cao cấp, kết hợp vệt tụ quang khúc xạ xanh lơ ngọc bích ở đáy mắt.",
+          "point_1_primary": {
+            "role": "Direct Keylight Specular",
+            "coords": "Góc 10h (2x2 pixel)",
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "point_2_secondary": {
+            "role": "Ground Ambient Bounce",
+            "coords": "Góc 4h (1x1 pixel)",
+            "color": "0xE7BF (#E0F2FE)"
+          },
+          "point_3_tertiary": {
+            "role": "Surface Wetness Slit Glint",
+            "coords": "Góc 2h / Vệt màng nước đáy",
+            "color": "0xFFFF (#FFFFFF)"
+          },
+          "wish_teardrops": "Cặp vết bùa lệ ước xanh lam hình tam giác ngược dưới hai mí mắt (đặc trưng thần thoại Jirachi)."
+        },
+        "silk_sashes": {
+          "description": "Hai tà áo lụa tiên thiên hà (Hagoromo Celestial Wings) uốn lượn sau lưng, phát quang vàng hoàng kim bán trong suốt (translucent starlight veil)."
+        },
+        "contact_floor_shadow": {
+          "description": "Bóng đổ tiếp xúc mặt sàn (Ambient Occlusion Shadow) co giãn tương thích theo nhịp lơ lửng: co đặc khi sà xuống, tản mềm khi bay lên."
+        }
+      },
+      "kinematics": {
+        "breath_frequency_hz": 0.32,
+        "hover_vertical_amplitude_px": 4.0,
+        "squash_and_stretch_vertical_pct": 5.0,
+        "squash_and_stretch_horizontal_pct": -3.0,
+        "tanzaku_phase_lag_rad": 0.45,
+        "silk_sash_phase_lag_rad": 0.6,
+        "lappet_sway_phase_lag_rad": 0.2,
+        "blink_interval_ms": 3500,
+        "blink_duration_ms": 140,
+        "stardust_pulse_frequency_hz": 1.2
+      },
+      "cpp_scaled_canvas_code": "// =========================================================================\n// JIRACHI NGÔI SAO BAN ĐIỀU ƯỚC THIÊN HÀ (MYTHIC JIRACHI WISH MAKER)\n// ScaledCanvas C++ Implementation - 100% Hardware Compatible ST7789\n// Pop Mart / Vinyl High-End 3D Sculpting & Micro-Physics Engine\n// =========================================================================\nvoid drawJirachiWishMaker(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float angle, bool blink) {\n  // -----------------------------------------------------------------------\n  // 1. CHUYỂN ĐỘNG VI VẬT LÝ HỮU CƠ (ORGANIC MICRO-PHYSICS)\n  // -----------------------------------------------------------------------\n  // Chu kỳ nhịp thở & dao động lơ lửng\n  float breathPhase = angle * 2.0f;\n  \n  // Chu kỳ lơ lửng theo phương đứng (Hovering float)\n  int hoverOffsetY = (int)(sinf(breathPhase) * 3.5f);\n  int by = cy + hoverOffsetY;\n\n  // Nhịp thở đàn hồi Squash & Stretch 5% (Bảo toàn thể tích thực tế)\n  float sY = 1.0f + 0.05f * sinf(breathPhase);\n  float sX = 1.0f - 0.03f * sinf(breathPhase);\n\n  // Trễ pha động học 3 dải bùa xanh ngọc (Delta Phi = 0.45 rad)\n  float lagTagTop   = breathPhase - 0.45f;\n  float lagTagLeft  = breathPhase - 0.45f - 0.15f;\n  float lagTagRight = breathPhase - 0.45f + 0.15f;\n\n  // Trễ pha tà áo lụa phía sau lưng (Delta Phi = 0.60 rad)\n  float lagSashL = breathPhase - 0.60f;\n  float lagSashR = breathPhase - 0.55f;\n\n  // Trễ pha tai mũ rủ hai bên má (Delta Phi = 0.20 rad)\n  float lagLappet = breathPhase - 0.20f;\n  int lappetSway = (int)(sinf(lagLappet) * 1.5f);\n\n  // -----------------------------------------------------------------------\n  // 2. BẢNG MÀU 16-BIT RGB565 CHUẨN XÁC POP MART VINYL & PHÉP THUẬT\n  // -----------------------------------------------------------------------\n  const uint16_t C_GOLD_BRIGHT = 0xFFB4; // #FFF7A0 Viền Fresnel đỉnh sao\n  const uint16_t C_GOLD_LIGHT  = 0xFF91; // #FEF08A Vàng sáng diện đón sáng\n  const uint16_t C_GOLD_MAIN   = 0xFE62; // #FACC15 Sắc vàng hoàng kim chuẩn\n  const uint16_t C_GOLD_WARM   = 0xED81; // #EAB308 Vàng hổ phách tạo khối 3D\n  const uint16_t C_GOLD_SHADOW = 0xCC40; // #CA8A04 Vàng sẫm đổ bóng nếp gấp\n  const uint16_t C_GOLD_DEEP   = 0x8261; // #854D0E Nâu hổ phách gầm mũ sao\n\n  const uint16_t C_CYAN_BRIGHT = 0xA79F; // #A5F3FC Xanh ngọc đón sáng\n  const uint16_t C_CYAN_MAIN   = 0x05BA; // #06B6D4 Xanh ngọc lam Tanzaku chính\n  const uint16_t C_CYAN_DEEP   = 0x0BB2; // #0E7490 Xanh ngọc sẫm nếp bùa\n  const uint16_t C_CYAN_GLYPH  = 0xC7DF; // #CFFAFE Ký tự ước nguyện cổ\n\n  const uint16_t C_TEAR_CYAN   = 0x0438; // #0284C7 Vết bùa lệ ước dưới mắt\n\n  const uint16_t C_WHITE_VINYL = 0xFFFF; // #FFFFFF Trắng sứ tinh khiết\n  const uint16_t C_CREAM_WHITE = 0xFFDF; // #F8FAFC Trắng kem vinyl SSS\n  const uint16_t C_BODY_SHADOW = 0xE75E; // #E2E8F0 Bóng đổ thể tích cơ thể\n  const uint16_t C_CREASE_GREY = 0xCEBC; // #CBD5E1 Rãnh nách, cằm, chân\n\n  const uint16_t C_THIRD_EYE   = 0x08A5; // #0F172A Mắt thứ ba nhắm tĩnh lặng\n  const uint16_t C_EYE_DARK    = 0x0022; // #020617 Hốc mắt đen pha lê\n  const uint16_t C_EYE_NAVY    = 0x18C9; // #1E1B4B Mống mắt chàm vũ trụ\n  const uint16_t C_EYE_CAUSTIC = 0x3DFF; // #38BDF8 Khúc xạ đáy mắt ngọc lam\n\n  const uint16_t C_BLUSH_PINK  = 0xF396; // #F472B6 Má hồng phấn ngọt ngào\n  const uint16_t C_BLUSH_SOFT  = 0xFE7D; // #FBCFE8 Viền má hồng tán mịn\n  const uint16_t C_MOUTH_CURVE = 0x320A; // #334155 Khóe miệng cười tí hon\n\n  const uint16_t C_SILK_LIGHT  = 0xFFD8; // #FEF9C3 Lụa vàng mỏng đón sáng\n  const uint16_t C_SILK_MAIN   = 0xFF08; // #FDE047 Tà áo lụa bay sau lưng\n  const uint16_t C_SILK_SHADOW = 0xED81; // #EAB308 Bóng nếp lượn sóng áo lụa\n\n  const uint16_t C_FLOOR_SHADOW= 0x9517; // #94A3B8 Bóng tiếp xúc sàn\n\n  // -----------------------------------------------------------------------\n  // 3. LỚP 1: BÓNG TIẾP XÚC MẶT SÀN (CONTACT AMBIENT SHADOW)\n  // -----------------------------------------------------------------------\n  int floorY = cy + 42;\n  int shRadiusX = (int)((26.0f - hoverOffsetY * 1.5f) * sX);\n  int shRadiusY = (int)((6.5f - hoverOffsetY * 0.4f));\n  if (shRadiusX < 14) shRadiusX = 14;\n  if (shRadiusY < 3)  shRadiusY = 3;\n  spr->fillEllipse(cx, floorY, shRadiusX + 2, shRadiusY + 1, C_BODY_SHADOW);\n  spr->fillEllipse(cx, floorY, shRadiusX, shRadiusY, C_FLOOR_SHADOW);\n\n  // -----------------------------------------------------------------------\n  // 4. LỚP 2: TÀ ÁO LỤA THIÊN HÀ BAY BỔNG SAU LƯNG (FLOWING SILK SASHES)\n  // -----------------------------------------------------------------------\n  // Cánh lụa trái (Left Silk Sash)\n  int sashWaveL = (int)(sinf(lagSashL) * 4.0f);\n  int sashBaseLX = cx - 8;\n  int sashBaseLY = by + 12;\n  int sashMidLX  = cx - 30;\n  int sashMidLY  = by + 18 + sashWaveL;\n  int sashEndLX  = cx - 50;\n  int sashEndLY  = by + 23 + (int)(sinf(lagSashL + 0.4f) * 5.0f);\n  spr->fillTriangle(sashBaseLX, sashBaseLY, sashMidLX, sashMidLY, sashBaseLX, sashBaseLY + 6, C_SILK_SHADOW);\n  spr->fillTriangle(sashMidLX, sashMidLY, sashEndLX, sashEndLY, sashMidLX + 2, sashMidLY + 7, C_SILK_MAIN);\n  spr->fillTriangle(sashEndLX, sashEndLY, sashEndLX + 8, sashEndLY + 5, sashMidLX + 4, sashMidLY + 8, C_SILK_LIGHT);\n  spr->drawLine(sashBaseLX, sashBaseLY, sashMidLX, sashMidLY, C_GOLD_BRIGHT);\n  spr->drawLine(sashMidLX, sashMidLY, sashEndLX, sashEndLY, C_GOLD_BRIGHT);\n\n  // Cánh lụa phải (Right Silk Sash)\n  int sashWaveR = (int)(sinf(lagSashR) * 4.0f);\n  int sashBaseRX = cx + 8;\n  int sashBaseRY = by + 12;\n  int sashMidRX  = cx + 30;\n  int sashMidRY  = by + 18 + sashWaveR;\n  int sashEndRX  = cx + 50;\n  int sashEndRY  = by + 23 + (int)(sinf(lagSashR + 0.4f) * 5.0f);\n  spr->fillTriangle(sashBaseRX, sashBaseRY, sashMidRX, sashMidRY, sashBaseRX, sashBaseRY + 6, C_SILK_SHADOW);\n  spr->fillTriangle(sashMidRX, sashMidRY, sashEndRX, sashEndRY, sashMidRX - 2, sashMidRY + 7, C_SILK_MAIN);\n  spr->fillTriangle(sashEndRX, sashEndRY, sashEndRX - 8, sashEndRY + 5, sashMidRX - 4, sashMidRY + 8, C_SILK_LIGHT);\n  spr->drawLine(sashBaseRX, sashBaseRY, sashMidRX, sashMidRY, C_GOLD_BRIGHT);\n  spr->drawLine(sashMidRX, sashMidRY, sashEndRX, sashEndRY, C_GOLD_BRIGHT);\n\n  // -----------------------------------------------------------------------\n  // 5. LỚP 3: MŨ NGÔI SAO HOÀNG KIM 3 CÁNH (3-POINTED GOLDEN STAR HELM)\n  // -----------------------------------------------------------------------\n  int starTopX = cx;\n  int starTopY = by - 46;\n  int starLeftX = cx - 46;\n  int starLeftY = by - 9;\n  int starRightX = cx + 46;\n  int starRightY = by - 9;\n\n  spr->fillTriangle(starTopX, starTopY, starLeftX, starLeftY, cx, by - 12, C_GOLD_WARM);\n  spr->fillTriangle(starTopX, starTopY, starRightX, starRightY, cx, by - 12, C_GOLD_SHADOW);\n  spr->fillTriangle(starLeftX, starLeftY, starRightX, starRightY, cx, by - 6, C_GOLD_MAIN);\n\n  spr->fillTriangle(starTopX, starTopY, starLeftX, starLeftY, cx - 12, by - 22, C_GOLD_LIGHT);\n  spr->fillTriangle(starLeftX, starLeftY, cx - 18, by - 12, cx - 12, by - 22, C_GOLD_MAIN);\n  spr->drawLine(starTopX, starTopY, starLeftX, starLeftY, C_GOLD_BRIGHT);\n\n  spr->fillTriangle(starTopX, starTopY, starRightX, starRightY, cx + 12, by - 22, C_GOLD_MAIN);\n  spr->fillTriangle(starRightX, starRightY, cx + 18, by - 12, cx + 12, by - 22, C_GOLD_SHADOW);\n  spr->drawLine(starTopX, starTopY, starRightX, starRightY, C_GOLD_LIGHT);\n\n  spr->fillTriangle(starLeftX, starLeftY, cx - 22, by + 1, cx - 14, by - 10, C_GOLD_WARM);\n  spr->fillTriangle(starRightX, starRightY, cx + 22, by + 1, cx + 14, by - 10, C_GOLD_SHADOW);\n\n  spr->fillEllipse(cx, by - 16, (int)(22 * sX), (int)(13 * sY), C_GOLD_SHADOW);\n  spr->fillEllipse(cx, by - 17, (int)(20 * sX), (int)(12 * sY), C_GOLD_MAIN);\n  spr->fillEllipse(cx - 2, by - 20, (int)(15 * sX), (int)(7 * sY), C_GOLD_LIGHT);\n\n  // -----------------------------------------------------------------------\n  // 6. LỚP 4: 3 DẢI BÙA NGUYỆN ƯỚC XANH NGỌC LAM (TANZAKU WISH TAGS)\n  // -----------------------------------------------------------------------\n  // DẢI BÙA 1: ĐỈNH SAO\n  int t1BaseX = starTopX;\n  int t1BaseY = starTopY + 2;\n  int t1Wave = (int)(sinf(lagTagTop) * 2.0f);\n  spr->fillRoundRect(t1BaseX - 3 + t1Wave, t1BaseY, 7, 24, 2, C_CYAN_DEEP);\n  spr->fillRoundRect(t1BaseX - 3 + t1Wave, t1BaseY, 6, 23, 2, C_CYAN_MAIN);\n  spr->fillRect(t1BaseX - 2 + t1Wave, t1BaseY + 2, 2, 20, C_CYAN_BRIGHT);\n  spr->drawFastVLine(t1BaseX + t1Wave, t1BaseY + 5, 12, C_CYAN_GLYPH);\n  spr->drawFastHLine(t1BaseX - 1 + t1Wave, t1BaseY + 8, 3, C_CYAN_GLYPH);\n  spr->drawFastHLine(t1BaseX - 1 + t1Wave, t1BaseY + 13, 3, C_CYAN_GLYPH);\n\n  // DẢI BÙA 2: CÁNH SAO TRÁI\n  int t2BaseX = starLeftX + 2;\n  int t2BaseY = starLeftY + 1;\n  int t2Wave1 = (int)(sinf(lagTagLeft) * 3.0f);\n  int t2Wave2 = (int)(sinf(lagTagLeft + 0.35f) * 4.0f);\n  spr->fillRoundRect(t2BaseX - 3 + t2Wave1, t2BaseY, 7, 14, 2, C_CYAN_DEEP);\n  spr->fillRoundRect(t2BaseX - 3 + t2Wave1, t2BaseY, 6, 13, 2, C_CYAN_MAIN);\n  spr->fillRect(t2BaseX - 2 + t2Wave1, t2BaseY + 2, 2, 10, C_CYAN_BRIGHT);\n  spr->fillRoundRect(t2BaseX - 3 + t2Wave2, t2BaseY + 12, 7, 14, 2, C_CYAN_DEEP);\n  spr->fillRoundRect(t2BaseX - 3 + t2Wave2, t2BaseY + 12, 6, 13, 2, C_CYAN_MAIN);\n  spr->fillRect(t2BaseX - 2 + t2Wave2, t2BaseY + 14, 2, 9, C_CYAN_BRIGHT);\n  spr->drawFastVLine(t2BaseX + t2Wave1, t2BaseY + 4, 8, C_CYAN_GLYPH);\n  spr->drawFastVLine(t2BaseX + t2Wave2, t2BaseY + 15, 8, C_CYAN_GLYPH);\n\n  // DẢI BÙA 3: CÁNH SAO PHẢI\n  int t3BaseX = starRightX - 2;\n  int t3BaseY = starRightY + 1;\n  int t3Wave1 = (int)(sinf(lagTagRight) * 3.0f);\n  int t3Wave2 = (int)(sinf(lagTagRight + 0.35f) * 4.0f);\n  spr->fillRoundRect(t3BaseX - 3 + t3Wave1, t3BaseY, 7, 14, 2, C_CYAN_DEEP);\n  spr->fillRoundRect(t3BaseX - 3 + t3Wave1, t3BaseY, 6, 13, 2, C_CYAN_MAIN);\n  spr->fillRect(t3BaseX - 1 + t3Wave1, t3BaseY + 2, 2, 10, C_CYAN_BRIGHT);\n  spr->fillRoundRect(t3BaseX - 3 + t3Wave2, t3BaseY + 12, 7, 14, 2, C_CYAN_DEEP);\n  spr->fillRoundRect(t3BaseX - 3 + t3Wave2, t3BaseY + 12, 6, 13, 2, C_CYAN_MAIN);\n  spr->fillRect(t3BaseX - 1 + t3Wave2, t3BaseY + 14, 2, 9, C_CYAN_BRIGHT);\n  spr->drawFastVLine(t3BaseX + t3Wave1, t3BaseY + 4, 8, C_CYAN_GLYPH);\n  spr->drawFastVLine(t3BaseX + t3Wave2, t3BaseY + 15, 8, C_CYAN_GLYPH);\n\n  // -----------------------------------------------------------------------\n  // 7. LỚP 5: THÂN TRẮNG SỮA PHÚNG PHÍNH & HAI CHÂN BÁNH BAO\n  // -----------------------------------------------------------------------\n  int bodyY = by + 14;\n  int bRx   = (int)(16 * sX);\n  int bRy   = (int)(15 * sY);\n\n  int footYL = by + 26 + (int)(sinf(breathPhase) * 1.0f);\n  int footYR = by + 26 - (int)(sinf(breathPhase) * 1.0f);\n  spr->fillCircle(cx - 7, footYL, (int)(4.5f * sX), C_BODY_SHADOW);\n  spr->fillCircle(cx - 7, footYL - 1, (int)(4.2f * sX), C_WHITE_VINYL);\n  spr->fillCircle(cx + 7, footYR, (int)(4.5f * sX), C_BODY_SHADOW);\n  spr->fillCircle(cx + 7, footYR - 1, (int)(4.2f * sX), C_WHITE_VINYL);\n\n  spr->fillEllipse(cx, bodyY + 1, bRx + 2, bRy + 2, C_BODY_SHADOW);\n  spr->fillEllipse(cx, bodyY, bRx, bRy, C_CREAM_WHITE);\n  spr->fillEllipse(cx - 1, bodyY - 2, bRx - 2, bRy - 3, C_WHITE_VINYL);\n  spr->fillCircle(cx - 3, bodyY - 4, 5, C_WHITE_VINYL);\n\n  // -----------------------------------------------------------------------\n  // 8. LỚP 6: MẮT THỨ BA TRÊN BỤNG (TRUE EYE OF TRUTH)\n  // -----------------------------------------------------------------------\n  int thirdEyeY = by + 16;\n  int eyeArcW   = (int)(13 * sX);\n  spr->drawEllipse(cx, thirdEyeY, eyeArcW, (int)(5 * sY), C_CREASE_GREY);\n  spr->drawEllipse(cx, thirdEyeY + 1, eyeArcW - 1, (int)(4 * sY), C_THIRD_EYE);\n  spr->drawPixel(cx, thirdEyeY + 4, C_THIRD_EYE);\n  spr->drawPixel(cx - 1, thirdEyeY + 3, C_THIRD_EYE);\n  spr->drawPixel(cx + 1, thirdEyeY + 3, C_THIRD_EYE);\n\n  // -----------------------------------------------------------------------\n  // 9. LỚP 7: HAI TAY MŨM MĨM DANG RỘNG\n  // -----------------------------------------------------------------------\n  spr->fillTriangle(cx - 10, by + 10, cx - 23, by + 16, cx - 11, by + 17, C_BODY_SHADOW);\n  spr->fillTriangle(cx - 10, by + 9, cx - 23, by + 15, cx - 11, by + 16, C_WHITE_VINYL);\n  spr->drawPixel(cx - 24, by + 14, C_WHITE_VINYL);\n  spr->drawPixel(cx - 25, by + 15, C_WHITE_VINYL);\n  spr->drawPixel(cx - 24, by + 16, C_WHITE_VINYL);\n\n  spr->fillTriangle(cx + 10, by + 10, cx + 23, by + 16, cx + 11, by + 17, C_BODY_SHADOW);\n  spr->fillTriangle(cx + 10, by + 9, cx + 23, by + 15, cx + 11, by + 16, C_WHITE_VINYL);\n  spr->drawPixel(cx + 24, by + 14, C_WHITE_VINYL);\n  spr->drawPixel(cx + 25, by + 15, C_WHITE_VINYL);\n  spr->drawPixel(cx + 24, by + 16, C_WHITE_VINYL);\n\n  // -----------------------------------------------------------------------\n  // 10. LỚP 8: ĐẦU & KHUÔN MẶT BÁNH BAO\n  // -----------------------------------------------------------------------\n  int headY = by - 6;\n  int hRx   = (int)(21 * sX);\n  int hRy   = (int)(15 * sY);\n\n  spr->fillEllipse(cx, headY + 1, hRx + 1, hRy + 1, C_BODY_SHADOW);\n  spr->fillEllipse(cx, headY, hRx, hRy, C_CREAM_WHITE);\n  spr->fillCircle(cx - 13, headY + 2, (int)(6 * sX), C_WHITE_VINYL);\n  spr->fillCircle(cx + 13, headY + 2, (int)(6 * sX), C_WHITE_VINYL);\n  spr->fillEllipse(cx, headY - 2, hRx - 3, hRy - 3, C_WHITE_VINYL);\n\n  // -----------------------------------------------------------------------\n  // 11. LỚP 9: HAI TAI MŨ SAO VÀNG RỦ XUỐNG HAI BÊN MÁ (STAR LAPPETS)\n  // -----------------------------------------------------------------------\n  int lapLX = cx - 18 + lappetSway;\n  int lapLY = by - 8;\n  spr->fillRoundRect(lapLX - 4, lapLY, 8, 20, 3, C_GOLD_SHADOW);\n  spr->fillRoundRect(lapLX - 4, lapLY, 7, 19, 3, C_GOLD_MAIN);\n  spr->fillCircle(lapLX, lapLY + 18, 3, C_GOLD_LIGHT);\n  spr->drawFastVLine(lapLX - 2, lapLY + 2, 14, C_GOLD_BRIGHT);\n\n  int lapRX = cx + 18 + lappetSway;\n  int lapRY = by - 8;\n  spr->fillRoundRect(lapRX - 4, lapRY, 8, 20, 3, C_GOLD_DEEP);\n  spr->fillRoundRect(lapRX - 3, lapRY, 7, 19, 3, C_GOLD_MAIN);\n  spr->fillCircle(lapRX, lapRY + 18, 3, C_GOLD_LIGHT);\n  spr->drawFastVLine(lapRX + 1, lapRY + 2, 14, C_GOLD_BRIGHT);\n\n  spr->drawCircle(cx, by - 12, 12, C_GOLD_SHADOW);\n  spr->drawCircle(cx, by - 13, 12, C_GOLD_WARM);\n\n  // -----------------------------------------------------------------------\n  // 12. LỚP 10: CHI TIẾT BIỂU CẢM KHUÔN MẶT\n  // -----------------------------------------------------------------------\n  spr->fillCircle(cx - 13, headY + 3, 4, C_BLUSH_SOFT);\n  spr->fillCircle(cx - 13, headY + 3, 2, C_BLUSH_PINK);\n  spr->fillCircle(cx + 13, headY + 3, 4, C_BLUSH_SOFT);\n  spr->fillCircle(cx + 13, headY + 3, 2, C_BLUSH_PINK);\n\n  spr->fillTriangle(cx - 10, headY + 1, cx - 12, headY + 6, cx - 8, headY + 6, C_TEAR_CYAN);\n  spr->fillTriangle(cx + 10, headY + 1, cx + 8, headY + 6, cx + 12, headY + 6, C_TEAR_CYAN);\n\n  int mouthY = headY + 5;\n  spr->drawPixel(cx - 2, mouthY,     C_MOUTH_CURVE);\n  spr->drawPixel(cx - 1, mouthY + 1, C_MOUTH_CURVE);\n  spr->drawPixel(cx,     mouthY + 1, C_MOUTH_CURVE);\n  spr->drawPixel(cx + 1, mouthY + 1, C_MOUTH_CURVE);\n  spr->drawPixel(cx + 2, mouthY,     C_MOUTH_CURVE);\n\n  // -----------------------------------------------------------------------\n  // 13. LỚP 11: ĐÔI MẮT PHA LÊ 3 ĐIỂM BẮT SÁNG (3-POINT SPECULAR CRYSTAL EYES)\n  // -----------------------------------------------------------------------\n  int eyeY  = headY - 1;\n  int eyeXL = cx - 10;\n  int eyeXR = cx + 10;\n\n  if (blink) {\n    for (int eyeIdx = 0; eyeIdx < 2; eyeIdx++) {\n      int ex = (eyeIdx == 0) ? eyeXL : eyeXR;\n      spr->drawEllipse(ex, eyeY + 2, 5, 2, C_EYE_DARK);\n      spr->drawEllipse(ex, eyeY + 3, 4, 1, C_EYE_DARK);\n      spr->drawPixel(ex - 4, eyeY + 1, C_EYE_DARK);\n      spr->drawPixel(ex + 4, eyeY + 1, C_EYE_DARK);\n    }\n  } else {\n    for (int eyeIdx = 0; eyeIdx < 2; eyeIdx++) {\n      int ex = (eyeIdx == 0) ? eyeXL : eyeXR;\n      spr->fillEllipse(ex, eyeY, 5, 7, C_EYE_DARK);\n      spr->fillEllipse(ex, eyeY - 1, 4, 5, C_EYE_NAVY);\n      spr->fillEllipse(ex, eyeY + 3, 3, 2, C_EYE_CAUSTIC);\n      spr->drawPixel(ex - 1, eyeY + 4, C_CYAN_BRIGHT);\n      spr->drawPixel(ex,     eyeY + 4, C_WHITE_VINYL);\n      spr->drawPixel(ex + 1, eyeY + 4, C_CYAN_BRIGHT);\n      spr->fillCircle(ex, eyeY, 3, C_EYE_DARK);\n      spr->fillRect(ex - 2, eyeY - 3, 2, 2, C_WHITE_VINYL); // Điểm 1 (10h, 2x2)\n      spr->drawPixel(ex + 2, eyeY + 2, C_WHITE_VINYL);      // Điểm 2 (4h, 1x1)\n      spr->drawPixel(ex + 1, eyeY - 2, C_WHITE_VINYL);      // Điểm 3 (2h, vệt màng nước)\n    }\n  }\n\n  // -----------------------------------------------------------------------\n  // 14. LỚP 12: HÀO QUANG BỤI SAO & KIM CƯƠNG PHÁT QUANG (STARDUST SPARKS ✨)\n  // -----------------------------------------------------------------------\n  int sparkT = (int)(angle * 8.0f) % 4;\n  uint16_t colSpark = (sparkT % 2 == 0) ? C_GOLD_BRIGHT : C_CYAN_BRIGHT;\n\n  int spTopX = starTopX + (int)(sinf(breathPhase * 1.5f) * 6.0f);\n  int spTopY = starTopY - 6;\n  spr->drawFastHLine(spTopX - 2, spTopY, 5, colSpark);\n  spr->drawFastVLine(spTopX, spTopY - 2, 5, colSpark);\n  spr->drawPixel(spTopX, spTopY, C_WHITE_VINYL);\n\n  int spLeftX = starLeftX - 4;\n  int spLeftY = starLeftY - 3 + (int)(cosf(breathPhase) * 3.0f);\n  spr->drawPixel(spLeftX, spLeftY, colSpark);\n  spr->drawPixel(spLeftX - 1, spLeftY, C_GOLD_LIGHT);\n  spr->drawPixel(spLeftX + 1, spLeftY, C_GOLD_LIGHT);\n\n  int spRightX = starRightX + 4;\n  int spRightY = starRightY - 3 - (int)(cosf(breathPhase) * 3.0f);\n  spr->drawPixel(spRightX, spRightY, colSpark);\n  spr->drawPixel(spRightX, spRightY - 1, C_CYAN_BRIGHT);\n  spr->drawPixel(spRightX, spRightY + 1, C_CYAN_BRIGHT);\n\n  spr->drawPixel(cx - 16, by + 18 + (int)(sinf(breathPhase + 1.0f) * 2.0f), C_GOLD_BRIGHT);\n  spr->drawPixel(cx + 17, by + 17 - (int)(sinf(breathPhase + 1.0f) * 2.0f), C_CYAN_BRIGHT);\n}",
+      "js_canvas_code": "// =========================================================================\n// JIRACHI NGÔI SAO BAN ĐIỀU ƯỚC THIÊN HÀ (MYTHIC JIRACHI WISH MAKER)\n// Modern HTML5 Canvas 2D Implementation - 60 FPS Fluid Physics\n// Pop Mart / Vinyl High-End 3D Sculpting & Micro-Physics Engine\n// =========================================================================\nfunction drawJirachiWishMaker(ctx, cx, cy, scale, t) {\n  ctx.save();\n\n  // -----------------------------------------------------------------------\n  // 1. CHUYỂN ĐỘNG VI VẬT LÝ HỮU CƠ (ORGANIC MICRO-PHYSICS)\n  // -----------------------------------------------------------------------\n  const breathFreq = 1.8;\n  const breathPhase = t * breathFreq;\n  const hoverOffsetY = Math.sin(breathPhase) * 4.0;\n  const by = cy + hoverOffsetY;\n\n  // Squash & Stretch đàn hồi 5% (Area preservation)\n  const sY = 1.0 + 0.05 * Math.sin(breathPhase);\n  const sX = 1.0 - 0.03 * Math.sin(breathPhase);\n\n  // Trễ pha động học 3 dải bùa (Delta Phi = 0.45 rad)\n  const lagTagTop   = breathPhase - 0.45;\n  const lagTagLeft  = breathPhase - 0.45 - 0.15;\n  const lagTagRight = breathPhase - 0.45 + 0.15;\n\n  // Trễ pha tà áo lụa phía sau lưng (Delta Phi = 0.60 rad)\n  const lagSashL = breathPhase - 0.60;\n  const lagSashR = breathPhase - 0.55;\n\n  // Trễ pha tai mũ rủ hai bên má (Delta Phi = 0.20 rad)\n  const lagLappet = breathPhase - 0.20;\n  const lappetSway = Math.sin(lagLappet) * 2.0;\n\n  // Chu kỳ chớp mắt tự nhiên 3.5s\n  const blinkCycle = (t * 1000) % 3500;\n  const blink = (blinkCycle < 140);\n\n  ctx.translate(cx, by);\n  ctx.scale(scale, scale);\n\n  // -----------------------------------------------------------------------\n  // 2. LỚP 1: BÓNG TIẾP XÚC MẶT SÀN (FLOOR CONTACT SHADOW)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const floorRelY = (cy + 44) - by;\n  const shRadiusX = (28.0 - hoverOffsetY * 1.5) * sX;\n  const shRadiusY = (7.0 - hoverOffsetY * 0.4);\n  const shadowAlpha = 0.35 + (hoverOffsetY / 4.0) * 0.15;\n\n  const shadowGrad = ctx.createRadialGradient(0, floorRelY, 2, 0, floorRelY, Math.max(8, shRadiusX));\n  shadowGrad.addColorStop(0, `rgba(15, 23, 42, ${shadowAlpha})`);\n  shadowGrad.addColorStop(0.5, `rgba(148, 163, 184, ${shadowAlpha * 0.6})`);\n  shadowGrad.addColorStop(1, \"rgba(148, 163, 184, 0)\");\n  ctx.fillStyle = shadowGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, floorRelY, Math.max(8, shRadiusX), Math.max(3, shRadiusY), 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 3. LỚP 2: TÀ ÁO LỤA THIÊN HÀ BAY BỔNG SAU LƯNG (FLOWING SILK SASHES)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const sashWaveL = Math.sin(lagSashL) * 5.0;\n  const sashWaveR = Math.sin(lagSashR) * 5.0;\n\n  // Tà áo lụa trái\n  const sashLGrad = ctx.createLinearGradient(-8, 12, -52, 24 + sashWaveL);\n  sashLGrad.addColorStop(0, \"rgba(253, 224, 71, 0.95)\");\n  sashLGrad.addColorStop(0.6, \"rgba(254, 240, 138, 0.85)\");\n  sashLGrad.addColorStop(1, \"rgba(254, 249, 195, 0.6)\");\n  ctx.fillStyle = sashLGrad;\n  ctx.beginPath();\n  ctx.moveTo(-8, 11);\n  ctx.bezierCurveTo(-22, 14 + sashWaveL * 0.5, -38, 16 + sashWaveL, -52, 23 + sashWaveL);\n  ctx.bezierCurveTo(-46, 30 + sashWaveL, -28, 25 + sashWaveL * 0.5, -8, 18);\n  ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"rgba(255, 247, 160, 0.8)\";\n  ctx.lineWidth = 1.2;\n  ctx.stroke();\n\n  // Tà áo lụa phải\n  const sashRGrad = ctx.createLinearGradient(8, 12, 52, 24 + sashWaveR);\n  sashRGrad.addColorStop(0, \"rgba(253, 224, 71, 0.95)\");\n  sashRGrad.addColorStop(0.6, \"rgba(254, 240, 138, 0.85)\");\n  sashRGrad.addColorStop(1, \"rgba(254, 249, 195, 0.6)\");\n  ctx.fillStyle = sashRGrad;\n  ctx.beginPath();\n  ctx.moveTo(8, 11);\n  ctx.bezierCurveTo(22, 14 + sashWaveR * 0.5, 38, 16 + sashWaveR, 52, 23 + sashWaveR);\n  ctx.bezierCurveTo(46, 30 + sashWaveR, 28, 25 + sashWaveR * 0.5, 8, 18);\n  ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"rgba(255, 247, 160, 0.8)\";\n  ctx.lineWidth = 1.2;\n  ctx.stroke();\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 4. LỚP 3: MŨ NGÔI SAO HOÀNG KIM 3 CÁNH (3-POINTED GOLDEN STAR HELM)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const starTopY  = -46;\n  const starLeftX = -46, starLeftY = -9;\n  const starRightX= 46,  starRightY= -9;\n\n  ctx.shadowColor = \"rgba(202, 138, 4, 0.35)\";\n  ctx.shadowBlur = 10;\n\n  const starGrad = ctx.createRadialGradient(-4, -20, 8, 0, -16, 48);\n  starGrad.addColorStop(0, \"#FFF7A0\");\n  starGrad.addColorStop(0.2, \"#FEF08A\");\n  starGrad.addColorStop(0.6, \"#FACC15\");\n  starGrad.addColorStop(0.85, \"#EAB308\");\n  starGrad.addColorStop(1, \"#CA8A04\");\n  ctx.fillStyle = starGrad;\n\n  ctx.beginPath();\n  ctx.moveTo(0, starTopY);\n  ctx.bezierCurveTo(-14, -30, -22, -22, starLeftX, starLeftY);\n  ctx.bezierCurveTo(-26, 0, -18, -2, -18, -10);\n  ctx.bezierCurveTo(-10, -5, 10, -5, 18, -10);\n  ctx.bezierCurveTo(18, -2, 26, 0, starRightX, starRightY);\n  ctx.bezierCurveTo(22, -22, 14, -30, 0, starTopY);\n  ctx.closePath();\n  ctx.fill();\n\n  ctx.strokeStyle = \"rgba(255, 247, 160, 0.9)\";\n  ctx.lineWidth = 1.8;\n  ctx.beginPath();\n  ctx.moveTo(0, starTopY); ctx.lineTo(-2, -16);\n  ctx.moveTo(starLeftX, starLeftY); ctx.lineTo(-14, -16);\n  ctx.moveTo(starRightX, starRightY); ctx.lineTo(14, -16);\n  ctx.stroke();\n\n  const underGrad = ctx.createLinearGradient(0, -16, 0, 0);\n  underGrad.addColorStop(0, \"rgba(202, 138, 4, 0)\");\n  underGrad.addColorStop(1, \"rgba(133, 77, 14, 0.45)\");\n  ctx.fillStyle = underGrad;\n  ctx.beginPath();\n  ctx.moveTo(starLeftX, starLeftY);\n  ctx.bezierCurveTo(-20, 2, 20, 2, starRightX, starRightY);\n  ctx.bezierCurveTo(16, -10, -16, -10, starLeftX, starLeftY);\n  ctx.closePath();\n  ctx.fill();\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 5. LỚP 4: 3 DẢI BÙA NGUYỆN ƯỚC XANH NGỌC LAM (TANZAKU WISH TAGS)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  function drawTanzakuTag(bx, by, lag, w, h) {\n    ctx.save();\n    const wave1 = Math.sin(lag) * 2.8;\n    const wave2 = Math.sin(lag + 0.4) * 4.2;\n    \n    ctx.shadowColor = \"rgba(6, 182, 212, 0.4)\";\n    ctx.shadowBlur = 6;\n\n    const tagGrad = ctx.createLinearGradient(bx, by, bx + wave2, by + h);\n    tagGrad.addColorStop(0, \"#22D3EE\");\n    tagGrad.addColorStop(0.5, \"#06B6D4\");\n    tagGrad.addColorStop(1, \"#0E7490\");\n    ctx.fillStyle = tagGrad;\n\n    ctx.beginPath();\n    ctx.moveTo(bx - w / 2, by);\n    ctx.bezierCurveTo(bx - w / 2 + wave1, by + h * 0.4, bx - w / 2 + wave2, by + h * 0.8, bx - w / 2 + wave2, by + h);\n    ctx.lineTo(bx + w / 2 + wave2, by + h);\n    ctx.bezierCurveTo(bx + w / 2 + wave2, by + h * 0.8, bx + w / 2 + wave1, by + h * 0.4, bx + w / 2, by);\n    ctx.closePath();\n    ctx.fill();\n\n    ctx.strokeStyle = \"#A5F3FC\";\n    ctx.lineWidth = 1.0;\n    ctx.stroke();\n\n    ctx.strokeStyle = \"#CFFAFE\";\n    ctx.lineWidth = 1.2;\n    ctx.beginPath();\n    ctx.moveTo(bx + wave1 * 0.5, by + 4);\n    ctx.lineTo(bx + wave1 * 0.8, by + h * 0.5);\n    ctx.lineTo(bx + wave2 * 0.9, by + h - 4);\n    ctx.stroke();\n\n    ctx.restore();\n  }\n\n  drawTanzakuTag(0, starTopY + 2, lagTagTop, 8, 25);\n  drawTanzakuTag(starLeftX + 2, starLeftY + 1, lagTagLeft, 7, 27);\n  drawTanzakuTag(starRightX - 2, starRightY + 1, lagTagRight, 7, 27);\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 6. LỚP 5: THÂN TRẮNG SỮA & CHÂN MŨM MĨM (PORCELAIN CHUBBY BODY & FEET)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const bodyY = 14;\n  const bRx   = 16 * sX;\n  const bRy   = 15 * sY;\n\n  ctx.fillStyle = \"#F8FAFC\";\n  ctx.strokeStyle = \"#E2E8F0\";\n  ctx.lineWidth = 1.2;\n  ctx.beginPath();\n  ctx.ellipse(-7, 26, 4.5 * sX, 4 * sY, 0.1, 0, Math.PI * 2);\n  ctx.ellipse(7,  26, 4.5 * sX, 4 * sY, -0.1, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.stroke();\n\n  const bodyGrad = ctx.createRadialGradient(-3, bodyY - 4, 3, 0, bodyY, 20);\n  bodyGrad.addColorStop(0, \"#FFFFFF\");\n  bodyGrad.addColorStop(0.5, \"#F8FAFC\");\n  bodyGrad.addColorStop(0.85, \"#F1F5F9\");\n  bodyGrad.addColorStop(1, \"#E2E8F0\");\n  ctx.fillStyle = bodyGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, bodyY, bRx, bRy, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#E2E8F0\";\n  ctx.lineWidth = 1.0;\n  ctx.stroke();\n\n  // -----------------------------------------------------------------------\n  // 7. LỚP 6: MẮT THỨ BA TRÊN BỤNG (TRUE EYE OF TRUTH)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const thirdEyeY = 16;\n  const eyeW = 12 * sX;\n  ctx.strokeStyle = \"#0F172A\";\n  ctx.lineWidth = 1.8;\n  ctx.lineCap = \"round\";\n  ctx.beginPath();\n  ctx.arc(0, thirdEyeY - 2, eyeW * 0.7, 0.3 * Math.PI, 0.7 * Math.PI, false);\n  ctx.stroke();\n\n  ctx.strokeStyle = \"rgba(148, 163, 184, 0.5)\";\n  ctx.lineWidth = 1.0;\n  ctx.beginPath();\n  ctx.arc(0, thirdEyeY - 1, eyeW * 0.72, 0.32 * Math.PI, 0.68 * Math.PI, false);\n  ctx.stroke();\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 8. LỚP 7: HAI TAY MŨM MĨM DANG RỘNG (CHUBBY ARMS)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const armGradL = ctx.createLinearGradient(-10, 10, -24, 16);\n  armGradL.addColorStop(0, \"#F8FAFC\");\n  armGradL.addColorStop(1, \"#FFFFFF\");\n  ctx.fillStyle = armGradL;\n  ctx.strokeStyle = \"#E2E8F0\";\n  ctx.lineWidth = 1.1;\n\n  ctx.beginPath();\n  ctx.moveTo(-10, 9);\n  ctx.lineTo(-24, 15);\n  ctx.lineTo(-24, 17);\n  ctx.lineTo(-11, 16);\n  ctx.closePath();\n  ctx.fill();\n  ctx.stroke();\n\n  ctx.beginPath();\n  ctx.moveTo(10, 9);\n  ctx.lineTo(24, 15);\n  ctx.lineTo(24, 17);\n  ctx.lineTo(11, 16);\n  ctx.closePath();\n  ctx.fill();\n  ctx.stroke();\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 9. LỚP 8: ĐẦU & KHUÔN MẶT BÁNH BAO (CHUBBY PORCELAIN HEAD)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const headY = -6;\n  const hRx   = 21 * sX;\n  const hRy   = 15 * sY;\n\n  const headGrad = ctx.createRadialGradient(-3, headY - 4, 4, 0, headY, 24);\n  headGrad.addColorStop(0, \"#FFFFFF\");\n  headGrad.addColorStop(0.6, \"#F8FAFC\");\n  headGrad.addColorStop(0.9, \"#F1F5F9\");\n  headGrad.addColorStop(1, \"#E2E8F0\");\n  ctx.fillStyle = headGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, headY, hRx, hRy, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#E2E8F0\";\n  ctx.lineWidth = 1.0;\n  ctx.stroke();\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 10. LỚP 9: HAI TAI MŨ SAO VÀNG RỦ XUỐNG HAI BÊN MÁ (STAR LAPPETS)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  function drawLappet(lx, ly, sway, isRight) {\n    ctx.save();\n    ctx.translate(lx, ly);\n    ctx.rotate((sway * Math.PI) / 180 * (isRight ? 1 : -1));\n\n    const lapGrad = ctx.createLinearGradient(-4, 0, 4, 20);\n    lapGrad.addColorStop(0, \"#FFF7A0\");\n    lapGrad.addColorStop(0.3, \"#FACC15\");\n    lapGrad.addColorStop(0.8, \"#EAB308\");\n    lapGrad.addColorStop(1, \"#CA8A04\");\n    ctx.fillStyle = lapGrad;\n\n    ctx.beginPath();\n    ctx.roundRect(-4, 0, 8, 20, [4, 4, 5, 5]);\n    ctx.fill();\n    ctx.strokeStyle = \"rgba(202, 138, 4, 0.6)\";\n    ctx.lineWidth = 1.0;\n    ctx.stroke();\n    ctx.restore();\n  }\n\n  drawLappet(-18, -8, lappetSway, false);\n  drawLappet(18, -8, lappetSway, true);\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 11. LỚP 10: CHI TIẾT BIỂU CẢM & MÁ HỒNG (BLUSH & TEARS & SMILE)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const blushGradL = ctx.createRadialGradient(-13, headY + 3, 1, -13, headY + 3, 6);\n  blushGradL.addColorStop(0, \"rgba(244, 114, 182, 0.65)\");\n  blushGradL.addColorStop(0.6, \"rgba(251, 207, 232, 0.35)\");\n  blushGradL.addColorStop(1, \"rgba(251, 207, 232, 0)\");\n  ctx.fillStyle = blushGradL;\n  ctx.beginPath();\n  ctx.arc(-13, headY + 3, 6, 0, Math.PI * 2);\n  ctx.fill();\n\n  const blushGradR = ctx.createRadialGradient(13, headY + 3, 1, 13, headY + 3, 6);\n  blushGradR.addColorStop(0, \"rgba(244, 114, 182, 0.65)\");\n  blushGradR.addColorStop(0.6, \"rgba(251, 207, 232, 0.35)\");\n  blushGradR.addColorStop(1, \"rgba(251, 207, 232, 0)\");\n  ctx.fillStyle = blushGradR;\n  ctx.beginPath();\n  ctx.arc(13, headY + 3, 6, 0, Math.PI * 2);\n  ctx.fill();\n\n  ctx.fillStyle = \"#0284C7\";\n  ctx.beginPath();\n  ctx.moveTo(-10, headY + 1); ctx.lineTo(-12, headY + 6); ctx.lineTo(-8, headY + 6); ctx.closePath(); ctx.fill();\n  ctx.beginPath();\n  ctx.moveTo(10, headY + 1); ctx.lineTo(8, headY + 6); ctx.lineTo(12, headY + 6); ctx.closePath(); ctx.fill();\n\n  ctx.strokeStyle = \"#334155\";\n  ctx.lineWidth = 1.4;\n  ctx.lineCap = \"round\";\n  ctx.beginPath();\n  ctx.arc(0, headY + 3, 3, 0.2 * Math.PI, 0.8 * Math.PI, false);\n  ctx.stroke();\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 12. LỚP 11: ĐÔI MẮT PHA LÊ 3 ĐIỂM BẮT SÁNG (3-POINT SPECULAR CRYSTAL EYES)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  const eyeY = headY - 1;\n  const eyeXL = -10, eyeXR = 10;\n\n  if (blink) {\n    ctx.strokeStyle = \"#020617\";\n    ctx.lineWidth = 2.0;\n    ctx.lineCap = \"round\";\n    ctx.beginPath();\n    ctx.arc(eyeXL, eyeY + 1, 5, 0.2 * Math.PI, 0.8 * Math.PI, false);\n    ctx.arc(eyeXR, eyeY + 1, 5, 0.2 * Math.PI, 0.8 * Math.PI, false);\n    ctx.stroke();\n  } else {\n    [eyeXL, eyeXR].forEach(ex => {\n      ctx.save();\n      const eyeGrad = ctx.createRadialGradient(ex - 1, eyeY - 2, 1, ex, eyeY, 7);\n      eyeGrad.addColorStop(0, \"#1E1B4B\");\n      eyeGrad.addColorStop(0.4, \"#0F172A\");\n      eyeGrad.addColorStop(1, \"#020617\");\n      ctx.fillStyle = eyeGrad;\n      ctx.beginPath();\n      ctx.ellipse(ex, eyeY, 5, 7, 0, 0, Math.PI * 2);\n      ctx.fill();\n\n      const causticGrad = ctx.createLinearGradient(ex, eyeY + 2, ex, eyeY + 7);\n      causticGrad.addColorStop(0, \"rgba(56, 189, 248, 0)\");\n      causticGrad.addColorStop(1, \"rgba(56, 189, 248, 0.85)\");\n      ctx.fillStyle = causticGrad;\n      ctx.beginPath();\n      ctx.ellipse(ex, eyeY + 4, 3.5, 2.2, 0, 0, Math.PI * 2);\n      ctx.fill();\n\n      // ĐIỂM SÁNG 1: Khối 2x2 góc 10h\n      ctx.fillStyle = \"#FFFFFF\";\n      ctx.beginPath();\n      ctx.arc(ex - 1.8, eyeY - 2.5, 1.8, 0, Math.PI * 2);\n      ctx.fill();\n\n      // ĐIỂM SÁNG 2: Phản xạ phụ góc 4h\n      ctx.fillStyle = \"#E0F2FE\";\n      ctx.beginPath();\n      ctx.arc(ex + 1.8, eyeY + 2.4, 1.0, 0, Math.PI * 2);\n      ctx.fill();\n\n      // ĐIỂM SÁNG 3: Bắt sáng ướt góc 2h\n      ctx.fillStyle = \"#FFFFFF\";\n      ctx.beginPath();\n      ctx.arc(ex + 1.6, eyeY - 1.6, 0.7, 0, Math.PI * 2);\n      ctx.fill();\n      ctx.restore();\n    });\n  }\n  ctx.restore();\n\n  // -----------------------------------------------------------------------\n  // 13. LỚP 12: HÀO QUANG BỤI SAO & KIM CƯƠNG THIÊN HÀ (STARDUST SPARKLES ✨)\n  // -----------------------------------------------------------------------\n  ctx.save();\n  function drawDiamondSparkle(x, y, r, color) {\n    ctx.save();\n    ctx.fillStyle = color;\n    ctx.beginPath();\n    ctx.moveTo(x, y - r);\n    ctx.quadraticCurveTo(x, y, x + r, y);\n    ctx.quadraticCurveTo(x, y, x, y + r);\n    ctx.quadraticCurveTo(x, y, x - r, y);\n    ctx.quadraticCurveTo(x, y, x, y - r);\n    ctx.closePath();\n    ctx.fill();\n    ctx.fillStyle = \"#FFFFFF\";\n    ctx.beginPath(); ctx.arc(x, y, r * 0.35, 0, Math.PI * 2); ctx.fill();\n    ctx.restore();\n  }\n\n  const sparkPulse = 1.0 + 0.3 * Math.sin(t * 4.0);\n  drawDiamondSparkle(0, starTopY - 6, 5 * sparkPulse, \"#FFF7A0\");\n  drawDiamondSparkle(starLeftX - 6, starLeftY - 2, 3.5 * sparkPulse, \"#67E8F9\");\n  drawDiamondSparkle(starRightX + 6, starRightY - 2, 3.5 * sparkPulse, \"#FDE047\");\n\n  const orb1X = -18 + Math.sin(t * 2.2) * 4.0;\n  const orb1Y = 18 + Math.cos(t * 2.2) * 3.0;\n  ctx.fillStyle = \"rgba(254, 240, 138, 0.85)\";\n  ctx.beginPath(); ctx.arc(orb1X, orb1Y, 1.2, 0, Math.PI * 2); ctx.fill();\n\n  const orb2X = 18 - Math.cos(t * 2.0) * 4.0;\n  const orb2Y = 16 + Math.sin(t * 2.0) * 3.0;\n  ctx.fillStyle = \"rgba(103, 232, 249, 0.85)\";\n  ctx.beginPath(); ctx.arc(orb2X, orb2Y, 1.2, 0, Math.PI * 2); ctx.fill();\n\n  ctx.restore();\n\n  ctx.restore(); // Restore root translation\n}"
+    }
+  ]
+}

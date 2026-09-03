@@ -1,0 +1,201 @@
+{
+  "character_profile": {
+    "id": 5,
+    "codename": "MYTHIC_MANAPHY_OCEAN_PRINCE",
+    "name_vi": "Manaphy - Hoàng Tử Biển Sâu Huyền Thoại",
+    "name_en": "Mythic Manaphy - Prince of the Ocean",
+    "japanese_name": "マナフィ (Manafi)",
+    "archetype": "Linh Thú Biển Sâu Thần Thoại / Pop Mart Vinyl Nghệ Thuật Cao Cấp",
+    "source_art_reference": "05_Mythic_Manaphy_Ocean_Prince.png",
+    "designer_toy_series": "Mythic Ocean Prince Pop Mart / Vinyl High-End Collectible 3D Series",
+    "mythology_lore": "Vị Hoàng Tử Biển Sâu Huyền Thoại sinh ra từ đáy đại dương thanh khiết nhất thế giới. Trái tim của Manaphy mang sức mạnh cộng hưởng tâm linh thấu hiểu vạn vật biển khơi (Heart Swap), dẫn lối cho toàn bộ sinh linh đại dương. Thân hình giọt nước trong suốt phát ra ánh hào quang ngọc bích êm dịu, mang lại hòa bình và sự thanh tịnh vô tận cho những ai chiêm ngưỡng.",
+    "sculpture_aesthetic_spec": {
+      "finish_quality": "High-End Pop Mart / Porcelain Glazed Vinyl Collectible Toy",
+      "body_material": "Thân nước xanh lam ngọc trong suốt (Water droplet body) với độ bóng men sứ phủ nano và tán xạ dưới bề mặt SSS (Subsurface Scattering)",
+      "antennae_sculpt": "Đôi ăng-ten mềm mại uyển chuyển đính 2 viên ngọc lục bảo biển phát quang dạ quang (Bioluminescent Jade Gem Orbs)",
+      "chest_ruby_solar": "Viên hồng ngọc Ruby đỏ rực hình bầu dục đính viền chạm khắc hoàng kim (Gilded Solar Ruby Core) cùng chấm vàng hoàng kim phúc khí",
+      "ocean_crystal_eyes": "Đôi mắt pha lê xanh lam thẳm 3 điểm bắt sáng vật lý (Keylight, Ground Bounce, Micro Twinkle) kết hợp vệt viền hoàng kim và chấm anten mí mắt",
+      "angel_fins": "Hai tay bơi vây cá tiên thon dài xòe rộng uốn lượn đa tầng đón sáng",
+      "seabed_shadow": "Bóng tiếp xúc mờ ảo đáy biển (Ambient Occlusion Contact Shadow)"
+    }
+  },
+  "palette": [
+    {
+      "name": "C_FRESNEL_RIM",
+      "hex": "#CCFBF1",
+      "rgb565": "0xCFDE",
+      "optical_function": "Viền men sứ xanh ngọc băng lóa sáng ngoài cùng (Fresnel Rim)"
+    },
+    {
+      "name": "C_BODY_CYAN",
+      "hex": "#22D3EE",
+      "rgb565": "0x269D",
+      "optical_function": "Thân ngọc lam đại dương bán trong suốt chính"
+    },
+    {
+      "name": "C_BODY_LIGHT",
+      "hex": "#67E8F9",
+      "rgb565": "0x675F",
+      "optical_function": "Vùng phản quang sáng khoang thể dịch bên trong"
+    },
+    {
+      "name": "C_BODY_CORE_SSS",
+      "hex": "#0284C7",
+      "rgb565": "0x0438",
+      "optical_function": "Lõi tán xạ ánh sáng dưới bề mặt SSS thể tích"
+    },
+    {
+      "name": "C_DEEP_CYAN",
+      "hex": "#0E7490",
+      "rgb565": "0x0BB2",
+      "optical_function": "Vùng đổ bóng khuất vạt nách và thùy đuôi"
+    },
+    {
+      "name": "C_JADE_CORE",
+      "hex": "#34D399",
+      "rgb565": "0x3693",
+      "optical_function": "Ngọc lục bảo biển phát quang đầu anten"
+    },
+    {
+      "name": "C_JADE_GLOW",
+      "hex": "#6EE7B7",
+      "rgb565": "0x6F36",
+      "optical_function": "Quầng hào quang dạ quang ngọc bích"
+    },
+    {
+      "name": "C_RUBY_DEEP",
+      "hex": "#991B1B",
+      "rgb565": "0x98C3",
+      "optical_function": "Đáy bóng tối hồng ngọc Ruby"
+    },
+    {
+      "name": "C_RUBY_CORE",
+      "hex": "#DC2626",
+      "rgb565": "0xD924",
+      "optical_function": "Lõi đỏ rực hồng ngọc trái tim đại dương"
+    },
+    {
+      "name": "C_RUBY_BRIGHT",
+      "hex": "#EF4444",
+      "rgb565": "0xEA28",
+      "optical_function": "Cạnh vát lóa sáng giác cắt ruby"
+    },
+    {
+      "name": "C_GOLD_CROWN",
+      "hex": "#F59E0B",
+      "rgb565": "0xF4E1",
+      "optical_function": "Viền vàng hoàng kim & hoa văn anten"
+    },
+    {
+      "name": "C_GOLD_BRIGHT",
+      "hex": "#FEF08A",
+      "rgb565": "0xFF91",
+      "optical_function": "Điểm tâm sáng hoàng kim lấp lánh"
+    },
+    {
+      "name": "C_GOLD_EYE_RING",
+      "hex": "#FACC15",
+      "rgb565": "0xFE62",
+      "optical_function": "Viền mí mắt & chấm anten vàng"
+    },
+    {
+      "name": "C_EYE_DARK",
+      "hex": "#03254C",
+      "rgb565": "0x0129",
+      "optical_function": "Hốc mắt vực thẳm đại dương sâu thẳm"
+    },
+    {
+      "name": "C_EYE_IRIS_BLUE",
+      "hex": "#1D4ED8",
+      "rgb565": "0x1A7B",
+      "optical_function": "Thể thủy tinh Sapphire mắt xanh"
+    },
+    {
+      "name": "C_EYE_IRIS_AQUA",
+      "hex": "#38BDF8",
+      "rgb565": "0x3DFF",
+      "optical_function": "Khúc xạ đáy mắt màu lam ngọc"
+    },
+    {
+      "name": "C_BLUSH_PINK",
+      "hex": "#FB7185",
+      "rgb565": "0xFB90",
+      "optical_function": "Đôi má hồng san hô e ấp ngọt ngào"
+    },
+    {
+      "name": "C_MOUTH_DEEP",
+      "hex": "#9F1239",
+      "rgb565": "0x9887",
+      "optical_function": "Khoang miệng hồng thẫm ngọt ngào"
+    },
+    {
+      "name": "C_MOUTH_TONGUE",
+      "hex": "#FDA4AF",
+      "rgb565": "0xFD35",
+      "optical_function": "Lưỡi nhỏ hồng phấn đáng yêu"
+    },
+    {
+      "name": "C_BUBBLE_GLOW",
+      "hex": "#7DD3FC",
+      "rgb565": "0x7E9F",
+      "optical_function": "Bọt nước ngân hà li ti phát sáng"
+    },
+    {
+      "name": "C_SEABED_SHADOW",
+      "hex": "#041E34",
+      "rgb565": "0x00E6",
+      "optical_function": "Bóng tiếp xúc mờ ảo đáy biển"
+    },
+    {
+      "name": "C_WHITE",
+      "hex": "#FFFFFF",
+      "rgb565": "0xFFFF",
+      "optical_function": "Điểm bắt sáng kim cương men sứ"
+    }
+  ],
+  "organic_kinematics": {
+    "swimming_levitation": {
+      "frequency_hz": 0.28,
+      "period_s": 3.5,
+      "y_bobbing_amplitude_px": 3.5,
+      "squash_and_stretch_vertical_pct": 5.0,
+      "squash_and_stretch_horizontal_pct": -2.5,
+      "volume_preservation_formula": "Sy * Sx ≈ 1.0 (sY = 1.0 + 0.05*sin(t*2.0), sX = 1.0 - 0.025*sin(t*2.0))"
+    },
+    "antennae_undulation": {
+      "waveform": "S-Curve undulation with phase lag",
+      "phase_lag_ms": 80,
+      "phase_lag_rad": 0.52,
+      "lateral_sway_px": 6.0,
+      "vertical_sway_px": 3.0,
+      "formula": "sinf(breathPhase - 0.52f) * 6.0f"
+    },
+    "angel_flippers_flutter": {
+      "phase_lag_ms": 55,
+      "phase_lag_rad": 0.35,
+      "flutter_amplitude_px": 4.0,
+      "formula": "sinf(breathPhase - 0.35f) * 4.0f"
+    },
+    "crystal_eye_blink": {
+      "interval_ms": 3500,
+      "duration_ms": 140,
+      "shape_when_blinking": "Happy kawaii crescent curve"
+    },
+    "bioluminescent_galaxy_bubbles": {
+      "bubble_count": 6,
+      "oscillation_hz": 0.75,
+      "glow_color": "#7DD3FC"
+    },
+    "seabed_ambient_shadow": {
+      "contact_falloff_px": 8,
+      "dynamic_expansion": "Expands when descending, contracts when ascending"
+    }
+  },
+  "cpp_scaled_canvas_code": "// =========================================================================\n// MANAPHY - HOÀNG TỬ BIỂN SÂU HUYỀN THOẠI (MYTHIC MANAPHY OCEAN PRINCE)\n// Pop Mart / High-End Vinyl Collectible Art - 100% Hardware Compatible\n// Target: ST7789 IPS 172x320 / 240x280 (16-bit RGB565)\n// =========================================================================\n\nstatic void drawMythicManaphy(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float angle, bool blink = false) {\n  // 1. Nhịp bơi lơ lửng đại dương Squash & Stretch 5%\n  float breathPhase = angle * 2.0f;\n  float sY = 1.0f + 0.05f * sinf(breathPhase);\n  float sX = 1.0f - 0.025f * sinf(breathPhase); // Area conservation: sY * sX ≈ 1.0\n  int by = cy + (int)(sinf(breathPhase) * 3.5f); // Dao động bơi lơ lửng Y-bobbing\n\n  // 2. Bảng màu 16-bit RGB565 chuẩn xác\n  const uint16_t C_FRESNEL_RIM   = 0xCFDE; // #CCFBF1 Viền men sứ xanh ngọc băng lóa sáng\n  const uint16_t C_BODY_CYAN     = 0x269D; // #22D3EE Thân ngọc lam đại dương bán trong suốt\n  const uint16_t C_BODY_LIGHT    = 0x675F; // #67E8F9 Vùng phản quang sáng khoang thể dịch\n  const uint16_t C_BODY_CORE_SSS = 0x0438; // #0284C7 Lõi tán xạ ánh sáng dưới bề mặt SSS\n  const uint16_t C_DEEP_CYAN     = 0x0BB2; // #0E7490 Vùng đổ bóng khuất vạt nách và đuôi\n  const uint16_t C_JADE_CORE     = 0x3693; // #34D399 Ngọc lục bảo biển phát quang đầu anten\n  const uint16_t C_JADE_GLOW     = 0x6F36; // #6EE7B7 Quầng hào quang dạ quang ngọc bích\n  const uint16_t C_RUBY_DEEP     = 0x98C3; // #991B1B Đáy bóng tối hồng ngọc Ruby\n  const uint16_t C_RUBY_CORE     = 0xD924; // #DC2626 Lõi đỏ rực hồng ngọc trái tim đại dương\n  const uint16_t C_RUBY_BRIGHT   = 0xEA28; // #EF4444 Cạnh vát lóa sáng giác cắt ruby\n  const uint16_t C_GOLD_CROWN    = 0xF4E1; // #F59E0B Viền vàng hoàng kim & hoa văn anten\n  const uint16_t C_GOLD_BRIGHT   = 0xFF91; // #FEF08A Điểm tâm sáng hoàng kim lấp lánh\n  const uint16_t C_GOLD_EYE_RING = 0xFE62; // #FACC15 Viền mí mắt & chấm anten vàng\n  const uint16_t C_EYE_DARK      = 0x0129; // #03254C Hốc mắt vực thẳm đại dương sâu thẳm\n  const uint16_t C_EYE_IRIS_BLUE = 0x1A7B; // #1D4ED8 Thể thủy tinh Sapphire mắt xanh\n  const uint16_t C_EYE_IRIS_AQUA = 0x3DFF; // #38BDF8 Khúc xạ đáy mắt màu lam ngọc\n  const uint16_t C_BLUSH_PINK    = 0xFB90; // #FB7185 Đôi má hồng san hô e ấp\n  const uint16_t C_MOUTH_DEEP    = 0x9887; // #9F1239 Khoang miệng hồng thẫm ngọt ngào\n  const uint16_t C_MOUTH_TONGUE  = 0xFD35; // #FDA4AF Lưỡi nhỏ hồng phấn đáng yêu\n  const uint16_t C_BUBBLE_GLOW   = 0x7E9F; // #7DD3FC Bọt nước ngân hà li ti phát sáng\n  const uint16_t C_SEABED_SHADOW = 0x00E6; // #041E34 Bóng tiếp xúc mờ ảo đáy biển\n  const uint16_t C_WHITE         = 0xFFFF; // #FFFFFF Điểm bắt sáng kim cương men sứ\n\n  // 3. BÓNG TIẾP XÚC MỜ ẢO ĐÁY BIỂN (Soft Contact Shadow)\n  int shadowRx = (int)((24.0f + 2.0f * sinf(breathPhase)) * sX);\n  int shadowRy = 5;\n  int shadowY  = cy + 38;\n  spr->fillEllipse(cx, shadowY, shadowRx + 4, shadowRy + 1, C_SEABED_SHADOW);\n  spr->fillEllipse(cx, shadowY, shadowRx, shadowRy, C_SEABED_SHADOW);\n\n  // 4. BỌT NƯỚC NGÂN HÀ LI TI PHÁT SÁNG BỒNG BỀNH XUNG QUANH (Bioluminescent Galaxy Bubbles)\n  const int bubbleOffsets[6][2] = {\n    {-36, -26}, {38, -20}, {-42, 12}, {40, 18}, {-18, -44}, {22, -48}\n  };\n  const float bubblePhases[6] = {0.0f, 1.2f, 2.4f, 3.6f, 4.8f, 5.5f};\n  for (int b = 0; b < 6; b++) {\n    float bLag = breathPhase * 0.8f + bubblePhases[b];\n    int bx = cx + bubbleOffsets[b][0] + (int)(cosf(bLag) * 3.0f);\n    int bby = cy + bubbleOffsets[b][1] + (int)(sinf(bLag) * 4.0f);\n    int br = (b % 2 == 0) ? 3 : 2;\n    spr->drawCircle(bx, bby, br, C_BUBBLE_GLOW);\n    spr->drawPixel(bx - 1, bby - 1, C_WHITE);\n  }\n\n  // 5. ĐÔI ĂNG-TEN ĐỈNH ĐẦU UỐN LƯỢN HÌNH CHỮ S (Độ trễ pha 80ms ~ 0.52 rad)\n  int hy = by - 16;\n  float antLag = breathPhase - 0.52f; // Trễ pha 80ms\n  int sCurve1 = (int)(sinf(antLag) * 6.0f);\n  int sCurve2 = (int)(cosf(antLag) * 3.0f);\n\n  // Ăng-ten 1 (Phía trước):\n  int a1RootX = cx - 2, a1RootY = hy - 14;\n  int a1MidX  = cx + 16 + sCurve2, a1MidY = hy - 24 + sCurve1 / 2;\n  int a1PeakX = cx + 36 + sCurve1, a1PeakY = hy - 20 - sCurve2;\n  int a1TipX  = cx + 46 + sCurve1, a1TipY = hy - 4 + sCurve2;\n\n  spr->drawLine(a1RootX, a1RootY, a1MidX, a1MidY, C_BODY_CYAN);\n  spr->drawLine(a1RootX + 1, a1RootY, a1MidX + 1, a1MidY, C_FRESNEL_RIM);\n  spr->drawLine(a1MidX, a1MidY, a1PeakX, a1PeakY, C_BODY_CYAN);\n  spr->drawLine(a1MidX + 1, a1MidY, a1PeakX + 1, a1PeakY, C_FRESNEL_RIM);\n  spr->drawLine(a1PeakX, a1PeakY, a1TipX, a1TipY, C_BODY_CYAN);\n  spr->drawLine(a1PeakX + 1, a1PeakY, a1TipX + 1, a1TipY, C_FRESNEL_RIM);\n\n  // Viên ngọc xanh ngọc bích phát quang 1 (Luminous Jade Gem Orb 1)\n  spr->fillCircle(a1TipX, a1TipY, 6, C_JADE_GLOW);\n  spr->fillCircle(a1TipX, a1TipY, 4, C_JADE_CORE);\n  spr->fillCircle(a1TipX - 1, a1TipY - 1, 2, C_WHITE);\n\n  // Ăng-ten 2 (Phía sau):\n  int a2RootX = cx + 3, a2RootY = hy - 14;\n  int a2MidX  = cx + 20 + sCurve2, a2MidY = hy - 28 + sCurve1 / 2;\n  int a2PeakX = cx + 40 + sCurve1, a2PeakY = hy - 24 - sCurve2;\n  int a2TipX  = cx + 52 + sCurve1, a2TipY = hy - 10 + sCurve2;\n\n  spr->drawLine(a2RootX, a2RootY, a2MidX, a2MidY, C_DEEP_CYAN);\n  spr->drawLine(a2RootX + 1, a2RootY, a2MidX + 1, a2MidY, C_BODY_CYAN);\n  spr->drawLine(a2MidX, a2MidY, a2PeakX, a2PeakY, C_DEEP_CYAN);\n  spr->drawLine(a2MidX + 1, a2MidY, a2PeakX + 1, a2PeakY, C_BODY_CYAN);\n  spr->drawLine(a2PeakX, a2PeakY, a2TipX, a2TipY, C_DEEP_CYAN);\n  spr->drawLine(a2PeakX + 1, a2PeakY, a2TipX + 1, a2TipY, C_BODY_CYAN);\n\n  // Viên ngọc xanh ngọc bích phát quang 2 (Luminous Jade Gem Orb 2)\n  spr->fillCircle(a2TipX, a2TipY, 6, C_JADE_GLOW);\n  spr->fillCircle(a2TipX, a2TipY, 4, C_JADE_CORE);\n  spr->fillCircle(a2TipX - 1, a2TipY - 1, 2, C_WHITE);\n\n  // 6. HAI TAY BƠI DÀI XÒE RỘNG UYỂN CHUYỂN NHƯ VÂY CÁ TIÊN (Angel Fairy Swimming Flippers)\n  float finLag = breathPhase - 0.35f;\n  int finFlutterL = (int)(sinf(finLag) * 4.0f);\n  int finFlutterR = (int)(sinf(finLag + 0.15f) * 4.0f);\n\n  // Tay bơi trái:\n  int fLx1 = cx - (int)(10 * sX), fLy1 = by + 3;\n  int fLx2 = cx - (int)(32 * sX), fLy2 = by + 8 + finFlutterL;\n  int fLx3 = cx - (int)(48 * sX), fLy3 = by + 4 + finFlutterL;\n  spr->fillTriangle(fLx1, fLy1 - 3, fLx2, fLy2 - 5, fLx1, fLy1 + 5, C_DEEP_CYAN);\n  spr->fillTriangle(fLx2, fLy2 - 5, fLx3, fLy3 - 2, fLx2, fLy2 + 4, C_BODY_CYAN);\n  spr->fillCircle(fLx3, fLy3, 5, C_BODY_CYAN);\n  spr->fillCircle(fLx3 - 1, fLy3 - 1, 3, C_BODY_LIGHT);\n  spr->drawLine(fLx1, fLy1 - 3, fLx3, fLy3 - 2, C_FRESNEL_RIM);\n\n  // Tay bơi phải:\n  int fRx1 = cx + (int)(10 * sX), fRy1 = by + 3;\n  int fRx2 = cx + (int)(32 * sX), fRy2 = by + 8 + finFlutterR;\n  int fRx3 = cx + (int)(48 * sX), fRy3 = by + 4 + finFlutterR;\n  spr->fillTriangle(fRx1, fRy1 - 3, fRx2, fRy2 - 5, fRx1, fRy1 + 5, C_DEEP_CYAN);\n  spr->fillTriangle(fRx2, fRy2 - 5, fRx3, fRy3 - 2, fRx2, fRy2 + 4, C_BODY_CYAN);\n  spr->fillCircle(fRx3, fRy3, 5, C_BODY_CYAN);\n  spr->fillCircle(fRx3 - 1, fRy3 - 1, 3, C_BODY_LIGHT);\n  spr->drawLine(fRx1, fRy1 - 3, fRx3, fRy3 - 2, C_FRESNEL_RIM);\n\n  // 7. THÂN NƯỚC GIỌT NƯỚC BÁN TRONG SUỐT & CHÂN BÁNH BAO\n  spr->fillRoundRect(cx - (int)(11 * sX), by + 18, (int)(8 * sX), (int)(9 * sY), 4, C_BODY_CYAN);\n  spr->fillRoundRect(cx + (int)(3 * sX),  by + 18, (int)(8 * sX), (int)(9 * sY), 4, C_BODY_CYAN);\n  spr->drawFastHLine(cx - (int)(9 * sX), by + 26, (int)(5 * sX), C_FRESNEL_RIM);\n  spr->drawFastHLine(cx + (int)(5 * sX),  by + 26, (int)(5 * sX), C_FRESNEL_RIM);\n\n  int bRy = (int)(16 * sY);\n  int bRx = (int)(16 * sX);\n  spr->fillEllipse(cx, by + 10, bRx + 2, bRy + 2, C_FRESNEL_RIM);\n  spr->fillEllipse(cx, by + 10, bRx, bRy, C_BODY_CYAN);\n  spr->fillEllipse(cx, by + 11, (int)(12 * sX), (int)(12 * sY), C_BODY_CORE_SSS);\n  spr->fillEllipse(cx, by + 8,  (int)(10 * sX), (int)(8 * sY),  C_BODY_LIGHT);\n  spr->fillEllipse(cx - (int)(6 * sX), by + 14, 3, 2, C_WHITE);\n\n  // 8. VIÊN HỒNG NGỌC RUBY ĐỎ RỰC TRƯỚC NGỰC & VÒNG CHẤM VÀNG HOÀNG KIM\n  int gemY = by + 4;\n  spr->fillEllipse(cx, gemY, 8, 10, C_GOLD_CROWN);\n  spr->drawCircle(cx, gemY - 9, 1, C_GOLD_BRIGHT);\n  spr->drawCircle(cx, gemY + 9, 1, C_GOLD_BRIGHT);\n  spr->drawCircle(cx - 7, gemY, 1, C_GOLD_BRIGHT);\n  spr->drawCircle(cx + 7, gemY, 1, C_GOLD_BRIGHT);\n\n  spr->fillEllipse(cx, gemY, 6, 8, C_RUBY_DEEP);\n  spr->fillEllipse(cx, gemY, 5, 7, C_RUBY_CORE);\n  spr->fillEllipse(cx, gemY - 1, 3, 4, C_RUBY_BRIGHT);\n  spr->fillCircle(cx - 1, gemY - 2, 1, C_WHITE);\n\n  int dotY = by + 16;\n  spr->fillEllipse(cx, dotY, 3, 4, C_GOLD_CROWN);\n  spr->fillCircle(cx, dotY, 2, C_GOLD_BRIGHT);\n\n  // 9. ĐẦU NƯỚC GIỌT NƯỚC KHỔNG LỒ & ĐỘ BÓNG MEN SỨ\n  int hRy = (int)(22 * sY);\n  int hRx = (int)(26 * sX);\n  spr->fillEllipse(cx, hy, hRx + 2, hRy + 2, C_FRESNEL_RIM);\n  spr->fillEllipse(cx, hy, hRx, hRy, C_BODY_CYAN);\n  spr->fillEllipse(cx, hy + 2, (int)(21 * sX), (int)(17 * sY), C_BODY_LIGHT);\n\n  spr->fillEllipse(cx - (int)(10 * sX), hy - (int)(11 * sY), 7, 3, C_WHITE);\n  spr->fillCircle(cx + (int)(12 * sX), hy - (int)(8 * sY), 2, C_WHITE);\n\n  // 10. HOA VĂN MÍ MẮT HOÀNG KIM & ĐỐM TRÒN ĂNG-TEN MẮT (100% Khớp ảnh mẫu)\n  int ey = hy + 1;\n  int exL = cx - (int)(11 * sX);\n  int exR = cx + (int)(11 * sX);\n\n  spr->drawEllipse(exL, ey, 7, 9, C_GOLD_EYE_RING);\n  spr->drawEllipse(exR, ey, 7, 9, C_GOLD_EYE_RING);\n\n  spr->drawLine(exL - 1, ey - 9, exL - 3, ey - 15, C_GOLD_EYE_RING);\n  spr->fillCircle(exL - 3, ey - 15, 3, C_GOLD_CROWN);\n  spr->fillCircle(exL - 3, ey - 15, 2, C_GOLD_BRIGHT);\n\n  spr->drawLine(exL + 4, ey - 8, exL + 8, ey - 13, C_GOLD_EYE_RING);\n  spr->fillCircle(exL + 8, ey - 13, 3, C_GOLD_CROWN);\n  spr->fillCircle(exL + 8, ey - 13, 2, C_GOLD_BRIGHT);\n\n  spr->drawLine(exR + 1, ey - 9, exR + 3, ey - 15, C_GOLD_EYE_RING);\n  spr->fillCircle(exR + 3, ey - 15, 3, C_GOLD_CROWN);\n  spr->fillCircle(exR + 3, ey - 15, 2, C_GOLD_BRIGHT);\n\n  spr->drawLine(exR - 4, ey - 8, exR - 8, ey - 13, C_GOLD_EYE_RING);\n  spr->fillCircle(exR - 8, ey - 13, 3, C_GOLD_CROWN);\n  spr->fillCircle(exR - 8, ey - 13, 2, C_GOLD_BRIGHT);\n\n  // 11. ĐÔI MẮT XANH THẲM ĐẠI DƯƠNG PHA LÊ (3-Point Catchlights)\n  if (blink) {\n    spr->drawEllipse(exL, ey + 2, 6, 2, C_EYE_DARK);\n    spr->drawEllipse(exR, ey + 2, 6, 2, C_EYE_DARK);\n  } else {\n    for (int eyeSide = 0; eyeSide < 2; eyeSide++) {\n      int ex = (eyeSide == 0) ? exL : exR;\n      spr->fillEllipse(ex, ey, 6, 8, C_EYE_DARK);\n      spr->fillEllipse(ex, ey + 2, 5, 5, C_EYE_IRIS_BLUE);\n      spr->fillEllipse(ex, ey + 4, 4, 2, C_EYE_IRIS_AQUA);\n      spr->fillCircle(ex, ey - 1, 3, C_EYE_DARK);\n\n      // 3 Catchlights:\n      spr->fillCircle(ex - 2, ey - 3, 2, C_WHITE); // Point 1: Keylight lớn\n      spr->fillCircle(ex + 2, ey + 3, 1, C_WHITE); // Point 2: Caustic bounce\n      spr->drawPixel(ex + 2, ey - 2, C_WHITE);     // Point 3: Micro twinkle\n    }\n  }\n\n  // 12. ĐÔI MÁ ỬNG HỒNG NƯỚC BIỂN & NỤ CƯỜI HOÀNG TỬ BIỂN SÂU\n  spr->fillEllipse(cx - (int)(18 * sX), hy + 6, 4, 3, C_BLUSH_PINK);\n  spr->fillEllipse(cx + (int)(18 * sX), hy + 6, 4, 3, C_BLUSH_PINK);\n\n  int mY = hy + 8;\n  spr->fillTriangle(cx - 4, mY, cx + 4, mY, cx, mY + 5, C_MOUTH_DEEP);\n  spr->fillCircle(cx, mY + 4, 2, C_MOUTH_TONGUE);\n  spr->drawLine(cx - 4, mY, cx + 4, mY, C_DEEP_CYAN);\n}\n\nstatic void drawMythicManaphy(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float breath, float angle, float scale = 1.0f) {\n  (void)breath;\n  (void)scale;\n  bool blink = (fmodf(angle, 3.5f) < 0.14f);\n  drawMythicManaphy(spr, cx, cy, angle, blink);\n}",
+  "js_canvas_code": "// =========================================================================\n// MANAPHY - HOÀNG TỬ BIỂN SÂU HUYỀN THOẠI (MYTHIC MANAPHY OCEAN PRINCE)\n// Pop Mart / High-End Vinyl Collectible Art - Modern HTML5 Canvas 2D\n// =========================================================================\n\nfunction drawMythicManaphy(ctx, cx, cy, scale, t) {\n  ctx.save();\n  ctx.translate(cx, cy);\n  ctx.scale(scale, scale);\n\n  // 1. Nhịp bơi lơ lửng đại dương Squash & Stretch 5%\n  const breathFreq = 2.0;\n  const breathPhase = t * breathFreq;\n  const sY = 1.0 + 0.05 * Math.sin(breathPhase);\n  const sX = 1.0 - 0.025 * Math.sin(breathPhase);\n  const by = Math.sin(breathPhase) * 3.5;\n  const blink = ((t % 3.5) < 0.14);\n\n  // 2. Bóng tiếp xúc mờ ảo đáy biển (Soft Contact Shadow)\n  ctx.save();\n  const shadowGrad = ctx.createRadialGradient(0, 38, 4, 0, 38, 28 * sX);\n  shadowGrad.addColorStop(0, 'rgba(4, 30, 52, 0.45)');\n  shadowGrad.addColorStop(0.6, 'rgba(4, 30, 52, 0.20)');\n  shadowGrad.addColorStop(1, 'rgba(4, 30, 52, 0)');\n  ctx.fillStyle = shadowGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, 38, 26 * sX, 6, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 3. Bọt nước ngân hà li ti phát sáng (Bioluminescent Galaxy Bubbles)\n  const bubbleDefs = [\n    { x: -36, y: -26, r: 3.2, phase: 0.0 },\n    { x: 38,  y: -20, r: 2.8, phase: 1.2 },\n    { x: -42, y: 12,  r: 2.4, phase: 2.4 },\n    { x: 40,  y: 18,  r: 3.0, phase: 3.6 },\n    { x: -18, y: -44, r: 2.0, phase: 4.8 },\n    { x: 22,  y: -48, r: 2.5, phase: 5.5 }\n  ];\n  bubbleDefs.forEach(b => {\n    const bLag = breathPhase * 0.8 + b.phase;\n    const bx = b.x + Math.cos(bLag) * 3.0;\n    const by_pos = b.y + Math.sin(bLag) * 4.0;\n    ctx.save();\n    ctx.shadowColor = '#7DD3FC';\n    ctx.shadowBlur = 8;\n    ctx.fillStyle = 'rgba(125, 211, 252, 0.35)';\n    ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';\n    ctx.lineWidth = 0.9;\n    ctx.beginPath();\n    ctx.arc(bx, by_pos, b.r, 0, Math.PI * 2);\n    ctx.fill();\n    ctx.stroke();\n    // Điểm bắt sáng bọt\n    ctx.fillStyle = '#FFFFFF';\n    ctx.beginPath();\n    ctx.arc(bx - b.r * 0.35, by_pos - b.r * 0.35, b.r * 0.3, 0, Math.PI * 2);\n    ctx.fill();\n    ctx.restore();\n  });\n\n  // 4. Đôi ăng-ten đỉnh đầu uốn lượn hình chữ S (Độ trễ pha 80ms)\n  const hy = by - 16;\n  const antLag = breathPhase - 0.52;\n  const sCurve1 = Math.sin(antLag) * 6.0;\n  const sCurve2 = Math.cos(antLag) * 3.0;\n\n  function drawAntenna(rootX, rootY, c1x, c1y, c2x, c2y, tipX, tipY, isFront) {\n    ctx.save();\n    ctx.lineWidth = 3.2;\n    ctx.lineCap = 'round';\n    ctx.strokeStyle = isFront ? '#22D3EE' : '#0E7490';\n    ctx.beginPath();\n    ctx.moveTo(rootX, rootY);\n    ctx.bezierCurveTo(c1x, c1y, c2x, c2y, tipX, tipY);\n    ctx.stroke();\n\n    // Viền men sứ lóa sáng\n    ctx.lineWidth = 1.0;\n    ctx.strokeStyle = '#CCFBF1';\n    ctx.beginPath();\n    ctx.moveTo(rootX + 0.6, rootY - 0.6);\n    ctx.bezierCurveTo(c1x + 0.6, c1y - 0.6, c2x + 0.6, c2y - 0.6, tipX, tipY);\n    ctx.stroke();\n\n    // Viên ngọc xanh ngọc bích phát quang ở chóp\n    ctx.shadowColor = '#34D399';\n    ctx.shadowBlur = 14;\n    const orbGrad = ctx.createRadialGradient(tipX - 1.5, tipY - 1.5, 1, tipX, tipY, 6);\n    orbGrad.addColorStop(0, '#FFFFFF');\n    orbGrad.addColorStop(0.3, '#6EE7B7');\n    orbGrad.addColorStop(0.8, '#10B981');\n    orbGrad.addColorStop(1, '#047857');\n    ctx.fillStyle = orbGrad;\n    ctx.beginPath();\n    ctx.arc(tipX, tipY, 5.5, 0, Math.PI * 2);\n    ctx.fill();\n\n    // Vầng hào quang ngọc bích\n    ctx.strokeStyle = 'rgba(110, 231, 183, 0.6)';\n    ctx.lineWidth = 1.4;\n    ctx.stroke();\n    ctx.restore();\n  }\n\n  // Ăng-ten sau\n  drawAntenna(3, hy - 14, 20 + sCurve2, hy - 28 + sCurve1 * 0.5, 40 + sCurve1, hy - 24 - sCurve2, 52 + sCurve1, hy - 10 + sCurve2, false);\n  // Ăng-ten trước\n  drawAntenna(-2, hy - 14, 16 + sCurve2, hy - 24 + sCurve1 * 0.5, 36 + sCurve1, hy - 20 - sCurve2, 46 + sCurve1, hy - 4 + sCurve2, true);\n\n  // 5. Hai tay bơi dài xòe rộng như vây cá tiên\n  const finLag = breathPhase - 0.35;\n  const finFlutterL = Math.sin(finLag) * 4.0;\n  const finFlutterR = Math.sin(finLag + 0.15) * 4.0;\n\n  function drawFin(isLeft, flutter) {\n    ctx.save();\n    const sign = isLeft ? -1 : 1;\n    const rX = sign * 10 * sX, rY = by + 3;\n    const mX = sign * 32 * sX, mY = by + 8 + flutter;\n    const tX = sign * 48 * sX, tY = by + 4 + flutter;\n\n    const finGrad = ctx.createLinearGradient(rX, rY, tX, tY);\n    finGrad.addColorStop(0, '#0E7490');\n    finGrad.addColorStop(0.5, '#22D3EE');\n    finGrad.addColorStop(1, '#67E8F9');\n\n    ctx.fillStyle = finGrad;\n    ctx.beginPath();\n    ctx.moveTo(rX, rY - 3);\n    ctx.quadraticCurveTo(mX, mY - 6, tX, tY);\n    ctx.arc(tX, tY, 5.2, isLeft ? Math.PI * 0.5 : -Math.PI * 0.5, isLeft ? -Math.PI * 0.5 : Math.PI * 0.5);\n    ctx.quadraticCurveTo(mX, mY + 6, rX, rY + 4);\n    ctx.closePath();\n    ctx.fill();\n\n    // Gờ men sứ lóa sáng\n    ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';\n    ctx.lineWidth = 1.2;\n    ctx.stroke();\n    ctx.restore();\n  }\n  drawFin(true, finFlutterL);\n  drawFin(false, finFlutterR);\n\n  // 6. Thân nước giọt nước bán trong suốt & Chân bánh bao\n  // Chân\n  ctx.fillStyle = '#22D3EE';\n  ctx.beginPath();\n  ctx.roundRect(-11 * sX, by + 18, 8 * sX, 9 * sY, 4);\n  ctx.roundRect(3 * sX,  by + 18, 8 * sX, 9 * sY, 4);\n  ctx.fill();\n\n  // Khối thân (Torso)\n  ctx.save();\n  const bodyGrad = ctx.createRadialGradient(-2 * sX, by + 6, 3, 0, by + 10, 18 * sY);\n  bodyGrad.addColorStop(0, '#67E8F9');\n  bodyGrad.addColorStop(0.5, '#22D3EE');\n  bodyGrad.addColorStop(0.85, '#0284C7');\n  bodyGrad.addColorStop(1, '#0E7490');\n  ctx.fillStyle = bodyGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, by + 10, 16 * sX, 16 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n\n  // Viền men sứ lóa sáng\n  ctx.strokeStyle = '#CCFBF1';\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  // Highlight bóng men sứ trên hông\n  ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';\n  ctx.beginPath();\n  ctx.ellipse(-6 * sX, by + 14, 3, 2, -0.2, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 7. Viên hồng ngọc Ruby đỏ rực trước ngực & Vòng chấm vàng hoàng kim\n  const gemY = by + 4;\n  ctx.save();\n  // Vòng chấm vàng hoàng kim tỏa sáng\n  ctx.fillStyle = '#F59E0B';\n  ctx.beginPath();\n  ctx.ellipse(0, gemY, 8.5, 10.5, 0, 0, Math.PI * 2);\n  ctx.fill();\n\n  ctx.fillStyle = '#FEF08A';\n  const dotAngles = [0, Math.PI/2, Math.PI, Math.PI*1.5];\n  dotAngles.forEach(a => {\n    ctx.beginPath();\n    ctx.arc(Math.cos(a) * 7.5, gemY + Math.sin(a) * 9.5, 1.3, 0, Math.PI * 2);\n    ctx.fill();\n  });\n\n  // Viên ngọc Ruby đỏ rực\n  ctx.shadowColor = 'rgba(220, 38, 38, 0.75)';\n  ctx.shadowBlur = 10;\n  const rubyGrad = ctx.createRadialGradient(-1, gemY - 2, 1, 0, gemY, 7);\n  rubyGrad.addColorStop(0, '#FCA5A5');\n  rubyGrad.addColorStop(0.25, '#EF4444');\n  rubyGrad.addColorStop(0.7, '#DC2626');\n  rubyGrad.addColorStop(1, '#881337');\n  ctx.fillStyle = rubyGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, gemY, 5.5, 7.5, 0, 0, Math.PI * 2);\n  ctx.fill();\n\n  // Điểm bắt sáng lóa giác cắt ruby\n  ctx.fillStyle = '#FFFFFF';\n  ctx.beginPath();\n  ctx.arc(-1.5, gemY - 2.5, 1.2, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // Chấm vàng phúc khí bụng dưới\n  ctx.save();\n  ctx.fillStyle = '#F59E0B';\n  ctx.beginPath();\n  ctx.ellipse(0, by + 16, 3, 4, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.fillStyle = '#FEF08A';\n  ctx.beginPath();\n  ctx.ellipse(0, by + 16, 2, 2.8, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 8. Đầu nước giọt nước khổng lồ & Độ bóng men sứ\n  ctx.save();\n  const headGrad = ctx.createRadialGradient(-8 * sX, hy - 8 * sY, 4, 0, hy, 26 * sX);\n  headGrad.addColorStop(0, '#E0F2FE');\n  headGrad.addColorStop(0.3, '#67E8F9');\n  headGrad.addColorStop(0.7, '#22D3EE');\n  headGrad.addColorStop(1, '#0284C7');\n  ctx.fillStyle = headGrad;\n  ctx.beginPath();\n  ctx.ellipse(0, hy, 26 * sX, 22 * sY, 0, 0, Math.PI * 2);\n  ctx.fill();\n\n  ctx.strokeStyle = '#CCFBF1';\n  ctx.lineWidth = 1.6;\n  ctx.stroke();\n\n  // Điểm phản chiếu men sứ đỉnh đầu\n  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';\n  ctx.beginPath();\n  ctx.ellipse(-10 * sX, hy - 11 * sY, 7, 3, -0.3, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.beginPath();\n  ctx.arc(12 * sX, hy - 8 * sY, 2.2, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 9. Hoa văn mí mắt hoàng kim & đốm tròn anten mắt\n  const ey = hy + 1;\n  const exL = -11 * sX;\n  const exR = 11 * sX;\n\n  function drawBrowDots(originX, sign) {\n    ctx.save();\n    ctx.strokeStyle = '#FACC15';\n    ctx.lineWidth = 1.4;\n\n    // Cuống 1\n    ctx.beginPath();\n    ctx.moveTo(originX + sign * 1, ey - 9);\n    ctx.lineTo(originX + sign * 3, ey - 15);\n    ctx.stroke();\n    // Đốm 1\n    ctx.fillStyle = '#F59E0B';\n    ctx.beginPath();\n    ctx.arc(originX + sign * 3, ey - 15, 3.2, 0, Math.PI * 2);\n    ctx.fill();\n    ctx.fillStyle = '#FEF08A';\n    ctx.beginPath();\n    ctx.arc(originX + sign * 3, ey - 15, 2.0, 0, Math.PI * 2);\n    ctx.fill();\n\n    // Cuống 2\n    ctx.beginPath();\n    ctx.moveTo(originX - sign * 4, ey - 8);\n    ctx.lineTo(originX - sign * 8, ey - 13);\n    ctx.stroke();\n    // Đốm 2\n    ctx.fillStyle = '#F59E0B';\n    ctx.beginPath();\n    ctx.arc(originX - sign * 8, ey - 13, 3.2, 0, Math.PI * 2);\n    ctx.fill();\n    ctx.fillStyle = '#FEF08A';\n    ctx.beginPath();\n    ctx.arc(originX - sign * 8, ey - 13, 2.0, 0, Math.PI * 2);\n    ctx.fill();\n\n    ctx.restore();\n  }\n  drawBrowDots(exL, -1);\n  drawBrowDots(exR, 1);\n\n  // Viền mí mắt vàng\n  ctx.save();\n  ctx.strokeStyle = '#FACC15';\n  ctx.lineWidth = 1.6;\n  ctx.beginPath();\n  ctx.ellipse(exL, ey, 7, 9, 0, 0, Math.PI * 2);\n  ctx.ellipse(exR, ey, 7, 9, 0, 0, Math.PI * 2);\n  ctx.stroke();\n  ctx.restore();\n\n  // 10. Đôi mắt xanh thẳm đại dương pha lê (3-Point Specular)\n  if (blink) {\n    ctx.strokeStyle = '#03254C';\n    ctx.lineWidth = 2.4;\n    ctx.beginPath();\n    ctx.ellipse(exL, ey + 2, 6, 2, 0, 0, Math.PI);\n    ctx.ellipse(exR, ey + 2, 6, 2, 0, 0, Math.PI);\n    ctx.stroke();\n  } else {\n    [exL, exR].forEach(ex => {\n      ctx.save();\n      // Hốc mắt xanh tối\n      ctx.fillStyle = '#03254C';\n      ctx.beginPath();\n      ctx.ellipse(ex, ey, 6, 8, 0, 0, Math.PI * 2);\n      ctx.fill();\n\n      // Mống mắt sapphire\n      const eyeGrad = ctx.createRadialGradient(ex, ey + 4, 1, ex, ey + 2, 6);\n      eyeGrad.addColorStop(0, '#38BDF8');\n      eyeGrad.addColorStop(0.6, '#1D4ED8');\n      eyeGrad.addColorStop(1, '#03254C');\n      ctx.fillStyle = eyeGrad;\n      ctx.beginPath();\n      ctx.ellipse(ex, ey + 2, 5, 5.5, 0, 0, Math.PI * 2);\n      ctx.fill();\n\n      // Đồng tử\n      ctx.fillStyle = '#031733';\n      ctx.beginPath();\n      ctx.arc(ex, ey - 0.5, 3.2, 0, Math.PI * 2);\n      ctx.fill();\n\n      // 3 Catchlights:\n      // Điểm 1: Primary lớn\n      ctx.fillStyle = '#FFFFFF';\n      ctx.beginPath();\n      ctx.arc(ex - 2, ey - 3, 1.9, 0, Math.PI * 2);\n      ctx.fill();\n      // Điểm 2: Secondary bounce\n      ctx.beginPath();\n      ctx.arc(ex + 2, ey + 3, 1.1, 0, Math.PI * 2);\n      ctx.fill();\n      // Điểm 3: Micro glint\n      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';\n      ctx.beginPath();\n      ctx.arc(ex + 2.2, ey - 2, 0.7, 0, Math.PI * 2);\n      ctx.fill();\n\n      ctx.restore();\n    });\n  }\n\n  // 11. Đôi má ửng hồng nước biển & Nụ cười hoàng tử biển sâu\n  // Má hồng\n  ctx.save();\n  const blushGradL = ctx.createRadialGradient(-18 * sX, hy + 6, 1, -18 * sX, hy + 6, 5);\n  blushGradL.addColorStop(0, 'rgba(251, 113, 133, 0.8)');\n  blushGradL.addColorStop(1, 'rgba(251, 113, 133, 0)');\n  ctx.fillStyle = blushGradL;\n  ctx.beginPath();\n  ctx.ellipse(-18 * sX, hy + 6, 4.8, 3.5, 0, 0, Math.PI * 2);\n  ctx.fill();\n\n  const blushGradR = ctx.createRadialGradient(18 * sX, hy + 6, 1, 18 * sX, hy + 6, 5);\n  blushGradR.addColorStop(0, 'rgba(251, 113, 133, 0.8)');\n  blushGradR.addColorStop(1, 'rgba(251, 113, 133, 0)');\n  ctx.fillStyle = blushGradR;\n  ctx.beginPath();\n  ctx.ellipse(18 * sX, hy + 6, 4.8, 3.5, 0, 0, Math.PI * 2);\n  ctx.fill();\n\n  // Miệng cười\n  ctx.fillStyle = '#9F1239';\n  ctx.beginPath();\n  ctx.moveTo(-4.5, hy + 8);\n  ctx.quadraticCurveTo(0, hy + 14, 4.5, hy + 8);\n  ctx.closePath();\n  ctx.fill();\n\n  // Chiếc lưỡi nhỏ xinh\n  ctx.fillStyle = '#FDA4AF';\n  ctx.beginPath();\n  ctx.arc(0, hy + 11, 2.2, 0, Math.PI);\n  ctx.fill();\n  ctx.restore();\n\n  ctx.restore();\n}",
+  "generated_render_artifact": {
+    "image_file": "manaphy_popmart_3d_1788461163831.jpg",
+    "description": "Bản điêu khắc 3D Pop Mart / Vinyl cao cấp của Hoàng Tử Biển Sâu Manaphy với men sứ bóng bẩy, thân ngọc lam SSS, ngọc ruby ngực phát sáng và đôi ăng-ten ngọc bích dạ quang.",
+    "status": "Verified & Rendered"
+  }
+}

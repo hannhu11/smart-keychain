@@ -62,6 +62,7 @@ struct ScaledCanvas {
 #include "jelly_celestial_sprites.h"
 #include "mahoukarp_ocean_sprites.h"
 #include "fantasy_beasts_sprites.h"
+#include "session1_mythics_sprites.h"
 
 namespace SpriteRenderer {
 
@@ -72,7 +73,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 50) : 0;
+    id = (id >= 0) ? (id % 55) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -670,7 +671,32 @@ namespace SpriteRenderer {
         break;
       }
 
-      case 49: default: { // Moon Craters
+      case 49: 
+      // =============================================================
+      // SESSION 1: 5 SINH VẬT THẦN THOẠI & LINH THÚ (IDs 50 - 54)
+      // =============================================================
+      case 50: { // Celebi - Tinh Linh Rừng Xanh Thời Gian
+        Session1Mythics::drawCelebiForestFairy(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 51: { // Jirachi - Ngôi Sao Ban Điều Ước Thiên Hà
+        Session1Mythics::drawJirachiWishMaker(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 52: { // Shaymin - Nhím Hoa Cỏ Gracidea
+        Session1Mythics::drawShayminFloraHedgehog(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 53: { // Victini - Tinh Linh Chiến Thắng Tai Chữ V
+        Session1Mythics::drawVictiniVictoryStar(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 54: { // Manaphy - Hoàng Tử Biển Sâu
+        Session1Mythics::drawMythicManaphy(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      default: { // Moon Craters
         spr->fillCircle(cx, cy, 26, 0xD6BA);
         spr->fillCircle(cx - 8, cy - 6, 5, 0x94B2);
         spr->fillCircle(cx + 10, cy + 4, 7, 0x94B2);

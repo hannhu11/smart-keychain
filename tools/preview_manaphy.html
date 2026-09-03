@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Manaphy Ocean Prince 3D Pop Mart Preview</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #0B2545 0%, #031424 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #E2E8F0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    h1 {
+      margin: 10px 0 4px 0;
+      font-size: 24px;
+      color: #38BDF8;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    }
+    p {
+      margin: 0 0 16px 0;
+      font-size: 14px;
+      color: #94A3B8;
+    }
+    .canvas-container {
+      position: relative;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(34, 211, 238, 0.15);
+      padding: 12px;
+    }
+    canvas {
+      display: block;
+      border-radius: 12px;
+      background: #041424;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(34, 211, 238, 0.4);
+      color: #67E8F9;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌊 MANAPHY - HOÀNG TỬ BIỂN SÂU (OCEAN PRINCE)</h1>
+  <p>Pop Mart / Vinyl Collectible Art • Organic Kinematics 60FPS</p>
+  <div class="canvas-container">
+    <canvas id="previewCanvas" width="344" height="400"></canvas>
+  </div>
+  <div class="badge">ST7789 IPS 172x320 @ 2X Zoom Canvas • Physics Phase Lag: 80ms</div>
+
+  <script>
+    const canvas = document.getElementById('previewCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // JS Code from session1_agent5_manaphy.json
+    function drawMythicManaphy(ctx, cx, cy, scale, t) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(scale, scale);
+
+      const breathFreq = 2.0;
+      const breathPhase = t * breathFreq;
+      const sY = 1.0 + 0.05 * Math.sin(breathPhase);
+      const sX = 1.0 - 0.025 * Math.sin(breathPhase);
+      const by = Math.sin(breathPhase) * 3.5;
+      const blink = ((t % 3.5) < 0.14);
+
+      // Contact Shadow
+      ctx.save();
+      const shadowGrad = ctx.createRadialGradient(0, 38, 4, 0, 38, 28 * sX);
+      shadowGrad.addColorStop(0, 'rgba(4, 30, 52, 0.45)');
+      shadowGrad.addColorStop(0.6, 'rgba(4, 30, 52, 0.20)');
+      shadowGrad.addColorStop(1, 'rgba(4, 30, 52, 0)');
+      ctx.fillStyle = shadowGrad;
+      ctx.beginPath();
+      ctx.ellipse(0, 38, 26 * sX, 6, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Bubbles
+      const bubbleDefs = [
+        { x: -36, y: -26, r: 3.2, phase: 0.0 },
+        { x: 38,  y: -20, r: 2.8, phase: 1.2 },
+        { x: -42, y: 12,  r: 2.4, phase: 2.4 },
+        { x: 40,  y: 18,  r: 3.0, phase: 3.6 },
+        { x: -18, y: -44, r: 2.0, phase: 4.8 },
+        { x: 22,  y: -48, r: 2.5, phase: 5.5 }
+      ];
+      bubbleDefs.forEach(b => {
+        const bLag = breathPhase * 0.8 + b.phase;
+        const bx = b.x + Math.cos(bLag) * 3.0;
+        const by_pos = b.y + Math.sin(bLag) * 4.0;
+        ctx.save();
+        ctx.shadowColor = '#7DD3FC';
+        ctx.shadowBlur = 8;
+        ctx.fillStyle = 'rgba(125, 211, 252, 0.35)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.lineWidth = 0.9;
+        ctx.beginPath();
+        ctx.arc(bx, by_pos, b.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.beginPath();
+        ctx.arc(bx - b.r * 0.35, by_pos - b.r * 0.35, b.r * 0.3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      // Antennae
+      const hy = by - 16;
+      const antLag = breathPhase - 0.52;
+      const sCurve1 = Math.sin(antLag) * 6.0;
+      const sCurve2 = Math.cos(antLag) * 3.0;
+
+      function drawAntenna(rootX, rootY, c1x, c1y, c2x, c2y, tipX, tipY, isFront) {
+        ctx.save();
+        ctx.lineWidth = 3.2;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = isFront ? '#22D3EE' : '#0E7490';
+        ctx.beginPath();
+        ctx.moveTo(rootX, rootY);
+        ctx.bezierCurveTo(c1x, c1y, c2x, c2y, tipX, tipY);
+        ctx.stroke();
+
+        ctx.lineWidth = 1.0;
+        ctx.strokeStyle = '#CCFBF1';
+        ctx.beginPath();
+        ctx.moveTo(rootX + 0.6, rootY - 0.6);
+        ctx.bezierCurveTo(c1x + 0.6, c1y - 0.6, c2x + 0.6, c2y - 0.6, tipX, tipY);
+        ctx.stroke();
+
+        ctx.shadowColor = '#34D399';
+        ctx.shadowBlur = 14;
+        const orbGrad = ctx.createRadialGradient(tipX - 1.5, tipY - 1.5, 1, tipX, tipY, 6);
+        orbGrad.addColorStop(0, '#FFFFFF');
+        orbGrad.addColorStop(0.3, '#6EE7B7');
+        orbGrad.addColorStop(0.8, '#10B981');
+        orbGrad.addColorStop(1, '#047857');
+        ctx.fillStyle = orbGrad;
+        ctx.beginPath();
+        ctx.arc(tipX, tipY, 5.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = 'rgba(110, 231, 183, 0.6)';
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      drawAntenna(3, hy - 14, 20 + sCurve2, hy - 28 + sCurve1 * 0.5, 40 + sCurve1, hy - 24 - sCurve2, 52 + sCurve1, hy - 10 + sCurve2, false);
+      drawAntenna(-2, hy - 14, 16 + sCurve2, hy - 24 + sCurve1 * 0.5, 36 + sCurve1, hy - 20 - sCurve2, 46 + sCurve1, hy - 4 + sCurve2, true);
+
+      // Fins
+      const finLag = breathPhase - 0.35;
+      const finFlutterL = Math.sin(finLag) * 4.0;
+      const finFlutterR = Math.sin(finLag + 0.15) * 4.0;
+
+      function drawFin(isLeft, flutter) {
+        ctx.save();
+        const sign = isLeft ? -1 : 1;
+        const rX = sign * 10 * sX, rY = by + 3;
+        const mX = sign * 32 * sX, mY = by + 8 + flutter;
+        const tX = sign * 48 * sX, tY = by + 4 + flutter;
+
+        const finGrad = ctx.createLinearGradient(rX, rY, tX, tY);
+        finGrad.addColorStop(0, '#0E7490');
+        finGrad.addColorStop(0.5, '#22D3EE');
+        finGrad.addColorStop(1, '#67E8F9');
+
+        ctx.fillStyle = finGrad;
+        ctx.beginPath();
+        ctx.moveTo(rX, rY - 3);
+        ctx.quadraticCurveTo(mX, mY - 6, tX, tY);
+        ctx.arc(tX, tY, 5.2, isLeft ? Math.PI * 0.5 : -Math.PI * 0.5, isLeft ? -Math.PI * 0.5 : Math.PI * 0.5);
+        ctx.quadraticCurveTo(mX, mY + 6, rX, rY + 4);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+        ctx.restore();
+      }
+      drawFin(true, finFlutterL);
+      drawFin(false, finFlutterR);
+
+      // Feet
+      ctx.fillStyle = '#22D3EE';
+      ctx.beginPath();
+      ctx.roundRect(-11 * sX, by + 18, 8 * sX, 9 * sY, 4);
+      ctx.roundRect(3 * sX,  by + 18, 8 * sX, 9 * sY, 4);
+      ctx.fill();
+
+      // Torso
+      ctx.save();
+      const bodyGrad = ctx.createRadialGradient(-2 * sX, by + 6, 3, 0, by + 10, 18 * sY);
+      bodyGrad.addColorStop(0, '#67E8F9');
+      bodyGrad.addColorStop(0.5, '#22D3EE');
+      bodyGrad.addColorStop(0.85, '#0284C7');
+      bodyGrad.addColorStop(1, '#0E7490');
+      ctx.fillStyle = bodyGrad;
+      ctx.beginPath();
+      ctx.ellipse(0, by + 10, 16 * sX, 16 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = '#CCFBF1';
+      ctx.lineWidth = 1.4;
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+      ctx.beginPath();
+      ctx.ellipse(-6 * sX, by + 14, 3, 2, -0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Chest Gem & Aura
+      const gemY = by + 4;
+      ctx.save();
+      ctx.fillStyle = '#F59E0B';
+      ctx.beginPath();
+      ctx.ellipse(0, gemY, 8.5, 10.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#FEF08A';
+      const dotAngles = [0, Math.PI/2, Math.PI, Math.PI*1.5];
+      dotAngles.forEach(a => {
+        ctx.beginPath();
+        ctx.arc(Math.cos(a) * 7.5, gemY + Math.sin(a) * 9.5, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.shadowColor = 'rgba(220, 38, 38, 0.75)';
+      ctx.shadowBlur = 10;
+      const rubyGrad = ctx.createRadialGradient(-1, gemY - 2, 1, 0, gemY, 7);
+      rubyGrad.addColorStop(0, '#FCA5A5');
+      rubyGrad.addColorStop(0.25, '#EF4444');
+      rubyGrad.addColorStop(0.7, '#DC2626');
+      rubyGrad.addColorStop(1, '#881337');
+      ctx.fillStyle = rubyGrad;
+      ctx.beginPath();
+      ctx.ellipse(0, gemY, 5.5, 7.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(-1.5, gemY - 2.5, 1.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Belly yellow dot
+      ctx.save();
+      ctx.fillStyle = '#F59E0B';
+      ctx.beginPath();
+      ctx.ellipse(0, by + 16, 3, 4, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#FEF08A';
+      ctx.beginPath();
+      ctx.ellipse(0, by + 16, 2, 2.8, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Head
+      ctx.save();
+      const headGrad = ctx.createRadialGradient(-8 * sX, hy - 8 * sY, 4, 0, hy, 26 * sX);
+      headGrad.addColorStop(0, '#E0F2FE');
+      headGrad.addColorStop(0.3, '#67E8F9');
+      headGrad.addColorStop(0.7, '#22D3EE');
+      headGrad.addColorStop(1, '#0284C7');
+      ctx.fillStyle = headGrad;
+      ctx.beginPath();
+      ctx.ellipse(0, hy, 26 * sX, 22 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = '#CCFBF1';
+      ctx.lineWidth = 1.6;
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.beginPath();
+      ctx.ellipse(-10 * sX, hy - 11 * sY, 7, 3, -0.3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(12 * sX, hy - 8 * sY, 2.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Brow Dots
+      const ey = hy + 1;
+      const exL = -11 * sX;
+      const exR = 11 * sX;
+
+      function drawBrowDots(originX, sign) {
+        ctx.save();
+        ctx.strokeStyle = '#FACC15';
+        ctx.lineWidth = 1.4;
+
+        ctx.beginPath();
+        ctx.moveTo(originX + sign * 1, ey - 9);
+        ctx.lineTo(originX + sign * 3, ey - 15);
+        ctx.stroke();
+
+        ctx.fillStyle = '#F59E0B';
+        ctx.beginPath();
+        ctx.arc(originX + sign * 3, ey - 15, 3.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FEF08A';
+        ctx.beginPath();
+        ctx.arc(originX + sign * 3, ey - 15, 2.0, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(originX - sign * 4, ey - 8);
+        ctx.lineTo(originX - sign * 8, ey - 13);
+        ctx.stroke();
+
+        ctx.fillStyle = '#F59E0B';
+        ctx.beginPath();
+        ctx.arc(originX - sign * 8, ey - 13, 3.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FEF08A';
+        ctx.beginPath();
+        ctx.arc(originX - sign * 8, ey - 13, 2.0, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+      }
+      drawBrowDots(exL, -1);
+      drawBrowDots(exR, 1);
+
+      // Eye gold rim
+      ctx.save();
+      ctx.strokeStyle = '#FACC15';
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.ellipse(exL, ey, 7, 9, 0, 0, Math.PI * 2);
+      ctx.ellipse(exR, ey, 7, 9, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      // Eyes
+      if (blink) {
+        ctx.strokeStyle = '#03254C';
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.ellipse(exL, ey + 2, 6, 2, 0, 0, Math.PI);
+        ctx.ellipse(exR, ey + 2, 6, 2, 0, 0, Math.PI);
+        ctx.stroke();
+      } else {
+        [exL, exR].forEach(ex => {
+          ctx.save();
+          ctx.fillStyle = '#03254C';
+          ctx.beginPath();
+          ctx.ellipse(ex, ey, 6, 8, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          const eyeGrad = ctx.createRadialGradient(ex, ey + 4, 1, ex, ey + 2, 6);
+          eyeGrad.addColorStop(0, '#38BDF8');
+          eyeGrad.addColorStop(0.6, '#1D4ED8');
+          eyeGrad.addColorStop(1, '#03254C');
+          ctx.fillStyle = eyeGrad;
+          ctx.beginPath();
+          ctx.ellipse(ex, ey + 2, 5, 5.5, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = '#031733';
+          ctx.beginPath();
+          ctx.arc(ex, ey - 0.5, 3.2, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = '#FFFFFF';
+          ctx.beginPath();
+          ctx.arc(ex - 2, ey - 3, 1.9, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(ex + 2, ey + 3, 1.1, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+          ctx.beginPath();
+          ctx.arc(ex + 2.2, ey - 2, 0.7, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+      }
+
+      // Cheeks
+      ctx.save();
+      const blushGradL = ctx.createRadialGradient(-18 * sX, hy + 6, 1, -18 * sX, hy + 6, 5);
+      blushGradL.addColorStop(0, 'rgba(251, 113, 133, 0.8)');
+      blushGradL.addColorStop(1, 'rgba(251, 113, 133, 0)');
+      ctx.fillStyle = blushGradL;
+      ctx.beginPath();
+      ctx.ellipse(-18 * sX, hy + 6, 4.8, 3.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      const blushGradR = ctx.createRadialGradient(18 * sX, hy + 6, 1, 18 * sX, hy + 6, 5);
+      blushGradR.addColorStop(0, 'rgba(251, 113, 133, 0.8)');
+      blushGradR.addColorStop(1, 'rgba(251, 113, 133, 0)');
+      ctx.fillStyle = blushGradR;
+      ctx.beginPath();
+      ctx.ellipse(18 * sX, hy + 6, 4.8, 3.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Mouth
+      ctx.fillStyle = '#9F1239';
+      ctx.beginPath();
+      ctx.moveTo(-4.5, hy + 8);
+      ctx.quadraticCurveTo(0, hy + 14, 4.5, hy + 8);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#FDA4AF';
+      ctx.beginPath();
+      ctx.arc(0, hy + 11, 2.2, 0, Math.PI);
+      ctx.fill();
+      ctx.restore();
+
+      ctx.restore();
+    }
+
+    let startTime = performance.now();
+    function animate() {
+      let t = (performance.now() - startTime) / 1000;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawMythicManaphy(ctx, canvas.width / 2, canvas.height / 2, 2.0, t);
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>

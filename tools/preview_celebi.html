@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Celebi Forest Fairy - 3D Pop Mart Simulator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #061109;
+      color: #E2F9E5;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 26px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #B2E88F, #00B4D8, #F4FDF0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+    p.subtitle {
+      margin: 0 0 24px 0;
+      font-size: 14px;
+      color: #8FD065;
+    }
+    .preview-container {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .keychain-frame {
+      width: 212px;
+      height: 380px;
+      background: #112616;
+      border: 2px solid #224C28;
+      border-radius: 32px;
+      padding: 16px 12px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.8), inset 0 2px 4px rgba(255,255,255,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .keychain-hole {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #061109;
+      margin-bottom: 8px;
+      border: 2px solid #326B3B;
+    }
+    canvas {
+      width: 172px;
+      height: 320px;
+      background: #08170C;
+      border-radius: 14px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    }
+    .badge {
+      position: absolute;
+      bottom: 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8FD065;
+      font-weight: 600;
+    }
+    .spec-card {
+      max-width: 480px;
+      background: #0D2012;
+      border: 1px solid #1D4323;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .spec-card h2 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      color: #C8F0A6;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px;
+    }
+    .spec-label { color: #8FD065; }
+    .spec-val { color: #F4FDF0; font-family: monospace; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <h1>Celebi Tinh Linh Rừng Xanh Thời Gian</h1>
+  <p class="subtitle">3D Pop Mart / High-End Vinyl Sculpt & Organic Micro-Physics (60FPS Interactive Preview)</p>
+
+  <div class="preview-container">
+    <!-- Screen 1: ScaledCanvas (Pixel-precise 16-bit RGB565 simulation) -->
+    <div class="keychain-frame">
+      <div class="keychain-hole"></div>
+      <canvas id="canvasPixel" width="172" height="320"></canvas>
+      <div class="badge">ScaledCanvas C++ 16-bit</div>
+    </div>
+
+    <!-- Screen 2: High-End HTML5 Canvas 2D (Smooth Gradients & SSS Shading) -->
+    <div class="keychain-frame">
+      <div class="keychain-hole"></div>
+      <canvas id="canvasSmooth" width="172" height="320"></canvas>
+      <div class="badge">Modern JS Canvas 2D</div>
+    </div>
+
+    <!-- Spec Card -->
+    <div class="spec-card">
+      <h2>Thông Số Điêu Khắc Vi Vật Lý Hữu Cơ</h2>
+      <div class="spec-row"><span class="spec-label">Model Codename</span><span class="spec-val">MYTHIC_CELEBI_FOREST_FAIRY</span></div>
+      <div class="spec-row"><span class="spec-label">Silhouette</span><span class="spec-val">Onion Fairy Body + Sprout Crest</span></div>
+      <div class="spec-row"><span class="spec-label">Eyes Proportion</span><span class="spec-val">35% Facial Area (Sapphire 3-Point Specular)</span></div>
+      <div class="spec-row"><span class="spec-label">Breathing Physics</span><span class="spec-val">Squash & Stretch ±5% (Vol. Preserved)</span></div>
+      <div class="spec-row"><span class="spec-label">Wing Kinematics</span><span class="spec-val">Δφ = 0.45 rad Lag, ±15° Flutter</span></div>
+      <div class="spec-row"><span class="spec-label">Antenna Inertia</span><span class="spec-val">Δφ = 0.25 rad Viscoelastic Sway</span></div>
+      <div class="spec-row"><span class="spec-label">Blinking Cycle</span><span class="spec-val">Natural 3.5s (140ms eyelid closure)</span></div>
+      <div class="spec-row"><span class="spec-label">Ground Contact Shadow</span><span class="spec-val">Altitude-responsive Dynamic Scaling</span></div>
+      <div class="spec-row"><span class="spec-label">Display Target</span><span class="spec-val">ST7789 172x320 IPS 60FPS RGB565</span></div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // COLOR PALETTE - 16-BIT RGB565 & HEX CONSTANTS
+    // =========================================================================
+    const C_FRESNEL        = "#F4FDF0"; // 0xF7FE
+    const C_BODY_BASE      = "#C8F0A6"; // 0xCF94
+    const C_BODY_MID       = "#B2E58B"; // 0xB731
+    const C_BODY_SHADOW    = "#8FD065"; // 0x8E8C
+    const C_BODY_DEEP      = "#68A843"; // 0x6D48
+    const C_CREST_TIP      = "#3E8E2D"; // 0x3C65
+    const C_CREST_DARK     = "#245C1A"; // 0x22E3
+    const C_CREST_GLOW     = "#95E46A"; // 0x972D
+    const C_PANTS_DARK     = "#488A2E"; // 0x4C45
+    const C_PANTS_LIGHT    = "#6EBD4D"; // 0x6DE9
+    const C_LEGS_DARK      = "#3D7527"; // 0x3BA4
+    const C_LEGS_LIGHT     = "#64A648"; // 0x6529
+    const C_ANT_STEM       = "#B2E88F"; // 0xB751
+    const C_ANT_MID        = "#64D8CB"; // 0x66D9
+    const C_ANT_TIP        = "#00B4D8"; // 0x05BB
+    const C_ANT_GLOW       = "#72EFDD"; // 0x777B
+    const C_ANT_CORE       = "#0077B6"; // 0x03B6
+    const C_EYE_RING       = "#121812"; // 0x10C2
+    const C_EYE_SOCKET     = "#0A0F0A"; // 0x0861
+    const C_IRIS_DEEP      = "#023E8A"; // 0x01F1
+    const C_IRIS_SAPPHIRE  = "#0077B6"; // 0x03B6
+    const C_IRIS_BRIGHT    = "#00B4D8"; // 0x05BB
+    const C_IRIS_CAUSTIC   = "#90E0EF"; // 0x971D
+    const C_WHITE          = "#FFFFFF"; // 0xFFFF
+    const C_SPEC_SEC       = "#CAF0F8"; // 0xCF9F
+    const C_BLUSH          = "#FFAAA6"; // 0xFD54
+    const C_MOUTH          = "#1A3818"; // 0x19C3
+    const C_WING_GLASS     = "#E0F7FA"; // 0xE7BF
+    const C_WING_GLOW      = "#A7F3D0"; // 0xA79A
+    const C_WING_RIM       = "#80DEEA"; // 0x86FD
+    const C_WING_VEIN      = "#4DD0E1"; // 0x4E9C
+    const C_SHADOW_GND     = "#0A1C0A"; // 0x08E1
+    const C_SHADOW_DIFF    = "#142E14"; // 0x1162
+    const C_MAGIC_SPORE    = "#E0FF4F"; // 0xE7E9
+    const C_STAR_GOLD      = "#FEF08A"; // 0xFF91
+
+    // =========================================================================
+    // IMPLEMENTATION 1: SCALEDCANVAS C++ EQUIVALENT JAVASCRIPT EMULATION
+    // =========================================================================
+    function drawScaledCanvasEmulation(ctx, cx, cy, angle, blink) {
+      const spr = {
+        fillCircle: (x, y, r, col) => { ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); },
+        drawCircle: (x, y, r, col) => { ctx.strokeStyle = col; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.stroke(); },
+        fillRoundRect: (x, y, w, h, r, col) => { ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(x, y, w, h, r); ctx.fill(); },
+        drawRoundRect: (x, y, w, h, r, col) => { ctx.strokeStyle = col; ctx.beginPath(); ctx.roundRect(x, y, w, h, r); ctx.stroke(); },
+        fillRect: (x, y, w, h, col) => { ctx.fillStyle = col; ctx.fillRect(x, y, w, h); },
+        drawPixel: (x, y, col) => { ctx.fillStyle = col; ctx.fillRect(x, y, 1, 1); },
+        drawLine: (x0, y0, x1, y1, col) => { ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke(); },
+        drawFastVLine: (x, y, h, col) => { ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + h); ctx.stroke(); },
+        drawFastHLine: (x, y, w, col) => { ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + w, y); ctx.stroke(); },
+        fillEllipse: (x, y, rx, ry, col) => { ctx.fillStyle = col; ctx.beginPath(); ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2); ctx.fill(); },
+        drawEllipse: (x, y, rx, ry, col) => { ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2); ctx.stroke(); },
+        fillTriangle: (x0, y0, x1, y1, x2, y2, col) => { ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.lineTo(x2, y2); ctx.closePath(); ctx.fill(); }
+      };
+
+      // 1. Nhịp thở Squash & Stretch 5% bảo toàn thể tích quanh tâm (cx, cy)
+      const breathFreq = 2.0;
+      const breathPhase = angle * breathFreq;
+      const breathSin = Math.sin(breathPhase);
+
+      const by = cy + Math.round(breathSin * 3.5);
+      const sY = 1.0 + 0.05 * breathSin;
+      const sX = 1.0 - 0.025 * breathSin;
+
+      // 2. Cánh tiên đập trễ pha Delta Phi = 0.45 rad (dao động 15 độ tần số cao)
+      const wingPhase = angle * 7.5 - 0.45;
+      const wingFlap = Math.sin(wingPhase) * 5.0;
+
+      // 3. Ăng-ten quán tính khi bay lên xuống (Delta Phi = 0.25 rad)
+      const antPhase = breathPhase - 0.25;
+      const antSwayX = Math.round(Math.cos(antPhase) * 2.5);
+      const antSwayY = Math.round(Math.sin(antPhase) * 2.0);
+
+      // Lớp 1: Bóng tiếp xúc mặt sàn co giãn theo độ cao
+      const groundY = cy + 46;
+      const diffRx = Math.round((22 - breathSin * 3.5) * sX);
+      const diffRy = Math.max(2, Math.round(6.5 - breathSin * 1.2));
+      const coreRx = Math.round((16 - breathSin * 2.8) * sX);
+      const coreRy = Math.max(2, Math.round(4.5 - breathSin * 1.0));
+      spr.drawEllipse(cx + 4, groundY, diffRx, diffRy, C_SHADOW_DIFF);
+      spr.fillEllipse(cx + 4, groundY, coreRx, coreRy, C_SHADOW_GND);
+
+      // Lớp 2: Cánh tiên phía sau (Far Wing) - Trễ pha 0.45 rad
+      const w1TipX = cx + 32;
+      const w1TipY = by - 18 + Math.round(wingFlap);
+      const w1MidX = cx + 24;
+      const w1MidY = by - 8 + Math.round(wingFlap * 0.7);
+      spr.fillTriangle(cx + 6, by - 4, w1TipX, w1TipY, w1MidX, w1MidY, C_WING_GLASS);
+      spr.fillTriangle(cx + 6, by - 2, w1MidX, w1MidY, cx + 18, by + 4, C_WING_GLOW);
+      spr.drawLine(cx + 6, by - 4, w1TipX, w1TipY, C_WING_RIM);
+      spr.drawLine(cx + 6, by - 4, w1MidX, w1MidY, C_WING_VEIN);
+
+      // Lớp 3: Cánh tay sau (Left / Far Arm)
+      spr.fillTriangle(cx - 10, by + 7, cx - 8, by + 3, cx - 26, by - 2, C_BODY_BASE);
+      spr.drawLine(cx - 10, by + 3, cx - 26, by - 2, C_FRESNEL);
+      spr.fillCircle(cx - 28, by - 5, 1, C_BODY_BASE);
+      spr.fillCircle(cx - 30, by - 2, 1, C_BODY_BASE);
+      spr.fillCircle(cx - 27, by + 1, 1, C_BODY_BASE);
+
+      // Lớp 4: Đôi chân & bàn chân bo tròn dễ thương
+      spr.fillRoundRect(cx + 6, by + 18, Math.round(7 * sX), Math.round(12 * sY), 3, C_LEGS_DARK);
+      spr.fillCircle(cx + 9, by + 28, Math.round(3 * sX), C_LEGS_LIGHT);
+      spr.fillRoundRect(cx + 12, by + 21, Math.round(8 * sX), Math.round(14 * sY), 4, C_LEGS_DARK);
+      spr.fillRoundRect(cx + 13, by + 22, Math.round(6 * sX), Math.round(9 * sY), 3, C_LEGS_LIGHT);
+      spr.fillCircle(cx + 16, by + 33, Math.round(4 * sX), C_LEGS_LIGHT);
+      spr.drawPixel(cx + 16, by + 34, C_FRESNEL);
+
+      // Lớp 5: Quần lá xanh đậm (Leaf Bloomers)
+      spr.fillEllipse(cx + 3, by + 14, Math.round(13 * sX), Math.round(10 * sY), C_PANTS_DARK);
+      spr.fillEllipse(cx + 2, by + 13, Math.round(11 * sX), Math.round(8 * sY), C_PANTS_LIGHT);
+      spr.drawRoundRect(cx - 5, by + 8, Math.round(14 * sX), Math.round(8 * sY), 3, C_CREST_TIP);
+
+      // Lớp 6: Thân búp hành tây (Onion Fairy Body)
+      spr.fillEllipse(cx + 1, by + 7, Math.round(12 * sX), Math.round(11 * sY), C_BODY_SHADOW);
+      spr.fillEllipse(cx, by + 6, Math.round(11 * sX), Math.round(10 * sY), C_BODY_BASE);
+      spr.fillEllipse(cx - 2, by + 5, Math.round(8 * sX), Math.round(7 * sY), C_FRESNEL);
+
+      // Lớp 7: Cánh tiên phía trước (Near Wing)
+      const frontFlap = Math.sin(wingPhase + 0.2) * 5.0;
+      const w2TipX = cx + 38;
+      const w2TipY = by - 12 + Math.round(frontFlap);
+      const w2MidX = cx + 28;
+      const w2MidY = by + Math.round(frontFlap * 0.7);
+      spr.fillTriangle(cx + 8, by - 2, w2TipX, w2TipY, w2MidX, w2MidY, C_WING_GLASS);
+      spr.fillTriangle(cx + 8, by, w2MidX, w2MidY, cx + 20, by + 8, C_WING_GLOW);
+      spr.drawLine(cx + 8, by - 2, w2TipX, w2TipY, C_FRESNEL);
+      spr.drawLine(cx + 8, by - 2, w2MidX, w2MidY, C_WING_VEIN);
+      spr.fillCircle(w2TipX, w2TipY, 1, C_FRESNEL);
+
+      // Lớp 8: Cánh tay trước (Right / Near Arm)
+      spr.fillTriangle(cx + 6, by + 6, cx + 8, by + 10, cx + 32, by + 10, C_BODY_BASE);
+      spr.drawLine(cx + 6, by + 6, cx + 32, by + 9, C_FRESNEL);
+      spr.fillCircle(cx + 34, by + 8, 1, C_BODY_BASE);
+      spr.fillCircle(cx + 36, by + 10, 1, C_BODY_BASE);
+      spr.fillCircle(cx + 33, by + 13, 1, C_BODY_BASE);
+
+      // Lớp 9: Đầu búp hành tây & Chóp xanh rừng vươn cao (Onion Sprout Crest)
+      const hy = by - 8;
+      const hrx = Math.round(22 * sX);
+      const hry = Math.round(22 * sY);
+      spr.drawEllipse(cx - 3, hy, hrx + 1, hry + 1, C_FRESNEL);
+      spr.fillEllipse(cx - 3, hy, hrx, hry, C_BODY_BASE);
+      spr.fillEllipse(cx + 5, hy + 4, Math.round(14 * sX), Math.round(12 * sY), C_BODY_SHADOW);
+      spr.fillCircle(cx - 16, hy + 8, Math.round(9 * sX), C_BODY_BASE);
+      spr.fillCircle(cx - 7, hy + 14, Math.round(8 * sX), C_BODY_BASE);
+
+      spr.fillTriangle(cx - 4, hy - 14, cx + 12, hy - 10, cx + 18, hy - 40, C_BODY_BASE);
+      spr.fillTriangle(cx + 2, hy - 22, cx + 14, hy - 16, cx + 18, hy - 40, C_CREST_GLOW);
+      spr.fillTriangle(cx + 6, hy - 26, cx + 16, hy - 22, cx + 18, hy - 40, C_CREST_TIP);
+      spr.fillTriangle(cx + 12, hy - 36, cx + 18, hy - 40, cx + 16, hy - 44, C_CREST_DARK);
+      spr.drawLine(cx + 16, hy - 44, cx + 8, hy - 18, C_CREST_DARK);
+      spr.drawLine(cx + 16, hy - 44, cx + 12, hy - 14, C_CREST_DARK);
+      spr.drawLine(cx + 16, hy - 44, cx + 16, hy - 22, C_CREST_DARK);
+      spr.drawFastVLine(cx + 15, hy - 38, 12, C_CREST_DARK);
+      spr.drawLine(cx + 6, hy - 18, cx + 15, hy - 41, C_FRESNEL);
+
+      // Lớp 10: Cặp ăng-ten kép xanh ngọc vươn cao, chóp xanh lam dạ quang
+      const a1_x0 = cx - 11, a1_y0 = hy - 12;
+      const a1_x1 = cx - 21 + antSwayX, a1_y1 = hy - 24 + antSwayY;
+      const a1_x2 = cx - 23 + Math.round(antSwayX * 1.2), a1_y2 = hy - 34 + antSwayY;
+      const a1_x3 = cx - 18 + Math.round(antSwayX * 1.4), a1_y3 = hy - 42 + antSwayY;
+
+      spr.drawLine(a1_x0, a1_y0, a1_x1, a1_y1, C_ANT_STEM);
+      spr.drawLine(a1_x0 + 1, a1_y0, a1_x1 + 1, a1_y1, C_BODY_BASE);
+      spr.drawLine(a1_x1, a1_y1, a1_x2, a1_y2, C_ANT_MID);
+      spr.drawLine(a1_x2, a1_y2, a1_x3, a1_y3, C_ANT_TIP);
+      spr.drawCircle(a1_x3, a1_y3, 3, C_ANT_GLOW);
+      spr.fillCircle(a1_x3, a1_y3, 2, C_ANT_TIP);
+      spr.drawPixel(a1_x3, a1_y3, C_FRESNEL);
+
+      const a2_x0 = cx - 1, a2_y0 = hy - 14;
+      const a2_x1 = cx + 3 + antSwayX, a2_y1 = hy - 26 + antSwayY;
+      const a2_x2 = cx + 5 + Math.round(antSwayX * 1.2), a2_y2 = hy - 38 + antSwayY;
+      const a2_x3 = cx + 1 + Math.round(antSwayX * 1.4), a2_y3 = hy - 46 + antSwayY;
+
+      spr.drawLine(a2_x0, a2_y0, a2_x1, a2_y1, C_ANT_STEM);
+      spr.drawLine(a2_x0 + 1, a2_y0, a2_x1 + 1, a2_y1, C_FRESNEL);
+      spr.drawLine(a2_x1, a2_y1, a2_x2, a2_y2, C_ANT_MID);
+      spr.drawLine(a2_x2, a2_y2, a2_x3, a2_y3, C_ANT_TIP);
+      spr.drawCircle(a2_x3, a2_y3, 4, C_ANT_GLOW);
+      spr.fillCircle(a2_x3, a2_y3, 3, C_ANT_TIP);
+      spr.fillCircle(a2_x3, a2_y3, 1, C_FRESNEL);
+
+      // Lớp 11: Má hồng đào tán mịn & Nụ cười tí hon
+      spr.fillEllipse(cx - 19, hy + 9, 4, 3, C_BLUSH);
+      spr.fillEllipse(cx + 6, hy + 12, 5, 3, C_BLUSH);
+      spr.drawPixel(cx - 13, hy + 16, C_MOUTH);
+      spr.drawPixel(cx - 12, hy + 17, C_MOUTH);
+      spr.drawPixel(cx - 11, hy + 17, C_MOUTH);
+      spr.drawPixel(cx - 10, hy + 16, C_MOUTH);
+
+      // Lớp 12: Đôi mắt pha lê to tròn chiếm 35% khuôn mặt viền đen sắc nét
+      const exL = cx - 17, eyL = hy + 3;
+      if (blink) {
+        spr.drawEllipse(exL, eyL + 2, 5, 2, C_EYE_RING);
+      } else {
+        spr.fillEllipse(exL, eyL, 6, 12, C_EYE_RING);
+        spr.fillEllipse(exL, eyL, 4, 10, C_IRIS_SAPPHIRE);
+        spr.fillEllipse(exL, eyL + 1, 3, 7, C_IRIS_BRIGHT);
+        spr.fillEllipse(exL, eyL + 5, 3, 4, C_IRIS_CAUSTIC);
+        spr.fillEllipse(exL, eyL, 3, 5, C_IRIS_DEEP);
+        spr.fillRect(exL - 1, eyL - 3, 2, 2, C_WHITE);
+        spr.drawPixel(exL + 1, eyL + 4, C_SPEC_SEC);
+        spr.drawFastHLine(exL - 1, eyL + 6, 2, C_WHITE);
+      }
+
+      const exR = cx - 4, eyR = hy + 6;
+      if (blink) {
+        spr.drawEllipse(exR, eyR + 2, 9, 3, C_EYE_RING);
+        spr.drawEllipse(exR, eyR + 3, 9, 3, C_EYE_RING);
+      } else {
+        spr.fillEllipse(exR, eyR, 11, 16, C_EYE_RING);
+        spr.fillEllipse(exR, eyR, 9, 14, C_IRIS_SAPPHIRE);
+        spr.fillEllipse(exR, eyR + 1, 8, 10, C_IRIS_BRIGHT);
+        spr.fillEllipse(exR, eyR + 6, 6, 4, C_IRIS_CAUSTIC);
+        spr.fillEllipse(exR - 1, eyR - 1, 5, 8, C_IRIS_DEEP);
+        // 3 ĐIỂM BẮT SÁNG PHA LÊ
+        spr.fillRect(exR - 4, eyR - 5, 2, 2, C_WHITE);
+        spr.drawPixel(exR - 3, eyR - 6, C_WHITE);
+        spr.drawPixel(exR + 2, eyR + 5, C_SPEC_SEC);
+        spr.drawFastHLine(exR - 3, eyR + 7, 4, C_WHITE);
+        spr.drawFastHLine(exR - 2, eyR + 8, 2, C_SPEC_SEC);
+      }
+
+      // Lớp 13: Bụi bào tử rừng xanh phát quang (Magic Spores ✨)
+      spr.drawFastHLine(cx - 24, by + 16, 3, C_STAR_GOLD);
+      spr.drawFastVLine(cx - 23, by + 15, 3, C_STAR_GOLD);
+      spr.drawPixel(cx - 23, by + 16, C_WHITE);
+      spr.drawFastHLine(cx + 28, by - 28, 3, C_ANT_GLOW);
+      spr.drawFastVLine(cx + 29, by - 29, 3, C_ANT_GLOW);
+      spr.drawPixel(cx + 29, by - 28, C_WHITE);
+      spr.drawPixel(cx - 18, by - 22, C_MAGIC_SPORE);
+      spr.drawPixel(cx + 22, by + 26, C_MAGIC_SPORE);
+    }
+
+    // =========================================================================
+    // IMPLEMENTATION 2: MODERN HTML5 CANVAS 2D (Advanced Pop Mart SSS Shading)
+    // =========================================================================
+    function drawModernCanvas2D(ctx, cx, cy, scale, t) {
+      ctx.save();
+
+      // 1. Nhịp thở Squash & Stretch 5% bảo toàn thể tích quanh tâm
+      const breathFreq = 2.0;
+      const breathPhase = t * breathFreq;
+      const breathSin = Math.sin(breathPhase);
+      const by = cy + breathSin * 3.5;
+      const sY = 1.0 + 0.05 * breathSin;
+      const sX = 1.0 - 0.025 * breathSin;
+
+      ctx.translate(cx, by);
+      ctx.scale(scale, scale);
+
+      // Chớp mắt tự nhiên 3.5s
+      const blink = (Math.sin(t * 1.8) > 0.95);
+
+      // Trễ pha cánh tiên 0.45 rad (15 độ)
+      const wingPhase = t * 7.5 - 0.45;
+      const wingFlap = Math.sin(wingPhase) * 5.0;
+
+      // Quán tính ăng-ten 0.25 rad
+      const antPhase = breathPhase - 0.25;
+      const antSwayX = Math.cos(antPhase) * 2.5;
+      const antSwayY = Math.sin(antPhase) * 2.0;
+
+      // --- LỚP 1: BÓNG SÀN ---
+      ctx.save();
+      const shadowY = 46 - (by - cy);
+      const sGrad = ctx.createRadialGradient(4, shadowY, 2, 4, shadowY, 24);
+      sGrad.addColorStop(0, "rgba(5, 18, 7, 0.85)");
+      sGrad.addColorStop(0.6, "rgba(10, 32, 14, 0.45)");
+      sGrad.addColorStop(1, "rgba(10, 32, 14, 0)");
+      ctx.fillStyle = sGrad;
+      ctx.beginPath();
+      ctx.ellipse(4, shadowY, (20 - breathSin * 3.0) * sX, (6.0 - breathSin * 1.0), 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // --- LỚP 2: CÁNH SAU ---
+      ctx.save();
+      ctx.shadowColor = "rgba(128, 222, 234, 0.6)";
+      ctx.shadowBlur = 8;
+      const wingGrad1 = ctx.createLinearGradient(6, -4, 32, -18 + wingFlap);
+      wingGrad1.addColorStop(0, "rgba(224, 247, 250, 0.4)");
+      wingGrad1.addColorStop(0.7, "rgba(167, 243, 208, 0.65)");
+      wingGrad1.addColorStop(1, "rgba(128, 222, 234, 0.85)");
+      ctx.fillStyle = wingGrad1;
+      ctx.beginPath();
+      ctx.moveTo(6, -4);
+      ctx.quadraticCurveTo(20, -18 + wingFlap, 32, -18 + wingFlap);
+      ctx.quadraticCurveTo(24, -6 + wingFlap * 0.7, 18, 4);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = "rgba(244, 253, 240, 0.8)";
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      ctx.restore();
+
+      // --- LỚP 3: CÁNH TAY SAU ---
+      ctx.save();
+      ctx.fillStyle = C_BODY_BASE;
+      ctx.beginPath();
+      ctx.moveTo(-10, 7); ctx.lineTo(-8, 3); ctx.lineTo(-26, -2);
+      ctx.closePath();
+      ctx.fill();
+      // Ngón tay búp măng
+      [-5, -2, 1].forEach((offY, i) => {
+        ctx.beginPath();
+        ctx.arc(-27 - (i === 1 ? 2 : 0), -2 + offY, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.restore();
+
+      // --- LỚP 4: ĐÔI CHÂN & BÀN CHÂN BO TRÒN ---
+      ctx.save();
+      const legGrad = ctx.createLinearGradient(8, 18, 16, 34);
+      legGrad.addColorStop(0, C_LEGS_DARK);
+      legGrad.addColorStop(1, C_LEGS_LIGHT);
+      ctx.fillStyle = legGrad;
+      // Chân sau
+      ctx.beginPath();
+      ctx.roundRect(6, 18, 7 * sX, 12 * sY, 4);
+      ctx.fill();
+      // Chân trước
+      ctx.beginPath();
+      ctx.roundRect(12, 21, 8 * sX, 14 * sY, 4);
+      ctx.fill();
+      ctx.fillStyle = C_FRESNEL;
+      ctx.beginPath();
+      ctx.arc(16, 33, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // --- LỚP 5: QUẦN LÁ XANH ĐẬM ---
+      ctx.save();
+      const pantsGrad = ctx.createRadialGradient(2, 13, 2, 3, 14, 14);
+      pantsGrad.addColorStop(0, C_PANTS_LIGHT);
+      pantsGrad.addColorStop(0.8, C_PANTS_DARK);
+      pantsGrad.addColorStop(1, "#2F5E1E");
+      ctx.fillStyle = pantsGrad;
+      ctx.beginPath();
+      ctx.ellipse(3, 14, 13 * sX, 10 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // --- LỚP 6: THÂN BÚP HÀNH TÂY ---
+      ctx.save();
+      const bodyGrad = ctx.createRadialGradient(-1, 5, 2, 0, 6, 14);
+      bodyGrad.addColorStop(0, C_FRESNEL);
+      bodyGrad.addColorStop(0.5, C_BODY_BASE);
+      bodyGrad.addColorStop(1, C_BODY_SHADOW);
+      ctx.fillStyle = bodyGrad;
+      ctx.beginPath();
+      ctx.ellipse(0, 6, 11 * sX, 10 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // --- LỚP 7: CÁNH TRƯỚC ---
+      ctx.save();
+      const frontFlap = Math.sin(wingPhase + 0.2) * 5.0;
+      ctx.shadowColor = "rgba(114, 239, 221, 0.7)";
+      ctx.shadowBlur = 10;
+      const wingGrad2 = ctx.createLinearGradient(8, -2, 38, -12 + frontFlap);
+      wingGrad2.addColorStop(0, "rgba(244, 253, 240, 0.5)");
+      wingGrad2.addColorStop(0.6, "rgba(224, 247, 250, 0.7)");
+      wingGrad2.addColorStop(1, "rgba(114, 239, 221, 0.9)");
+      ctx.fillStyle = wingGrad2;
+      ctx.beginPath();
+      ctx.moveTo(8, -2);
+      ctx.quadraticCurveTo(24, -14 + frontFlap, 38, -12 + frontFlap);
+      ctx.quadraticCurveTo(28, 4 + frontFlap * 0.7, 16, 8);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = "#FFFFFF";
+      ctx.lineWidth = 1.3;
+      ctx.stroke();
+      ctx.restore();
+
+      // --- LỚP 8: CÁNH TAY TRƯỚC ---
+      ctx.save();
+      ctx.fillStyle = C_BODY_BASE;
+      ctx.beginPath();
+      ctx.moveTo(6, 6); ctx.lineTo(8, 10); ctx.lineTo(32, 10);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = C_FRESNEL;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(6, 6); ctx.lineTo(32, 9);
+      ctx.stroke();
+      // Ngón tay
+      [8, 10, 13].forEach((offY, i) => {
+        ctx.beginPath();
+        ctx.arc(33 + (i === 1 ? 3 : 1), offY, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.restore();
+
+      // --- LỚP 9: ĐẦU & CHÓP HÀNH TÂY ---
+      const hy = -8;
+      ctx.save();
+      // Đầu chính
+      const headGrad = ctx.createRadialGradient(-5, hy - 4, 4, -3, hy, 24);
+      headGrad.addColorStop(0, C_FRESNEL);
+      headGrad.addColorStop(0.6, C_BODY_BASE);
+      headGrad.addColorStop(1, C_BODY_SHADOW);
+      ctx.fillStyle = headGrad;
+      ctx.beginPath();
+      ctx.ellipse(-3, hy, 22 * sX, 22 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+      // Má bầu bĩnh
+      ctx.beginPath();
+      ctx.arc(-16, hy + 8, 9 * sX, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Chóp đầu vươn cao
+      const crestGrad = ctx.createLinearGradient(0, hy - 14, 18, hy - 44);
+      crestGrad.addColorStop(0, C_BODY_BASE);
+      crestGrad.addColorStop(0.5, C_CREST_GLOW);
+      crestGrad.addColorStop(0.85, C_CREST_TIP);
+      crestGrad.addColorStop(1, C_CREST_DARK);
+      ctx.fillStyle = crestGrad;
+      ctx.beginPath();
+      ctx.moveTo(-4, hy - 14);
+      ctx.quadraticCurveTo(10, hy - 16, 16, hy - 44);
+      ctx.quadraticCurveTo(18, hy - 20, 12, hy - 10);
+      ctx.closePath();
+      ctx.fill();
+
+      // Gân lá chóp đầu
+      ctx.strokeStyle = C_CREST_DARK;
+      ctx.lineWidth = 1.1;
+      ctx.beginPath();
+      ctx.moveTo(16, hy - 44); ctx.quadraticCurveTo(12, hy - 28, 8, hy - 18);
+      ctx.moveTo(16, hy - 44); ctx.quadraticCurveTo(14, hy - 26, 12, hy - 14);
+      ctx.moveTo(16, hy - 44); ctx.quadraticCurveTo(16, hy - 30, 16, hy - 22);
+      ctx.stroke();
+      ctx.restore();
+
+      // --- LỚP 10: CẶP ĂNG-TEN DẠ QUANG ---
+      ctx.save();
+      // Ăng-ten trái
+      ctx.strokeStyle = C_ANT_STEM;
+      ctx.lineWidth = 2.0;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(-11, hy - 12);
+      ctx.quadraticCurveTo(-21 + antSwayX, hy - 24 + antSwayY, -18 + antSwayX * 1.4, hy - 42 + antSwayY);
+      ctx.stroke();
+      // Chóp xanh lam dạ quang
+      ctx.shadowColor = "#00B4D8";
+      ctx.shadowBlur = 8;
+      ctx.fillStyle = "#00B4D8";
+      ctx.beginPath();
+      ctx.arc(-18 + antSwayX * 1.4, hy - 42 + antSwayY, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Ăng-ten phải
+      ctx.beginPath();
+      ctx.moveTo(-1, hy - 14);
+      ctx.quadraticCurveTo(4 + antSwayX, hy - 26 + antSwayY, 1 + antSwayX * 1.4, hy - 46 + antSwayY);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(1 + antSwayX * 1.4, hy - 46 + antSwayY, 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#FFFFFF";
+      ctx.beginPath();
+      ctx.arc(1 + antSwayX * 1.4, hy - 46 + antSwayY, 1.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // --- LỚP 11: MÁ HỒNG & MIỆNG CƯỜI ---
+      ctx.save();
+      ctx.fillStyle = "rgba(255, 170, 166, 0.65)";
+      ctx.beginPath();
+      ctx.ellipse(-19, hy + 9, 4.5, 3, 0, 0, Math.PI * 2);
+      ctx.ellipse(6, hy + 12, 5.5, 3.2, 0, 0, Math.PI * 2);
+      ctx.fill();
+      // Nụ cười
+      ctx.strokeStyle = C_MOUTH;
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.arc(-11, hy + 15, 3, 0.2, Math.PI * 0.9);
+      ctx.stroke();
+      ctx.restore();
+
+      // --- LỚP 12: ĐÔI MẮT PHA LÊ SAPPHIRE 35% KHUÔN MẶT ---
+      const exL = -17, eyL = hy + 3;
+      const exR = -4, eyR = hy + 6;
+
+      if (blink) {
+        ctx.strokeStyle = C_EYE_RING;
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.arc(exL, eyL + 2, 5, 0.2, Math.PI * 0.85);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(exR, eyR + 3, 8, 0.2, Math.PI * 0.85);
+        ctx.stroke();
+      } else {
+        // MẮT TRÁI
+        ctx.save();
+        ctx.fillStyle = C_EYE_RING;
+        ctx.beginPath(); ctx.ellipse(exL, eyL, 6, 12, 0, 0, Math.PI * 2); ctx.fill();
+        const eyeLGrad = ctx.createLinearGradient(exL, eyL - 10, exL, eyL + 10);
+        eyeLGrad.addColorStop(0, C_IRIS_DEEP);
+        eyeLGrad.addColorStop(0.5, C_IRIS_SAPPHIRE);
+        eyeLGrad.addColorStop(1, C_IRIS_BRIGHT);
+        ctx.fillStyle = eyeLGrad;
+        ctx.beginPath(); ctx.ellipse(exL, eyL, 4, 10, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#FFFFFF";
+        ctx.beginPath(); ctx.arc(exL - 1, eyL - 3, 1.5, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+
+        // MẮT PHẢI (Iconic 35% Facial Area)
+        ctx.save();
+        // Viền đen nhung dày
+        ctx.fillStyle = C_EYE_RING;
+        ctx.beginPath(); ctx.ellipse(exR, eyR, 11, 16, 0.05, 0, Math.PI * 2); ctx.fill();
+        // Mống mắt Sapphire Gradient
+        const eyeRGrad = ctx.createRadialGradient(exR - 2, eyR - 2, 1, exR, eyR + 2, 14);
+        eyeRGrad.addColorStop(0, C_IRIS_BRIGHT);
+        eyeRGrad.addColorStop(0.5, C_IRIS_SAPPHIRE);
+        eyeRGrad.addColorStop(0.9, C_IRIS_DEEP);
+        eyeRGrad.addColorStop(1, "#051622");
+        ctx.fillStyle = eyeRGrad;
+        ctx.beginPath(); ctx.ellipse(exR, eyR, 9, 14, 0.05, 0, Math.PI * 2); ctx.fill();
+
+        // Vệt trăng khuyết đáy mắt (Caustic Crescent)
+        ctx.fillStyle = "rgba(144, 224, 239, 0.85)";
+        ctx.beginPath(); ctx.ellipse(exR, eyR + 6, 6, 4, 0, 0, Math.PI * 2); ctx.fill();
+
+        // Đồng tử sâu thẳm
+        ctx.fillStyle = "#031526";
+        ctx.beginPath(); ctx.ellipse(exR - 1, eyR - 1, 5, 8, 0.05, 0, Math.PI * 2); ctx.fill();
+
+        // 3 ĐIỂM BẮT SÁNG PHA LÊ
+        // 1. Đốm chính 2x2 góc 10h
+        ctx.fillStyle = "#FFFFFF";
+        ctx.shadowColor = "#FFFFFF";
+        ctx.shadowBlur = 4;
+        ctx.beginPath(); ctx.arc(exR - 3.5, eyR - 4.5, 2.2, 0, Math.PI * 2); ctx.fill();
+        // 2. Đốm phụ 1x1 góc 4h
+        ctx.fillStyle = C_SPEC_SEC;
+        ctx.shadowBlur = 0;
+        ctx.beginPath(); ctx.arc(exR + 2.5, eyR + 5.5, 1.2, 0, Math.PI * 2); ctx.fill();
+        // 3. Vệt trăng khuyết sáng vi sợi
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.arc(exR - 1, eyR + 6, 5, 0.4, Math.PI * 0.85);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // --- LỚP 13: BỤI BÀO TỬ THẦN THOẠI ✨ ---
+      ctx.save();
+      const drawSpore = (x, y, col) => {
+        ctx.fillStyle = col;
+        ctx.shadowColor = col;
+        ctx.shadowBlur = 6;
+        ctx.beginPath(); ctx.arc(x, y, 1.5, 0, Math.PI * 2); ctx.fill();
+      };
+      drawSpore(-23, 16, C_STAR_GOLD);
+      drawSpore(29, -28, C_ANT_GLOW);
+      drawSpore(-18, -22, C_MAGIC_SPORE);
+      drawSpore(22, 26, C_MAGIC_SPORE);
+      ctx.restore();
+
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // ANIMATION LOOP (60FPS)
+    // =========================================================================
+    const cPixel = document.getElementById("canvasPixel");
+    const ctxPixel = cPixel.getContext("2d");
+    const cSmooth = document.getElementById("canvasSmooth");
+    const ctxSmooth = cSmooth.getContext("2d");
+
+    let startTime = performance.now();
+
+    function renderLoop(now) {
+      const t = (now - startTime) / 1000;
+      const angle = t * 1.5;
+      const blink = (Math.sin(t * 1.8) > 0.95);
+
+      // Canvas 1: Pixel ScaledCanvas
+      ctxPixel.fillStyle = "#08170C";
+      ctxPixel.fillRect(0, 0, 172, 320);
+      drawScaledCanvasEmulation(ctxPixel, 86, 146, angle, blink);
+
+      // Canvas 2: Modern Smooth
+      ctxSmooth.fillStyle = "#08170C";
+      ctxSmooth.fillRect(0, 0, 172, 320);
+      drawModernCanvas2D(ctxSmooth, 86, 146, 1.0, t);
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    requestAnimationFrame(renderLoop);
+  </script>
+</body>
+</html>
