@@ -193,10 +193,15 @@ async def set_quote(text: str = Form(...)):
     return {"status": "ok", "quote": text}
 
 @app.post("/api/qr")
-async def trigger_qr():
-    state["qr_mode"] = True
+async def trigger_qr(qr: Optional[str] = Form(None)):
+    if qr == "false":
+        state["qr_mode"] = False
+    elif qr == "true":
+        state["qr_mode"] = True
+    else:
+        state["qr_mode"] = not state.get("qr_mode", False)
     await manager.broadcast({"type": "UPDATE", "data": state})
-    return {"status": "ok", "qr_mode": True}
+    return {"status": "ok", "qr_mode": state["qr_mode"]}
 
 @app.post("/api/design")
 async def api_design(
@@ -780,15 +785,19 @@ INDEX_HTML = """<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- 3. LIVING DIORAMAS (5 BỐI CẢNH) -->
+      <!-- 3. LIVING DIORAMAS (BỐI CẢNH TRÁI ĐẤT & CYBERPUNK) -->
       <div class="control-group">
-        <div class="control-label">Bối Cảnh Sống (5 Dioramas)</div>
+        <div class="control-label">Bối Cảnh Trái Đất & Không Gian</div>
         <div class="gem-palette-grid" id="sceneryGrid">
-          <button class="gem-btn active" onclick="setSceneryChoice(0, this)">🛏️ Phòng Ngủ</button>
+          <button class="gem-btn" onclick="setSceneryChoice(0, this)">🛏️ Phòng Ngủ</button>
           <button class="gem-btn" onclick="setSceneryChoice(1, this)">🌸 Anh Đào</button>
-          <button class="gem-btn" onclick="setSceneryChoice(2, this)">🌧️ Mưa Cyber</button>
+          <button class="gem-btn active" onclick="setSceneryChoice(2, this)">🌧️ Mưa Cyber</button>
           <button class="gem-btn" onclick="setSceneryChoice(3, this)">🍄 Rừng Đom Đóm</button>
           <button class="gem-btn" onclick="setSceneryChoice(4, this)">🌊 Biển Chiều</button>
+          <button class="gem-btn" onclick="setSceneryChoice(5, this)">🌍 Quỹ Đạo Trái Đất</button>
+          <button class="gem-btn" onclick="setSceneryChoice(6, this)">🌌 Cực Quang Aurora</button>
+          <button class="gem-btn" onclick="setSceneryChoice(7, this)">🗻 Núi Phú Sĩ</button>
+          <button class="gem-btn" onclick="setSceneryChoice(8, this)">🌃 Đêm Tokyo Mưa</button>
         </div>
       </div>
 
@@ -858,6 +867,9 @@ INDEX_HTML = """<!DOCTYPE html>
     let currentSpriteId = 0;
     let currentPaletteId = 0;
     let currentQuote = "Dù ở thế giới nào, anh vẫn luôn tìm thấy em.";
+    let currentTextColor = "#FFFFFF";
+    let currentTextSize = 1;
+    let currentSceneryId = 2; // Mặc định: Mưa Cyber 1:1 phần cứng
     let ws;
     let time = 0;
     const heroCanvas = document.getElementById('heroCanvas');
@@ -874,6 +886,18 @@ INDEX_HTML = """<!DOCTYPE html>
             if (res.data.sprite_id !== undefined) selectCard(res.data.sprite_id, false);
             if (res.data.palette_id !== undefined) currentPaletteId = res.data.palette_id;
             if (res.data.quote) currentQuote = res.data.quote;
+            if (res.data.text_color) {
+              currentTextColor = res.data.text_color;
+              highlightColorBtn(currentTextColor);
+            }
+            if (res.data.text_size !== undefined) {
+              currentTextSize = res.data.text_size;
+              highlightSizeBtn(currentTextSize);
+            }
+            if (res.data.scenery_id !== undefined) {
+              currentSceneryId = res.data.scenery_id;
+              highlightSceneryBtn(currentSceneryId);
+            }
             if (res.data.brightness) {
               document.getElementById('brightRange').value = res.data.brightness;
               document.getElementById('brightVal').innerText = Math.round((res.data.brightness / 255) * 100) + '%';
@@ -884,6 +908,91 @@ INDEX_HTML = """<!DOCTYPE html>
       ws.onclose = () => setTimeout(initWebSocket, 2000);
     }
     initWebSocket();
+
+    // GOD-MODE STUDIO SETTINGS CONTROLS & EVENT HANDLERS
+    function setTextColorChoice(hex, btn) {
+      currentTextColor = hex;
+      document.querySelectorAll('#textColorGrid .gem-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.getElementById('customColorInput').value = hex;
+      broadcastDesignUpdate({ text_color: hex });
+    }
+
+    function onCustomColorInput(val) {
+      currentTextColor = val;
+    }
+
+    function onCustomColorCommit(val) {
+      currentTextColor = val;
+      document.querySelectorAll('#textColorGrid .gem-btn').forEach(b => b.classList.remove('active'));
+      broadcastDesignUpdate({ text_color: val });
+    }
+
+    function highlightColorBtn(hex) {
+      const colorInput = document.getElementById('customColorInput');
+      if (colorInput) colorInput.value = hex;
+      document.querySelectorAll('#textColorGrid .gem-btn').forEach(b => {
+        const dot = b.querySelector('.gem-circle');
+        if (dot && dot.style.background.toLowerCase() === hex.toLowerCase()) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+    }
+
+    function setTextSizeChoice(size) {
+      currentTextSize = size;
+      highlightSizeBtn(size);
+      broadcastDesignUpdate({ text_size: size });
+    }
+
+    function highlightSizeBtn(size) {
+      const b1 = document.getElementById('btnSize1');
+      const b2 = document.getElementById('btnSize2');
+      if (b1 && b2) {
+        if (size === 2) {
+          b1.classList.remove('active');
+          b2.classList.add('active');
+        } else {
+          b1.classList.add('active');
+          b2.classList.remove('active');
+        }
+      }
+    }
+
+    function setSceneryChoice(id, btn) {
+      currentSceneryId = id;
+      document.querySelectorAll('#sceneryGrid .gem-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      broadcastDesignUpdate({ scenery_id: id });
+    }
+
+    function highlightSceneryBtn(id) {
+      const btns = document.querySelectorAll('#sceneryGrid .gem-btn');
+      btns.forEach((b, idx) => {
+        if (idx === id) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+    }
+
+    let designDebounceTimer = null;
+    function broadcastDesignUpdate(data) {
+      // 1. Gửi qua WebSocket tức thì
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({
+          action: "SET_DESIGN",
+          ...data
+        }));
+      }
+      // 2. Gửi qua REST POST /api/design để lưu trạng thái
+      clearTimeout(designDebounceTimer);
+      designDebounceTimer = setTimeout(() => {
+        const form = new URLSearchParams();
+        for (let k in data) form.append(k, data[k]);
+        fetch('/api/design', { method: 'POST', body: form }).catch(() => {});
+      }, 120);
+    }
 
     // POPULATE 50 CARDS
     function populateGrid() {
@@ -2178,6 +2287,106 @@ INDEX_HTML = """<!DOCTYPE html>
             for (let x = 0; x < 172; x += 8) {
               let wy = yBase + Math.sin(time * 2.0 + x * 0.08 + layer) * 3.0;
               heroCtx.fillRect(x, wy, 5, 1);
+            }
+          }
+          break;
+
+        case 5: // SCENE_EARTH_ORBIT (Quỹ Đạo Trái Đất Từ Không Gian)
+          {
+            // Bầu khí quyển Trái Đất phát quang màu lam
+            let radGlow = heroCtx.createRadialGradient(86, 280, 40, 86, 280, 85);
+            radGlow.addColorStop(0, '#0055ff');
+            radGlow.addColorStop(0.7, '#00d0ff');
+            radGlow.addColorStop(1, 'rgba(0, 208, 255, 0)');
+            heroCtx.fillStyle = radGlow;
+            heroCtx.beginPath(); heroCtx.arc(86, 280, 85, 0, Math.PI * 2); heroCtx.fill();
+
+            // Địa cầu Trái Đất
+            heroCtx.fillStyle = '#082567';
+            heroCtx.beginPath(); heroCtx.arc(86, 280, 68, 0, Math.PI * 2); heroCtx.fill();
+
+            // Các lục địa xanh lục trôi
+            heroCtx.fillStyle = '#1e7b34';
+            heroCtx.beginPath(); heroCtx.arc(70 + Math.sin(time*0.1)*6, 260, 18, 0, Math.PI * 2); heroCtx.fill();
+            heroCtx.beginPath(); heroCtx.arc(105 + Math.sin(time*0.1)*6, 275, 14, 0, Math.PI * 2); heroCtx.fill();
+
+            // Dải mây trắng tầng khí quyển trôi xoáy
+            heroCtx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+            heroCtx.beginPath(); heroCtx.ellipse(86 + Math.cos(time*0.2)*10, 265, 45, 10, -0.2, 0, Math.PI * 2); heroCtx.fill();
+            heroCtx.beginPath(); heroCtx.ellipse(86 - Math.cos(time*0.15)*8, 285, 52, 12, 0.15, 0, Math.PI * 2); heroCtx.fill();
+
+            // Vệt nắng bình minh vàng kim lóe sáng ở đường chân trời
+            heroCtx.fillStyle = '#fffae0';
+            heroCtx.beginPath(); heroCtx.arc(128, 222, 5, 0, Math.PI * 2); heroCtx.fill();
+          }
+          break;
+
+        case 6: // SCENE_AURORA_BOREALIS (Cực Quang Trái Đất)
+          {
+            // Rặng núi tuyết Trái Đất ở chân trời
+            heroCtx.fillStyle = '#101525';
+            heroCtx.beginPath(); heroCtx.moveTo(0, 320); heroCtx.lineTo(0, 270); heroCtx.lineTo(50, 240); heroCtx.lineTo(95, 280); heroCtx.lineTo(145, 235); heroCtx.lineTo(172, 265); heroCtx.lineTo(172, 320); heroCtx.fill();
+            // Đỉnh tuyết phủ trắng
+            heroCtx.fillStyle = '#d0e5ff';
+            heroCtx.beginPath(); heroCtx.moveTo(50, 240); heroCtx.lineTo(40, 252); heroCtx.lineTo(60, 252); heroCtx.fill();
+            heroCtx.beginPath(); heroCtx.moveTo(145, 235); heroCtx.lineTo(135, 247); heroCtx.lineTo(155, 247); heroCtx.fill();
+
+            // Dải lụa cực quang Aurora xanh ngọc và tím mềm mại uốn lượn hình sin
+            for (let j = 0; j < 2; j++) {
+              let aCol = (j === 0) ? 'rgba(0, 255, 150, 0.25)' : 'rgba(180, 0, 255, 0.2)';
+              heroCtx.fillStyle = aCol;
+              heroCtx.beginPath();
+              heroCtx.moveTo(0, 80 + j * 30);
+              for (let x = 0; x <= 172; x += 12) {
+                let ay = 80 + j * 30 + Math.sin(time * 1.5 + x * 0.04 + j) * 22;
+                heroCtx.lineTo(x, ay);
+              }
+              heroCtx.lineTo(172, 190); heroCtx.lineTo(0, 190);
+              heroCtx.fill();
+            }
+          }
+          break;
+
+        case 7: // SCENE_MT_FUJI_SAKURA (Mùa Xuân Núi Phú Sĩ Trái Đất)
+          {
+            // Nón núi tuyết Phú Sĩ hùng vĩ
+            heroCtx.fillStyle = '#1e243b';
+            heroCtx.beginPath(); heroCtx.moveTo(20, 320); heroCtx.lineTo(86, 215); heroCtx.lineTo(152, 320); heroCtx.fill();
+            // Tuyết trắng đỉnh núi Phú Sĩ
+            heroCtx.fillStyle = '#ffffff';
+            heroCtx.beginPath(); heroCtx.moveTo(86, 215); heroCtx.lineTo(72, 238); heroCtx.lineTo(100, 238); heroCtx.fill();
+
+            // Mặt trời đỏ bình minh mọc sau núi
+            heroCtx.fillStyle = '#e63946';
+            heroCtx.beginPath(); heroCtx.arc(86, 205, 16, 0, Math.PI * 2); heroCtx.fill();
+
+            // Cánh hoa anh đào rơi theo gió
+            heroCtx.fillStyle = '#ff7597';
+            for (let i = 0; i < 9; i++) {
+              let px = (Math.sin(time * 0.8 + i * 1.5) * 35 + 20 * i) % 172;
+              let py = (time * 30 + i * 38) % 320;
+              heroCtx.beginPath(); heroCtx.arc(px, py, 2, 0, Math.PI * 2); heroCtx.fill();
+            }
+          }
+          break;
+
+        case 8: // SCENE_TOKYO_NIGHT (Đêm Tokyo Mưa Trái Đất)
+          {
+            // Tháp Tokyo màu đỏ cam rực rỡ
+            heroCtx.strokeStyle = '#ff4500';
+            heroCtx.lineWidth = 2;
+            heroCtx.beginPath(); heroCtx.moveTo(86, 220); heroCtx.lineTo(86, 320); heroCtx.stroke();
+            heroCtx.beginPath(); heroCtx.moveTo(70, 320); heroCtx.lineTo(86, 235); heroCtx.lineTo(102, 320); heroCtx.stroke();
+            heroCtx.fillStyle = '#ffffff';
+            heroCtx.fillRect(85, 218, 3, 3); // Đèn hải đăng chớp đỉnh tháp
+
+            // Mưa đêm Tokyo phản chiếu ánh neon
+            heroCtx.lineWidth = 1;
+            for (let i = 0; i < 24; i++) {
+              let rx = (i * 15 + 4) % 172;
+              let ry = Math.floor((Date.now() * 320 / 1000 + i * 28) % 340) - 10;
+              heroCtx.strokeStyle = (i % 2 === 0) ? 'rgba(0, 240, 255, 0.7)' : 'rgba(255, 0, 128, 0.7)';
+              heroCtx.beginPath(); heroCtx.moveTo(rx, ry); heroCtx.lineTo(rx, ry + 9); heroCtx.stroke();
             }
           }
           break;

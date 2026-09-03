@@ -315,29 +315,39 @@ public:
           // 1. Hào quang Aura trắng phát sáng viền ngoài (Outer White Aura)
           drawTiltedQuad(-16, -18, 52, -18, 52, 18, -16, 18, colAura);
           spr->fillTriangle(toX(52, -18), toY(52, -18), toX(66, 0), toY(66, 0), toX(52, 18), toY(52, 18), colAura);
-          drawTiltedQuad(-26, -30, -16, -30, -16, 30, -26, 30, colAura);
+          drawTiltedQuad(-28, -32, -16, -32, -16, 32, -28, 32, colAura);
+          // Cánh chim chuôi kiếm xòe ra sau
+          drawTiltedQuad(-32, -28, -20, -32, -18, -24, -30, -20, colAura);
+          drawTiltedQuad(-32, 28, -20, 32, -18, 24, -30, 20, colAura);
+
           drawTiltedQuad(-50, -7, -26, -7, -26, 7, -50, 7, colAura);
-          drawTiltedQuad(-62, -12, -48, -12, -48, 12, -62, 12, colAura);
-          spr->fillTriangle(toX(-62, -12), toY(-62, -12), toX(-66, 0), toY(-66, 0), toX(-62, 12), toY(-62, 12), colAura);
+          drawTiltedQuad(-64, -14, -48, -14, -48, 14, -64, 14, colAura);
+          spr->fillTriangle(toX(-64, -14), toY(-64, -14), toX(-68, 0), toY(-68, 0), toX(-64, 14), toY(-64, 14), colAura);
 
           // 2. Viền lưỡi Neon Cyan
           drawTiltedQuad(-15, -15, 50, -15, 50, 15, -15, 15, colCyan);
           spr->fillTriangle(toX(50, -15), toY(50, -15), toX(62, 0), toY(62, 0), toX(50, 15), toY(50, 15), colCyan);
-          drawTiltedQuad(-24, -27, -17, -27, -17, 27, -24, 27, colCyan);
+          drawTiltedQuad(-25, -28, -17, -28, -17, 28, -25, 28, colCyan);
 
           // 3. Thân kiếm Thép Tím Chàm (Deep Slate Indigo)
           drawTiltedQuad(-14, -10, 46, -10, 46, 10, -14, 10, colBlade);
           spr->fillTriangle(toX(46, -10), toY(46, -10), toX(54, 0), toY(54, 0), toX(46, 10), toY(46, 10), colBlade);
 
-          // 4. Sống kiếm Fuller & 3 Cổ tự Kim Cương Runic phát sáng
+          // 4. Lõi Ngọc Trung Tâm (Central Power Core Jewel) & Cổ tự Kim Cương
           spr->drawLine(toX(-12, 0), toY(-12, 0), toX(48, 0), toY(48, 0), colAura);
-          for (float ru : {-4.0f, 14.0f, 30.0f}) {
+          // Lõi ngọc phát quang lớn ở thân kiếm
+          drawTiltedQuad(10, -7, 20, 0, 10, 7, 0, 0, colAura);
+          drawTiltedQuad(10, -4, 17, 0, 10, 4, 3, 0, colCyan);
+          spr->fillCircle(toX(10, 0), toY(10, 0), 2, TFT_WHITE);
+
+          for (float ru : {-3.0f, 32.0f}) {
             drawTiltedQuad(ru - 3, 0, ru, -4, ru + 3, 0, ru, 4, colAura);
           }
 
           // 5. Chuôi kiếm hoa văn cánh chim & Ngọc trung tâm
-          drawTiltedQuad(-22, -6, -17, 0, -22, 6, -27, 0, colAura);
-          drawTiltedQuad(-22, -3, -19, 0, -22, 3, -25, 0, colCyan);
+          drawTiltedQuad(-22, -8, -16, 0, -22, 8, -28, 0, colAura);
+          drawTiltedQuad(-22, -4, -18, 0, -22, 4, -26, 0, colCyan);
+          spr->drawPixel(toX(-22, 0), toY(-22, 0), TFT_WHITE);
 
           // 6. Cán kiếm quấn dây da xanh hoàng gia
           drawTiltedQuad(-48, -4, -26, -4, -26, 4, -48, 4, colGrip);

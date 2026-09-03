@@ -248,7 +248,7 @@ public:
   }
 
   void setScenery(uint8_t sc) {
-    currentSceneryId = sc % 5;
+    currentSceneryId = sc % 9;
     needSavePrefs = true;
     savePrefsTimer = millis() + 3000;
   }
@@ -256,11 +256,13 @@ public:
   void setQRMode(bool qr) {
     isQRMode = qr;
     qrScreenRendered = false;
+    sprite.setTextDatum(textdatum_t::top_left);
   }
 
   void toggleQRMode() {
     isQRMode = !isQRMode;
     qrScreenRendered = false;
+    sprite.setTextDatum(textdatum_t::top_left);
   }
 
   void setWifiStats(bool active, bool connected, bool cloud, int secLeft) {
@@ -391,6 +393,91 @@ public:
         }
         break;
       }
+
+      case 5: {
+        // SCENE_EARTH_ORBIT (Quỹ đạo Trái Đất từ không gian):
+        // Bầu khí quyển Trái Đất phát quang xanh lam
+        spr->fillCircle(86, 280, 76, lgfx::color565(0, 80, 200));
+        spr->fillCircle(86, 280, 72, lgfx::color565(0, 150, 255));
+
+        // Địa cầu Trái Đất (Đại dương xanh thẳm)
+        spr->fillCircle(86, 280, 68, lgfx::color565(8, 37, 103));
+
+        // Các lục địa xanh lá trôi dạt
+        int cx1 = 70 + (int)(sinf(timeAngle * 0.1f) * 6.0f);
+        int cx2 = 105 + (int)(sinf(timeAngle * 0.1f) * 6.0f);
+        spr->fillCircle(cx1, 260, 18, lgfx::color565(30, 123, 52));
+        spr->fillCircle(cx2, 275, 14, lgfx::color565(40, 150, 60));
+
+        // Dải mây trắng tầng khí quyển trôi xoáy
+        int mx1 = 86 + (int)(cosf(timeAngle * 0.2f) * 10.0f);
+        int mx2 = 86 - (int)(cosf(timeAngle * 0.15f) * 8.0f);
+        spr->drawEllipse(mx1, 265, 45, 10, lgfx::color565(200, 230, 255));
+        spr->drawEllipse(mx2, 285, 52, 12, lgfx::color565(180, 220, 255));
+
+        // Vệt sáng bình minh vàng kim lóe lên ở đường chân trời
+        spr->fillCircle(128, 222, 4, lgfx::color565(255, 250, 220));
+        spr->drawPixel(128, 222, TFT_WHITE);
+        break;
+      }
+
+      case 6: {
+        // SCENE_AURORA_BOREALIS (Cực quang Trái Đất uốn lượn):
+        // Rặng núi tuyết Trái Đất
+        spr->fillTriangle(0, 270, 50, 240, 95, 280, lgfx::color565(16, 21, 37));
+        spr->fillTriangle(95, 280, 145, 235, 172, 265, lgfx::color565(16, 21, 37));
+        spr->fillRect(0, 270, SCREEN_WIDTH, 50, lgfx::color565(16, 21, 37));
+        // Đỉnh tuyết phủ trắng
+        spr->fillTriangle(50, 240, 42, 252, 58, 252, lgfx::color565(210, 230, 255));
+        spr->fillTriangle(145, 235, 137, 247, 153, 247, lgfx::color565(210, 230, 255));
+
+        // Dải lụa cực quang Aurora xanh ngọc và tím
+        for (int x = 0; x < SCREEN_WIDTH; x += 3) {
+          int ay1 = 80 + (int)(sinf(timeAngle * 1.5f + (float)x * 0.04f) * 22.0f);
+          int ay2 = 110 + (int)(sinf(timeAngle * 1.5f + (float)x * 0.04f + 1.0f) * 22.0f);
+          spr->drawFastVLine(x, ay1, 16, lgfx::color565(0, 255, 150));
+          spr->drawFastVLine(x, ay2, 14, lgfx::color565(180, 50, 255));
+        }
+        break;
+      }
+
+      case 7: {
+        // SCENE_MT_FUJI_SAKURA (Mùa xuân núi Phú Sĩ Trái Đất):
+        // Mặt trời đỏ bình minh mọc sau núi
+        spr->fillCircle(86, 205, 16, lgfx::color565(230, 57, 70));
+
+        // Nón núi tuyết Phú Sĩ
+        spr->fillTriangle(20, 320, 86, 215, 152, 320, lgfx::color565(30, 36, 59));
+        // Tuyết trắng đỉnh núi Phú Sĩ
+        spr->fillTriangle(86, 215, 72, 238, 100, 238, TFT_WHITE);
+
+        // Cánh hoa anh đào rơi theo gió
+        for (int i = 0; i < 9; i++) {
+          int px = (int)(sinf(timeAngle * 0.8f + i * 1.5f) * 35.0f + 20.0f * i) % SCREEN_WIDTH;
+          if (px < 0) px += SCREEN_WIDTH;
+          int py = (int)(millis() * 0.03f + i * 38) % SCREEN_HEIGHT;
+          spr->fillCircle(px, py, 2, lgfx::color565(255, 117, 151));
+        }
+        break;
+      }
+
+      case 8: {
+        // SCENE_TOKYO_NIGHT (Đêm Tokyo Mưa Trái Đất):
+        // Tháp Tokyo màu đỏ cam
+        spr->drawFastVLine(86, 220, 100, lgfx::color565(255, 69, 0));
+        spr->drawLine(70, 320, 86, 235, lgfx::color565(255, 69, 0));
+        spr->drawLine(102, 320, 86, 235, lgfx::color565(255, 69, 0));
+        spr->fillRect(85, 218, 3, 3, TFT_WHITE);
+
+        // Mưa đêm Tokyo phản chiếu ánh neon
+        for (int i = 0; i < 24; i++) {
+          int rx = (i * 15 + 4) % SCREEN_WIDTH;
+          int ry = (int)((millis() * 320 / 1000 + i * 28) % (SCREEN_HEIGHT + 20)) - 10;
+          uint16_t col = (i % 2 == 0) ? lgfx::color565(0, 240, 255) : lgfx::color565(255, 0, 128);
+          spr->drawFastVLine(rx, ry, 9, col);
+        }
+        break;
+      }
     }
   }
 
@@ -400,11 +487,12 @@ public:
 
     spr->setFont(&fonts::fontVietnamese);
     spr->setTextSize(1);
+    spr->setTextDatum(textdatum_t::top_left);
 
     const int maxLineWidth = SCREEN_WIDTH - 16; // 156px (x=8 đến 164)
     const int maxLines = 4;
-    const int lineHeight = 13;
-    const int startY = 16;
+    const int lineHeight = 15;
+    const int startY = 14;
 
     std::vector<String> lines;
     if (fullText.indexOf('\n') != -1) {
@@ -463,9 +551,9 @@ public:
       }
     }
 
-    // Tốc độ đánh máy: 40ms/ký tự, dừng 3500ms sau khi gõ xong
-    uint32_t charDelay = 40;
-    uint32_t holdTime = 3500;
+    // Tốc độ đánh máy: Chậm lại bằng 2/3 hiện tại (65ms/ký tự), dừng đọc 4000ms sau khi gõ xong
+    uint32_t charDelay = 65;
+    uint32_t holdTime = 4000;
     uint32_t cycle = (totalChars * charDelay) + holdTime;
     uint32_t progress = (cycle > 0) ? (millis() % cycle) : 0;
     int visibleCount = (progress < (uint32_t)(totalChars * charDelay)) ? (int)(progress / charDelay) : totalChars;
@@ -492,12 +580,13 @@ public:
       int lw = spr->textWidth(lineToDraw.c_str());
       int lx = (SCREEN_WIDTH - lw) / 2;
 
-      // Đổ bóng đen phía sau
-      spr->setTextColor(TFT_BLACK, TFT_BLACK);
+      // Đổ bóng đen phía sau (Vẽ trong suốt, không đè hộp đen lên chân dòng trên)
+      spr->setTextDatum(textdatum_t::top_left);
+      spr->setTextColor(0x0000);
       spr->drawString(lineToDraw.c_str(), lx + 1, lineY + 1);
 
-      // Chữ màu chính (Trắng/Vàng kim/Cyan)
-      spr->setTextColor(currentTextColor, TFT_BLACK);
+      // Chữ màu chính (Vẽ trong suốt)
+      spr->setTextColor(currentTextColor);
       spr->drawString(lineToDraw.c_str(), lx, lineY);
     }
   }
