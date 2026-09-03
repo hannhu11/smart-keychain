@@ -331,16 +331,16 @@ public:
       }
 
       case 2: {
-        // SCENE_CYBER_RAIN (Mưa Neon Cyberpunk Siêu Mượt 1:1 Phần Cứng):
-        // Chỉ cho mưa rơi ở 2 rìa biên ngoài (X < 24 hoặc X > 148), giữ vùng trung tâm (X = 24..148) trong suốt tuyệt đối!
-        for (int i = 0; i < 20; i++) {
-          int rx = (i < 10) ? (i * 2 + 2) : (SCREEN_WIDTH - 22 + (i - 10) * 2);
-          int speed = 260 + (i % 5) * 40;
-          int ry = (int)((millis() * speed / 1000 + i * 31) % (SCREEN_HEIGHT + 24)) - 12;
-          int len = 8 + (i % 4) * 4;
-          uint16_t rainColor = (i % 2 == 0) ? 0x07FF : 0x05DF;
+        // SCENE_CYBER_RAIN (Mưa Neon Cyberpunk Siêu Mượt 1:1 Toàn Màn Hình):
+        // KHÔI PHỤC FULL MÀN HÌNH THEO YÊU CẦU NGƯỜI DÙNG: X = 0..172, Y = 0..320
+        for (int i = 0; i < 36; i++) {
+          int rx = (i * 19 + 7) % SCREEN_WIDTH;
+          int speed = 260 + (i % 7) * 35;
+          int ry = (int)((millis() * speed / 1000 + i * 29) % (SCREEN_HEIGHT + 30)) - 15;
+          int len = 8 + (i % 5) * 3;
+          uint16_t rainColor = (i % 3 == 0) ? 0x07FF : ((i % 3 == 1) ? 0x05DF : 0x035B);
           spr->drawFastVLine(rx, ry, len, rainColor);
-          spr->drawPixel(rx, ry + len - 1, TFT_WHITE);
+          spr->drawPixel(rx, ry + len - 1, TFT_WHITE); // Hạt đầu mưa sáng trắng
         }
         break;
       }
