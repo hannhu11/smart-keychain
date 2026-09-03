@@ -553,7 +553,7 @@
     </div>
     <div class="status-pill">
       <span class="pulse-dot"></span>
-      <span id="telemetryText">CLOUD SYNC &bull; 250 TÁC PHẨM SẴN SÀNG</span>
+      <span id="telemetryText">CLOUD SYNC &bull; 50 TÁC PHẨM TINH HOA SẴN SÀNG</span>
     </div>
   </div>
 
@@ -561,7 +561,7 @@
   <div class="nav-tabs-wrapper">
     <div class="segmented-control">
       <button class="seg-btn active" onclick="switchMainTab('simulator', this)">📱 Màn Hình Live</button>
-      <button class="seg-btn" onclick="switchMainTab('gallery', this)">🎨 Kho 250 Tác Phẩm</button>
+      <button class="seg-btn" onclick="switchMainTab('gallery', this)">🎨 Kho 50 Tác Phẩm Master</button>
       <button class="seg-btn" onclick="switchMainTab('design', this)">⚙️ Bối Cảnh 3D & Màu Sắc</button>
     </div>
   </div>
@@ -617,19 +617,19 @@
       <div class="view-panel" id="panelGallery">
         <div class="settings-card">
           <div class="card-heading">
-            <span>🎨 Kho 250 Animations & Tác Phẩm Master</span>
+            <span>🎨 Kho 50 Tác Phẩm Nghệ Thuật Master (3D Pop Mart & Kawaii)</span>
           </div>
 
           <div class="gallery-filter-bar">
             <div class="category-pills">
-              <button class="cat-pill active" onclick="filterCategory('all', this)">Tất Cả <span class="cat-badge">250</span></button>
-              <button class="cat-pill" onclick="filterCategory('Thánh Khí & Vũ Khí Thần Thoại', this)">🗡️ Thánh Khí <span class="cat-badge">50</span></button>
-              <button class="cat-pill" onclick="filterCategory('Cơ Giáp Cyber & Không Gian', this)">🚀 Cơ Giáp <span class="cat-badge">50</span></button>
-              <button class="cat-pill" onclick="filterCategory('Thú Cưng Pixel & Anime Kawaii', this)">🐾 Thú Cưng <span class="cat-badge">50</span></button>
-              <button class="cat-pill" onclick="filterCategory('Bối Cảnh Trái Đất & Thiên Văn 3D', this)">🌍 Trái Đất 3D <span class="cat-badge">50</span></button>
-              <button class="cat-pill" onclick="filterCategory('Lõi Năng Lượng & Ma Trận Cyber', this)">⚡ Năng Lượng <span class="cat-badge">50</span></button>
+              <button class="cat-pill active" onclick="filterCategory('all', this)">Tất Cả <span class="cat-badge">50</span></button>
+              <button class="cat-pill" onclick="filterCategory('Bé Cưng Pop Mart 3D', this)">🧸 Bé Cưng Pop Mart <span class="cat-badge">15</span></button>
+              <button class="cat-pill" onclick="filterCategory('Axolotl Kỳ Nhông Kawaii 2.5D', this)">🌸 Axolotl 2.5D <span class="cat-badge">10</span></button>
+              <button class="cat-pill" onclick="filterCategory('Thú Cưng Đáng Yêu & Lãng Mạn', this)">🐾 Thú Cưng Lãng Mạn <span class="cat-badge">14</span></button>
+              <button class="cat-pill" onclick="filterCategory('Địa Cầu & Thiên Văn 3D', this)">🌍 Trái Đất 3D <span class="cat-badge">10</span></button>
+              <button class="cat-pill" onclick="filterCategory('Thánh Khí Huyền Thoại', this)">⚔️ Thánh Khí <span class="cat-badge">1</span></button>
             </div>
-            <input type="text" class="gallery-search" placeholder="🔍 Tìm kiếm trong 250 tác phẩm nghệ thuật..." oninput="searchCatalog(this.value)">
+            <input type="text" class="gallery-search" placeholder="🔍 Tìm kiếm trong 50 tác phẩm nghệ thuật..." oninput="searchCatalog(this.value)">
           </div>
 
           <div class="master-grid" id="cardsGridContainer"></div>
@@ -852,6 +852,8 @@
       if (activeEl) activeEl.classList.add('active-card');
       if (CATALOG[id]) {
         currentQuote = CATALOG[id].quote;
+        const qIn = document.getElementById('quickQuoteInput');
+        if (qIn) qIn.value = CATALOG[id].quote;
         document.getElementById('podTitle').innerText = (CATALOG[id].name || '').toUpperCase();
       }
       if (pushNetwork) {
@@ -1050,14 +1052,14 @@
       ctx.translate(cx, cy);
       ctx.scale(scale, scale);
 
-      id = (id >= 0) ? (id % 250) : 0;
+      id = (id >= 0) ? (id % 50) : 0;
       const breath = Math.sin(t * 3.5);
       const angle = t * 2.0;
 
-      // =========================================================================
-      // TRƯỜNG HỢP ĐẶC BIỆT: THE HOLY CLAYMORE 1:1 (ID 0 & ID 12 - KHỚP MÀN HÌNH THẬT)
-      // =========================================================================
-      if (id === 0 || id === 12) {
+      // =======================================================================
+      // NHÓM 1: THÁNH KHÍ HUYỀN THOẠI (ID 0)
+      // =======================================================================
+      if (id === 0) {
         // Dynamic Contact Shadow
         ctx.fillStyle = 'rgba(5, 10, 20, 0.45)';
         ctx.beginPath();
@@ -1108,252 +1110,272 @@
         return;
       }
 
-      // =========================================================================
-      // NHÓM 1: THÁNH KHÍ & VŨ KHÍ THẦN THOẠI (IDs 0..49)
-      // =========================================================================
-      if (id < 50) {
-        let sub = id;
-        let item = CATALOG[id] || {};
-        let col = item.palette || '#f5c842';
+      // =======================================================================
+      // NHÓM 2: SIÊU THÚ CƯNG 3D ART-TOY & POP MART (IDs 1..15)
+      // =======================================================================
+      if (id === 1) { // Yobao - Bé Hoa Cải Vàng (Mô phỏng 1:1 Hubei Rapeseed Festival)
+        let by = Math.sin(angle * 2.5) * 3;
+        ctx.fillStyle = 'rgba(25, 20, 5, 0.4)';
+        ctx.beginPath(); ctx.ellipse(0, by + 34, 24, 5, 0, 0, Math.PI * 2); ctx.fill();
 
-        // Contact Shadow
-        ctx.fillStyle = 'rgba(8, 12, 22, 0.4)';
-        ctx.beginPath(); ctx.ellipse(0, 48, 28, 5, 0, 0, Math.PI * 2); ctx.fill();
+        // 1. Mũ cánh hoa cải vàng nở 3D
+        ctx.fillStyle = '#f9d038';
+        ctx.beginPath(); ctx.arc(0, by - 24, 13, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(-18, by - 18, 11, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(18, by - 18, 11, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(-24, by - 8, 9, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(24, by - 8, 9, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#22c55e'; // Cuống lá xanh
+        ctx.fillRect(-2, by - 36, 4, 12);
+        ctx.beginPath(); ctx.arc(2, by - 36, 3, 0, Math.PI * 2); ctx.fill();
 
-        if (sub < 20) {
-          // Thánh Kiếm (Clarent, Dáinsleif, Gram, Tyrfing, Kusanagi...)
-          ctx.rotate(-0.785398);
-          ctx.strokeStyle = 'rgba(0, 240, 255, 0.45)'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.arc(0, 0, 28 + breath * 3, 0, Math.PI * 2); ctx.stroke();
-          // Lưỡi kiếm bạc vát 3D
-          ctx.fillStyle = '#ffffff';
-          ctx.beginPath(); ctx.moveTo(-4, 12); ctx.lineTo(-3, -38); ctx.lineTo(0, -46); ctx.lineTo(3, -38); ctx.lineTo(4, 12); ctx.closePath(); ctx.fill();
-          // Rãnh rune phát sáng
-          ctx.strokeStyle = col; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.moveTo(0, 8); ctx.lineTo(0, -36); ctx.stroke();
-          // Đốc vàng
-          ctx.fillStyle = '#f5c842'; ctx.fillRect(-12, 12, 24, 5);
-          ctx.fillStyle = '#1e293b'; ctx.fillRect(-3, 17, 6, 14);
-          ctx.fillStyle = col; ctx.beginPath(); ctx.arc(0, 33, 4, 0, Math.PI * 2); ctx.fill();
-        } else if (sub < 30) {
-          // Thần Cung
-          ctx.strokeStyle = col; ctx.lineWidth = 3;
-          ctx.beginPath(); ctx.ellipse(0, 0, 16, 38, 0, -Math.PI*0.5, Math.PI*0.5); ctx.stroke();
-          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.2;
-          ctx.beginPath(); ctx.moveTo(0, -38); ctx.lineTo(0, 38); ctx.stroke();
-          ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(-20, 0); ctx.lineTo(24, 0); ctx.stroke();
-          ctx.fillStyle = '#00f0ff';
-          ctx.beginPath(); ctx.moveTo(24, 0); ctx.lineTo(18, -4); ctx.lineTo(18, 4); ctx.closePath(); ctx.fill();
-        } else if (sub < 40) {
-          // Thần Thương
-          ctx.rotate(-0.785398);
-          ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2.5;
-          ctx.beginPath(); ctx.moveTo(0, 42); ctx.lineTo(0, -42); ctx.stroke();
-          ctx.fillStyle = '#ffffff';
-          ctx.beginPath(); ctx.moveTo(0, -48); ctx.lineTo(8, -32); ctx.lineTo(0, -26); ctx.lineTo(-8, -32); ctx.closePath(); ctx.fill();
-          ctx.fillStyle = col; ctx.fillRect(-3, -26, 6, 8);
-          ctx.fillStyle = '#ef4444';
-          ctx.beginPath(); ctx.moveTo(0, -22); ctx.lineTo(12 + Math.sin(angle*4)*4, -16); ctx.lineTo(4, -10); ctx.closePath(); ctx.fill();
-        } else if (sub < 45) {
-          // Khiên Thần
-          ctx.fillStyle = '#1e293b';
-          ctx.beginPath(); ctx.moveTo(0, -30); ctx.lineTo(24, -20); ctx.lineTo(20, 16); ctx.lineTo(0, 32); ctx.lineTo(-20, 16); ctx.lineTo(-24, -20); ctx.closePath(); ctx.fill();
-          ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.stroke();
-          ctx.fillStyle = col; ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.fill();
-          ctx.strokeStyle = 'rgba(0, 240, 255, 0.5)'; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.arc(0, 0, 34 + breath * 3, 0, Math.PI * 2); ctx.stroke();
-        } else {
-          // Thánh Tích
-          ctx.fillStyle = '#f5c842';
-          ctx.beginPath(); ctx.arc(0, -6, 18, 0, Math.PI); ctx.fill();
-          ctx.fillRect(-4, 12, 8, 14); ctx.fillRect(-14, 26, 28, 6);
-          ctx.fillStyle = '#ef4444';
-          ctx.beginPath(); ctx.ellipse(0, -6, 16, 6, 0, 0, Math.PI * 2); ctx.fill();
-        }
-        ctx.restore();
-        return;
+        // 2. Thân vàng phúng phính & bụng 3D
+        ctx.fillStyle = '#f9d038';
+        ctx.beginPath(); ctx.roundRect(-18, by - 12, 36, 32, 10); ctx.fill();
+        ctx.fillStyle = '#fef08a';
+        ctx.beginPath(); ctx.roundRect(-14, by - 8, 28, 24, 8); ctx.fill();
+
+        // 3. Mắt đen hạt tiêu & đốm sáng
+        ctx.fillStyle = '#451a03';
+        ctx.beginPath(); ctx.arc(-8, by - 2, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(8, by - 2, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(-9, by - 4, 2, 2); ctx.fillRect(7, by - 4, 2, 2);
+
+        // 4. Má hồng cam đào & miệng cười
+        ctx.fillStyle = '#fb923c';
+        ctx.beginPath(); ctx.arc(-13, by + 4, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(13, by + 4, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#451a03'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.arc(0, by + 2, 3, 0.2, Math.PI - 0.2); ctx.stroke();
+
+        // 5. Hai tay ôm bông hoa vàng
+        ctx.fillStyle = '#eab308';
+        ctx.beginPath(); ctx.arc(0, by + 14, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#f97316'; ctx.fillRect(-1, by + 13, 2, 2);
+        ctx.fillStyle = '#22c55e'; ctx.fillRect(-1, by + 19, 2, 8);
+        ctx.restore(); return;
       }
 
-      // =========================================================================
-      // NHÓM 2: CƠ GIÁP CYBER & KHÔNG GIAN (IDs 50..99)
-      // =========================================================================
-      if (id >= 50 && id < 100) {
-        let sub = id - 50;
-        let item = CATALOG[id] || {};
-        let col = item.palette || '#00f0ff';
+      if (id === 2) { // Raya - Tinh Linh Rừng Xanh (Mô phỏng 1:1 Raya Forest Heart)
+        let ry = Math.sin(angle * 3.0) * 3;
+        ctx.fillStyle = 'rgba(5, 20, 15, 0.45)';
+        ctx.beginPath(); ctx.ellipse(0, ry + 36, 26, 5, 0, 0, Math.PI * 2); ctx.fill();
 
-        // Contact Shadow
-        ctx.fillStyle = 'rgba(6, 16, 26, 0.45)';
-        ctx.beginPath(); ctx.ellipse(0, 46, 32, 5, 0, 0, Math.PI * 2); ctx.fill();
+        // 1. Cánh lá sau lưng
+        let lFlap = Math.sin(angle * 4.5) * 3;
+        ctx.fillStyle = '#10b981';
+        ctx.beginPath(); ctx.moveTo(-16, ry + 2); ctx.lineTo(-28, ry - 14 + lFlap); ctx.lineTo(-12, ry + 12); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(16, ry + 2); ctx.lineTo(28, ry - 14 + lFlap); ctx.lineTo(12, ry + 12); ctx.closePath(); ctx.fill();
 
-        if (sub < 15) {
-          // 50-64: PHÁO RAY ĐIỆN TỪ & DAO GĂM CAO TẦN MURASAMA
-          ctx.fillStyle = '#1e293b';
-          ctx.fillRect(-26, -9, 52, 5); ctx.fillRect(-26, 4, 52, 5);
-          for (let c = 0; c < 5; c++) {
-            ctx.fillStyle = col; ctx.fillRect(-18 + c * 8, -7, 4, 14);
-          }
-          // Quả cầu plasma
-          ctx.fillStyle = col;
-          ctx.beginPath(); ctx.arc(28, 0, 7 + breath * 3, 0, Math.PI * 2); ctx.fill();
+        // 2. Thân xanh mint & tóc lá
+        ctx.fillStyle = '#a7f3d0';
+        ctx.beginPath(); ctx.roundRect(-18, ry - 14, 36, 34, 12); ctx.fill();
+        ctx.fillStyle = '#34d399';
+        ctx.beginPath(); ctx.moveTo(-12, ry - 14); ctx.lineTo(0, ry - 32); ctx.lineTo(12, ry - 14); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(-22, ry - 8); ctx.lineTo(-14, ry - 24); ctx.lineTo(-6, ry - 8); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(6, ry - 8); ctx.lineTo(14, ry - 24); ctx.lineTo(22, ry - 8); ctx.closePath(); ctx.fill();
+
+        // 3. Họa tiết dạ quang neon trắng
+        ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(0, ry - 22); ctx.lineTo(0, ry - 12); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(-6, ry - 18); ctx.lineTo(-2, ry - 10); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(6, ry - 18); ctx.lineTo(2, ry - 10); ctx.stroke();
+
+        // 4. Mắt to đen & chớp
+        let blink = (Date.now() % 3500 < 160);
+        ctx.fillStyle = '#0f172a';
+        if (!blink) {
+          ctx.beginPath(); ctx.arc(-8, ry - 4, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(8, ry - 4, 4, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#ffffff';
-          ctx.beginPath(); ctx.arc(28, 0, 3, 0, Math.PI * 2); ctx.fill();
-        } else if (sub < 30) {
-          // 65-79: TACTICAL RADAR HUD & LA BÀN THIÊN HÀ
-          ctx.strokeStyle = col; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.arc(0, 0, 14, 0, Math.PI * 2); ctx.stroke();
-          ctx.beginPath(); ctx.arc(0, 0, 26, 0, Math.PI * 2); ctx.stroke();
-          ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
-          ctx.beginPath(); ctx.arc(0, 0, 36, 0, Math.PI * 2); ctx.stroke();
-          let sw = angle * 2.8;
-          ctx.strokeStyle = col; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(sw)*36, Math.sin(sw)*36); ctx.stroke();
-          ctx.fillStyle = '#ef4444'; ctx.fillRect(14, -12, 4, 4);
-          ctx.fillStyle = '#00ff88'; ctx.fillRect(-16, 12, 4, 4);
-          ctx.fillStyle = '#f5c842'; ctx.fillRect(8, 16, 4, 4);
-          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1;
-          ctx.strokeRect(-6, -6, 12, 12);
+          ctx.fillRect(-10, ry - 6, 2, 2); ctx.fillRect(6, ry - 6, 2, 2);
         } else {
-          // 80-99: DRONE TRINH SÁT NANITE & KHIÊN LỤC GIÁC
-          let dy = Math.sin(angle * 3.0) * 3;
-          ctx.fillStyle = '#0f172a';
-          ctx.strokeStyle = col; ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(-18, -8 + dy); ctx.lineTo(0, -18 + dy); ctx.lineTo(18, -8 + dy);
-          ctx.lineTo(18, 8 + dy); ctx.lineTo(0, 18 + dy); ctx.lineTo(-18, 8 + dy);
-          ctx.closePath(); ctx.fill(); ctx.stroke();
-          ctx.fillStyle = col;
-          ctx.beginPath(); ctx.arc(0, dy, 6, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#ffffff';
-          ctx.beginPath(); ctx.arc(0, dy, 2, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#00f0ff';
-          ctx.fillRect(-24, -12 + dy, 6, 4); ctx.fillRect(18, -12 + dy, 6, 4);
-          ctx.fillRect(-24, 8 + dy, 6, 4); ctx.fillRect(18, 8 + dy, 6, 4);
-        }
-        ctx.restore();
-        return;
-      }
-
-      // =========================================================================
-      // NHÓM 3: THÚ CƯNG PIXEL & ANIME KAWAII (IDs 100..149)
-      // =========================================================================
-      if (id >= 100 && id < 150) {
-        let sub = id - 100;
-        let item = CATALOG[id] || {};
-
-        // Dynamic Contact Shadow
-        let shadowW = 28 - Math.sin(angle * 2.5) * 4;
-        ctx.fillStyle = 'rgba(12, 10, 16, 0.45)';
-        ctx.beginPath(); ctx.ellipse(0, 44, shadowW, 6, 0, 0, Math.PI * 2); ctx.fill();
-
-        if (sub < 15) {
-          // 100-114: CÁC LOẠI AXOLOTL KAWAII (Hồng đào, thổi bong bóng, game thủ, ramen...)
-          let ay = Math.sin(angle * 2.5) * 3;
-
-          // 1. Thân bầu bĩnh hồng đào 2.5D
-          ctx.fillStyle = '#ff7597';
-          ctx.beginPath(); ctx.ellipse(0, ay, 22, 17, 0, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#ffb6c1';
-          ctx.beginPath(); ctx.ellipse(0, ay - 2, 18, 13, 0, 0, Math.PI * 2); ctx.fill();
-
-          // 2. 6 mang tai xòe vẫy sóng theo dòng nước
-          let fw = Math.sin(angle * 3.5) * 2.5;
-          ctx.fillStyle = '#ff2a70';
-          // Mang trái
-          ctx.beginPath(); ctx.ellipse(-24 + fw, ay - 10, 8, 4, -0.3, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.ellipse(-26 + fw, ay, 9, 4, 0, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.ellipse(-22 + fw, ay + 10, 7, 3.5, 0.3, 0, Math.PI * 2); ctx.fill();
-          // Mang phải
-          ctx.beginPath(); ctx.ellipse(24 - fw, ay - 10, 8, 4, 0.3, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.ellipse(26 - fw, ay, 9, 4, 0, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.ellipse(22 - fw, ay + 10, 7, 3.5, -0.3, 0, Math.PI * 2); ctx.fill();
-
-          // 3. Cửa sổ chớp mắt sinh học 3.5s
-          let blink = ((Date.now() % 3500) < 160);
-          ctx.fillStyle = '#111827';
-          if (!blink) {
-            ctx.beginPath(); ctx.arc(-10, ay - 2, 5, 0, Math.PI * 2); ctx.fill();
-            ctx.beginPath(); ctx.arc(10, ay - 2, 5, 0, Math.PI * 2); ctx.fill();
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(-12, ay - 5, 2.5, 2.5); ctx.fillRect(8, ay - 5, 2.5, 2.5);
-            ctx.fillRect(-9, ay - 1, 1.5, 1.5); ctx.fillRect(11, ay - 1, 1.5, 1.5);
-          } else {
-            ctx.lineWidth = 2; ctx.strokeStyle = '#111827';
-            ctx.beginPath(); ctx.moveTo(-14, ay - 2); ctx.lineTo(-6, ay - 2); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(6, ay - 2); ctx.lineTo(14, ay - 2); ctx.stroke();
-          }
-
-          // 4. Má hồng Sakura phúng phính & miệng cười
-          ctx.fillStyle = 'rgba(255, 42, 112, 0.65)';
-          ctx.beginPath(); ctx.arc(-13, ay + 5, 3.5, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.arc(13, ay + 5, 3.5, 0, Math.PI * 2); ctx.fill();
-          ctx.strokeStyle = '#c2410c'; ctx.lineWidth = 1.2;
-          ctx.beginPath(); ctx.arc(0, ay + 3, 3, 0.2, Math.PI - 0.2); ctx.stroke();
-
-          // 5. Bong bóng nước nổi lên
-          let b1y = ay + 20 - ((Date.now() / 20) % 65);
-          let b2y = ay + 32 - (((Date.now() + 400) / 25) % 75);
-          ctx.strokeStyle = 'rgba(0, 240, 255, 0.75)'; ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.arc(24, b1y, 4, 0, Math.PI * 2); ctx.stroke();
-          ctx.beginPath(); ctx.arc(-26, b2y, 3, 0, Math.PI * 2); ctx.stroke();
-
-          // 6. Phụ kiện riêng
-          if (sub === 3) {
-            // Hoàng tử: Vương miện vàng
-            ctx.fillStyle = '#f5c842';
-            ctx.beginPath(); ctx.moveTo(-8, ay - 18); ctx.lineTo(0, ay - 26); ctx.lineTo(8, ay - 18); ctx.closePath(); ctx.fill();
-          } else if (sub === 5) {
-            // Game thủ: Tai nghe neon
-            ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 2.5;
-            ctx.beginPath(); ctx.arc(0, ay - 4, 22, Math.PI, 0); ctx.stroke();
-            ctx.fillStyle = '#ff0055';
-            ctx.fillRect(-24, ay - 8, 4, 10); ctx.fillRect(20, ay - 8, 4, 10);
-          }
-        } else if (sub < 30) {
-          // 115-129: MÈO HOÀNG GIA & MANEKI NEKO
-          let my = Math.sin(angle * 2.0) * 2;
-          ctx.fillStyle = '#ffffff';
-          ctx.beginPath(); ctx.arc(0, my, 20, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#ffffff';
-          ctx.beginPath(); ctx.moveTo(-18, my - 10); ctx.lineTo(-12, my - 26); ctx.lineTo(-4, my - 10); ctx.closePath(); ctx.fill();
-          ctx.fillStyle = '#ffb6c1';
-          ctx.beginPath(); ctx.moveTo(-16, my - 10); ctx.lineTo(-12, my - 22); ctx.lineTo(-6, my - 10); ctx.closePath(); ctx.fill();
-          ctx.fillStyle = '#ffffff';
-          ctx.beginPath(); ctx.moveTo(4, my - 10); ctx.lineTo(12, my - 26); ctx.lineTo(18, my - 10); ctx.closePath(); ctx.fill();
-          ctx.fillStyle = '#ffb6c1';
-          ctx.beginPath(); ctx.moveTo(6, my - 10); ctx.lineTo(12, my - 22); ctx.lineTo(16, my - 10); ctx.closePath(); ctx.fill();
           ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.arc(-9, my - 2, 4, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke();
-          ctx.beginPath(); ctx.arc(9, my - 2, 4, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke();
-          ctx.fillStyle = '#f5c842';
-          ctx.beginPath(); ctx.arc(0, my + 16, 5, 0, Math.PI * 2); ctx.fill();
-        } else {
-          // 130-149: RỒNG CON CHIBI & KODAMA
-          let ry = Math.sin(angle * 2.5) * 3;
-          ctx.fillStyle = '#60a5fa';
-          ctx.beginPath(); ctx.arc(0, ry, 20, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#1e293b';
-          ctx.beginPath(); ctx.arc(-7, ry - 3, 4, 0, Math.PI * 2); ctx.fill();
-          ctx.beginPath(); ctx.arc(7, ry - 3, 4, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(-8, ry - 5, 2, 2); ctx.fillRect(6, ry - 5, 2, 2);
-          let wFlap = Math.sin(angle * 6.0) * 4;
-          ctx.fillStyle = '#3b82f6';
-          ctx.beginPath(); ctx.moveTo(-16, ry); ctx.lineTo(-28, ry - 10 + wFlap); ctx.lineTo(-12, ry + 6); ctx.closePath(); ctx.fill();
-          ctx.beginPath(); ctx.moveTo(16, ry); ctx.lineTo(28, ry - 10 + wFlap); ctx.lineTo(12, ry + 6); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(-11, ry - 4); ctx.lineTo(-5, ry - 4); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(5, ry - 4); ctx.lineTo(11, ry - 4); ctx.stroke();
         }
-        ctx.restore();
-        return;
+
+        // 5. Miệng cười tươi rộng mở & má hồng
+        ctx.fillStyle = '#ef4444';
+        ctx.beginPath(); ctx.arc(0, ry + 4, 4, 0, Math.PI); ctx.fill();
+        ctx.fillStyle = '#fda4af';
+        ctx.beginPath(); ctx.arc(-12, ry + 3, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(12, ry + 3, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.restore(); return;
       }
 
-      // =========================================================================
-      // NHÓM 4: BỐI CẢNH TRÁI ĐẤT & THIÊN VĂN 3D (IDs 150..199)
-      // =========================================================================
-      if (id >= 150 && id < 200) {
-        let sub = id - 150;
-        if (sub < 25) {
-          // 150-174: ĐỊA CẦU XANH QUỸ ĐẠO ISS 3D (3D Volumetric Blue Marble)
+      if (id === 3) { // Bloomy [Yoona] - Ong Bắp Cày Hoa Anh Đào
+        let by = Math.sin(angle * 3.5) * 3;
+        ctx.fillStyle = 'rgba(15, 12, 10, 0.45)';
+        ctx.beginPath(); ctx.ellipse(0, by + 34, 28, 5, 0, 0, Math.PI * 2); ctx.fill();
+
+        // Cánh ong trắng mờ
+        let wShimmer = Math.sin(angle * 12.0) * 4;
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.beginPath(); ctx.ellipse(-24, by - 8 + wShimmer, 12, 6, -0.2, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(24, by - 8 - wShimmer, 12, 6, 0.2, 0, Math.PI * 2); ctx.fill();
+
+        // Thân ong vàng sọc nâu
+        ctx.fillStyle = '#fde047';
+        ctx.beginPath(); ctx.roundRect(-20, by - 16, 40, 36, 14); ctx.fill();
+        ctx.fillStyle = '#78350f';
+        ctx.beginPath(); ctx.roundRect(-19, by + 4, 38, 7, 3); ctx.fill();
+        ctx.beginPath(); ctx.roundRect(-17, by + 14, 34, 5, 2); ctx.fill();
+
+        // Vòng hoa anh đào pha lê
+        const fX = [-16, -8, 0, 8, 16], fY = [-4, 2, 5, 2, -4];
+        for (let i = 0; i < 5; i++) {
+          ctx.fillStyle = '#f472b6';
+          ctx.beginPath(); ctx.arc(fX[i], by + fY[i], 4, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(fX[i] - 1, by + fY[i] - 1, 2, 2);
+        }
+
+        // Mắt đen to long lanh
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath(); ctx.arc(-8, by - 6, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(8, by - 6, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(-10, by - 8, 2, 2); ctx.fillRect(6, by - 8, 2, 2);
+        ctx.fillStyle = '#fb7185';
+        ctx.beginPath(); ctx.arc(-13, by - 1, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(13, by - 1, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.restore(); return;
+      }
+
+      if (id === 9) { // Cute Bunny - Thỏ Hoodie Mint Pastel
+        let by = Math.sin(angle * 2.4) * 3;
+        ctx.fillStyle = 'rgba(12, 18, 16, 0.45)';
+        ctx.beginPath(); ctx.ellipse(0, by + 36, 26, 5, 0, 0, Math.PI * 2); ctx.fill();
+
+        // Tai cọc cạch
+        ctx.fillStyle = '#f472b6';
+        ctx.beginPath(); ctx.roundRect(-14, by - 36, 8, 22, 4); ctx.fill();
+        ctx.fillStyle = '#a7f3d0';
+        ctx.beginPath(); ctx.roundRect(6, by - 36, 8, 22, 4); ctx.fill();
+
+        // Mũ hoodie mint & mặt trắng
+        ctx.fillStyle = '#a7f3d0';
+        ctx.beginPath(); ctx.roundRect(-20, by - 16, 40, 34, 14); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath(); ctx.roundRect(-14, by - 10, 28, 24, 10); ctx.fill();
+
+        // Mắt & má hồng
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath(); ctx.arc(-7, by - 2, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(7, by - 2, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#f472b6';
+        ctx.fillRect(-1, by, 2, 2); // Mũi
+        ctx.beginPath(); ctx.arc(-10, by + 4, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(10, by + 4, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.restore(); return;
+      }
+
+      // =======================================================================
+      // NHÓM 3: AXOLOTL KỲ NHÔNG KAWAII 2.5D (IDs 16..25)
+      // =======================================================================
+      if (id >= 16 && id <= 25) {
+        let sub = id - 16;
+        let ay = Math.sin(angle * 2.5) * 3;
+        ctx.fillStyle = 'rgba(12, 10, 16, 0.45)';
+        ctx.beginPath(); ctx.ellipse(0, ay + 36, 28, 5, 0, 0, Math.PI * 2); ctx.fill();
+
+        let bodyCol = (sub === 9) ? '#86efac' : '#ff7597';
+        let gillCol = (sub === 9) ? '#22c55e' : '#ff2a70';
+
+        // 1. Thân 2.5D
+        ctx.fillStyle = bodyCol;
+        ctx.beginPath(); ctx.ellipse(0, ay, 22, 17, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffb6c1';
+        ctx.beginPath(); ctx.ellipse(0, ay - 2, 18, 13, 0, 0, Math.PI * 2); ctx.fill();
+
+        // 2. 6 mang xòe
+        let fw = Math.sin(angle * 3.5) * 2.5;
+        ctx.fillStyle = gillCol;
+        ctx.beginPath(); ctx.ellipse(-24 + fw, ay - 10, 8, 4, -0.3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(-26 + fw, ay, 9, 4, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(-22 + fw, ay + 10, 7, 3.5, 0.3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(24 - fw, ay - 10, 8, 4, 0.3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(26 - fw, ay, 9, 4, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(22 - fw, ay + 10, 7, 3.5, -0.3, 0, Math.PI * 2); ctx.fill();
+
+        // 3. Mắt chớp
+        let blink = ((Date.now() % 3500) < 160) || (sub === 2);
+        ctx.fillStyle = '#111827';
+        if (!blink) {
+          ctx.beginPath(); ctx.arc(-10, ay - 2, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(10, ay - 2, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(-12, ay - 5, 2.5, 2.5); ctx.fillRect(8, ay - 5, 2.5, 2.5);
+        } else {
+          ctx.strokeStyle = '#111827'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(-14, ay - 2); ctx.lineTo(-6, ay - 2); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(6, ay - 2); ctx.lineTo(14, ay - 2); ctx.stroke();
+        }
+
+        ctx.fillStyle = gillCol;
+        ctx.beginPath(); ctx.arc(-13, ay + 5, 3.5, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(13, ay + 5, 3.5, 0, Math.PI * 2); ctx.fill();
+
+        if (sub === 1) { // Thổi bong bóng
+          let by1 = ay - ((Date.now() / 20) % 50);
+          ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.arc(16, by1, 4, 0, Math.PI * 2); ctx.stroke();
+        } else if (sub === 3) { // Hoàng tử
+          ctx.fillStyle = '#f5c842';
+          ctx.beginPath(); ctx.moveTo(-8, ay - 18); ctx.lineTo(0, ay - 26); ctx.lineTo(8, ay - 18); ctx.closePath(); ctx.fill();
+        }
+        ctx.restore(); return;
+      }
+
+      // =======================================================================
+      // NHÓM 4: THÚ CƯNG ĐÁNG YÊU & LÃNG MẠN (IDs 26..39)
+      // =======================================================================
+      if (id >= 26 && id <= 39) {
+        let sub = id - 26;
+        let my = Math.sin(angle * 2.0) * 2.5;
+        ctx.fillStyle = 'rgba(12, 12, 16, 0.45)';
+        ctx.beginPath(); ctx.ellipse(0, my + 36, 28, 5, 0, 0, Math.PI * 2); ctx.fill();
+
+        if (sub === 0) { // Mèo Ba Tư (Heterochromia)
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-20, my - 14, 40, 32, 12); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(-18, my - 12); ctx.lineTo(-12, my - 26); ctx.lineTo(-4, my - 12); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(4, my - 12); ctx.lineTo(12, my - 26); ctx.lineTo(18, my - 12); ctx.closePath(); ctx.fill();
+          // Mắt 2 màu: Trái Cyan, Phải Vàng
+          ctx.fillStyle = '#00f0ff'; ctx.beginPath(); ctx.arc(-8, my - 2, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#f5c842'; ctx.beginPath(); ctx.arc(8, my - 2, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(0, my + 16, 4, 0, Math.PI * 2); ctx.fill(); // Vòng ruby
+        } else if (sub === 2) { // Maneki Neko
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-18, my - 14, 36, 32, 10); ctx.fill();
+          ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(-7, my - 2, 4, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke();
+          ctx.beginPath(); ctx.arc(7, my - 2, 4, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke();
+          let wWave = Math.sin(angle * 8.0) * 5;
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath(); ctx.roundRect(-24, my - 2 + wWave, 8, 16, 4); ctx.fill();
+          ctx.fillStyle = '#f5c842'; ctx.beginPath(); ctx.arc(0, my + 16, 4, 0, Math.PI * 2); ctx.fill();
+        } else { // Generic Cuddle Mascot
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath(); ctx.arc(0, my, 20, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(-6, my - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(6, my - 2, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#fda4af';
+          ctx.beginPath(); ctx.arc(-11, my + 4, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(11, my + 4, 3, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.restore(); return;
+      }
+
+      // =======================================================================
+      // NHÓM 5: ĐỊA CẦU & THIÊN VĂN 3D (IDs 40..49)
+      // =======================================================================
+      if (id >= 40 && id <= 49) {
+        let sub = id - 40;
+        if (sub === 0) { // Địa Cầu ISS Blue Marble 3D
           let atmo = ctx.createRadialGradient(0, 0, 24, 0, 0, 38);
           atmo.addColorStop(0, 'rgba(0, 220, 255, 0.9)');
           atmo.addColorStop(0.5, 'rgba(0, 120, 255, 0.4)');
@@ -1374,54 +1396,18 @@
           ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 1;
           ctx.beginPath(); ctx.moveTo(12, -16); ctx.lineTo(28, -16); ctx.stroke();
           ctx.beginPath(); ctx.moveTo(20, -24); ctx.lineTo(20, -8); ctx.stroke();
-        } else {
-          // 175-199: HỐ ĐEN GARGANTUA & SAO THỔ VÀNH ĐAI 3D
+        } else if (sub === 6) { // Hố đen Gargantua
           ctx.fillStyle = '#d97706';
           ctx.beginPath(); ctx.arc(0, 0, 22, 0, Math.PI * 2); ctx.fill();
           ctx.strokeStyle = '#f5c842'; ctx.lineWidth = 3;
           ctx.beginPath(); ctx.ellipse(0, 0, 42, 14, -0.2, 0, Math.PI * 2); ctx.stroke();
-          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.ellipse(0, 0, 46, 16, -0.2, 0, Math.PI * 2); ctx.stroke();
-        }
-        ctx.restore();
-        return;
-      }
-
-      // =========================================================================
-      // NHÓM 5: LÕI NĂNG LƯỢNG PLASMA & MA TRẬN CYBER (IDs 200..249)
-      // =========================================================================
-      if (id >= 200 && id < 250) {
-        let sub = id - 200;
-        let item = CATALOG[id] || {};
-        let col = item.palette || '#f5c842';
-
-        if (sub < 25) {
-          // 200-224: LÕI HỢP HẠCH TOKAMAK TORUS
-          ctx.strokeStyle = col; ctx.lineWidth = 3;
-          ctx.beginPath(); ctx.arc(0, 0, 28, 0, Math.PI * 2); ctx.stroke();
-          ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.arc(0, 0, 18, 0, Math.PI * 2); ctx.stroke();
-          ctx.fillStyle = '#ffffff';
-          ctx.beginPath(); ctx.arc(0, 0, 7 + breath * 3, 0, Math.PI * 2); ctx.fill();
-          for (let a = 0; a < 8; a++) {
-            let rad = a * 0.785398 + angle * 2.0;
-            ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 1.5;
-            ctx.beginPath(); ctx.moveTo(Math.cos(rad)*14, Math.sin(rad)*14); ctx.lineTo(Math.cos(rad)*28, Math.sin(rad)*28); ctx.stroke();
-          }
+          ctx.fillStyle = '#000000';
+          ctx.beginPath(); ctx.arc(0, 0, 16, 0, Math.PI * 2); ctx.fill();
         } else {
-          // 225-249: TINH THỂ LẬP PHƯƠNG LƯỢNG TỬ & MA TRẬN NEURAL
-          ctx.strokeStyle = '#00f0ff'; ctx.lineWidth = 2;
-          ctx.strokeRect(-18, -26, 36, 52);
-          ctx.fillStyle = 'rgba(0, 240, 255, 0.15)';
-          ctx.fillRect(-16, -24, 32, 48);
-          let pHeight = 12 + (breath + 1) * 14;
-          ctx.fillStyle = col;
-          ctx.fillRect(-14, 20 - pHeight, 28, pHeight);
-          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.moveTo(-12, 0); ctx.lineTo(12, 0); ctx.stroke();
+          ctx.fillStyle = '#e0f2fe';
+          ctx.beginPath(); ctx.arc(0, 0, 24, 0, Math.PI * 2); ctx.fill();
         }
-        ctx.restore();
-        return;
+        ctx.restore(); return;
       }
 
       ctx.restore();

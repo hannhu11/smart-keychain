@@ -6,11 +6,11 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Form
 from fastapi.responses import HTMLResponse, JSONResponse
 import uvicorn
 
-app = FastAPI(title="Smart Keychain — 250 Master Animations Studio")
+app = FastAPI(title="Smart Keychain — 50 Master Animations Studio")
 
-CATALOG_PATH = os.path.join(os.path.dirname(__file__), "catalog_250_master.json")
+CATALOG_PATH = os.path.join(os.path.dirname(__file__), "catalog_50_master.json")
 if not os.path.exists(CATALOG_PATH):
-    CATALOG_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data", "catalog_250_master.json")
+    CATALOG_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data", "catalog_50_master.json")
 
 try:
     with open(CATALOG_PATH, "r", encoding="utf-8") as f:

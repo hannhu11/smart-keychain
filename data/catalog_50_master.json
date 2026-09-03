@@ -1,0 +1,452 @@
+[
+  {
+    "id": 0,
+    "global_id": 0,
+    "name": "Excalibur - Thánh Kiếm Bàn Tròn (The Holy Claymore)",
+    "category": "Thánh Khí Huyền Thoại",
+    "palette": "#00f0ff",
+    "quote": "Dù ở thế giới nào, anh vẫn luôn tìm thấy em.",
+    "description": "Thánh bảo kiếm nghiêng 45 độ anh hùng, lưỡi thép vát 3D, viền hào quang Aura trắng và rãnh rune kim cương xanh ngọc phát sáng 1:1."
+  },
+  {
+    "id": 1,
+    "global_id": 1,
+    "name": "Yobao - Bé Hoa Cải Vàng (Rapeseed Fairy)",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#f9d038",
+    "quote": "Gặp được em là mùa hoa rực rỡ nhất đời anh.",
+    "description": "Mô phỏng 1:1 bé hoa cải Hubei: mũ cánh hoa vàng nở xòe 3D, hai tay ôm bông hoa vàng rực rỡ, má hồng cam phúng phính và đôi mắt long lanh."
+  },
+  {
+    "id": 2,
+    "global_id": 2,
+    "name": "Raya - Tinh Linh Rừng Xanh (Forest Heart)",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#34d399",
+    "quote": "Bình yên là khi có em bên cạnh mỗi ngày.",
+    "description": "Mô phỏng 1:1 tinh linh Raya: mái tóc lá xanh phát quang viền neon trắng dạ quang, 2 cánh lá sau lưng, nụ cười tươi bừng sáng cả khu rừng."
+  },
+  {
+    "id": 3,
+    "global_id": 3,
+    "name": "Bloomy [Yoona] - Ong Bắp Cày Hoa Anh Đào",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#f472b6",
+    "quote": "Em ngọt ngào hơn tất cả mật hoa trên đời.",
+    "description": "Mô phỏng 1:1 Bloomy NXU Project: chú ong lông xù vàng ấm, vòng cổ vòng hoa pha lê anh đào lấp lánh, đôi cánh trắng mờ và sọc bụng êm ái."
+  },
+  {
+    "id": 4,
+    "global_id": 4,
+    "name": "Ember [Chae-on] - Cáo Lửa Pha Lê Có Cánh",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#fb923c",
+    "quote": "Trái tim anh rực cháy vì nụ cười của em.",
+    "description": "Mô phỏng 1:1 Ember NXU Project: chú cáo lửa lông cam có đôi cánh thiên thần sải rộng, trán và vai đính ngọc hổ phách pha lê lấp lánh."
+  },
+  {
+    "id": 5,
+    "global_id": 5,
+    "name": "Aurelle [Seorin] - Sư Tử Nhí Vương Giả",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#fca5a5",
+    "quote": "Anh sẽ bảo vệ em trọn cả cuộc đời này.",
+    "description": "Mô phỏng 1:1 Aurelle NXU Project: sư tử nhí bờm lông hồng đào đính sao kim cương, vương miện hoàng gia, chiếc răng khểnh nhỏ đáng yêu."
+  },
+  {
+    "id": 6,
+    "global_id": 6,
+    "name": "Kairo [Yiseo] - Rồng Dơi Hồng Tinh Nghịch",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#f472b6",
+    "quote": "Mỗi ngày bên em đều là một cuộc phiêu lưu ngọt ngào.",
+    "description": "Mô phỏng 1:1 Kairo NXU Project: chú rồng dơi lông hồng pastel với cánh dơi mềm, cặp sừng nhỏ, răng nanh xinh xắn và các vì sao pha lê."
+  },
+  {
+    "id": 7,
+    "global_id": 7,
+    "name": "Lumori - Nấm Rừng Phát Quang Cổ Đại",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#38bdf8",
+    "quote": "Ánh sáng dịu dàng soi đường em về với anh.",
+    "description": "Mô phỏng 1:1 Lumori: chú nấm rừng cổ tích đội mũ ngủ chóp dài phát quang ánh đom đóm, bụng phát sáng xoắn ốc vàng ấm và nhành dương xỉ."
+  },
+  {
+    "id": 8,
+    "global_id": 8,
+    "name": "Lumio - Ngọn Lửa Vũ Trụ Tinh Nghịch",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#818cf8",
+    "quote": "Cùng em thắp sáng cả dải ngân hà bao la.",
+    "description": "Mô phỏng 1:1 Lumio: tinh linh ngọn lửa với mái tóc gradient tím-lam-hồng, áo choàng phù thủy sao đêm và biểu tượng xoắn ốc ma thuật phát sáng."
+  },
+  {
+    "id": 9,
+    "global_id": 9,
+    "name": "Cute Bunny - Thỏ Hoodie Mint Pastel",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#a7f3d0",
+    "quote": "Thế giới này dễ thương hơn khi có em trong đó.",
+    "description": "Mô phỏng 1:1 Cute Bunny: chú thỏ vinyl đội mũ hoodie xanh bạc hà, đôi tai cọc cạch hồng-xanh, má hồng đào và chiếc miệng xinh hình số 3."
+  },
+  {
+    "id": 10,
+    "global_id": 10,
+    "name": "Star Sprite - Bé Sao Băng Áo Choàng Vàng",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#fde047",
+    "quote": "Ước nguyện duy nhất của anh dưới sao băng là có em.",
+    "description": "Bé tinh linh sao băng khoác áo choàng trùm đầu hình ngôi sao vàng kim, đôi má ửng đào và ánh nhìn ngây thơ ngước nhìn trời đêm."
+  },
+  {
+    "id": 11,
+    "global_id": 11,
+    "name": "Lotus Frog - Ếch Xanh Đội Lá Sen",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#4ade80",
+    "quote": "Cơn mưa rào hóa ngọt lành khi che chung ô cùng em.",
+    "description": "Chú ếch xanh tròn phúng phính cầm chiếc ô lá sen đọng giọt sương mai, đôi mắt to tròn chớp nháy dưới làn mưa mát rượi."
+  },
+  {
+    "id": 12,
+    "global_id": 12,
+    "name": "Spore Fairy - Nấm Hồng Dạo Phố",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#fb7185",
+    "quote": "Em là điều kỳ diệu nhỏ bé sưởi ấm tim anh.",
+    "description": "Cô bé nấm hồng xinh xắn với chiếc váy xòe cánh nấm, những hạt bào tử phát sáng lơ lửng xung quanh như những đốm pháo hoa mini."
+  },
+  {
+    "id": 13,
+    "global_id": 13,
+    "name": "Clover Sprout - Mầm Cây May Mắn 4 Lá",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#22c55e",
+    "quote": "Em chính là may mắn bốn lá tuyệt vời nhất của anh.",
+    "description": "Mầm cây búp non trắng tròn với chiếc ăng-ten cỏ bốn lá xoay tròn nhịp nhàng trên đỉnh đầu, mang đến điềm lành và nụ cười rạng rỡ."
+  },
+  {
+    "id": 14,
+    "global_id": 14,
+    "name": "Berry Fox - Cáo Dâu Tây Ngọt Ngào",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#f43f5e",
+    "quote": "Mỗi cái ôm bên em đều ngọt như quả dâu chín mọng.",
+    "description": "Chú cáo dâu tây thân đỏ tươi điểm hạt mè tàn nhang đáng yêu, đầu đội mũ cuống lá dâu xanh biếc, chiếc đuôi xù múp míp."
+  },
+  {
+    "id": 15,
+    "global_id": 15,
+    "name": "Cloud Sheep - Cừu Mây Bồng Bềnh",
+    "category": "Bé Cưng Pop Mart 3D",
+    "palette": "#c084fc",
+    "quote": "Đêm nay hãy ngủ thật ngon trong vòng tay êm ái của anh nhé.",
+    "description": "Chú cừu lông xù màu hoa oải hương bồng bềnh như đám mây kẹo ngọt, bốn chân nhí lơ lửng trên cầu vồng mini diệu kỳ."
+  },
+  {
+    "id": 16,
+    "global_id": 16,
+    "name": "Axolotl Hồng Đào Ngọt Ngào",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#ff7597",
+    "quote": "Thương em nhiều như những bọt nước bồng bềnh dưới đáy sâu.",
+    "description": "Kỳ nhông Axolotl nguyên bản 2.5D: thân bầu bĩnh hồng đào, 6 chùm mang xòe rung rinh theo dòng nước, mắt chớp sinh học 3.5s và bóng nước nổi."
+  },
+  {
+    "id": 17,
+    "global_id": 17,
+    "name": "Axolotl Thổi Bong Bóng Nước",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#38bdf8",
+    "quote": "Gửi tình yêu của anh vào bong bóng bay đến bên em.",
+    "description": "Axolotl chúm chím môi thổi những chùm bong bóng nước cầu vồng trong suốt bay lơ lửng lên không trung rồi vỡ tan lấp lánh."
+  },
+  {
+    "id": 18,
+    "global_id": 18,
+    "name": "Axolotl Ngủ Mơ Kẹo Bông",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#e879f9",
+    "quote": "Trong giấc mơ ngọt ngào nhất, anh luôn thấy bóng hình em.",
+    "description": "Axolotl đội mũ ngủ chấm bi xanh hồng, đôi mắt nhắm tít ngủ say 'u_u', xung quanh tỏa vầng hào quang kẹo bông bồng bềnh."
+  },
+  {
+    "id": 19,
+    "global_id": 19,
+    "name": "Axolotl Hoàng Tử Vương Giả",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#fbbf24",
+    "quote": "Hoàng tử nhỏ xin hứa sẽ cưng chiều công chúa cả đời.",
+    "description": "Axolotl đội vương miện vàng đính ngọc ruby đỏ thắm, khoác áo choàng hoàng gia nhung đỏ viền lông trắng uy nghiêm mà đáng yêu."
+  },
+  {
+    "id": 20,
+    "global_id": 20,
+    "name": "Axolotl Game Thủ Neon",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#00f0ff",
+    "quote": "Chiến thắng lớn nhất trong game cuộc đời anh là có được em.",
+    "description": "Axolotl đeo tai nghe chụp tai Gaming phát quang RGB đổi màu Cyan-Magenta, kính LED hiển thị trái tim số nhấp nháy."
+  },
+  {
+    "id": 21,
+    "global_id": 21,
+    "name": "Axolotl Bát Mì Ramen Nóng Hổi",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#f97316",
+    "quote": "Em là gia vị ấm áp nhất sưởi lành tâm hồn anh.",
+    "description": "Axolotl ngâm mình thư thái trong bát mì ramen gốm hoa văn, hai má đỏ ửng vì nước dùng thơm lừng với lát chả cá narutomaki xinh xắn."
+  },
+  {
+    "id": 22,
+    "global_id": 22,
+    "name": "Axolotl Thiên Sứ Đôi Cánh Trắng",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#ffffff",
+    "quote": "Thiên thần nhỏ của anh, cảm ơn em đã đến bên cuộc đời này.",
+    "description": "Axolotl trắng ngọc trai với đôi cánh lông vũ mềm mại vỗ nhịp nhàng sau lưng, trên đầu tỏa sáng vầng hào quang thiên sứ thuần khiết."
+  },
+  {
+    "id": 23,
+    "global_id": 23,
+    "name": "Axolotl Hoa Anh Đào Sakura",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#fda4af",
+    "quote": "Xuân sang hoa nở không rực rỡ bằng nụ cười của em.",
+    "description": "Axolotl đội vòng nguyệt quế kết từ những đóa hoa anh đào phớt hồng, các cánh hoa sakura lượn bay xung quanh theo làn gió xuân."
+  },
+  {
+    "id": 24,
+    "global_id": 24,
+    "name": "Axolotl Du Hành Không Gian",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#60a5fa",
+    "quote": "Vũ trụ mênh mông vô tận, em là tọa độ duy nhất của anh.",
+    "description": "Axolotl đội mũ bảo hiểm phi hành gia thủy tinh trong suốt, bên trong có các vì sao tí hon và hành tinh trôi bồng bềnh."
+  },
+  {
+    "id": 25,
+    "global_id": 25,
+    "name": "Axolotl Matcha Bánh Trôi",
+    "category": "Axolotl Kỳ Nhông Kawaii 2.5D",
+    "palette": "#86efac",
+    "quote": "Ngọt ngào thanh mát như ngụm trà sữa sánh đôi cùng em.",
+    "description": "Axolotl mang màu xanh matcha dịu mát, trên đầu đội chiếc bánh trôi mochi nếp dẻo thơm hạt đậu đỏ ngọt lành."
+  },
+  {
+    "id": 26,
+    "global_id": 26,
+    "name": "Mèo Ba Tư Hoàng Đế (Heterochromia)",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#f8fafc",
+    "quote": "Ánh mắt em là cả bầu trời xanh biếc và nắng vàng rực rỡ.",
+    "description": "Mèo Ba Tư lông xù trắng tuyết với đôi mắt hai màu (xanh biển và hổ phách), đeo vòng cổ hoàng gia đính viên hồng ngọc quý giá."
+  },
+  {
+    "id": 27,
+    "global_id": 27,
+    "name": "Mèo Tam Thể Nữ Hoàng",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#ea580c",
+    "quote": "Bên em từng giây phút đều đong đầy yêu thương ấm áp.",
+    "description": "Mèo tam thể ba sắc cam-đen-trắng sống động, đôi tai vểnh giật nhẹ nghe ngóng, ria mép rung rinh và chiếc đuôi ngoe nguẩy."
+  },
+  {
+    "id": 28,
+    "global_id": 28,
+    "name": "Mèo Thần Tài Maneki Neko",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#fbbf24",
+    "quote": "Cầu chúc cho em vạn sự hanh thông, triệu niềm vui mỗi ngày.",
+    "description": "Mèo may mắn vẫy tay trái liên tục ở 60 FPS thu hút vượng khí, cổ đeo yếm đỏ và chiếc chuông vàng leng keng rộn rã."
+  },
+  {
+    "id": 29,
+    "global_id": 29,
+    "name": "Mèo Con Trong Hộp Giấy Cạc-tông",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#f59e0b",
+    "quote": "Em có sẵn lòng nhận nuôi trái tim nhỏ bé này không?",
+    "description": "Mèo mướp vàng thò hai chiếc móng nhỏ và đôi mắt tròn xoe long lanh ngơ ngác nhìn ra từ chiếc thùng cạc-tông ấm áp."
+  },
+  {
+    "id": 30,
+    "global_id": 30,
+    "name": "Shiba Inu Má Bánh Bao",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#d97706",
+    "quote": "Chỉ cần nhìn thấy em là mọi buồn phiền đều tan biến hết.",
+    "description": "Chú chó Shiba má phúng phính như hai chiếc bánh bao đàn hồi, chiếc đuôi xoắn tít lắc lia lịa và nụ cười híp mắt đặc trưng."
+  },
+  {
+    "id": 31,
+    "global_id": 31,
+    "name": "Corgi Mông Trái Tim",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#f59e0b",
+    "quote": "Trái tim anh hướng về em như chiếc mông Corgi lắc lư vậy đó!",
+    "description": "Chú cún Corgi bốn chân ngắn cũn tung tăng bước đi, để lộ chiếc mông tròn xoe cắt tỉa hình trái tim đào lắc lư siêu hài hước."
+  },
+  {
+    "id": 32,
+    "global_id": 32,
+    "name": "Thỏ Mặt Trăng Ngọc Thỏ",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#ffffff",
+    "quote": "Tình cảm anh trao em tròn đầy như ánh trăng rằm.",
+    "description": "Chú thỏ ngọc trắng muốt chăm chỉ giã chày ngọc trong cối bột làm bánh mochi dẻo thơm dưới bóng cây quế nguyệt cung."
+  },
+  {
+    "id": 33,
+    "global_id": 33,
+    "name": "Gấu Trúc Gặm Trúc Non",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#1e293b",
+    "quote": "Hạnh phúc đơn sơ là được ăn ngon và có em kề bên.",
+    "description": "Gấu trúc mũm mĩm ngồi bệt trên đồi cỏ xanh, hai tay ôm chặt đọt măng trúc xanh non nhai ngon lành với đôi má phúng phính."
+  },
+  {
+    "id": 34,
+    "global_id": 34,
+    "name": "Chim Cánh Cụt Khăn Len Đỏ",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#0284c7",
+    "quote": "Dẫu mùa đông băng giá, có em là ấm áp ngập tràn.",
+    "description": "Chim cánh cụt hoàng đế nhí quàng chiếc khăn len màu đỏ tươi, lạch bạch bước từng bước nhỏ xíu trên thảm tuyết trắng."
+  },
+  {
+    "id": 35,
+    "global_id": 35,
+    "name": "Rái Cá Biển Nắm Tay",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#78350f",
+    "quote": "Nắm chặt tay nhau để sóng biển không thể tách rời đôi ta.",
+    "description": "Rái cá biển nằm ngửa nổi bồng bềnh trên mặt nước, hai tay ôm khư khư viên đá cuội lấp lánh và thỉnh thoảng chớp mắt bẽn lẽn."
+  },
+  {
+    "id": 36,
+    "global_id": 36,
+    "name": "Rồng Con Sấm Sét Chibi",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#3b82f6",
+    "quote": "Anh sẽ là dũng sĩ bảo vệ em trước mọi bão giông.",
+    "description": "Rồng con vảy xanh ngọc bích có đôi cánh nhỏ xíu vỗ phành phạch, mũi thỉnh thoảng thở ra cụm khói sao nhỏ lấp lánh."
+  },
+  {
+    "id": 37,
+    "global_id": 37,
+    "name": "Kỳ Lân Cầu Vồng Nhí",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#c084fc",
+    "quote": "Em là cầu vồng rực rỡ sau những ngày mưa của anh.",
+    "description": "Ngựa con một sừng kỳ lân với bờm tóc màu pastel ngũ sắc uốn lượn, chiếc sừng xoắn ốc vàng phát quang ánh sáng cầu vồng."
+  },
+  {
+    "id": 38,
+    "global_id": 38,
+    "name": "Đôi Mèo Uyên Ương Lãng Mạn",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#f43f5e",
+    "quote": "Hai trái tim chung một nhịp đập, trọn đời bên nhau.",
+    "description": "Hai chú mèo trắng và đen tựa đầu âu yếm vào nhau dưới ánh trăng, hai chiếc đuôi uốn cong đan lại thành hình trái tim hoàn mỹ."
+  },
+  {
+    "id": 39,
+    "global_id": 39,
+    "name": "Cún Cứu Hộ Saint Bernard",
+    "category": "Thú Cưng Đáng Yêu & Lãng Mạn",
+    "palette": "#b45309",
+    "quote": "Khi em mệt mỏi, luôn có anh là điểm tựa bình yên.",
+    "description": "Chú cún Saint Bernard lông xù màu nâu trắng đeo chiếc thùng gỗ nhỏ ở cổ, đôi tai cụp và ánh mắt ấm áp dịu hiền."
+  },
+  {
+    "id": 40,
+    "global_id": 40,
+    "name": "Địa Cầu Xanh Quỹ Đạo ISS (Blue Marble 3D)",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#0284c7",
+    "quote": "Giữa 8 tỷ người trên địa cầu, anh chỉ thấy mỗi em.",
+    "description": "Khối cầu Trái Đất 3D sống động với vành khí quyển tán xạ Rayleigh lam ngọc, các lục địa xanh trôi dạt 3D và vệt nắng bình minh lóe sáng."
+  },
+  {
+    "id": 41,
+    "global_id": 41,
+    "name": "Bão Xoáy Cực Băng Nam Cực",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#e0f2fe",
+    "quote": "Tình yêu anh mãnh liệt như cơn bão tuyết phương Nam.",
+    "description": "Cơn bão lốc xoáy mây trắng cuộn tròn 3D trên nền đại dương sâu thẳm, mắt bão tĩnh lặng với những dải mây uốn lượn kỳ vĩ."
+  },
+  {
+    "id": 42,
+    "global_id": 42,
+    "name": "Rạn San Hô Phát Quang Rãnh Sâu",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#06b6d4",
+    "quote": "Tình cảm anh sâu thẳm như lòng đại dương bí ẩn.",
+    "description": "Rạn san hô phát quang sinh học dưới đáy biển sâu nghìn mét với bầy sứa biển dạ quang trôi bập bùng theo nhịp thở."
+  },
+  {
+    "id": 43,
+    "global_id": 43,
+    "name": "Sa Mạc Sahara Ánh Hoàng Hôn",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#f97316",
+    "quote": "Dù sa mạc cát cháy, tình anh vẫn là ốc đảo dịu êm.",
+    "description": "Những đụn cát vàng óng ả uốn lượn gợn sóng dưới vầng thái dương đỏ rực, bóng đổ dài tạo chiều sâu 3D sa mạc bất tận."
+  },
+  {
+    "id": 44,
+    "global_id": 44,
+    "name": "Rừng Mưa Nhiệt Đới Amazon Mây Mù",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#15803d",
+    "quote": "Bên em, tâm hồn anh xanh tươi như rừng ngút ngàn.",
+    "description": "Tán rừng nguyên sinh ngọc bích bạt ngàn với những cuộn sương mù trắng muốt bốc lên từ dòng sông Amazon uốn lượn 3D."
+  },
+  {
+    "id": 45,
+    "global_id": 45,
+    "name": "Cực Quang Aurora Vùng Cực",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#10b981",
+    "quote": "Em là dải cực quang diệu kỳ thắp sáng màn đêm của anh.",
+    "description": "Dải lụa cực quang xanh ngọc lục bảo và tím hoa cà nhảy múa uyển chuyển trên bầu trời đêm đầy sao phản chiếu trên hồ băng tuyết."
+  },
+  {
+    "id": 46,
+    "global_id": 46,
+    "name": "Hố Đen Siêu Khối Lượng Gargantua",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#d97706",
+    "quote": "Lực hút của em lớn hơn mọi định luật vật lý vũ trụ.",
+    "description": "Khối cầu chân trời sự kiện đen tuyền với đĩa bồi tụ phát quang vàng cam rực rỡ bẻ cong ánh sáng không-thời gian theo thuyết tương đối."
+  },
+  {
+    "id": 47,
+    "global_id": 47,
+    "name": "Sao Thổ Chúa Tể Vành Đai 3D",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#fde047",
+    "quote": "Thời gian ngừng trôi trong vòng quay ngọt ngào bên em.",
+    "description": "Hành tinh khí khổng lồ màu hổ phách với hệ thống vành đai băng 3D nghiêng đổ bóng mềm mại lên bề mặt quả cầu."
+  },
+  {
+    "id": 48,
+    "global_id": 48,
+    "name": "Mặt Trời Thái Dương Hợp Hạch 3D",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#ef4444",
+    "quote": "Nụ cười của em ấm áp như ánh dương sớm mai.",
+    "description": "Quả cầu năng lượng hạt nhân đỏ rực cuồn cuộn với những hạt plasma bề mặt và tai lửa từ trường bùng phát ở rìa không gian."
+  },
+  {
+    "id": 49,
+    "global_id": 49,
+    "name": "Nguyệt Cầu Trăng Tròn Cổ Đại",
+    "category": "Địa Cầu & Thiên Văn 3D",
+    "palette": "#cbd5e1",
+    "quote": "Ánh trăng soi sáng ước thề đôi ta mãi bền lâu.",
+    "description": "Mặt trăng tròn đầy màu bạc với các biển bazan sẫm màu và miệng hố thiên thạch Tycho nổi khối 3D rõ nét trong đêm huyền ảo."
+  }
+]
