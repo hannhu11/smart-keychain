@@ -63,6 +63,8 @@ struct ScaledCanvas {
 #include "mahoukarp_ocean_sprites.h"
 #include "fantasy_beasts_sprites.h"
 #include "session1_mythics_sprites.h"
+#include "session2_mythics_sprites.h"
+#include "phione_sprites.h"
 
 namespace SpriteRenderer {
 
@@ -73,7 +75,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 55) : 0;
+    id = (id >= 0) ? (id % 60) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -693,6 +695,26 @@ namespace SpriteRenderer {
       }
       case 54: { // Manaphy - Hoàng Tử Biển Sâu
         Session1Mythics::drawMythicManaphy(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 55: { // Phione - Giọt Nước Biển Trôi Dạt
+        Session2Mythics::drawPhioneSeaDrifter(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 56: { // Marshadow - Tinh Linh Bóng Đêm Khói Xám
+        Session2Mythics::drawMythicMarshadow(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 57: { // Zeraora - Miêu Thần Sấm Sét Hoàng Kim
+        Session2Mythics::drawZeraoraThunderclapCat(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 58: { // Cosmog - Đám Mây Tinh Vân Vũ Trụ
+        Session2Mythics::drawCosmogNebulaBaby(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 59: { // Poipole - Tinh Linh Tím Ngoài Hành Tinh
+        Session2Mythics::drawPoipoleAdhesiveAlien(spr, cx, cy, angle, blink);
         break;
       }
 

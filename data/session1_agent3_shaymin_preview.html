@@ -145,8 +145,8 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
 
   // 2. Bóng tiếp xúc mặt sàn co giãn êm ái (Ground contact shadow)
   ctx.save();
-  const shadowW = 50 * (1.0 + 0.04 * breathSin);
-  const shadowH = 10 * (1.0 - 0.03 * breathSin);
+  const shadowW = 54 * (1.0 + 0.04 * breathSin);
+  const shadowH = 11 * (1.0 - 0.03 * breathSin);
   const shadowGrad = ctx.createRadialGradient(8, 42 - breathSin * 2.5, 3, 8, 42 - breathSin * 2.5, shadowW);
   shadowGrad.addColorStop(0, "rgba(15, 23, 42, 0.45)");
   shadowGrad.addColorStop(0.5, "rgba(30, 41, 59, 0.22)");
@@ -225,54 +225,17 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
 
   // 7. Khối lưng cỏ xanh ngọc mướt mát (Lush Jade Grass Torso Dome)
   ctx.save();
-  const grassGrad = ctx.createRadialGradient(10, -16, 8, 16, -6, 56);
+  const grassGrad = ctx.createRadialGradient(10, -16, 8, 16, -6, 58);
   grassGrad.addColorStop(0, "#A3E635"); // Đỉnh ngọc non đón sáng
   grassGrad.addColorStop(0.5, "#65A30D"); // Xanh ngọc mướt mát
   grassGrad.addColorStop(1, "#4D7C0F"); // Đổ bóng khối cầu
   ctx.fillStyle = grassGrad;
   ctx.beginPath();
-  ctx.ellipse(16, -6, 46 * sX, 34 * sY, 0, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Vòm gai cỏ che trán
-  ctx.fillStyle = "#65A30D";
-  ctx.beginPath();
-  const frontSpikes = [
-    [-30, -16, -22, -34, -12, -18],
-    [-18, -20, -10, -40, 2, -20],
-    [-4, -22, 6, -44, 16, -20],
-    [10, -20, 22, -38, 30, -18]
-  ];
-  for (let sp of frontSpikes) {
-    ctx.moveTo(sp[0], sp[1]);
-    ctx.lineTo(sp[2], sp[3]);
-    ctx.lineTo(sp[4], sp[5]);
-  }
-  ctx.closePath();
+  ctx.ellipse(16, -6, 48 * sX, 34 * sY, 0, 0, Math.PI * 2);
   ctx.fill();
   ctx.restore();
 
-  // 8. Đốm phấn hoa vàng hoàng kim trên lưng cỏ
-  ctx.save();
-  const pollens = [
-    [-16, -22, 5, 3, 0.3],
-    [8, -28, 6, 4, 0.4],
-    [32, -12, 5, 3, -0.2],
-    [24, 2, 4, 2, 0.1]
-  ];
-  for (let p of pollens) {
-    ctx.fillStyle = "#FACC15";
-    ctx.beginPath();
-    ctx.ellipse(p[0], p[1], p[2], p[3], p[4], 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "#FEF08A";
-    ctx.beginPath();
-    ctx.arc(p[0], p[1], p[3] * 0.45, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  ctx.restore();
-
-  // 9. Thân trắng muốt bồng bềnh (Porcelain Body Torso)
+  // 8. Thân trắng muốt bồng bềnh (Porcelain Body Torso)
   ctx.save();
   const bodyGrad = ctx.createRadialGradient(4, 12, 6, 6, 16, 40);
   bodyGrad.addColorStop(0, "#FFFFFF");
@@ -284,7 +247,7 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
   ctx.fill();
   ctx.restore();
 
-  // 10. Chân nhỏ tròn vo như hạt đậu (Foreground Bean Feet)
+  // 9. Chân nhỏ tròn vo như hạt đậu (Foreground Bean Feet)
   ctx.save();
   // Chân trước trái
   const f1x = -24, f1y = 20 + footWobble;
@@ -318,7 +281,7 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
   ctx.stroke();
   ctx.restore();
 
-  // 11. Đầu trắng muốt & Sống mũi nhô ra thanh tú (Head & Snout)
+  // 10. Đầu trắng muốt & Sống mũi nhô ra thanh tú (Head & Snout)
   ctx.save();
   const hx = -34, hy = 4;
   const headGrad = ctx.createRadialGradient(hx - 2, hy - 2, 4, hx, hy, 28);
@@ -336,15 +299,6 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
   ctx.lineTo(hx - 28, hy + 2);
   ctx.lineTo(hx - 12, hy + 10);
   ctx.closePath();
-  ctx.fill();
-
-  // Má ửng hồng cam tự nhiên
-  const blushGrad = ctx.createRadialGradient(hx - 2, hy + 9, 1, hx - 2, hy + 9, 8);
-  blushGrad.addColorStop(0, "rgba(251, 146, 60, 0.75)");
-  blushGrad.addColorStop(1, "rgba(251, 146, 60, 0)");
-  ctx.fillStyle = blushGrad;
-  ctx.beginPath();
-  ctx.ellipse(hx - 2, hy + 9, 8, 5, 0, 0, Math.PI * 2);
   ctx.fill();
 
   // Miệng cười hé mở ngọt ngào
@@ -369,48 +323,102 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
   ctx.beginPath();
   ctx.arc(hx - 29, hy + 1, 1, 0, Math.PI * 2);
   ctx.fill();
+
+  // Má ửng hồng cam tự nhiên
+  const blushGrad = ctx.createRadialGradient(hx - 2, hy + 9, 1, hx - 2, hy + 9, 8);
+  blushGrad.addColorStop(0, "rgba(251, 146, 60, 0.75)");
+  blushGrad.addColorStop(1, "rgba(251, 146, 60, 0)");
+  ctx.fillStyle = blushGrad;
+  ctx.beginPath();
+  ctx.ellipse(hx - 2, hy + 9, 8, 5, 0, 0, Math.PI * 2);
+  ctx.fill();
   ctx.restore();
 
-  // 12. Hai chiếc lá xanh mướt nâng đỡ đài hoa Gracidea
+  // 11. VÒM MÁI CỎ XANH TRÙM TRÁN (Signature Shaymin Grass Cap / Forehead Fringe)
+  ctx.save();
+  const capGrad = ctx.createLinearGradient(hx - 20, hy - 24, hx + 20, hy);
+  capGrad.addColorStop(0, "#A3E635");
+  capGrad.addColorStop(0.6, "#65A30D");
+  capGrad.addColorStop(1, "#4D7C0F");
+  ctx.fillStyle = capGrad;
+  ctx.beginPath();
+  // Vòm mái che phủ đỉnh đầu
+  ctx.ellipse(hx + 6, hy - 14, 22 * sX, 14 * sY, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Lượn sóng cỏ rủ xuống trán
+  ctx.beginPath();
+  ctx.arc(hx - 10, hy - 10, 8, 0, Math.PI * 2);
+  ctx.arc(hx - 2, hy - 14, 10, 0, Math.PI * 2);
+  ctx.arc(hx + 8, hy - 16, 11, 0, Math.PI * 2);
+  ctx.fill();
+  // Gai nhọn chúc nhẹ xuống trán
+  ctx.beginPath();
+  ctx.moveTo(hx - 16, hy - 8); ctx.lineTo(hx - 22, hy - 4); ctx.lineTo(hx - 12, hy - 4);
+  ctx.moveTo(hx - 8, hy - 6);  ctx.lineTo(hx - 12, hy - 1); ctx.lineTo(hx - 4, hy - 5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+
+  // 12. Đốm phấn hoa vàng hoàng kim trên lưng cỏ
+  ctx.save();
+  const pollens = [
+    [-16, -22, 5, 3, 0.3],
+    [8, -28, 6, 4, 0.4],
+    [32, -12, 5, 3, -0.2],
+    [24, 2, 4, 2, 0.1]
+  ];
+  for (let p of pollens) {
+    ctx.fillStyle = "#FACC15";
+    ctx.beginPath();
+    ctx.ellipse(p[0], p[1], p[2], p[3], p[4], 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#FEF08A";
+    ctx.beginPath();
+    ctx.arc(p[0], p[1], p[3] * 0.45, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.restore();
+
+  // 13. Hai chiếc lá xanh mướt nâng đỡ đài hoa Gracidea
   ctx.save();
   const flx = -14, fly = 6;
   // Lá chúc xuống
-  const leaf1Grad = ctx.createLinearGradient(flx, fly, flx - 4, fly + 32);
+  const leaf1Grad = ctx.createLinearGradient(flx, fly, flx - 6, fly + 34);
   leaf1Grad.addColorStop(0, "#4ADE80");
   leaf1Grad.addColorStop(1, "#14532D");
   ctx.fillStyle = leaf1Grad;
   ctx.beginPath();
   ctx.moveTo(flx, fly + 6);
-  ctx.lineTo(flx - 4, fly + 32);
+  ctx.lineTo(flx - 6, fly + 34);
   ctx.lineTo(flx + 16, fly + 20);
   ctx.closePath();
   ctx.fill();
   ctx.strokeStyle = "#86EFAC";
-  ctx.lineWidth = 1.1;
+  ctx.lineWidth = 1.2;
   ctx.beginPath();
-  ctx.moveTo(flx + 3, fly + 8); ctx.lineTo(flx + 4, fly + 25);
+  ctx.moveTo(flx + 3, fly + 8); ctx.lineTo(flx + 3, fly + 26);
   ctx.stroke();
 
   // Lá vươn sang sườn phải
-  const leaf2Grad = ctx.createLinearGradient(flx, fly, flx + 36, fly + 14);
+  const leaf2Grad = ctx.createLinearGradient(flx, fly, flx + 38, fly + 14);
   leaf2Grad.addColorStop(0, "#4ADE80");
   leaf2Grad.addColorStop(1, "#14532D");
   ctx.fillStyle = leaf2Grad;
   ctx.beginPath();
   ctx.moveTo(flx + 8, fly);
-  ctx.lineTo(flx + 36, fly + 14);
-  ctx.lineTo(flx + 16, fly + 24);
+  ctx.lineTo(flx + 38, fly + 14);
+  ctx.lineTo(flx + 16, fly + 26);
   ctx.closePath();
   ctx.fill();
   ctx.beginPath();
-  ctx.moveTo(flx + 11, fly + 2); ctx.lineTo(flx + 25, fly + 14);
+  ctx.moveTo(flx + 11, fly + 2); ctx.lineTo(flx + 26, fly + 14);
   ctx.stroke();
   ctx.restore();
 
-  // 13. ĐÓA HOA HỒNG GRACIDEA NỞ RỘ (6 CÁNH LỚN BUNG NỞ)
+  // 14. ĐÓA HOA HỒNG GRACIDEA NỞ RỘ (6 CÁNH LỚN BUNG NỞ)
   ctx.save();
   const petalAngles = [0, 1.047, 2.094, 3.141, 4.188, 5.235];
-  const petalLens = [24, 26, 25, 23, 22, 25];
+  const petalLens = [26, 28, 27, 25, 24, 27];
 
   for (let p = 0; p < 6; p++) {
     const ang = petalAngles[p] + 0.18 + petalFlutter * 0.03;
@@ -423,11 +431,11 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
 
     const perpCos = -sinA;
     const perpSin = cosA;
-    const w = 9;
-    const b1x = flx + cosA * 6 + perpCos * w;
-    const b1y = fly + sinA * 6 + perpSin * w;
-    const b2x = flx + cosA * 6 - perpCos * w;
-    const b2y = fly + sinA * 6 - perpSin * w;
+    const w = 11;
+    const b1x = flx + cosA * 7 + perpCos * w;
+    const b1y = fly + sinA * 7 + perpSin * w;
+    const b2x = flx + cosA * 7 - perpCos * w;
+    const b2y = fly + sinA * 7 - perpSin * w;
 
     const petalGrad = ctx.createLinearGradient(flx, fly, tipX, tipY);
     petalGrad.addColorStop(0, "#BE185D");
@@ -440,15 +448,15 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
     ctx.quadraticCurveTo(b1x, b1y, tipX, tipY);
     ctx.quadraticCurveTo(b2x, b2y, flx, fly);
     ctx.fill();
-    ctx.strokeStyle = "rgba(253, 242, 248, 0.7)";
-    ctx.lineWidth = 1.0;
+    ctx.strokeStyle = "rgba(253, 242, 248, 0.75)";
+    ctx.lineWidth = 1.1;
     ctx.stroke();
   }
 
   // Tâm đài hoa hồng đậm
   ctx.fillStyle = "#BE185D";
   ctx.beginPath();
-  ctx.arc(flx, fly, 8, 0, Math.PI * 2);
+  ctx.arc(flx, fly, 9, 0, Math.PI * 2);
   ctx.fill();
 
   // Nhị hoa vàng hoàng kim tỏa hương
@@ -458,24 +466,24 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
   ctx.fill();
   ctx.fillStyle = "#FEF08A";
   ctx.beginPath();
-  ctx.arc(flx - 0.5, fly - 0.5, 1.5, 0, Math.PI * 2);
+  ctx.arc(flx - 0.5, fly - 0.5, 1.6, 0, Math.PI * 2);
   ctx.fill();
 
-  // Hạt nhụy hoa tím thẫm
+  // 6 Hạt nhụy hoa tím thẫm
   ctx.fillStyle = "#4A044E";
   for (let s = 0; s < 6; s++) {
     const ang = petalAngles[s] + 0.18;
-    const sx = flx + Math.cos(ang) * 7.0;
-    const sy = fly + Math.sin(ang) * 7.0;
+    const sx = flx + Math.cos(ang) * 7.5;
+    const sy = fly + Math.sin(ang) * 7.5;
     ctx.beginPath();
-    ctx.arc(sx, sy, 1.4, 0, Math.PI * 2);
+    ctx.arc(sx, sy, 1.5, 0, Math.PI * 2);
     ctx.fill();
   }
   ctx.restore();
 
-  // 14. ĐÔI MẮT PHA LÊ XANH LỤC BẢO (3-Point Specular Emerald Crystal Eyes)
+  // 15. ĐÔI MẮT PHA LÊ XANH LỤC BẢO (3-Point Specular Emerald Crystal Eyes)
   ctx.save();
-  const ex = hx - 12, ey = hy - 3;
+  const ex = hx - 12, ey = hy - 2;
 
   if (blink) {
     ctx.strokeStyle = "#052E16";
@@ -535,14 +543,14 @@ function drawShayminFloraHedgehog(ctx, cx, cy, scale, t) {
     const t = (now - startTime) / 1000;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Draw background subtle vignette
+    // Draw background subtle border
     ctx.save();
     ctx.strokeStyle = "rgba(203, 213, 225, 0.4)";
     ctx.lineWidth = 1;
     ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
     ctx.restore();
 
-    // Render Shaymin scaled to fit 240x280 display
+    // Render Shaymin
     drawShayminFloraHedgehog(ctx, 115, 140, 1.42, t);
 
     requestAnimationFrame(renderLoop);

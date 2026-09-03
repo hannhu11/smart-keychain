@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Phione Sea Drifter 3D Pop Mart Preview</title>
+  <style>
+    :root {
+      --bg-ocean-deep: #031424;
+      --bg-ocean-mid: #0B2545;
+      --cyan-bright: #38BDF8;
+      --cyan-glow: #22D3EE;
+      --text-main: #E2E8F0;
+      --text-dim: #94A3B8;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: radial-gradient(circle at 50% 20%, var(--bg-ocean-mid) 0%, var(--bg-ocean-deep) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 26px;
+      color: var(--cyan-bright);
+      text-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    p.subtitle {
+      margin: 0 0 20px 0;
+      font-size: 14px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+    .layout-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      max-width: 1060px;
+      width: 100%;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 18px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(34, 211, 238, 0.12);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #7DD3FC;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    canvas {
+      display: block;
+      border-radius: 14px;
+      background: radial-gradient(circle at center, #0B2B48 0%, #031424 100%);
+      border: 1px solid rgba(125, 211, 252, 0.2);
+    }
+    .ref-image {
+      width: 320px;
+      height: 320px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: radial-gradient(circle at center, rgba(34, 211, 238, 0.1) 0%, rgba(3, 20, 36, 0.6) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .controls {
+      margin-top: 18px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      background: linear-gradient(135deg, #0284C7, #0369A1);
+      color: white;
+      border: 1px solid #38BDF8;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #0369A1, #0284C7);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      color: #67E8F9;
+      font-size: 12px;
+      margin-top: 14px;
+      text-align: center;
+    }
+    .spec-table {
+      margin-top: 20px;
+      max-width: 900px;
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .spec-table th, .spec-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .spec-table th {
+      background: rgba(2, 132, 199, 0.25);
+      color: #38BDF8;
+      font-weight: 600;
+    }
+    .spec-table tr:hover {
+      background: rgba(34, 211, 238, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>🌊 PHIONE - GIỌT NƯỚC BIỂN TRÔI DẠT (SEA DRIFTER)</h1>
+  <p class="subtitle">3D Pop Mart / Vinyl High-End Collectible Art • 60 FPS Organic Micro-Physics Kinematics</p>
+
+  <div class="layout-grid">
+    <!-- Live Canvas -->
+    <div class="card">
+      <div class="card-title">Live Canvas 2D (60 FPS Physics)</div>
+      <canvas id="liveCanvas" width="340" height="380"></canvas>
+      <div class="controls">
+        <button id="btnPause">Tạm dừng</button>
+        <button id="btnBlink">Chớp mắt ngay</button>
+        <label style="font-size: 13px; color: var(--text-dim);">
+          Tốc độ: <input type="range" id="speedSlider" min="0.2" max="2.0" step="0.1" value="1.0">
+        </label>
+      </div>
+      <div class="badge">Squash & Stretch 5% • Delta Phi = 0.45 rad • 3-Point Specular Eyes</div>
+    </div>
+
+    <!-- 3D Pop Mart Render Artifact -->
+    <div class="card">
+      <div class="card-title">3D Pop Mart Vinyl Render</div>
+      <img src="../data/phione_popmart_3d_1788461851471.jpg" alt="Phione 3D Pop Mart Render" class="ref-image">
+      <div class="badge" style="border-color: #34D399; color: #6EE7B7;">AI 3D Sculpted Pop Mart Master Artifact</div>
+    </div>
+
+    <!-- Original Reference Art -->
+    <div class="card">
+      <div class="card-title">Ảnh Mẫu Đối Chiếu 100%</div>
+      <img src="../ảnh mẫu fllow theo để tạo y hệt như vậy ( giống 100 % các kiểu cách )/06_Mythic_Phione_Sea_Drifter.png" alt="Phione Reference Art" class="ref-image">
+      <div class="badge" style="border-color: #F59E0B; color: #FCD34D;">Official Pokémon Master Concept Art</div>
+    </div>
+  </div>
+
+  <table class="spec-table">
+    <thead>
+      <tr>
+        <th>Thành phần giải phẫu 3D</th>
+        <th>Quy cách điêu khắc Pop Mart & Vật lý quang học</th>
+        <th>Hệ màu / RGB565</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Thân giọt nước (Teardrop Body)</strong></td>
+        <td>Bán trong suốt SSS (Subsurface Scattering) men sứ nano bóng bẩy, thắt nhọn ở đáy thành thùy đuôi tí hon.</td>
+        <td>#38BDF8 (0x3DFE), #0284C7 (0x0438), #D0F8FF (0xCFDE)</td>
+      </tr>
+      <tr>
+        <td><strong>Phao nổi đỉnh đầu (Head Flotation Buoy)</strong></td>
+        <td>Dạng phao tròn phồng to như viên kẹo biển / phao cứu sinh, có gờ cổ chân phao và tâm lõm sâu đón sáng.</td>
+        <td>#38BDF8 (0x3DFE), #BAE6FD (0xBF3F), #0284C7 (0x0438)</td>
+      </tr>
+      <tr>
+        <td><strong>Dải ruy băng đuôi dài (Ribbon Tail)</strong></td>
+        <td>Uốn lượn hình sóng S-Curve từ chóp phao rủ sang phải, trễ pha 0.45 rad, chóp chẻ đuôi cá V-notch.</td>
+        <td>#38BDF8, #7DD3FC, Viền #D0F8FF</td>
+      </tr>
+      <tr>
+        <td><strong>Viên hồng ngọc Ruby ngực</strong></td>
+        <td>Ruby đỏ rực giác cắt facet hình bầu dục đính viền chạm khắc hoàng kim (Gilded Bezel), đốm bắt sáng sắc nét.</td>
+        <td>Ruby #DC2626 (0xD924), Vàng #F59E0B (0xF4E1)</td>
+      </tr>
+      <tr>
+        <td><strong>Đôi mắt pha lê xanh thẳm</strong></td>
+        <td>Mống mắt xanh Sapphire khúc xạ lam ngọc đáy mắt, 3 điểm bắt sáng vật lý (Keylight, Ground Bounce, Glint), vệt mí vàng trên.</td>
+        <td>Iris #1D4ED8, Đáy #0284C7, Mí #FACC15</td>
+      </tr>
+      <tr>
+        <td><strong>Đốm anten trán (Forehead Orbs)</strong></td>
+        <td>2 hạt ngọc xanh tròn đối xứng trên trán nối cuống xuống viền mắt theo đúng nguyên tác 100%.</td>
+        <td>#0284C7 (0x0438), Đón sáng #7DD3FC</td>
+      </tr>
+      <tr>
+        <td><strong>Hai tay bơi vây cá nhỏ</strong></td>
+        <td>Xòe ngang mềm mại, đầu vây tròn mịn đón luồng nước, vẫy nhịp nhàng trễ pha 0.35 rad.</td>
+        <td>#38BDF8, Viền men sứ #D0F8FF</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    // =========================================================================
+    // PHIONE - GIỌT NƯỚC BIỂN TRÔI DẠT (MYTHIC PHIONE SEA DRIFTER)
+    // Pop Mart / High-End Vinyl Collectible Art - Modern HTML5 Canvas 2D
+    // =========================================================================
+
+    function drawMythicPhione(ctx, cx, cy, scale, t, forceBlink = false) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(scale, scale);
+
+      // 1. Nhịp bơi lơ lửng đại dương Squash & Stretch 5%
+      const breathFreq = 2.0;
+      const breathPhase = t * breathFreq;
+      const sY = 1.0 + 0.05 * Math.sin(breathPhase);
+      const sX = 1.0 - 0.025 * Math.sin(breathPhase);
+      const by = Math.sin(breathPhase) * 3.5;
+      const blink = forceBlink || ((t % 3.5) < 0.14);
+
+      // 2. Bóng tiếp xúc mờ ảo đáy biển (Soft Contact Shadow)
+      ctx.save();
+      const shadowY = 56;
+      const shadowRx = (26.0 + 2.0 * Math.sin(breathPhase)) * sX;
+      const shadowGrad = ctx.createRadialGradient(-2, shadowY, 3, -2, shadowY, shadowRx);
+      shadowGrad.addColorStop(0, 'rgba(4, 30, 52, 0.50)');
+      shadowGrad.addColorStop(0.6, 'rgba(4, 30, 52, 0.22)');
+      shadowGrad.addColorStop(1, 'rgba(4, 30, 52, 0)');
+      ctx.fillStyle = shadowGrad;
+      ctx.beginPath();
+      ctx.ellipse(-2, shadowY, shadowRx, 6.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // 3. Bọt nước ngân hà li ti phát sáng (Bioluminescent Galaxy Bubbles)
+      const bubbleDefs = [
+        { x: -48, y: -30, r: 3.0, phase: 0.0 },
+        { x: 42,  y: -24, r: 2.6, phase: 1.1 },
+        { x: -52, y: 14,  r: 2.2, phase: 2.3 },
+        { x: 48,  y: 22,  r: 2.8, phase: 3.5 },
+        { x: -24, y: -52, r: 1.8, phase: 4.7 },
+        { x: 30,  y: -56, r: 2.4, phase: 5.4 }
+      ];
+      bubbleDefs.forEach(b => {
+        const bLag = breathPhase * 0.8 + b.phase;
+        const bx = b.x + Math.cos(bLag) * 3.0;
+        const by_pos = b.y + Math.sin(bLag) * 4.0;
+        ctx.save();
+        ctx.shadowColor = '#7DD3FC';
+        ctx.shadowBlur = 8;
+        ctx.fillStyle = 'rgba(125, 211, 252, 0.35)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.lineWidth = 0.9;
+        ctx.beginPath();
+        ctx.arc(bx, by_pos, b.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.beginPath();
+        ctx.arc(bx - b.r * 0.35, by_pos - b.r * 0.35, b.r * 0.3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      // Tọa độ đầu & phao
+      const hy = by - 8;
+      const buoyX = -4 * sX;
+      const buoyY = hy - 20 * sY;
+
+      // 4. DẢI RUY BĂNG ĐUÔI DÀI MỀM MẠI (Ribbon Tail - Trễ pha Delta Phi = 0.45 rad)
+      // Xuất phát từ đỉnh phao, vòng lên trên sang phải và rủ xuống
+      const ribLag = breathPhase - 0.45;
+      const sway1 = Math.sin(ribLag) * 4.0;
+      const sway2 = Math.cos(ribLag) * 5.0;
+      const sway3 = Math.sin(ribLag + 0.5) * 6.0;
+      const sway4 = Math.cos(ribLag + 0.8) * 7.0;
+
+      // Trục xương sống ruy băng:
+      const p0 = { x: buoyX, y: buoyY - 3 };
+      const p1 = { x: buoyX + 8 + sway1 * 0.4, y: buoyY - 16 };
+      const p2 = { x: buoyX + 24 + sway2 * 0.6, y: buoyY - 14 };
+      const p3 = { x: buoyX + 46 + sway3 * 0.8, y: buoyY + 6 };
+      const p4 = { x: buoyX + 70 + sway4, y: buoyY + 34 };
+      const p5 = { x: buoyX + 90 + sway4 * 1.2, y: buoyY + 58 };
+
+      ctx.save();
+      // Vẽ dải ruy băng với độ dày nở dần về phía đuôi
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      // Lớp bóng dưới ruy băng
+      ctx.lineWidth = 11;
+      ctx.strokeStyle = 'rgba(2, 132, 199, 0.45)';
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y);
+      ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+      ctx.bezierCurveTo(p3.x + 12, p3.y + 14, p4.x - 6, p4.y - 10, p5.x, p5.y);
+      ctx.stroke();
+
+      // Thân ruy băng chuyển sắc
+      const ribGrad = ctx.createLinearGradient(p0.x, p0.y, p5.x, p5.y);
+      ribGrad.addColorStop(0, '#22D3EE');
+      ribGrad.addColorStop(0.4, '#38BDF8');
+      ribGrad.addColorStop(0.8, '#67E8F9');
+      ribGrad.addColorStop(1, '#A5F3FC');
+
+      ctx.lineWidth = 9;
+      ctx.strokeStyle = ribGrad;
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y);
+      ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+      ctx.bezierCurveTo(p3.x + 12, p3.y + 14, p4.x - 6, p4.y - 10, p5.x, p5.y);
+      ctx.stroke();
+
+      // Viền men sứ lóa sáng ruy băng
+      ctx.lineWidth = 1.4;
+      ctx.strokeStyle = 'rgba(208, 248, 255, 0.85)';
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y - 3);
+      ctx.bezierCurveTo(p1.x, p1.y - 3, p2.x, p2.y - 3, p3.x, p3.y - 3);
+      ctx.bezierCurveTo(p3.x + 12, p3.y + 11, p4.x - 6, p4.y - 13, p5.x, p5.y - 3);
+      ctx.stroke();
+
+      // Chóp đuôi chẻ 2 thùy V-notch cá tính (Notched Swallowtail)
+      const tipX = p5.x;
+      const tipY = p5.y;
+      ctx.fillStyle = '#67E8F9';
+      ctx.strokeStyle = '#D0F8FF';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(tipX - 4, tipY - 5);
+      ctx.lineTo(tipX + 8, tipY - 4);  // Thùy trên
+      ctx.lineTo(tipX + 3, tipY + 1);  // Vết khía V
+      ctx.lineTo(tipX + 9, tipY + 7);  // Thùy dưới
+      ctx.lineTo(tipX - 3, tipY + 5);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+
+      // 5. HAI TAY BƠI NGẮN TRÒN XÒE NGANG (Swimming Paddle Flippers)
+      const finLag = breathPhase - 0.35;
+      const finFlutterL = Math.sin(finLag) * 3.5;
+      const finFlutterR = Math.sin(finLag + 0.2) * 3.5;
+
+      // Tay bơi phải (vươn ngang sang phải - xa người hơn một chút)
+      ctx.save();
+      const rFinX1 = 4 * sX, rFinY1 = by + 6;
+      const rFinX2 = 28 * sX, rFinY2 = by + 8 + finFlutterR;
+      const rFinX3 = 46 * sX, rFinY3 = by + 12 + finFlutterR;
+
+      const finRGrad = ctx.createLinearGradient(rFinX1, rFinY1, rFinX3, rFinY3);
+      finRGrad.addColorStop(0, '#0284C7');
+      finRGrad.addColorStop(0.5, '#38BDF8');
+      finRGrad.addColorStop(1, '#7DD3FC');
+      ctx.fillStyle = finRGrad;
+      ctx.beginPath();
+      ctx.moveTo(rFinX1, rFinY1 - 4);
+      ctx.quadraticCurveTo(rFinX2, rFinY2 - 6, rFinX3, rFinY3);
+      ctx.arc(rFinX3, rFinY3 + 3, 5.0, -Math.PI * 0.4, Math.PI * 0.4);
+      ctx.quadraticCurveTo(rFinX2, rFinY2 + 8, rFinX1, rFinY1 + 5);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(208, 248, 255, 0.7)';
+      ctx.lineWidth = 1.1;
+      ctx.stroke();
+      ctx.restore();
+
+      // Tay bơi trái (vươn chéo xuống phía trước bên trái)
+      ctx.save();
+      const lFinX1 = -8 * sX, lFinY1 = by + 7;
+      const lFinX2 = -26 * sX, lFinY2 = by + 17 + finFlutterL;
+      const lFinX3 = -38 * sX, lFinY3 = by + 26 + finFlutterL;
+
+      const finLGrad = ctx.createLinearGradient(lFinX1, lFinY1, lFinX3, lFinY3);
+      finLGrad.addColorStop(0, '#0369A1');
+      finLGrad.addColorStop(0.4, '#38BDF8');
+      finLGrad.addColorStop(1, '#67E8F9');
+      ctx.fillStyle = finLGrad;
+      ctx.beginPath();
+      ctx.moveTo(lFinX1, lFinY1 - 3);
+      ctx.quadraticCurveTo(lFinX2, lFinY2 - 5, lFinX3, lFinY3);
+      ctx.arc(lFinX3 + 2, lFinY3 + 3, 5.2, -Math.PI * 0.6, Math.PI * 0.5);
+      ctx.quadraticCurveTo(lFinX2 + 4, lFinY2 + 7, lFinX1, lFinY1 + 6);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(208, 248, 255, 0.75)';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      ctx.restore();
+
+      // 6. THÂN GIỌT NƯỚC BÁN TRONG SUỐT & ĐUÔI NHỌN NÚNG NÍNH (Teardrop Torso & Tail Nub)
+      ctx.save();
+      // Khối thân chính (Torso)
+      const torsoGrad = ctx.createRadialGradient(-3 * sX, by + 8, 2, -1 * sX, by + 13, 16 * sY);
+      torsoGrad.addColorStop(0, '#7DD3FC');
+      torsoGrad.addColorStop(0.5, '#38BDF8');
+      torsoGrad.addColorStop(0.85, '#0284C7');
+      torsoGrad.addColorStop(1, '#0369A1');
+      ctx.fillStyle = torsoGrad;
+
+      // Vẽ hình giọt nước thuôn nhọn ở đáy
+      ctx.beginPath();
+      ctx.moveTo(-10 * sX, by + 7);
+      ctx.quadraticCurveTo(-14 * sX, by + 17, -2 * sX, by + 28 * sY); // Đỉnh nhọn đuôi ở dưới
+      ctx.quadraticCurveTo(10 * sX, by + 17, 8 * sX, by + 7);
+      ctx.closePath();
+      ctx.fill();
+
+      // Viền men sứ lóa sáng
+      ctx.strokeStyle = '#D0F8FF';
+      ctx.lineWidth = 1.3;
+      ctx.stroke();
+
+      // Highlight bóng men sứ hông
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+      ctx.beginPath();
+      ctx.ellipse(-5 * sX, by + 16, 2.5, 1.8, -0.25, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // 7. VIÊN HỒNG NGỌC RUBY ĐỎ RỰC TRƯỚC NGỰC (Faceted Radiant Ruby Gem)
+      const gemX = -1 * sX;
+      const gemY = by + 10;
+      ctx.save();
+      // Vành vàng hoàng kim (Gold Bezel)
+      ctx.fillStyle = '#F59E0B';
+      ctx.beginPath();
+      ctx.ellipse(gemX, gemY, 6.5, 8.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Hạt vàng lấp lánh 4 hướng
+      ctx.fillStyle = '#FEF08A';
+      const bezelPoints = [
+        { x: gemX, y: gemY - 7.5 },
+        { x: gemX, y: gemY + 7.5 },
+        { x: gemX - 5.5, y: gemY },
+        { x: gemX + 5.5, y: gemY }
+      ];
+      bezelPoints.forEach(pt => {
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 1.0, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Viên Ruby đỏ rực
+      ctx.shadowColor = 'rgba(220, 38, 38, 0.8)';
+      ctx.shadowBlur = 10;
+      const rubyGrad = ctx.createRadialGradient(gemX - 1, gemY - 2, 1, gemX, gemY, 6);
+      rubyGrad.addColorStop(0, '#FCA5A5');
+      rubyGrad.addColorStop(0.25, '#EF4444');
+      rubyGrad.addColorStop(0.7, '#DC2626');
+      rubyGrad.addColorStop(1, '#991B1B');
+      ctx.fillStyle = rubyGrad;
+      ctx.beginPath();
+      ctx.ellipse(gemX, gemY, 4.8, 6.8, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Điểm bắt sáng lóa giác cắt ruby
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(gemX - 1.2, gemY - 2.2, 1.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // 8. ĐẦU NƯỚC GIỌT NƯỚC KHỔNG LỒ & ĐỘ BÓNG MEN SỨ (Giant Water Droplet Head)
+      ctx.save();
+      const headGrad = ctx.createRadialGradient(-7 * sX, hy - 6 * sY, 3, -1 * sX, hy, 25 * sX);
+      headGrad.addColorStop(0, '#BAE6FD');
+      headGrad.addColorStop(0.35, '#7DD3FC');
+      headGrad.addColorStop(0.7, '#38BDF8');
+      headGrad.addColorStop(1, '#0284C7');
+      ctx.fillStyle = headGrad;
+      ctx.beginPath();
+      ctx.ellipse(-1 * sX, hy, 24 * sX, 21 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = '#D0F8FF';
+      ctx.lineWidth = 1.6;
+      ctx.stroke();
+
+      // Điểm phản chiếu men sứ trên trán
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+      ctx.beginPath();
+      ctx.ellipse(-11 * sX, hy - 11 * sY, 6.5, 3.2, -0.3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(10 * sX, hy - 9 * sY, 2.0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // 9. PHAO NỔI TRÒN TRÊN ĐỈNH ĐẦU (Head Flotation Buoy Cushion)
+      ctx.save();
+      // Chân cổ phao
+      ctx.fillStyle = '#0284C7';
+      ctx.beginPath();
+      ctx.ellipse(buoyX, buoyY + 4, 7, 3, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Khối phao tròn phồng to tựa viên kẹo biển
+      const buoyGrad = ctx.createRadialGradient(buoyX - 2, buoyY - 2, 2, buoyX, buoyY, 15);
+      buoyGrad.addColorStop(0, '#BAE6FD');
+      buoyGrad.addColorStop(0.4, '#38BDF8');
+      buoyGrad.addColorStop(0.85, '#0284C7');
+      buoyGrad.addColorStop(1, '#0369A1');
+      ctx.fillStyle = buoyGrad;
+      ctx.beginPath();
+      ctx.ellipse(buoyX, buoyY, 14 * sX, 7.5 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Viền men sứ phao
+      ctx.strokeStyle = '#D0F8FF';
+      ctx.lineWidth = 1.3;
+      ctx.stroke();
+
+      // Tâm lõm phao
+      ctx.fillStyle = '#0284C7';
+      ctx.beginPath();
+      ctx.ellipse(buoyX, buoyY - 1, 4.5 * sX, 2.2 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Điểm sáng trên phao
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.beginPath();
+      ctx.ellipse(buoyX - 4 * sX, buoyY - 3 * sY, 4.0, 1.4, -0.15, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // 10. ĐỐM ANTEN TRÁN & CUỐNG NỐI MẮT (Forehead Orbs & Connecting Stems)
+      const ey = hy + 2;
+      const exL = -13 * sX;
+      const exR = 7 * sX;
+
+      ctx.save();
+      // Đốm trái
+      const dotLX = -14 * sX, dotLY = hy - 6 * sY;
+      ctx.strokeStyle = '#0284C7';
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.moveTo(dotLX, dotLY);
+      ctx.lineTo(exL - 1, ey - 7);
+      ctx.stroke();
+
+      ctx.fillStyle = '#0284C7';
+      ctx.beginPath();
+      ctx.arc(dotLX, dotLY, 3.4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#7DD3FC';
+      ctx.beginPath();
+      ctx.arc(dotLX - 0.8, dotLY - 0.8, 1.6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Đốm phải (hơi cao hơn và hướng vào trung tâm theo đúng ảnh mẫu)
+      const dotRX = -2 * sX, dotRY = hy - 7 * sY;
+      ctx.beginPath();
+      ctx.moveTo(dotRX, dotRY);
+      ctx.lineTo(exR - 2, ey - 7);
+      ctx.stroke();
+
+      ctx.fillStyle = '#0284C7';
+      ctx.beginPath();
+      ctx.arc(dotRX, dotRY, 3.4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#7DD3FC';
+      ctx.beginPath();
+      ctx.arc(dotRX - 0.8, dotRY - 0.8, 1.6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // 11. VỆT VÀNG MÍ MẮT TRÊN (Golden Eyelid Accent Arcs)
+      ctx.save();
+      ctx.strokeStyle = '#FACC15';
+      ctx.lineWidth = 1.4;
+      ctx.lineCap = 'round';
+
+      // Mí mắt trái
+      ctx.beginPath();
+      ctx.arc(exL, ey - 1, 6.0, Math.PI * 1.05, Math.PI * 1.85);
+      ctx.stroke();
+
+      // Mí mắt phải
+      ctx.beginPath();
+      ctx.arc(exR, ey - 1, 7.0, Math.PI * 1.05, Math.PI * 1.85);
+      ctx.stroke();
+
+      // Chấm vàng rạng rỡ ở góc mí
+      ctx.fillStyle = '#FEF08A';
+      ctx.beginPath();
+      ctx.arc(exL + 4, ey - 6, 1.0, 0, Math.PI * 2);
+      ctx.arc(exR + 5, ey - 6.5, 1.0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // 12. ĐÔI MẮT PHA LÊ XANH THẲM TO TRÒN (3-Point Catchlights)
+      if (blink) {
+        ctx.save();
+        ctx.strokeStyle = '#031E3D';
+        ctx.lineWidth = 2.4;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.ellipse(exL, ey + 2, 5.5, 2.2, 0, 0, Math.PI);
+        ctx.ellipse(exR, ey + 2, 6.5, 2.5, 0, 0, Math.PI);
+        ctx.stroke();
+        ctx.restore();
+      } else {
+        const eyeConfigs = [
+          { ex: exL, rx: 5.5, ry: 8.5 },
+          { ex: exR, rx: 6.8, ry: 9.8 }
+        ];
+        eyeConfigs.forEach(({ ex, rx, ry }) => {
+          ctx.save();
+          // Hốc mắt xanh tối vực thẳm
+          ctx.fillStyle = '#031E3D';
+          ctx.beginPath();
+          ctx.ellipse(ex, ey, rx, ry, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Mống mắt sapphire
+          const irisGrad = ctx.createRadialGradient(ex, ey + 3, 1, ex, ey + 1, ry - 1);
+          irisGrad.addColorStop(0, '#38BDF8');
+          irisGrad.addColorStop(0.5, '#1D4ED8');
+          irisGrad.addColorStop(1, '#031E3D');
+          ctx.fillStyle = irisGrad;
+          ctx.beginPath();
+          ctx.ellipse(ex, ey + 1, rx - 1, ry - 1.2, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Khúc xạ đáy mắt lam ngọc (Caustic Crescent)
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.75)';
+          ctx.beginPath();
+          ctx.ellipse(ex, ey + ry * 0.45, rx * 0.65, ry * 0.28, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Đồng tử thon đen
+          ctx.fillStyle = '#021226';
+          ctx.beginPath();
+          ctx.ellipse(ex - 0.5, ey - 0.5, rx * 0.5, ry * 0.55, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 3 ĐIỂM BẮT SÁNG PHA LÊ (3-Point Specular Highlights)
+          // 1. Keylight lớn (góc 10h)
+          ctx.fillStyle = '#FFFFFF';
+          ctx.beginPath();
+          ctx.arc(ex - rx * 0.35, ey - ry * 0.35, 1.8, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 2. Caustic bounce (góc 4h)
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+          ctx.beginPath();
+          ctx.arc(ex + rx * 0.35, ey + ry * 0.35, 1.0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 3. Micro twinkle
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+          ctx.beginPath();
+          ctx.arc(ex + rx * 0.35, ey - ry * 0.25, 0.7, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+      }
+
+      // 13. ĐÔI MÁ HỒNG NƯỚC BIỂN & NỤ CƯỜI NGỌT NGÀO (Cheeks & Kawaii Smile)
+      ctx.save();
+      // Má hồng tán mịn
+      const blushL = ctx.createRadialGradient(exL - 4, hy + 8, 1, exL - 4, hy + 8, 4.5);
+      blushL.addColorStop(0, 'rgba(251, 113, 133, 0.75)');
+      blushL.addColorStop(1, 'rgba(251, 113, 133, 0)');
+      ctx.fillStyle = blushL;
+      ctx.beginPath();
+      ctx.ellipse(exL - 4, hy + 8, 4.5, 3.0, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      const blushR = ctx.createRadialGradient(exR + 5, hy + 8, 1, exR + 5, hy + 8, 4.5);
+      blushR.addColorStop(0, 'rgba(251, 113, 133, 0.75)');
+      blushR.addColorStop(1, 'rgba(251, 113, 133, 0)');
+      ctx.fillStyle = blushR;
+      ctx.beginPath();
+      ctx.ellipse(exR + 5, hy + 8, 4.5, 3.0, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Nụ cười mỉm đáng yêu
+      ctx.strokeStyle = '#0C4A6E';
+      ctx.lineWidth = 1.3;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.arc(-3 * sX, hy + 8, 4.0, 0.15, Math.PI * 0.85);
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.restore();
+    }
+
+    // Canvas Animation Loop
+    const canvas = document.getElementById('liveCanvas');
+    const ctx = canvas.getContext('2d');
+    let isPaused = false;
+    let manualBlink = false;
+    let speed = 1.0;
+    let startTime = performance.now();
+
+    function renderFrame(now) {
+      if (!isPaused) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const t = ((now - startTime) / 1000) * speed;
+        drawMythicPhione(ctx, canvas.width / 2, 175, 1.45, t, manualBlink);
+        if (manualBlink) manualBlink = false;
+      }
+      requestAnimationFrame(renderFrame);
+    }
+    requestAnimationFrame(renderFrame);
+
+    // Controls
+    document.getElementById('btnPause').addEventListener('click', (e) => {
+      isPaused = !isPaused;
+      e.target.textContent = isPaused ? 'Tiếp tục' : 'Tạm dừng';
+    });
+    document.getElementById('btnBlink').addEventListener('click', () => {
+      manualBlink = true;
+    });
+    document.getElementById('speedSlider').addEventListener('input', (e) => {
+      speed = parseFloat(e.target.value);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmog Nebula Baby - 3D Pop Mart Sculpt & 60 FPS Micro-Physics</title>
+  <style>
+    :root {
+      --bg-space: #070913;
+      --card-bg: rgba(22, 27, 46, 0.75);
+      --border-glow: #00E5FF;
+      --gold: #FFEE58;
+      --nebula-pink: #E91E63;
+      --text: #F1F5F9;
+      --text-muted: #94A3B8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    body {
+      background: radial-gradient(circle at 50% 25%, #1D1435 0%, var(--bg-space) 75%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, #00E5FF, #FFEE58, #E91E63);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .tags {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      background: rgba(0, 229, 255, 0.12);
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      color: #80D8FF;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .tag.gold {
+      background: rgba(255, 238, 88, 0.12);
+      border-color: rgba(255, 238, 88, 0.35);
+      color: #FFF59D;
+    }
+    .tag.pink {
+      background: rgba(233, 30, 99, 0.12);
+      border-color: rgba(233, 30, 99, 0.35);
+      color: #FF80AB;
+    }
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      width: 100%;
+    }
+    @media (max-width: 900px) {
+      .workspace { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      color: #FFF59D;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+    }
+    .canvas-container {
+      position: relative;
+      width: 320px;
+      height: 360px;
+      background: radial-gradient(circle at 50% 50%, #15102A 0%, #080A14 80%);
+      border: 2px solid rgba(0, 229, 255, 0.25);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 8px 24px rgba(0, 229, 255, 0.15);
+      overflow: hidden;
+    }
+    canvas {
+      image-rendering: auto;
+    }
+    .controls {
+      margin-top: 18px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .control-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+    }
+    input[type=range] {
+      accent-color: #00E5FF;
+      width: 160px;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    button {
+      background: linear-gradient(135deg, #00E5FF, #0288D1);
+      color: #051329;
+      font-weight: 700;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.85rem;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 229, 255, 0.4);
+    }
+    .info-panel {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .info-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .info-box h3 {
+      font-size: 0.95rem;
+      color: #80D8FF;
+      margin-bottom: 6px;
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .color-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+    }
+    .swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      flex-shrink: 0;
+    }
+    .spec-item {
+      margin-bottom: 6px;
+    }
+    .spec-item strong {
+      color: #FFF59D;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>COSMOG ĐÁM MÂY TINH VÂN VŨ TRỤ</h1>
+    <p class="subtitle">Session 2 - Agent 4 | 3D Pop Mart Vinyl & Micro-Physics Engine | 100% Fidelity to 09_Mythic_Cosmog_Nebula_Baby.png</p>
+    <div class="tags">
+      <span class="tag">Psychic / Cosmic Nebula</span>
+      <span class="tag gold">Imperial Golden Rings</span>
+      <span class="tag pink">Squash & Stretch 5%</span>
+      <span class="tag">Lag 80ms Twin Puffs</span>
+      <span class="tag gold">ST7789 16-bit RGB565 Ready</span>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <!-- LEFT: 60 FPS INTERACTIVE VIEWPORT -->
+    <div class="card">
+      <h2>✨ 60 FPS Canvas Viewport</h2>
+      <div class="canvas-container">
+        <canvas id="cosmogCanvas" width="320" height="360"></canvas>
+      </div>
+
+      <div class="controls">
+        <div class="control-row">
+          <span>Tốc độ chuyển động:</span>
+          <input type="range" id="speedSlider" min="0.2" max="2.5" step="0.1" value="1.0">
+          <span id="speedVal">1.0x</span>
+        </div>
+        <div class="control-row">
+          <span>Kích thước (Scale):</span>
+          <input type="range" id="scaleSlider" min="0.8" max="2.2" step="0.05" value="1.55">
+          <span id="scaleVal">1.55x</span>
+        </div>
+        <div class="btn-row">
+          <button id="btnBlink">Chớp mắt (Blink)</button>
+          <button id="btnFreeze">Tạm dừng (Pause)</button>
+          <button id="btnReset">Mặc định (Reset)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: 3D ANATOMY & PHYSICAL DETAILS -->
+    <div class="card">
+      <h2>🔭 Thông Số Tạo Hình 3D & Vi Vật Lý</h2>
+      <div class="info-panel">
+        <div class="info-box">
+          <h3>🌌 Tạo Hình Đám Mây Tinh Vân (Nebula Cloud)</h3>
+          <p class="spec-item"><strong>Thân:</strong> Đa thùy bồng bềnh chuyển sắc từ chàm tím vi lượng (#1A103C, #4A148C) ở đỉnh sang hồng cánh sen (#D81B60, #E91E63) và magenta dạ quang ở đáy.</p>
+          <p class="spec-item"><strong>Búi mây đỉnh:</strong> Hai cuống lam thẫm vươn cao với hai búi mây xanh lơ cyan điện tử (#00E5FF) đính bụi sao kim cương phát quang 4 cánh.</p>
+          <p class="spec-item"><strong>Đĩa vàng khuyết:</strong> Vòng đai hoàng kim vương giả ôm quanh thân nghiêng 38 độ (sừng trên góc 1h, sừng dưới góc 7h).</p>
+        </div>
+
+        <div class="info-box">
+          <h3>✨ Chi Tiết Khuôn Mặt & Ánh Sáng</h3>
+          <p class="spec-item"><strong>Mặt nạ:</strong> Đám mây đen tuyền 5 thùy sắc nét chất liệu đá obsidian matte vinyl.</p>
+          <p class="spec-item"><strong>Mắt hổ phách:</strong> 3 Điểm bắt sáng pha lê vật lý (Keylight 2x2 #FFFFFF góc 10h, Caustic bounce #FFF9C4 góc 4h, Micro-sparkle góc 1h).</p>
+          <p class="spec-item"><strong>Đôi má:</strong> Đốm tròn ngọc lam phát quang (#00E5FF) kèm má hồng phấn bẽn lẽn (#F472B6) ngọt ngào.</p>
+          <p class="spec-item"><strong>Hào quang đáy:</strong> Vầng tinh vân mờ ảo dịu dàng nâng đỡ thay cho bóng sàn cứng.</p>
+        </div>
+
+        <div class="info-box">
+          <h3>🎨 Bảng Màu 16-bit RGB565 Trích Lọc</h3>
+          <div class="palette-grid">
+            <div class="color-chip"><div class="swatch" style="background:#00E5FF"></div><div><strong>0x073F</strong><br>#00E5FF</div></div>
+            <div class="color-chip"><div class="swatch" style="background:#FFEE58"></div><div><strong>0xFF6B</strong><br>#FFEE58</div></div>
+            <div class="color-chip"><div class="swatch" style="background:#E91E63"></div><div><strong>0xE8EC</strong><br>#E91E63</div></div>
+            <div class="color-chip"><div class="swatch" style="background:#1A103C"></div><div><strong>0x1887</strong><br>#1A103C</div></div>
+            <div class="color-chip"><div class="swatch" style="background:#FFCA28"></div><div><strong>0xFE45</strong><br>#FFCA28</div></div>
+            <div class="color-chip"><div class="swatch" style="background:#F472B6"></div><div><strong>0xF396</strong><br>#F472B6</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JS IMPLEMENTATION
+    // =========================================================================
+// 09_MYTHIC_COSMOG_NEBULA_BABY - Modern HTML5 Canvas 2D Implementation
+// 100% Anatomical Likeness & High-End 3D Pop Mart Vinyl Aesthetic
+// Organic Micro-Physics: 5% Squash & Stretch, 80ms Lag Puffs, Orbiting Stars
+// =========================================================================
+function drawCosmogNebulaBaby(ctx, cx, cy, scale, t) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  // -----------------------------------------------------------------------
+  // 1. CHUYỂN ĐỘNG VI VẬT LÝ HỮU CƠ (ORGANIC ZERO-G PHYSICS)
+  // -----------------------------------------------------------------------
+  const breathFreq  = 2.0;
+  const breathPhase = t * breathFreq;
+  const breathSin   = Math.sin(breathPhase);
+
+  // Nhịp bồng bềnh lơ lửng không trọng lực (Hovering Float Offset)
+  const hoverOffsetY = breathSin * 4.0;
+  const by = hoverOffsetY;
+
+  // Squash & Stretch đàn hồi 5% (Bảo toàn thể tích thực tế)
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+
+  // Trễ pha động học 80ms của hai búi mây tinh vân trên đỉnh (Delta Phi = 0.25 rad)
+  const lagTuftL = breathPhase - 0.25;
+  const lagTuftR = breathPhase - 0.25 + 0.12;
+  const tuftSwayLX = Math.sin(lagTuftL) * 3.5;
+  const tuftSwayLY = Math.cos(lagTuftL) * 2.2;
+  const tuftRotL   = Math.sin(lagTuftL) * 0.06;
+
+  const tuftSwayRX = Math.sin(lagTuftR) * 3.5;
+  const tuftSwayRY = Math.cos(lagTuftR) * 2.2;
+  const tuftRotR   = Math.sin(lagTuftR) * 0.06;
+
+  // Chu kỳ chớp mắt tự nhiên 3.5s (140ms duration)
+  const blinkCycle = (t * 1000) % 3500;
+  const blink = blinkCycle < 140;
+
+  // -----------------------------------------------------------------------
+  // 2. LAYER 0: VẦNG HÀO QUANG MỜ ẢO ĐÁY THAY CHO BÓNG SÀN (ASTRAL NEBULA HALO)
+  // -----------------------------------------------------------------------
+  ctx.save();
+  const haloY = 46;
+  const haloRx = Math.max(16, (34.0 - hoverOffsetY * 1.2) * sX);
+  const haloRy = Math.max(5, 10.0 - hoverOffsetY * 0.35);
+  const haloAlpha = 0.45 + (hoverOffsetY / 4.0) * 0.15;
+
+  const haloGrad = ctx.createRadialGradient(0, haloY, 2, 0, haloY, haloRx);
+  haloGrad.addColorStop(0, `rgba(123, 31, 162, ${haloAlpha * 0.8})`);
+  haloGrad.addColorStop(0.4, `rgba(74, 20, 140, ${haloAlpha * 0.5})`);
+  haloGrad.addColorStop(0.75, `rgba(26, 16, 60, ${haloAlpha * 0.25})`);
+  haloGrad.addColorStop(1, "rgba(26, 16, 60, 0)");
+  ctx.fillStyle = haloGrad;
+  ctx.beginPath();
+  ctx.ellipse(0, haloY, haloRx, haloRy, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // -----------------------------------------------------------------------
+  // 3. LAYER 1: ĐĨA VÀNG KHUYẾT PHÍA SAU (REAR GOLDEN CRESCENT DISC & BAND)
+  // -----------------------------------------------------------------------
+  ctx.save();
+  ctx.translate(0, by);
+
+  // Sừng trên đĩa vàng khuyết vươn cao góc 1h (Top Horn)
+  const topHornGrad = ctx.createLinearGradient(6, -16, 18, -42);
+  topHornGrad.addColorStop(0, "#CA8A04");
+  topHornGrad.addColorStop(0.4, "#FFEE58");
+  topHornGrad.addColorStop(0.8, "#FFF59D");
+  topHornGrad.addColorStop(1, "#FFFDE7");
+  ctx.fillStyle = topHornGrad;
+  ctx.strokeStyle = "#9E9D24";
+  ctx.lineWidth = 1.0;
+
+  ctx.beginPath();
+  ctx.moveTo(4, -14);
+  ctx.quadraticCurveTo(8, -28, 17, -42);
+  ctx.quadraticCurveTo(22, -26, 18, -20);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  // Highlight sống đĩa vàng
+  ctx.strokeStyle = "rgba(255, 253, 231, 0.9)";
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(5, -14);
+  ctx.quadraticCurveTo(9, -27, 16.5, -41);
+  ctx.stroke();
+
+  // Sừng dưới đĩa vàng khuyết chúc xuống góc 7h (Bottom Horn)
+  const botHornGrad = ctx.createLinearGradient(-4, 20, -16, 50);
+  botHornGrad.addColorStop(0, "#CA8A04");
+  botHornGrad.addColorStop(0.4, "#FFEE58");
+  botHornGrad.addColorStop(0.8, "#FFF59D");
+  botHornGrad.addColorStop(1, "#FFFDE7");
+  ctx.fillStyle = botHornGrad;
+  ctx.strokeStyle = "#9E9D24";
+  ctx.lineWidth = 1.0;
+
+  ctx.beginPath();
+  ctx.moveTo(-4, 20);
+  ctx.quadraticCurveTo(-8, 36, -15, 50);
+  ctx.quadraticCurveTo(-22, 34, -16, 26);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.strokeStyle = "rgba(255, 253, 231, 0.9)";
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(-16, 26);
+  ctx.quadraticCurveTo(-18, 38, -14.5, 49);
+  ctx.stroke();
+  ctx.restore();
+
+  // -----------------------------------------------------------------------
+  // 4. LAYER 2: KHỐI ĐÁM MÂY TINH VÂN VŨ TRỤ (MAIN NEBULA CLOUD BODY)
+  // -----------------------------------------------------------------------
+  ctx.save();
+  ctx.translate(0, by);
+  ctx.scale(sX, sY);
+
+  // 4.1 Thùy mây đáy dưới (Hồng cánh sen rực rỡ & Magenta dạ quang)
+  function drawNebulaLobe(x, y, rx, ry, colorInner, colorOuter, alpha = 0.95) {
+    ctx.save();
+    const grad = ctx.createRadialGradient(x - rx * 0.25, y - ry * 0.25, rx * 0.15, x, y, Math.max(rx, ry));
+    grad.addColorStop(0, colorInner);
+    grad.addColorStop(0.7, colorOuter);
+    grad.addColorStop(1, "rgba(26, 16, 60, 0.9)");
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // Cụm thùy dưới
+  drawNebulaLobe(0, 24, 20, 15, "#E91E63", "#7B1FA2");
+  drawNebulaLobe(-16, 20, 16, 13, "#FF4081", "#8E24AA");
+  drawNebulaLobe(16, 18, 16, 13, "#D81B60", "#6A1B9A");
+  drawNebulaLobe(-8, 28, 12, 10, "#FF80AB", "#AD1457");
+  drawNebulaLobe(8, 27, 12, 10, "#FF4081", "#880E4F");
+
+  // Cụm thùy sườn giữa
+  drawNebulaLobe(-26, 4, 16, 14, "#8E24AA", "#2E124D");
+  drawNebulaLobe(27, 4, 16, 14, "#7B1FA2", "#2E124D");
+
+  // Cụm thùy đỉnh & trung tâm (Lõi chàm tím huyền bí)
+  drawNebulaLobe(0, -14, 20, 14, "#4A148C", "#1A103C");
+  drawNebulaLobe(-17, -12, 14, 12, "#3F1968", "#1A103C");
+  drawNebulaLobe(17, -12, 14, 12, "#3F1968", "#1A103C");
+  drawNebulaLobe(0, 2, 22, 18, "#2E124D", "#1A103C");
+
+  // Ánh sáng phát quang bên dưới lớp mây
+  const innerGlow = ctx.createRadialGradient(0, 8, 4, 0, 8, 26);
+  innerGlow.addColorStop(0, "rgba(233, 30, 99, 0.35)");
+  innerGlow.addColorStop(0.6, "rgba(123, 31, 162, 0.2)");
+  innerGlow.addColorStop(1, "rgba(26, 16, 60, 0)");
+  ctx.fillStyle = innerGlow;
+  ctx.beginPath();
+  ctx.ellipse(0, 8, 26, 22, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+
+  // -----------------------------------------------------------------------
+  // 5. LAYER 3: HAI BÚI MÂY TINH VÂN XANH LAM TRÊN ĐỈNH (TWIN NEBULA TUFTS)
+  // -----------------------------------------------------------------------
+  ctx.save();
+  ctx.translate(0, by);
+
+  // Cuống mây trái
+  ctx.save();
+  const stemLGrad = ctx.createLinearGradient(-12, -14, -36 + tuftSwayLX, -42 + tuftSwayLY);
+  stemLGrad.addColorStop(0, "#1A103C");
+  stemLGrad.addColorStop(0.4, "#0D47A1");
+  stemLGrad.addColorStop(1, "#0288D1");
+  ctx.fillStyle = stemLGrad;
+  ctx.beginPath();
+  ctx.moveTo(-16, -12);
+  ctx.quadraticCurveTo(-24 + tuftSwayLX * 0.4, -28, -38 + tuftSwayLX, -44 + tuftSwayLY);
+  ctx.lineTo(-32 + tuftSwayLX, -46 + tuftSwayLY);
+  ctx.quadraticCurveTo(-18 + tuftSwayLX * 0.4, -24, -8, -14);
+  ctx.closePath();
+  ctx.fill();
+
+  // Búi mây tinh vân trái (Left Cloud Puff)
+  ctx.translate(-42 + tuftSwayLX, -54 + tuftSwayLY);
+  ctx.rotate(tuftRotL);
+
+  function drawCloudBubble(x, y, r, innerCol, outerCol) {
+    ctx.save();
+    const g = ctx.createRadialGradient(x - r * 0.3, y - r * 0.3, r * 0.15, x, y, r);
+    g.addColorStop(0, innerCol);
+    g.addColorStop(0.6, outerCol);
+    g.addColorStop(1, "rgba(2, 136, 209, 0.85)");
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  drawCloudBubble(0, 0, 15, "#E0F7FA", "#00E5FF");
+  drawCloudBubble(4, -9, 12, "#FFFFFF", "#80D8FF");
+  drawCloudBubble(-10, 2, 11, "#E0F7FA", "#0288D1");
+  drawCloudBubble(10, -2, 11, "#80D8FF", "#00E5FF");
+  drawCloudBubble(-5, 9, 10, "#80D8FF", "#0288D1");
+  drawCloudBubble(1, -3, 9, "#FFFFFF", "#E0F7FA");
+
+  // Bụi sao kim cương phát quang trên búi mây trái
+  drawDiamondStar(ctx, 0, -4, 6, "#FFFFFF");
+  drawDiamondStar(ctx, 7, -10, 3.5, "#E0F7FA");
+  drawStardustDot(ctx, -7, -3, 1.5, "#FFFFFF");
+  drawStardustDot(ctx, -3, 7, 1.2, "#80D8FF");
+  drawStardustDot(ctx, 8, 5, 1.2, "#E0F7FA");
+  ctx.restore();
+
+  // Cuống mây phải
+  ctx.save();
+  const stemRGrad = ctx.createLinearGradient(12, -14, 38 + tuftSwayRX, -38 + tuftSwayRY);
+  stemRGrad.addColorStop(0, "#1A103C");
+  stemRGrad.addColorStop(0.4, "#0D47A1");
+  stemRGrad.addColorStop(1, "#0288D1");
+  ctx.fillStyle = stemRGrad;
+  ctx.beginPath();
+  ctx.moveTo(8, -14);
+  ctx.quadraticCurveTo(20 + tuftSwayRX * 0.4, -26, 34 + tuftSwayRX, -42 + tuftSwayRY);
+  ctx.lineTo(40 + tuftSwayRX, -40 + tuftSwayRY);
+  ctx.quadraticCurveTo(26 + tuftSwayRX * 0.4, -24, 16, -12);
+  ctx.closePath();
+  ctx.fill();
+
+  // Búi mây tinh vân phải (Right Cloud Puff)
+  ctx.translate(44 + tuftSwayRX, -50 + tuftSwayRY);
+  ctx.rotate(tuftRotR);
+
+  drawCloudBubble(0, 0, 15, "#E0F7FA", "#00E5FF");
+  drawCloudBubble(3, -9, 12, "#FFFFFF", "#80D8FF");
+  drawCloudBubble(10, 2, 11, "#E0F7FA", "#0288D1");
+  drawCloudBubble(-10, -2, 11, "#80D8FF", "#00E5FF");
+  drawCloudBubble(5, 9, 10, "#80D8FF", "#0288D1");
+  drawCloudBubble(-1, -3, 9, "#FFFFFF", "#E0F7FA");
+
+  // Bụi sao kim cương phát quang trên búi mây phải
+  drawDiamondStar(ctx, 2, -4, 6, "#FFFFFF");
+  drawDiamondStar(ctx, -6, -9, 3.5, "#E0F7FA");
+  drawStardustDot(ctx, 7, -3, 1.5, "#FFFFFF");
+  drawStardustDot(ctx, 3, 7, 1.2, "#80D8FF");
+  drawStardustDot(ctx, -8, 5, 1.2, "#E0F7FA");
+  ctx.restore();
+
+  // Các giọt tinh vân trôi dạt (Drifting Astral Droplets)
+  drawAstralDroplet(ctx, -64 + tuftSwayLX * 0.7, -66 + tuftSwayLY * 0.6, 4.5, -0.4);
+  drawAstralDroplet(ctx, -48 + tuftSwayLX * 0.5, -28 + tuftSwayLY * 0.4, 3.5, -0.2);
+  drawAstralDroplet(ctx, 64 + tuftSwayRX * 0.7, -58 + tuftSwayRY * 0.6, 4.5, 0.4);
+  drawAstralDroplet(ctx, 58 + tuftSwayRX * 0.5, -38 + tuftSwayRY * 0.4, 3.5, 0.3);
+
+  ctx.restore();
+
+  // -----------------------------------------------------------------------
+  // 6. LAYER 4: VÒNG ĐAI HOÀNG KIM ÔM TRƯỚC THÂN (FRONT GOLDEN RING & CRESCENTS)
+  // -----------------------------------------------------------------------
+  ctx.save();
+  ctx.translate(0, by);
+
+  // Vành đai vàng ôm quanh eo
+  ctx.save();
+  ctx.rotate((-38 * Math.PI) / 180);
+  const ringGrad = ctx.createLinearGradient(-34, 0, 34, 0);
+  ringGrad.addColorStop(0, "#CA8A04");
+  ringGrad.addColorStop(0.25, "#FFEE58");
+  ringGrad.addColorStop(0.5, "#FFFDE7");
+  ringGrad.addColorStop(0.75, "#FFEE58");
+  ringGrad.addColorStop(1, "#CA8A04");
+  ctx.strokeStyle = ringGrad;
+  ctx.lineWidth = 2.4;
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 31 * sX, 12 * sY, 0, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.restore();
+
+  ctx.restore();
+
+  // -----------------------------------------------------------------------
+  // 7. LAYER 5: MẶT NẠ ĐÁM MÂY ĐEN TUYỀN (SCALLOPED CHARCOAL FACE MASK)
+  // -----------------------------------------------------------------------
+  ctx.save();
+  ctx.translate(0, by);
+  ctx.scale(sX, sY);
+
+  ctx.shadowColor = "rgba(15, 23, 42, 0.65)";
+  ctx.shadowBlur = 8;
+
+  const maskGrad = ctx.createRadialGradient(-3, -4, 3, 0, 0, 20);
+  maskGrad.addColorStop(0, "#2A3038");
+  maskGrad.addColorStop(0.5, "#1E2328");
+  maskGrad.addColorStop(0.9, "#14171A");
+  maskGrad.addColorStop(1, "#0D0F12");
+  ctx.fillStyle = maskGrad;
+
+  // Điêu khắc đám mây 5 thùy sắc nét Pop Mart
+  ctx.beginPath();
+  ctx.arc(0, -7, 11, 0, Math.PI * 2);       // Thùy đỉnh
+  ctx.arc(-11, -3, 10, 0, Math.PI * 2);     // Thùy trên trái
+  ctx.arc(11, -3, 10, 0, Math.PI * 2);      // Thùy trên phải
+  ctx.arc(-8, 9, 11, 0, Math.PI * 2);       // Thùy dưới trái
+  ctx.arc(8, 9, 11, 0, Math.PI * 2);        // Thùy dưới phải
+  ctx.arc(0, 1, 13, 0, Math.PI * 2);        // Lõi trung tâm
+  ctx.fill();
+
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = "rgba(51, 65, 85, 0.6)";
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  // -----------------------------------------------------------------------
+  // 8. LAYER 6: ĐÔI MÁ NGỌC LAM & MÁ HỒNG PHẤN BẼN LẼN (CHEEK BLUSHES)
+  // -----------------------------------------------------------------------
+  const cheekYL = 4;
+  const cheekYR = 4;
+  const cheekXL = -14;
+  const cheekXR = 14;
+
+  // Vầng má hồng phấn bẽn lẽn phớt nhẹ Chibi
+  const blushGradL = ctx.createRadialGradient(cheekXL, cheekYL, 1, cheekXL, cheekYL, 8);
+  blushGradL.addColorStop(0, "rgba(244, 114, 182, 0.65)");
+  blushGradL.addColorStop(0.6, "rgba(251, 207, 232, 0.35)");
+  blushGradL.addColorStop(1, "rgba(251, 207, 232, 0)");
+  ctx.fillStyle = blushGradL;
+  ctx.beginPath();
+  ctx.arc(cheekXL, cheekYL, 8, 0, Math.PI * 2);
+  ctx.fill();
+
+  const blushGradR = ctx.createRadialGradient(cheekXR, cheekYR, 1, cheekXR, cheekYR, 8);
+  blushGradR.addColorStop(0, "rgba(244, 114, 182, 0.65)");
+  blushGradR.addColorStop(0.6, "rgba(251, 207, 232, 0.35)");
+  blushGradR.addColorStop(1, "rgba(251, 207, 232, 0)");
+  ctx.fillStyle = blushGradR;
+  ctx.beginPath();
+  ctx.arc(cheekXR, cheekYR, 8, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Đốm má tròn xanh lơ ngọc bích phát quang đặc trưng
+  function drawCyanCheek(cxPos, cyPos) {
+    ctx.save();
+    ctx.shadowColor = "rgba(0, 229, 255, 0.75)";
+    ctx.shadowBlur = 6;
+
+    const cGrad = ctx.createRadialGradient(cxPos - 1, cyPos - 1, 1, cxPos, cyPos, 5);
+    cGrad.addColorStop(0, "#E0F7FA");
+    cGrad.addColorStop(0.35, "#80D8FF");
+    cGrad.addColorStop(0.7, "#00E5FF");
+    cGrad.addColorStop(1, "#0091EA");
+    ctx.fillStyle = cGrad;
+    ctx.beginPath();
+    ctx.arc(cxPos, cyPos, 4.8, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Điểm bắt sáng men sứ má
+    ctx.fillStyle = "#FFFFFF";
+    ctx.beginPath();
+    ctx.arc(cxPos - 1.2, cyPos - 1.2, 1.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  drawCyanCheek(cheekXL, cheekYL);
+  drawCyanCheek(cheekXR, cheekYR);
+
+  // -----------------------------------------------------------------------
+  // 9. LAYER 7: MIỆNG NHỎ XINH HÉ MỞ (CUTE OPEN MOUTH)
+  // -----------------------------------------------------------------------
+  ctx.save();
+  const mouthY = 7.5;
+  ctx.beginPath();
+  ctx.ellipse(0, mouthY, 3.8, 4.2, 0, 0, Math.PI * 2);
+  const mGrad = ctx.createLinearGradient(0, mouthY - 3, 0, mouthY + 4);
+  mGrad.addColorStop(0, "#4A0E2E");
+  mGrad.addColorStop(0.5, "#D81B60");
+  mGrad.addColorStop(1, "#FF4081");
+  ctx.fillStyle = mGrad;
+  ctx.fill();
+  ctx.strokeStyle = "#0F1114";
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+
+  // Lưỡi hồng đào nhỏ xíu ngây thơ
+  ctx.beginPath();
+  ctx.ellipse(0, mouthY + 2.2, 2.5, 1.8, 0, 0, Math.PI * 2);
+  ctx.fillStyle = "#FF80AB";
+  ctx.fill();
+
+  // Điểm nước bóng môi
+  ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
+  ctx.beginPath();
+  ctx.arc(0, mouthY - 1.8, 0.8, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // -----------------------------------------------------------------------
+  // 10. LAYER 8: ĐÔI MẮT HỔ PHÁCH VÀNG TO TRÒN TRONG VEO (CRYSTAL AMBER EYES)
+  // -----------------------------------------------------------------------
+  const eyeY = 0;
+  const eyeXL = -6.8;
+  const eyeXR = 6.8;
+
+  function drawAmberEye(ex, ey, isLeft, isBlink) {
+    ctx.save();
+    if (isBlink) {
+      // Mí mắt cong cười hạnh phúc
+      ctx.strokeStyle = "#F57F17";
+      ctx.lineWidth = 2.4;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.arc(ex, ey + 1, 4.5, 0.2 * Math.PI, 0.8 * Math.PI, false);
+      ctx.stroke();
+
+      ctx.strokeStyle = "#FFEE58";
+      ctx.lineWidth = 1.0;
+      ctx.beginPath();
+      ctx.arc(ex, ey + 1, 4.0, 0.25 * Math.PI, 0.75 * Math.PI, false);
+      ctx.stroke();
+    } else {
+      // Hốc mắt vàng hổ phách 3 tầng
+      ctx.shadowColor = "rgba(255, 202, 40, 0.6)";
+      ctx.shadowBlur = 8;
+
+      const eyeGrad = ctx.createLinearGradient(ex, ey - 7, ex, ey + 7);
+      eyeGrad.addColorStop(0, "#FFF9C4");
+      eyeGrad.addColorStop(0.2, "#FFF176");
+      eyeGrad.addColorStop(0.6, "#FFCA28");
+      eyeGrad.addColorStop(0.9, "#FFB300");
+      eyeGrad.addColorStop(1, "#F57F17");
+      ctx.fillStyle = eyeGrad;
+
+      ctx.beginPath();
+      ctx.ellipse(ex, ey, 4.8, 7.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = "#E65100";
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+
+      // Vùng khúc xạ tụ quang đáy mắt
+      ctx.beginPath();
+      ctx.ellipse(ex, ey + 3.2, 3.2, 2.2, 0, 0, Math.PI);
+      ctx.fillStyle = "rgba(255, 249, 196, 0.65)";
+      ctx.fill();
+
+      // 3 ĐIỂM BẮT SÁNG PHA LÊ (3-Point Specular System)
+      // Điểm 1: Direct keylight lớn góc 10h
+      ctx.fillStyle = "#FFFFFF";
+      ctx.beginPath();
+      ctx.arc(ex - 1.5, ey - 3.2, 1.8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Điểm 2: Caustic ground bounce góc 4h
+      ctx.fillStyle = "#FFFDE7";
+      ctx.beginPath();
+      ctx.arc(ex + 1.6, ey + 3.0, 1.1, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Điểm 3: Surface wetness micro-sparkle góc 1h
+      ctx.fillStyle = "#FFFFFF";
+      ctx.beginPath();
+      ctx.arc(ex + 1.5, ey - 1.6, 0.8, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  drawAmberEye(eyeXL, eyeY, true, blink);
+  drawAmberEye(eyeXR, eyeY, false, blink);
+
+  ctx.restore(); // Restore head & body scale
+
+  // -----------------------------------------------------------------------
+  // 11. LAYER 9: TINH TÚ NGÂN HÀ XOAY TRÒN QUANH VÒNG ĐAI VÀNG (ORBITING STARDUST)
+  // -----------------------------------------------------------------------
+  ctx.save();
+  ctx.translate(0, by);
+  const orbitT = t * 3.0;
+  const numParticles = 6;
+
+  for (let i = 0; i < numParticles; i++) {
+    const pAngle = orbitT + i * ((Math.PI * 2) / numParticles);
+    const ox = Math.cos(pAngle) * (34.0 * sX);
+    const oy = Math.sin(pAngle) * (14.0 * sY);
+
+    // Xoay nghiêng theo góc vòng đai ~ -38 độ
+    const rot = (-38 * Math.PI) / 180;
+    const px = ox * Math.cos(rot) - oy * Math.sin(rot);
+    const py = ox * Math.sin(rot) + oy * Math.cos(rot);
+
+    // Độ lớn và màu sắc vi hạt
+    const pScale = 0.7 + 0.3 * Math.sin(pAngle + t);
+    const pCol = (i % 3 === 0) ? "#FFFFFF" : (i % 3 === 1 ? "#FFEE58" : "#00E5FF");
+
+    ctx.save();
+    ctx.translate(px, py);
+    ctx.fillStyle = pCol;
+    ctx.shadowColor = pCol;
+    ctx.shadowBlur = 5;
+    ctx.beginPath();
+    ctx.arc(0, 0, 1.6 * pScale, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+  ctx.restore();
+
+  ctx.restore(); // Restore root translation & scale
+}
+
+// -------------------------------------------------------------------------
+// HELPER DRAWING FUNCTIONS
+// -------------------------------------------------------------------------
+function drawDiamondStar(ctx, x, y, r, color) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.fillStyle = color;
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 6;
+  ctx.beginPath();
+  ctx.moveTo(0, -r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.quadraticCurveTo(0, 0, 0, r);
+  ctx.quadraticCurveTo(0, 0, -r, 0);
+  ctx.quadraticCurveTo(0, 0, 0, -r);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath();
+  ctx.arc(0, 0, r * 0.3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawStardustDot(ctx, x, y, r, color) {
+  ctx.save();
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawAstralDroplet(ctx, x, y, r, rot) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(rot);
+
+  const dropGrad = ctx.createRadialGradient(-r * 0.2, -r * 0.3, r * 0.2, 0, 0, r);
+  dropGrad.addColorStop(0, "#E0F7FA");
+  dropGrad.addColorStop(0.5, "#00E5FF");
+  dropGrad.addColorStop(1, "#0288D1");
+  ctx.fillStyle = dropGrad;
+
+  ctx.beginPath();
+  ctx.moveTo(0, -r * 1.5);
+  ctx.bezierCurveTo(r * 0.8, -r * 0.5, r, r * 0.5, 0, r);
+  ctx.bezierCurveTo(-r, r * 0.5, -r * 0.8, -r * 0.5, 0, -r * 1.5);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+  ctx.beginPath();
+  ctx.arc(-r * 0.2, -r * 0.4, r * 0.28, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+
+    // Interactive Loop
+    const canvas = document.getElementById('cosmogCanvas');
+    const ctx = canvas.getContext('2d');
+    let speed = 1.0;
+    let scale = 1.55;
+    let isPaused = false;
+    let forceBlinkTime = 0;
+
+    const speedSlider = document.getElementById('speedSlider');
+    const scaleSlider = document.getElementById('scaleSlider');
+    const speedVal = document.getElementById('speedVal');
+    const scaleVal = document.getElementById('scaleVal');
+    const btnBlink = document.getElementById('btnBlink');
+    const btnFreeze = document.getElementById('btnFreeze');
+    const btnReset = document.getElementById('btnReset');
+
+    speedSlider.addEventListener('input', (e) => {
+      speed = parseFloat(e.target.value);
+      speedVal.textContent = speed.toFixed(1) + 'x';
+    });
+
+    scaleSlider.addEventListener('input', (e) => {
+      scale = parseFloat(e.target.value);
+      scaleVal.textContent = scale.toFixed(2) + 'x';
+    });
+
+    btnBlink.addEventListener('click', () => {
+      forceBlinkTime = performance.now() / 1000;
+    });
+
+    btnFreeze.addEventListener('click', () => {
+      isPaused = !isPaused;
+      btnFreeze.textContent = isPaused ? 'Tiếp tục (Play)' : 'Tạm dừng (Pause)';
+    });
+
+    btnReset.addEventListener('click', () => {
+      speed = 1.0; scale = 1.55; isPaused = false;
+      speedSlider.value = 1.0; speedVal.textContent = '1.0x';
+      scaleSlider.value = 1.55; scaleVal.textContent = '1.55x';
+      btnFreeze.textContent = 'Tạm dừng (Pause)';
+    });
+
+    let simulatedTime = 0;
+    let lastStamp = performance.now();
+
+    function renderLoop(stamp) {
+      const delta = (stamp - lastStamp) / 1000;
+      lastStamp = stamp;
+
+      if (!isPaused) {
+        simulatedTime += delta * speed;
+      }
+
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw Cosmog
+      let renderTime = simulatedTime;
+      if (forceBlinkTime > 0 && (stamp / 1000 - forceBlinkTime) < 0.25) {
+        // force blink
+        renderTime = 0.05; // blink condition
+      }
+
+      drawCosmogNebulaBaby(ctx, canvas.width / 2, canvas.height / 2, scale, renderTime);
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    requestAnimationFrame(renderLoop);
+  </script>
+</body>
+</html>

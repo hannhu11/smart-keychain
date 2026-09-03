@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poipole Adhesive Alien 3D Pop Mart - Master Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 25%, #2e1065 0%, #0f172a 100%);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #c4b5fd;
+      text-shadow: 0 0 20px rgba(196, 181, 253, 0.5);
+      margin-bottom: 6px;
+    }
+    .header p {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(34, 211, 238, 0.2);
+      border: 1px solid #22d3ee;
+      color: #67e8f9;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .container {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1060px;
+      width: 100%;
+    }
+    .card {
+      background: rgba(30, 27, 75, 0.6);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(196, 181, 253, 0.2);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #f472b6;
+    }
+    canvas {
+      background: #110c28;
+      border-radius: 16px;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(243, 232, 255, 0.15);
+    }
+    .controls {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    .control-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+    .control-row input[type="range"] {
+      width: 130px;
+      accent-color: #22d3ee;
+    }
+    .btn {
+      background: linear-gradient(135deg, #7c3aed 0%, #22d3ee 100%);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(34, 211, 238, 0.4);
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+    .spec-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .spec-table td:first-child {
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .spec-table td:last-child {
+      color: #f1f5f9;
+      font-family: monospace;
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+      width: 100%;
+    }
+    .palette-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 8px;
+      padding: 6px;
+      font-size: 10px;
+    }
+    .color-swatch {
+      width: 100%;
+      height: 22px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Poipole Adhesive Alien (ベベノム)</h1>
+    <p>3D Pop Mart / Vinyl High-End Collectible Simulation & ScaledCanvas Verification</p>
+    <div class="badge">Session 2 - Agent 5 | 100% Hardware Compatible ST7789</div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Live Organic Canvas 2D (ST7789 240x280)</h2>
+      <canvas id="viewCanvas" width="240" height="280"></canvas>
+      <div class="controls">
+        <div class="control-row">
+          <span>Tốc độ chuyển động:</span>
+          <input type="range" id="speedSlider" min="0.2" max="2.5" step="0.1" value="1.0">
+          <span id="speedVal">1.0x</span>
+        </div>
+        <div class="control-row">
+          <span>Thu phóng (Scale):</span>
+          <input type="range" id="scaleSlider" min="0.8" max="2.0" step="0.1" value="1.3">
+          <span id="scaleVal">1.3x</span>
+        </div>
+        <div class="control-row" style="justify-content: center; gap: 10px; margin-top: 6px;">
+          <button class="btn" id="blinkBtn">Chớp Mắt Ngay</button>
+          <button class="btn" id="pauseBtn">Tạm Dừng</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="max-width: 440px;">
+      <h2>Thông Số Điêu Khắc Vi Vật Lý Hữu Cơ</h2>
+      <table class="spec-table">
+        <tr><td>Nhân vật:</td><td>Poipole (ベベノム UB-01 Adhesive)</td></tr>
+        <tr><td>Độ phân giải hiển thị:</td><td>ST7789 240x280 / 172x320 IPS</td></tr>
+        <tr><td>Squash & Stretch:</td><td>5% (sY=1.05, sX=0.975) Thể tích không đổi</td></tr>
+        <tr><td>Độ trễ pha 3 sừng ngọc:</td><td>Delta Phi = 0.45 rad (~72ms)</td></tr>
+        <tr><td>Độ trễ pha đuôi ngoe nguẩy:</td><td>Delta Phi = 0.65 rad (~105ms)</td></tr>
+        <tr><td>Chu kỳ chớp mắt:</td><td>3500ms (Thời gian nhắm: 140ms)</td></tr>
+        <tr><td>Sọc dạ quang cổ & ngực:</td><td>Cyan Neon (#22D3EE / RGB565: 0x269D)</td></tr>
+        <tr><td>Mắt hình thoi:</td><td>Cyan Rhombus Specular Crystals</td></tr>
+      </table>
+
+      <h2 style="margin-top: 16px; font-size: 14px;">Bảng Màu 16-bit RGB565 Pop Mart Vinyl</h2>
+      <div class="palette-grid">
+        <div class="palette-item">
+          <div class="color-swatch" style="background: #F3E8FF;"></div>
+          <span>FRESNEL</span>
+          <code>0xF75F</code>
+        </div>
+        <div class="palette-item">
+          <div class="color-swatch" style="background: #A78BFA;"></div>
+          <span>HEAD PURPLE</span>
+          <code>0xA45F</code>
+        </div>
+        <div class="palette-item">
+          <div class="color-swatch" style="background: #4C1D95;"></div>
+          <span>BODY DARK</span>
+          <code>0x48F2</code>
+        </div>
+        <div class="palette-item">
+          <div class="color-swatch" style="background: #E11D48;"></div>
+          <span>MAGENTA</span>
+          <code>0xE0E9</code>
+        </div>
+        <div class="palette-item">
+          <div class="color-swatch" style="background: #22D3EE;"></div>
+          <span>CYAN STRIPE</span>
+          <code>0x269D</code>
+        </div>
+        <div class="palette-item">
+          <div class="color-swatch" style="background: #06B6D4;"></div>
+          <span>CYAN EYE</span>
+          <code>0x05BA</code>
+        </div>
+        <div class="palette-item">
+          <div class="color-swatch" style="background: #F43F5E;"></div>
+          <span>BLUSH PINK</span>
+          <code>0xF1EB</code>
+        </div>
+        <div class="palette-item">
+          <div class="color-swatch" style="background: #FFFFFF;"></div>
+          <span>WHITE SPEC</span>
+          <code>0xFFFF</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+// 10_MYTHIC_POIPOLE_ADHESIVE_ALIEN - Modern HTML5 Canvas 2D Implementation
+// 100% Anatomical Likeness & High-End 3D Pop Mart Vinyl Aesthetic
+// Organic Micro-Physics: 5% Squash & Stretch, Horn Sway Lag 0.45 rad, Wagging Tail
+// =========================================================================
+
+function drawPoipoleAdhesiveAlien(ctx, cx, cy, scale, t) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  // 1. CHUYỂN ĐỘNG VI VẬT LÝ HỮU CƠ (Organic Micro-Physics)
+  const breathFreq  = 2.0;
+  const breathPhase = t * breathFreq;
+  const breathSin   = Math.sin(breathPhase);
+
+  // Squash & Stretch 5% bảo toàn thể tích (sY * sX ≈ 1.0)
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+  const by = breathSin * 3.5;
+
+  // 3 Chiếc kim tiêm / sừng ngọc trễ pha Delta Phi = 0.45 rad
+  const hornLag   = breathPhase - 0.45;
+  const hornSwayX = Math.sin(hornLag) * 2.5;
+  const hornSwayY = Math.cos(hornLag) * 1.8;
+
+  // Đuôi ngoe nguẩy trễ pha Delta Phi = 0.65 rad
+  const tailLag  = breathPhase - 0.65;
+  const tailSway = Math.sin(tailLag) * 4.5;
+
+  // Nhịp chớp mắt 3.5s (chu kỳ 3500ms, thời gian nhắm 140ms)
+  const blink = ((t % 3.5) < 0.14);
+
+  // 2. LAYER 0: BÓNG TIẾP XÚC MỜ ẢO CO GIÃN NHỊP NHÀNG
+  ctx.save();
+  const groundY = 46;
+  const shadowW = (28.0 - breathSin * 3.0) * sX;
+  const shadowH = 6.0 - breathSin * 0.8;
+  const shadowGrad = ctx.createRadialGradient(2, groundY, 2, 2, groundY, shadowW);
+  shadowGrad.addColorStop(0, 'rgba(30, 27, 75, 0.7)');
+  shadowGrad.addColorStop(0.6, 'rgba(30, 27, 75, 0.35)');
+  shadowGrad.addColorStop(1, 'rgba(30, 27, 75, 0)');
+  ctx.fillStyle = shadowGrad;
+  ctx.beginPath();
+  ctx.ellipse(2, groundY, shadowW, shadowH, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // 3. LAYER 1: BỌT ĐỘC DẠ QUANG LI TI PHÁT SÁNG BỒNG BỀNH
+  const dropletDefs = [
+    { x: -34, y: -22, r: 3.0, phase: 0.0 },
+    { x: 36,  y: -18, r: 2.6, phase: 1.2 },
+    { x: -40, y: 14,  r: 2.4, phase: 2.4 },
+    { x: 38,  y: 22,  r: 2.8, phase: 3.6 },
+    { x: -22, y: -44, r: 2.0, phase: 4.8 },
+    { x: 26,  y: -50, r: 2.5, phase: 5.5 }
+  ];
+  dropletDefs.forEach(d => {
+    const dLag = breathPhase * 0.8 + d.phase;
+    const dx = d.x + Math.cos(dLag) * 3.0;
+    const dy = d.y + Math.sin(dLag) * 3.5;
+    ctx.save();
+    ctx.shadowColor = '#22D3EE';
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = 'rgba(34, 211, 238, 0.75)';
+    ctx.beginPath();
+    ctx.arc(dx, dy, d.r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(dx - d.r * 0.3, dy - d.r * 0.3, d.r * 0.35, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  });
+
+  // 4. LAYER 2: CHIẾC ĐUÔI CONG NGOE NGUẨY VUI VẺ
+  ctx.save();
+  ctx.translate(0, by);
+  const tRootX = 6 * sX, tRootY = 14 * sY;
+  const tMidX  = 24 * sX + tailSway, tMidY = 20 * sY;
+  const tArchX = 36 * sX + tailSway * 1.2, tArchY = 32 * sY;
+  const tTipX  = 38 * sX + tailSway * 1.5, tTipY = 48 * sY;
+
+  const tailGrad = ctx.createLinearGradient(tRootX, tRootY, tTipX, tTipY);
+  tailGrad.addColorStop(0, '#4C1D95');
+  tailGrad.addColorStop(0.65, '#5B21B6');
+  tailGrad.addColorStop(0.85, '#E11D48');
+  tailGrad.addColorStop(1, '#F472B6');
+  ctx.fillStyle = tailGrad;
+  ctx.beginPath();
+  ctx.moveTo(tRootX, tRootY - 3);
+  ctx.quadraticCurveTo(tMidX, tMidY - 3, tArchX, tArchY - 2);
+  ctx.lineTo(tTipX, tTipY);
+  ctx.lineTo(tTipX - 3, tTipY + 4);
+  ctx.quadraticCurveTo(tMidX, tMidY + 3, tRootX, tRootY + 4);
+  ctx.closePath();
+  ctx.fill();
+
+  // Vây gai sống đuôi
+  ctx.fillStyle = '#4C1D95';
+  ctx.beginPath();
+  ctx.moveTo(tMidX + 2, tMidY - 2);
+  ctx.lineTo(tMidX + 10, tMidY - 8);
+  ctx.lineTo(tMidX + 11, tMidY - 1);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = '#F3E8FF';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+
+  // Viền sống đuôi
+  ctx.strokeStyle = '#8B5CF6';
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(tRootX, tRootY - 3);
+  ctx.quadraticCurveTo(tMidX, tMidY - 3, tArchX, tArchY - 2);
+  ctx.stroke();
+
+  ctx.shadowColor = '#22D3EE';
+  ctx.shadowBlur = 8;
+  ctx.fillStyle = '#22D3EE';
+  ctx.beginPath();
+  ctx.arc(tTipX, tTipY, 2.2, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // 5. LAYER 3: ĐÔI CHÂN NHỎ MŨM MĨM & KHỐI THÂN TÍM ĐẬM
+  ctx.save();
+  ctx.translate(0, by);
+  ctx.scale(sX, sY);
+
+  const intLegLX = -8;
+  const intLegRX = 5;
+  ctx.fillStyle = '#4C1D95';
+  ctx.beginPath();
+  ctx.roundRect(intLegLX - 4, 17, 8, 13, 4);
+  ctx.roundRect(intLegRX - 4, 17, 8, 13, 4);
+  ctx.fill();
+
+  ctx.fillStyle = '#4C1D95';
+  ctx.beginPath();
+  ctx.arc(intLegLX, 27, 3.5, 0, Math.PI * 2);
+  ctx.arc(intLegRX, 27, 3.5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#F3E8FF';
+  ctx.beginPath();
+  ctx.arc(intLegLX, 28, 1, 0, Math.PI * 2);
+  ctx.arc(intLegRX, 28, 1, 0, Math.PI * 2);
+  ctx.fill();
+
+  const bodyGrad = ctx.createRadialGradient(-3, 8, 2, -1, 10, 15);
+  bodyGrad.addColorStop(0, '#8B5CF6');
+  bodyGrad.addColorStop(0.35, '#6D28D9');
+  bodyGrad.addColorStop(0.8, '#4C1D95');
+  bodyGrad.addColorStop(1, '#1E0A40');
+  ctx.fillStyle = bodyGrad;
+  ctx.beginPath();
+  ctx.ellipse(-1, 10, 13, 14, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#4C1D95';
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  // 6. LAYER 4: YẾM CHEVRON MAGENTA & SỌC DẠ QUANG CYAN CỔ VÀ NGỰC
+  const chestY = 4;
+  const chestGrad = ctx.createLinearGradient(0, chestY, 0, chestY + 9);
+  chestGrad.addColorStop(0, '#F472B6');
+  chestGrad.addColorStop(0.4, '#E11D48');
+  chestGrad.addColorStop(1, '#9F1239');
+  ctx.fillStyle = chestGrad;
+  ctx.beginPath();
+  ctx.moveTo(-8, chestY);
+  ctx.lineTo(6, chestY);
+  ctx.lineTo(-1, chestY + 9);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.save();
+  ctx.shadowColor = '#22D3EE';
+  ctx.shadowBlur = 12;
+  ctx.strokeStyle = '#22D3EE';
+  ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  ctx.moveTo(-8, chestY);
+  ctx.lineTo(-1, chestY + 9);
+  ctx.lineTo(6, chestY);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(-8, chestY - 2);
+  ctx.lineTo(7, chestY - 2);
+  ctx.stroke();
+
+  ctx.fillStyle = '#FFFFFF';
+  ctx.beginPath();
+  ctx.arc(-1, chestY + 9, 1.4, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  ctx.restore(); // restore body scale
+
+  // 7. LAYER 5: TỨ CHI TÍ HON ĐÁNG YÊU
+  ctx.save();
+  ctx.translate(0, by);
+
+  // Tay phải
+  const armRx1 = 8 * sX, armRy1 = 6;
+  const armRx2 = 22 * sX, armRy2 = 7 + Math.sin(breathPhase) * 2.0;
+  ctx.fillStyle = '#4C1D95';
+  ctx.beginPath();
+  ctx.moveTo(armRx1, armRy1 - 3);
+  ctx.quadraticCurveTo(armRx1 + 8, armRy1 + 1, armRx2, armRy2);
+  ctx.lineTo(armRx1, armRy1 + 3);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = '#F3E8FF';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+  ctx.fillStyle = '#8B5CF6';
+  ctx.beginPath();
+  ctx.arc(armRx2, armRy2, 2.4, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Tay trái (giơ lên má cười khúc khích)
+  const armLx1 = -7 * sX, armLy1 = 6;
+  const armLx2 = -15 * sX, armLy2 = 2;
+  const armLx3 = -13 * sX, armLy3 = -4;
+  ctx.fillStyle = '#4C1D95';
+  ctx.beginPath();
+  ctx.moveTo(armLx1, armLy1 - 2);
+  ctx.lineTo(armLx2, armLy2);
+  ctx.lineTo(armLx3, armLy3);
+  ctx.lineTo(armLx2 + 2, armLy2 + 2);
+  ctx.lineTo(armLx1, armLy1 + 3);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = '#F3E8FF';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+  ctx.fillStyle = '#8B5CF6';
+  ctx.beginPath();
+  ctx.arc(armLx3, armLy3, 2.4, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // 8. LAYER 6: ĐẦU QUẢ LÊ / GIỌT NƯỚC NGƯỢC
+  ctx.save();
+  ctx.translate(0, by);
+  ctx.scale(sX, sY);
+
+  const hy = -16;
+
+  // Thùy má hai bên phúng phính
+  ctx.fillStyle = '#6D28D9';
+  ctx.beginPath();
+  ctx.ellipse(-15, hy + 5, 14, 17, 0, 0, Math.PI * 2);
+  ctx.ellipse(15, hy + 5, 14, 17, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Vòm đầu cao
+  const headGrad = ctx.createRadialGradient(-6, hy - 10, 3, 0, hy, 28);
+  headGrad.addColorStop(0, '#DDD6FE');
+  headGrad.addColorStop(0.35, '#8B5CF6');
+  headGrad.addColorStop(0.75, '#6D28D9');
+  headGrad.addColorStop(1, '#4C1D95');
+  ctx.fillStyle = headGrad;
+  ctx.beginPath();
+  ctx.ellipse(0, hy, 25, 28, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#F3E8FF';
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // Chóp nón vươn lên đỉnh
+  ctx.fillStyle = '#6D28D9';
+  ctx.beginPath();
+  ctx.moveTo(-15, hy - 16);
+  ctx.lineTo(15, hy - 16);
+  ctx.lineTo(0, hy - 32);
+  ctx.closePath();
+  ctx.fill();
+
+  // Cằm bo tròn dưới má
+  ctx.fillStyle = '#6D28D9';
+  ctx.beginPath();
+  ctx.ellipse(0, hy + 17, 13, 8, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#4C1D95';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+
+  // Múi giáp cánh hoa xòe hai bên tai
+  ctx.fillStyle = '#4C1D95';
+  ctx.beginPath();
+  ctx.moveTo(-23, hy + 6);
+  ctx.lineTo(-34, hy - 7);
+  ctx.lineTo(-18, hy - 14);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = '#F3E8FF';
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(23, hy + 6);
+  ctx.lineTo(34, hy - 7);
+  ctx.lineTo(18, hy - 14);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  // Vành nón đỉnh đầu magenta
+  const domeGrad = ctx.createRadialGradient(-3, hy - 24, 2, 0, hy - 23, 13);
+  domeGrad.addColorStop(0, '#F472B6');
+  domeGrad.addColorStop(0.6, '#E11D48');
+  domeGrad.addColorStop(1, '#9F1239');
+  ctx.fillStyle = domeGrad;
+  ctx.beginPath();
+  ctx.ellipse(0, hy - 23, 12, 5.5, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Họa tiết cánh hoa kim cương magenta giữa trán
+  const fX = 0, fY = hy - 8;
+  const diaGrad = ctx.createLinearGradient(0, fY - 11, 0, fY + 9);
+  diaGrad.addColorStop(0, '#F472B6');
+  diaGrad.addColorStop(0.5, '#E11D48');
+  diaGrad.addColorStop(1, '#9F1239');
+  ctx.fillStyle = diaGrad;
+  ctx.beginPath();
+  ctx.moveTo(fX, fY - 11);
+  ctx.lineTo(fX + 6, fY);
+  ctx.lineTo(fX, fY + 9);
+  ctx.lineTo(fX - 6, fY);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = '#F472B6';
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  ctx.fillStyle = '#FFFFFF';
+  ctx.beginPath();
+  ctx.arc(fX, fY, 1.4, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.strokeStyle = '#2E1065';
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(-7, hy - 18);
+  ctx.lineTo(-15, hy - 3);
+  ctx.moveTo(7, hy - 18);
+  ctx.lineTo(15, hy - 3);
+  ctx.stroke();
+
+  ctx.restore(); // restore head scale
+
+  // 9. LAYER 7: 3 CHIẾC KIM TIÊM / SỪNG NGỌC LAM CYAN PHÁT QUANG
+  ctx.save();
+  ctx.translate(0, by);
+
+  function drawNeedleHorn(bx, by_pos, tx, ty, isCenter) {
+    ctx.save();
+    const hornGrad = ctx.createLinearGradient(bx, by_pos, tx, ty);
+    hornGrad.addColorStop(0, '#F472B6');
+    hornGrad.addColorStop(0.3, '#E9D5FF');
+    hornGrad.addColorStop(1, '#22D3EE');
+    ctx.strokeStyle = hornGrad;
+    ctx.lineWidth = isCenter ? 3.4 : 2.8;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(bx, by_pos);
+    ctx.lineTo(tx, ty);
+    ctx.stroke();
+
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth = 1.0;
+    ctx.beginPath();
+    ctx.moveTo(bx - 0.5, by_pos);
+    ctx.lineTo(tx - 0.5, ty);
+    ctx.stroke();
+
+    ctx.shadowColor = '#22D3EE';
+    ctx.shadowBlur = 14;
+    ctx.fillStyle = '#22D3EE';
+    ctx.beginPath();
+    ctx.arc(tx, ty, isCenter ? 4.5 : 3.6, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(tx, ty - 0.8, isCenter ? 1.8 : 1.4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  const hyBase = -16;
+  drawNeedleHorn(0, hyBase - 28 * sY, hornSwayX * 0.7, hyBase - 54 * sY + hornSwayY, true);
+
+  ctx.fillStyle = '#E11D48';
+  ctx.beginPath();
+  ctx.arc(-24 * sX, hyBase - 8 * sY, 5.0, 0, Math.PI * 2);
+  ctx.fill();
+  drawNeedleHorn(-24 * sX, hyBase - 8 * sY, -41 * sX + hornSwayX, hyBase - 26 * sY + hornSwayY, false);
+
+  ctx.fillStyle = '#E11D48';
+  ctx.beginPath();
+  ctx.arc(24 * sX, hyBase - 8 * sY, 5.0, 0, Math.PI * 2);
+  ctx.fill();
+  drawNeedleHorn(24 * sX, hyBase - 8 * sY, 41 * sX + hornSwayX, hyBase - 26 * sY + hornSwayY, false);
+
+  ctx.restore(); // restore horns transform
+
+  // 10. LAYER 8: MẶT NẠ MẮT HỒNG MAGENTA & ĐÔI MÁ HỒNG TÍM
+  ctx.save();
+  ctx.translate(0, by);
+  ctx.scale(sX, sY);
+
+  const maskY = hy + 4;
+  const maskGrad = ctx.createLinearGradient(0, maskY - 6, 0, maskY + 6);
+  maskGrad.addColorStop(0, '#F472B6');
+  maskGrad.addColorStop(0.5, '#E11D48');
+  maskGrad.addColorStop(1, '#9F1239');
+  ctx.fillStyle = maskGrad;
+  ctx.beginPath();
+  ctx.ellipse(0, maskY, 18, 8, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#F472B6';
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  const blushGradL = ctx.createRadialGradient(-17, hy + 9, 1, -17, hy + 9, 5);
+  blushGradL.addColorStop(0, 'rgba(244, 63, 94, 0.75)');
+  blushGradL.addColorStop(1, 'rgba(244, 63, 94, 0)');
+  ctx.fillStyle = blushGradL;
+  ctx.beginPath();
+  ctx.ellipse(-17, hy + 9, 4, 3, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  const blushGradR = ctx.createRadialGradient(17, hy + 9, 1, 17, hy + 9, 5);
+  blushGradR.addColorStop(0, 'rgba(244, 63, 94, 0.75)');
+  blushGradR.addColorStop(1, 'rgba(244, 63, 94, 0)');
+  ctx.fillStyle = blushGradR;
+  ctx.beginPath();
+  ctx.ellipse(17, hy + 9, 4, 3, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 11. LAYER 9: ĐÔI MẮT HÌNH THOI MÀU LAM NGỌC PHÁT SÁNG
+  const eyeY  = hy + 3;
+  const eyeXL = -11;
+  const eyeXR = 11;
+
+  function drawRhombusEye(ex, isLeft) {
+    ctx.save();
+    ctx.translate(ex, eyeY);
+
+    if (blink) {
+      ctx.shadowColor = '#22D3EE';
+      ctx.shadowBlur = 10;
+      ctx.strokeStyle = '#22D3EE';
+      ctx.lineWidth = 2.4;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(isLeft ? -6 : -5, 0);
+      ctx.quadraticCurveTo(0, 3, isLeft ? 5 : 6, 0);
+      ctx.stroke();
+    } else {
+      ctx.shadowColor = '#22D3EE';
+      ctx.shadowBlur = 14;
+
+      const p1 = isLeft ? { x: 3,  y: -6 } : { x: -3, y: -6 };
+      const p2 = isLeft ? { x: 6,  y: 0 }  : { x: 8,  y: -2 };
+      const p3 = isLeft ? { x: -2, y: 6 }  : { x: 2,  y: 6 };
+      const p4 = isLeft ? { x: -8, y: -2 } : { x: -6, y: 0 };
+
+      ctx.fillStyle = '#0E7490';
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.lineTo(p3.x, p3.y);
+      ctx.lineTo(p4.x, p4.y);
+      ctx.closePath();
+      ctx.fill();
+
+      const eyeGrad = ctx.createLinearGradient(p4.x, p1.y, p2.x, p3.y);
+      eyeGrad.addColorStop(0, '#A5F3FC');
+      eyeGrad.addColorStop(0.4, '#22D3EE');
+      eyeGrad.addColorStop(0.85, '#06B6D4');
+      eyeGrad.addColorStop(1, '#0891B2');
+      ctx.fillStyle = eyeGrad;
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.lineTo(p3.x, p3.y);
+      ctx.lineTo(p4.x, p4.y);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(0, -2, 2.0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+      ctx.beginPath();
+      ctx.arc(isLeft ? 3 : -3, 2, 1.0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  drawRhombusEye(eyeXL, true);
+  drawRhombusEye(eyeXR, false);
+
+  // 12. LAYER 10: MIỆNG CƯỜI CHỮ V TINH NGHỊCH
+  const mY = hy + 13;
+  ctx.save();
+  ctx.fillStyle = '#4C0519';
+  ctx.beginPath();
+  ctx.moveTo(-5, mY - 1);
+  ctx.lineTo(5, mY - 1);
+  ctx.lineTo(0, mY + 3);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.shadowColor = '#22D3EE';
+  ctx.shadowBlur = 6;
+  ctx.strokeStyle = '#22D3EE';
+  ctx.lineWidth = 1.3;
+  ctx.beginPath();
+  ctx.moveTo(-5, mY - 1);
+  ctx.lineTo(0, mY + 3);
+  ctx.lineTo(5, mY - 1);
+  ctx.stroke();
+  ctx.restore();
+
+  ctx.restore(); // restore head scale
+  ctx.restore(); // restore root
+}
+
+
+    const canvas = document.getElementById('viewCanvas');
+    const ctx = canvas.getContext('2d');
+    let startTime = performance.now();
+    let isPaused = false;
+    let manualBlink = false;
+    let manualBlinkTimer = 0;
+
+    const speedSlider = document.getElementById('speedSlider');
+    const speedVal = document.getElementById('speedVal');
+    const scaleSlider = document.getElementById('scaleSlider');
+    const scaleVal = document.getElementById('scaleVal');
+    const blinkBtn = document.getElementById('blinkBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    speedSlider.addEventListener('input', (e) => {
+      speedVal.textContent = e.target.value + 'x';
+    });
+
+    scaleSlider.addEventListener('input', (e) => {
+      scaleVal.textContent = e.target.value + 'x';
+    });
+
+    blinkBtn.addEventListener('click', () => {
+      manualBlink = true;
+      manualBlinkTimer = performance.now();
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      isPaused = !isPaused;
+      pauseBtn.textContent = isPaused ? 'Tiếp Tục' : 'Tạm Dừng';
+    });
+
+    function animate(currentTime) {
+      requestAnimationFrame(animate);
+      if (isPaused) return;
+
+      const elapsed = (currentTime - startTime) * 0.001 * parseFloat(speedSlider.value);
+      const scale = parseFloat(scaleSlider.value);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.fillRect(28, 40, 1.5, 1.5);
+      ctx.fillRect(210, 55, 1.5, 1.5);
+      ctx.fillRect(35, 230, 1.5, 1.5);
+      ctx.fillRect(195, 210, 1.5, 1.5);
+
+      let tSim = elapsed;
+      if (manualBlink) {
+        if (currentTime - manualBlinkTimer < 200) {
+          tSim = 0.05;
+        } else {
+          manualBlink = false;
+        }
+      }
+
+      drawPoipoleAdhesiveAlien(ctx, canvas.width / 2, canvas.height / 2, scale, tSim);
+    }
+
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>

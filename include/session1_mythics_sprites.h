@@ -664,141 +664,144 @@ static void drawShayminFloraHedgehog(SpriteRenderer::ScaledCanvas* spr, int cx, 
   const uint16_t C_WHITE        = 0xFFFF; // #FFFFFF Sứ trắng muốt bồng bềnh
   const uint16_t C_BODY_SHADOW  = 0xE73C; // #E2E8F0 Bóng đổ sứ mềm mại
   const uint16_t C_BODY_OCCL    = 0xCE79; // #CBD5E1 Bóng nếp gấp sâu
-  const uint16_t C_GRASS_LIGHT  = 0x9F0B; // #9BE15D Gai cỏ xanh ngọc non đón nắng
-  const uint16_t C_GRASS_BASE   = 0x7E4A; // #78C850 Thảm cỏ xanh ngọc mướt mát
-  const uint16_t C_GRASS_SHADOW = 0x3BE4; // #3D7D20 Khối cầu cỏ đổ bóng 3D
-  const uint16_t C_GRASS_DEEP   = 0x22A2; // #235315 Nền cỏ khuất sâu
+  const uint16_t C_GRASS_LIGHT  = 0xA726; // #A3E635 Gai cỏ non đón nắng
+  const uint16_t C_GRASS_BASE   = 0x6521; // #65A30D Thảm cỏ xanh ngọc mướt
+  const uint16_t C_GRASS_SHADOW = 0x4BE1; // #4D7C0F Khối cầu cỏ đổ bóng 3D
+  const uint16_t C_GRASS_DEEP   = 0x32A2; // #365314 Nền cỏ khuất sâu
   const uint16_t C_POLLEN_GOLD  = 0xFE62; // #FACC15 Nhị & đốm phấn hoa hoàng kim
   const uint16_t C_POLLEN_LIGHT = 0xFF91; // #FEF08A Điểm sáng phấn hoa
   const uint16_t C_PETAL_PINK   = 0xF396; // #F472B6 Cánh hoa Gracidea nở rộ
-  const uint16_t C_PETAL_LIGHT  = 0xFE79; // #FBCFE8 Viền cánh hoa đón sáng
-  const uint16_t C_PETAL_CORE   = 0xD94E; // #DB2777 Tâm hoa hồng đậm
+  const uint16_t C_PETAL_LIGHT  = 0xFE7E; // #FCE7F3 Viền cánh hoa đón sáng
+  const uint16_t C_PETAL_CORE   = 0xBD0B; // #BE185D Tâm đài hoa hồng ruby
   const uint16_t C_STAMEN_GOLD  = 0xF4E1; // #F59E0B Nhụy hoa vàng tỏa hương
   const uint16_t C_STAMEN_SPECK = 0x4829; // #4A044E Hạt nhụy hoa tím thẫm
-  const uint16_t C_LEAF_GREEN   = 0x1529; // #16A34A Lá xanh mướt dưới đài hoa
+  const uint16_t C_LEAF_GREEN   = 0x1407; // #15803D Lá xanh mướt dưới đài hoa
   const uint16_t C_LEAF_LIGHT   = 0x4EEF; // #4ADE80 Sống gân lá ngọc
-  const uint16_t C_LEAF_SHADOW  = 0x1326; // #166534 Bóng lá phía sau
+  const uint16_t C_LEAF_SHADOW  = 0x12A5; // #14532D Bóng lá phía sau
   const uint16_t C_EYE_DARK     = 0x0162; // #052E16 Hốc mắt lục bảo thẫm sâu
   const uint16_t C_EYE_EMERALD  = 0x15D0; // #10B981 Mống mắt ngọc lục bảo
   const uint16_t C_EYE_BRIGHT   = 0x3693; // #34D399 Vòm quang khúc xạ đáy mắt
-  const uint16_t C_NOSE_BLACK   = 0x1967; // #1E293B Sống mũi cúc áo nhỏ xinh
+  const uint16_t C_NOSE_BLACK   = 0x08E5; // #0F172A Sống mũi cúc áo nhỏ xinh
   const uint16_t C_MOUTH_PINK   = 0xFE19; // #FDA4AF Lưỡi hồng ngọt ngào
-  const uint16_t C_MOUTH_DEEP   = 0xE0E9; // #E11D48 Vòm họng chúm chím
+  const uint16_t C_MOUTH_DEEP   = 0x98A7; // #9F1239 Vòm họng chúm chím
   const uint16_t C_BLUSH_PEACH  = 0xFC87; // #FB923C Má ửng hồng cam tự nhiên
-  const uint16_t C_FLOOR_SHADOW = 0x320A; // #334155 Bóng tiếp xúc mặt sàn
+  const uint16_t C_FLOOR_SHADOW = 0x1967; // #1E293B Bóng tiếp xúc mặt sàn
 
   // 3. Bóng tiếp xúc mặt sàn co giãn êm ái
-  int shadowW = (int)(42 * (1.0f + 0.04f * sinf(breathPhase)));
-  int shadowH = (int)(8 * (1.0f - 0.03f * sinf(breathPhase)));
-  spr->fillEllipse(cx + 4, cy + 40, shadowW + 4, shadowH + 2, 0x1967);
-  spr->fillEllipse(cx + 4, cy + 40, shadowW, shadowH, C_FLOOR_SHADOW);
+  int shadowW = (int)(50 * (1.0f + 0.04f * sinf(breathPhase)));
+  int shadowH = (int)(10 * (1.0f - 0.03f * sinf(breathPhase)));
+  spr->fillEllipse(cx + 8, cy + 42, shadowW + 4, shadowH + 2, 0x08E5);
+  spr->fillEllipse(cx + 8, cy + 42, shadowW, shadowH, C_FLOOR_SHADOW);
 
-  // 4. Chân sau bên phải (khuất trong bóng) lúc lắc nhịp nhàng
-  spr->fillRoundRect(cx + 26, by + 22 + (int)(footWobble * 0.4f), (int)(11 * sX), (int)(16 * sY), 5, C_BODY_SHADOW);
-  // Chân trước bên phải (khuất)
-  spr->fillRoundRect(cx - 8, by + 23 + (int)(footWobble * 0.4f), (int)(10 * sX), (int)(16 * sY), 5, C_BODY_SHADOW);
+  // 4. Chân sau và trước bên phải (lớp khuất)
+  spr->fillRoundRect(cx + 30, by + 22 + (int)(footWobble * 0.4f), (int)(14 * sX), (int)(18 * sY), 6, C_BODY_OCCL);
+  spr->fillRoundRect(cx - 6, by + 23 + (int)(footWobble * 0.4f), (int)(12 * sX), (int)(18 * sY), 6, C_BODY_OCCL);
 
-  // 5. Lớp gai cỏ sâu phía sau lưng (3D Back Spikes Layer 1)
-  spr->fillTriangle(cx - 2, by - 32, cx + 8, by - 48, cx + 18, by - 30, C_GRASS_DEEP);
-  spr->fillTriangle(cx + 14, by - 30, cx + 24, by - 44, cx + 32, by - 24, C_GRASS_DEEP);
-  spr->fillTriangle(cx + 28, by - 24, cx + 42, by - 34, cx + 44, by - 16, C_GRASS_DEEP);
-  spr->fillTriangle(cx + 38, by - 16, cx + 54, by - 20, cx + 48, by - 4, C_GRASS_DEEP);
-  spr->fillTriangle(cx + 44, by - 4, cx + 58, by + 2, cx + 46, by + 14, C_GRASS_DEEP);
-  spr->fillTriangle(cx + 40, by + 10, cx + 52, by + 18, cx + 38, by + 24, C_GRASS_DEEP);
+  // 5. Gai cỏ tầng sâu phía sau lưng (Layer 1)
+  spr->fillTriangle(cx + 6, by - 38, cx + 18, by - 56, cx + 28, by - 36, C_GRASS_DEEP);
+  spr->fillTriangle(cx + 24, by - 36, cx + 38, by - 52, cx + 46, by - 30, C_GRASS_DEEP);
+  spr->fillTriangle(cx + 40, by - 30, cx + 58, by - 42, cx + 60, by - 20, C_GRASS_DEEP);
+  spr->fillTriangle(cx + 52, by - 20, cx + 72, by - 26, cx + 66, by - 8, C_GRASS_DEEP);
+  spr->fillTriangle(cx + 58, by - 8, cx + 76, by + 0, cx + 62, by + 14, C_GRASS_DEEP);
+  spr->fillTriangle(cx + 52, by + 8, cx + 68, by + 18, cx + 50, by + 26, C_GRASS_DEEP);
 
-  // 6. Cánh hoa Gracidea tai phải (xa) e ấp sau lưng cỏ
-  spr->fillCircle(cx - 16 + petalFlutter, by - 20, 6, C_PETAL_CORE);
-  spr->fillCircle(cx - 16 + petalFlutter, by - 20, 5, C_PETAL_PINK);
-  spr->fillCircle(cx - 10 + petalFlutter, by - 24, 6, C_PETAL_PINK);
-  spr->fillCircle(cx - 10 + petalFlutter, by - 24, 4, C_PETAL_LIGHT);
+  // 6. Cánh hoa Gracidea tai phải (xa)
+  spr->fillCircle(cx - 18 + petalFlutter, by - 22, 8, C_PETAL_CORE);
+  spr->fillCircle(cx - 18 + petalFlutter, by - 22, 6, C_PETAL_PINK);
+  spr->fillCircle(cx - 10 + petalFlutter, by - 28, 7, C_PETAL_PINK);
+  spr->fillCircle(cx - 10 + petalFlutter, by - 28, 5, C_PETAL_LIGHT);
 
-  // 7. Lớp gai cỏ trung gian & khối cầu 3D chính (3D Mid Spikes Layer 2)
-  spr->fillTriangle(cx - 6, by - 26, cx + 2, by - 42, cx + 14, by - 24, C_GRASS_SHADOW);
-  spr->fillTriangle(cx + 10, by - 24, cx + 20, by - 38, cx + 28, by - 18, C_GRASS_SHADOW);
-  spr->fillTriangle(cx + 24, by - 18, cx + 38, by - 28, cx + 40, by - 10, C_GRASS_SHADOW);
-  spr->fillTriangle(cx + 34, by - 10, cx + 48, by - 14, cx + 42, by + 4, C_GRASS_SHADOW);
-  spr->fillTriangle(cx + 38, by + 2, cx + 50, by + 8, cx + 38, by + 20, C_GRASS_SHADOW);
+  // 7. Gai cỏ tầng trung gian 3D (Layer 2)
+  spr->fillTriangle(cx + 0, by - 32, cx + 10, by - 50, cx + 22, by - 30, C_GRASS_SHADOW);
+  spr->fillTriangle(cx + 18, by - 30, cx + 30, by - 46, cx + 38, by - 24, C_GRASS_SHADOW);
+  spr->fillTriangle(cx + 32, by - 24, cx + 48, by - 36, cx + 50, by - 14, C_GRASS_SHADOW);
+  spr->fillTriangle(cx + 44, by - 14, cx + 60, by - 18, cx + 54, by + 2, C_GRASS_SHADOW);
+  spr->fillTriangle(cx + 48, by + 0, cx + 62, by + 8, cx + 48, by + 20, C_GRASS_SHADOW);
 
-  // 8. Khối lưng cỏ xanh ngọc mướt mát (Lush Jade Grass Torso Dome)
-  int gRx = (int)(38 * sX);
-  int gRy = (int)(28 * sY);
-  spr->fillEllipse(cx + 12, by - 4, gRx + 2, gRy + 2, C_GRASS_SHADOW); // Bóng khối cầu
-  spr->fillEllipse(cx + 12, by - 4, gRx, gRy, C_GRASS_BASE);           // Thảm cỏ ngọc chính
-  spr->fillEllipse(cx + 8, by - 10, (int)(30 * sX), (int)(18 * sY), C_GRASS_LIGHT); // Mặt cỏ đón nắng
+  // 8. Khối thân sau & Lưng cỏ xanh ngọc mướt mát (Lush Jade Grass Torso Dome)
+  int gRx = (int)(48 * sX);
+  int gRy = (int)(34 * sY);
+  spr->fillEllipse(cx + 16, by - 6, gRx + 2, gRy + 2, C_GRASS_SHADOW);
+  spr->fillEllipse(cx + 16, by - 6, gRx, gRy, C_GRASS_BASE);
+  spr->fillEllipse(cx + 10, by - 14, (int)(36 * sX), (int)(22 * sY), C_GRASS_LIGHT);
 
-  // Gai cỏ vòm trước & đỉnh đầu
-  spr->fillTriangle(cx - 24, by - 16, cx - 18, by - 30, cx - 10, by - 14, C_GRASS_BASE);
-  spr->fillTriangle(cx - 14, by - 18, cx - 8, by - 34, cx + 2, by - 16, C_GRASS_LIGHT);
-  spr->fillTriangle(cx - 2, by - 18, cx + 6, by - 36, cx + 14, by - 16, C_GRASS_LIGHT);
-  spr->fillTriangle(cx + 8, by - 16, cx + 18, by - 32, cx + 24, by - 14, C_GRASS_LIGHT);
+  // 9. Thân trắng muốt bồng bềnh (Porcelain Body Torso)
+  int bRx = (int)(36 * sX);
+  int bRy = (int)(22 * sY);
+  spr->fillEllipse(cx + 6, by + 16, bRx + 2, bRy + 2, C_BODY_SHADOW);
+  spr->fillEllipse(cx + 6, by + 15, bRx, bRy, C_WHITE);
+  spr->fillEllipse(cx + 8, by + 20, (int)(26 * sX), (int)(12 * sY), C_BODY_SHADOW);
+  spr->fillEllipse(cx + 8, by + 18, (int)(24 * sX), (int)(11 * sY), C_WHITE);
 
-  // 9. Đốm phấn hoa vàng hoàng kim trên lưng cỏ
-  spr->fillEllipse(cx - 14, by - 18, 4, 2, C_POLLEN_GOLD);
-  spr->drawPixel(cx - 14, by - 18, C_POLLEN_LIGHT);
-  spr->fillEllipse(cx + 6, by - 22, 5, 3, C_POLLEN_GOLD);
-  spr->drawPixel(cx + 6, by - 22, C_POLLEN_LIGHT);
-  spr->fillEllipse(cx + 24, by - 8, 4, 2, C_POLLEN_GOLD);
-  spr->drawPixel(cx + 24, by - 8, C_POLLEN_LIGHT);
-  spr->fillEllipse(cx + 18, by + 2, 3, 2, C_POLLEN_GOLD);
-
-  // 10. Thân trắng muốt bồng bềnh (Porcelain Belly & Body)
-  int bRx = (int)(30 * sX);
-  int bRy = (int)(18 * sY);
-  spr->fillEllipse(cx + 4, by + 16, bRx + 2, bRy + 2, C_BODY_SHADOW);
-  spr->fillEllipse(cx + 4, by + 15, bRx, bRy, C_WHITE);
-  spr->fillEllipse(cx + 6, by + 20, (int)(22 * sX), (int)(10 * sY), C_BODY_SHADOW);
-  spr->fillEllipse(cx + 6, by + 18, (int)(20 * sX), (int)(9 * sY), C_WHITE);
-
-  // 11. Đôi chân nhỏ tròn vo như hạt đậu (Foreground Bean Feet)
-  int f1x = cx - 22;
+  // 10. Đôi chân nhỏ tròn vo như hạt đậu (Foreground Bean Feet)
+  int f1x = cx - 24;
   int f1y = by + 20 + footWobble;
-  spr->fillRoundRect(f1x, f1y, (int)(13 * sX), (int)(18 * sY), 6, C_BODY_SHADOW);
-  spr->fillRoundRect(f1x + 1, f1y, (int)(11 * sX), (int)(17 * sY), 5, C_WHITE);
-  spr->drawFastVLine(f1x + 4, f1y + 12, 4, C_BODY_SHADOW);
-  spr->drawFastVLine(f1x + 8, f1y + 12, 4, C_BODY_SHADOW);
+  spr->fillRoundRect(f1x, f1y, (int)(16 * sX), (int)(20 * sY), 7, C_BODY_SHADOW);
+  spr->fillRoundRect(f1x + 1, f1y, (int)(14 * sX), (int)(19 * sY), 6, C_WHITE);
+  spr->drawFastVLine(f1x + 5, f1y + 13, 5, C_BODY_SHADOW);
+  spr->drawFastVLine(f1x + 10, f1y + 13, 5, C_BODY_SHADOW);
 
-  int f2x = cx + 14;
+  int f2x = cx + 18;
   int f2y = by + 20 - footWobble;
-  spr->fillRoundRect(f2x, f2y, (int)(14 * sX), (int)(18 * sY), 6, C_BODY_SHADOW);
-  spr->fillRoundRect(f2x + 1, f2y, (int)(12 * sX), (int)(17 * sY), 5, C_WHITE);
-  spr->drawFastVLine(f2x + 4, f2y + 12, 4, C_BODY_SHADOW);
-  spr->drawFastVLine(f2x + 8, f2y + 12, 4, C_BODY_SHADOW);
+  spr->fillRoundRect(f2x, f2y, (int)(17 * sX), (int)(20 * sY), 7, C_BODY_SHADOW);
+  spr->fillRoundRect(f2x + 1, f2y, (int)(15 * sX), (int)(19 * sY), 6, C_WHITE);
+  spr->drawFastVLine(f2x + 5, f2y + 13, 5, C_BODY_SHADOW);
+  spr->drawFastVLine(f2x + 11, f2y + 13, 5, C_BODY_SHADOW);
 
-  // 12. Đầu trắng muốt & Sống mũi nhỏ xinh (Head, Snout & Cheeks)
+  // 11. Đầu trắng muốt & Sống mũi nhô ra thanh tú
   int hy = by + 4;
-  int hx = cx - 28;
-  spr->fillEllipse(hx, hy, (int)(22 * sX), (int)(19 * sY), C_BODY_SHADOW);
-  spr->fillEllipse(hx + 1, hy, (int)(21 * sX), (int)(18 * sY), C_WHITE);
+  int hx = cx - 34;
+  spr->fillEllipse(hx, hy, (int)(26 * sX), (int)(22 * sY), C_BODY_SHADOW);
+  spr->fillEllipse(hx + 1, hy, (int)(25 * sX), (int)(21 * sY), C_WHITE);
 
-  spr->fillTriangle(hx - 12, hy - 4, hx - 24, hy + 3, hx - 10, hy + 9, C_BODY_SHADOW);
-  spr->fillTriangle(hx - 11, hy - 3, hx - 24, hy + 3, hx - 9, hy + 8, C_WHITE);
+  // Mõm nhô ra sang trái
+  spr->fillTriangle(hx - 14, hy - 6, hx - 28, hy + 2, hx - 12, hy + 10, C_BODY_SHADOW);
+  spr->fillTriangle(hx - 13, hy - 5, hx - 28, hy + 2, hx - 11, hy + 9, C_WHITE);
+
+  // Miệng cười hé mở ngọt ngào
+  spr->fillTriangle(hx - 20, hy + 6, hx - 12, hy + 5, hx - 14, hy + 14, C_MOUTH_DEEP);
+  spr->fillCircle(hx - 14, hy + 10, 4, C_MOUTH_PINK);
+
+  // Sống mũi nhỏ cúc áo
+  spr->fillCircle(hx - 28, hy + 2, 3, C_NOSE_BLACK);
+  spr->drawPixel(hx - 29, hy + 1, C_WHITE);
 
   // Má ửng hồng cam tự nhiên
-  spr->fillEllipse(hx - 4, hy + 8, 7, 4, C_BLUSH_PEACH);
-  spr->fillCircle(hx - 4, hy + 8, 2, C_WHITE);
+  spr->fillEllipse(hx - 2, hy + 9, 8, 5, C_BLUSH_PEACH);
+  spr->fillCircle(hx - 2, hy + 9, 2, C_WHITE);
 
-  // Miệng cười chúm chím hé mở ngọt ngào
-  spr->fillTriangle(hx - 18, hy + 6, hx - 12, hy + 6, hx - 14, hy + 13, C_MOUTH_DEEP);
-  spr->fillCircle(hx - 14, hy + 9, 3, C_MOUTH_PINK);
+  // 12. Vòm mái cỏ xanh trùm trán (Shaymin Grass Cap / Forehead Fringe)
+  spr->fillEllipse(hx + 6, hy - 14, (int)(22 * sX), (int)(14 * sY), C_GRASS_BASE);
+  spr->fillEllipse(hx + 6, hy - 16, (int)(20 * sX), (int)(11 * sY), C_GRASS_LIGHT);
+  spr->fillCircle(hx - 10, hy - 10, 8, C_GRASS_BASE);
+  spr->fillCircle(hx - 2, hy - 14, 10, C_GRASS_BASE);
+  spr->fillCircle(hx + 8, hy - 16, 11, C_GRASS_LIGHT);
+  spr->fillTriangle(hx - 16, hy - 8, hx - 22, hy - 4, hx - 12, hy - 4, C_GRASS_BASE);
+  spr->fillTriangle(hx - 8, hy - 6, hx - 12, hy - 1, hx - 4, hy - 5, C_GRASS_LIGHT);
 
-  // Sống mũi cúc áo đen nhỏ xinh
-  spr->fillCircle(hx - 24, hy + 3, 3, C_NOSE_BLACK);
-  spr->drawPixel(hx - 25, hy + 2, C_WHITE);
+  // Đốm phấn hoa vàng hoàng kim trên lưng cỏ
+  spr->fillEllipse(cx - 16, by - 22, 5, 3, C_POLLEN_GOLD);
+  spr->drawPixel(cx - 16, by - 22, C_POLLEN_LIGHT);
+  spr->fillEllipse(cx + 8, by - 28, 6, 4, C_POLLEN_GOLD);
+  spr->drawPixel(cx + 8, by - 28, C_POLLEN_LIGHT);
+  spr->fillEllipse(cx + 32, by - 12, 5, 3, C_POLLEN_GOLD);
+  spr->drawPixel(cx + 32, by - 12, C_POLLEN_LIGHT);
+  spr->fillEllipse(cx + 24, by + 2, 4, 2, C_POLLEN_GOLD);
 
-  // 13. Hai chiếc lá xanh mướt dưới đài hoa Gracidea
-  int flx = cx - 12;
-  int fly = by + 8;
-  spr->fillTriangle(flx, fly + 4, flx - 2, fly + 26, flx + 12, fly + 16, C_LEAF_SHADOW);
-  spr->fillTriangle(flx + 1, fly + 4, flx - 1, fly + 24, flx + 10, fly + 15, C_LEAF_GREEN);
-  spr->drawLine(flx + 2, fly + 6, flx + 4, fly + 20, C_LEAF_LIGHT);
+  // 13. Hai chiếc lá xanh mướt nâng đỡ đài hoa Gracidea
+  int flx = cx - 14;
+  int fly = by + 6;
+  spr->fillTriangle(flx, fly + 6, flx - 6, fly + 34, flx + 16, fly + 20, C_LEAF_SHADOW);
+  spr->fillTriangle(flx + 1, fly + 6, flx - 5, fly + 32, flx + 14, fly + 19, C_LEAF_GREEN);
+  spr->drawLine(flx + 3, fly + 8, flx + 3, fly + 26, C_LEAF_LIGHT);
 
-  spr->fillTriangle(flx + 6, fly, flx + 28, fly + 12, flx + 12, fly + 20, C_LEAF_SHADOW);
-  spr->fillTriangle(flx + 7, fly, flx + 26, fly + 11, flx + 12, fly + 18, C_LEAF_GREEN);
-  spr->drawLine(flx + 8, fly + 2, flx + 20, fly + 12, C_LEAF_LIGHT);
+  spr->fillTriangle(flx + 8, fly, flx + 38, fly + 14, flx + 16, fly + 26, C_LEAF_SHADOW);
+  spr->fillTriangle(flx + 9, fly, flx + 36, fly + 13, flx + 16, fly + 24, C_LEAF_GREEN);
+  spr->drawLine(flx + 11, fly + 2, fly + 26, fly + 14, C_LEAF_LIGHT);
 
-  // 14. ĐÓA HOA HỒNG GRACIDEA NỞ RỘ (6 cánh, trễ pha 80ms)
+  // 14. ĐÓA HOA HỒNG GRACIDEA NỞ RỘ (6 CÁNH BẦU BĨNH 3D POP MART)
   const float petalAngles[6] = { 0.0f, 1.047f, 2.094f, 3.141f, 4.188f, 5.235f };
-  const int petalLens[6]     = { 18, 20, 19, 18, 17, 19 };
+  const int petalLens[6]     = { 26, 28, 27, 25, 24, 27 };
 
   for (int p = 0; p < 6; p++) {
     float ang = petalAngles[p] + 0.18f + petalFlutter * 0.03f;
@@ -811,58 +814,60 @@ static void drawShayminFloraHedgehog(SpriteRenderer::ScaledCanvas* spr, int cx, 
 
     float perpCos = -sinA;
     float perpSin = cosA;
-    int w = 7;
-    int b1x = flx + (int)(cosA * 5 + perpCos * w);
-    int b1y = fly + (int)(sinA * 5 + perpSin * w);
-    int b2x = flx + (int)(cosA * 5 - perpCos * w);
-    int b2y = fly + (int)(sinA * 5 - perpSin * w);
+    int w = 11;
+    int b1x = flx + (int)(cosA * 7 + perpCos * w);
+    int b1y = fly + (int)(sinA * 7 + perpSin * w);
+    int b2x = flx + (int)(cosA * 7 - perpCos * w);
+    int b2y = fly + (int)(sinA * 7 - perpSin * w);
 
     spr->fillTriangle(flx, fly, b1x, b1y, tipX, tipY, C_PETAL_CORE);
     spr->fillTriangle(flx, fly, b2x, b2y, tipX, tipY, C_PETAL_PINK);
-    spr->fillCircle(tipX, tipY, 3, C_PETAL_LIGHT);
+    spr->fillCircle(tipX, tipY, 4, C_PETAL_LIGHT);
     spr->drawLine(flx, fly, tipX, tipY, C_PETAL_LIGHT);
   }
 
   // Tâm đài hoa hồng đậm
-  spr->fillCircle(flx, fly, 6, C_PETAL_CORE);
+  spr->fillCircle(flx, fly, 9, C_PETAL_CORE);
 
   // Nhị hoa vàng hoàng kim tỏa hương
-  spr->fillCircle(flx, fly, 3, C_STAMEN_GOLD);
+  spr->fillCircle(flx, fly, 4, C_STAMEN_GOLD);
   spr->drawPixel(flx, fly, C_POLLEN_LIGHT);
 
-  // Hạt nhụy hoa tím thẫm đặc trưng Gracidea
+  // 6 Hạt nhụy hoa tím thẫm
   for (int s = 0; s < 6; s++) {
     float ang = petalAngles[s] + 0.18f;
-    int sx = flx + (int)(cosf(ang) * 5.5f);
-    int sy = fly + (int)(sinf(ang) * 5.5f);
+    int sx = flx + (int)(cosf(ang) * 7.5f);
+    int sy = fly + (int)(sinf(ang) * 7.5f);
     spr->drawPixel(sx, sy, C_STAMEN_SPECK);
+    spr->drawPixel(sx + 1, sy, C_STAMEN_SPECK);
   }
 
   // 15. ĐÔI MẮT PHA LÊ XANH LỤC BẢO (3-Point Specular Emerald Crystal Eyes)
-  int ex = hx - 10;
-  int ey = hy - 1;
+  int ex = hx - 12;
+  int ey = hy - 2;
 
   if (blink) {
-    spr->drawCircle(ex, ey + 1, 5, C_EYE_DARK);
-    spr->drawCircle(ex, ey + 2, 5, C_EYE_DARK);
-    spr->drawFastHLine(ex - 4, ey + 4, 8, C_EYE_DARK);
+    spr->drawCircle(ex, ey + 2, 6, C_EYE_DARK);
+    spr->drawCircle(ex, ey + 3, 6, C_EYE_DARK);
+    spr->drawFastHLine(ex - 5, ey + 6, 10, C_EYE_DARK);
   } else {
-    // 15.1 Hốc mắt lục bảo sâu
-    spr->fillEllipse(ex, ey, 6, 8, C_EYE_DARK);
-    // 15.2 Mống mắt ngọc lục bảo khúc xạ
-    spr->fillEllipse(ex, ey + 2, 5, 5, C_EYE_EMERALD);
-    // 15.3 Vòm sáng đáy mắt ngọc bích
-    spr->fillEllipse(ex, ey + 4, 3, 2, C_EYE_BRIGHT);
-    // 15.4 Đồng tử đen thẳm
-    spr->fillCircle(ex, ey - 1, 3, C_EYE_DARK);
+    spr->fillEllipse(ex, ey, 7, 10, C_EYE_DARK);
+    spr->fillEllipse(ex, ey + 2, 6, 7, C_EYE_EMERALD);
+    spr->fillEllipse(ex, ey + 5, 4, 3, C_EYE_BRIGHT);
+    spr->fillCircle(ex, ey - 2, 4, C_EYE_DARK);
 
-    // 15.5 ĐIỂM SÁNG 1: Primary Direct Keylight Specular
-    spr->fillCircle(ex - 2, ey - 3, 2, C_WHITE);
-    // 15.6 ĐIỂM SÁNG 2: Secondary Emerald Caustic Bounce
-    spr->fillCircle(ex + 2, ey + 3, 1, C_WHITE);
-    // 15.7 ĐIỂM SÁNG 3: Tertiary Surface Wetness Sparkle
+    // 3 Điểm bắt sáng
+    spr->fillCircle(ex - 2, ey - 4, 2, C_WHITE);
+    spr->fillCircle(ex + 2, ey + 4, 1, C_WHITE);
     spr->drawPixel(ex + 2, ey - 2, C_WHITE);
   }
+}
+
+static void drawShayminFloraHedgehog(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float breath, float angle, float scale = 1.0f) {
+  (void)breath;
+  (void)scale;
+  bool blink = (fmodf(angle, 3.5f) < 0.14f);
+  drawShayminFloraHedgehog(spr, cx, cy, angle, blink);
 }
 
 // -------------------------------------------------------------
@@ -1210,5 +1215,6 @@ static void drawMythicManaphy(SpriteRenderer::ScaledCanvas* spr, int cx, int cy,
   bool blink = (fmodf(angle, 3.5f) < 0.14f);
   drawMythicManaphy(spr, cx, cy, angle, blink);
 }
+
 
 } // namespace Session1Mythics

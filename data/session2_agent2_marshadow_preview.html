@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mythic Marshadow - Gloomy Ghost 3D Pop Mart Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 30%, #171b24 0%, #0c0f15 60%, #050609 100%);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fb923c, #facc15, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+    .header p {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .container {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1100px;
+      width: 100%;
+    }
+    .card {
+      background: rgba(20, 24, 32, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(249, 115, 22, 0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card h2 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card h2 .badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: rgba(249, 115, 22, 0.2);
+      color: #fb923c;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+    canvas {
+      border-radius: 16px;
+      background: radial-gradient(circle at 50% 45%, #252c38 0%, #131720 70%, #090c12 100%);
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    .controls {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+    }
+    button {
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button:hover {
+      background: #334155;
+      border-color: #f97316;
+      color: #ffffff;
+    }
+    .specs-card {
+      max-width: 440px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #94a3b8;
+    }
+    .specs-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .specs-card li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .specs-card li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: #f97316;
+    }
+    .specs-card strong {
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>MARSHADOW GLOOMY GHOST 3D POP MART</h1>
+    <p>Nghệ Sĩ Điêu Khắc Tinh Linh Bóng Đêm Khói Xám • Mythic Pokedex #802 • ST7789 IPS 16-bit Engine</p>
+  </div>
+
+  <div class="container">
+    <!-- Display 1: ST7789 240x280 Standard Preview -->
+    <div class="card">
+      <h2>ST7789 IPS 240x280 <span class="badge">Hardware Scale 1.0x</span></h2>
+      <canvas id="canvas1" width="240" height="280"></canvas>
+      <div class="controls">
+        <button id="btnBlink">Trigger Blink</button>
+        <button id="btnPause">Pause / Resume</button>
+      </div>
+    </div>
+
+    <!-- Display 2: Large Pop Mart Collectible Inspection (Scale 1.7x) -->
+    <div class="card">
+      <h2>3D Pop Mart HD Inspection <span class="badge">High-Fidelity 1.7x</span></h2>
+      <canvas id="canvas2" width="380" height="440"></canvas>
+    </div>
+
+    <!-- Architectural Spec Card -->
+    <div class="card specs-card">
+      <h2>Sculpting Specifications <span class="badge">PRO-MAX</span></h2>
+      <ul>
+        <li><strong>Shadow Soot Body:</strong> Thân xám khói than chì bóng bẩy phủ nano vinyl satin, đai bóng tối ngang ngực/eo, rãnh cơ bắp tròn vo Chibi.</li>
+        <li><strong>Smoky Hood & Twin Spiral Horns:</strong> Mũ trùm đầu khói than chì với 2 sừng khói xoắn ốc cuộn tròn từ ngoài vào trong và chỏm lửa trung tâm uốn lượn hình ngọn lửa chữ S trễ pha 80ms.</li>
+        <li><strong>Billowing Smoke Cowl:</strong> Cổ áo khói 3 múi cuộn bồng bềnh với dải khói đuôi vút sang phải chuyển động vi vật lý hữu cơ.</li>
+        <li><strong>Amber-Ruby Crystal Eyes:</strong> Đôi mắt hổ phách vàng cam rực sáng với tròng đỏ ruby quyền năng, chóp lửa ngọn nến vàng trên đỉnh mắt, 3 điểm bắt sáng pha lê (Keylight 10h, Ground Bounce 4h, Micro Glint 2h).</li>
+        <li><strong>Chubby Fists & Legs:</strong> Hai nắm đấm tròn vo bọc khói bóng đêm với vòng xoáy phù hiệu cổ tay, hai chân ngắn mũm mĩm lún nhẹ vào bóng tối.</li>
+        <li><strong>Void Shadow Pool & Tendril:</strong> Vùng bóng tối loang rộng dưới chân cùng dải khói bóng đêm bò dài trên sàn lượn sóng.</li>
+        <li><strong>Silver Ash Embers:</strong> 6 đốm tàn tro xám bạc và tia sáng dạ quang lơ lửng tự nhiên.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // MARSHADOW TINH LINH BÓNG ĐÊM KHÓI XÁM (MYTHIC MARSHADOW GLOOMY GHOST)
+    // Modern HTML5 Canvas 2D Implementation - 60 FPS Fluid Organic Physics
+    // Pop Mart / Vinyl High-End 3D Sculpting & Micro-Physics Engine
+    // =========================================================================
+    function drawMythicMarshadow(ctx, cx, cy, scale, t, manualBlink = false) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(scale, scale);
+
+      // -----------------------------------------------------------------------
+      // 1. CHUYỂN ĐỘNG VI VẬT LÝ HỮU CƠ (ORGANIC MICRO-PHYSICS)
+      // -----------------------------------------------------------------------
+      const breathFreq = 1.9;
+      const breathPhase = t * breathFreq;
+
+      // Chu kỳ lơ lửng & phập phồng nhẹ theo phương đứng (hovering float)
+      const hoverOffsetY = Math.sin(breathPhase) * 2.5;
+      const by = hoverOffsetY;
+
+      // Nhịp thở đàn hồi Squash & Stretch 5% (Bảo toàn thể tích: sY * sX ≈ 1.0)
+      const sY = 1.0 + 0.05 * Math.sin(breathPhase);
+      const sX = 1.0 - 0.025 * Math.sin(breathPhase);
+
+      // Trễ pha động học 80ms (Delta Phi ≈ 0.48 rad)
+      const lagSmoke  = breathPhase - 0.48; // Khói cổ & mũ
+      const lagCrest  = breathPhase - 0.40; // Ngọn lửa chỏm mũ
+      const lagShadow = breathPhase - 0.20; // Vùng bóng trải sàn
+
+      // Chu kỳ chớp mắt tự nhiên 3.5s (chớp trong 140ms)
+      const blinkCycle = (t * 1000) % 3500;
+      const blink = manualBlink || (blinkCycle < 140);
+
+      // -----------------------------------------------------------------------
+      // 2. LỚP 1: VÙNG BÓNG ĐÊM LOANG RỘNG DƯỚI CHÂN & DẢI KHÓI TRẢI SÀN
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const floorY = 46;
+      const shRx = (27.0 - hoverOffsetY * 1.2) * sX;
+      const shRy = (6.8 - hoverOffsetY * 0.3);
+      const shadowAlpha = 0.50 + (hoverOffsetY / 2.5) * 0.15;
+
+      // Vùng bóng đêm loang rộng dưới chân tạo hiệu ứng lún chìm vào bóng tối
+      const shadowGrad = ctx.createRadialGradient(0, floorY, 2, 0, floorY, Math.max(10, shRx + 10));
+      shadowGrad.addColorStop(0, `rgba(8, 10, 14, ${shadowAlpha * 0.98})`);
+      shadowGrad.addColorStop(0.4, `rgba(18, 22, 29, ${shadowAlpha * 0.70})`);
+      shadowGrad.addColorStop(0.75, `rgba(28, 34, 45, ${shadowAlpha * 0.30})`);
+      shadowGrad.addColorStop(1, "rgba(8, 10, 14, 0)");
+      ctx.fillStyle = shadowGrad;
+      ctx.beginPath();
+      ctx.ellipse(0, floorY, Math.max(10, shRx + 10), Math.max(3, shRy + 2), 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Dải khói bóng đêm bò dài trên sàn từ gót chân phải (100% Khớp ảnh mẫu)
+      const shadowWave1 = Math.sin(lagShadow) * 2.4;
+      const shadowWave2 = Math.cos(lagShadow * 1.2) * 2.8;
+      const shadowWave3 = Math.sin(lagShadow * 1.5) * 2.0;
+
+      const ribbonGrad = ctx.createLinearGradient(4, floorY, 74, floorY + shadowWave3);
+      ribbonGrad.addColorStop(0, "rgba(18, 21, 28, 0.95)");
+      ribbonGrad.addColorStop(0.4, "rgba(26, 31, 40, 0.8)");
+      ribbonGrad.addColorStop(0.8, "rgba(35, 42, 54, 0.5)");
+      ribbonGrad.addColorStop(1, "rgba(18, 21, 28, 0)");
+      ctx.fillStyle = ribbonGrad;
+
+      ctx.beginPath();
+      ctx.moveTo(4, floorY - 1);
+      ctx.bezierCurveTo(16, floorY + 1 + shadowWave1, 28, floorY - 1 + shadowWave2, 42, floorY + 2 + shadowWave3);
+      ctx.bezierCurveTo(54, floorY + 3 + shadowWave3, 64, floorY - 1 + shadowWave2, 72, floorY + shadowWave3);
+      ctx.bezierCurveTo(62, floorY + 4 + shadowWave3, 44, floorY + 5 + shadowWave2, 28, floorY + 4 + shadowWave1);
+      ctx.bezierCurveTo(16, floorY + 3, 10, floorY + 2, 2, floorY + 1);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 3. LỚP 2: ĐỐM TÀN TRO DẠ QUANG XÁM BẠC BAY LƠ LỬNG
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const ashDefs = [
+        { x: -38, y: -30, r: 1.8, phase: 0.0, color: "rgba(226, 232, 240, 0.85)" },
+        { x: 38,  y: -22, r: 2.0, phase: 1.5, color: "rgba(254, 240, 138, 0.75)" },
+        { x: -44, y: 14,  r: 1.5, phase: 2.8, color: "rgba(203, 213, 225, 0.8)" },
+        { x: 42,  y: 20,  r: 1.6, phase: 4.0, color: "rgba(249, 115, 22, 0.7)" },
+        { x: -16, y: -54, r: 2.2, phase: 5.1, color: "rgba(255, 255, 255, 0.9)" },
+        { x: 22,  y: -58, r: 1.7, phase: 3.4, color: "rgba(226, 232, 240, 0.85)" }
+      ];
+      ashDefs.forEach(ash => {
+        const aLag = breathPhase * 0.7 + ash.phase;
+        const ax = ash.x + Math.sin(aLag) * 4.5;
+        const ay = ash.y + Math.cos(aLag * 0.9) * 4.0;
+        const pulse = 0.8 + 0.3 * Math.sin(aLag * 2.0);
+
+        ctx.save();
+        ctx.shadowColor = ash.color;
+        ctx.shadowBlur = 6;
+        ctx.fillStyle = ash.color;
+        ctx.beginPath();
+        ctx.arc(ax, ay, ash.r * pulse, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#FFFFFF";
+        ctx.beginPath();
+        ctx.arc(ax, ay, ash.r * pulse * 0.4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 4. LỚP 3: HAI CHÂN NGẮN MŨM MĨM (STUBBY LEGS)
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const legY = by + 28;
+      const legW = 8.5 * sX;
+      const legH = 17 * sY;
+
+      function drawStubbyLeg(lx, isLeft) {
+        ctx.save();
+        const legGrad = ctx.createLinearGradient(lx - legW, legY, lx + legW, legY + legH);
+        legGrad.addColorStop(0, "#485261");
+        legGrad.addColorStop(0.35, "#38414f");
+        legGrad.addColorStop(0.75, "#282e38");
+        legGrad.addColorStop(1, "#181c23"); // Lún chìm vào bóng tối
+        ctx.fillStyle = legGrad;
+
+        ctx.beginPath();
+        ctx.roundRect(lx - legW / 2, legY, legW, legH, [3, 3, 4, 4]);
+        ctx.fill();
+
+        // Gờ sáng vinyl 3D phía ngoài
+        ctx.strokeStyle = "rgba(100, 112, 130, 0.4)";
+        ctx.lineWidth = 1.0;
+        ctx.beginPath();
+        ctx.moveTo(isLeft ? lx - legW / 2 : lx + legW / 2, legY + 2);
+        ctx.lineTo(isLeft ? lx - legW / 2 : lx + legW / 2, legY + legH - 2);
+        ctx.stroke();
+
+        // Bàn chân hơi bè ra trước lún vào bóng
+        const footGrad = ctx.createRadialGradient(lx, legY + legH - 2, 1, lx, legY + legH - 2, legW * 0.85);
+        footGrad.addColorStop(0, "#343c49");
+        footGrad.addColorStop(0.7, "#20252e");
+        footGrad.addColorStop(1, "#10141a");
+        ctx.fillStyle = footGrad;
+        ctx.beginPath();
+        ctx.ellipse(lx + (isLeft ? -1.2 : 1.2), legY + legH - 1, legW * 0.7, 3.2 * sY, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      drawStubbyLeg(-8.5 * sX, true);
+      drawStubbyLeg(8.5 * sX, false);
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 5. LỚP 4: THÂN KHÓI THAN CHÌ BÓNG BẨY & ĐAI BÓNG TỐI NGANG EO
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const bodyY = by + 16;
+      const bRx = 17.5 * sX;
+      const bRy = 15.5 * sY;
+
+      // Đổ bóng đáy thân
+      ctx.save();
+      ctx.fillStyle = "#181c23";
+      ctx.beginPath();
+      ctx.ellipse(0, bodyY + 4, bRx + 1, bRy - 2, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Khối thân chính - 3D Pop Mart Vinyl satin sheen
+      const bodyGrad = ctx.createRadialGradient(-4 * sX, bodyY - 4 * sY, 3, 0, bodyY, 19 * sY);
+      bodyGrad.addColorStop(0, "#556071"); // Highlight đón sáng góc 10h
+      bodyGrad.addColorStop(0.3, "#424b59");
+      bodyGrad.addColorStop(0.75, "#2f3642");
+      bodyGrad.addColorStop(1, "#1f242d");
+      ctx.fillStyle = bodyGrad;
+
+      ctx.beginPath();
+      ctx.ellipse(0, bodyY, bRx, bRy, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Đai bóng tối đặc trưng ngang ngực/eo (Horizontal Dark Shadow Band - 100% Khớp ảnh mẫu)
+      const bandGrad = ctx.createLinearGradient(0, bodyY - 11, 0, bodyY - 1);
+      bandGrad.addColorStop(0, "rgba(16, 19, 24, 0.96)");
+      bandGrad.addColorStop(0.5, "rgba(22, 26, 33, 0.85)");
+      bandGrad.addColorStop(1, "rgba(35, 41, 50, 0.2)");
+      ctx.fillStyle = bandGrad;
+      ctx.beginPath();
+      ctx.ellipse(0, bodyY - 5.5, bRx * 0.96, 5.2 * sY, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Highlight bóng men sứ Vinyl trên sườn ngực trái
+      ctx.fillStyle = "rgba(255, 255, 255, 0.12)";
+      ctx.beginPath();
+      ctx.ellipse(-7 * sX, bodyY + 2 * sY, 3.5, 2.0, -0.3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 6. LỚP 5: HAI TAY MŨM MĨM & NẮM ĐẤM BỌC KHÓI CỔ TAY
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const armLag = breathPhase - 0.25;
+      const armSwayL = Math.sin(armLag) * 1.5;
+      const armSwayR = -Math.sin(armLag) * 1.5;
+
+      function drawArmAndFist(isLeft, sway) {
+        ctx.save();
+        const sign = isLeft ? -1 : 1;
+        const shX = sign * 13.0 * sX;
+        const shY = by + 12;
+        const fistX = sign * (20.5 * sX) + sway * 0.5;
+        const fistY = by + 24.0 + sway;
+
+        const armGrad = ctx.createLinearGradient(shX, shY, fistX, fistY);
+        armGrad.addColorStop(0, "#485261");
+        armGrad.addColorStop(0.5, "#373e4b");
+        armGrad.addColorStop(1, "#262c36");
+        ctx.fillStyle = armGrad;
+
+        ctx.beginPath();
+        ctx.moveTo(shX, shY - 2);
+        ctx.lineTo(fistX - sign * 2, fistY - 7);
+        ctx.lineTo(fistX + sign * 6, fistY - 3);
+        ctx.lineTo(shX + sign * 3, shY + 4);
+        ctx.closePath();
+        ctx.fill();
+
+        // Nắm đấm tròn vo mũm mĩm
+        const fistGrad = ctx.createRadialGradient(fistX - sign * 1.5, fistY - 1.5, 1, fistX, fistY, 8.0);
+        fistGrad.addColorStop(0, "#5d6778");
+        fistGrad.addColorStop(0.4, "#434c5a");
+        fistGrad.addColorStop(0.85, "#2d333e");
+        fistGrad.addColorStop(1, "#1c2027");
+        ctx.fillStyle = fistGrad;
+        ctx.beginPath();
+        ctx.arc(fistX, fistY, 7.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Gờ khớp ngón tay
+        ctx.strokeStyle = "rgba(99, 110, 128, 0.4)";
+        ctx.lineWidth = 1.0;
+        ctx.beginPath();
+        ctx.arc(fistX + sign * 0.8, fistY + 1.2, 4.4, isLeft ? Math.PI * 0.4 : -Math.PI * 0.4, isLeft ? Math.PI * 1.2 : -Math.PI * 1.2);
+        ctx.stroke();
+
+        // Vòng xoáy khói cổ tay đặc trưng (Circular Smoke Pad - 100% Khớp ảnh mẫu)
+        const padX = fistX + sign * 3.0;
+        const padY = fistY - 4.0;
+        ctx.save();
+        ctx.strokeStyle = "rgba(107, 119, 137, 0.8)";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.ellipse(padX, padY, 3.4, 4.4, sign * 0.25, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = "rgba(70, 78, 92, 0.65)";
+        ctx.fill();
+        ctx.restore();
+
+        ctx.restore();
+      }
+
+      drawArmAndFist(true, armSwayL);
+      drawArmAndFist(false, armSwayR);
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 7. LỚP 6: CỔ ÁO KHÓI XOẮN ỐC BỒNG BỀNH (BILLOWING SMOKE COWL)
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const cowlY = by + 4.0;
+      const smokeWave = Math.sin(lagSmoke) * 2.2;
+      const smokeWave2 = Math.cos(lagSmoke * 1.1) * 2.0;
+
+      ctx.save();
+      ctx.fillStyle = "rgba(16, 19, 24, 0.85)";
+      ctx.beginPath();
+      ctx.ellipse(0, cowlY + 6.0, 24 * sX, 6.8, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      function drawSmokePuff(px, py, prx, pry, rot) {
+        ctx.save();
+        const puffGrad = ctx.createRadialGradient(px - 2, py - 2, 2, px, py, Math.max(prx, pry));
+        puffGrad.addColorStop(0, "#6c788a");
+        puffGrad.addColorStop(0.35, "#515c6d");
+        puffGrad.addColorStop(0.75, "#38404e");
+        puffGrad.addColorStop(1, "#212630");
+        ctx.fillStyle = puffGrad;
+
+        ctx.beginPath();
+        ctx.ellipse(px, py, prx, pry, rot, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = "rgba(115, 128, 148, 0.4)";
+        ctx.lineWidth = 0.9;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      drawSmokePuff(-16 * sX, cowlY + 1 + smokeWave * 0.4, 11.0 * sX, 7.8 * sY, -0.15);
+      drawSmokePuff(-5 * sX,  cowlY + 3 + smokeWave2 * 0.5, 12.0 * sX, 8.2 * sY, -0.05);
+      drawSmokePuff(8 * sX,   cowlY + 2 - smokeWave * 0.4, 12.5 * sX, 8.5 * sY, 0.12);
+
+      // Đuôi khói cổ áo vút sang phải (Trailing Collar Smoke Wisp)
+      const tailBaseX = 18 * sX;
+      const tailBaseY = cowlY + 1;
+      const tailMidX  = 31 * sX + smokeWave2 * 0.8;
+      const tailMidY  = cowlY + 2 + smokeWave;
+      const tailTipX  = 44 * sX + smokeWave * 1.2;
+      const tailTipY  = cowlY - 3 + smokeWave2 * 1.0;
+
+      const tailGrad = ctx.createLinearGradient(tailBaseX, tailBaseY, tailTipX, tailTipY);
+      tailGrad.addColorStop(0, "#515c6d");
+      tailGrad.addColorStop(0.5, "#3e4755");
+      tailGrad.addColorStop(1, "#616e82");
+      ctx.fillStyle = tailGrad;
+
+      ctx.beginPath();
+      ctx.moveTo(tailBaseX, tailBaseY + 4);
+      ctx.bezierCurveTo(tailBaseX + 6, tailBaseY + 6, tailMidX - 2, tailMidY + 4, tailMidX + 3, tailMidY + 1);
+      ctx.bezierCurveTo(tailMidX + 7, tailMidY - 1, tailTipX - 3, tailTipY + 2, tailTipX, tailTipY);
+      ctx.bezierCurveTo(tailTipX - 6, tailTipY - 3, tailMidX, tailMidY - 5, tailBaseX + 2, tailBaseY - 3);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = "rgba(120, 134, 154, 0.5)";
+      ctx.lineWidth = 1.0;
+      ctx.stroke();
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 8. LỚP 7: MŨ TRÙM ĐẦU KHÓI THAN CHÌ (SMOKY HOOD)
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const headY = by - 12;
+      const hRx = 25.0 * sX;
+      const hRy = 22.5 * sY;
+
+      const headGrad = ctx.createRadialGradient(-7 * sX, headY - 8 * sY, 4, 0, headY, 27 * sX);
+      headGrad.addColorStop(0, "#647082"); // Vùng lóa sáng men sứ vinyl góc 10h
+      headGrad.addColorStop(0.25, "#4c5666");
+      headGrad.addColorStop(0.65, "#363e4b");
+      headGrad.addColorStop(0.9, "#252b34");
+      headGrad.addColorStop(1, "#181c23");
+      ctx.fillStyle = headGrad;
+
+      ctx.beginPath();
+      ctx.ellipse(0, headY, hRx, hRy, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Tai mũ trùm hai bên má (Cheek Lobes of the hood)
+      ctx.beginPath();
+      ctx.ellipse(-18 * sX, headY + 8 * sY, 7.5 * sX, 9 * sY, 0.25, 0, Math.PI * 2);
+      ctx.ellipse(18 * sX,  headY + 8 * sY, 7.5 * sX, 9 * sY, -0.25, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = "rgba(130, 145, 165, 0.4)";
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.arc(-4 * sX, headY - 2 * sY, hRx - 2, -Math.PI * 0.75, -Math.PI * 0.25);
+      ctx.stroke();
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 9. LỚP 8: CHỎM LỬA BÓNG TỐI TRUNG TÂM VƯƠN CAO (UPRIGHT TOP SMOKE CREST)
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const crestWave = Math.sin(lagCrest) * 2.8;
+      const crestWave2 = Math.cos(lagCrest * 1.2) * 2.2;
+      const crestBaseY = by - 28 * sY;
+
+      const crestGrad = ctx.createLinearGradient(0, crestBaseY, 6 + crestWave, crestBaseY - 32);
+      crestGrad.addColorStop(0, "#434c5b");
+      crestGrad.addColorStop(0.4, "#535f71");
+      crestGrad.addColorStop(0.8, "#6a788d");
+      crestGrad.addColorStop(1, "#8392a8");
+      ctx.fillStyle = crestGrad;
+
+      ctx.beginPath();
+      ctx.moveTo(-8 * sX, crestBaseY);
+      ctx.bezierCurveTo(-11 * sX, crestBaseY - 10, -5 + crestWave * 0.5, crestBaseY - 18, -2 + crestWave * 0.7, crestBaseY - 24);
+      ctx.bezierCurveTo(0 + crestWave, crestBaseY - 28, 4 + crestWave * 1.2, crestBaseY - 32, 7 + crestWave * 1.3, crestBaseY - 34 + crestWave2 * 0.5);
+      ctx.bezierCurveTo(12 + crestWave * 1.2, crestBaseY - 32, 14 + crestWave, crestBaseY - 26, 9 + crestWave * 0.8, crestBaseY - 22);
+      ctx.bezierCurveTo(5 + crestWave * 0.5, crestBaseY - 18, 5, crestBaseY - 12, 8 * sX, crestBaseY);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = "rgba(150, 165, 185, 0.6)";
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.strokeStyle = "rgba(226, 232, 240, 0.45)";
+      ctx.lineWidth = 0.9;
+      ctx.beginPath();
+      ctx.moveTo(-1 + crestWave * 0.4, crestBaseY - 6);
+      ctx.bezierCurveTo(0 + crestWave * 0.6, crestBaseY - 16, 4 + crestWave, crestBaseY - 26, 7 + crestWave * 1.1, crestBaseY - 30);
+      ctx.stroke();
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 10. LỚP 9: ĐÔI SỪNG KHÓI XOẮN ỐC HAI BÊN (TWIN SPIRAL SMOKE HORNS)
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const hornLag = breathPhase - 0.52;
+      const hornSway = Math.sin(hornLag) * 2.0;
+
+      function drawSpiralHorn(isRight) {
+        ctx.save();
+        const sign = isRight ? 1 : -1;
+        const hornBaseX = sign * 14 * sX;
+        const hornBaseY = by - 24 * sY;
+        const spiralCenterX = sign * 18.0 * sX + hornSway * sign * 0.4;
+        const spiralCenterY = by - 33.5 * sY + hornSway * 0.6;
+
+        const hornGrad = ctx.createRadialGradient(
+          spiralCenterX - sign * 2, spiralCenterY - 2, 2,
+          spiralCenterX, spiralCenterY, 15
+        );
+        hornGrad.addColorStop(0, "#738196");
+        hornGrad.addColorStop(0.35, "#556173");
+        hornGrad.addColorStop(0.75, "#38414e");
+        hornGrad.addColorStop(1, "#222731");
+        ctx.fillStyle = hornGrad;
+
+        ctx.beginPath();
+        ctx.moveTo(hornBaseX - sign * 4, hornBaseY);
+        ctx.bezierCurveTo(
+          sign * 29 * sX, hornBaseY - 4,
+          sign * 32 * sX, spiralCenterY - 6,
+          spiralCenterX + sign * 2, spiralCenterY - 10
+        );
+        ctx.bezierCurveTo(
+          spiralCenterX - sign * 5, spiralCenterY - 11,
+          spiralCenterX - sign * 11, spiralCenterY - 5,
+          spiralCenterX - sign * 9, spiralCenterY + 2
+        );
+        ctx.bezierCurveTo(
+          spiralCenterX - sign * 7, spiralCenterY + 9,
+          spiralCenterX + sign * 2, spiralCenterY + 8,
+          spiralCenterX + sign * 5, spiralCenterY + 2
+        );
+        ctx.bezierCurveTo(
+          spiralCenterX + sign * 6, spiralCenterY - 3,
+          spiralCenterX, spiralCenterY - 4,
+          spiralCenterX - sign * 1.5, spiralCenterY - 1
+        );
+        ctx.bezierCurveTo(
+          spiralCenterX - sign * 4, spiralCenterY + 3,
+          spiralCenterX, spiralCenterY + 8,
+          hornBaseX + sign * 2, hornBaseY
+        );
+        ctx.closePath();
+        ctx.fill();
+
+        // Đường xoắn ốc 3D chạm khắc tinh xảo
+        ctx.strokeStyle = "rgba(150, 165, 185, 0.7)";
+        ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        ctx.arc(spiralCenterX, spiralCenterY, 5.8, sign > 0 ? 0.3 * Math.PI : 0.7 * Math.PI, sign > 0 ? 1.8 * Math.PI : 0.2 * Math.PI, sign < 0);
+        ctx.stroke();
+
+        ctx.strokeStyle = "rgba(226, 232, 240, 0.55)";
+        ctx.lineWidth = 1.0;
+        ctx.beginPath();
+        ctx.arc(spiralCenterX - sign * 0.5, spiralCenterY - 0.5, 3.2, sign > 0 ? 0.5 * Math.PI : 0.5 * Math.PI, sign > 0 ? 1.6 * Math.PI : 0.4 * Math.PI, sign < 0);
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      drawSpiralHorn(false);
+      drawSpiralHorn(true);
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 11. LỚP 10: HỐC MẶT BÓNG ĐÊM SÂU THẲM (DARK FACE MASK WELL - 100% Khớp ảnh mẫu)
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const faceY = by - 12;
+
+      const faceGrad = ctx.createRadialGradient(0, faceY - 2, 2, 0, faceY + 2, 22);
+      faceGrad.addColorStop(0, "#191d24");
+      faceGrad.addColorStop(0.6, "#11141a");
+      faceGrad.addColorStop(1, "#0a0c10");
+      ctx.fillStyle = faceGrad;
+
+      ctx.beginPath();
+      ctx.moveTo(-12 * sX, faceY + 12 * sY);
+      ctx.bezierCurveTo(-6 * sX, faceY + 15 * sY, 6 * sX, faceY + 15 * sY, 12 * sX, faceY + 12 * sY);
+      ctx.bezierCurveTo(20 * sX, faceY + 9 * sY, 22 * sX, faceY - 2 * sY, 19 * sX, faceY - 8 * sY);
+      ctx.bezierCurveTo(17 * sX, faceY - 15 * sY, 10 * sX, faceY - 17 * sY, 3.5 * sX, faceY - 14 * sY);
+      // Vết lõm trung tâm giữa hai mắt
+      ctx.lineTo(0, faceY - 8.5 * sY);
+      ctx.lineTo(-3.5 * sX, faceY - 14 * sY);
+      ctx.bezierCurveTo(-10 * sX, faceY - 17 * sY, -17 * sX, faceY - 15 * sY, -19 * sX, faceY - 8 * sY);
+      ctx.bezierCurveTo(-22 * sX, faceY - 2 * sY, -20 * sX, faceY + 9 * sY, -12 * sX, faceY + 12 * sY);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = "rgba(40, 46, 56, 0.65)";
+      ctx.lineWidth = 1.0;
+      ctx.stroke();
+
+      // Chiếc miệng nhỏ xinh kiên định (Tiny Determined Mouth Line)
+      const mouthY = faceY + 7.2 * sY;
+      ctx.strokeStyle = "rgba(8, 10, 14, 0.95)";
+      ctx.lineWidth = 1.6;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.arc(0, mouthY, 2.5, 0.15 * Math.PI, 0.85 * Math.PI, false);
+      ctx.stroke();
+
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 12. LỚP 11: ĐÔI MẮT HỔ PHÁCH VÀNG CAM RỰC SÁNG VỚI TRÒNG ĐỎ RUBY
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const eyeY = by - 12;
+      const eyeXL = -10.5 * sX;
+      const eyeXR =  10.5 * sX;
+      const eyeR = 5.2 * sX;
+      const eyeH = 7.8 * sY;
+
+      if (blink) {
+        [eyeXL, eyeXR].forEach(ex => {
+          ctx.save();
+          ctx.strokeStyle = "rgba(249, 115, 22, 0.5)";
+          ctx.lineWidth = 2.8;
+          ctx.beginPath();
+          ctx.arc(ex, eyeY + 1, 5.5, 0.15 * Math.PI, 0.85 * Math.PI, false);
+          ctx.stroke();
+
+          ctx.strokeStyle = "#080a0e";
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.arc(ex, eyeY + 1, 5.5, 0.15 * Math.PI, 0.85 * Math.PI, false);
+          ctx.stroke();
+          ctx.restore();
+        });
+      } else {
+        [eyeXL, eyeXR].forEach((ex, idx) => {
+          ctx.save();
+          const isLeft = (idx === 0);
+          const tiltAngle = isLeft ? 0.08 : -0.08;
+
+          ctx.translate(ex, eyeY);
+          ctx.rotate(tiltAngle);
+
+          // 1. Quầng sáng hào quang mắt (Luminous Bloom)
+          const bloomGrad = ctx.createRadialGradient(0, 0, 2, 0, 0, 14);
+          bloomGrad.addColorStop(0, "rgba(249, 115, 22, 0.45)");
+          bloomGrad.addColorStop(0.5, "rgba(220, 38, 38, 0.2)");
+          bloomGrad.addColorStop(1, "rgba(220, 38, 38, 0)");
+          ctx.fillStyle = bloomGrad;
+          ctx.beginPath();
+          ctx.arc(0, 0, 14, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 2. Chóp lửa ngọn nến vàng rực trên đỉnh mắt (Candle Flame Tip - 100% Khớp ảnh mẫu)
+          const flameTipY = -eyeH - 5.0;
+          const flameGrad = ctx.createLinearGradient(0, -eyeH, 0, flameTipY);
+          flameGrad.addColorStop(0, "#facc15");
+          flameGrad.addColorStop(0.5, "#fef08a");
+          flameGrad.addColorStop(1, "#ffffff");
+          ctx.fillStyle = flameGrad;
+
+          ctx.beginPath();
+          ctx.moveTo(-2.2, -eyeH + 2);
+          ctx.quadraticCurveTo(-2.8, -eyeH - 2, 0, flameTipY);
+          ctx.quadraticCurveTo(2.8, -eyeH - 2, 2.2, -eyeH + 2);
+          ctx.closePath();
+          ctx.fill();
+
+          // 3. Tròng mắt oval chính: Chuyển sắc từ Đỏ Ruby sang Cam Hổ Phách & Vàng Hoàng Kim
+          const eyeGrad = ctx.createRadialGradient(
+            -0.8, -1.0, 1.2,
+            0, 0, eyeH
+          );
+          eyeGrad.addColorStop(0, "#fff7a0"); // Tâm sáng chói
+          eyeGrad.addColorStop(0.2, "#fde047"); // Lõi vàng hoàng kim
+          eyeGrad.addColorStop(0.5, "#f97316"); // Thân cam hổ phách rực rỡ
+          eyeGrad.addColorStop(0.8, "#dc2626"); // Tròng đỏ ruby quyền năng
+          eyeGrad.addColorStop(1, "#7f1d1d");   // Viền đỏ thẫm hốc mắt
+          ctx.fillStyle = eyeGrad;
+
+          ctx.beginPath();
+          ctx.ellipse(0, 0, eyeR, eyeH, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = "#450a0a";
+          ctx.lineWidth = 1.0;
+          ctx.stroke();
+
+          // 4. Vệt tụ quang đáy mắt (Caustic Arc)
+          ctx.strokeStyle = "rgba(254, 240, 138, 0.75)";
+          ctx.lineWidth = 1.1;
+          ctx.beginPath();
+          ctx.arc(0, 2, eyeR * 0.65, 0.2 * Math.PI, 0.8 * Math.PI, false);
+          ctx.stroke();
+
+          // 5. 3 ĐIỂM BẮT SÁNG PHA LÊ (3-POINT SPECULAR CRYSTAL CATCHLIGHTS)
+          // ĐIỂM 1: Direct Keylight (Góc 10h, 2x2 px sắc nét)
+          ctx.fillStyle = "#FFFFFF";
+          ctx.beginPath();
+          ctx.arc(-1.8, -2.8, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+
+          // ĐIỂM 2: Ground Amber Bounce (Góc 4h, 1x1 px phản xạ ấm)
+          ctx.fillStyle = "#FED7AA";
+          ctx.beginPath();
+          ctx.arc(1.8, 2.6, 1.0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // ĐIỂM 3: Crystal Slit Micro Glint (Góc 2h, tia lóa pha lê)
+          ctx.fillStyle = "#FFFFFF";
+          ctx.beginPath();
+          ctx.arc(1.6, -1.8, 0.75, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.restore();
+        });
+      }
+      ctx.restore();
+
+      // -----------------------------------------------------------------------
+      // 13. LỚP 12: ĐỐM SÁNG HOÀNG KIM TIA LỬA LƠ LỬNG
+      // -----------------------------------------------------------------------
+      ctx.save();
+      const sparkT = t * 3.0;
+      const sp1X = -17 * sX + Math.sin(sparkT) * 2.5;
+      const sp1Y = by - 8 + Math.cos(sparkT * 0.8) * 2.0;
+      ctx.fillStyle = "rgba(254, 240, 138, 0.85)";
+      ctx.beginPath(); ctx.arc(sp1X, sp1Y, 1.1, 0, Math.PI * 2); ctx.fill();
+
+      const sp2X = 17 * sX - Math.cos(sparkT * 0.9) * 2.5;
+      const sp2Y = by - 8 + Math.sin(sparkT) * 2.0;
+      ctx.fillStyle = "rgba(249, 115, 22, 0.85)";
+      ctx.beginPath(); ctx.arc(sp2X, sp2Y, 1.1, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+
+      ctx.restore();
+    }
+
+    const canvas1 = document.getElementById("canvas1");
+    const ctx1 = canvas1.getContext("2d");
+
+    const canvas2 = document.getElementById("canvas2");
+    const ctx2 = canvas2.getContext("2d");
+
+    let isPaused = false;
+    let manualBlinkTrigger = false;
+    let startTime = performance.now();
+
+    document.getElementById("btnBlink").addEventListener("click", () => {
+      manualBlinkTrigger = true;
+      setTimeout(() => { manualBlinkTrigger = false; }, 180);
+    });
+
+    document.getElementById("btnPause").addEventListener("click", () => {
+      isPaused = !isPaused;
+    });
+
+    function render(now) {
+      if (!isPaused) {
+        const t = (now - startTime) / 1000;
+
+        ctx1.clearRect(0, 0, 240, 280);
+        drawMythicMarshadow(ctx1, 120, 140, 1.0, t, manualBlinkTrigger);
+
+        ctx2.clearRect(0, 0, 380, 440);
+        drawMythicMarshadow(ctx2, 190, 220, 1.6, t, manualBlinkTrigger);
+      }
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+  </script>
+</body>
+</html>

@@ -483,5 +483,40 @@
     "category": "Linh Thú Thần Thoại",
     "description": "Thân nước xanh lam ngọc trong suốt men sứ, ăng-ten chữ S uốn lượn, viên hồng ngọc Ruby rực sáng trước ngực.",
     "quote": "Trái tim đại dương bao la xoa dịu mọi giông bão cuộc đời."
+  },
+  {
+    "id": 55,
+    "name": "Phione - Giọt Nước Biển Trôi Dạt",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Thân giọt nước xanh ngọc SSS núng nính, phao kẹo biển tròn đỉnh đầu, dải ruy băng đuôi dài mềm mại uốn lượn hình sóng, ngọc ruby ngực đỏ rực.",
+    "quote": "Hãy thả lỏng tâm hồn và trôi dạt nhẹ nhàng cùng những con sóng hiền hòa."
+  },
+  {
+    "id": 56,
+    "name": "Marshadow - Tinh Linh Bóng Đêm Khói Xám",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Thân khói than chì bóng bẩy, mũ trùm khói xoắn đôi sừng bóng tối, đôi mắt hổ phách đỏ ruby rực sáng kiên định.",
+    "quote": "Ẩn mình trong bóng tối, bước đi không để lại dấu chân nhưng kiên định khôn cùng."
+  },
+  {
+    "id": 57,
+    "name": "Zeraora - Miêu Thần Sấm Sét Hoàng Kim",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Lông vàng hoàng kim điện chớp, tai đệm xanh plasma phát sáng, đuôi tia chớp uốn lượn tràn đầy năng lượng.",
+    "quote": "Tốc độ của sấm sét, trái tim của bầu trời lôi quang rực rỡ."
+  },
+  {
+    "id": 58,
+    "name": "Cosmog - Đám Mây Tinh Vân Vũ Trụ",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Đám mây tinh vân vũ trụ màu chàm tím chuyển sắc mờ ảo, vòng đai vàng vương giả, đôi mắt hổ phách ngây thơ thuần khiết.",
+    "quote": "Mỗi hạt bụi sao là mầm sống của một thiên hà diệu kỳ tương lai."
+  },
+  {
+    "id": 59,
+    "name": "Poipole - Tinh Linh Tím Ngoài Hành Tinh",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Đầu tím oải hương pastel phúng phính, 3 kim tiêm sừng ngọc lam cyan dạ quang, nụ cười chữ V tinh nghịch đáng yêu.",
+    "quote": "Thế giới vô tận ngoài kia luôn tràn ngập những điều bất ngờ đón chờ."
   }
 ]
