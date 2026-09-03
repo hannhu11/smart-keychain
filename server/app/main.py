@@ -127,6 +127,7 @@ async def startup_event():
     asyncio.create_task(quote_rotator_task())
 
 @app.websocket("/ws")
+@app.websocket("/ws/keychain")
 async def websocket_endpoint(websocket: WebSocket, client: Optional[str] = None):
     client_ip = websocket.client.host if websocket.client else "Unknown"
     is_device = (client == "esp32")
