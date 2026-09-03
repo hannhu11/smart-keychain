@@ -223,6 +223,18 @@ void loop() {
       engine.nextSprite();
       btnManager.setState(STATE_ANIMATION);
       Serial.printf("[SERIAL] Next Theme -> ID: %d\n", engine.currentSpriteIdx + 1);
+    } else if (cmd.startsWith("#SET_SCALE ")) {
+      float sc = cmd.substring(11).toFloat();
+      engine.setSpriteScale(sc);
+    } else if (cmd.startsWith("#SET_FREEZE ")) {
+      bool frz = (cmd.substring(12).toInt() != 0);
+      engine.setFreezeText(frz);
+    } else if (cmd.startsWith("#SET_SPEED ")) {
+      uint32_t spd = cmd.substring(11).toInt();
+      engine.setTypewriterSpeed(spd);
+    } else if (cmd.startsWith("#SET_HOLD ")) {
+      uint32_t ht = cmd.substring(10).toInt();
+      engine.setHoldTime(ht);
     } else if (cmd == "#TEST_PIN") {
       for (int i = 0; i < 5; i++) {
         Serial.printf("[PIN_LOG] GPIO33=%d | GPIO0=%d | GPIO32=%d | GPIO35=%d\n",

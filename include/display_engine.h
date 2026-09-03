@@ -102,6 +102,18 @@ public:
   int currentFps = 60;
   unsigned long lastFpsTime = 0;
 
+  // Cấu hình Kích Thước & Tốc Độ Chữ Mới (V10 Master)
+  float currentSpriteScale = 1.4f;       // Mặc định: 140% Mũm mĩm to rõ (80% - 200%)
+  uint32_t currentTypewriterSpeed = 65;  // ms mỗi ký tự (20ms - 150ms)
+  uint32_t currentHoldTime = 4000;       // ms dừng đọc
+  bool isFreezeText = false;             // True = dừng lại khi gõ xong
+  bool autoQuoteCycle = true;            // Tự động đổi Quotes mỗi 2 phút
+  uint32_t quoteCycleInterval = 120;     // 120 giây
+  unsigned long lastQuoteCycleTime = 0;
+  unsigned long quoteStartTime = 0;
+  int currentEnQuoteIdx = 0;
+  LGFX_Sprite heroSprite;
+
   DisplayEngine() : sprite(&tft) {}
 
   void init() {
@@ -112,6 +124,12 @@ public:
     // Khởi tạo Canvas Framebuffer 172x320 16-bit RGB565
     sprite.setColorDepth(16);
     void* buffer = sprite.createSprite(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    // Khởi tạo Hero SubSprite 96x96 để Zoom 3D 80% - 200% siêu mượt
+    heroSprite.setPsram(false);
+    heroSprite.setColorDepth(16);
+    heroSprite.createSprite(96, 96);
+    heroSprite.setPivot(48, 48);
     if (!buffer) {
       Serial.println("[LỖI] Không đủ RAM tạo Framebuffer 172x320!");
     } else {
@@ -233,8 +251,78 @@ public:
     tft.setBrightness(currentBrightness);
   }
 
+  static const char* getMotivationalQuote(int idx) {
+    static const char* const QUOTES[30] = {
+      "Stay hungry, stay foolish.",
+      "The only way to do great work is to love what you do.",
+      "Believe you can and you're halfway there.",
+      "In the middle of difficulty lies opportunity.",
+      "Difficulties strengthen the mind, as labor does the body.",
+      "It always seems impossible until it is done.",
+      "Do what you can, with what you have, where you are.",
+      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "Turn your wounds into wisdom.",
+      "Dream big and dare to fail.",
+      "Act as if what you do makes a difference. It does.",
+      "Happiness depends upon ourselves.",
+      "Focus on being productive instead of busy.",
+      "Your time is limited, don't waste it living someone else's life.",
+      "Small daily improvements over time lead to stunning results.",
+      "Don't watch the clock; do what it does. Keep going.",
+      "Everything you've ever wanted is sitting on the other side of fear.",
+      "Hardships often prepare ordinary people for an extraordinary destiny.",
+      "You are never too old to set another goal or to dream a new dream.",
+      "Magic is believing in yourself. If you can make that happen, you can make anything happen.",
+      "Limit your always and your nevers.",
+      "Nothing is impossible. The word itself says 'I'm possible'!",
+      "The future belongs to those who believe in the beauty of their dreams.",
+      "You don't have to be great to start, but you have to start to be great.",
+      "Continuous effort, not strength or intelligence, is the key to unlocking our potential.",
+      "Rise above the storm and you will find the sunshine.",
+      "Fall seven times and stand up eight.",
+      "Doubt kills more dreams than failure ever will.",
+      "Be so good they can't ignore you.",
+      "The mind is everything. What you think you become."
+    };
+    return QUOTES[(idx >= 0 && idx < 30) ? idx : 0];
+  }
+
+  void setSpriteScale(float s) {
+    if (s >= 0.7f && s <= 2.2f) {
+      currentSpriteScale = s;
+      Serial.printf("[DISPLAY] Đã đặt tỷ lệ phóng đại nhân vật: %.2fx (%.0f%%)\n", s, s * 100.0f);
+    }
+  }
+
+  void setTypewriterSpeed(uint32_t spd) {
+    currentTypewriterSpeed = spd;
+    Serial.printf("[DISPLAY] Đã đặt tốc độ gõ chữ: %u ms/ký tự\n", spd);
+  }
+
+  void setHoldTime(uint32_t ht) {
+    currentHoldTime = ht;
+    Serial.printf("[DISPLAY] Đã đặt thời gian dừng đọc: %u ms\n", ht);
+  }
+
+  void setFreezeText(bool f) {
+    isFreezeText = f;
+    quoteStartTime = millis();
+    Serial.printf("[DISPLAY] Chế độ Dừng Chữ Sau Khi Gõ: %s\n", f ? "BẬT (FREEZE)" : "TẮT (LOOP)");
+  }
+
+  void setAutoQuoteCycle(bool a) {
+    autoQuoteCycle = a;
+    lastQuoteCycleTime = millis();
+    Serial.printf("[DISPLAY] Tự động đổi Quotes mỗi 2 phút: %s\n", a ? "BẬT" : "TẮT");
+  }
+
+  void setQuoteCycleInterval(uint32_t itv) {
+    quoteCycleInterval = (itv >= 10) ? itv : 120;
+  }
+
   void setCustomQuote(const String& q) {
     customQuote = q;
+    quoteStartTime = millis();
     needSavePrefs = true;
     savePrefsTimer = millis() + 3000;
   }
@@ -544,12 +632,25 @@ public:
       }
     }
 
-    // Tốc độ đánh máy: Chậm lại bằng 2/3 hiện tại (65ms/ký tự), dừng đọc 4000ms sau khi gõ xong
-    uint32_t charDelay = 65;
-    uint32_t holdTime = 4000;
-    uint32_t cycle = (totalChars * charDelay) + holdTime;
-    uint32_t progress = (cycle > 0) ? (millis() % cycle) : 0;
-    int visibleCount = (progress < (uint32_t)(totalChars * charDelay)) ? (int)(progress / charDelay) : totalChars;
+    // Tốc độ đánh máy và chế độ Dừng Chữ (Freeze Text)
+    uint32_t charDelay = currentTypewriterSpeed;
+    uint32_t holdTime = currentHoldTime;
+    int visibleCount = totalChars;
+
+    if (isFreezeText) {
+      // Dừng lại sau khi gõ xong: tính thời gian từ lúc bắt đầu câu
+      uint32_t elapsed = millis() - quoteStartTime;
+      if (charDelay == 0) {
+        visibleCount = totalChars;
+      } else {
+        int c = (int)(elapsed / charDelay);
+        visibleCount = (c < totalChars) ? c : totalChars;
+      }
+    } else {
+      uint32_t cycle = (totalChars * charDelay) + holdTime;
+      uint32_t progress = (cycle > 0) ? (millis() % cycle) : 0;
+      visibleCount = (charDelay == 0) ? totalChars : ((progress < (uint32_t)(totalChars * charDelay)) ? (int)(progress / charDelay) : totalChars);
+    }
 
     // Vẽ từng dòng chữ (Căn giữa mỗi dòng cân đối)
     int charsDrawn = 0;
@@ -668,17 +769,33 @@ public:
     int cx = SCREEN_WIDTH / 2; // 86
     int cy = (int)centerY;
 
-    // Bóng tiếp xúc chỉ vẽ khi nhân vật đứng đất (không vẽ cho kiếm thánh hoặc mưa cyber)
+    // Kiểm tra chu kỳ tự động đổi Quotes 2 phút
+    if (autoQuoteCycle && !isFreezeText) {
+      if (millis() - lastQuoteCycleTime >= (quoteCycleInterval * 1000UL)) {
+        lastQuoteCycleTime = millis();
+        currentEnQuoteIdx = (currentEnQuoteIdx + 1) % 30;
+        setCustomQuote(getMotivationalQuote(currentEnQuoteIdx));
+        Serial.printf("[AUTO-ROTATE 2-MIN QUOTE] %s\n", getMotivationalQuote(currentEnQuoteIdx));
+      }
+    }
+
+    // Bóng tiếp xúc chỉ vẽ khi nhân vật đứng đất (phóng to theo currentSpriteScale)
     if (currentSpriteIdx != 0 && currentSceneryId != 2) {
       float hover = -sinf(floatAngle); // > 0 khi bay cao
-      int rx = (int)(22.0f - hover * 5.0f);
-      int ry = (int)(5.0f - hover * 1.5f);
+      int rx = (int)((22.0f - hover * 5.0f) * currentSpriteScale);
+      int ry = (int)((5.0f - hover * 1.5f) * currentSpriteScale);
       uint16_t shadowCol = (hover > 0.1f) ? 0x0841 : 0x18C3;
       sprite.fillEllipse(cx, 202, rx, ry, shadowCol);
     }
 
-    // Vẽ Theme Animation 2.5D Volumetric Hero Scale
-    SpriteRenderer::drawTheme(&sprite, currentSpriteIdx, cx, cy, breath, floatAngle);
+    // Vẽ Theme Animation 2.5D Volumetric phóng to 80% - 200% qua SubSprite
+    if (fabsf(currentSpriteScale - 1.0f) < 0.05f) {
+      SpriteRenderer::drawTheme(&sprite, currentSpriteIdx, cx, cy, breath, floatAngle);
+    } else {
+      heroSprite.clear(0x0001); // Màu trong suốt Chroma Key
+      SpriteRenderer::drawTheme(&heroSprite, currentSpriteIdx, 48, 48, breath, floatAngle);
+      heroSprite.pushRotateZoom(&sprite, cx, cy, 0, currentSpriteScale, currentSpriteScale, 0x0001);
+    }
 
     // 5. LAYER 3: CHỮ NỔI Ở ĐỈNH (Y = 8 - 28) CÓ DẤU 100%
     renderTopTypography(&sprite);
@@ -695,3 +812,4 @@ extern DisplayEngine engine;
 inline DisplayEngine& DisplayEngine::getInstance() {
   return engine;
 }
+

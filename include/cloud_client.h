@@ -152,6 +152,35 @@ public:
       Serial.printf("[CLOUD REALTIME] >>> ĐỔI BỐI CẢNH SCENERY: %d <<<\n", sc);
       DisplayEngine::getInstance().setScenery(sc);
     }
+    if (data.containsKey("sprite_scale")) {
+      float sc = data["sprite_scale"].as<float>();
+      Serial.printf("[CLOUD REALTIME] >>> ĐỔI KÍCH THƯỚC SCALE: %.2f <<<\n", sc);
+      DisplayEngine::getInstance().setSpriteScale(sc);
+    }
+    if (data.containsKey("typewriter_speed")) {
+      uint32_t spd = data["typewriter_speed"].as<uint32_t>();
+      Serial.printf("[CLOUD REALTIME] >>> ĐỔI TỐC ĐỘ GÕ: %u ms <<<\n", spd);
+      DisplayEngine::getInstance().setTypewriterSpeed(spd);
+    }
+    if (data.containsKey("hold_time")) {
+      uint32_t ht = data["hold_time"].as<uint32_t>();
+      Serial.printf("[CLOUD REALTIME] >>> ĐỔI THỜI GIAN DỪNG: %u ms <<<\n", ht);
+      DisplayEngine::getInstance().setHoldTime(ht);
+    }
+    if (data.containsKey("freeze_text")) {
+      bool frz = data["freeze_text"].as<bool>();
+      Serial.printf("[CLOUD REALTIME] >>> CHẾ ĐỘ DỪNG CHỮ: %s <<<\n", frz ? "BẬT" : "TẮT");
+      DisplayEngine::getInstance().setFreezeText(frz);
+    }
+    if (data.containsKey("auto_quote_cycle")) {
+      bool aq = data["auto_quote_cycle"].as<bool>();
+      Serial.printf("[CLOUD REALTIME] >>> TỰ ĐỔI QUOTES 2 PHÚT: %s <<<\n", aq ? "BẬT" : "TẮT");
+      DisplayEngine::getInstance().setAutoQuoteCycle(aq);
+    }
+    if (data.containsKey("quote_cycle_interval")) {
+      uint32_t itv = data["quote_cycle_interval"].as<uint32_t>();
+      DisplayEngine::getInstance().setQuoteCycleInterval(itv);
+    }
   }
 
   void loop() {

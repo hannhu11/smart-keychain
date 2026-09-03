@@ -541,6 +541,148 @@
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       }
     }
+  
+    /* V10 LUXURY SETTINGS & CONFIRM BUTTON */
+    .btn-confirm-sync {
+      width: 100%;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #00f0ff 0%, #0099ff 100%);
+      color: #030712;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 13.5px;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(0, 240, 255, 0.25);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-confirm-sync:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 240, 255, 0.45);
+      background: linear-gradient(135deg, #38bdf8 0%, #00f0ff 100%);
+    }
+    .btn-confirm-sync:active {
+      transform: scale(0.98);
+    }
+    .btn-confirm-sync.pending-save {
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 25px rgba(245, 158, 11, 0.5);
+      animation: pulseSync 1.5s infinite alternate;
+    }
+    @keyframes pulseSync {
+      from { transform: scale(1.0); box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4); }
+      to { transform: scale(1.02); box-shadow: 0 6px 30px rgba(239, 68, 68, 0.7); }
+    }
+    .sync-status-tip {
+      font-size: 11px;
+      text-align: center;
+      margin-top: 8px;
+      color: var(--text-dim);
+      transition: color 0.3s;
+    }
+    .sync-status-tip.pending {
+      color: #f59e0b;
+      font-weight: 700;
+    }
+    .scale-preset-chips {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .scale-chip {
+      padding: 6px 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .scale-chip:hover {
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+    .scale-chip.active {
+      background: rgba(0, 240, 255, 0.25);
+      color: var(--cyan);
+      border-color: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    }
+    .quote-scroll-box {
+      max-height: 220px;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .quote-item-card {
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quote-item-card:hover {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: var(--cyan);
+    }
+    .quote-item-card.active {
+      background: rgba(0, 240, 255, 0.18);
+      border-color: var(--cyan);
+    }
+    .quote-item-text {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+    .quote-item-author {
+      font-size: 10px;
+      color: var(--cyan);
+      margin-top: 2px;
+      font-style: italic;
+    }
+    .seg-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .seg-switch-btn {
+      padding: 8px 10px;
+      background: none;
+      border: none;
+      border-radius: 8px;
+      color: var(--text-dim);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .seg-switch-btn.active {
+      background: rgba(0, 240, 255, 0.2);
+      color: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.25);
+    }
+
   </style>
 </head>
 <body>
@@ -581,6 +723,31 @@
       <div class="pod-telemetry">
         <span class="pod-title" id="podTitle">THẦN KIẾM TUYỆT PHẨM</span>
         <span class="pod-fps">60.0 FPS</span>
+      </div>
+
+      <!-- V10 QUICK SCALE SLIDER -->
+      <div class="control-group" style="margin-top: 10px; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;">
+        <div class="control-label" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+          <span>⚡ Kích Thước Nhân Vật:</span>
+          <span id="quickScaleVal" style="color:var(--cyan); font-weight:800; font-size:14px;">140%</span>
+        </div>
+        <input type="range" id="quickScaleSlider" min="80" max="200" step="5" value="140" class="luxury-slider" oninput="onScaleSliderChange(this.value)">
+        <div class="scale-preset-chips">
+          <button class="scale-chip" id="chipScale100" onclick="setScalePreset(100)">100%</button>
+          <button class="scale-chip active" id="chipScale140" onclick="setScalePreset(140)">140% ⭐</button>
+          <button class="scale-chip" id="chipScale175" onclick="setScalePreset(175)">175%</button>
+          <button class="scale-chip" id="chipScale200" onclick="setScalePreset(200)">200% 🔥</button>
+        </div>
+      </div>
+
+      <!-- V10 CONFIRM & SYNC ACTION BUTTON -->
+      <div style="margin-top: 10px;">
+        <button id="btnConfirmSyncLeft" class="btn-confirm-sync" onclick="confirmAndSyncToDevice()">
+          <span>💾</span> ÁP DỤNG LÊN MÓC KHÓA
+        </button>
+        <div id="syncStatusTipLeft" class="sync-status-tip">
+          ✅ Đã đồng bộ hoàn hảo với thiết bị
+        </div>
       </div>
 
       <!-- QUICK QUOTE TRANSMITTER -->
@@ -638,6 +805,110 @@
 
       <!-- VIEW PANEL 2: BỐI CẢNH 3D & THIẾT KẾ -->
       <div class="view-panel" id="panelDesign">
+
+        <!-- V10 CONFIRM & SYNC BANNER -->
+        <div class="settings-card" style="border: 1px solid rgba(0, 240, 255, 0.3); background: rgba(0, 240, 255, 0.04);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+              <div style="font-size:15px; font-weight:800; color:#fff;">⚙️ BẢNG ĐIỀU KHIỂN & ĐỒNG BỘ PHẦN CỨNG</div>
+              <div style="font-size:12px; color:var(--text-dim);">Chỉnh sửa xem trước trên Web Studio -> Bấm Lưu để nạp cấu hình sang ESP32</div>
+            </div>
+            <div style="min-width: 260px;">
+              <button id="btnConfirmSyncMain" class="btn-confirm-sync" onclick="confirmAndSyncToDevice()">
+                <span>💾</span> XÁC NHẬN & ĐỒNG BỘ NGAY
+              </button>
+              <div id="syncStatusTipMain" class="sync-status-tip">
+                ✅ Trạng thái: Đang đồng bộ
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTING 1: KÍCH THƯỚC NHÂN VẬT (80% - 200%) -->
+        <div class="settings-card">
+          <div class="card-heading">
+            <span>📐 Kích Thước Nhân Vật 3D Pop Mart (Scale 80% - 200%)</span>
+            <span id="settingScaleBadge" style="color:var(--cyan); font-weight:800; font-size:15px;">140%</span>
+          </div>
+          <div class="control-group">
+            <div class="control-label" style="display:flex; justify-content:space-between;">
+              <span>Kéo để tăng/giảm kích thước nhân vật:</span>
+              <span style="color:var(--text-dim);">Khuyên dùng: 140% - 200% để mũm mĩm, lấp đầy màn hình</span>
+            </div>
+            <input type="range" id="mainScaleSlider" min="80" max="200" step="5" value="140" class="luxury-slider" oninput="onScaleSliderChange(this.value)">
+            <div class="scale-preset-chips" style="margin-top:10px;">
+              <button class="scale-chip" id="mainChip100" onclick="setScalePreset(100)">Tiêu chuẩn (100%)</button>
+              <button class="scale-chip active" id="mainChip140" onclick="setScalePreset(140)">Mũm mĩm đáng yêu (140% ⭐)</button>
+              <button class="scale-chip" id="mainChip175" onclick="setScalePreset(175)">Cực đại Chibi (175%)</button>
+              <button class="scale-chip" id="mainChip200" onclick="setScalePreset(200)">Khổng lồ tràn viền (200% 🔥)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTING 2: QUOTES ĐỘNG LỰC TIẾNG ANH & TÙY CHỌN DỪNG CHỮ -->
+        <div class="settings-card">
+          <div class="card-heading">
+            <span>✨ Kho Danh Ngôn Tiếng Anh Động Lực (Curated 30 Quotes)</span>
+          </div>
+
+          <!-- CHẾ ĐỘ DỪNG CHỮ / LẶP CHỮ -->
+          <div class="control-group">
+            <div class="control-label">Chế Độ Hiển Thị Typewriter</div>
+            <div class="seg-switch">
+              <button id="btnLoopContinuous" class="seg-switch-btn active" onclick="setFreezeMode(false)">
+                🔄 Lặp lại tuần hoàn (Continuous)
+              </button>
+              <button id="btnLoopFreeze" class="seg-switch-btn" onclick="setFreezeMode(true)">
+                🛑 Dừng sau khi gõ xong (Freeze)
+              </button>
+            </div>
+            <div style="font-size:11px; color:var(--text-dim); margin-top:6px;">
+              * Chọn <b>Dừng sau khi gõ xong</b> nếu bạn muốn dòng chữ gõ xong sẽ đứng yên cố định trên màn hình, không gõ lại.
+            </div>
+          </div>
+
+          <!-- TỰ ĐỘNG ĐỔI QUOTES 2 PHÚT -->
+          <div class="control-group" style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.25); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#fff;">⏱️ Tự Động Đổi Quotes Mỗi 2 Phút (120s)</div>
+              <div style="font-size:11px; color:var(--text-dim);">Mỗi 2 phút tự động chuyển sang 1 câu danh ngôn ý nghĩa tiếp theo</div>
+            </div>
+            <label class="switch" style="position:relative; display:inline-block; width:44px; height:24px;">
+              <input type="checkbox" id="chkAutoQuote" checked onchange="onAutoQuoteToggle(this.checked)" style="opacity:0; width:0; height:0;">
+              <span class="slider round" style="position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#334155; transition:.4s; border-radius:24px;"></span>
+            </label>
+          </div>
+
+          <!-- TỐC ĐỘ GÕ CHỮ -->
+          <div class="control-group">
+            <div class="control-label" style="display:flex; justify-content:space-between;">
+              <span>Tốc Độ Gõ Chữ Typewriter:</span>
+              <span id="speedValBadge" style="color:var(--cyan); font-weight:800;">65ms/ký tự</span>
+            </div>
+            <input type="range" id="typewriterSpeedSlider" min="15" max="150" step="5" value="65" class="luxury-slider" oninput="onSpeedSliderChange(this.value)">
+            <div class="scale-preset-chips" style="margin-top:8px;">
+              <button class="scale-chip" onclick="setSpeedPreset(100)">Chậm (100ms)</button>
+              <button class="scale-chip active" onclick="setSpeedPreset(65)">Tự Nhiên (65ms ⭐)</button>
+              <button class="scale-chip" onclick="setSpeedPreset(35)">Nhanh (35ms)</button>
+              <button class="scale-chip" onclick="setSpeedPreset(0)">Tức Thì (0ms)</button>
+            </div>
+          </div>
+
+          <!-- THỜI GIAN DỪNG ĐỌC -->
+          <div class="control-group">
+            <div class="control-label" style="display:flex; justify-content:space-between;">
+              <span>Thời Gian Dừng Đọc Lời Chúc (Hold Time):</span>
+              <span id="holdValBadge" style="color:var(--cyan); font-weight:800;">4.0 giây</span>
+            </div>
+            <input type="range" id="holdTimeSlider" min="1500" max="10000" step="500" value="4000" class="luxury-slider" oninput="onHoldSliderChange(this.value)">
+          </div>
+
+          <!-- DANH SÁCH 30 QUOTES TIẾNG ANH CHỌN NHANH -->
+          <div class="control-group">
+            <div class="control-label">Chọn Trực Tiếp Từ Bộ Sưu Tập Quotes Động Lực:</div>
+            <div class="quote-scroll-box" id="motivationalQuotesList"></div>
+          </div>
+        </div>
         <div class="settings-card">
           <div class="card-heading">
             <span>🌍 9 Bối Cảnh Trái Đất & Không Gian 3D Quang Học Chân Thực</span>
@@ -2021,13 +2292,13 @@
         let ry = 5 - hover * 1.5;
         heroCtx.fillStyle = (hover > 0.1) ? 'rgba(8, 12, 20, 0.4)' : 'rgba(2, 4, 8, 0.85)';
         heroCtx.beginPath();
-        heroCtx.ellipse(86, 202, Math.max(12, rx), Math.max(3, ry), 0, 0, Math.PI * 2);
+        heroCtx.ellipse(86, 202, Math.max(12, rx * localSettings.spriteScale), Math.max(3, ry * localSettings.spriteScale), 0, 0, Math.PI * 2);
         heroCtx.fill();
       }
 
       // 4. LAYER 2: ANIMATION TRUNG TÂM
       let cy = (currentSpriteId === 0) ? (182 + Math.sin(time) * 4.0) : (160 + Math.sin(time) * 6.0);
-      renderSpecificAnimation(heroCtx, currentSpriteId, 86, cy, 1.0, time);
+      renderSpecificAnimation(heroCtx, currentSpriteId, 86, cy, localSettings.spriteScale, time);
 
       // 5. LAYER 3: TYPEWRITER ĐA HÀNG KHÔNG CHE KHUẤT
       let topText = currentQuote || (CATALOG[currentSpriteId] ? CATALOG[currentSpriteId].quote : 'Dù ở thế giới nào, anh vẫn luôn tìm thấy em.');
@@ -2055,11 +2326,23 @@
       if (curLine.length > 0 && lines.length < maxLines) lines.push(curLine);
 
       let totalChars = lines.reduce((acc, l) => acc + l.length, 0);
-      let charDelay = 65;
-      let holdTime = 4000;
-      let cycle = (totalChars * charDelay) + holdTime;
-      let progress = cycle > 0 ? (Date.now() % cycle) : 0;
-      let visibleCount = (progress < totalChars * charDelay) ? Math.floor(progress / charDelay) : totalChars;
+      let charDelay = localSettings.typewriterSpeed;
+      let holdTime = localSettings.holdTime;
+      let visibleCount = totalChars;
+
+      if (localSettings.freezeText) {
+        let elapsed = Date.now() - (window._quoteStartTime || Date.now());
+        if (charDelay === 0) {
+          visibleCount = totalChars;
+        } else {
+          let count = Math.floor(elapsed / charDelay);
+          visibleCount = (count < totalChars) ? count : totalChars;
+        }
+      } else {
+        let cycle = (totalChars * charDelay) + holdTime;
+        let progress = cycle > 0 ? (Date.now() % cycle) : 0;
+        visibleCount = (charDelay === 0) ? totalChars : ((progress < totalChars * charDelay) ? Math.floor(progress / charDelay) : totalChars);
+      }
 
       let charsDrawn = 0;
       for (let i = 0; i < lines.length; i++) {

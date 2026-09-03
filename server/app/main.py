@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 import json
+import time
+import asyncio
 from typing import List, Dict, Optional
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Form
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Form, Body
 from fastapi.responses import HTMLResponse, JSONResponse
 import uvicorn
 
@@ -18,15 +20,35 @@ try:
 except Exception:
     ANIMATIONS = []
 
+EN_QUOTES_PATH = os.path.join(os.path.dirname(__file__), "motivational_quotes_en.json")
+if not os.path.exists(EN_QUOTES_PATH):
+    EN_QUOTES_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "data", "motivational_quotes_en.json")
+
+try:
+    with open(EN_QUOTES_PATH, "r", encoding="utf-8") as f:
+        EN_QUOTES = json.load(f)
+except Exception:
+    EN_QUOTES = []
+
 state = {
-    "sprite_id": 12,        # Mặc định: Thần Kiếm Tuyệt Phẩm
+    "sprite_id": 1,
     "palette_id": 0,
     "brightness": 255,
-    "quote": "Dù ở thế giới nào, anh vẫn luôn tìm thấy em.",
+    "quote": "Stay hungry, stay foolish.",
     "text_color": "#FFFFFF",
     "text_size": 1,
-    "scenery_id": 5         # Mặc định: Quỹ Đạo Trái Đất 3D Siêu Chân Thực
+    "scenery_id": 2,
+    "qr_mode": False,
+    "sprite_scale": 1.4,          # 140% Mũm mĩm to rõ
+    "typewriter_speed": 65,       # ms mỗi ký tự
+    "hold_time": 4000,            # 4s dừng đọc
+    "freeze_text": False,         # True = Dừng sau khi gõ xong
+    "auto_quote_cycle": True,     # Bật tự động đổi quotes 2 phút
+    "quote_cycle_interval": 120,  # 120 giây = 2 phút
+    "quote_index": 0
 }
+
+state["_last_quote_time"] = time.time()
 
 class ConnectionManager:
     def __init__(self):
@@ -78,7 +100,7 @@ class ConnectionManager:
                 await ws.send_text(msg_str)
             except Exception:
                 pass
-        for ws in self.device_connections.keys():
+        for ws in self.device_connections:
             try:
                 await ws.send_text(msg_str)
             except Exception:
@@ -86,7 +108,25 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
-@app.websocket("/ws/keychain")
+async def quote_rotator_task():
+    while True:
+        await asyncio.sleep(2)
+        if state.get("auto_quote_cycle", True) and EN_QUOTES and not state.get("freeze_text", False):
+            now = time.time()
+            interval = state.get("quote_cycle_interval", 120)
+            if now - state.get("_last_quote_time", 0) >= interval:
+                state["_last_quote_time"] = now
+                next_idx = (state.get("quote_index", 0) + 1) % len(EN_QUOTES)
+                state["quote_index"] = next_idx
+                state["quote"] = EN_QUOTES[next_idx]["quote"]
+                print(f"[AUTO-ROTATE QUOTE 2-MIN] {state['quote']}")
+                await manager.broadcast({"type": "UPDATE", "data": state})
+
+@app.on_event("startup")
+async def startup_event():
+    asyncio.create_task(quote_rotator_task())
+
+@app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, client: Optional[str] = None):
     client_ip = websocket.client.host if websocket.client else "Unknown"
     is_device = (client == "esp32")
@@ -110,6 +150,17 @@ async def websocket_endpoint(websocket: WebSocket, client: Optional[str] = None)
                     await websocket.send_text(json.dumps({"type": "SYNC", "data": state}))
                     continue
 
+                if action == "SET_SETTINGS":
+                    payload_data = payload.get("data", {})
+                    for k in ["sprite_scale", "typewriter_speed", "hold_time", "freeze_text",
+                              "auto_quote_cycle", "quote_cycle_interval", "quote", "brightness",
+                              "text_color", "text_size", "scenery_id", "sprite_id"]:
+                        if k in payload_data:
+                            state[k] = payload_data[k]
+                    state["_last_quote_time"] = time.time()
+                    await manager.broadcast({"type": "UPDATE", "data": state})
+                    continue
+
                 if action == "SET_SPRITE":
                     state["sprite_id"] = payload.get("value", 0)
                     if 0 <= state["sprite_id"] < len(ANIMATIONS):
@@ -118,33 +169,22 @@ async def websocket_endpoint(websocket: WebSocket, client: Optional[str] = None)
                     state["palette_id"] = payload.get("value", 0)
                 elif action == "SET_BRIGHTNESS":
                     state["brightness"] = payload.get("value", 255)
-                elif action == "SET_QUOTE":
+                elif action == "SET_TEXT":
                     state["quote"] = payload.get("value", "")
-                elif action == "SET_DESIGN":
-                    if "sprite_id" in payload:
-                        state["sprite_id"] = int(payload["sprite_id"])
-                        if 0 <= state["sprite_id"] < len(ANIMATIONS):
-                            state["quote"] = ANIMATIONS[state["sprite_id"]]["quote"]
-                    if "text_color" in payload:
-                        state["text_color"] = str(payload["text_color"])
-                    if "text_size" in payload:
-                        state["text_size"] = int(payload["text_size"])
-                    if "scenery_id" in payload:
-                        state["scenery_id"] = int(payload["scenery_id"])
-                    if "quote" in payload:
-                        state["quote"] = str(payload["quote"])
-                    if "brightness" in payload:
-                        state["brightness"] = int(payload["brightness"])
-                    await manager.broadcast({"type": "UPDATE", "data": state})
-                    continue
-                elif action == "SET_QR":
-                    state["qr_mode"] = payload.get("value", True)
-                elif action == "PING":
-                    await websocket.send_text(json.dumps({"type": "PONG"}))
-                    continue
+                    state["freeze_text"] = False
+                    state["_last_quote_time"] = time.time()
+                elif action == "SET_TEXT_COLOR":
+                    state["text_color"] = payload.get("value", "#FFFFFF")
+                elif action == "SET_TEXT_SIZE":
+                    state["text_size"] = payload.get("value", 1)
+                elif action == "SET_SCENERY":
+                    state["scenery_id"] = payload.get("value", 0)
+                elif action == "TOGGLE_QR":
+                    state["qr_mode"] = not state.get("qr_mode", False)
 
                 await manager.broadcast({"type": "UPDATE", "data": state})
-            except Exception:
+
+            except json.JSONDecodeError:
                 pass
     except WebSocketDisconnect:
         manager.disconnect(websocket)
@@ -163,9 +203,24 @@ def get_presence():
 async def get_catalog():
     return JSONResponse(ANIMATIONS)
 
+@app.get("/api/quotes_en")
+async def get_quotes_en():
+    return JSONResponse(EN_QUOTES)
+
 @app.get("/api/state")
 async def get_state():
     return JSONResponse(state)
+
+@app.post("/api/settings")
+async def api_save_settings(payload: dict = Body(...)):
+    for k in ["sprite_scale", "typewriter_speed", "hold_time", "freeze_text",
+              "auto_quote_cycle", "quote_cycle_interval", "quote", "brightness",
+              "text_color", "text_size", "scenery_id", "sprite_id"]:
+        if k in payload:
+            state[k] = payload[k]
+    state["_last_quote_time"] = time.time()
+    await manager.broadcast({"type": "UPDATE", "data": state})
+    return {"status": "ok", "data": state}
 
 @app.post("/api/sprite")
 async def set_sprite(id: int = Form(...)):
@@ -175,35 +230,6 @@ async def set_sprite(id: int = Form(...)):
     await manager.broadcast({"type": "UPDATE", "data": state})
     return {"status": "ok", "sprite_id": id}
 
-@app.post("/api/palette")
-async def set_palette(id: int = Form(...)):
-    state["palette_id"] = id
-    await manager.broadcast({"type": "UPDATE", "data": state})
-    return {"status": "ok", "palette_id": id}
-
-@app.post("/api/brightness")
-async def set_brightness(value: int = Form(...)):
-    state["brightness"] = value
-    await manager.broadcast({"type": "UPDATE", "data": state})
-    return {"status": "ok", "brightness": value}
-
-@app.post("/api/quote")
-async def set_quote(text: str = Form(...)):
-    state["quote"] = text
-    await manager.broadcast({"type": "UPDATE", "data": state})
-    return {"status": "ok", "quote": text}
-
-@app.post("/api/qr")
-async def trigger_qr(qr: Optional[str] = Form(None)):
-    if qr == "false":
-        state["qr_mode"] = False
-    elif qr == "true":
-        state["qr_mode"] = True
-    else:
-        state["qr_mode"] = not state.get("qr_mode", False)
-    await manager.broadcast({"type": "UPDATE", "data": state})
-    return {"status": "ok", "qr_mode": state["qr_mode"]}
-
 @app.post("/api/design")
 async def api_design(
     quote: Optional[str] = Form(None),
@@ -211,7 +237,12 @@ async def api_design(
     text_size: Optional[int] = Form(None),
     scenery_id: Optional[int] = Form(None),
     sprite_id: Optional[int] = Form(None),
-    brightness: Optional[int] = Form(None)
+    brightness: Optional[int] = Form(None),
+    sprite_scale: Optional[float] = Form(None),
+    typewriter_speed: Optional[int] = Form(None),
+    hold_time: Optional[int] = Form(None),
+    freeze_text: Optional[bool] = Form(None),
+    auto_quote_cycle: Optional[bool] = Form(None)
 ):
     if quote is not None: state["quote"] = quote
     if text_color is not None: state["text_color"] = text_color
@@ -219,6 +250,11 @@ async def api_design(
     if scenery_id is not None: state["scenery_id"] = scenery_id
     if sprite_id is not None: state["sprite_id"] = sprite_id
     if brightness is not None: state["brightness"] = brightness
+    if sprite_scale is not None: state["sprite_scale"] = sprite_scale
+    if typewriter_speed is not None: state["typewriter_speed"] = typewriter_speed
+    if hold_time is not None: state["hold_time"] = hold_time
+    if freeze_text is not None: state["freeze_text"] = freeze_text
+    if auto_quote_cycle is not None: state["auto_quote_cycle"] = auto_quote_cycle
     await manager.broadcast({"type": "UPDATE", "data": state})
     return {"status": "ok", "data": state}
 
@@ -228,8 +264,9 @@ async def serve_index():
     with open(index_path, "r", encoding="utf-8") as f:
         html_data = f.read()
     catalog_json = json.dumps(ANIMATIONS, ensure_ascii=False)
+    en_quotes_json = json.dumps(EN_QUOTES, ensure_ascii=False)
     return HTMLResponse(
-        html_data.replace("__CATALOG_JSON__", catalog_json),
+        html_data.replace("__CATALOG_JSON__", catalog_json).replace("__EN_QUOTES_JSON__", en_quotes_json),
         headers={"Cache-Control": "no-cache, no-store, must-revalidate", "Pragma": "no-cache", "Expires": "0"}
     )
 
