@@ -1,0 +1,7 @@
+services:
+  keychain-api:
+    build: .
+    container_name: keychain_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"

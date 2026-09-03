@@ -1,0 +1,48 @@
+# PlatformIO & Build artifacts
+.pio/
+.pioenvs/
+.piolibdeps/
+*.elf
+*.bin
+*.hex
+*.o
+*.a
+*.d
+
+# Python & Virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets & Private Keys (STRICT SECURITY RULE)
+*.key
+*.pem
+*.pub
+*.pfx
+*.p12
+*.crt
+id_rsa*
+id_ed25519*
+ssh-key*
+.env
+.env.*
+*secret*
+*credential*
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Screen capture dumps & temp files
+tools/screen_dump.png
+tools/test_*.png
+tools/*.tmp
+tools/__pycache__/

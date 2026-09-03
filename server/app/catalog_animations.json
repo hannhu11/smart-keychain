@@ -1,0 +1,502 @@
+[
+  {
+    "id": 0,
+    "name": "Hu Tao & Boo Tao",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "ghost",
+    "palette": "Amber Gold",
+    "quote": "Dù ở thế giới nào, anh vẫn luôn tìm thấy em.",
+    "shader": "Aura Shimmer & Ghost Float"
+  },
+  {
+    "id": 1,
+    "name": "Anya Forger",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "sparkles",
+    "palette": "Pastel Pink",
+    "quote": "Anya thích đậu phộng, và thích ở bên em!",
+    "shader": "Star Blink & Waku Waku Aura"
+  },
+  {
+    "id": 2,
+    "name": "Raiden Shogun",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "zap",
+    "palette": "Astral Purple",
+    "quote": "Tia sét vĩnh cửu soi sáng lối em đi.",
+    "shader": "Electro Lightning Arc"
+  },
+  {
+    "id": 3,
+    "name": "Furina Fontaine",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "droplet",
+    "palette": "Cyan Magic",
+    "quote": "Sân khấu này chỉ dành riêng cho hai ta.",
+    "shader": "Hydro Bubble Salon"
+  },
+  {
+    "id": 4,
+    "name": "Nahida Dendro",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "flower",
+    "palette": "Matrix Green",
+    "quote": "Tri thức vũ trụ không bằng nụ cười của em.",
+    "shader": "Sanctuary Lotus Float"
+  },
+  {
+    "id": 5,
+    "name": "Xiao Vigilant Yaksha",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "wind",
+    "palette": "Emerald Anemo",
+    "quote": "Chỉ cần gọi tên anh, anh sẽ đến bên em.",
+    "shader": "Yaksha Mask Anemo Vortex"
+  },
+  {
+    "id": 6,
+    "name": "Gojo Satoru",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "eye",
+    "palette": "Cyan Magic",
+    "quote": "Anh là kẻ mạnh nhất, nhưng luôn yếu lòng trước em.",
+    "shader": "Limitless Blue & Red Orbs"
+  },
+  {
+    "id": 7,
+    "name": "Nezuko Kamado",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "flame",
+    "palette": "Ruby Pink",
+    "quote": "Huyết quỷ thuật nở rộ bảo vệ người anh yêu.",
+    "shader": "Pink Flame Petals"
+  },
+  {
+    "id": 8,
+    "name": "Tanjiro Sun Breathing",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "sun",
+    "palette": "Solar Flame",
+    "quote": "Ngọn lửa mặt trời sưởi ấm trái tim em.",
+    "shader": "Hinokami Kagura Solar Flare"
+  },
+  {
+    "id": 9,
+    "name": "Roronoa Zoro",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "sword",
+    "palette": "Matrix Green",
+    "quote": "Lạc đường ở đâu cũng sẽ tìm về bên em.",
+    "shader": "Triple Blade Dragon Aura"
+  },
+  {
+    "id": 10,
+    "name": "Luffy Gear 5 Nika",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "cloud",
+    "palette": "Pure Diamond",
+    "quote": "Tự do lớn nhất của anh là yêu em mỗi ngày.",
+    "shader": "Sun God Nika Cloud Rings"
+  },
+  {
+    "id": 11,
+    "name": "Naruto Sage Mode",
+    "category": "Anime & Genshin",
+    "tab": "anime",
+    "icon_type": "circle-dot",
+    "palette": "Amber Gold",
+    "quote": "Đó là nhẫn đạo và lời hứa cả đời của anh.",
+    "shader": "Rasengan Swirl & Sage Aura"
+  },
+  {
+    "id": 12,
+    "name": "Thanh Kiếm Thánh Excalibur",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "sword",
+    "palette": "Golden Holy",
+    "quote": "Thanh kiếm ánh sáng thề bảo vệ em trọn đời.",
+    "shader": "Holy Light Radiance Beam"
+  },
+  {
+    "id": 13,
+    "name": "Huyết Kiếm Muramasa",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "sword",
+    "palette": "Ruby Pink",
+    "quote": "Lưỡi gươm sắc bén cắt đứt mọi âu lo.",
+    "shader": "Crimson Blood Slash Orbit"
+  },
+  {
+    "id": 14,
+    "name": "Cyberpunk Thermal Katana",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "flame",
+    "palette": "Cyan Magic",
+    "quote": "Thành phố Night City rực sáng cùng tình yêu ta.",
+    "shader": "Neon Heated Edge Drift"
+  },
+  {
+    "id": 15,
+    "name": "Pháo Năng Lượng Plasma",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "zap",
+    "palette": "Cyan Magic",
+    "quote": "Năng lượng vô tận nạp đầy niềm vui cho em.",
+    "shader": "Energy Charge Rings"
+  },
+  {
+    "id": 16,
+    "name": "Băng Kiếm Frostmourne",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "snowflake",
+    "palette": "Glacial Blue",
+    "quote": "Băng giá vĩnh cửu giữ chặt kỷ niệm hai đứa.",
+    "shader": "Runic Frost Fog & Shards"
+  },
+  {
+    "id": 17,
+    "name": "Búa Sấm Sét Mjolnir",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "hammer",
+    "palette": "Thunder Neon",
+    "quote": "Sức mạnh thần thánh chỉ dành riêng cho em.",
+    "shader": "Electric Thunder Shockwave"
+  },
+  {
+    "id": 18,
+    "name": "Kiếm Bóng Đêm Darksaber",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "moon",
+    "palette": "Obsidian Glow",
+    "quote": "Ngay cả trong bóng tối, anh vẫn tìm thấy em.",
+    "shader": "White Corona Edge Wave"
+  },
+  {
+    "id": 19,
+    "name": "Song Đao Năng Lượng",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "crosshair",
+    "palette": "Cyan Magic",
+    "quote": "Tốc độ ánh sáng đuổi theo từng nhịp tim em.",
+    "shader": "Spinning Cross Flares"
+  },
+  {
+    "id": 20,
+    "name": "Lưỡi Hái Tử Thần Reaper",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "moon",
+    "palette": "Astral Purple",
+    "quote": "Gom hết những vì sao đẹp nhất tặng em.",
+    "shader": "Soul Wisps Flame"
+  },
+  {
+    "id": 21,
+    "name": "Laser Railgun Sniper",
+    "category": "Vũ Khí & Cyberpunk",
+    "tab": "weapons",
+    "icon_type": "target",
+    "palette": "Ruby Pink",
+    "quote": "Mục tiêu duy nhất của cuộc đời anh là em.",
+    "shader": "Precision Scope HUD Grid"
+  },
+  {
+    "id": 22,
+    "name": "Trái Tim Pha Lê Diamond",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "heart",
+    "palette": "Ruby Pink",
+    "quote": "Trái tim này luôn đập cùng một tần số với em.",
+    "shader": "Faceted Diamond Refraction"
+  },
+  {
+    "id": 23,
+    "name": "Song Tâm Lồng Nhau",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "heart",
+    "palette": "Pastel Pink",
+    "quote": "Hai trái tim hòa chung một nhịp đập.",
+    "shader": "Dual Heart Orbit Sparkles"
+  },
+  {
+    "id": 24,
+    "name": "Nhịp Tim Điện Tâm Đồ ECG",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "activity",
+    "palette": "Ruby Pink",
+    "quote": "Mỗi nhịp đập trên màn hình đều thuộc về em.",
+    "shader": "ECG Waveform Pulse"
+  },
+  {
+    "id": 25,
+    "name": "Thư Tình Có Cánh",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "mail",
+    "palette": "Golden Holy",
+    "quote": "Bức thư tình này anh viết riêng cho em.",
+    "shader": "Wing Flap & Wax Seal Shine"
+  },
+  {
+    "id": 26,
+    "name": "Biểu Tượng Vô Cực Infinity",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "infinity",
+    "palette": "Cyan Magic",
+    "quote": "Tình yêu của anh dành cho em là vô cực.",
+    "shader": "Flowing Light Particle Loop"
+  },
+  {
+    "id": 27,
+    "name": "Hoa Hồng Pha Lê",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "flower",
+    "palette": "Ruby Pink",
+    "quote": "Bông hồng vĩnh cửu không bao giờ tàn phai.",
+    "shader": "Blooming Petal Dew Drop"
+  },
+  {
+    "id": 28,
+    "name": "Mũi Tên Thần Cupid",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "navigation",
+    "palette": "Golden Holy",
+    "quote": "Mũi tên thần ái tình đã bắn trúng tim anh.",
+    "shader": "Star Trail Heart Pierce"
+  },
+  {
+    "id": 29,
+    "name": "Chòm Sao Đôi Tình Nhân",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "stars",
+    "palette": "Astral Purple",
+    "quote": "Nối từng vì sao thành tên của em trên bầu trời.",
+    "shader": "Connected Constellation Glow"
+  },
+  {
+    "id": 30,
+    "name": "Đống Lửa Trại Ấm Áp",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "flame",
+    "palette": "Solar Flame",
+    "quote": "Ngồi bên em ngắm đốm lửa ấm áp bập bùng.",
+    "shader": "Dancing Pixel Embers"
+  },
+  {
+    "id": 31,
+    "name": "Bình Thuốc Tình Yêu Magic",
+    "category": "Tình Yêu & Bling",
+    "tab": "love",
+    "icon_type": "flask",
+    "palette": "Pastel Pink",
+    "quote": "Liều thuốc ma thuật làm anh say đắm em.",
+    "shader": "Bubbling Floating Heart Flask"
+  },
+  {
+    "id": 32,
+    "name": "Gấu Trúc Đỏ Cyber Red Panda",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "shield",
+    "palette": "Amber Gold",
+    "quote": "Cái đuôi bông xù ôm trọn giấc ngủ của em.",
+    "shader": "Wagging Bushy Tail & Blink"
+  },
+  {
+    "id": 33,
+    "name": "Mèo Vũ Trụ Space Cat Astronaut",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "cat",
+    "palette": "Cyan Magic",
+    "quote": "Giữa dải ngân hà, em là điều kỳ diệu nhất.",
+    "shader": "Glass Visor Glint & Floating Bob"
+  },
+  {
+    "id": 34,
+    "name": "Cún Cyber Shiba Inu",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "dog",
+    "palette": "Amber Gold",
+    "quote": "Gâu gâu! Cả ngày quấn quýt bên em không rời.",
+    "shader": "Curled Tail Wag & Neon Visor"
+  },
+  {
+    "id": 35,
+    "name": "Thỏ Cyber Bunny",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "moon",
+    "palette": "Pastel Pink",
+    "quote": "Tai thỏ vẫy chào mang niềm vui đến cho em.",
+    "shader": "Ear Twitch & Ruby Eye Sparkle"
+  },
+  {
+    "id": 36,
+    "name": "Chuột Hamster Explorer",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "globe",
+    "palette": "Amber Gold",
+    "quote": "Má phúng phính gom hết yêu thương tặng em.",
+    "shader": "Chubby Cheek Star Nibble"
+  },
+  {
+    "id": 37,
+    "name": "Cáo Say Giấc Sleeping Fox",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "star",
+    "palette": "Solar Flame",
+    "quote": "Ngủ ngon nhé cô bé đáng yêu của anh.",
+    "shader": "Curled Fluffy Tail & Star Dust"
+  },
+  {
+    "id": 38,
+    "name": "Rồng Con Thở Lửa Cyber Dragon",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "flame",
+    "palette": "Matrix Green",
+    "quote": "Rồng con bảo vệ em khỏi mọi điều xấu xa.",
+    "shader": "Flapping Wings & Plasma Puff"
+  },
+  {
+    "id": 39,
+    "name": "Phượng Hoàng Rebirth Phoenix",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "flame",
+    "palette": "Solar Flame",
+    "quote": "Ngọn lửa hồi sinh sưởi ấm mọi ước mơ.",
+    "shader": "Radiant Flame Wings & Plumage"
+  },
+  {
+    "id": 40,
+    "name": "Chim Cánh Cụt Cyber Penguin",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "snowflake",
+    "palette": "Cyan Magic",
+    "quote": "Lạch bạch bước đi chỉ để ôm lấy em.",
+    "shader": "Flipper Flap & Cyber Waddle"
+  },
+  {
+    "id": 41,
+    "name": "Kỳ Nhông Axolotl Glow",
+    "category": "Thú Cưng Vũ Trụ",
+    "tab": "pets",
+    "icon_type": "heart",
+    "palette": "Pastel Pink",
+    "quote": "Nụ cười ngọt ngào xua tan mọi mệt mỏi.",
+    "shader": "Frilly Gills Undulation & Bubbles"
+  },
+  {
+    "id": 42,
+    "name": "Lò Phản Ứng Arc Reactor",
+    "category": "Game & Sci-Fi HUD",
+    "tab": "retro",
+    "icon_type": "cpu",
+    "palette": "Cyan Magic",
+    "quote": "I love you 3000! Trái tim công nghệ bất diệt.",
+    "shader": "Tri-Core Spinning Plasma"
+  },
+  {
+    "id": 43,
+    "name": "Cyberpunk Radar HUD",
+    "category": "Game & Sci-Fi HUD",
+    "tab": "retro",
+    "icon_type": "compass",
+    "palette": "Matrix Green",
+    "quote": "Radar quét 360 độ chỉ khóa chặt một mình em.",
+    "shader": "Radar Sweep & Target Lock"
+  },
+  {
+    "id": 44,
+    "name": "Máy Game Boy Cổ Điển",
+    "category": "Game & Sci-Fi HUD",
+    "tab": "retro",
+    "icon_type": "gamepad",
+    "palette": "Matrix Green",
+    "quote": "Em là trò chơi thú vị nhất anh muốn chơi cả đời.",
+    "shader": "Dot Matrix Screen Scroll"
+  },
+  {
+    "id": 45,
+    "name": "Bình Máu Pixel 8-Bit Zelda",
+    "category": "Game & Sci-Fi HUD",
+    "tab": "retro",
+    "icon_type": "heart",
+    "palette": "Ruby Pink",
+    "quote": "Ở bên em, thanh máu cuộc đời luôn đầy 100%.",
+    "shader": "8-Bit Health Bar Pulse"
+  },
+  {
+    "id": 46,
+    "name": "Băng Cát-sét Synthwave",
+    "category": "Game & Sci-Fi HUD",
+    "tab": "retro",
+    "icon_type": "disc",
+    "palette": "Ruby Pink",
+    "quote": "Phát đi phát lại bản tình ca dành riêng cho em.",
+    "shader": "Spinning Reels & Neon Grid"
+  },
+  {
+    "id": 47,
+    "name": "Đầu Lâu Glitch Hologram",
+    "category": "Game & Sci-Fi HUD",
+    "tab": "retro",
+    "icon_type": "code",
+    "palette": "Cyan Magic",
+    "quote": "Hệ thống lỗi nhịp mỗi khi anh nhìn thấy em.",
+    "shader": "Digital Hologram Breakdown"
+  },
+  {
+    "id": 48,
+    "name": "Cơn Mưa Ký Tự Matrix Code",
+    "category": "Game & Sci-Fi HUD",
+    "tab": "retro",
+    "icon_type": "terminal",
+    "palette": "Matrix Green",
+    "quote": "Hàng triệu dòng code cũng không giải mã hết tình yêu.",
+    "shader": "Glyph Rain Waterfall"
+  },
+  {
+    "id": 49,
+    "name": "Lõi Lượng Tử Quantum Core",
+    "category": "Game & Sci-Fi HUD",
+    "tab": "retro",
+    "icon_type": "layers",
+    "palette": "Astral Purple",
+    "quote": "Sự vướng víu lượng tử giữ hai ta luôn gần nhau.",
+    "shader": "Multi-Axis Gyro Rings Plasma"
+  }
+]
