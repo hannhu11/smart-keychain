@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Smart Keychain — 250 Master Animations Studio</title>
+  <style>
+    :root {
+      --bg: #03050a;
+      --bg-surface: #080c14;
+      --bg-card: #0d121f;
+      --bg-card-hover: #141b2d;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-active: #00f0ff;
+      --cyan: #00f0ff;
+      --cyan-glow: rgba(0, 240, 255, 0.35);
+      --pink: #ff0055;
+      --gold: #f5c842;
+      --green: #00ff88;
+      --purple: #a855f7;
+      --text-1: #ffffff;
+      --text-2: #94a3b8;
+      --text-muted: #64748b;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-1);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* TOP NAVBAR */
+    .top-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: rgba(8, 12, 20, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #00f0ff, #3b82f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #000;
+      font-size: 15px;
+      box-shadow: 0 0 16px var(--cyan-glow);
+    }
+    .brand-title {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.25);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--green);
+    }
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 1.6s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    /* NAVIGATION MODE BAR (APPLE-GRADE SEGMENTED CONTROL) */
+    .nav-tabs-wrapper {
+      max-width: 1400px;
+      margin: 16px auto 0;
+      padding: 0 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .segmented-control {
+      display: flex;
+      background: #090e18;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 4px;
+      gap: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .seg-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-2);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+    .seg-btn:hover { color: #fff; }
+    .seg-btn.active {
+      background: #151c2d;
+      color: var(--cyan);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(0, 240, 255, 0.3);
+    }
+
+    /* STUDIO LAYOUT */
+    .studio-layout {
+      max-width: 1400px;
+      margin: 20px auto 60px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* LEFT POD: HARDWARE SIMULATOR */
+    .left-pod {
+      position: sticky;
+      top: 80px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    }
+    .bezel-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .device-bezel {
+      width: 196px;
+      height: 348px;
+      background: #000;
+      border: 3px solid #1a2233;
+      border-radius: 28px;
+      padding: 11px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.06);
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .device-bezel:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 24px rgba(0,240,255,0.3);
+    }
+    .device-bezel:active { transform: scale(0.98); }
+    .screen-canvas {
+      width: 172px;
+      height: 320px;
+      border-radius: 18px;
+      background: #000;
+      display: block;
+    }
+    .bezel-hint {
+      font-size: 10.5px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .pod-telemetry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.025);
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .pod-title { color: var(--cyan); font-weight: 800; }
+    .pod-fps { color: var(--green); font-weight: 700; }
+
+    /* RIGHT POD: MULTI-VIEW PANELS */
+    .right-pod {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .view-panel {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .view-panel.active-panel {
+      display: flex;
+    }
+
+    /* DESIGN STUDIO SETTINGS CARD */
+    .settings-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .card-heading {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .control-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-2);
+      font-family: var(--font-mono);
+    }
+
+    /* SCENERY & PALETTE GRIDS */
+    .scenery-grid-3x3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+    .scenery-btn {
+      background: #0d121f;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: left;
+    }
+    .scenery-btn:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: #141b2d;
+      transform: translateY(-2px);
+    }
+    .scenery-btn.active {
+      border-color: var(--cyan);
+      background: rgba(0, 240, 255, 0.12);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.25);
+    }
+    .scenery-btn-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .scenery-btn-desc {
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+
+    .gem-palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px;
+    }
+    .gem-btn {
+      background: #0d121f;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .gem-btn:hover { border-color: rgba(255,255,255,0.3); }
+    .gem-btn.active {
+      border-color: var(--cyan);
+      background: rgba(0, 240, 255, 0.12);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+    }
+    .gem-circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* QUICK MESSAGE BOX */
+    .msg-box {
+      display: flex;
+      gap: 10px;
+    }
+    .msg-input {
+      flex: 1;
+      background: #050811;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    .msg-input:focus { border-color: var(--cyan); }
+    .send-action-btn {
+      background: var(--cyan);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      padding: 0 22px;
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: transform 0.1s ease, opacity 0.1s ease;
+      white-space: nowrap;
+    }
+    .send-action-btn:hover { opacity: 0.92; }
+    .send-action-btn:active { transform: scale(0.97); }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .love-chip {
+      background: #0f1422;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .love-chip:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 240, 255, 0.08);
+      color: var(--cyan);
+      transform: translateY(-1px);
+    }
+    .love-chip:active { transform: scale(0.96); }
+
+    /* 250 ANIMATIONS GALLERY */
+    .gallery-filter-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .cat-pill {
+      background: #0a0e18;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 8px 16px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-2);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .cat-pill:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+    .cat-pill.active {
+      background: #141b2c;
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+    .cat-badge {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      margin-left: 6px;
+    }
+
+    .gallery-search {
+      background: #050811;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: #fff;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.15s ease;
+    }
+    .gallery-search:focus { border-color: var(--cyan); }
+
+    .master-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 14px;
+    }
+    .card-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+    .card-item:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+    }
+    .card-item.active-card {
+      border-color: var(--cyan);
+      background: rgba(0, 240, 255, 0.08);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.28);
+    }
+    .card-active-tag {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--cyan);
+      color: #000;
+      font-size: 8.5px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 5px;
+      letter-spacing: 0.5px;
+      display: none;
+    }
+    .card-item.active-card .card-active-tag { display: block; }
+    .preview-canvas {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      background: #000;
+    }
+    .card-name {
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+      line-height: 1.35;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .card-tag {
+      font-size: 9.5px;
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* TOAST */
+    .toast-pill {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      transform: translateY(100px);
+      background: var(--cyan);
+      color: #000;
+      font-weight: 800;
+      font-size: 12.5px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      box-shadow: 0 10px 30px var(--cyan-glow);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 200;
+      letter-spacing: 0.5px;
+    }
+    .toast-pill.visible { transform: translateY(0); }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 1080px) {
+      .studio-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .left-pod {
+        position: relative;
+        top: 0;
+        align-items: center;
+      }
+      .master-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVBAR -->
+  <div class="top-navbar">
+    <div class="brand-group">
+      <div class="brand-logo">K</div>
+      <div class="brand-title">SMART KEYCHAIN STUDIO</div>
+    </div>
+    <div class="status-pill">
+      <span class="pulse-dot"></span>
+      <span id="telemetryText">CLOUD SYNC &bull; 250 TÁC PHẨM SẴN SÀNG</span>
+    </div>
+  </div>
+
+  <!-- SEGMENTED NAVIGATION TABS -->
+  <div class="nav-tabs-wrapper">
+    <div class="segmented-control">
+      <button class="seg-btn active" onclick="switchMainTab('simulator', this)">📱 Màn Hình Live</button>
+      <button class="seg-btn" onclick="switchMainTab('gallery', this)">🎨 Kho 250 Tác Phẩm</button>
+      <button class="seg-btn" onclick="switchMainTab('design', this)">⚙️ Bối Cảnh 3D & Màu Sắc</button>
+    </div>
+  </div>
+
+  <!-- STUDIO MAIN CONTAINER -->
+  <div class="studio-layout">
+
+    <!-- LEFT POD: STICKY SIMULATOR -->
+    <div class="left-pod" id="leftSimulatorPod">
+      <div class="bezel-container">
+        <div class="device-bezel" onclick="triggerNextThemeClick()" title="Nhấp để đổi sang Theme kế tiếp (Giống thao tác nút bấm thật)">
+          <canvas id="heroCanvas" class="screen-canvas" width="172" height="320"></canvas>
+        </div>
+        <div class="bezel-hint">CHẠM VÀO MÀN HÌNH ĐỂ ĐỔI THEME</div>
+      </div>
+
+      <div class="pod-telemetry">
+        <span class="pod-title" id="podTitle">THẦN KIẾM TUYỆT PHẨM</span>
+        <span class="pod-fps">60.0 FPS</span>
+      </div>
+
+      <!-- QUICK QUOTE TRANSMITTER -->
+      <div class="control-group">
+        <div class="control-label">Gửi Lời Nhắn Lên Móc Khóa</div>
+        <div class="msg-box">
+          <input type="text" class="msg-input" id="quickQuoteInput" placeholder="Nhập lời chúc hoặc kỷ niệm ngọt ngào..." maxlength="80">
+          <button class="send-action-btn" onclick="sendCustomQuoteFromInput()">GỬI</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">1-Chạm Gửi Lời Yêu Thương</div>
+        <div class="chips-row">
+          <div class="love-chip" onclick="sendQuickChip('Anh yêu em ❤️')">Anh yêu em ❤️</div>
+          <div class="love-chip" onclick="sendQuickChip('I love you 3000 ✨')">I love you 3000 ✨</div>
+          <div class="love-chip" onclick="sendQuickChip('Nhớ em nhiều 🌙')">Nhớ em nhiều 🌙</div>
+          <div class="love-chip" onclick="sendQuickChip('Dù ở thế giới nào, anh vẫn tìm thấy em 🌌')">Dù ở thế giới nào, anh vẫn tìm thấy em 🌌</div>
+        </div>
+      </div>
+
+      <!-- REMOTE QR ACTION -->
+      <div class="control-group">
+        <button class="send-action-btn" style="width:100%; padding:12px; background:rgba(0,240,255,0.1); border:1px solid var(--cyan); color:var(--cyan);" onclick="triggerRemoteQR()">
+          📱 BẬT / TẮT MÃ QR CẤU HÌNH (TRIPLE-CLICK)
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT POD: MULTI-VIEW PANELS -->
+    <div class="right-pod">
+
+      <!-- VIEW PANEL 1: KHO 250 ANIMATIONS -->
+      <div class="view-panel" id="panelGallery">
+        <div class="settings-card">
+          <div class="card-heading">
+            <span>🎨 Kho 250 Animations & Tác Phẩm Master</span>
+          </div>
+
+          <div class="gallery-filter-bar">
+            <div class="category-pills">
+              <button class="cat-pill active" onclick="filterCategory('all', this)">Tất Cả <span class="cat-badge">250</span></button>
+              <button class="cat-pill" onclick="filterCategory('Thánh Khí & Vũ Khí Thần Thoại', this)">🗡️ Thánh Khí <span class="cat-badge">50</span></button>
+              <button class="cat-pill" onclick="filterCategory('Cơ Giáp Cyber & Không Gian', this)">🚀 Cơ Giáp <span class="cat-badge">50</span></button>
+              <button class="cat-pill" onclick="filterCategory('Thú Cưng Pixel & Anime Kawaii', this)">🐾 Thú Cưng <span class="cat-badge">50</span></button>
+              <button class="cat-pill" onclick="filterCategory('Bối Cảnh Trái Đất & Thiên Văn 3D', this)">🌍 Trái Đất 3D <span class="cat-badge">50</span></button>
+              <button class="cat-pill" onclick="filterCategory('Lõi Năng Lượng & Ma Trận Cyber', this)">⚡ Năng Lượng <span class="cat-badge">50</span></button>
+            </div>
+            <input type="text" class="gallery-search" placeholder="🔍 Tìm kiếm trong 250 tác phẩm nghệ thuật..." oninput="searchCatalog(this.value)">
+          </div>
+
+          <div class="master-grid" id="cardsGridContainer"></div>
+        </div>
+      </div>
+
+      <!-- VIEW PANEL 2: BỐI CẢNH 3D & THIẾT KẾ -->
+      <div class="view-panel" id="panelDesign">
+        <div class="settings-card">
+          <div class="card-heading">
+            <span>🌍 9 Bối Cảnh Trái Đất & Không Gian 3D Quang Học Chân Thực</span>
+          </div>
+
+          <div class="scenery-grid-3x3" id="sceneryButtonsGrid">
+            <div class="scenery-btn active" onclick="setSceneryChoice(5, this)">
+              <div class="scenery-btn-title">🌍 Quỹ Đạo Trái Đất 3D</div>
+              <div class="scenery-btn-desc">Đĩa Trái Đất 3D, lục địa trôi, vành khí quyển lam & nắng sớm</div>
+            </div>
+            <div class="scenery-btn" onclick="setSceneryChoice(6, this)">
+              <div class="scenery-btn-title">🌌 Cực Quang Aurora</div>
+              <div class="scenery-btn-desc">Dải lụa cực quang ngọc lục bảo uốn lượn trên núi tuyết</div>
+            </div>
+            <div class="scenery-btn" onclick="setSceneryChoice(7, this)">
+              <div class="scenery-btn-title">🗻 Núi Phú Sĩ Bình Minh</div>
+              <div class="scenery-btn-desc">Bình minh Ukiyo-e, chóp tuyết Phú Sĩ và hoa anh đào rơi</div>
+            </div>
+            <div class="scenery-btn" onclick="setSceneryChoice(8, this)">
+              <div class="scenery-btn-title">🌃 Đêm Tokyo Mưa Cyber</div>
+              <div class="scenery-btn-desc">Chân trời cao ốc Tokyo rực rỡ, Tháp Tokyo và mưa neon</div>
+            </div>
+            <div class="scenery-btn" onclick="setSceneryChoice(2, this)">
+              <div class="scenery-btn-title">🌧️ Mưa Neon Cyber</div>
+              <div class="scenery-btn-desc">Mưa số đa tầng tốc độ cao chuẩn 1:1 phần cứng</div>
+            </div>
+            <div class="scenery-btn" onclick="setSceneryChoice(3, this)">
+              <div class="scenery-btn-title">🍄 Rừng Đom Đóm Dạ Quang</div>
+              <div class="scenery-btn-desc">Nấm phát quang sinh học và bầy đom đóm 3D lượn sóng</div>
+            </div>
+            <div class="scenery-btn" onclick="setSceneryChoice(4, this)">
+              <div class="scenery-btn-title">🌅 Biển Chiều Hoàng Hôn</div>
+              <div class="scenery-btn-desc">Mặt trời lặn biển khơi và sóng nước phản chiếu ánh vàng</div>
+            </div>
+            <div class="scenery-btn" onclick="setSceneryChoice(1, this)">
+              <div class="scenery-btn-title">🌸 Đền Thần Anh Đào</div>
+              <div class="scenery-btn-desc">Cổng Torii sơn son cổ kính và bão hoa anh đào rơi</div>
+            </div>
+            <div class="scenery-btn" onclick="setSceneryChoice(0, this)">
+              <div class="scenery-btn-title">🏕️ Đêm Rừng Lửa Trại</div>
+              <div class="scenery-btn-desc">Dải Ngân Hà sâu thẳm, rừng thông và đống lửa trại ấm áp</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="card-heading">
+            <span>✨ Tùy Chỉnh Chữ & Phần Cứng</span>
+          </div>
+
+          <!-- TEXT COLOR -->
+          <div class="control-group">
+            <div class="control-label" style="display:flex; justify-content:space-between; align-items:center;">
+              <span>Màu Chữ Hoàng Gia</span>
+              <input type="color" id="customColorPicker" value="#ffffff" style="width:26px; height:26px; border:none; border-radius:50%; cursor:pointer; background:none;" oninput="onCustomColorInput(this.value)" onchange="onCustomColorCommit(this.value)">
+            </div>
+            <div class="gem-palette-grid">
+              <button class="gem-btn active" onclick="setTextColorChoice('#FFFFFF', this)"><div class="gem-circle" style="background:#ffffff;"></div>Trắng Kim Cương</button>
+              <button class="gem-btn" onclick="setTextColorChoice('#F5C842', this)"><div class="gem-circle" style="background:#f5c842;"></div>Vàng Kinpaku</button>
+              <button class="gem-btn" onclick="setTextColorChoice('#00F0FF', this)"><div class="gem-circle" style="background:#00f0ff;"></div>Xanh Neon</button>
+              <button class="gem-btn" onclick="setTextColorChoice('#FF7597', this)"><div class="gem-circle" style="background:#ff7597;"></div>Hồng Sakura</button>
+              <button class="gem-btn" onclick="setTextColorChoice('#00FF88', this)"><div class="gem-circle" style="background:#00ff88;"></div>Xanh Ngọc</button>
+              <button class="gem-btn" onclick="setTextColorChoice('#C084FC', this)"><div class="gem-circle" style="background:#c084fc;"></div>Tím Amethyst</button>
+            </div>
+          </div>
+
+          <!-- TEXT SIZE -->
+          <div class="control-group">
+            <div class="control-label">Kích Cỡ Chữ Màn Hình</div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+              <button id="btnTextSize1" class="gem-btn active" onclick="setTextSizeChoice(1)">Tiêu Chuẩn (16px)</button>
+              <button id="btnTextSize2" class="gem-btn" onclick="setTextSizeChoice(2)">Nét To Rõ (24px)</button>
+            </div>
+          </div>
+
+          <!-- BRIGHTNESS -->
+          <div class="control-group">
+            <div class="control-label" style="display:flex; justify-content:space-between;">
+              <span>Độ Sáng Màn Hình ST7789</span>
+              <span id="brightVal" style="color:var(--cyan); font-weight:800;">100%</span>
+            </div>
+            <input type="range" id="brightRange" min="25" max="255" value="255" oninput="sendBrightness(this.value)">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="toast-pill" id="toastPill">Đã kích hoạt hoạt ảnh!</div>
+
+  <script>
+    const CATALOG = __CATALOG_JSON__;
+    let currentSpriteId = 12;
+    let currentPaletteId = 0;
+    let currentQuote = "Dù ở thế giới nào, anh vẫn luôn tìm thấy em.";
+    let currentTextColor = "#FFFFFF";
+    let currentTextSize = 1;
+    let currentSceneryId = 5; // Mặc định: Quỹ Đạo Trái Đất 3D
+    let ws;
+    let time = 0;
+    const heroCanvas = document.getElementById('heroCanvas');
+    const heroCtx = heroCanvas.getContext('2d');
+
+    // TABS MANAGEMENT
+    function switchMainTab(tab, btn) {
+      document.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const isMobile = window.innerWidth <= 1080;
+      const leftPod = document.getElementById('leftSimulatorPod');
+      const panelGallery = document.getElementById('panelGallery');
+      const panelDesign = document.getElementById('panelDesign');
+
+      if (tab === 'simulator') {
+        leftPod.style.display = 'flex';
+        panelGallery.classList.remove('active-panel');
+        panelDesign.classList.remove('active-panel');
+      } else if (tab === 'gallery') {
+        if (isMobile) leftPod.style.display = 'none';
+        panelGallery.classList.add('active-panel');
+        panelDesign.classList.remove('active-panel');
+      } else if (tab === 'design') {
+        if (isMobile) leftPod.style.display = 'none';
+        panelGallery.classList.remove('active-panel');
+        panelDesign.classList.add('active-panel');
+      }
+    }
+
+    // Default view setup on load
+    if (window.innerWidth > 1080) {
+      document.getElementById('panelGallery').classList.add('active-panel');
+    }
+
+    // WEBSOCKET INITIALIZER
+    function initWebSocket() {
+      const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      ws = new WebSocket(`${proto}//${window.location.host}/ws/keychain`);
+      ws.onmessage = (event) => {
+        try {
+          const res = JSON.parse(event.data);
+          if (res.data) {
+            if (res.data.sprite_id !== undefined) selectCard(res.data.sprite_id, false);
+            if (res.data.palette_id !== undefined) currentPaletteId = res.data.palette_id;
+            if (res.data.quote) currentQuote = res.data.quote;
+            if (res.data.text_color) {
+              currentTextColor = res.data.text_color;
+              highlightColorBtn(currentTextColor);
+            }
+            if (res.data.text_size !== undefined) {
+              currentTextSize = res.data.text_size;
+              highlightSizeBtn(currentTextSize);
+            }
+            if (res.data.scenery_id !== undefined) {
+              currentSceneryId = res.data.scenery_id;
+              highlightSceneryBtn(currentSceneryId);
+            }
+          }
+        } catch(e) {}
+      };
+      ws.onclose = () => setTimeout(initWebSocket, 2000);
+    }
+    initWebSocket();
+
+    // POPULATE 250 CARDS
+    function populateGrid() {
+      const container = document.getElementById('cardsGridContainer');
+      container.innerHTML = '';
+      CATALOG.forEach(item => {
+        const card = document.createElement('div');
+        const id = item.global_id !== undefined ? item.global_id : item.id;
+        card.className = 'card-item' + (id === currentSpriteId ? ' active-card' : '');
+        card.id = `card-${id}`;
+        card.dataset.category = item.category || 'Tác Phẩm';
+        card.dataset.name = (item.name || '').toLowerCase();
+        card.onclick = () => selectCard(id, true);
+
+        card.innerHTML = `
+          <div class="card-active-tag">ĐANG CHIẾU</div>
+          <canvas class="preview-canvas" id="mini-${id}" width="72" height="72"></canvas>
+          <div class="card-name">${item.name}</div>
+          <div class="card-tag">${item.category || 'Master'}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+    populateGrid();
+
+    // FILTER CATEGORY
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.card-item').forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.category === cat) ? 'flex' : 'none';
+      });
+    }
+
+    // SEARCH CATALOG
+    function searchCatalog(q) {
+      const query = q.trim().toLowerCase();
+      document.querySelectorAll('.card-item').forEach(c => {
+        const match = !query || c.dataset.name.includes(query);
+        c.style.display = match ? 'flex' : 'none';
+      });
+    }
+
+    // SELECT CARD
+    function selectCard(id, pushNetwork = true) {
+      currentSpriteId = id;
+      document.querySelectorAll('.card-item').forEach((c, idx) => {
+        c.classList.toggle('active-card', idx === id);
+      });
+      if (CATALOG[id]) {
+        currentQuote = CATALOG[id].quote;
+        document.getElementById('podTitle').innerText = (CATALOG[id].name || '').toUpperCase();
+      }
+      if (pushNetwork) {
+        broadcastDesignUpdate();
+        showToast(`Đã chọn: ${CATALOG[id] ? CATALOG[id].name : id}`);
+      }
+    }
+
+    function triggerNextThemeClick() {
+      const nextId = (currentSpriteId + 1) % CATALOG.length;
+      selectCard(nextId, true);
+    }
+
+    // COLOR & SIZE HANDLERS
+    function setTextColorChoice(hex, btn) {
+      currentTextColor = hex;
+      highlightColorBtn(hex);
+      broadcastDesignUpdate();
+      showToast(`Đã đổi màu chữ: ${hex}`);
+    }
+
+    function highlightColorBtn(hex) {
+      document.querySelectorAll('.gem-btn').forEach(b => {
+        if (b.innerText.includes('Kim Cương') && hex.toUpperCase() === '#FFFFFF') b.classList.add('active');
+        else if (b.innerText.includes('Kinpaku') && hex.toUpperCase() === '#F5C842') b.classList.add('active');
+        else if (b.innerText.includes('Neon') && hex.toUpperCase() === '#00F0FF') b.classList.add('active');
+        else if (b.innerText.includes('Sakura') && hex.toUpperCase() === '#FF7597') b.classList.add('active');
+        else if (b.innerText.includes('Ngọc') && hex.toUpperCase() === '#00FF88') b.classList.add('active');
+        else if (b.innerText.includes('Amethyst') && hex.toUpperCase() === '#C084FC') b.classList.add('active');
+        else b.classList.remove('active');
+      });
+      document.getElementById('customColorPicker').value = hex;
+    }
+
+    function onCustomColorInput(hex) {
+      currentTextColor = hex;
+    }
+
+    function onCustomColorCommit(hex) {
+      currentTextColor = hex;
+      broadcastDesignUpdate();
+      showToast(`Màu chữ tùy chỉnh: ${hex}`);
+    }
+
+    function setTextSizeChoice(sz) {
+      currentTextSize = sz;
+      highlightSizeBtn(sz);
+      broadcastDesignUpdate();
+      showToast(`Kích cỡ chữ: ${sz === 1 ? '16px' : '24px'}`);
+    }
+
+    function highlightSizeBtn(sz) {
+      document.getElementById('btnTextSize1').classList.toggle('active', sz === 1);
+      document.getElementById('btnTextSize2').classList.toggle('active', sz === 2);
+    }
+
+    function setSceneryChoice(sc, btn) {
+      currentSceneryId = sc;
+      highlightSceneryBtn(sc);
+      broadcastDesignUpdate();
+      showToast(`Đổi bối cảnh: ${btn.querySelector('.scenery-btn-title').innerText}`);
+    }
+
+    function highlightSceneryBtn(sc) {
+      const btns = document.querySelectorAll('.scenery-btn');
+      btns.forEach((b, idx) => {
+        b.classList.toggle('active', idx === sc);
+      });
+    }
+
+    function sendBrightness(val) {
+      document.getElementById('brightVal').innerText = Math.round((val / 255) * 100) + '%';
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({action: 'SET_BRIGHTNESS', value: parseInt(val)}));
+      }
+      fetch('/api/brightness', { method: 'POST', body: new URLSearchParams({value: val})});
+    }
+
+    function triggerRemoteQR() {
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({action: 'SET_QR', value: true}));
+      }
+      fetch('/api/qr', { method: 'POST' });
+      showToast('Đang bật mã QR trên móc khóa...');
+    }
+
+    function sendCustomQuoteFromInput() {
+      const input = document.getElementById('quickQuoteInput');
+      const val = input.value.trim();
+      if (!val) return;
+      currentQuote = val;
+      broadcastDesignUpdate();
+      showToast('Đã gửi lời nhắn lên móc khóa!');
+      input.value = '';
+    }
+
+    function sendQuickChip(text) {
+      currentQuote = text;
+      broadcastDesignUpdate();
+      showToast(`Đã gửi: "${text}"`);
+    }
+
+    function broadcastDesignUpdate() {
+      const payload = {
+        action: 'SET_DESIGN',
+        sprite_id: currentSpriteId,
+        scenery_id: currentSceneryId,
+        text_color: currentTextColor,
+        text_size: currentTextSize,
+        quote: currentQuote
+      };
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify(payload));
+      }
+      fetch('/api/design', {
+        method: 'POST',
+        body: new URLSearchParams({
+          sprite_id: currentSpriteId,
+          scenery_id: currentSceneryId,
+          text_color: currentTextColor,
+          text_size: currentTextSize,
+          quote: currentQuote
+        })
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastPill');
+      toast.innerText = msg;
+      toast.classList.add('visible');
+      setTimeout(() => toast.classList.remove('visible'), 2200);
+    }
+
+    // DRAWING HELPER FUNCTIONS
+    function frRect(ctx, x, y, w, h, r, color) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, w, h, r);
+      else ctx.rect(x, y, w, h);
+      ctx.fill();
+    }
+    function drRect(ctx, x, y, w, h, r, color, lw=1) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, w, h, r);
+      else ctx.rect(x, y, w, h);
+      ctx.stroke();
+    }
+    function fCirc(ctx, x, y, r, color) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x, y, Math.max(0.5, r), 0, Math.PI*2);
+      ctx.fill();
+    }
+    function dCirc(ctx, x, y, r, color, lw=1) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.arc(x, y, Math.max(0.5, r), 0, Math.PI*2);
+      ctx.stroke();
+    }
+    function fTri(ctx, x1, y1, x2, y2, x3, y3, color) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x3, y3); ctx.closePath();
+      ctx.fill();
+    }
+    function dTri(ctx, x1, y1, x2, y2, x3, y3, color, lw=1) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x3, y3); ctx.closePath();
+      ctx.stroke();
+    }
+    function fRect(ctx, x, y, w, h, color) {
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, w, h);
+    }
+    function dRect(ctx, x, y, w, h, color, lw=1) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.strokeRect(x, y, w, h);
+    }
+    function dLine(ctx, x1, y1, x2, y2, color, lw=1) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+
+    // ANIMATION RENDERER
+    function renderSpecificAnimation(ctx, id, cx, cy, scale, t) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(scale, scale);
+
+      const breath = Math.sin(t * 3.5);
+      const angle = t * 2.0;
+
+      // Group 1: 0 to 49 (Classic & Genshin & Holy Claymore)
+      if (id === 12) {
+        // Thần Kiếm Tuyệt Phẩm (The Holy Claymore 1:1 Khớp Ảnh Móc Khóa Thật)
+        const cosA = 0.70710678, sinA = -0.70710678;
+        const tX = (u, v) => Math.round(u * cosA - v * sinA);
+        const tY = (u, v) => Math.round(u * sinA + v * cosA);
+        const dPoly = (pts, fill) => {
+          ctx.fillStyle = fill;
+          ctx.beginPath();
+          ctx.moveTo(tX(pts[0][0], pts[0][1]), tY(pts[0][0], pts[0][1]));
+          for (let p = 1; p < pts.length; p++) ctx.lineTo(tX(pts[p][0], pts[p][1]), tY(pts[p][0], pts[p][1]));
+          ctx.closePath();
+          ctx.fill();
+        };
+
+        dPoly([[-16, -18], [52, -18], [66, 0], [52, 18], [-16, 18]], "#ffffff");
+        dPoly([[-26, -30], [-16, -30], [-16, 30], [-26, 30]], "#ffffff");
+        dPoly([[-50, -7], [-26, -7], [-26, 7], [-50, 7]], "#ffffff");
+        dPoly([[-62, -12], [-48, -12], [-48, 12], [-62, 12], [-66, 0]], "#ffffff");
+
+        dPoly([[-15, -15], [50, -15], [62, 0], [50, 15], [-15, 15]], "#00f0ff");
+        dPoly([[-24, -27], [-17, -27], [-17, 27], [-24, 27]], "#00f0ff");
+
+        dPoly([[-14, -10], [46, -10], [54, 0], [46, 10], [-14, 10]], "#2c365e");
+
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(tX(-12, 0), tY(-12, 0));
+        ctx.lineTo(tX(48, 0), tY(48, 0));
+        ctx.stroke();
+
+        for (let ru of [-4, 14, 30]) {
+          dPoly([[ru - 3, 0], [ru, -4], [ru + 3, 0], [ru, 4]], "#ffffff");
+        }
+
+        dPoly([[-22, -6], [-17, 0], [-22, 6], [-27, 0]], "#ffffff");
+        dPoly([[-22, -3], [-19, 0], [-22, 3], [-25, 0]], "#00f0ff");
+
+        dPoly([[-48, -4], [-26, -4], [-26, 4], [-48, 4]], "#14192d");
+
+        dPoly([[-58, -8], [-50, -8], [-50, 8], [-58, 8]], "#00f0ff");
+        dPoly([[-56, -4], [-52, -4], [-52, 4], [-56, 4]], "#ffffff");
+      }
+      else if (id >= 50 && id < 100) {
+        // NHÓM 2: THÁNH KHÍ & VŨ KHÍ THẦN THOẠI (Excalibur, Dáinsleif, Gungnir, Aegis...)
+        let item = CATALOG[id] || {};
+        let col1 = item.palette || '#f5c842';
+        let bladeRot = Math.sin(t * 1.5) * 0.12 - 0.785;
+        ctx.rotate(bladeRot);
+        // Aura phát quang
+        ctx.strokeStyle = col1;
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(0, -42); ctx.lineTo(0, 24); ctx.stroke();
+        ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.2; ctx.stroke();
+        // Cánh chuôi kiếm
+        ctx.fillStyle = '#f5c842';
+        ctx.fillRect(-12, 10, 24, 4);
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(-4, 14, 8, 16);
+        // Ngọc trung tâm
+        ctx.fillStyle = '#00f0ff';
+        ctx.beginPath(); ctx.arc(0, 10, 3, 0, Math.PI * 2); ctx.fill();
+        // Hạt lấp lánh
+        let py = -30 + ((Date.now() / 20) % 50);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(Math.sin(py)*4, py - 20, 2, 2);
+      }
+      else if (id >= 100 && id < 150) {
+        // NHÓM 3: CƠ GIÁP & VŨ KHÍ CYBER KHÔNG GIAN
+        let item = CATALOG[id] || {};
+        let col1 = item.palette || '#00f0ff';
+        // Vòng năng lượng quay
+        ctx.strokeStyle = col1; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(0, 0, 24 + breath * 3, 0, Math.PI * 2); ctx.stroke();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.strokeRect(-16, -16, 32, 32);
+        // Lõi năng lượng
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath(); ctx.arc(0, 0, 12, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = col1;
+        ctx.beginPath(); ctx.arc(0, 0, 6 + breath * 2, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(-1, -1, 2, 2);
+      }
+      else if (id >= 150 && id < 200) {
+        // NHÓM 4: BỐI CẢNH TRÁI ĐẤT & THIÊN VĂN 3D
+        let item = CATALOG[id] || {};
+        let col1 = item.palette || '#00f0ff';
+        let col2 = item.palette_secondary || '#1e3a8a';
+        // Thiên thể 3D quay
+        let rad = ctx.createRadialGradient(-6, -6, 2, 0, 0, 26);
+        rad.addColorStop(0, '#ffffff');
+        rad.addColorStop(0.3, col1);
+        rad.addColorStop(0.8, col2);
+        rad.addColorStop(1, '#050a18');
+        ctx.fillStyle = rad;
+        ctx.beginPath(); ctx.arc(0, 0, 26, 0, Math.PI * 2); ctx.fill();
+        // Vành đai hạt
+        ctx.strokeStyle = col1; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.ellipse(0, 0, 36, 10, -0.4, 0, Math.PI * 2); ctx.stroke();
+      }
+      else if (id >= 200 && id < 250) {
+        // NHÓM 5: LÕI NĂNG LƯỢNG PLASMA & MA TRẬN CYBER
+        let item = CATALOG[id] || {};
+        let col1 = item.palette || '#f5c842';
+        let col2 = item.palette_secondary || '#00f0ff';
+        // Tokamak plasma ring
+        ctx.strokeStyle = col1; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.arc(0, 0, 20 + Math.sin(t * 4) * 3, 0, Math.PI * 2); ctx.stroke();
+        ctx.strokeStyle = col2; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(0, 0, 10 + Math.cos(t * 4) * 2, 0, Math.PI * 2); ctx.stroke();
+        // 4 diode phóng tia
+        for (let i = 0; i < 4; i++) {
+          let a = i * 1.5708 + t * 3.0;
+          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.moveTo(Math.cos(a)*8, Math.sin(a)*8); ctx.lineTo(Math.cos(a)*26, Math.sin(a)*26); ctx.stroke();
+        }
+      }
+      else {
+        // Fallback chibi / mascot
+        fCirc(ctx, 0, 0, 24 + breath * 2, "#f5c842");
+        fCirc(ctx, -7, -4, 3, "#000000");
+        fCirc(ctx, 7, -4, 3, "#000000");
+        fCirc(ctx, 0, 6, 2, "#ff0055");
+      }
+
+      ctx.restore();
+    }
+
+    // MAIN 60 FPS RENDER LOOP
+    function loop() {
+      time += 0.03;
+
+      // 1. CLEAR FRAMEBUFFER
+      heroCtx.clearRect(0, 0, 172, 320);
+
+      // 2. LAYER 0: 9 LIVING DIORAMAS 3D QUANG HỌC CHÂN THỰC
+      switch (currentSceneryId) {
+        case 0: // SCENE_COZY_CAMPFIRE (Lửa Trại Rừng Sao Đêm)
+          {
+            // Bầu trời đêm dải Ngân Hà sâu thẳm
+            let skyG = heroCtx.createLinearGradient(0, 0, 0, 320);
+            skyG.addColorStop(0, '#030514');
+            skyG.addColorStop(0.5, '#070b22');
+            skyG.addColorStop(0.85, '#120d20');
+            skyG.addColorStop(1, '#1a1018');
+            heroCtx.fillStyle = skyG;
+            heroCtx.fillRect(0, 0, 172, 320);
+
+            // Dải Ngân Hà lấp lánh sao
+            for (let i = 0; i < 40; i++) {
+              let sx = (i * 31 + 7) % 172;
+              let sy = (i * 19 + 5) % 220;
+              let alpha = 0.3 + 0.7 * Math.abs(Math.sin(time * 2.0 + i));
+              heroCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+              heroCtx.fillRect(sx, sy, (i % 3 === 0) ? 2 : 1, (i % 3 === 0) ? 2 : 1);
+            }
+
+            // Rừng thông bạt ngàn ở chân trời
+            heroCtx.fillStyle = '#0a101d';
+            for (let tr = 0; tr < 8; tr++) {
+              let tx = tr * 24 - 10;
+              heroCtx.beginPath();
+              heroCtx.moveTo(tx, 260); heroCtx.lineTo(tx + 16, 215); heroCtx.lineTo(tx + 32, 260);
+              heroCtx.fill();
+            }
+
+            // Mặt đất đồi cỏ đêm
+            heroCtx.fillStyle = '#0f1710';
+            heroCtx.fillRect(0, 260, 172, 60);
+
+            // Vầng sáng ấm của đống lửa trại
+            let campGlow = heroCtx.createRadialGradient(86, 265, 0, 86, 265, 55);
+            campGlow.addColorStop(0, 'rgba(255, 180, 0, 0.45)');
+            campGlow.addColorStop(0.6, 'rgba(255, 80, 0, 0.2)');
+            campGlow.addColorStop(1, 'rgba(255, 80, 0, 0)');
+            heroCtx.fillStyle = campGlow;
+            heroCtx.beginPath(); heroCtx.arc(86, 265, 55, 0, Math.PI * 2); heroCtx.fill();
+
+            // Khúc gỗ sồi
+            heroCtx.fillStyle = '#3e2723';
+            heroCtx.fillRect(72, 266, 28, 6);
+
+            // Ngọn lửa trại sống động 3 tầng
+            let fFlap = Math.sin(time * 8.0) * 3;
+            heroCtx.fillStyle = '#ef4444';
+            heroCtx.beginPath();
+            heroCtx.moveTo(76, 266); heroCtx.lineTo(86 + fFlap, 238); heroCtx.lineTo(96, 266);
+            heroCtx.fill();
+            heroCtx.fillStyle = '#f59e0b';
+            heroCtx.beginPath();
+            heroCtx.moveTo(79, 266); heroCtx.lineTo(86 + fFlap * 0.5, 244); heroCtx.lineTo(93, 266);
+            heroCtx.fill();
+            heroCtx.fillStyle = '#ffffff';
+            heroCtx.beginPath();
+            heroCtx.moveTo(82, 266); heroCtx.lineTo(86, 252); heroCtx.lineTo(90, 266);
+            heroCtx.fill();
+
+            // Tàn tro đốm lửa bay lơ lửng
+            for (let s = 0; s < 10; s++) {
+              let spkY = 250 - ((Date.now() / 15 + s * 30) % 120);
+              let spkX = 86 + Math.sin(time * 3.0 + s) * 14;
+              heroCtx.fillStyle = (s % 2 === 0) ? '#ffd166' : '#ff4d00';
+              heroCtx.fillRect(spkX, spkY, 1.5, 1.5);
+            }
+          }
+          break;
+
+        case 1: // SCENE_SAKURA_SHRINE (Đền Thần Anh Đào Hoàng Hôn)
+          {
+            // Bầu trời hoàng hôn tím hồng
+            let sGrad = heroCtx.createLinearGradient(0, 0, 0, 320);
+            sGrad.addColorStop(0, '#1a0d33');
+            sGrad.addColorStop(0.45, '#4a154b');
+            sGrad.addColorStop(0.8, '#832845');
+            sGrad.addColorStop(1, '#a8423f');
+            heroCtx.fillStyle = sGrad;
+            heroCtx.fillRect(0, 0, 172, 320);
+
+            // Trăng khuyết đầu tháng
+            heroCtx.fillStyle = '#fffbe8';
+            heroCtx.beginPath(); heroCtx.arc(140, 50, 12, 0, Math.PI * 2); heroCtx.fill();
+            heroCtx.fillStyle = '#1a0d33';
+            heroCtx.beginPath(); heroCtx.arc(136, 48, 11, 0, Math.PI * 2); heroCtx.fill();
+
+            // Cổng Torii thần đạo
+            heroCtx.fillStyle = '#b91c1c';
+            heroCtx.fillRect(125, 255, 6, 65);
+            heroCtx.fillRect(155, 255, 6, 65);
+            heroCtx.fillStyle = '#18181b'; // Mái xà đen
+            heroCtx.fillRect(118, 256, 49, 5);
+            heroCtx.fillStyle = '#ef4444'; // Xà đỏ
+            heroCtx.fillRect(122, 263, 42, 4);
+
+            // Cánh hoa anh đào rơi
+            heroCtx.fillStyle = '#ff7597';
+            for (let i = 0; i < 14; i++) {
+              let px = (Math.sin(time * 0.8 + i * 1.3) * 35.0 + 20.0 * i + 172) % 172;
+              let py = (time * 26.0 + i * 40) % 320;
+              heroCtx.beginPath(); heroCtx.arc(px, py, 2, 0, Math.PI * 2); heroCtx.fill();
+            }
+          }
+          break;
+
+        case 2: // SCENE_CYBER_RAIN (Mưa Neon Cyberpunk Siêu Mượt 1:1)
+          {
+            heroCtx.lineWidth = 1;
+            for (let i = 0; i < 36; i++) {
+              let rx = (i * 17 + 5) % 172;
+              let speed = 260 + (i % 6) * 40;
+              let ry = Math.floor((Date.now() * speed / 1000 + i * 31) % 344) - 12;
+              let len = 7 + (i % 4) * 4;
+              let col = (i % 3 === 0) ? '#00f0ff' : ((i % 2 === 0) ? '#00b8d4' : '#00838f');
+              heroCtx.strokeStyle = col;
+              heroCtx.beginPath(); heroCtx.moveTo(rx, ry); heroCtx.lineTo(rx, ry + len); heroCtx.stroke();
+              heroCtx.fillStyle = '#ffffff';
+              heroCtx.fillRect(rx, ry + len - 1, 1, 1);
+            }
+          }
+          break;
+
+        case 3: // SCENE_MAGIC_FOREST (Rừng Đom Đóm Phát Quang)
+          {
+            // Bầu trời rừng đêm ngọc bích
+            let forGrad = heroCtx.createLinearGradient(0, 0, 0, 320);
+            forGrad.addColorStop(0, '#02120e');
+            forGrad.addColorStop(0.6, '#04241c');
+            forGrad.addColorStop(1, '#06382b');
+            heroCtx.fillStyle = forGrad;
+            heroCtx.fillRect(0, 0, 172, 320);
+
+            // Nền đất rêu phong
+            heroCtx.fillStyle = '#06291a';
+            heroCtx.fillRect(0, 270, 172, 50);
+
+            // Cây cổ thụ bên trái
+            heroCtx.fillStyle = '#0b1d14';
+            heroCtx.fillRect(0, 180, 20, 140);
+            heroCtx.fillRect(0, 200, 35, 16);
+
+            // Nấm phát quang sinh học
+            heroCtx.fillStyle = '#00f0ff';
+            heroCtx.beginPath(); heroCtx.arc(38, 285, 7, Math.PI, Math.PI * 2); heroCtx.fill();
+            heroCtx.fillRect(36, 285, 4, 8);
+            heroCtx.fillStyle = '#ec4899';
+            heroCtx.beginPath(); heroCtx.arc(130, 290, 6, Math.PI, Math.PI * 2); heroCtx.fill();
+            heroCtx.fillRect(128, 290, 4, 6);
+
+            // Bầy đom đóm phát sáng nhấp nháy
+            for (let i = 0; i < 12; i++) {
+              let fx = Math.cos(time * 0.7 + i * 1.4) * 55.0 + 86.0;
+              let fy = Math.sin(time * 0.5 + i * 1.8) * 50.0 + 170.0;
+              let glow = (Math.sin(time * 3.0 + i * 2.0) + 1.0) * 0.5;
+              if (glow > 0.25) {
+                heroCtx.fillStyle = (i % 2 === 0) ? '#fde047' : '#00f0ff';
+                heroCtx.beginPath(); heroCtx.arc(fx, fy, 2, 0, Math.PI * 2); heroCtx.fill();
+              }
+            }
+          }
+          break;
+
+        case 4: // SCENE_OCEAN_SUNSET (Biển Chiều Hoàng Hôn)
+          {
+            // Bầu trời hoàng hôn rực lửa
+            let seaSky = heroCtx.createLinearGradient(0, 0, 0, 240);
+            seaSky.addColorStop(0, '#2e0854');
+            seaSky.addColorStop(0.4, '#801438');
+            seaSky.addColorStop(0.75, '#c2410c');
+            seaSky.addColorStop(1, '#f59e0b');
+            heroCtx.fillStyle = seaSky;
+            heroCtx.fillRect(0, 0, 172, 240);
+
+            // Mặt trời đỏ rực chạm chân trời
+            heroCtx.fillStyle = '#fef08a';
+            heroCtx.beginPath(); heroCtx.arc(86, 230, 22, 0, Math.PI * 2); heroCtx.fill();
+
+            // Đại dương sóng vỗ
+            let oceanG = heroCtx.createLinearGradient(0, 235, 0, 320);
+            oceanG.addColorStop(0, '#1e293b');
+            oceanG.addColorStop(0.4, '#0f172a');
+            oceanG.addColorStop(1, '#020617');
+            heroCtx.fillStyle = oceanG;
+            heroCtx.fillRect(0, 235, 172, 85);
+
+            // Dải sóng biển phản chiếu ánh vàng
+            for (let layer = 0; layer < 4; layer++) {
+              let yBase = 245 + layer * 18;
+              heroCtx.fillStyle = 'rgba(254, 240, 138, 0.45)';
+              for (let x = 20; x < 152; x += 10) {
+                let wy = yBase + Math.sin(time * 2.5 + x * 0.1 + layer) * 2.5;
+                heroCtx.fillRect(x, wy, 8, 1.5);
+              }
+            }
+          }
+          break;
+
+        case 5: // SCENE_EARTH_ORBIT (Quỹ Đạo Trái Đất 3D Siêu Chân Thực)
+          {
+            // Bầu trời không gian sâu thẳm
+            let spaceGrad = heroCtx.createLinearGradient(0, 0, 0, 320);
+            spaceGrad.addColorStop(0, '#01030d');
+            spaceGrad.addColorStop(0.5, '#04081e');
+            spaceGrad.addColorStop(1, '#070f2f');
+            heroCtx.fillStyle = spaceGrad;
+            heroCtx.fillRect(0, 0, 172, 320);
+
+            // Trường sao Parallax
+            for (let i = 0; i < 45; i++) {
+              let sx = (i * 37 + 11) % 172;
+              let sy = (i * 23 + 7) % 240;
+              let sz = (i % 5 === 0) ? 2 : ((i % 2 === 0) ? 1.5 : 1);
+              let alpha = 0.35 + 0.65 * Math.abs(Math.sin(time * 2.0 + i * 1.7));
+              let col = (i % 4 === 0) ? `rgba(180, 220, 255, ${alpha})` : ((i % 3 === 0) ? `rgba(255, 235, 170, ${alpha})` : `rgba(255, 255, 255, ${alpha})`);
+              heroCtx.fillStyle = col;
+              heroCtx.fillRect(sx, sy, sz, sz);
+            }
+
+            // Đĩa Trái Đất 3D
+            let eCx = 86, eCy = 345, eR = 135;
+
+            // 1. Vành khí quyển tán xạ Rayleigh
+            let atmoGlow = heroCtx.createRadialGradient(eCx, eCy, eR - 10, eCx, eCy, eR + 25);
+            atmoGlow.addColorStop(0, 'rgba(0, 230, 255, 0.9)');
+            atmoGlow.addColorStop(0.4, 'rgba(0, 136, 255, 0.6)');
+            atmoGlow.addColorStop(0.75, 'rgba(0, 68, 255, 0.25)');
+            atmoGlow.addColorStop(1, 'rgba(0, 17, 68, 0)');
+            heroCtx.fillStyle = atmoGlow;
+            heroCtx.beginPath(); heroCtx.arc(eCx, eCy, eR + 25, 0, Math.PI * 2); heroCtx.fill();
+
+            // 2. Đại dương xanh thẳm
+            let oceanGrad = heroCtx.createRadialGradient(eCx - 30, eCy - 60, 20, eCx, eCy, eR);
+            oceanGrad.addColorStop(0, '#104e8b');
+            oceanGrad.addColorStop(0.45, '#0b3164');
+            oceanGrad.addColorStop(0.85, '#071d40');
+            oceanGrad.addColorStop(1, '#030d1e');
+            heroCtx.fillStyle = oceanGrad;
+            heroCtx.beginPath(); heroCtx.arc(eCx, eCy, eR, 0, Math.PI * 2); heroCtx.fill();
+
+            // 3. Lục địa trôi
+            heroCtx.save();
+            heroCtx.beginPath(); heroCtx.arc(eCx, eCy, eR - 1, 0, Math.PI * 2); heroCtx.clip();
+            let drift = (time * 1.5) % 180;
+            for (let c = -1; c <= 1; c++) {
+              let cxOffset = c * 180 + drift;
+              heroCtx.fillStyle = '#1e683b';
+              heroCtx.beginPath(); heroCtx.ellipse(eCx - 40 + cxOffset, eCy - 45, 35, 22, -0.2, 0, Math.PI * 2); heroCtx.fill();
+              heroCtx.fillStyle = '#b8860b';
+              heroCtx.beginPath(); heroCtx.ellipse(eCx - 35 + cxOffset, eCy - 48, 18, 10, -0.1, 0, Math.PI * 2); heroCtx.fill();
+              heroCtx.fillStyle = '#227b44';
+              heroCtx.beginPath(); heroCtx.ellipse(eCx + 30 + cxOffset, eCy - 30, 28, 18, 0.3, 0, Math.PI * 2); heroCtx.fill();
+            }
+
+            // 4. Mây tầng xoáy
+            heroCtx.fillStyle = 'rgba(255, 255, 255, 0.42)';
+            let cDrift = (time * 2.5) % 200;
+            for (let c = -1; c <= 1; c++) {
+              let cOff = c * 200 + cDrift;
+              heroCtx.beginPath(); heroCtx.ellipse(eCx - 20 + cOff, eCy - 55, 55, 9, -0.15, 0, Math.PI * 2); heroCtx.fill();
+              heroCtx.beginPath(); heroCtx.ellipse(eCx + 35 + cOff, eCy - 35, 48, 11, 0.2, 0, Math.PI * 2); heroCtx.fill();
+            }
+            heroCtx.restore();
+
+            // 5. Sunburst Lóe Sáng Bình Minh
+            let sunX = 138, sunY = 222;
+            let sunGlow = heroCtx.createRadialGradient(sunX, sunY, 0, sunX, sunY, 32);
+            sunGlow.addColorStop(0, '#ffffff');
+            sunGlow.addColorStop(0.2, '#fff7c2');
+            sunGlow.addColorStop(0.6, 'rgba(255, 180, 0, 0.4)');
+            sunGlow.addColorStop(1, 'rgba(255, 120, 0, 0)');
+            heroCtx.fillStyle = sunGlow;
+            heroCtx.beginPath(); heroCtx.arc(sunX, sunY, 32, 0, Math.PI * 2); heroCtx.fill();
+            heroCtx.strokeStyle = 'rgba(255, 255, 255, 0.85)'; heroCtx.lineWidth = 1;
+            heroCtx.beginPath(); heroCtx.moveTo(sunX - 22, sunY); heroCtx.lineTo(sunX + 22, sunY); heroCtx.moveTo(sunX, sunY - 22); heroCtx.lineTo(sunX, sunY + 22); heroCtx.stroke();
+          }
+          break;
+
+        case 6: // SCENE_AURORA_BOREALIS (Cực Quang Trái Đất Tuyệt Đỉnh)
+          {
+            let polarGrad = heroCtx.createLinearGradient(0, 0, 0, 320);
+            polarGrad.addColorStop(0, '#060317');
+            polarGrad.addColorStop(0.4, '#090822');
+            polarGrad.addColorStop(0.75, '#05181a');
+            polarGrad.addColorStop(1, '#020e11');
+            heroCtx.fillStyle = polarGrad;
+            heroCtx.fillRect(0, 0, 172, 320);
+
+            for (let i = 0; i < 30; i++) {
+              let sx = (i * 29 + 5) % 172;
+              let sy = (i * 19 + 3) % 190;
+              let alpha = 0.4 + 0.6 * Math.abs(Math.sin(time * 1.5 + i));
+              heroCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+              heroCtx.fillRect(sx, sy, 1.5, 1.5);
+            }
+
+            for (let layer = 0; layer < 4; layer++) {
+              let baseY = 65 + layer * 26;
+              let freq = 0.035 + layer * 0.012;
+              let speed = time * (1.2 - layer * 0.2);
+
+              heroCtx.beginPath();
+              heroCtx.moveTo(0, baseY);
+              for (let x = 0; x <= 172; x += 6) {
+                let y = baseY + Math.sin(x * freq + speed) * 18 + Math.cos(x * 0.08 - speed * 0.5) * 8;
+                heroCtx.lineTo(x, y);
+              }
+              heroCtx.lineTo(172, baseY + 45); heroCtx.lineTo(0, baseY + 45); heroCtx.closePath();
+
+              let aurGrad = heroCtx.createLinearGradient(0, baseY - 10, 0, baseY + 45);
+              if (layer % 2 === 0) {
+                aurGrad.addColorStop(0, 'rgba(0, 255, 160, 0)');
+                aurGrad.addColorStop(0.4, 'rgba(0, 255, 180, 0.45)');
+                aurGrad.addColorStop(0.8, 'rgba(0, 240, 255, 0.25)');
+                aurGrad.addColorStop(1, 'rgba(168, 85, 247, 0)');
+              } else {
+                aurGrad.addColorStop(0, 'rgba(168, 85, 247, 0)');
+                aurGrad.addColorStop(0.4, 'rgba(192, 132, 252, 0.38)');
+                aurGrad.addColorStop(0.8, 'rgba(0, 255, 136, 0.3)');
+                aurGrad.addColorStop(1, 'rgba(0, 255, 200, 0)');
+              }
+              heroCtx.fillStyle = aurGrad;
+              heroCtx.fill();
+            }
+
+            // Rặng núi tuyết phủ
+            heroCtx.fillStyle = '#0f1424';
+            heroCtx.beginPath();
+            heroCtx.moveTo(0, 320); heroCtx.lineTo(0, 265); heroCtx.lineTo(25, 242); heroCtx.lineTo(52, 260);
+            heroCtx.lineTo(80, 232); heroCtx.lineTo(110, 258); heroCtx.lineTo(138, 236); heroCtx.lineTo(172, 262); heroCtx.lineTo(172, 320);
+            heroCtx.fill();
+
+            heroCtx.fillStyle = '#dbeafe';
+            heroCtx.beginPath(); heroCtx.moveTo(25, 242); heroCtx.lineTo(18, 252); heroCtx.lineTo(32, 252); heroCtx.fill();
+            heroCtx.beginPath(); heroCtx.moveTo(80, 232); heroCtx.lineTo(70, 246); heroCtx.lineTo(92, 246); heroCtx.fill();
+            heroCtx.beginPath(); heroCtx.moveTo(138, 236); heroCtx.lineTo(128, 248); heroCtx.lineTo(148, 248); heroCtx.fill();
+
+            // Hồ băng phản chiếu
+            let lakeGrad = heroCtx.createLinearGradient(0, 275, 0, 320);
+            lakeGrad.addColorStop(0, '#0a1622'); lakeGrad.addColorStop(1, '#040b12');
+            heroCtx.fillStyle = lakeGrad; heroCtx.fillRect(0, 275, 172, 45);
+
+            for (let r = 0; r < 8; r++) {
+              let ry = 280 + r * 5;
+              let rx = (Math.sin(time * 1.5 + r) * 12 + 40);
+              let rw = 50 + (r % 3) * 20;
+              heroCtx.fillStyle = (r % 2 === 0) ? 'rgba(0, 255, 150, 0.22)' : 'rgba(180, 100, 255, 0.18)';
+              heroCtx.fillRect(rx, ry, rw, 1.5);
+            }
+          }
+          break;
+
+        case 7: // SCENE_MT_FUJI_SAKURA (Mùa Xuân Núi Phú Sĩ Ukiyo-e)
+          {
+            let fujiSky = heroCtx.createLinearGradient(0, 0, 0, 260);
+            fujiSky.addColorStop(0, '#15092a');
+            fujiSky.addColorStop(0.3, '#4a1135');
+            fujiSky.addColorStop(0.55, '#8c1d35');
+            fujiSky.addColorStop(0.75, '#c8441c');
+            fujiSky.addColorStop(0.92, '#ea7524');
+            fujiSky.addColorStop(1, '#fde047');
+            heroCtx.fillStyle = fujiSky;
+            heroCtx.fillRect(0, 0, 172, 320);
+
+            let sunG = heroCtx.createRadialGradient(86, 185, 0, 86, 185, 34);
+            sunG.addColorStop(0, '#ff1a35');
+            sunG.addColorStop(0.65, '#e62438');
+            sunG.addColorStop(0.9, 'rgba(230, 36, 56, 0.4)');
+            sunG.addColorStop(1, 'rgba(230, 36, 56, 0)');
+            heroCtx.fillStyle = sunG;
+            heroCtx.beginPath(); heroCtx.arc(86, 185, 34, 0, Math.PI * 2); heroCtx.fill();
+
+            heroCtx.fillStyle = '#22253f';
+            heroCtx.beginPath();
+            heroCtx.moveTo(0, 320); heroCtx.lineTo(0, 290); heroCtx.lineTo(15, 275);
+            heroCtx.lineTo(72, 192); heroCtx.lineTo(100, 192); heroCtx.lineTo(157, 275); heroCtx.lineTo(172, 290); heroCtx.lineTo(172, 320);
+            heroCtx.fill();
+
+            heroCtx.fillStyle = '#ffffff';
+            heroCtx.beginPath();
+            heroCtx.moveTo(72, 192); heroCtx.lineTo(100, 192); heroCtx.lineTo(112, 222); heroCtx.lineTo(104, 218);
+            heroCtx.lineTo(96, 230); heroCtx.lineTo(88, 220); heroCtx.lineTo(82, 232); heroCtx.lineTo(76, 221);
+            heroCtx.lineTo(68, 228); heroCtx.lineTo(60, 222); heroCtx.closePath();
+            heroCtx.fill();
+
+            for (let m = 0; m < 3; m++) {
+              let my = 245 + m * 24;
+              let mx = ((time * 8 + m * 55) % 220) - 40;
+              let mistG = heroCtx.createLinearGradient(mx, my, mx + 110, my);
+              mistG.addColorStop(0, 'rgba(255, 235, 240, 0)');
+              mistG.addColorStop(0.5, 'rgba(255, 235, 240, 0.45)');
+              mistG.addColorStop(1, 'rgba(255, 235, 240, 0)');
+              heroCtx.fillStyle = mistG;
+              heroCtx.fillRect(mx, my, 110, 8);
+            }
+
+            for (let p = 0; p < 14; p++) {
+              let px = ((time * 24 + p * 28 + Math.sin(time + p) * 20) % 200) - 15;
+              let py = ((time * 18 + p * 35) % 340) - 10;
+              let pRot = time * 2.0 + p * 0.8;
+              let pScale = 0.7 + 0.5 * Math.sin(p * 2);
+
+              heroCtx.save();
+              heroCtx.translate(px, py); heroCtx.rotate(pRot); heroCtx.scale(pScale, pScale);
+              heroCtx.fillStyle = (p % 2 === 0) ? '#ff7597' : '#ffb6c5';
+              heroCtx.beginPath(); heroCtx.ellipse(0, 0, 5, 2.5, 0, 0, Math.PI * 2); heroCtx.fill();
+              heroCtx.restore();
+            }
+          }
+          break;
+
+        case 8: // SCENE_TOKYO_NIGHT (Đêm Tokyo Mưa Cyber)
+          {
+            let tokyoSky = heroCtx.createLinearGradient(0, 0, 0, 320);
+            tokyoSky.addColorStop(0, '#0b0c1b');
+            tokyoSky.addColorStop(0.5, '#12112a');
+            tokyoSky.addColorStop(0.85, '#1c1538');
+            tokyoSky.addColorStop(1, '#160e28');
+            heroCtx.fillStyle = tokyoSky;
+            heroCtx.fillRect(0, 0, 172, 320);
+
+            const bldgs = [
+              {x: 0, w: 24, h: 90}, {x: 22, w: 18, h: 120}, {x: 38, w: 28, h: 75},
+              {x: 64, w: 20, h: 135}, {x: 82, w: 25, h: 105}, {x: 105, w: 22, h: 80},
+              {x: 125, w: 30, h: 125}, {x: 153, w: 22, h: 95}
+            ];
+            bldgs.forEach(b => {
+              heroCtx.fillStyle = '#0f1224';
+              heroCtx.fillRect(b.x, 320 - b.h, b.w, b.h);
+
+              heroCtx.fillStyle = (Math.sin(time * 3.0 + b.x) > 0.2) ? '#ff1744' : '#450a0a';
+              heroCtx.fillRect(b.x + b.w/2 - 1, 320 - b.h - 3, 2, 2);
+
+              for (let wx = b.x + 3; wx < b.x + b.w - 3; wx += 5) {
+                for (let wy = 320 - b.h + 8; wy < 300; wy += 7) {
+                  if ((wx * 11 + wy * 17) % 7 > 2) {
+                    let winCol = ((wx + wy) % 5 === 0) ? '#ffd700' : (((wx + wy) % 3 === 0) ? '#00f0ff' : '#ffffff');
+                    heroCtx.fillStyle = winCol;
+                    heroCtx.fillRect(wx, wy, 2, 2.5);
+                  }
+                }
+              }
+            });
+
+            // Tháp Tokyo
+            let tX = 86;
+            heroCtx.strokeStyle = '#ef4444'; heroCtx.lineWidth = 2;
+            heroCtx.beginPath();
+            heroCtx.moveTo(tX, 170); heroCtx.lineTo(tX, 320);
+            heroCtx.moveTo(tX - 22, 320); heroCtx.lineTo(tX, 185); heroCtx.lineTo(tX + 22, 320);
+            heroCtx.stroke();
+            for (let ty = 205; ty <= 305; ty += 20) {
+              let tw = (ty - 185) * 0.22;
+              heroCtx.strokeStyle = (ty % 40 === 0) ? '#ffffff' : '#ef4444';
+              heroCtx.beginPath(); heroCtx.moveTo(tX - tw, ty); heroCtx.lineTo(tX + tw, ty); heroCtx.stroke();
+            }
+            heroCtx.fillStyle = '#ffffff'; heroCtx.fillRect(tX - 10, 245, 20, 6);
+            heroCtx.fillStyle = '#ff1744'; heroCtx.fillRect(tX - 8, 246, 16, 4);
+
+            // Đèn rọi bầu trời
+            let beamAngle = Math.sin(time * 0.8) * 0.45;
+            let beamX2 = tX + Math.sin(beamAngle) * 160;
+            let beamY2 = 170 - Math.cos(beamAngle) * 90;
+            let beamGrad = heroCtx.createLinearGradient(tX, 170, beamX2, beamY2);
+            beamGrad.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+            beamGrad.addColorStop(0.6, 'rgba(0, 240, 255, 0.25)');
+            beamGrad.addColorStop(1, 'rgba(0, 240, 255, 0)');
+            heroCtx.strokeStyle = beamGrad; heroCtx.lineWidth = 14;
+            heroCtx.beginPath(); heroCtx.moveTo(tX, 170); heroCtx.lineTo(beamX2, beamY2); heroCtx.stroke();
+
+            // Phản chiếu đường ướt
+            heroCtx.fillStyle = '#080a14'; heroCtx.fillRect(0, 305, 172, 15);
+            for (let p = 0; p < 6; p++) {
+              let px = p * 30 + 10;
+              heroCtx.fillStyle = (p % 2 === 0) ? 'rgba(255, 23, 68, 0.35)' : 'rgba(0, 240, 255, 0.35)';
+              heroCtx.fillRect(px, 308 + (p % 3) * 2, 22, 1.5);
+            }
+
+            // Mưa Cyber
+            heroCtx.lineWidth = 1;
+            for (let i = 0; i < 28; i++) {
+              let rx = (i * 19 + 7) % 172;
+              let spd = 280 + (i % 5) * 35;
+              let ry = ((Date.now() * spd / 1000 + i * 33) % 335) - 15;
+              let len = 9 + (i % 4) * 4;
+              heroCtx.strokeStyle = (i % 3 === 0) ? '#00f0ff' : ((i % 2 === 0) ? 'rgba(255, 0, 128, 0.8)' : '#ffffff');
+              heroCtx.beginPath(); heroCtx.moveTo(rx, ry); heroCtx.lineTo(rx - 1, ry + len); heroCtx.stroke();
+            }
+          }
+          break;
+      }
+
+      // 3. LAYER 1: BÓNG TIẾP XÚC (Nếu không phải kiếm hoặc mưa cyber)
+      if (currentSpriteId !== 12 && currentSceneryId !== 2) {
+        let hover = -Math.sin(time);
+        let rx = 22 - hover * 5;
+        let ry = 5 - hover * 1.5;
+        heroCtx.fillStyle = (hover > 0.1) ? 'rgba(8, 12, 20, 0.4)' : 'rgba(2, 4, 8, 0.85)';
+        heroCtx.beginPath();
+        heroCtx.ellipse(86, 202, Math.max(12, rx), Math.max(3, ry), 0, 0, Math.PI * 2);
+        heroCtx.fill();
+      }
+
+      // 4. LAYER 2: ANIMATION TRUNG TÂM
+      let cy = (currentSpriteId === 12) ? (182 + Math.sin(time) * 4.0) : (160 + Math.sin(time) * 6.0);
+      renderSpecificAnimation(heroCtx, currentSpriteId, 86, cy, 1.0, time);
+
+      // 5. LAYER 3: TYPEWRITER ĐA HÀNG KHÔNG CHE KHUẤT
+      let topText = currentQuote || (CATALOG[currentSpriteId] ? CATALOG[currentSpriteId].quote : 'Dù ở thế giới nào, anh vẫn luôn tìm thấy em.');
+      let fontSize = (currentTextSize >= 2) ? 12 : 10.5;
+      heroCtx.font = `600 ${fontSize}px "SF Pro Text", "Segoe UI", Roboto, sans-serif`;
+
+      const maxLineWidth = 156;
+      const maxLines = 4;
+      const lineHeight = 15;
+      const startY = 22;
+
+      let words = topText.split(' ');
+      let lines = [];
+      let curLine = '';
+      for (let w of words) {
+        let testLine = curLine.length === 0 ? w : curLine + ' ' + w;
+        if (heroCtx.measureText(testLine).width <= maxLineWidth) {
+          curLine = testLine;
+        } else {
+          if (curLine.length > 0) lines.push(curLine);
+          curLine = w;
+          if (lines.length >= maxLines - 1) break;
+        }
+      }
+      if (curLine.length > 0 && lines.length < maxLines) lines.push(curLine);
+
+      let totalChars = lines.reduce((acc, l) => acc + l.length, 0);
+      let charDelay = 65;
+      let holdTime = 4000;
+      let cycle = (totalChars * charDelay) + holdTime;
+      let progress = cycle > 0 ? (Date.now() % cycle) : 0;
+      let visibleCount = (progress < totalChars * charDelay) ? Math.floor(progress / charDelay) : totalChars;
+
+      let charsDrawn = 0;
+      for (let i = 0; i < lines.length; i++) {
+        if (charsDrawn >= visibleCount) break;
+        let charsLeft = visibleCount - charsDrawn;
+        let lineToDraw = lines[i].substring(0, charsLeft);
+        charsDrawn += lineToDraw.length;
+
+        let lw = heroCtx.measureText(lineToDraw).width;
+        let lx = 8 + (156 - lw) / 2;
+        let ly = startY + i * lineHeight;
+
+        heroCtx.fillStyle = '#000000';
+        heroCtx.fillText(lineToDraw, lx + 1, ly + 1);
+        heroCtx.fillStyle = currentTextColor;
+        heroCtx.fillText(lineToDraw, lx, ly);
+      }
+
+      // 6. RENDER MINI CANVASES
+      const galleryPanel = document.getElementById('panelGallery');
+      if (galleryPanel && galleryPanel.classList.contains('active-panel')) {
+        CATALOG.slice(0, 60).forEach(item => {
+          const id = item.global_id !== undefined ? item.global_id : item.id;
+          const card = document.getElementById(`card-${id}`);
+          if (card && card.style.display !== 'none') {
+            const mini = document.getElementById(`mini-${id}`);
+            if (mini) {
+              const mCtx = mini.getContext('2d');
+              mCtx.fillStyle = '#000000';
+              mCtx.fillRect(0, 0, 72, 72);
+              renderSpecificAnimation(mCtx, id, 36, 36, 0.9, time);
+            }
+          }
+        });
+      }
+
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
+</body>
+</html>
