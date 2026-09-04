@@ -10679,12 +10679,361 @@ function drawElectricSpark(ctx, x, y, scale, color) {
 
 
 
+    
+    // --- SESSION 4: 5 KANTO LEGENDS (IDs 65 to 69) ---
+function drawPikachuPopMart(ctx, cx, cy, scale, t, blink = false) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const breathPhase = t * 2.3;
+  const breathSin = Math.sin(breathPhase);
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+  const by = -Math.abs(breathSin) * 3.5;
+
+  const tailLag = breathPhase - 0.45;
+  const tailSwayX = Math.sin(tailLag) * 5.0;
+  const tailSwayY = Math.cos(tailLag) * 3.0;
+
+  // Bóng sàn
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.ellipse(0, 42, 26 * (1.0 - 0.15 * breathSin), 6, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Đuôi sấm sét
+  const tx = 16 + tailSwayX;
+  const ty = by - 8 + tailSwayY;
+  ctx.fillStyle = '#78350f';
+  ctx.beginPath(); ctx.roundRect(8, by + 16, 8, 4, 2); ctx.fill();
+  ctx.fillStyle = '#facc15';
+  ctx.beginPath(); ctx.moveTo(tx - 4, ty + 16); ctx.lineTo(tx + 6, ty + 12); ctx.lineTo(tx + 2, ty + 22); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(tx + 4, ty + 12); ctx.lineTo(tx + 14, ty + 2); ctx.lineTo(tx + 8, ty + 16); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(tx + 10, ty + 4); ctx.lineTo(tx + 28, ty - 24); ctx.lineTo(tx + 14, ty - 8); ctx.fill();
+
+  // Thân vàng & chân
+  ctx.fillStyle = '#facc15';
+  ctx.beginPath(); ctx.ellipse(0, by + 14, 20 * sX, 18 * sY, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(-14, by + 27, 8, 9, 4); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(6, by + 27, 8, 9, 4); ctx.fill();
+
+  // Đầu vàng
+  ctx.beginPath(); ctx.ellipse(0, by - 8, 22 * sX, 18 * sY, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Tai vàng chóp đen
+  ctx.beginPath(); ctx.moveTo(-13, by - 19); ctx.lineTo(-25, by - 42); ctx.lineTo(-7, by - 22); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(7, by - 22); ctx.lineTo(30, by - 36); ctx.lineTo(13, by - 18); ctx.fill();
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath(); ctx.moveTo(-20, by - 32); ctx.lineTo(-25, by - 42); ctx.lineTo(-15, by - 35); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(20, by - 30); ctx.lineTo(30, by - 36); ctx.lineTo(22, by - 24); ctx.fill();
+
+  // Má đỏ
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath(); ctx.arc(-16, by + 1, 6, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(16, by + 1, 6, 0, Math.PI * 2); ctx.fill();
+
+  // Mắt đen
+  if (!blink) {
+    ctx.fillStyle = '#0f172a';
+    ctx.beginPath(); ctx.ellipse(-10, by - 8, 4, 6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(10, by - 8, 4, 6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(-11, by - 11, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(9, by - 11, 2, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Miệng cười
+  ctx.fillStyle = '#881337';
+  ctx.beginPath(); ctx.moveTo(0, by + 8); ctx.lineTo(-6, by + 1); ctx.lineTo(6, by + 1); ctx.fill();
+  ctx.fillStyle = '#f472b6';
+  ctx.beginPath(); ctx.arc(0, by + 6, 3, 0, Math.PI * 2); ctx.fill();
+
+  // Tay nhỏ
+  ctx.fillStyle = '#facc15';
+  ctx.beginPath(); ctx.arc(-12, by + 12, 4, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(12, by + 12, 4, 0, Math.PI * 2); ctx.fill();
+
+  ctx.restore();
+}
+
+
+function drawEeveeFluffyClay(ctx, cx, cy, scale, t, blink = false) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const breathPhase = t * 2.2;
+  const breathSin = Math.sin(breathPhase);
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+  const by = -Math.abs(breathSin) * 3.0;
+
+  const tailLag = breathPhase - 0.45;
+  const tailSwayX = Math.sin(tailLag) * 6.0;
+  const tailSwayY = Math.cos(tailLag) * 3.5;
+
+  // Bóng sàn
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.ellipse(0, 42, 26 * (1.0 - 0.15 * breathSin), 6, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Đuôi chổi lông
+  const tx = 18 + tailSwayX;
+  const ty = by - 2 + tailSwayY;
+  ctx.fillStyle = '#b45309';
+  ctx.beginPath(); ctx.ellipse(tx - 2, ty - 2, 14, 24, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fef08a';
+  ctx.beginPath(); ctx.moveTo(tx + 4, ty - 18); ctx.lineTo(tx + 14, ty - 32); ctx.lineTo(tx - 4, ty - 22); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(tx + 4, ty - 22, 8, 10, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Thân & chân
+  ctx.fillStyle = '#b45309';
+  ctx.beginPath(); ctx.ellipse(0, by + 16, 16 * sX, 14 * sY, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(-16, by + 26, 7, 12, 3); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(-7,  by + 26, 7, 12, 3); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(2,   by + 26, 7, 12, 3); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(11,  by + 26, 7, 12, 3); ctx.fill();
+
+  // Bờm cổ kem xốp
+  ctx.fillStyle = '#fef08a';
+  ctx.beginPath(); ctx.arc(-14, by + 7, 9, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(14,  by + 7, 9, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(0,   by + 11, 10, 0, Math.PI * 2); ctx.fill();
+
+  // Đầu nâu
+  ctx.fillStyle = '#b45309';
+  ctx.beginPath(); ctx.ellipse(0, by - 10, 20 * sX, 16 * sY, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Tai cáo
+  ctx.beginPath(); ctx.moveTo(-14, by - 20); ctx.lineTo(-32, by - 48); ctx.lineTo(-4, by - 24); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(4,   by - 24); ctx.lineTo(32,  by - 48); ctx.lineTo(14, by - 20); ctx.fill();
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.moveTo(-15, by - 22); ctx.lineTo(-28, by - 44); ctx.lineTo(-8, by - 26); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(8,   by - 26); ctx.lineTo(28,  by - 44); ctx.lineTo(15, by - 22); ctx.fill();
+
+  // Mắt đen
+  if (!blink) {
+    ctx.fillStyle = '#1e293b';
+    ctx.beginPath(); ctx.ellipse(-9, by - 10, 4, 7, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(9,  by - 10, 4, 7, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(-10, by - 13, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(8,   by - 13, 2, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Miệng
+  ctx.strokeStyle = '#1e293b';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(-3, by - 2); ctx.lineTo(0, by - 1); ctx.lineTo(3, by - 2);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+
+function drawBulbasaurFlowerBud(ctx, cx, cy, scale, t, blink = false) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const breathPhase = t * 2.1;
+  const breathSin = Math.sin(breathPhase);
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+  const by = -Math.abs(breathSin) * 2.5;
+
+  // Bóng sàn
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.ellipse(0, 42, 28 * (1.0 - 0.15 * breathSin), 7, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Hạt nụ xanh trên lưng
+  ctx.fillStyle = '#22c55e';
+  ctx.beginPath(); ctx.ellipse(6, by - 10, 14, 20, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#4ade80';
+  ctx.beginPath(); ctx.moveTo(0, by - 24); ctx.lineTo(16, by - 36); ctx.lineTo(18, by - 18); ctx.fill();
+
+  // Thân & chân
+  ctx.fillStyle = '#2dd4bf';
+  ctx.beginPath(); ctx.ellipse(-4, by + 14, 20 * sX, 16 * sY, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(-20, by + 24, 9, 12, 4); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(-9,  by + 24, 9, 12, 4); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(4,   by + 24, 9, 12, 4); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(14,  by + 24, 9, 12, 4); ctx.fill();
+
+  // Đầu
+  ctx.beginPath(); ctx.ellipse(-6, by - 8, 20 * sX, 16 * sY, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Tai
+  ctx.beginPath(); ctx.moveTo(-20, by - 18); ctx.lineTo(-26, by - 32); ctx.lineTo(-12, by - 20); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(0,   by - 20); ctx.lineTo(6,   by - 32); ctx.lineTo(12,  by - 18); ctx.fill();
+
+  // Đốm xanh
+  ctx.fillStyle = '#0f766e';
+  ctx.beginPath(); ctx.moveTo(-10, by - 18); ctx.lineTo(-6, by - 24); ctx.lineTo(-2, by - 18); ctx.fill();
+
+  // Mắt đỏ
+  if (!blink) {
+    ctx.fillStyle = '#ef4444';
+    ctx.beginPath(); ctx.moveTo(-16, by - 14); ctx.lineTo(-6, by - 14); ctx.lineTo(-14, by - 2); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(2,   by - 14); ctx.lineTo(12, by - 14); ctx.lineTo(4,   by - 2); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(-11, by - 11, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(7,   by - 11, 2, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Miệng & răng
+  ctx.fillStyle = '#881337';
+  ctx.beginPath(); ctx.moveTo(-6, by + 6); ctx.lineTo(-14, by + 1); ctx.lineTo(2, by + 1); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(-12, by + 1, 2, 2);
+  ctx.fillRect(0,   by + 1, 2, 2);
+
+  ctx.restore();
+}
+
+
+function drawCharmanderEmberTail(ctx, cx, cy, scale, t, blink = false) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const breathPhase = t * 2.4;
+  const breathSin = Math.sin(breathPhase);
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+  const by = -Math.abs(breathSin) * 3.0;
+
+  const flamePhase = t * 5.0;
+  const flameWiggle = Math.sin(flamePhase) * 3.0;
+
+  // Bóng sàn
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.ellipse(0, 42, 26 * (1.0 - 0.15 * breathSin), 6, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Đuôi & ngọn lửa
+  ctx.fillStyle = '#f97316';
+  ctx.beginPath(); ctx.roundRect(12, by + 20, 16, 6, 3); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(22, by + 10, 8, 14, 3); ctx.fill();
+  const fx = 26 + flameWiggle;
+  const fy = by + 2;
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath(); ctx.moveTo(fx - 6, fy + 8); ctx.lineTo(fx, fy - 18); ctx.lineTo(fx + 8, fy + 8); ctx.fill();
+  ctx.fillStyle = '#facc15';
+  ctx.beginPath(); ctx.moveTo(fx - 4, fy + 6); ctx.lineTo(fx + 2, fy - 12); ctx.lineTo(fx + 6, fy + 6); ctx.fill();
+
+  // Thân cam & bụng kem
+  ctx.fillStyle = '#f97316';
+  ctx.beginPath(); ctx.ellipse(-2, by + 14, 18 * sX, 16 * sY, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fef08a';
+  ctx.beginPath(); ctx.ellipse(-6, by + 16, 10 * sX, 14 * sY, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#f97316';
+  ctx.beginPath(); ctx.roundRect(-16, by + 28, 10, 10, 4); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(2,   by + 28, 10, 10, 4); ctx.fill();
+
+  // Đầu cam
+  ctx.beginPath(); ctx.ellipse(-4, by - 10, 18 * sX, 16 * sY, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Mắt xanh
+  if (!blink) {
+    ctx.fillStyle = '#0284c7';
+    ctx.beginPath(); ctx.ellipse(-10, by - 10, 4, 7, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(4,   by - 10, 4, 7, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(-11, by - 13, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(3,   by - 13, 2, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Miệng & răng
+  ctx.fillStyle = '#881337';
+  ctx.beginPath(); ctx.moveTo(-4, by + 6); ctx.lineTo(-12, by + 1); ctx.lineTo(4, by + 1); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(-10, by + 1, 2, 2);
+  ctx.fillRect(2,   by + 1, 2, 2);
+
+  // Tay nhỏ
+  ctx.fillStyle = '#f97316';
+  ctx.beginPath(); ctx.arc(-14, by + 10, 4, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(8,   by + 10, 4, 0, Math.PI * 2); ctx.fill();
+
+  ctx.restore();
+}
+
+
+function drawSquirtleWaterTurtle(ctx, cx, cy, scale, t, blink = false) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  const breathPhase = t * 2.2;
+  const breathSin = Math.sin(breathPhase);
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+  const by = -Math.abs(breathSin) * 2.8;
+
+  const tailLag = breathPhase - 0.45;
+  const tailSwayX = Math.sin(tailLag) * 5.0;
+  const tailSwayY = Math.cos(tailLag) * 3.0;
+
+  // Bóng sàn
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.ellipse(0, 42, 26 * (1.0 - 0.15 * breathSin), 6, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Mai rùa
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.ellipse(8, by + 10, 16, 20, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#92400e';
+  ctx.beginPath(); ctx.ellipse(10, by + 10, 14, 18, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Đuôi xoáy nước
+  const tx = 22 + tailSwayX;
+  const ty = by + 14 + tailSwayY;
+  ctx.fillStyle = '#38bdf8';
+  ctx.beginPath(); ctx.arc(tx, ty, 10, 0, Math.PI * 2); ctx.fill();
+
+  // Thân lam & yếm bụng
+  ctx.fillStyle = '#38bdf8';
+  ctx.beginPath(); ctx.ellipse(-4, by + 14, 16 * sX, 14 * sY, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fef08a';
+  ctx.beginPath(); ctx.ellipse(-8, by + 14, 10 * sX, 12 * sY, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#38bdf8';
+  ctx.beginPath(); ctx.roundRect(-18, by + 26, 9, 10, 4); ctx.fill();
+  ctx.beginPath(); ctx.roundRect(-2,  by + 26, 9, 10, 4); ctx.fill();
+
+  // Đầu
+  ctx.beginPath(); ctx.ellipse(-6, by - 10, 20 * sX, 16 * sY, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Mắt đỏ
+  if (!blink) {
+    ctx.fillStyle = '#b91c1c';
+    ctx.beginPath(); ctx.ellipse(-12, by - 10, 4, 7, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(2,   by - 10, 4, 7, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(-13, by - 13, 2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(1,   by - 13, 2, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Mỏ
+  ctx.strokeStyle = '#0284c7';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(-14, by - 2); ctx.lineTo(-4, by); ctx.lineTo(4, by - 2);
+  ctx.stroke();
+
+  // Tay nhỏ
+  ctx.fillStyle = '#38bdf8';
+  ctx.beginPath(); ctx.arc(-18, by + 8, 4, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(4,   by + 8, 4, 0, Math.PI * 2); ctx.fill();
+
+  ctx.restore();
+}
+
+
+
     function renderSpecificAnimation(ctx, id, cx, cy, scale, t) {
       ctx.save();
       ctx.translate(cx, cy);
       ctx.scale(scale, scale);
 
-      id = (id >= 0) ? (id % 65) : 0;
+      id = (id >= 0) ? (id % 70) : 0;
       const breath = Math.sin(t * 3.5);
       const angle = t * 2.0;
       const blink = (Date.now() % 3500 < 160);
@@ -11330,6 +11679,28 @@ function drawElectricSpark(ctx, x, y, scale, color) {
         }
         case 64: { // Pawmi
           drawPawmiElectricBear(ctx, 0, 0, 1.0, t, blink);
+          break;
+        }
+
+        
+        case 65: { // Pikachu
+          drawPikachuPopMart(ctx, 0, 0, 1.0, t, blink);
+          break;
+        }
+        case 66: { // Eevee
+          drawEeveeFluffyClay(ctx, 0, 0, 1.0, t, blink);
+          break;
+        }
+        case 67: { // Bulbasaur
+          drawBulbasaurFlowerBud(ctx, 0, 0, 1.0, t, blink);
+          break;
+        }
+        case 68: { // Charmander
+          drawCharmanderEmberTail(ctx, 0, 0, 1.0, t, blink);
+          break;
+        }
+        case 69: { // Squirtle
+          drawSquirtleWaterTurtle(ctx, 0, 0, 1.0, t, blink);
           break;
         }
 

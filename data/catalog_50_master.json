@@ -553,5 +553,40 @@
     "category": "Linh Thú Hệ Điện",
     "description": "Lông cam ấm áp bồng bềnh Pop Mart, tai đệm ngọc bích, đệm lòng bàn tay phóng điện vàng tươi.",
     "quote": "Ấm áp như ánh mặt trời, truyền thêm dũng khí cho mỗi bước đi."
+  },
+  {
+    "id": 65,
+    "name": "Pikachu - Chuột Điện Hoàng Kim",
+    "category": "Huyền Thoại Kanto",
+    "description": "Thân vàng rực rỡ Pop Mart, đôi má đỏ tròn xoe tích điện triệu volt, đuôi tia chớp gấp khúc nhảy múa.",
+    "quote": "Pika-Pikachu! Năng lượng triệu volt thắp sáng mọi ước mơ."
+  },
+  {
+    "id": 66,
+    "name": "Eevee - Cáo Bông Bờm Trắng",
+    "category": "Huyền Thoại Kanto",
+    "description": "Lông nâu hạt dẻ ấm áp, bờm cổ kem xốp bồng bềnh mây trắng, đôi tai vươn cao với ánh mắt thuần khiết.",
+    "quote": "Vô hạn tiềm năng, từng bước tiến hóa theo cách rực rỡ nhất."
+  },
+  {
+    "id": 67,
+    "name": "Bulbasaur - Ếch Mầm Xanh Hạt Nụ",
+    "category": "Huyền Thoại Kanto",
+    "description": "Thân xanh lam ngọc, hạt nụ xanh biếc trên lưng vươn cao, đôi mắt ruby đỏ lấp lánh nụ cười tươi rói.",
+    "quote": "Mầm sống đâm chồi, từng ngày kiên định vươn lên đón nắng."
+  },
+  {
+    "id": 68,
+    "name": "Charmander - Khủng Long Lửa Đuôi Cháy",
+    "category": "Huyền Thoại Kanto",
+    "description": "Khủng long cam rực lửa, bụng kem ấm áp, ngọn lửa đuôi bập bùng cháy mãi biểu trưng cho sự kiên cường.",
+    "quote": "Ngọn lửa nhiệt huyết không bao giờ tắt, sưởi ấm mọi trái tim."
+  },
+  {
+    "id": 69,
+    "name": "Squirtle - Rùa Nước Mai Nâu",
+    "category": "Huyền Thoại Kanto",
+    "description": "Rùa xanh lam ngọc bích, mai rùa nâu viền trắng ngọc, đuôi xoáy nước uốn lượn lướt sóng hiền hòa.",
+    "quote": "Lướt trên những con sóng, bền bỉ tiến về phía trước."
   }
 ]

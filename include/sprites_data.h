@@ -65,6 +65,7 @@ struct ScaledCanvas {
 #include "session1_mythics_sprites.h"
 #include "session2_mythics_sprites.h"
 #include "session3_mythics_sprites.h"
+#include "session4_mythics_sprites.h"
 #include "phione_sprites.h"
 
 namespace SpriteRenderer {
@@ -76,7 +77,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 65) : 0;
+    id = (id >= 0) ? (id % 70) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -741,6 +742,31 @@ namespace SpriteRenderer {
       }
       case 64: { // Pawmi - Gấu Bông Lông Cam Điện Quang
         Session3Mythics::drawPawmiElectricBear(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      
+      // =============================================================
+      // SESSION 4: 5 HUYỀN THOẠI KANTO POP MART (IDs 65 - 69)
+      // =============================================================
+      case 65: { // Pikachu - Chuột Điện Hoàng Kim
+        Session4Mythics::drawPikachuPopMart(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 66: { // Eevee - Cáo Bông Bờm Trắng
+        Session4Mythics::drawEeveeFluffyClay(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 67: { // Bulbasaur - Ếch Mầm Xanh Hạt Nụ
+        Session4Mythics::drawBulbasaurFlowerBud(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 68: { // Charmander - Khủng Long Lửa Đuôi Cháy
+        Session4Mythics::drawCharmanderEmberTail(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 69: { // Squirtle - Rùa Nước Mai Nâu
+        Session4Mythics::drawSquirtleWaterTurtle(spr, cx, cy, angle, blink);
         break;
       }
 
