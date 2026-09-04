@@ -693,5 +693,40 @@
     "category": "Cổ Đại Thần Thoại",
     "description": "Huyền quy đại lục đồ sộ vòm mai xanh rêu, mang trên lưng cổ thụ bonsai cùng 3 đỉnh núi đá bạc sừng sững.",
     "quote": "Vững chãi như núi cao đại ngàn, nuôi dưỡng sự sống muôn nơi."
+  },
+  {
+    "id": 85,
+    "name": "Raikou - Lôi Thần Hổ Nanh Kiếm",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Lôi thần hổ vàng dũng mãnh, mặt nạ xanh băng, đôi nanh kiếm dài trắng muốt, mây tím giông bão bồng bềnh sau lưng.",
+    "quote": "Tia chớp dẫn đường, sấm sét phá tan mọi bóng đêm u tối."
+  },
+  {
+    "id": 86,
+    "name": "Magikarp - Cá Chép Vàng Vượt Vũ Môn",
+    "category": "Linh Thú Đáng Yêu",
+    "description": "Cá chép vàng cam béo tròn Pop Mart, đội vương miện hoàng kim 3 chóp, râu vàng uốn lượn, miệng tròn xoe ngơ ngác đáng yêu.",
+    "quote": "Kiên trì vượt sóng thác ghềnh, ngày mai sẽ hóa rồng kiêu hãnh."
+  },
+  {
+    "id": 87,
+    "name": "Scorbunny - Thỏ Lửa Năng Lượng Tươi Vui",
+    "category": "Linh Thú Đáng Yêu",
+    "description": "Thỏ trắng hoạt bát năng động, chóp tai cam rực lửa, dán băng gạc vàng trên sống mũi, miệng cười lộ chiếc răng ngộ nghĩnh.",
+    "quote": "Chạy hết mình về phía trước, biến đam mê thành ngọn lửa bùng cháy."
+  },
+  {
+    "id": 88,
+    "name": "Xerneas - Hươu Thần Rừng Cầu Vồng Sự Sống",
+    "category": "Thần Thoại Tối Thượng",
+    "description": "Hươu thần đen tuyền quý phái, giáp ngực xanh hoàng gia, gạc sừng hoàng kim khổng lồ đính 8 viên ngọc sáng cầu vồng rực rỡ.",
+    "quote": "Năng lượng sự sống bất tận chiếu rọi và hồi sinh muôn loài."
+  },
+  {
+    "id": 89,
+    "name": "Arcanine - Hỏa Sư Thần Khuyển Bờm Mây",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Thần khuyển hỏa sư oai phong lẫm liệt, lông cam sọc hổ, bờm mây và đuôi mây khổng lồ cuồn cuộn trắng muốt.",
+    "quote": "Lòng trung thành sắc son và trái tim dũng cảm như ngọn lửa bùng cháy."
   }
 ]

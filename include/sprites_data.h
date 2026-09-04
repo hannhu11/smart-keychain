@@ -69,6 +69,7 @@ struct ScaledCanvas {
 #include "session5_mythics_sprites.h"
 #include "session6_mythics_sprites.h"
 #include "session7_mythics_sprites.h"
+#include "session8_mythics_sprites.h"
 #include "phione_sprites.h"
 
 namespace SpriteRenderer {
@@ -80,7 +81,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 85) : 0;
+    id = (id >= 0) ? (id % 90) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -845,6 +846,31 @@ namespace SpriteRenderer {
       }
       case 84: { // Torterra - Huyền Quy Đại Lục Bonsai
         Session7Mythics::drawTorterraContinentTortoise(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      
+      // =============================================================
+      // SESSION 8: 5 LINH THÚ HOÀNG GIA & CẦU VỒNG (IDs 85 - 89)
+      // =============================================================
+      case 85: { // Raikou - Lôi Thần Hổ Nanh Kiếm
+        Session8Mythics::drawRaikouThunderTiger(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 86: { // Magikarp - Cá Chép Vàng Vượt Vũ Môn
+        Session8Mythics::drawMagikarpGoldenKarp(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 87: { // Scorbunny - Thỏ Lửa Năng Lượng Tươi Vui
+        Session8Mythics::drawScorbunnyFireRabbit(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 88: { // Xerneas - Hươu Thần Rừng Cầu Vồng Sự Sống
+        Session8Mythics::drawXerneasRainbowStag(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 89: { // Arcanine - Hỏa Sư Thần Khuyển Bờm Mây
+        Session8Mythics::drawArcanineCloudLion(spr, cx, cy, angle, blink);
         break;
       }
 
