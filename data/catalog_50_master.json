@@ -623,5 +623,40 @@
     "category": "Biểu Tượng Đáng Yêu",
     "description": "Bóng bay hồng hoàn hảo, chỏm xoáy tóc bồng bềnh, đôi mắt ngọc aqua khổng lồ long lanh cất tiếng hát du dương.",
     "quote": "Giai điệu du dương xua tan mệt mỏi, đưa tâm hồn vào giấc ngủ êm đềm."
+  },
+  {
+    "id": 75,
+    "name": "Psyduck - Vịt Vàng Đau Đầu",
+    "category": "Linh Thú Đáng Yêu",
+    "description": "Vịt vàng béo tròn Pop Mart, mỏ kem siêu to, 3 cọng tóc đen và hai cánh ôm đầu bộc phát siêu năng lực.",
+    "quote": "Dù đầu có đau, sức mạnh tiềm ẩn bên trong luôn sẵn sàng bùng nổ."
+  },
+  {
+    "id": 76,
+    "name": "Piplup - Chim Cánh Cụt Băng Tuyết",
+    "category": "Linh Thú Đáng Yêu",
+    "description": "Chim cánh cụt xanh hoàng gia, áo choàng lam nhạt, mặt nạ trắng cùng hai khuy ngực ngọc trai kiêu hãnh.",
+    "quote": "Kiêu hãnh và dũng cảm, luôn ngẩng cao đầu vượt qua bão tuyết."
+  },
+  {
+    "id": 77,
+    "name": "Vulpix Alola - Cáo Tuyết Băng Giá",
+    "category": "Linh Thú Đáng Yêu",
+    "description": "Cáo tuyết trắng muốt thanh khiết, chỏm tóc xoăn mây tuyết, đuôi bồng bềnh như đám mây ngọc bích.",
+    "quote": "Thanh khiết như tuyết đầu mùa, mang lại sự bình yên dịu mát."
+  },
+  {
+    "id": 78,
+    "name": "Rowlet - Cú Mèo Tròn Vo Nơ Lá",
+    "category": "Linh Thú Đáng Yêu",
+    "description": "Cú mèo hình cầu lông be mềm mại, kính mắt đôi trắng khổng lồ, thắt nơ lá kép xanh biếc lịch lãm.",
+    "quote": "Bình tĩnh và thông thái, ngắm nhìn thế giới bằng đôi mắt trong trẻo."
+  },
+  {
+    "id": 79,
+    "name": "Mimikyu - Búp Bê Vải Rách Đôi Mắt Sâu",
+    "category": "Linh Thú Đáng Yêu",
+    "description": "Búp bê vải bao bố xám be, tai gãy nguệch ngoạc nét sáp, đôi mắt thật đen láy hé nhìn dưới gấu váy rách.",
+    "quote": "Khao khát được yêu thương, trái tim chân thành ẩn dưới lớp áo choàng."
   }
 ]

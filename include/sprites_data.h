@@ -67,6 +67,7 @@ struct ScaledCanvas {
 #include "session3_mythics_sprites.h"
 #include "session4_mythics_sprites.h"
 #include "session5_mythics_sprites.h"
+#include "session6_mythics_sprites.h"
 #include "phione_sprites.h"
 
 namespace SpriteRenderer {
@@ -78,7 +79,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 75) : 0;
+    id = (id >= 0) ? (id % 80) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -793,6 +794,31 @@ namespace SpriteRenderer {
       }
       case 74: { // Jigglypuff - Bóng Hồng Khúc Hát Ru
         Session5Mythics::drawJigglypuffBalloonSinger(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      
+      // =============================================================
+      // SESSION 6: 5 LINH THÚ THÂN THƯƠNG (IDs 75 - 79)
+      // =============================================================
+      case 75: { // Psyduck - Vịt Vàng Đau Đầu
+        Session6Mythics::drawPsyduckHeadacheDuck(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 76: { // Piplup - Chim Cánh Cụt Băng Tuyết
+        Session6Mythics::drawPiplupIcePenguin(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 77: { // Vulpix Alola - Cáo Tuyết Băng Giá
+        Session6Mythics::drawVulpixAlolanIceFox(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 78: { // Rowlet - Cú Mèo Tròn Vo Nơ Lá
+        Session6Mythics::drawRowletRoundOwl(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 79: { // Mimikyu - Búp Bê Vải Rách Đôi Mắt Sâu
+        Session6Mythics::drawMimikyuRagdollFairy(spr, cx, cy, angle, blink);
         break;
       }
 
