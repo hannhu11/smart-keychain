@@ -588,5 +588,40 @@
     "category": "Huyền Thoại Kanto",
     "description": "Rùa xanh lam ngọc bích, mai rùa nâu viền trắng ngọc, đuôi xoáy nước uốn lượn lướt sóng hiền hòa.",
     "quote": "Lướt trên những con sóng, bền bỉ tiến về phía trước."
+  },
+  {
+    "id": 70,
+    "name": "Togepi - Trứng Hạnh Phúc Vỏ Hoa",
+    "category": "Biểu Tượng Đáng Yêu",
+    "description": "Vỏ trứng trắng nứt zigzag đốm xanh đỏ Pop Mart, đầu vàng 5 chóp sao, nụ cười thơ ngây mang phước lành.",
+    "quote": "Tràn ngập niềm vui và may mắn, mang lại điềm lành cho muôn loài."
+  },
+  {
+    "id": 71,
+    "name": "Mew - Mèo Tiên Hồng Không Trọng Lực",
+    "category": "Biểu Tượng Đáng Yêu",
+    "description": "Mèo tiên hồng pastel lơ lửng không trọng lực, mắt sapphire ngọc bích, đuôi dài uốn cong mềm mại.",
+    "quote": "Khởi nguyên sự sống, tâm hồn thuần khiết bay lượn giữa muôn vì sao."
+  },
+  {
+    "id": 72,
+    "name": "Snorlax - Gấu Lười Ngủ Khổng Lồ",
+    "category": "Biểu Tượng Đáng Yêu",
+    "description": "Thân béo tròn khổng lồ màu xanh thẫm, bụng kem siêu to núng nính, hai bàn chân xòe đệm nâu ngủ say sưa.",
+    "quote": "Ngủ một giấc thật sâu, sạc đầy năng lượng cho ngày mai rực rỡ."
+  },
+  {
+    "id": 73,
+    "name": "Gengar - Bóng Ma Tím Nụ Cười Gian",
+    "category": "Biểu Tượng Đáng Yêu",
+    "description": "Bóng ma tím than tròn xoe, gai lưng nhọn hoắt, mắt đỏ tinh nghịch cùng nụ cười rộng ngoác khoe răng trắng.",
+    "quote": "Bí ẩn và tinh nghịch, mang lại niềm vui bất ngờ trong màn đêm."
+  },
+  {
+    "id": 74,
+    "name": "Jigglypuff - Bóng Hồng Khúc Hát Ru",
+    "category": "Biểu Tượng Đáng Yêu",
+    "description": "Bóng bay hồng hoàn hảo, chỏm xoáy tóc bồng bềnh, đôi mắt ngọc aqua khổng lồ long lanh cất tiếng hát du dương.",
+    "quote": "Giai điệu du dương xua tan mệt mỏi, đưa tâm hồn vào giấc ngủ êm đềm."
   }
 ]

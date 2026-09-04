@@ -66,6 +66,7 @@ struct ScaledCanvas {
 #include "session2_mythics_sprites.h"
 #include "session3_mythics_sprites.h"
 #include "session4_mythics_sprites.h"
+#include "session5_mythics_sprites.h"
 #include "phione_sprites.h"
 
 namespace SpriteRenderer {
@@ -77,7 +78,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 70) : 0;
+    id = (id >= 0) ? (id % 75) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -767,6 +768,31 @@ namespace SpriteRenderer {
       }
       case 69: { // Squirtle - Rùa Nước Mai Nâu
         Session4Mythics::drawSquirtleWaterTurtle(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      
+      // =============================================================
+      // SESSION 5: 5 BIỂU TƯỢNG ĐÁNG YÊU (IDs 70 - 74)
+      // =============================================================
+      case 70: { // Togepi - Trứng Hạnh Phúc Vỏ Hoa
+        Session5Mythics::drawTogepiSpottedEgg(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 71: { // Mew - Mèo Tiên Hồng Không Trọng Lực
+        Session5Mythics::drawMewCelestialPink(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 72: { // Snorlax - Gấu Lười Ngủ Khổng Lồ
+        Session5Mythics::drawSnorlaxSoftGiant(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 73: { // Gengar - Bóng Ma Tím Nụ Cười Gian
+        Session5Mythics::drawGengarNeonShadow(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 74: { // Jigglypuff - Bóng Hồng Khúc Hát Ru
+        Session5Mythics::drawJigglypuffBalloonSinger(spr, cx, cy, angle, blink);
         break;
       }
 
