@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMOLGA SÓC BAY ĐÔI CÁNH ĐIỆN - Pop Mart 3D Vinyl Sculptor Preview</title>
+  <style>
+    :root {
+      --bg-dark: #0b0f17;
+      --card-bg: rgba(18, 24, 38, 0.85);
+      --border-glow: rgba(255, 213, 0, 0.35);
+      --accent-yellow: #FFD000;
+      --accent-gold: #FFF875;
+      --accent-electric: #FFB703;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: radial-gradient(circle at 50% 20%, #172033 0%, var(--bg-dark) 85%);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .header h1 {
+      font-size: 26px;
+      letter-spacing: 1.5px;
+      background: linear-gradient(135deg, #FFF875, #FFD000, #FFB703);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1280px;
+      width: 100%;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-yellow), transparent);
+    }
+    .card h2 {
+      font-size: 15px;
+      color: #e2e8f0;
+      margin-bottom: 15px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 8px;
+    }
+    .badge {
+      font-size: 10px;
+      padding: 3px 8px;
+      background: rgba(255, 213, 0, 0.15);
+      border: 1px solid rgba(255, 213, 0, 0.4);
+      color: #FFF875;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    img.ref {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+      margin: auto;
+    }
+    canvas {
+      border-radius: 12px;
+      background: radial-gradient(circle at 50% 40%, #151b29 0%, #0c1018 100%);
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      width: 100%;
+      justify-content: center;
+    }
+    button {
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button:hover {
+      background: #334155;
+      border-color: var(--accent-yellow);
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 213, 0, 0.3);
+    }
+    .metrics {
+      margin-top: 12px;
+      font-family: monospace;
+      font-size: 11px;
+      color: #fde047;
+      display: flex;
+      gap: 14px;
+    }
+    .specs-card {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #94a3b8;
+    }
+    .specs-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .specs-card li {
+      margin-bottom: 8px;
+      padding-left: 18px;
+      position: relative;
+    }
+    .specs-card li::before {
+      content: "⚡";
+      position: absolute;
+      left: 0;
+      color: var(--accent-yellow);
+    }
+    .specs-card strong {
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>EMOLGA SÓC BAY ĐÔI CÁNH ĐIỆN</h1>
+    <p>3D Pop Mart Vinyl Sculptor • Session 3 Agent 2 • Pokedex #587 • ST7789 IPS 16-bit RGB565</p>
+  </div>
+
+  <div class="container">
+    <!-- Panel 1: Reference Artwork -->
+    <div class="card">
+      <h2>REFERENCE IMAGE <span class="badge">100% Fidelity</span></h2>
+      <img class="ref" src="../ảnh mẫu fllow theo để tạo y hệt như vậy ( giống 100 % các kiểu cách )/12_Mythic_Emolga_Flying_Squirrel.png" alt="Emolga Reference">
+      <div class="metrics">Official Master Art 100%</div>
+    </div>
+
+    <!-- Panel 2: ST7789 Standard Display (240x280) -->
+    <div class="card">
+      <h2>ST7789 240x280 <span class="badge">Hardware 1.0x</span></h2>
+      <canvas id="canvas1" width="240" height="280"></canvas>
+      <div class="controls">
+        <button id="btnBlink">Trigger Blink</button>
+        <button id="btnPause">Pause / Resume</button>
+      </div>
+      <div class="metrics">
+        <span id="fps">FPS: 60</span>
+        <span id="squash">Squash: 1.00</span>
+      </div>
+    </div>
+
+    <!-- Panel 3: HD Collectible Inspection -->
+    <div class="card">
+      <h2>POP MART HD INSPECTION <span class="badge">Scale 1.45x</span></h2>
+      <canvas id="canvas2" width="340" height="380"></canvas>
+      <div class="metrics">
+        <span id="wing">Wing Lag: 80ms</span>
+        <span id="tail">Tail Sway: Active</span>
+      </div>
+    </div>
+
+    <!-- Panel 4: Sculpting Specs Breakdown -->
+    <div class="card specs-card">
+      <h2>SCULPTING SPECS <span class="badge">PRO-MAX</span></h2>
+      <ul>
+        <li><strong>Màng cánh sóc bay vàng chanh:</strong> Mặt trong vàng chanh rực rỡ, mặt ngoài đen bóng bẩy nối từ cổ tay đến hông.</li>
+        <li><strong>Vỗ cánh trễ pha 80ms:</strong> Đôi cánh sóc bay vỗ nhịp trễ pha Delta Phi = 0.20 rad dập dờn như cánh diều lướt gió.</li>
+        <li><strong>Đôi tai đen tròn & Lòng tai vàng:</strong> Đôi tai tròn xòe rộng với lòng tai vàng rực rỡ và vành đệm trắng chân tai.</li>
+        <li><strong>Mũ trùm đầu đen 3 múi:</strong> Chúc xuống trán 3 múi nhọn (1 giữa 2 mắt, 2 bên má) trên nền mặt trắng ngọc.</li>
+        <li><strong>Hai má túi điện vàng phúng phính:</strong> Túi điện tròn vo tích tụ điện trường Pop Mart ngọt ngào.</li>
+        <li><strong>Mắt pha lê 3 điểm bắt sáng:</strong> Đôi mắt đen láy to tròn với Primary Keylight, Caustic Bounce và Micro Glint.</li>
+        <li><strong>Đuôi sóc lưỡi liềm tia chớp:</strong> Xòe rộng đen tuyền sau lưng vút chéo lên phải với 3 khía răng cưa tia chớp uốn lượn.</li>
+        <li><strong>Bóng tiếp xúc mờ ảo:</strong> Co giãn mềm mại dưới sàn theo cao độ lượn bay không trọng lực.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+// 12_MYTHIC_EMOLGA_FLYING_SQUIRREL - Modern HTML5 Canvas 2D Implementation
+// 100% Anatomical Fidelity & High-End 3D Pop Mart Vinyl Aesthetic
+// Organic Micro-Physics: 5% Squash & Stretch, 80ms Wing Flap Lag, Tail Sway
+// =========================================================================
+function drawEmolgaFlyingSquirrel(ctx, cx, cy, scale, t, manualBlink = false) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  // 1. Organic Micro-Physics Kinematics
+  const breathFreq = 2.4;
+  const breathPhase = t * breathFreq;
+  const breathSin = Math.sin(breathPhase);
+
+  // Nhịp lượn bay Squash & Stretch 5% bảo toàn thể tích
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+  const bounceY = Math.sin(breathPhase) * 4.5;
+  const by = bounceY; // Tọa độ Y động của thân, cánh và đầu
+
+  // Đôi cánh sóc bay vỗ nhịp trễ pha 80ms (Delta Phi = 0.20 rad) dập dờn như cánh diều
+  const wingLag = breathPhase - 0.20;
+  const wingFlap = Math.sin(wingLag) * 5.0;
+  const wingFlutter = Math.sin(breathPhase * 2.0 - 0.20) * 1.6;
+
+  // Đuôi sóc xòe hình lưỡi liềm uốn lượn sau lưng trễ pha quán tính
+  const tailLag = breathPhase - 0.40;
+  const tailSwayX = Math.sin(tailLag) * 6.5;
+  const tailSwayY = Math.cos(tailLag) * 3.8;
+
+  // Nhịp chớp mắt 3.5s (interval 3500ms, duration 140ms)
+  const blinkCycle = (t * 1000) % 3500;
+  const blink = manualBlink || (blinkCycle < 140);
+
+  // Hạt bụi tĩnh điện lách tách quanh má và cánh
+  const spark1 = Math.sin(t * 12.0) * 3.0;
+  const spark2 = Math.cos(t * 16.0) * 3.0;
+
+  // 2. LAYER 0: BÓNG TIẾP XÚC MỜ ẢO CO GIÃN DƯỚI SÀN (Ground Contact Shadow)
+  ctx.save();
+  const shadowFactor = 1.0 - bounceY * 0.04;
+  const shadowGrad = ctx.createRadialGradient(-2, 64, 3, -2, 64, 56 * sX * shadowFactor);
+  shadowGrad.addColorStop(0, "rgba(18, 22, 32, 0.70)");
+  shadowGrad.addColorStop(0.55, "rgba(18, 22, 32, 0.32)");
+  shadowGrad.addColorStop(1, "rgba(18, 22, 32, 0.0)");
+  ctx.fillStyle = shadowGrad;
+  ctx.beginPath();
+  ctx.ellipse(-2, 64, 56 * sX * shadowFactor, 11.5 * sX * shadowFactor, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // 3. LAYER 1: BẢN ĐUÔI SÓC TIA CHỚP LƯỠI LIỀM KHỔNG LỒ ĐEN TUYỀN (Giant Sweeping Lightning Plume)
+  ctx.save();
+  ctx.translate(0, by);
+
+  const tx0 = 16;
+  const ty0 = 14;
+  const txTop = 96 + tailSwayX;
+  const tyTop = -34 + tailSwayY;
+  const txNotch1 = 80 + tailSwayX * 0.8;
+  const tyNotch1 = -16 + tailSwayY;
+  const txMidSpike = 112 + tailSwayX * 1.15;
+  const tyMidSpike = -10 + tailSwayY;
+  const txNotch2 = 86 + tailSwayX * 0.85;
+  const tyNotch2 = 4 + tailSwayY;
+  const txBotSpike = 102 + tailSwayX * 0.9;
+  const tyBotSpike = 18 + tailSwayY;
+
+  const tailGrad = ctx.createLinearGradient(tx0, ty0, txMidSpike, tyMidSpike);
+  tailGrad.addColorStop(0, "#303848");
+  tailGrad.addColorStop(0.35, "#222834");
+  tailGrad.addColorStop(1, "#141822");
+
+  ctx.beginPath();
+  ctx.moveTo(tx0, ty0 - 6);
+  // Cung lưng đuôi vút cong lên chóp 1 góc 35 độ
+  ctx.bezierCurveTo(38, 8 + tailSwayY * 0.3, 64 + tailSwayX * 0.4, -20 + tailSwayY * 0.7, txTop, tyTop);
+  // Răng cưa tia chớp 1
+  ctx.lineTo(txNotch1, tyNotch1);
+  ctx.lineTo(txMidSpike, tyMidSpike);
+  // Răng cưa tia chớp 2
+  ctx.lineTo(txNotch2, tyNotch2);
+  ctx.lineTo(txBotSpike, tyBotSpike);
+  // Cung đáy đuôi uốn lượn ôm lại hông
+  ctx.bezierCurveTo(74 + tailSwayX * 0.6, 26 + tailSwayY * 0.8, 38, 26, tx0 + 6, ty0 + 10);
+  ctx.closePath();
+
+  ctx.fillStyle = tailGrad;
+  ctx.fill();
+  ctx.strokeStyle = "#4D5C73";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // Sống gờ tia chớp đón sáng sắc cạnh (Chiseled Facet Rim)
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.45)";
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(32, 10 + tailSwayY * 0.2);
+  ctx.bezierCurveTo(58 + tailSwayX * 0.4, -8 + tailSwayY * 0.6, 82 + tailSwayX * 0.8, -24 + tailSwayY * 0.9, txTop - 3, tyTop + 2);
+  ctx.stroke();
+
+  ctx.restore();
+
+  // 4. LAYER 2: ĐÔI TAI ĐEN TRÒN XÒE RỘNG VỚI LÒNG TAI VÀNG RỰC (Large Rounded Ears)
+  ctx.save();
+  ctx.translate(0, by);
+
+  // Tai trái (viewer's left - vểnh sang trái)
+  ctx.save();
+  ctx.translate(-32, -36);
+  ctx.rotate(-0.35);
+  const earGradL = ctx.createRadialGradient(-3, -4, 2, 0, 0, 22);
+  earGradL.addColorStop(0, "#475166");
+  earGradL.addColorStop(0.6, "#222630");
+  earGradL.addColorStop(1, "#14171F");
+  ctx.fillStyle = earGradL;
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 16, 20, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  // Lòng tai vàng rực rỡ
+  const earInGradL = ctx.createRadialGradient(-1, -2, 1, 1, 1, 15);
+  earInGradL.addColorStop(0, "#FFF380");
+  earInGradL.addColorStop(0.65, "#FFCE00");
+  earInGradL.addColorStop(1, "#E69D00");
+  ctx.fillStyle = earInGradL;
+  ctx.beginPath();
+  ctx.ellipse(1, 1, 11, 14, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Đệm trắng chân tai
+  ctx.fillStyle = "#F1F5F9";
+  ctx.beginPath();
+  ctx.ellipse(2, 9, 7, 5, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // Tai phải (viewer's right - xòe rộng sang phải)
+  ctx.save();
+  ctx.translate(20, -44);
+  ctx.rotate(0.48);
+  const earGradR = ctx.createRadialGradient(-3, -4, 2, 0, 0, 25);
+  earGradR.addColorStop(0, "#475166");
+  earGradR.addColorStop(0.6, "#222630");
+  earGradR.addColorStop(1, "#14171F");
+  ctx.fillStyle = earGradR;
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 20, 23, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  // Lòng tai vàng rực rỡ
+  const earInGradR = ctx.createRadialGradient(-1, -2, 1, -1, 1, 18);
+  earInGradR.addColorStop(0, "#FFF380");
+  earInGradR.addColorStop(0.65, "#FFCE00");
+  earInGradR.addColorStop(1, "#E69D00");
+  ctx.fillStyle = earInGradR;
+  ctx.beginPath();
+  ctx.ellipse(-1, 1, 14, 17, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Đệm trắng chân tai
+  ctx.fillStyle = "#F1F5F9";
+  ctx.beginPath();
+  ctx.ellipse(-1, 10, 10, 6, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  ctx.restore();
+
+  // 5. LAYER 3: HAI CÁNH SÓC BAY MÀNG VÀNG CHANH RỰC RỠ (Gliding Patagium Wings with 80ms Lag)
+  ctx.save();
+  ctx.translate(0, by);
+
+  // Cánh trái (viewer's left)
+  const wlx = -56;
+  const wly = -8 + wingFlap;
+  const whlx = -18;
+  const whly = 26;
+  const wMidLx = -44;
+  const wMidLy = 22 + wingFlutter;
+
+  // Lớp viền đen mặt ngoài màng cánh trái
+  ctx.fillStyle = "#1E232B";
+  ctx.beginPath();
+  ctx.moveTo(wlx, wly);
+  ctx.quadraticCurveTo(wMidLx - 9, wMidLy + 7, whlx, whly);
+  ctx.lineTo(whlx + 4, whly);
+  ctx.quadraticCurveTo(wMidLx - 5, wMidLy + 4, wlx + 3, wly);
+  ctx.closePath();
+  ctx.fill();
+
+  // Mặt trong màng cánh màu vàng chanh rực rỡ
+  const wingGradL = ctx.createRadialGradient(wlx + 18, wly + 10, 2, wMidLx, wMidLy, 36);
+  wingGradL.addColorStop(0, "#FFF875");
+  wingGradL.addColorStop(0.6, "#FFD000");
+  wingGradL.addColorStop(1, "#D97706");
+  ctx.fillStyle = wingGradL;
+  ctx.beginPath();
+  ctx.moveTo(wlx, wly);
+  ctx.quadraticCurveTo(wMidLx - 6, wMidLy + 3, whlx, whly);
+  ctx.quadraticCurveTo(-28, 14, wlx, wly);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.45)";
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  // Cánh phải (viewer's right - buồm vàng khổng lồ xòe sang phải đón gió)
+  const wrx = 46;
+  const wry = -6 + wingFlap * 0.85;
+  const whrx = 18;
+  const whry = 24;
+
+  // Lớp viền đen mặt ngoài màng cánh phải
+  ctx.fillStyle = "#1E232B";
+  ctx.beginPath();
+  ctx.moveTo(wrx, wry);
+  ctx.bezierCurveTo(wrx + 22, wry + 10, whrx + 38, whry + 4, whrx, whry);
+  ctx.lineTo(whrx - 4, whry);
+  ctx.bezierCurveTo(whrx + 32, whry, wrx + 18, wry + 6, wrx - 3, wry);
+  ctx.closePath();
+  ctx.fill();
+
+  // Mặt trong màng cánh phải vàng chanh - cánh buồm phồng to rực rỡ
+  const wingGradR = ctx.createRadialGradient(wrx - 8, wry + 14, 4, 38, 16, 44);
+  wingGradR.addColorStop(0, "#FFF875");
+  wingGradR.addColorStop(0.55, "#FFD000");
+  wingGradR.addColorStop(0.85, "#F59E0B");
+  wingGradR.addColorStop(1, "#D97706");
+  ctx.fillStyle = wingGradR;
+  ctx.beginPath();
+  ctx.moveTo(14, 2); // Nách phải
+  ctx.lineTo(wrx, wry); // Cổ tay phải
+  ctx.bezierCurveTo(wrx + 22, wry + 8, whrx + 36, whry + 2, whrx, whry); // Cung buồm căng gió
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.45)";
+  ctx.lineWidth = 1.0;
+  ctx.stroke();
+
+  ctx.restore();
+
+  // 6. LAYER 4: THÂN TRÒN MẬP & HAI CHÂN SAU TÍ HON (Plump Pear Body & Dangling Feet)
+  ctx.save();
+  ctx.translate(0, by);
+  ctx.scale(sX, sY);
+
+  // Lưng và sườn đen bao phủ
+  const bodyBackGrad = ctx.createRadialGradient(0, 16, 4, 0, 16, 28);
+  bodyBackGrad.addColorStop(0, "#303746");
+  bodyBackGrad.addColorStop(0.7, "#222630");
+  bodyBackGrad.addColorStop(1, "#14171F");
+  ctx.fillStyle = bodyBackGrad;
+  ctx.beginPath();
+  ctx.ellipse(0, 16, 26, 24, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Bụng trắng ngọc trai phúng phính Pop Mart
+  const bellyGrad = ctx.createRadialGradient(-3, 13, 3, -1, 16, 24);
+  bellyGrad.addColorStop(0, "#FFFFFF");
+  bellyGrad.addColorStop(0.75, "#F8FAFC");
+  bellyGrad.addColorStop(1, "#E2E8F0");
+  ctx.fillStyle = bellyGrad;
+  ctx.beginPath();
+  ctx.ellipse(-2, 16, 22, 21, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Hai chân sau tí hon buông lỏng tự nhiên trong gió
+  // Chân trái
+  ctx.fillStyle = "#94A3B8";
+  ctx.beginPath(); ctx.roundRect(-16, 36, 7, 10, 3); ctx.fill();
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath(); ctx.arc(-13, 44, 3.2, 0, Math.PI * 2); ctx.fill();
+
+  // Chân phải
+  ctx.fillStyle = "#94A3B8";
+  ctx.beginPath(); ctx.roundRect(4, 35, 7, 10, 3); ctx.fill();
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath(); ctx.arc(7, 43, 3.2, 0, Math.PI * 2); ctx.fill();
+
+  // Vòng cổ đen ôm quanh gáy và dưới cằm
+  ctx.fillStyle = "#222630";
+  ctx.beginPath();
+  ctx.ellipse(-3, 4, 18, 5, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.restore();
+
+  // 7. LAYER 5: HAI CÁNH TAY TRẮNG DANG RỘNG (Outstretched White Arms & Claws)
+  ctx.save();
+  ctx.translate(0, by);
+
+  // Tay trái (viewer's left)
+  const armGradL = ctx.createLinearGradient(-18, 4, wlx, wly);
+  armGradL.addColorStop(0, "#F1F5F9");
+  armGradL.addColorStop(0.7, "#FFFFFF");
+  armGradL.addColorStop(1, "#E2E8F0");
+  ctx.fillStyle = armGradL;
+  ctx.beginPath();
+  ctx.moveTo(-18, 4);
+  ctx.lineTo(wlx, wly);
+  ctx.lineTo(wlx + 7, wly + 7);
+  ctx.lineTo(-20, 12);
+  ctx.closePath();
+  ctx.fill();
+
+  // Cổ tay & móng vuốt trái
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath(); ctx.arc(wlx, wly, 5.5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(wlx - 4, wly - 3, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(wlx - 5, wly, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(wlx - 3, wly + 3, 2, 0, Math.PI * 2); ctx.fill();
+
+  // Tay phải (viewer's right)
+  const armGradR = ctx.createLinearGradient(14, 2, wrx, wry);
+  armGradR.addColorStop(0, "#F1F5F9");
+  armGradR.addColorStop(0.7, "#FFFFFF");
+  armGradR.addColorStop(1, "#E2E8F0");
+  ctx.fillStyle = armGradR;
+  ctx.beginPath();
+  ctx.moveTo(14, 2);
+  ctx.lineTo(wrx, wry);
+  ctx.lineTo(wrx - 5, wry + 7);
+  ctx.lineTo(16, 11);
+  ctx.closePath();
+  ctx.fill();
+
+  // Cổ tay & móng vuốt phải
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath(); ctx.arc(wrx, wry, 5.5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(wrx + 4, wry - 3, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(wrx + 5, wry, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(wrx + 3, wry + 3, 2, 0, Math.PI * 2); ctx.fill();
+
+  ctx.restore();
+
+  // 8. LAYER 6: KHỐI ĐẦU POP MART, MŨ TRÙM ĐEN 3 MÚI & KHUÔN MẶT TRẮNG (Head, Hood & Face)
+  ctx.save();
+  ctx.translate(0, by);
+  ctx.scale(sX, sY);
+
+  const hx = -4;
+  const hy = -12;
+
+  // Khối đỉnh đầu đen (Black Hood Base phía sau - chỉ ở trên vòm gáy)
+  const headGrad = ctx.createRadialGradient(hx - 2, hy - 10, 3, hx, hy - 8, 26);
+  headGrad.addColorStop(0, "#475166");
+  headGrad.addColorStop(0.55, "#222630");
+  headGrad.addColorStop(1, "#14171F");
+  ctx.fillStyle = headGrad;
+  ctx.beginPath();
+  ctx.ellipse(hx, hy - 10, 28, 20, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Đón sáng lụa đỉnh đầu
+  ctx.fillStyle = "rgba(255, 255, 255, 0.28)";
+  ctx.beginPath();
+  ctx.ellipse(hx, hy - 18, 18, 8, -0.08, 0, Math.PI * 2);
+  ctx.fill();
+
+  // KHUÔN MẶT TRẮNG TINH KHÔI PHÚNG PHÍNH (White Face bao trọn toàn bộ mắt, mũi, miệng, má và trán)
+  const faceGrad = ctx.createRadialGradient(hx - 2, hy + 2, 4, hx - 2, hy + 4, 26);
+  faceGrad.addColorStop(0, "#FFFFFF");
+  faceGrad.addColorStop(0.85, "#F8FAFC");
+  faceGrad.addColorStop(1, "#E2E8F0");
+  ctx.fillStyle = faceGrad;
+  ctx.beginPath();
+  ctx.ellipse(hx - 2, hy + 2, 26, 22, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Má phúng phính bầu bĩnh Pop Mart
+  ctx.beginPath(); ctx.arc(hx - 14, hy + 5, 13, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(hx + 10, hy + 4, 12, 0, Math.PI * 2); ctx.fill();
+  // Vòm trán trắng vươn cao
+  ctx.beginPath(); ctx.ellipse(hx - 2, hy - 6, 17, 13, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Mũ trùm đầu đen chúc xuống trán 3 múi nhọn sắc sảo (3 Sharp Black Teeth on White Forehead)
+  ctx.fillStyle = "#222630";
+  // Múi giữa (chúc xuống chính giữa 2 mắt - cao ráo không che mắt)
+  ctx.beginPath();
+  ctx.moveTo(hx - 8, hy - 20);
+  ctx.lineTo(hx, hy - 11);
+  ctx.lineTo(hx + 7, hy - 20);
+  ctx.closePath();
+  ctx.fill();
+
+  // Múi bên trái (chúc xuống mép ngoài mắt trái)
+  ctx.beginPath();
+  ctx.moveTo(hx - 20, hy - 19);
+  ctx.lineTo(hx - 16, hy - 13);
+  ctx.lineTo(hx - 11, hy - 20);
+  ctx.closePath();
+  ctx.fill();
+
+  // Múi bên phải (chúc xuống mép ngoài mắt phải)
+  ctx.beginPath();
+  ctx.moveTo(hx + 10, hy - 20);
+  ctx.lineTo(hx + 15, hy - 14);
+  ctx.lineTo(hx + 20, hy - 18);
+  ctx.closePath();
+  ctx.fill();
+
+  // 9. LAYER 7: HAI MÁ TÚI ĐIỆN VÀNG TRÒN VO PHÚNG PHÍNH (Plump Electric Yellow Cheeks)
+  // Nằm hoàn toàn trên nền lông trắng hai bên má
+  const clx = -25;
+  const cly = hy + 6;
+  const cheekGradL = ctx.createRadialGradient(clx - 1, cly - 1, 1, clx, cly, 9);
+  cheekGradL.addColorStop(0, "#FFF875");
+  cheekGradL.addColorStop(0.5, "#FFD000");
+  cheekGradL.addColorStop(1, "#FFB703");
+  ctx.fillStyle = cheekGradL;
+  ctx.beginPath();
+  ctx.arc(clx, cly, 8.2, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Túi điện má phải (viewer's right)
+  const crx = 17;
+  const cry = hy + 4;
+  const cheekGradR = ctx.createRadialGradient(crx - 1, cry - 1, 1, crx, cry, 8);
+  cheekGradR.addColorStop(0, "#FFF875");
+  cheekGradR.addColorStop(0.5, "#FFD000");
+  cheekGradR.addColorStop(1, "#FFB703");
+  ctx.fillStyle = cheekGradR;
+  ctx.beginPath();
+  ctx.arc(crx, cry, 7.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 10. LAYER 8: ĐÔI MẮT PHA LÊ ĐEN LÁY TO TRÒN 3 ĐIỂM BẮT SÁNG (Crystal Specular Eyes NẰM TRÊN NỀN TRẮNG)
+  // Mắt trái (viewer's left) - to tròn lấp lánh trên nền mặt trắng
+  const elX = -15;
+  const elY = hy - 4;
+  drawEmolgaEye(ctx, elX, elY, 8.2, 12.0, -0.1, blink);
+
+  // Mắt phải (viewer's right)
+  const erX = 6;
+  const erY = hy - 7;
+  drawEmolgaEye(ctx, erX, erY, 7.5, 11.2, 0.1, blink);
+
+  // 11. LAYER 9: MŨI ĐEN & MIỆNG CƯỜI HẠNH PHÚC LƯỠI HỒNG (Snout & Happy Smile)
+  // Chấm mũi đen nhỏ xíu
+  ctx.fillStyle = "#14171F";
+  ctx.beginPath();
+  ctx.arc(-5, hy - 1, 1.4, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Miệng cười mở rộng hình nêm hạnh phúc
+  ctx.save();
+  const mx0 = -13;
+  const my0 = hy + 4;
+  const mx1 = 2;
+  const my1 = hy + 3;
+  const mxMid = -6;
+  const myMid = hy + 14;
+
+  ctx.beginPath();
+  ctx.moveTo(mx0, my0);
+  ctx.quadraticCurveTo(mxMid, my0 - 1, mx1, my1);
+  ctx.quadraticCurveTo(mx1 + 1, myMid - 2, mxMid, myMid);
+  ctx.quadraticCurveTo(mx0 - 1, myMid - 2, mx0, my0);
+  ctx.closePath();
+  ctx.fillStyle = "#581C28";
+  ctx.fill();
+  ctx.strokeStyle = "#380D15";
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+
+  // Lưỡi hồng đào nhỏ nhắn hé mở
+  ctx.fillStyle = "#FB7185";
+  ctx.beginPath();
+  ctx.arc(mxMid, myMid - 3.5, 3.8, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  ctx.restore(); // restore head scale
+
+  // 12. LAYER 10: HẠT BỤI TĨNH ĐIỆN LÁCH TÁCH (Floating Electric Sparks)
+  drawElectricSpark(ctx, -25 - 9 + spark1, hy + 6 - 4 + spark2, "#FFF875");
+  drawElectricSpark(ctx, 112 + tailSwayX * 1.15 + 2 + spark2, -10 + tailSwayY - 4 + spark1, "#FFD000");
+  drawElectricSpark(ctx, wlx - 4 + spark2, wly + 6 + spark1, "#FFF875");
+  drawElectricSpark(ctx, 20 + 16 + spark1, -44 - 6 + spark2, "#FFD000");
+
+  ctx.restore();
+}
+
+function drawEmolgaEye(ctx, ex, ey, rx, ry, rot, blink) {
+  ctx.save();
+  ctx.translate(ex, ey);
+  ctx.rotate(rot);
+
+  if (blink) {
+    ctx.strokeStyle = "#0E1015";
+    ctx.lineWidth = 2.6;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.arc(0, 2, rx * 0.85, Math.PI * 0.15, Math.PI * 0.85);
+    ctx.stroke();
+    // Đuôi mi mắt vểnh ngộ nghĩnh
+    ctx.beginPath();
+    ctx.moveTo(rx * 0.7, 3);
+    ctx.lineTo(rx * 1.2, -1);
+    ctx.stroke();
+  } else {
+    // Hốc mắt & Tròng mắt đen láy obsidian
+    const eyeGrad = ctx.createRadialGradient(-1, -3, 1, 0, 0, ry);
+    eyeGrad.addColorStop(0, "#2E3442");
+    eyeGrad.addColorStop(0.5, "#1C202A");
+    eyeGrad.addColorStop(1, "#0E1015");
+    ctx.fillStyle = eyeGrad;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 3 ĐIỂM BẮT SÁNG PHA LÊ (3-Point Specular Highlights)
+    // Điểm 1: Primary Keylight lớn góc 10h (hình bầu dục sáng bóng)
+    ctx.fillStyle = "#FFFFFF";
+    ctx.beginPath();
+    ctx.ellipse(-rx * 0.28, -ry * 0.38, rx * 0.44, ry * 0.30, -0.2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Điểm 2: Secondary Caustic Bounce góc 4h (vầng phản chiếu mềm)
+    ctx.fillStyle = "rgba(226, 232, 240, 0.88)";
+    ctx.beginPath();
+    ctx.ellipse(rx * 0.35, ry * 0.38, rx * 0.30, ry * 0.22, 0.2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Điểm 3: Tertiary Micro Specular Glint (vi điểm bắt sáng li ti mép phải)
+    ctx.fillStyle = "#FFFFFF";
+    ctx.beginPath();
+    ctx.arc(rx * 0.45, -ry * 0.05, 1.2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+function drawElectricSpark(ctx, sx, sy, color) {
+  ctx.save();
+  ctx.translate(sx, sy);
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(0, -4.0);
+  ctx.lineTo(1.4, -1.2);
+  ctx.lineTo(4.0, 0);
+  ctx.lineTo(1.4, 1.2);
+  ctx.lineTo(0, 4.0);
+  ctx.lineTo(-1.4, 1.2);
+  ctx.lineTo(-4.0, 0);
+  ctx.lineTo(-1.4, -1.2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+
+    const c1 = document.getElementById("canvas1");
+    const ctx1 = c1.getContext("2d");
+
+    const c2 = document.getElementById("canvas2");
+    const ctx2 = c2.getContext("2d");
+
+    let isPaused = false;
+    let manualBlinkTimer = 0;
+    let lastTime = performance.now();
+    let frames = 0;
+    let fpsTimer = 0;
+
+    document.getElementById("btnBlink").addEventListener("click", () => {
+      manualBlinkTimer = 0.25;
+    });
+
+    document.getElementById("btnPause").addEventListener("click", () => {
+      isPaused = !isPaused;
+    });
+
+    function animate(now) {
+      const dt = (now - lastTime) / 1000;
+      lastTime = now;
+      const t = now / 1000;
+
+      if (!isPaused) {
+        frames++;
+        fpsTimer += dt;
+        if (fpsTimer >= 1.0) {
+          document.getElementById("fps").textContent = `FPS: ${frames}`;
+          frames = 0;
+          fpsTimer = 0;
+        }
+
+        if (manualBlinkTimer > 0) {
+          manualBlinkTimer -= dt;
+        }
+
+        const breathSin = Math.sin(t * 2.4);
+        const sY = 1.0 + 0.05 * breathSin;
+        document.getElementById("squash").textContent = `Squash Y: ${sY.toFixed(3)}`;
+
+        // Canvas 1: ST7789 240x280 (Native Hardware 1.0x)
+        ctx1.clearRect(0, 0, c1.width, c1.height);
+        drawEmolgaFlyingSquirrel(ctx1, 115, 142, 1.25, t, manualBlinkTimer > 0);
+
+        // Canvas 2: HD Collectible Inspection (Scale 1.45x)
+        ctx2.clearRect(0, 0, c2.width, c2.height);
+        drawEmolgaFlyingSquirrel(ctx2, 165, 205, 1.62, t, manualBlinkTimer > 0);
+      }
+
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>

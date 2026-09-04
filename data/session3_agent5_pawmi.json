@@ -1,0 +1,399 @@
+{
+  "metadata": {
+    "agent_name": "Nghệ Sĩ Điêu Khắc Pawmi Gấu Bông Lông Cam Điện Quang (Pawmi Electric Bear 3D Sculptor)",
+    "agent_role": "Master 3D Pop Mart & Vinyl Creature Sculptor for IoT Digital Keychain",
+    "version": "3.0.0-PRO-MAX",
+    "created_date": "2026-09-04",
+    "target_display": "ST7789 240x280 / 172x320 16-bit RGB565 IPS Display & Modern HTML5 Canvas 2D",
+    "reference_artwork": "15_Mythic_Pawmi_Electric_Bear.png",
+    "design_frameworks": [
+      "Reffernce/NHOM_1_FRONTEND_UIUX/ui-ux-pro-max-skill-main (Design Intelligence, Tactical Depth, Anti-Cheap Icon)",
+      "Reffernce/NHOM_1_FRONTEND_UIUX/gsap-skills (Harmonic Physics, Phase Lag, Elastic Easing)",
+      "Reffernce/NHOM_1_FRONTEND_UIUX/impeccable-main (Craft Floor, Material Fidelity, Organic Motion)"
+    ],
+    "core_design_rules": {
+      "style_definition": "3D Pop Mart Vinyl Toy cao cấp: Hình thể tròn xoe phúng phính bồng bềnh, chất liệu lông nhung cam ấm áp phủ men bóng vinyl sang trọng, không dùng icon phẳng rẻ tiền.",
+      "fur_and_forelock_rule": "Toàn thân phủ bộ lông cam ấm áp bồng bềnh dạng quả cầu Chibi Pop Mart, chỏm bờm lông trên trán nhô cao uốn lượn mềm mại sang phải tạo thần thái linh thú điện quang tinh nghịch.",
+      "ears_rule": "Đôi tai gấu to tròn vươn cao với lòng tai màu xanh lá cây ngọc bích độc đáo (Emerald Jade Teal) xếp lớp 3 sắc thái tạo chiều sâu khoáng thạch lộng lẫy.",
+      "cheeks_and_muzzle_rule": "Hai má túi điện tròn xoe màu vàng hoàng kim phúng phính tích tụ năng lượng, mõm tròn màu kem ấm áp với sống mũi đen nhỏ và nét cười ấm áp chữa lành.",
+      "paws_and_pads_rule": "Hai bàn tay gấu to tròn phía trước chống vững chãi, cổ tay lông kem với 3-4 múi ngón mềm mại và đệm lòng bàn tay phóng điện màu vàng phát sáng.",
+      "eyes_rule": "Đôi mắt pha lê to tròn đen nhánh 3 điểm bắt sáng (Primary Keylight Specular, Secondary Caustic Bounce, Tertiary Micro Glint) cùng quầng phản quang hổ phách lấp lánh.",
+      "kinematics_rule": "Chuyển động vi vật lý hữu cơ: Nhịp thở phập phồng Squash & Stretch 5% bảo toàn thể tích (Sy*Sx ≈ 1.0), hai tai gấu rung rinh trễ pha Delta Phi = 0.45 rad, bàn tay gấu nhúc nhích tạo xung điện lách tách quanh má và đệm tay, nhịp chớp mắt 3.5s, bóng tiếp xúc mặt sàn co giãn êm ái."
+    }
+  },
+  "creature_profile": {
+    "id": 15,
+    "global_id": 15,
+    "codename": "MYTHIC_PAWMI_ELECTRIC_BEAR",
+    "name_vi": "Pawmi - Gấu Bông Lông Cam Điện Quang",
+    "name_en": "Mythic Pawmi the Electric Bear Cub",
+    "japanese_name": "パモ (Pamo - ねずみポケモン)",
+    "pokedex_number": 921,
+    "category": "Linh Thú Chuột Gấu Bông Điện & Bé Cưng Pop Mart 3D",
+    "archetype": "Bé Gấu Bông Lông Cam Điện Quang (The Warm Orange Electro-Bear Cub)",
+    "elements": [
+      "Lôi Điện Tích Tụ (Bio-Electric Field)",
+      "Lông Nhung Ấm Áp (Warm Plush Fur)"
+    ],
+    "signature_moves": [
+      "Nuzzle (Cọ Má Phóng Điện)",
+      "Arm Thrust (Bàn Tay Sấm Sét)",
+      "Spark (Xung Điện Hoàng Kim)",
+      "Rest (Ngủ Say Chữa Lành)"
+    ],
+    "mythology_lore": "Pawmi là sinh vật sở hữu bộ lông cam dày dặn tích điện vô cùng êm ái. Khi cọ hai chiếc má vàng hoàng kim hoặc xoa hai lòng bàn tay vào nhau, những xung điện sinh học lách tách phát ra tạo nên vầng hào quang ấm áp bao bọc xung quanh. Trong phiên bản Pop Mart Vinyl 3D cao cấp, Pawmi mang vóc dáng tròn xoe phúng phính đáng yêu, đôi tai gấu vươn cao với lòng tai xanh ngọc bích độc bản, chỏm lông bờm bồng bềnh uốn lượn trên trán và đôi mắt pha lê đen lánh ba điểm bắt sáng, truyền tải trọn vẹn năng lượng chữa lành và niềm vui thuần khiết.",
+    "inspirational_quotes": {
+      "vi": "Mỗi cái chạm tay ấm áp là một dòng điện yêu thương thắp sáng nụ cười của bạn.",
+      "en": "Every warm little touch sparks a gentle current of love to brighten your day."
+    }
+  },
+  "palette": [
+    {
+      "name": "col_fur_orange_light",
+      "hex": "#FFA947",
+      "rgb565": "0xFD48",
+      "optical_role": "Đón sáng đỉnh đầu, gáy và viền Fresnel lông cam",
+      "material_finish": "Specular High Gloss"
+    },
+    {
+      "name": "col_fur_orange_main",
+      "hex": "#EA6C18",
+      "rgb565": "0xEB63",
+      "optical_role": "Bộ lông cam ấm áp bồng bềnh chủ đạo toàn thân",
+      "material_finish": "Soft Vinyl Gloss"
+    },
+    {
+      "name": "col_fur_orange_shadow",
+      "hex": "#B84606",
+      "rgb565": "0xBA20",
+      "optical_role": "Đổ bóng hổ phách rãnh lông, nách và cơ đùi",
+      "material_finish": "Satin Shadow"
+    },
+    {
+      "name": "col_fur_orange_dark",
+      "hex": "#7A2B00",
+      "rgb565": "0x7940",
+      "optical_role": "Bóng che khuất sâu các nếp gấp lông cam",
+      "material_finish": "Matte Occlusion"
+    },
+    {
+      "name": "col_tuft_highlight",
+      "hex": "#FFB660",
+      "rgb565": "0xFDAC",
+      "optical_role": "Highlight sống bờm lông uốn lượn trên trán",
+      "material_finish": "Specular Pearl"
+    },
+    {
+      "name": "col_tuft_main",
+      "hex": "#F0731E",
+      "rgb565": "0xF383",
+      "optical_role": "Chỏm bờm lông trán nhô cao mềm mại",
+      "material_finish": "Soft Vinyl Gloss"
+    },
+    {
+      "name": "col_tuft_shadow",
+      "hex": "#A33800",
+      "rgb565": "0xA1C0",
+      "optical_role": "Đổ bóng chân bờm lông trán",
+      "material_finish": "Satin Shadow"
+    },
+    {
+      "name": "col_ear_teal_light",
+      "hex": "#17B29F",
+      "rgb565": "0x1593",
+      "optical_role": "Viền sáng ngọc bích lòng tai độc đáo",
+      "material_finish": "Luminescent Jade Glow"
+    },
+    {
+      "name": "col_ear_teal_main",
+      "hex": "#0D8374",
+      "rgb565": "0x0C0E",
+      "optical_role": "Lòng tai màu xanh lá cây ngọc bích độc bản",
+      "material_finish": "Radiant Jade Emerald"
+    },
+    {
+      "name": "col_ear_teal_dark",
+      "hex": "#07554B",
+      "rgb565": "0x02A9",
+      "optical_role": "Hốc sâu lòng tai xanh ngọc bích sẫm",
+      "material_finish": "Deep Mineral Jade"
+    },
+    {
+      "name": "col_ear_fold_cream",
+      "hex": "#FCE5C0",
+      "rgb565": "0xFF38",
+      "optical_role": "Nếp gấp chân tai màu kem ấm áp",
+      "material_finish": "Warm Satin"
+    },
+    {
+      "name": "col_cheek_gold_light",
+      "hex": "#FFF385",
+      "rgb565": "0xFF90",
+      "optical_role": "Bắt sáng viền má túi điện phúng phính",
+      "material_finish": "Luminescent Gold"
+    },
+    {
+      "name": "col_cheek_gold_main",
+      "hex": "#F8D847",
+      "rgb565": "0xFEC8",
+      "optical_role": "Hai má túi điện tròn xoe màu vàng hoàng kim",
+      "material_finish": "Vibrant Yellow Gloss"
+    },
+    {
+      "name": "col_cheek_gold_shadow",
+      "hex": "#E2B522",
+      "rgb565": "0xE5A4",
+      "optical_role": "Đổ bóng hổ phách chân má túi điện",
+      "material_finish": "Warm Amber Shadow"
+    },
+    {
+      "name": "col_cream_light",
+      "hex": "#FFF5E4",
+      "rgb565": "0xFFBC",
+      "optical_role": "Đón sáng vòm mõm kem ngọc bích",
+      "material_finish": "Soft Pearl"
+    },
+    {
+      "name": "col_cream_main",
+      "hex": "#FCE5C0",
+      "rgb565": "0xFF38",
+      "optical_role": "Mõm kem và cẳng bàn tay gấu Chibi",
+      "material_finish": "Soft Velvet Matte"
+    },
+    {
+      "name": "col_cream_shadow",
+      "hex": "#DDBA8F",
+      "rgb565": "0xDDD1",
+      "optical_role": "Đổ bóng dưới cằm và rãnh cổ tay kem",
+      "material_finish": "Satin Shadow"
+    },
+    {
+      "name": "col_paw_pad_yellow",
+      "hex": "#FFE600",
+      "rgb565": "0xFF20",
+      "optical_role": "Đệm lòng bàn tay phóng điện màu vàng phát sáng",
+      "material_finish": "Fluorescent Bio-Pad"
+    },
+    {
+      "name": "col_paw_pad_glow",
+      "hex": "#FFF9A6",
+      "rgb565": "0xFFD4",
+      "optical_role": "Lõi xung điện chói lòa giữa đệm bàn tay",
+      "material_finish": "Pure Specular Core"
+    },
+    {
+      "name": "col_eye_rim",
+      "hex": "#1A1115",
+      "rgb565": "0x1882",
+      "optical_role": "Viền mí mắt đen tuyền Pop Mart Chibi",
+      "material_finish": "Polished Onyx"
+    },
+    {
+      "name": "col_eye_pupil",
+      "hex": "#25181E",
+      "rgb565": "0x20C3",
+      "optical_role": "Tròng mắt đen nhánh hạt pha lê sâu thẳm",
+      "material_finish": "Gemstone Facet"
+    },
+    {
+      "name": "col_eye_amber_glow",
+      "hex": "#D97736",
+      "rgb565": "0xDBA6",
+      "optical_role": "Cung phản xạ caustic đáy mắt hổ phách",
+      "material_finish": "Caustic Amber Refraction"
+    },
+    {
+      "name": "col_white_specular",
+      "hex": "#FFFFFF",
+      "rgb565": "0xFFFF",
+      "optical_role": "3 Điểm sáng pha lê long lanh & tia chớp",
+      "material_finish": "Diamond Specular"
+    },
+    {
+      "name": "col_nose_black",
+      "hex": "#1E1418",
+      "rgb565": "0x18A3",
+      "optical_role": "Sống mũi đen nhỏ xinh Chibi",
+      "material_finish": "Polished Onyx"
+    },
+    {
+      "name": "col_mouth_line",
+      "hex": "#663319",
+      "rgb565": "0x6183",
+      "optical_role": "Nét miệng cười ấm áp ngây thơ",
+      "material_finish": "Deep Amber Contour"
+    },
+    {
+      "name": "col_mouth_tongue",
+      "hex": "#FF7A90",
+      "rgb565": "0xFBD2",
+      "optical_role": "Lưỡi hồng đào nhỏ nhắn đáng yêu",
+      "material_finish": "Warm Satin"
+    },
+    {
+      "name": "col_hind_paw",
+      "hex": "#BD5213",
+      "rgb565": "0xBA82",
+      "optical_role": "Bàn chân sau peeking out bên sườn phải",
+      "material_finish": "Soft Vinyl Gloss"
+    },
+    {
+      "name": "col_tail_cream",
+      "hex": "#F6DEC0",
+      "rgb565": "0xF6F8",
+      "optical_role": "Đuôi kem phúng phính vểnh sau lưng",
+      "material_finish": "Soft Velvet"
+    },
+    {
+      "name": "col_tail_shadow",
+      "hex": "#D4AC82",
+      "rgb565": "0xD570",
+      "optical_role": "Đổ bóng gốc đuôi kem",
+      "material_finish": "Satin Shadow"
+    },
+    {
+      "name": "col_spark_emerald",
+      "hex": "#00F5D4",
+      "rgb565": "0x07BA",
+      "optical_role": "Tia lửa điện plasma ngọc bích lách tách",
+      "material_finish": "Neon Emerald Glow"
+    },
+    {
+      "name": "col_contact_shadow",
+      "hex": "#28140A",
+      "rgb565": "0x28A1",
+      "optical_role": "Bóng tiếp xúc mặt sàn co giãn êm ái",
+      "material_finish": "Soft Ambient Occlusion"
+    }
+  ],
+  "volumetric_3d_anatomy": {
+    "mesh_topology": "Chibi Rotund Bear Cub Sphere with Plump Forearms, Sweeping Forehead Tuft, Tall Oval Bear Ears with Emerald Inners, and Fluffy Cream Tail",
+    "light_rig": {
+      "key_light": {
+        "direction": [
+          -0.4,
+          -0.8,
+          0.45
+        ],
+        "color": "#FFA947",
+        "role": "Studio Keylight trên đỉnh bờm lông trán, chóp tai và sống lưng cam"
+      },
+      "fill_light": {
+        "direction": [
+          0.5,
+          0.3,
+          0.3
+        ],
+        "color": "#F8D847",
+        "role": "Ánh sáng tán xạ môi trường vàng hoàng kim từ má túi điện và đệm bàn tay"
+      },
+      "rim_light": {
+        "direction": [
+          0.0,
+          -0.2,
+          -1.0
+        ],
+        "color": "#17B29F",
+        "role": "Viền Fresnel ngọc bích emerald từ lòng tai tách bạch khỏi nền tối"
+      }
+    },
+    "ears_structure": {
+      "outer_ears": "Đôi tai gấu tròn to vươn cao, tai trái hướng 75 độ và tai phải nghiêng nhẹ 62 độ, viền ngoài phủ lông cam dày dặn.",
+      "jade_inners": "Lòng tai xanh lá cây ngọc bích độc đáo (Emerald Jade Teal) xếp lớp 3 sắc thái tạo hiệu ứng khoáng thạch lộng lẫy.",
+      "ear_folds": "Nếp gấp chân tai màu kem ấm áp nối liền với vòm đầu Chibi."
+    },
+    "forehead_swirl_tuft": {
+      "structure": "Chỏm bờm lông dày dặn bồng bềnh nhô cao trên trán giữa hai tai, uốn lượn mềm mại sang phải tạo điểm nhấn linh thú điện quang.",
+      "lighting": "Highlight sống bờm vàng cam nhạt (#FFB660) và đổ bóng chân bờm hổ phách (#A33800)."
+    },
+    "crystal_black_eyes": {
+      "type": "3-Point Specular Crystal Black Orb",
+      "coverage": "Chiếm 35% khuôn mặt Chibi Pop Mart",
+      "optical_gradient": "Viền mí đen tuyền (#1A1115) -> Tròng mắt đen mun (#25181E) -> Cung phản quang caustic hổ phách (#D97736 -> #F59B42)",
+      "catchlight_1": {
+        "role": "Primary Keylight Specular",
+        "dx": -3.0,
+        "dy": -5.0,
+        "rx": 5.0,
+        "ry": 3.6,
+        "color": "#FFFFFF"
+      },
+      "catchlight_2": {
+        "role": "Secondary Caustic Specular",
+        "dx": 3.6,
+        "dy": 4.5,
+        "radius": 2.5,
+        "color": "#FFF5E6"
+      },
+      "catchlight_3": {
+        "role": "Tertiary Micro Surface Glint",
+        "dx": 5.5,
+        "dy": -0.8,
+        "radius": 1.5,
+        "color": "#FFFFFF"
+      }
+    },
+    "cheeks_and_muzzle": {
+      "cheeks": "Hai má túi điện tròn xoe màu vàng hoàng kim phúng phính (#F8D847) tích tụ năng lượng bio-electric.",
+      "muzzle": "Mõm tròn màu kem ấm áp (#FCE5C0) mềm mại ôm lấy sống mũi đen nhỏ và nét cười ấm áp."
+    },
+    "paws_and_pads": {
+      "arms": "Hai tay gấu to tròn chống vững chãi phía trước, cẳng tay lông cam chuyển tiếp cổ tay lông kem.",
+      "toes": "3 múi ngón chân mềm mại chạm đất nâng đỡ trọng lượng cơ thể.",
+      "discharge_pads": "Đệm lòng bàn tay phóng điện màu vàng phát sáng rực rỡ (#FFE600 -> #FFF9A6) phát ra các vi hạt điện plasma."
+    },
+    "tail_and_hind_foot": {
+      "tail": "Đuôi kem phúng phính vểnh sau lưng bên phải tạo cảm giác mềm mại như kẹo bông.",
+      "hind_foot": "Bàn chân sau màu cam sẫm peeking out dưới sườn phải với các kẽ ngón chân đáng yêu."
+    }
+  },
+  "organic_microphysics_kinematics": {
+    "squash_and_stretch": {
+      "frequency_hz": 0.35,
+      "angular_freq_rad": 2.2,
+      "amplitude_pct": 5.0,
+      "vertical_scale_formula": "Sy = 1.0 + 0.05 * sin(2.2 * t)",
+      "horizontal_scale_formula": "Sx = 1.0 - 0.025 * sin(2.2 * t)",
+      "bounce_hop_formula": "by = -abs(sin(2.2 * t)) * 3.5",
+      "volume_conservation": "Sx * Sx * Sy = 0.9506 * 1.05 = 0.9981 (~ 1.00)"
+    },
+    "bear_ears_jiggle_lag": {
+      "delta_phi_rad": 0.45,
+      "rot_left_formula": "earRotL = sin(2.2 * t - 0.45) * 0.055 rad",
+      "rot_right_formula": "earRotR = -sin(2.2 * t - 0.45) * 0.045 rad",
+      "damping_factor": 0.95
+    },
+    "forehead_tuft_sway": {
+      "delta_phi_rad": 0.3,
+      "sway_x_formula": "tuftSwayX = sin(2.2 * t - 0.30) * 2.8 px"
+    },
+    "electric_sparks_flicker": {
+      "frequency_rad": 16.0,
+      "spark_particles": "Xung điện lách tách màu vàng hoàng kim (#F8D847, #FFE600) và ngọc bích (#00F5D4) quanh má và đệm tay"
+    },
+    "blinking_state_machine": {
+      "cycle_period_ms": 3500,
+      "blink_duration_ms": 140,
+      "closed_eye_arc": "Mí mắt cong hình lưỡi liềm ngọt ngào kèm khóe vểnh Chibi"
+    },
+    "dynamic_contact_shadow": {
+      "base_width_px": 92,
+      "base_height_px": 16,
+      "dynamic_scaling": "width = 92 * Sx * (1.0 - bounce_y * 0.04)"
+    }
+  },
+  "cpp_scaled_canvas_code": "// =========================================================================\n// 15_MYTHIC_PAWMI_ELECTRIC_BEAR - C++ ScaledCanvas Implementation\n// 100% Hardware Compatible with ESP32 / ESP32-S3 + ST7789 IPS 16-bit RGB565\n// Pop Mart / Vinyl 3D Sculpt: Warm Orange Fur, Forehead Swirl Tuft,\n// Jade Green Inner Ears, Golden Electric Cheeks, Yellow Discharge Paw Pads,\n// 3-Point Specular Crystal Eyes, Warm Smiling Mouth.\n// Organic Micro-Physics: 5% Volume-Preserving Squash & Stretch,\n// Bear Ears Jiggle with Phase Lag Delta Phi = 0.45 rad, Twitching Electric Sparks\n// =========================================================================\n\nvoid drawPawmiElectricBear(SpriteRenderer::ScaledCanvas* spr, int cx, int cy, float angle, bool blink = false) {\n  // 1. CHUYỂN ĐỘNG VI VẬT LÝ HỮU CƠ (Organic Micro-Physics)\n  float breathPhase = angle * 2.2f; // Tần số nhịp thở êm ái\n  float breathSin   = sinf(breathPhase);\n\n  // Nhịp thở phập phồng Squash & Stretch 5% bảo toàn thể tích (Sy * Sx ≈ 1.0)\n  float sY = 1.0f + 0.05f * breathSin;\n  float sX = 1.0f - 0.025f * breathSin;\n  int bounceY = (int)(-fabsf(breathSin) * 3.5f);\n  int by = cy + bounceY; // Tọa độ Y động của thân và đầu\n\n  // Hai tai gấu rung rinh trễ pha Delta Phi = 0.45 rad\n  float earLag  = breathPhase - 0.45f;\n  int earLagL_X = (int)(sinf(earLag) * 3.0f);\n  int earLagL_Y = (int)(cosf(earLag) * 2.0f);\n  int earLagR_X = (int)(-sinf(earLag) * 2.8f);\n  int earLagR_Y = (int)(cosf(earLag) * 1.8f);\n\n  // Chỏm bờm lông trán uốn lượn trễ pha Delta Phi = 0.30 rad\n  float tuftLag = breathPhase - 0.30f;\n  int tuftSwayX = (int)(sinf(tuftLag) * 2.6f);\n\n  // Xung điện lách tách quanh má và đệm bàn tay (Electric Micro-Sparks)\n  int spark1 = (int)(sinf(angle * 16.0f) * 3.5f);\n  int spark2 = (int)(cosf(angle * 14.0f) * 3.5f);\n  int spark3 = (int)(sinf(angle * 20.0f) * 3.0f);\n\n  // 2. BẢNG MÀU 16-BIT RGB565 CHUẨN XÁC POP MART VINYL\n  const uint16_t C_FUR_LIGHT       = 0xFD48; // #FFA947 Đón sáng đỉnh lông cam\n  const uint16_t C_FUR_MAIN        = 0xEB63; // #EA6C18 Lông cam ấm áp chủ đạo\n  const uint16_t C_FUR_SHADOW      = 0xBA20; // #B84606 Đổ bóng hổ phách lông cam\n  const uint16_t C_FUR_DARK        = 0x7940; // #7A2B00 Bóng che khuất sâu rãnh nếp gấp\n  const uint16_t C_TUFT_LIGHT      = 0xFDAC; // #FFB660 Highlight sống bờm lông trán\n  const uint16_t C_TUFT_MAIN       = 0xF383; // #F0731E Chỏm bờm lông trán mềm mại\n  const uint16_t C_TUFT_SHADOW     = 0xA1C0; // #A33800 Bóng chân bờm lông\n  const uint16_t C_EAR_TEAL_LIGHT  = 0x1593; // #17B29F Viền sáng ngọc bích lòng tai\n  const uint16_t C_EAR_TEAL_MAIN   = 0x0C2E; // #0D8374 Xanh lá ngọc bích lòng tai độc bản\n  const uint16_t C_EAR_TEAL_DARK   = 0x02AA; // #07554B Hốc sâu xanh ngọc bích\n  const uint16_t C_CHEEK_LIGHT     = 0xFFB0; // #FFF385 Highlight má túi điện\n  const uint16_t C_CHEEK_MAIN      = 0xFEC8; // #F8D847 Má túi điện vàng hoàng kim\n  const uint16_t C_CHEEK_SHADOW    = 0xE5A4; // #E2B522 Đổ bóng hổ phách má túi điện\n  const uint16_t C_CREAM_LIGHT     = 0xFFFA; // #FFF5E4 Đón sáng vòm mõm kem\n  const uint16_t C_CREAM_MAIN      = 0xFEF8; // #FCE5C0 Mõm kem & cẳng tay gấu Chibi\n  const uint16_t C_CREAM_SHADOW    = 0xDDC1; // #DDBA8F Bóng kem dưới cằm & cổ tay\n  const uint16_t C_PAW_PAD_YELLOW  = 0xFF20; // #FFE600 Đệm phóng điện vàng phát sáng\n  const uint16_t C_PAW_PAD_GLOW    = 0xFFD4; // #FFF9A6 Lõi chói lòa đệm phóng điện\n  const uint16_t C_EYE_RIM         = 0x1882; // #1A1115 Viền mí mắt đen tuyền Chibi\n  const uint16_t C_EYE_PUPIL       = 0x20C3; // #25181E Tròng mắt đen nhánh hạt pha lê\n  const uint16_t C_EYE_AMBER       = 0xDBC6; // #D97736 Phản xạ caustic đáy mắt hổ phách\n  const uint16_t C_WHITE           = 0xFFFF; // #FFFFFF 3 Điểm bắt sáng pha lê tinh khiết\n  const uint16_t C_NOSE_BLACK      = 0x18A3; // #1E1418 Sống mũi đen nhỏ xinh\n  const uint16_t C_MOUTH_LINE      = 0x6183; // #663319 Nét cười ấm áp ngây thơ\n  const uint16_t C_MOUTH_TONGUE    = 0xFBC2; // #FF7A90 Lưỡi hồng đào nhỏ nhắn\n  const uint16_t C_HIND_PAW        = 0xBA82; // #BD5213 Bàn chân sau sườn phải\n  const uint16_t C_TAIL_CREAM      = 0xF6F8; // #F6DEC0 Đuôi kem phúng phính vểnh sau\n  const uint16_t C_TAIL_SHADOW     = 0xD570; // #D4AC82 Đổ bóng gốc đuôi kem\n  const uint16_t C_SPARK_EMERALD   = 0x07BA; // #00F5D4 Tia chớp ngọc bích lách tách\n  const uint16_t C_CONTACT_SHADOW  = 0x2881; // #28140A Bóng tiếp xúc sàn co giãn\n\n  // 3. LAYER 0: BÓNG TIẾP XÚC MẶT SÀN CO GIÃN ÊM ÁI (Ground Contact Shadow)\n  int shadowW = (int)(90.0f * sX);\n  int shadowH = (int)(16.0f * sX);\n  spr->fillEllipse(cx - 2, cy + 86, shadowW, shadowH, C_CONTACT_SHADOW);\n  spr->fillEllipse(cx - 2, cy + 86, (int)(shadowW * 0.65f), (int)(shadowH * 0.6f), 0x1840);\n\n  // 4. LAYER 1: ĐUÔI KEM & BÀN CHÂN SAU (Tail & Hind Foot)\n  // Đuôi kem vểnh sau lưng bên phải\n  spr->fillEllipse(cx + 74 + tuftSwayX, by - 48, 16, 26, C_TAIL_CREAM);\n  spr->fillCircle(cx + 78 + tuftSwayX, by - 62, 12, C_TAIL_CREAM);\n  spr->fillCircle(cx + 70 + tuftSwayX, by - 36, 10, C_TAIL_SHADOW);\n\n  // Bàn chân sau phải peeking out dưới sườn phải\n  spr->fillRoundRect(cx + 80, by + 64, 20, 13, 5, C_HIND_PAW);\n  spr->fillCircle(cx + 97, by + 71, 4, C_HIND_PAW);\n  spr->drawPixel(cx + 86, by + 75, C_FUR_DARK);\n  spr->drawPixel(cx + 92, by + 75, C_FUR_DARK);\n\n  // 5. LAYER 2: THÂN HÌNH QUẢ CẦU BÉO MẬP CHIBI POP MART (Rotund Torso Sphere)\n  int bodyW = (int)(72.0f * sX);\n  int bodyH = (int)(60.0f * sY);\n  spr->fillEllipse(cx + 34, by + 22, bodyW, bodyH, C_FUR_MAIN);\n  spr->fillEllipse(cx + 44, by + 8, (int)(46 * sX), (int)(36 * sY), C_FUR_LIGHT);\n  spr->fillEllipse(cx + 30, by + 42, (int)(56 * sX), (int)(26 * sY), C_FUR_SHADOW);\n\n  // 6. LAYER 3: ĐÔI TAI GẤU TRÒN TO VỚI LÒNG TAI XANH NGỌC BÍCH (Bear Ears & Jade Inners)\n  // Tai trái (viewer's left - vươn cao góc 75 độ)\n  int eLx = cx - 64 + earLagL_X;\n  int eLy = by - 56 + earLagL_Y;\n  // Vành ngoài tai cam\n  spr->fillEllipse(eLx, eLy, 23, 46, C_FUR_MAIN);\n  spr->fillEllipse(eLx - 3, eLy - 8, 17, 36, C_FUR_LIGHT);\n  // Lòng tai xanh lá ngọc bích độc bản (Emerald Jade Inners)\n  spr->fillEllipse(eLx + 1, eLy + 1, 14, 30, C_EAR_TEAL_DARK);\n  spr->fillEllipse(eLx + 1, eLy + 1, 11, 26, C_EAR_TEAL_MAIN);\n  spr->fillEllipse(eLx, eLy - 4, 7, 18, C_EAR_TEAL_LIGHT);\n  // Nếp gấp chân tai màu kem\n  spr->fillCircle(eLx + 8, eLy + 26, 7, C_CREAM_MAIN);\n\n  // Tai phải (viewer's right - nghiêng nhẹ góc 62 độ)\n  int eRx = cx + 34 + earLagR_X;\n  int eRy = by - 54 + earLagR_Y;\n  // Vành ngoài tai cam\n  spr->fillEllipse(eRx, eRy, 23, 46, C_FUR_MAIN);\n  spr->fillEllipse(eRx + 3, eRy - 8, 17, 36, C_FUR_LIGHT);\n  // Lòng tai xanh ngọc bích độc bản\n  spr->fillEllipse(eRx - 1, eRy + 1, 14, 30, C_EAR_TEAL_DARK);\n  spr->fillEllipse(eRx - 1, eRy + 1, 11, 26, C_EAR_TEAL_MAIN);\n  spr->fillEllipse(eRx, eRy - 4, 7, 18, C_EAR_TEAL_LIGHT);\n  // Nếp gấp chân tai màu kem\n  spr->fillCircle(eRx - 7, eRy + 26, 7, C_CREAM_MAIN);\n\n  // 7. LAYER 4: KHỐI ĐẦU TRÒN & CHỎM BỜM LÔNG TRÊN TRÁN NHÔ CAO (Head & Forehead Tuft)\n  // Khối đầu tròn phúng phính\n  int headW = (int)(68.0f * sX);\n  int headH = (int)(54.0f * sY);\n  spr->fillEllipse(cx - 15, by + 18, headW, headH, C_FUR_MAIN);\n  spr->fillEllipse(cx - 22, by + 2, (int)(38 * sX), (int)(24 * sY), C_FUR_LIGHT);\n\n  // Chỏm bờm lông trên trán nhô cao mềm mại uốn lượn sang phải (Forehead Swirl Tuft)\n  int tBaseX = cx - 12 + tuftSwayX;\n  int tBaseY = by - 36;\n  spr->fillEllipse(tBaseX - 6, tBaseY - 10, 24, 30, C_TUFT_SHADOW);\n  spr->fillEllipse(tBaseX - 3, tBaseY - 12, 23, 28, C_TUFT_MAIN);\n  // Múi uốn lượn nhô cao vươn đỉnh\n  spr->fillCircle(tBaseX + 6, tBaseY - 26, 16, C_TUFT_MAIN);\n  spr->fillCircle(tBaseX + 12, tBaseY - 32, 12, C_TUFT_LIGHT);\n  spr->fillTriangle(tBaseX + 8, tBaseY - 42, tBaseX + 24, tBaseY - 24, tBaseX + 2, tBaseY - 24, C_TUFT_MAIN);\n  spr->fillEllipse(tBaseX + 6, tBaseY - 24, 11, 8, C_TUFT_LIGHT); // Highlight đỉnh bờm\n\n  // 8. LAYER 5: HAI MÁ TÚI ĐIỆN VÀNG HOÀNG KIM PHÚNG PHÍNH (Golden Electric Cheeks)\n  // Má trái\n  int chLx = cx - 68;\n  int chLy = by + 38;\n  spr->fillEllipse(chLx, chLy, 25, 23, C_CHEEK_SHADOW);\n  spr->fillEllipse(chLx, chLy - 1, 24, 22, C_CHEEK_MAIN);\n  spr->fillCircle(chLx - 5, chLy - 6, 10, C_CHEEK_LIGHT);\n\n  // Má phải\n  int chRx = cx + 38;\n  int chRy = by + 38;\n  spr->fillEllipse(chRx, chRy, 25, 23, C_CHEEK_SHADOW);\n  spr->fillEllipse(chRx, chRy - 1, 24, 22, C_CHEEK_MAIN);\n  spr->fillCircle(chRx - 3, chLy - 6, 10, C_CHEEK_LIGHT);\n\n  // 9. LAYER 6: MÕM KEM, MŨI ĐEN NHỎ & NỤ CƯỜI ẤM ÁP (Snout, Nose & Smile)\n  int snX = cx - 15;\n  int snY = by + 44;\n  spr->fillEllipse(snX, snY + 2, 28, 19, C_CREAM_SHADOW);\n  spr->fillEllipse(snX, snY, 27, 18, C_CREAM_MAIN);\n  spr->fillEllipse(snX, snY - 5, 16, 9, C_CREAM_LIGHT);\n\n  // Mũi đen nhỏ xinh\n  spr->fillCircle(snX, snY - 8, 3, C_NOSE_BLACK);\n  spr->drawPixel(snX - 1, snY - 9, C_WHITE);\n\n  // Miệng cong nhẹ ngây thơ\n  spr->drawLine(snX - 7, snY - 1, snX, snY + 3, C_MOUTH_LINE);\n  spr->drawLine(snX, snY + 3, snX + 7, snY - 1, C_MOUTH_LINE);\n\n  // 10. LAYER 7: ĐÔI MẮT PHA LÊ TO TRÒN ĐEN NHÁNH 3 ĐIỂM BẮT SÁNG (Crystal Black Eyes)\n  for (int eyeIdx = 0; eyeIdx < 2; eyeIdx++) {\n    int ex = (eyeIdx == 0) ? (cx - 44) : (cx + 14);\n    int ey = by + 22;\n\n    if (blink) {\n      // Mí mắt nhắm cong hình lưỡi liềm ngọt ngào\n      spr->drawEllipse(ex, ey + 3, 13, 4, C_EYE_RIM);\n      spr->drawLine(ex - 10, ey + 3, ex - 14, ey, C_EYE_RIM);\n      spr->drawLine(ex + 10, ey + 3, ex + 14, ey, C_EYE_RIM);\n    } else {\n      // Viền mí & hốc mắt đen tuyền\n      spr->fillEllipse(ex, ey, 14, 16, C_EYE_RIM);\n      // Tròng mắt đen nhánh hạt pha lê\n      spr->fillEllipse(ex, ey, 13, 15, C_EYE_PUPIL);\n      // Cung phản xạ caustic đáy mắt hổ phách lấp lánh\n      spr->fillEllipse(ex, ey + 6, 10, 7, C_EYE_AMBER);\n      spr->fillCircle(ex, ey + 2, 8, C_EYE_PUPIL); // Đồng tử\n\n      // 3 ĐIỂM BẮT SÁNG PHA LÊ (3-Point Specular Highlights)\n      // Điểm 1: Primary Keylight Specular (Bầu dục sáng to, góc 11h)\n      spr->fillEllipse(ex - 3, ey - 5, 5, 3, C_WHITE);\n      // Điểm 2: Secondary Caustic Specular (Tròn vừa, góc 5h)\n      spr->fillCircle(ex + 3, ey + 4, 3, C_WHITE);\n      // Điểm 3: Tertiary Micro Glint (Tia sáng vi điểm mép ngoài)\n      spr->drawPixel(ex + 6, ey - 2, C_WHITE);\n    }\n  }\n\n  // 11. LAYER 8: HAI BÀN TAY GẤU TO TRÒN & ĐỆM PHÓNG ĐIỆN VÀNG (Paws & Discharge Pads)\n  // Tay trái (viewer's left - chống bên sườn trái)\n  int pLx = cx - 78;\n  int pLy = by + 76;\n  // Cẳng tay lông cam\n  spr->fillRoundRect(pLx - 14, pLy - 26, 28, 24, 8, C_FUR_MAIN);\n  // Bàn tay lông kem với 3 múi ngón chạm đất\n  spr->fillRoundRect(pLx - 16, pLy - 6, 34, 20, 7, C_CREAM_MAIN);\n  spr->fillTriangle(pLx - 14, pLy + 12, pLx - 8, pLy + 18, pLx - 2, pLy + 12, C_CREAM_MAIN);\n  spr->fillTriangle(pLx - 4,  pLy + 12, pLx + 2, pLy + 18, pLx + 8, pLy + 12, C_CREAM_MAIN);\n  spr->fillTriangle(pLx + 6,  pLy + 12, pLx + 12, pLy + 18, pLx + 18, pLy + 12, C_CREAM_MAIN);\n  // Đệm lòng bàn tay phóng điện màu vàng phát sáng (Yellow Discharge Pad)\n  spr->fillEllipse(pLx, pLy + 2, 10, 6, C_PAW_PAD_YELLOW);\n  spr->fillEllipse(pLx, pLy + 2, 6, 3, C_PAW_PAD_GLOW);\n  spr->drawPixel(pLx, pLy + 2, C_WHITE);\n\n  // Tay phải (viewer's right - chống bên sườn phải)\n  int pRx = cx + 48;\n  int pRy = by + 78;\n  // Cẳng tay lông cam\n  spr->fillRoundRect(pRx - 14, pRy - 26, 28, 24, 8, C_FUR_MAIN);\n  // Bàn tay lông kem với 3 múi ngón\n  spr->fillRoundRect(pRx - 16, pRy - 6, 34, 20, 7, C_CREAM_MAIN);\n  spr->fillTriangle(pRx - 14, pRy + 12, pRx - 8, pRy + 18, pRx - 2, pRy + 12, C_CREAM_MAIN);\n  spr->fillTriangle(pRx - 4,  pRy + 12, pRx + 2, pRy + 18, pRx + 8, pRy + 12, C_CREAM_MAIN);\n  spr->fillTriangle(pRx + 6,  pRy + 12, pRx + 12, pRy + 18, pRx + 18, pRy + 12, C_CREAM_MAIN);\n  // Đệm lòng bàn tay phóng điện màu vàng phát sáng\n  spr->fillEllipse(pRx, pRy + 2, 10, 6, C_PAW_PAD_YELLOW);\n  spr->fillEllipse(pRx, pRy + 2, 6, 3, C_PAW_PAD_GLOW);\n  spr->drawPixel(pRx, pRy + 2, C_WHITE);\n\n  // 12. LAYER 9: XUNG ĐIỆN LÁCH TÁCH & TIA LỬA PLASMA (Electric Sparks)\n  // Tia lửa má trái\n  spr->fillCircle(chLx - 18 + spark1, chLy + spark2, 3, C_CHEEK_LIGHT);\n  spr->drawPixel(chLx - 18 + spark1, chLy + spark2, C_WHITE);\n  // Tia lửa má phải\n  spr->fillCircle(chRx + 18 + spark2, chRy + spark1, 3, C_CHEEK_LIGHT);\n  spr->drawPixel(chRx + 18 + spark2, chRy + spark1, C_WHITE);\n  // Tia chớp ngọc bích trên đỉnh tai\n  spr->fillCircle(eLx - 8 + spark3, eLy - 24, 3, C_SPARK_EMERALD);\n  spr->drawPixel(eLx - 8 + spark3, eLy - 24, C_WHITE);\n  // Tia chớp đệm tay phải\n  spr->fillCircle(pRx + 16 + spark1, pRy + spark3, 3, C_PAW_PAD_YELLOW);\n  spr->drawPixel(pRx + 16 + spark1, pRy + spark3, C_WHITE);\n}\n",
+  "js_canvas_code": "// =========================================================================\n// 15_MYTHIC_PAWMI_ELECTRIC_BEAR - Modern HTML5 Canvas 2D Implementation\n// 100% Anatomical Likeness & High-End 3D Pop Mart Vinyl Aesthetic\n// Organic Micro-Physics: 5% Squash & Stretch, Ears Jiggle Lag 0.45 rad, Twitching Sparks\n// =========================================================================\n\nfunction drawPawmiElectricBear(ctx, cx, cy, scale, t, manualBlink = false) {\n  ctx.save();\n  ctx.translate(cx, cy);\n  ctx.scale(scale, scale);\n\n  // 1. Organic Micro-Physics Kinematics\n  const breathFreq  = 2.2; // Tần số nhịp thở êm ái\n  const breathPhase = t * breathFreq;\n  const breathSin   = Math.sin(breathPhase);\n\n  // Squash & Stretch 5% bảo toàn thể tích (sY * sX ≈ 1.0)\n  const sY = 1.0 + 0.05 * breathSin;\n  const sX = 1.0 - 0.025 * breathSin;\n  const bounceY = -Math.abs(breathSin) * 3.5;\n  const by = bounceY; // Tọa độ Y động\n\n  // Hai tai gấu rung rinh trễ pha Delta Phi = 0.45 rad\n  const earLag   = breathPhase - 0.45;\n  const earRotL  = Math.sin(earLag) * 0.055;\n  const earRotR  = -Math.sin(earLag) * 0.045;\n\n  // Chỏm bờm lông trán uốn lượn trễ pha Delta Phi = 0.30 rad\n  const tuftLag  = breathPhase - 0.30;\n  const tuftSwayX = Math.sin(tuftLag) * 2.8;\n\n  // Xung điện lách tách tần số cao\n  const sparkF1 = Math.sin(t * 16.0) * 3.5;\n  const sparkF2 = Math.cos(t * 14.0) * 3.5;\n  const sparkF3 = Math.sin(t * 20.0) * 3.0;\n\n  // Nhịp chớp mắt 3.5s (interval 3500ms, duration 140ms)\n  const blinkCycle = (t * 1000) % 3500;\n  const blink = manualBlink || (blinkCycle < 140);\n\n  // 2. LAYER 0: BÓNG TIẾP XÚC MẶT SÀN CO GIÃN ÊM ÁI (Ground Contact Shadow)\n  ctx.save();\n  const shadowScale = (1.0 - bounceY * 0.04);\n  const shadowW = 92 * sX * shadowScale;\n  const shadowH = 16 * sX * shadowScale;\n  const shadowGrad = ctx.createRadialGradient(-2, 86, 4, -2, 86, shadowW);\n  shadowGrad.addColorStop(0, \"rgba(40, 20, 10, 0.75)\");\n  shadowGrad.addColorStop(0.5, \"rgba(45, 24, 12, 0.35)\");\n  shadowGrad.addColorStop(1, \"rgba(45, 24, 12, 0.0)\");\n  ctx.fillStyle = shadowGrad;\n  ctx.beginPath();\n  ctx.ellipse(-2, 86, shadowW, shadowH, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 3. LAYER 1: ĐUÔI KEM & BÀN CHÂN SAU (Tail & Hind Foot)\n  ctx.save();\n  ctx.translate(0, by);\n\n  // Đuôi kem phúng phính vểnh sau lưng bên phải\n  const tailGrad = ctx.createRadialGradient(74 + tuftSwayX, -50, 4, 74 + tuftSwayX, -50, 24);\n  tailGrad.addColorStop(0, \"#FFF5E4\");\n  tailGrad.addColorStop(0.7, \"#F6DEC0\");\n  tailGrad.addColorStop(1, \"#D4AC82\");\n  ctx.fillStyle = tailGrad;\n  ctx.beginPath();\n  ctx.ellipse(74 + tuftSwayX, -48, 16, 26, 0.3, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.beginPath();\n  ctx.arc(78 + tuftSwayX, -62, 12, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#4A2810\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  // Bàn chân sau phải peeking out dưới sườn\n  ctx.fillStyle = \"#BD5213\";\n  ctx.beginPath();\n  ctx.roundRect(80, 64, 20, 13, 5);\n  ctx.fill();\n  ctx.beginPath();\n  ctx.arc(97, 71, 4.5, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n  ctx.beginPath();\n  ctx.moveTo(86, 77); ctx.lineTo(86, 70);\n  ctx.moveTo(92, 77); ctx.lineTo(92, 70);\n  ctx.stroke();\n\n  ctx.restore();\n\n  // 4. LAYER 2: THÂN HÌNH QUẢ CẦU BÉO MẬP CHIBI POP MART (Rotund Torso Sphere)\n  ctx.save();\n  ctx.translate(0, by);\n\n  const bodyGrad = ctx.createRadialGradient(44, 4, 12, 34, 22, 75);\n  bodyGrad.addColorStop(0, \"#FFA947\");\n  bodyGrad.addColorStop(0.45, \"#EA6C18\");\n  bodyGrad.addColorStop(0.85, \"#B84606\");\n  bodyGrad.addColorStop(1, \"#7A2B00\");\n  ctx.fillStyle = bodyGrad;\n  ctx.beginPath();\n  ctx.ellipse(34, 22, 72 * sX, 60 * sY, 0.08, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.5;\n  ctx.stroke();\n\n  ctx.restore();\n\n  // 5. LAYER 3: ĐÔI TAI GẤU TRÒN TO VỚI LÒNG TAI XANH NGỌC BÍCH (Bear Ears & Jade Inners)\n  ctx.save();\n  ctx.translate(0, by);\n\n  // TAI TRÁI (viewer's left - vươn cao góc ~75 độ)\n  ctx.save();\n  ctx.translate(-64, -28);\n  ctx.rotate(-0.25 + earRotL);\n\n  // Vành ngoài tai cam\n  const earGradL = ctx.createRadialGradient(-3, -30, 5, 0, -26, 48);\n  earGradL.addColorStop(0, \"#FFA947\");\n  earGradL.addColorStop(0.6, \"#EA6C18\");\n  earGradL.addColorStop(1, \"#B84606\");\n  ctx.fillStyle = earGradL;\n  ctx.beginPath();\n  ctx.ellipse(0, -26, 23, 47, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.6;\n  ctx.stroke();\n\n  // Lòng tai xanh lá ngọc bích độc bản (Emerald Jade Teal)\n  const innerTealGradL = ctx.createRadialGradient(1, -24, 3, 1, -24, 32);\n  innerTealGradL.addColorStop(0, \"#17B29F\");\n  innerTealGradL.addColorStop(0.55, \"#0D8374\");\n  innerTealGradL.addColorStop(1, \"#07554B\");\n  ctx.fillStyle = innerTealGradL;\n  ctx.beginPath();\n  ctx.ellipse(1, -24, 13.5, 30, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#07554B\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  // Viền sáng ngọc bích bên trong\n  ctx.strokeStyle = \"rgba(23, 178, 159, 0.7)\";\n  ctx.lineWidth = 1.4;\n  ctx.beginPath();\n  ctx.ellipse(1, -24, 11, 26, 0, 0, Math.PI * 2);\n  ctx.stroke();\n\n  // Nếp gấp chân tai màu kem\n  ctx.fillStyle = \"#FCE5C0\";\n  ctx.beginPath();\n  ctx.ellipse(8, 8, 7.5, 9.5, 0.3, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.2;\n  ctx.stroke();\n\n  ctx.restore(); // restore tai trái\n\n  // TAI PHẢI (viewer's right - nghiêng góc ~62 độ)\n  ctx.save();\n  ctx.translate(34, -26);\n  ctx.rotate(0.48 + earRotR);\n\n  // Vành ngoài tai cam\n  const earGradR = ctx.createRadialGradient(3, -30, 5, 0, -26, 48);\n  earGradR.addColorStop(0, \"#FFA947\");\n  earGradR.addColorStop(0.6, \"#EA6C18\");\n  earGradR.addColorStop(1, \"#B84606\");\n  ctx.fillStyle = earGradR;\n  ctx.beginPath();\n  ctx.ellipse(0, -26, 23, 47, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.6;\n  ctx.stroke();\n\n  // Lòng tai xanh ngọc bích độc bản\n  const innerTealGradR = ctx.createRadialGradient(-1, -24, 3, -1, -24, 32);\n  innerTealGradR.addColorStop(0, \"#17B29F\");\n  innerTealGradR.addColorStop(0.55, \"#0D8374\");\n  innerTealGradR.addColorStop(1, \"#07554B\");\n  ctx.fillStyle = innerTealGradR;\n  ctx.beginPath();\n  ctx.ellipse(-1, -24, 13.5, 30, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#07554B\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  ctx.strokeStyle = \"rgba(23, 178, 159, 0.7)\";\n  ctx.lineWidth = 1.4;\n  ctx.beginPath();\n  ctx.ellipse(-1, -24, 11, 26, 0, 0, Math.PI * 2);\n  ctx.stroke();\n\n  // Nếp gấp chân tai màu kem\n  ctx.fillStyle = \"#FCE5C0\";\n  ctx.beginPath();\n  ctx.ellipse(-7, 8, 7.5, 9.5, -0.3, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.2;\n  ctx.stroke();\n\n  ctx.restore(); // restore tai phải\n  ctx.restore(); // restore layer 3\n\n  // 6. LAYER 4: KHỐI ĐẦU TRÒN & CHỎM BỜM LÔNG TRÊN TRÁN NHÔ CAO (Head & Forehead Tuft)\n  ctx.save();\n  ctx.translate(0, by);\n  ctx.scale(sX, sY);\n\n  // Khối đầu tròn trĩnh Pop Mart\n  const headGrad = ctx.createRadialGradient(-15, -4, 8, -15, 18, 68);\n  headGrad.addColorStop(0, \"#FFA947\");\n  headGrad.addColorStop(0.5, \"#EA6C18\");\n  headGrad.addColorStop(0.85, \"#B84606\");\n  headGrad.addColorStop(1, \"#8A3200\");\n  ctx.fillStyle = headGrad;\n  ctx.beginPath();\n  ctx.ellipse(-15, 18, 68, 54, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.5;\n  ctx.stroke();\n\n  // Chỏm bờm lông trên trán nhô cao mềm mại uốn lượn sang phải (Forehead Swirl Tuft)\n  ctx.save();\n  const tuftX = -12 + tuftSwayX;\n  const tuftY = -34;\n  const tuftGrad = ctx.createRadialGradient(tuftX + 8, tuftY - 24, 6, tuftX, tuftY - 10, 36);\n  tuftGrad.addColorStop(0, \"#FFB660\");\n  tuftGrad.addColorStop(0.45, \"#F0731E\");\n  tuftGrad.addColorStop(0.85, \"#EA6C18\");\n  tuftGrad.addColorStop(1, \"#A33800\");\n  ctx.fillStyle = tuftGrad;\n\n  ctx.beginPath();\n  ctx.moveTo(tuftX - 26, tuftY + 6);\n  ctx.bezierCurveTo(tuftX - 34, tuftY - 22, tuftX - 18, tuftY - 48, tuftX + 6, tuftY - 46);\n  ctx.bezierCurveTo(tuftX + 24, tuftY - 44, tuftX + 36, tuftY - 30, tuftX + 32, tuftY - 10);\n  ctx.bezierCurveTo(tuftX + 28, tuftY + 6, tuftX + 12, tuftY + 10, tuftX - 26, tuftY + 6);\n  ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.6;\n  ctx.stroke();\n\n  // Nếp gấp lông chân bờm\n  ctx.strokeStyle = \"rgba(163, 56, 0, 0.5)\";\n  ctx.lineWidth = 1.4;\n  ctx.beginPath();\n  ctx.moveTo(tuftX - 10, tuftY + 6);\n  ctx.quadraticCurveTo(tuftX - 4, tuftY - 14, tuftX + 10, tuftY - 24);\n  ctx.stroke();\n\n  // Highlight sống bờm\n  ctx.fillStyle = \"rgba(255, 240, 210, 0.5)\";\n  ctx.beginPath();\n  ctx.ellipse(tuftX + 6, tuftY - 30, 12, 7, 0.35, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // 7. LAYER 5: HAI MÁ TÚI ĐIỆN VÀNG HOÀNG KIM PHÚNG PHÍNH (Golden Electric Cheeks)\n  // Má trái\n  const chLx = -68, chLy = 38;\n  const chGradL = ctx.createRadialGradient(chLx - 4, chLy - 5, 4, chLx, chLy, 26);\n  chGradL.addColorStop(0, \"#FFF385\");\n  chGradL.addColorStop(0.55, \"#F8D847\");\n  chGradL.addColorStop(0.9, \"#E2B522\");\n  chGradL.addColorStop(1, \"#C99612\");\n  ctx.fillStyle = chGradL;\n  ctx.beginPath();\n  ctx.ellipse(chLx, chLy, 25, 23, -0.1, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  // Má phải\n  const chRx = 38, chRy = 38;\n  const chGradR = ctx.createRadialGradient(chRx - 3, chRy - 5, 4, chRx, chRy, 26);\n  chGradR.addColorStop(0, \"#FFF385\");\n  chGradR.addColorStop(0.55, \"#F8D847\");\n  chGradR.addColorStop(0.9, \"#E2B522\");\n  chGradR.addColorStop(1, \"#C99612\");\n  ctx.fillStyle = chGradR;\n  ctx.beginPath();\n  ctx.ellipse(chRx, chRy, 25, 23, 0.1, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  // 8. LAYER 6: MÕM KEM, MŨI ĐEN NHỎ & NỤ CƯỜI ẤM ÁP (Snout, Nose & Smile)\n  const snX = -15, snY = 44;\n  const snoutGrad = ctx.createRadialGradient(snX, snY - 4, 4, snX, snY + 3, 26);\n  snoutGrad.addColorStop(0, \"#FFF5E4\");\n  snoutGrad.addColorStop(0.6, \"#FCE5C0\");\n  snoutGrad.addColorStop(1, \"#DDBA8F\");\n  ctx.fillStyle = snoutGrad;\n  ctx.beginPath();\n  ctx.ellipse(snX, snY, 27, 18, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  // Sống mũi đen nhỏ xinh\n  ctx.fillStyle = \"#1E1418\";\n  ctx.beginPath();\n  ctx.ellipse(snX, snY - 8, 3.0, 2.0, 0, 0, Math.PI * 2);\n  ctx.fill();\n\n  // Nét miệng cong nhẹ ngây thơ\n  ctx.strokeStyle = \"#2B160C\";\n  ctx.lineWidth = 1.8;\n  ctx.lineCap = \"round\";\n  ctx.beginPath();\n  ctx.moveTo(snX - 7.0, snY - 0.5);\n  ctx.quadraticCurveTo(snX, snY + 3.0, snX + 7.0, snY - 0.5);\n  ctx.stroke();\n\n  // 9. LAYER 7: ĐÔI MẮT PHA LÊ TO TRÒN ĐEN NHÁNH 3 ĐIỂM BẮT SÁNG (Crystal Black Eyes)\n  drawPawmiEye(ctx, -44, 22, 14.0, 16.5, -0.06, blink);\n  drawPawmiEye(ctx, 14, 22, 14.0, 16.5, 0.06, blink);\n\n  ctx.restore(); // restore head scale\n\n  // 10. LAYER 8: HAI BÀN TAY GẤU TO TRÒN & ĐỆM PHÓNG ĐIỆN VÀNG (Paws & Discharge Pads)\n  ctx.save();\n  ctx.translate(0, by);\n\n  // TAY TRÁI (viewer's left - chống bên sườn trái)\n  const pLx = -78, pLy = 76;\n  // Cẳng tay lông cam\n  const armGradL = ctx.createLinearGradient(pLx - 14, pLy - 26, pLx + 14, pLy - 6);\n  armGradL.addColorStop(0, \"#EA6C18\");\n  armGradL.addColorStop(1, \"#B84606\");\n  ctx.fillStyle = armGradL;\n  ctx.beginPath();\n  ctx.roundRect(pLx - 14, pLy - 26, 28, 24, 8);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  // Bàn tay lông kem với 3 múi ngón chạm đất\n  const pawGradL = ctx.createRadialGradient(pLx, pLy + 2, 3, pLx, pLy + 3, 20);\n  pawGradL.addColorStop(0, \"#FFF5E4\");\n  pawGradL.addColorStop(0.65, \"#FCE5C0\");\n  pawGradL.addColorStop(1, \"#DDBA8F\");\n  ctx.fillStyle = pawGradL;\n\n  // Đường viền bàn tay với múi lông nhọn chạm đất\n  ctx.beginPath();\n  ctx.moveTo(pLx - 18, pLy - 6);\n  ctx.lineTo(pLx + 18, pLy - 6);\n  ctx.lineTo(pLx + 18, pLy + 8);\n  ctx.lineTo(pLx + 14, pLy + 18); // ngón 3\n  ctx.lineTo(pLx + 6,  pLy + 11);\n  ctx.lineTo(pLx,      pLy + 18); // ngón 2\n  ctx.lineTo(pLx - 6,  pLy + 11);\n  ctx.lineTo(pLx - 12, pLy + 18); // ngón 1\n  ctx.lineTo(pLx - 18, pLy + 8);\n  ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.6;\n  ctx.stroke();\n\n  // Đệm lòng bàn tay phóng điện màu vàng phát sáng (Yellow Discharge Pad)\n  ctx.save();\n  ctx.shadowColor = \"#FFE600\";\n  ctx.shadowBlur = 10;\n  const padGradL = ctx.createRadialGradient(pLx, pLy + 2, 1.5, pLx, pLy + 2, 10);\n  padGradL.addColorStop(0, \"#FFF9A6\");\n  padGradL.addColorStop(0.5, \"#FFE600\");\n  padGradL.addColorStop(1, \"#F8D847\");\n  ctx.fillStyle = padGradL;\n  ctx.beginPath();\n  ctx.ellipse(pLx, pLy + 2, 10.5, 6.2, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.fillStyle = \"#FFFFFF\";\n  ctx.beginPath();\n  ctx.arc(pLx, pLy + 2, 1.8, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  // TAY PHẢI (viewer's right - chống bên sườn phải)\n  const pRx = 48, pRy = 78;\n  // Cẳng tay lông cam\n  const armGradR = ctx.createLinearGradient(pRx - 14, pRy - 26, pRx + 14, pRy - 6);\n  armGradR.addColorStop(0, \"#EA6C18\");\n  armGradR.addColorStop(1, \"#B84606\");\n  ctx.fillStyle = armGradR;\n  ctx.beginPath();\n  ctx.roundRect(pRx - 14, pRy - 26, 28, 24, 8);\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.4;\n  ctx.stroke();\n\n  // Bàn tay lông kem với 3 múi ngón\n  const pawGradR = ctx.createRadialGradient(pRx, pRy + 2, 3, pRx, pRy + 3, 20);\n  pawGradR.addColorStop(0, \"#FFF5E4\");\n  pawGradR.addColorStop(0.65, \"#FCE5C0\");\n  pawGradR.addColorStop(1, \"#DDBA8F\");\n  ctx.fillStyle = pawGradR;\n\n  ctx.beginPath();\n  ctx.moveTo(pRx - 18, pRy - 6);\n  ctx.lineTo(pRx + 18, pRy - 6);\n  ctx.lineTo(pRx + 18, pRy + 8);\n  ctx.lineTo(pRx + 14, pRy + 18); // ngón 3\n  ctx.lineTo(pRx + 6,  pRy + 11);\n  ctx.lineTo(pRx,      pRy + 18); // ngón 2\n  ctx.lineTo(pRx - 6,  pRy + 11);\n  ctx.lineTo(pRx - 12, pRy + 18); // ngón 1\n  ctx.lineTo(pRx - 18, pRy + 8);\n  ctx.closePath();\n  ctx.fill();\n  ctx.strokeStyle = \"#381808\";\n  ctx.lineWidth = 1.6;\n  ctx.stroke();\n\n  // Đệm lòng bàn tay phóng điện màu vàng phát sáng\n  ctx.save();\n  ctx.shadowColor = \"#FFE600\";\n  ctx.shadowBlur = 10;\n  const padGradR = ctx.createRadialGradient(pRx, pRy + 2, 1.5, pRx, pRy + 2, 10);\n  padGradR.addColorStop(0, \"#FFF9A6\");\n  padGradR.addColorStop(0.5, \"#FFE600\");\n  padGradR.addColorStop(1, \"#F8D847\");\n  ctx.fillStyle = padGradR;\n  ctx.beginPath();\n  ctx.ellipse(pRx, pRy + 2, 10.5, 6.2, 0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.fillStyle = \"#FFFFFF\";\n  ctx.beginPath();\n  ctx.arc(pRx, pRy + 2, 1.8, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n\n  ctx.restore(); // restore layer 8\n\n  // 11. LAYER 9: XUNG ĐIỆN LÁCH TÁCH & TIA LỬA PLASMA (Electric Sparks)\n  drawElectricSpark(ctx, -68 - 18 + sparkF1, by + 38 + sparkF2, 1.2, \"#F8D847\");\n  drawElectricSpark(ctx, 38 + 18 + sparkF2, by + 38 + sparkF1, 1.2, \"#F8D847\");\n  drawElectricSpark(ctx, -64 - 10 + sparkF3, by - 56 - 18, 1.3, \"#00F5D4\");\n  drawElectricSpark(ctx, 48 + 18 + sparkF1, by + 78 + sparkF3, 1.1, \"#FFE600\");\n\n  ctx.restore(); // restore root\n}\n\nfunction drawPawmiEye(ctx, ex, ey, rx, ry, rot, blink) {\n  ctx.save();\n  ctx.translate(ex, ey);\n  ctx.rotate(rot);\n\n  if (blink) {\n    // Mí mắt nhắm cong hình lưỡi liềm ngọt ngào\n    ctx.strokeStyle = \"#1A1115\";\n    ctx.lineWidth = 3.2;\n    ctx.lineCap = \"round\";\n    ctx.beginPath();\n    ctx.arc(0, 3, rx * 0.85, Math.PI * 0.12, Math.PI * 0.88);\n    ctx.stroke();\n    // Khóe vểnh nhẹ\n    ctx.beginPath();\n    ctx.moveTo(rx * 0.7, 4); ctx.lineTo(rx * 1.1, 1);\n    ctx.moveTo(-rx * 0.7, 4); ctx.lineTo(-rx * 1.1, 1);\n    ctx.stroke();\n  } else {\n    // 1. Viền mí & hốc mắt đen tuyền\n    ctx.beginPath();\n    ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);\n    ctx.fillStyle = \"#1A1115\";\n    ctx.fill();\n    ctx.strokeStyle = \"#381808\";\n    ctx.lineWidth = 1.6;\n    ctx.stroke();\n\n    // 2. Tròng mắt đen nhánh hạt pha lê\n    const eyeGrad = ctx.createLinearGradient(0, -ry, 0, ry);\n    eyeGrad.addColorStop(0, \"#1A1115\");\n    eyeGrad.addColorStop(0.5, \"#25181E\");\n    eyeGrad.addColorStop(0.78, \"#3D252E\");\n    eyeGrad.addColorStop(1, \"#D97736\");\n    ctx.beginPath();\n    ctx.ellipse(0, 0, rx - 1.2, ry - 1.2, 0, 0, Math.PI * 2);\n    ctx.fillStyle = eyeGrad;\n    ctx.fill();\n\n    // Vòm sáng caustic đáy mắt hổ phách\n    ctx.beginPath();\n    ctx.ellipse(0, ry * 0.38, rx * 0.68, ry * 0.44, 0, 0, Math.PI);\n    ctx.fillStyle = \"rgba(245, 155, 66, 0.65)\";\n    ctx.fill();\n\n    // 3. 3 ĐIỂM BẮT SÁNG PHA LÊ (3-Point Specular Highlights)\n    // Điểm 1: Primary Keylight Specular (Bầu dục lớn góc 11h)\n    ctx.fillStyle = \"#FFFFFF\";\n    ctx.beginPath();\n    ctx.ellipse(-rx * 0.22, -ry * 0.35, rx * 0.38, ry * 0.28, -0.25, 0, Math.PI * 2);\n    ctx.fill();\n\n    // Điểm 2: Secondary Caustic Specular (Tròn vừa góc 5h)\n    ctx.fillStyle = \"rgba(255, 245, 230, 0.95)\";\n    ctx.beginPath();\n    ctx.arc(rx * 0.26, ry * 0.32, rx * 0.20, 0, Math.PI * 2);\n    ctx.fill();\n\n    // Điểm 3: Tertiary Micro Glint (Tia sáng vi điểm mép ngoài)\n    ctx.fillStyle = \"#FFFFFF\";\n    ctx.beginPath();\n    ctx.arc(rx * 0.40, -ry * 0.05, rx * 0.12, 0, Math.PI * 2);\n    ctx.fill();\n  }\n  ctx.restore();\n}\n\nfunction drawElectricSpark(ctx, x, y, scale, color) {\n  ctx.save();\n  ctx.translate(x, y);\n  ctx.scale(scale, scale);\n  ctx.shadowColor = color;\n  ctx.shadowBlur = 10;\n  ctx.fillStyle = color;\n  ctx.beginPath();\n  ctx.moveTo(0, -7);\n  ctx.quadraticCurveTo(0, 0, 7, 0);\n  ctx.quadraticCurveTo(0, 0, 0, 7);\n  ctx.quadraticCurveTo(0, 0, -7, 0);\n  ctx.quadraticCurveTo(0, 0, 0, -7);\n  ctx.fill();\n  ctx.fillStyle = \"#FFFFFF\";\n  ctx.beginPath();\n  ctx.arc(0, 0, 2.0, 0, Math.PI * 2);\n  ctx.fill();\n  ctx.restore();\n}\n",
+  "visual_breakdown_checklist": [
+    "1. Bộ lông cam ấm áp bồng bềnh: Toàn thân phủ lông cam dạng quả cầu Chibi Pop Mart tròn xoe phúng phính chuẩn 100% tỷ lệ ảnh mẫu.",
+    "2. Chỏm bờm lông trên trán nhô cao mềm mại: Múi bờm lông dày dặn uốn lượn sang phải với độ chuyển màu 3D tinh xảo.",
+    "3. Đôi tai gấu to tròn với lòng tai xanh lá cây ngọc bích độc đáo: Vành tai cam, lòng tai emerald teal 3 sắc thái khoáng thạch lộng lẫy.",
+    "4. Hai má túi điện tròn xoe màu vàng hoàng kim: Má bầu bĩnh tích tụ điện năng với hiệu ứng vi hạt plasma lách tách.",
+    "5. Hai bàn tay gấu to tròn chống phía trước có đệm phóng điện vàng: 3 múi ngón chạm đất và đệm bio-pad vàng phát quang.",
+    "6. Đôi mắt pha lê to tròn đen nhánh 3 điểm bắt sáng: Primary keylight, Secondary caustic bounce và Tertiary micro glint kèm phản xạ đáy mắt hổ phách.",
+    "7. Sống mũi đen nhỏ xinh và nụ cười ấm áp ngây thơ trên mõm kem ấm áp.",
+    "8. Đuôi kem phúng phính vểnh sau lưng và bàn chân sau sườn phải peeking out bám đất.",
+    "9. Chuyển động vi vật lý hữu cơ: Squash & Stretch 5% bảo toàn thể tích, tai gấu rung rinh trễ pha Delta Phi = 0.45 rad, chớp mắt 3.5s, bóng tiếp xúc co giãn êm ái.",
+    "10. Xuất đầy đủ mã C++ ScaledCanvas và JavaScript Canvas 2D tương thích 100% phần cứng ESP32 ST7789 và Modern HTML5 Canvas 2D."
+  ]
+}

@@ -64,6 +64,7 @@ struct ScaledCanvas {
 #include "fantasy_beasts_sprites.h"
 #include "session1_mythics_sprites.h"
 #include "session2_mythics_sprites.h"
+#include "session3_mythics_sprites.h"
 #include "phione_sprites.h"
 
 namespace SpriteRenderer {
@@ -75,7 +76,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 60) : 0;
+    id = (id >= 0) ? (id % 65) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -715,6 +716,31 @@ namespace SpriteRenderer {
       }
       case 59: { // Poipole - Tinh Linh Tím Ngoài Hành Tinh
         Session2Mythics::drawPoipoleAdhesiveAlien(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      
+      // =============================================================
+      // SESSION 3: 5 LINH THÚ HỆ ĐIỆN KAWAII (IDs 60 - 64)
+      // =============================================================
+      case 60: { // Pachirisu - Sóc Điện Trắng Lam
+        Session3Mythics::drawPachirisuSquirrel(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 61: { // Emolga - Sóc Bay Đôi Cánh Điện
+        Session3Mythics::drawEmolgaFlyingSquirrel(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 62: { // Dedenne - Chuột Ăng-ten Râu Điện
+        Session3Mythics::drawDedenneAntennaMouse(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 63: { // Morpeko - Chuột Túi No Bụng
+        Session3Mythics::drawMorpekoHamster(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 64: { // Pawmi - Gấu Bông Lông Cam Điện Quang
+        Session3Mythics::drawPawmiElectricBear(spr, cx, cy, angle, blink);
         break;
       }
 

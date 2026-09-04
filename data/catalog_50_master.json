@@ -518,5 +518,40 @@
     "category": "Linh Thú Thần Thoại",
     "description": "Đầu tím oải hương pastel phúng phính, 3 kim tiêm sừng ngọc lam cyan dạ quang, nụ cười chữ V tinh nghịch đáng yêu.",
     "quote": "Thế giới vô tận ngoài kia luôn tràn ngập những điều bất ngờ đón chờ."
+  },
+  {
+    "id": 60,
+    "name": "Pachirisu - Sóc Điện Trắng Lam",
+    "category": "Linh Thú Hệ Điện",
+    "description": "Thân trắng sữa phúng phính mũm mĩm, đuôi sóc khổng lồ cuộn tròn 3 gai lam, má túi điện vàng căng mọng.",
+    "quote": "Năng lượng vui tươi lan tỏa niềm tin và nụ cười rạng rỡ."
+  },
+  {
+    "id": 61,
+    "name": "Emolga - Sóc Bay Đôi Cánh Điện",
+    "category": "Linh Thú Hệ Điện",
+    "description": "Màng cánh sóc bay vàng chanh rực rỡ, tai đen xòe rộng, má túi điện phúng phính đáng yêu.",
+    "quote": "Lướt gió tự do, bay cao đến những chân trời rộng mở."
+  },
+  {
+    "id": 62,
+    "name": "Dedenne - Chuột Ăng-ten Râu Điện",
+    "category": "Linh Thú Hệ Điện",
+    "description": "Thân quả lê tròn quay núng nính màu cam, râu ăng-ten tivi rung rinh bắt sóng, đuôi hoa sao đen ngộ nghĩnh.",
+    "quote": "Bắt sóng yêu thương, truyền tải năng lượng hạnh phúc."
+  },
+  {
+    "id": 63,
+    "name": "Morpeko - Chuột Túi No Bụng",
+    "category": "Linh Thú Hệ Điện",
+    "description": "Thân hamster tròn xoe 3 mảng màu đặc trưng, má hồng đào tròn phồng, ôm hạt berry trước ngực.",
+    "quote": "Bữa no trọn vẹn thắp sáng niềm vui và lòng biết ơn."
+  },
+  {
+    "id": 64,
+    "name": "Pawmi - Gấu Bông Lông Cam Điện Quang",
+    "category": "Linh Thú Hệ Điện",
+    "description": "Lông cam ấm áp bồng bềnh Pop Mart, tai đệm ngọc bích, đệm lòng bàn tay phóng điện vàng tươi.",
+    "quote": "Ấm áp như ánh mặt trời, truyền thêm dũng khí cho mỗi bước đi."
   }
 ]

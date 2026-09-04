@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawmi Gấu Bông Lông Cam Điện Quang - 3D Pop Mart Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 25%, #2a1b12 0%, #170e08 60%, #0c0704 100%);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFA947, #F8D847, #17B29F, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+    .header p {
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+    .container {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1200px;
+      width: 100%;
+    }
+    .card {
+      background: rgba(36, 22, 14, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 169, 71, 0.25);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 169, 71, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card h2 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: #fed7aa;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card h2 .badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: rgba(255, 169, 71, 0.2);
+      color: #ffedd5;
+      border: 1px solid rgba(255, 169, 71, 0.4);
+    }
+    img.ref {
+      width: 240px;
+      height: 280px;
+      object-fit: contain;
+      background: #140d08;
+      border-radius: 14px;
+      border: 1px solid #2e1a0e;
+    }
+    canvas {
+      background: #140d08;
+      border-radius: 14px;
+      border: 1px solid #2e1a0e;
+      image-rendering: auto;
+    }
+    .controls {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 169, 71, 0.4);
+      background: rgba(234, 108, 24, 0.25);
+      color: #ffedd5;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: rgba(234, 108, 24, 0.5);
+      border-color: #FFA947;
+      box-shadow: 0 0 14px rgba(255, 169, 71, 0.4);
+    }
+    .specs {
+      max-width: 900px;
+      width: 100%;
+      margin-top: 28px;
+      background: rgba(36, 22, 14, 0.7);
+      border: 1px solid rgba(255, 169, 71, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .specs h3 {
+      color: #fed7aa;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+    .specs ul {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 10px;
+    }
+    .specs li {
+      font-size: 13px;
+      color: #fdba74;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .specs li::before {
+      content: "⚡";
+      color: #F8D847;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>PAWMI - GẤU BÔNG LÔNG CAM ĐIỆN QUANG</h1>
+    <p>3D Pop Mart & Vinyl Creature Sculptor | ST7789 IPS 240x280 & HTML5 Canvas</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>ẢNH MẪU GỐC <span class="badge">Reference 100%</span></h2>
+      <img class="ref" src="../ảnh mẫu fllow theo để tạo y hệt như vậy ( giống 100 % các kiểu cách )/15_Mythic_Pawmi_Electric_Bear.png" alt="Pawmi Reference">
+    </div>
+
+    <div class="card">
+      <h2>3D POP MART CANVAS 2D <span class="badge">Live Organic Physics</span></h2>
+      <canvas id="pawmiCanvas" width="240" height="280"></canvas>
+      <div class="controls">
+        <button class="btn" id="btnPause">Tạm dừng (Pause)</button>
+        <button class="btn" id="btnBlink">Chớp mắt (Blink)</button>
+        <button class="btn" id="btnReset">Đặt lại (Reset)</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="specs">
+    <h3>Đặc Tả Điêu Khắc 3D & Vi Vật Lý Hữu Cơ (Pawmi Sculpt Metrics)</h3>
+    <ul>
+      <li>Toàn thân phủ lông cam ấm áp bồng bềnh Chibi Pop Mart</li>
+      <li>Chỏm bờm lông trán nhô cao uốn lượn mềm mại sang phải</li>
+      <li>Đôi tai gấu tròn to với lòng tai xanh ngọc bích độc bản (Emerald Jade)</li>
+      <li>Hai má túi điện tròn xoe màu vàng hoàng kim phúng phính</li>
+      <li>Hai bàn tay gấu to tròn chống phía trước với đệm phóng điện vàng</li>
+      <li>Đôi mắt pha lê đen nhánh 3 điểm bắt sáng & phản quang hổ phách</li>
+      <li>Mõm tròn màu kem ấm áp với sống mũi đen nhỏ và nụ cười ngọt ngào</li>
+      <li>Nhịp thở Squash & Stretch 5% bảo toàn thể tích (Sy * Sx ≈ 1.0)</li>
+      <li>Tai gấu rung rinh trễ pha Delta Phi = 0.45 rad nhịp nhàng</li>
+      <li>Xung điện lách tách quanh má và đệm bàn tay tần số cao</li>
+      <li>Bóng tiếp xúc mặt sàn co giãn êm ái đàn hồi theo nhịp nhún</li>
+      <li>Tương thích 100% phần cứng ESP32 ST7789 16-bit RGB565</li>
+    </ul>
+  </div>
+
+  <script>
+// =========================================================================
+// 15_MYTHIC_PAWMI_ELECTRIC_BEAR - Modern HTML5 Canvas 2D Implementation
+// 100% Anatomical Likeness & High-End 3D Pop Mart Vinyl Aesthetic
+// Organic Micro-Physics: 5% Squash & Stretch, Ears Jiggle Lag 0.45 rad, Twitching Sparks
+// =========================================================================
+
+function drawPawmiElectricBear(ctx, cx, cy, scale, t, manualBlink = false) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  // 1. Organic Micro-Physics Kinematics
+  const breathFreq  = 2.2; // Tần số nhịp thở êm ái
+  const breathPhase = t * breathFreq;
+  const breathSin   = Math.sin(breathPhase);
+
+  // Squash & Stretch 5% bảo toàn thể tích (sY * sX ≈ 1.0)
+  const sY = 1.0 + 0.05 * breathSin;
+  const sX = 1.0 - 0.025 * breathSin;
+  const bounceY = -Math.abs(breathSin) * 3.5;
+  const by = bounceY; // Tọa độ Y động
+
+  // Hai tai gấu rung rinh trễ pha Delta Phi = 0.45 rad
+  const earLag   = breathPhase - 0.45;
+  const earRotL  = Math.sin(earLag) * 0.055;
+  const earRotR  = -Math.sin(earLag) * 0.045;
+
+  // Chỏm bờm lông trán uốn lượn trễ pha Delta Phi = 0.30 rad
+  const tuftLag  = breathPhase - 0.30;
+  const tuftSwayX = Math.sin(tuftLag) * 2.8;
+
+  // Xung điện lách tách tần số cao
+  const sparkF1 = Math.sin(t * 16.0) * 3.5;
+  const sparkF2 = Math.cos(t * 14.0) * 3.5;
+  const sparkF3 = Math.sin(t * 20.0) * 3.0;
+
+  // Nhịp chớp mắt 3.5s (interval 3500ms, duration 140ms)
+  const blinkCycle = (t * 1000) % 3500;
+  const blink = manualBlink || (blinkCycle < 140);
+
+  // 2. LAYER 0: BÓNG TIẾP XÚC MẶT SÀN CO GIÃN ÊM ÁI (Ground Contact Shadow)
+  ctx.save();
+  const shadowScale = (1.0 - bounceY * 0.04);
+  const shadowW = 92 * sX * shadowScale;
+  const shadowH = 16 * sX * shadowScale;
+  const shadowGrad = ctx.createRadialGradient(-2, 86, 4, -2, 86, shadowW);
+  shadowGrad.addColorStop(0, "rgba(40, 20, 10, 0.75)");
+  shadowGrad.addColorStop(0.5, "rgba(45, 24, 12, 0.35)");
+  shadowGrad.addColorStop(1, "rgba(45, 24, 12, 0.0)");
+  ctx.fillStyle = shadowGrad;
+  ctx.beginPath();
+  ctx.ellipse(-2, 86, shadowW, shadowH, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // 3. LAYER 1: ĐUÔI KEM & BÀN CHÂN SAU (Tail & Hind Foot)
+  ctx.save();
+  ctx.translate(0, by);
+
+  // Đuôi kem phúng phính vểnh sau lưng bên phải
+  const tailGrad = ctx.createRadialGradient(74 + tuftSwayX, -50, 4, 74 + tuftSwayX, -50, 24);
+  tailGrad.addColorStop(0, "#FFF5E4");
+  tailGrad.addColorStop(0.7, "#F6DEC0");
+  tailGrad.addColorStop(1, "#D4AC82");
+  ctx.fillStyle = tailGrad;
+  ctx.beginPath();
+  ctx.ellipse(74 + tuftSwayX, -48, 16, 26, 0.3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(78 + tuftSwayX, -62, 12, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#4A2810";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // Bàn chân sau phải peeking out dưới sườn
+  ctx.fillStyle = "#BD5213";
+  ctx.beginPath();
+  ctx.roundRect(80, 64, 20, 13, 5);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(97, 71, 4.5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(86, 77); ctx.lineTo(86, 70);
+  ctx.moveTo(92, 77); ctx.lineTo(92, 70);
+  ctx.stroke();
+
+  ctx.restore();
+
+  // 4. LAYER 2: THÂN HÌNH QUẢ CẦU BÉO MẬP CHIBI POP MART (Rotund Torso Sphere)
+  ctx.save();
+  ctx.translate(0, by);
+
+  const bodyGrad = ctx.createRadialGradient(44, 4, 12, 34, 22, 75);
+  bodyGrad.addColorStop(0, "#FFA947");
+  bodyGrad.addColorStop(0.45, "#EA6C18");
+  bodyGrad.addColorStop(0.85, "#B84606");
+  bodyGrad.addColorStop(1, "#7A2B00");
+  ctx.fillStyle = bodyGrad;
+  ctx.beginPath();
+  ctx.ellipse(34, 22, 72 * sX, 60 * sY, 0.08, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  ctx.restore();
+
+  // 5. LAYER 3: ĐÔI TAI GẤU TRÒN TO VỚI LÒNG TAI XANH NGỌC BÍCH (Bear Ears & Jade Inners)
+  ctx.save();
+  ctx.translate(0, by);
+
+  // TAI TRÁI (viewer's left - vươn cao góc ~75 độ)
+  ctx.save();
+  ctx.translate(-64, -28);
+  ctx.rotate(-0.25 + earRotL);
+
+  // Vành ngoài tai cam
+  const earGradL = ctx.createRadialGradient(-3, -30, 5, 0, -26, 48);
+  earGradL.addColorStop(0, "#FFA947");
+  earGradL.addColorStop(0.6, "#EA6C18");
+  earGradL.addColorStop(1, "#B84606");
+  ctx.fillStyle = earGradL;
+  ctx.beginPath();
+  ctx.ellipse(0, -26, 23, 47, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.6;
+  ctx.stroke();
+
+  // Lòng tai xanh lá ngọc bích độc bản (Emerald Jade Teal)
+  const innerTealGradL = ctx.createRadialGradient(1, -24, 3, 1, -24, 32);
+  innerTealGradL.addColorStop(0, "#17B29F");
+  innerTealGradL.addColorStop(0.55, "#0D8374");
+  innerTealGradL.addColorStop(1, "#07554B");
+  ctx.fillStyle = innerTealGradL;
+  ctx.beginPath();
+  ctx.ellipse(1, -24, 13.5, 30, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#07554B";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // Viền sáng ngọc bích bên trong
+  ctx.strokeStyle = "rgba(23, 178, 159, 0.7)";
+  ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.ellipse(1, -24, 11, 26, 0, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Nếp gấp chân tai màu kem
+  ctx.fillStyle = "#FCE5C0";
+  ctx.beginPath();
+  ctx.ellipse(8, 8, 7.5, 9.5, 0.3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.2;
+  ctx.stroke();
+
+  ctx.restore(); // restore tai trái
+
+  // TAI PHẢI (viewer's right - nghiêng góc ~62 độ)
+  ctx.save();
+  ctx.translate(34, -26);
+  ctx.rotate(0.48 + earRotR);
+
+  // Vành ngoài tai cam
+  const earGradR = ctx.createRadialGradient(3, -30, 5, 0, -26, 48);
+  earGradR.addColorStop(0, "#FFA947");
+  earGradR.addColorStop(0.6, "#EA6C18");
+  earGradR.addColorStop(1, "#B84606");
+  ctx.fillStyle = earGradR;
+  ctx.beginPath();
+  ctx.ellipse(0, -26, 23, 47, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.6;
+  ctx.stroke();
+
+  // Lòng tai xanh ngọc bích độc bản
+  const innerTealGradR = ctx.createRadialGradient(-1, -24, 3, -1, -24, 32);
+  innerTealGradR.addColorStop(0, "#17B29F");
+  innerTealGradR.addColorStop(0.55, "#0D8374");
+  innerTealGradR.addColorStop(1, "#07554B");
+  ctx.fillStyle = innerTealGradR;
+  ctx.beginPath();
+  ctx.ellipse(-1, -24, 13.5, 30, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#07554B";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  ctx.strokeStyle = "rgba(23, 178, 159, 0.7)";
+  ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.ellipse(-1, -24, 11, 26, 0, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Nếp gấp chân tai màu kem
+  ctx.fillStyle = "#FCE5C0";
+  ctx.beginPath();
+  ctx.ellipse(-7, 8, 7.5, 9.5, -0.3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.2;
+  ctx.stroke();
+
+  ctx.restore(); // restore tai phải
+  ctx.restore(); // restore layer 3
+
+  // 6. LAYER 4: KHỐI ĐẦU TRÒN & CHỎM BỜM LÔNG TRÊN TRÁN NHÔ CAO (Head & Forehead Tuft)
+  ctx.save();
+  ctx.translate(0, by);
+  ctx.scale(sX, sY);
+
+  // Khối đầu tròn trĩnh Pop Mart
+  const headGrad = ctx.createRadialGradient(-15, -4, 8, -15, 18, 68);
+  headGrad.addColorStop(0, "#FFA947");
+  headGrad.addColorStop(0.5, "#EA6C18");
+  headGrad.addColorStop(0.85, "#B84606");
+  headGrad.addColorStop(1, "#8A3200");
+  ctx.fillStyle = headGrad;
+  ctx.beginPath();
+  ctx.ellipse(-15, 18, 68, 54, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // Chỏm bờm lông trên trán nhô cao mềm mại uốn lượn sang phải (Forehead Swirl Tuft)
+  ctx.save();
+  const tuftX = -12 + tuftSwayX;
+  const tuftY = -34;
+  const tuftGrad = ctx.createRadialGradient(tuftX + 8, tuftY - 24, 6, tuftX, tuftY - 10, 36);
+  tuftGrad.addColorStop(0, "#FFB660");
+  tuftGrad.addColorStop(0.45, "#F0731E");
+  tuftGrad.addColorStop(0.85, "#EA6C18");
+  tuftGrad.addColorStop(1, "#A33800");
+  ctx.fillStyle = tuftGrad;
+
+  ctx.beginPath();
+  ctx.moveTo(tuftX - 26, tuftY + 6);
+  ctx.bezierCurveTo(tuftX - 34, tuftY - 22, tuftX - 18, tuftY - 48, tuftX + 6, tuftY - 46);
+  ctx.bezierCurveTo(tuftX + 24, tuftY - 44, tuftX + 36, tuftY - 30, tuftX + 32, tuftY - 10);
+  ctx.bezierCurveTo(tuftX + 28, tuftY + 6, tuftX + 12, tuftY + 10, tuftX - 26, tuftY + 6);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.6;
+  ctx.stroke();
+
+  // Nếp gấp lông chân bờm
+  ctx.strokeStyle = "rgba(163, 56, 0, 0.5)";
+  ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.moveTo(tuftX - 10, tuftY + 6);
+  ctx.quadraticCurveTo(tuftX - 4, tuftY - 14, tuftX + 10, tuftY - 24);
+  ctx.stroke();
+
+  // Highlight sống bờm
+  ctx.fillStyle = "rgba(255, 240, 210, 0.5)";
+  ctx.beginPath();
+  ctx.ellipse(tuftX + 6, tuftY - 30, 12, 7, 0.35, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // 7. LAYER 5: HAI MÁ TÚI ĐIỆN VÀNG HOÀNG KIM PHÚNG PHÍNH (Golden Electric Cheeks)
+  // Má trái
+  const chLx = -68, chLy = 38;
+  const chGradL = ctx.createRadialGradient(chLx - 4, chLy - 5, 4, chLx, chLy, 26);
+  chGradL.addColorStop(0, "#FFF385");
+  chGradL.addColorStop(0.55, "#F8D847");
+  chGradL.addColorStop(0.9, "#E2B522");
+  chGradL.addColorStop(1, "#C99612");
+  ctx.fillStyle = chGradL;
+  ctx.beginPath();
+  ctx.ellipse(chLx, chLy, 25, 23, -0.1, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // Má phải
+  const chRx = 38, chRy = 38;
+  const chGradR = ctx.createRadialGradient(chRx - 3, chRy - 5, 4, chRx, chRy, 26);
+  chGradR.addColorStop(0, "#FFF385");
+  chGradR.addColorStop(0.55, "#F8D847");
+  chGradR.addColorStop(0.9, "#E2B522");
+  chGradR.addColorStop(1, "#C99612");
+  ctx.fillStyle = chGradR;
+  ctx.beginPath();
+  ctx.ellipse(chRx, chRy, 25, 23, 0.1, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // 8. LAYER 6: MÕM KEM, MŨI ĐEN NHỎ & NỤ CƯỜI ẤM ÁP (Snout, Nose & Smile)
+  const snX = -15, snY = 44;
+  const snoutGrad = ctx.createRadialGradient(snX, snY - 4, 4, snX, snY + 3, 26);
+  snoutGrad.addColorStop(0, "#FFF5E4");
+  snoutGrad.addColorStop(0.6, "#FCE5C0");
+  snoutGrad.addColorStop(1, "#DDBA8F");
+  ctx.fillStyle = snoutGrad;
+  ctx.beginPath();
+  ctx.ellipse(snX, snY, 27, 18, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // Sống mũi đen nhỏ xinh
+  ctx.fillStyle = "#1E1418";
+  ctx.beginPath();
+  ctx.ellipse(snX, snY - 8, 3.0, 2.0, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Nét miệng cong nhẹ ngây thơ
+  ctx.strokeStyle = "#2B160C";
+  ctx.lineWidth = 1.8;
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.moveTo(snX - 7.0, snY - 0.5);
+  ctx.quadraticCurveTo(snX, snY + 3.0, snX + 7.0, snY - 0.5);
+  ctx.stroke();
+
+  // 9. LAYER 7: ĐÔI MẮT PHA LÊ TO TRÒN ĐEN NHÁNH 3 ĐIỂM BẮT SÁNG (Crystal Black Eyes)
+  drawPawmiEye(ctx, -44, 22, 14.0, 16.5, -0.06, blink);
+  drawPawmiEye(ctx, 14, 22, 14.0, 16.5, 0.06, blink);
+
+  ctx.restore(); // restore head scale
+
+  // 10. LAYER 8: HAI BÀN TAY GẤU TO TRÒN & ĐỆM PHÓNG ĐIỆN VÀNG (Paws & Discharge Pads)
+  ctx.save();
+  ctx.translate(0, by);
+
+  // TAY TRÁI (viewer's left - chống bên sườn trái)
+  const pLx = -78, pLy = 76;
+  // Cẳng tay lông cam
+  const armGradL = ctx.createLinearGradient(pLx - 14, pLy - 26, pLx + 14, pLy - 6);
+  armGradL.addColorStop(0, "#EA6C18");
+  armGradL.addColorStop(1, "#B84606");
+  ctx.fillStyle = armGradL;
+  ctx.beginPath();
+  ctx.roundRect(pLx - 14, pLy - 26, 28, 24, 8);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // Bàn tay lông kem với 3 múi ngón chạm đất
+  const pawGradL = ctx.createRadialGradient(pLx, pLy + 2, 3, pLx, pLy + 3, 20);
+  pawGradL.addColorStop(0, "#FFF5E4");
+  pawGradL.addColorStop(0.65, "#FCE5C0");
+  pawGradL.addColorStop(1, "#DDBA8F");
+  ctx.fillStyle = pawGradL;
+
+  // Đường viền bàn tay với múi lông nhọn chạm đất
+  ctx.beginPath();
+  ctx.moveTo(pLx - 18, pLy - 6);
+  ctx.lineTo(pLx + 18, pLy - 6);
+  ctx.lineTo(pLx + 18, pLy + 8);
+  ctx.lineTo(pLx + 14, pLy + 18); // ngón 3
+  ctx.lineTo(pLx + 6,  pLy + 11);
+  ctx.lineTo(pLx,      pLy + 18); // ngón 2
+  ctx.lineTo(pLx - 6,  pLy + 11);
+  ctx.lineTo(pLx - 12, pLy + 18); // ngón 1
+  ctx.lineTo(pLx - 18, pLy + 8);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.6;
+  ctx.stroke();
+
+  // Đệm lòng bàn tay phóng điện màu vàng phát sáng (Yellow Discharge Pad)
+  ctx.save();
+  ctx.shadowColor = "#FFE600";
+  ctx.shadowBlur = 10;
+  const padGradL = ctx.createRadialGradient(pLx, pLy + 2, 1.5, pLx, pLy + 2, 10);
+  padGradL.addColorStop(0, "#FFF9A6");
+  padGradL.addColorStop(0.5, "#FFE600");
+  padGradL.addColorStop(1, "#F8D847");
+  ctx.fillStyle = padGradL;
+  ctx.beginPath();
+  ctx.ellipse(pLx, pLy + 2, 10.5, 6.2, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath();
+  ctx.arc(pLx, pLy + 2, 1.8, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // TAY PHẢI (viewer's right - chống bên sườn phải)
+  const pRx = 48, pRy = 78;
+  // Cẳng tay lông cam
+  const armGradR = ctx.createLinearGradient(pRx - 14, pRy - 26, pRx + 14, pRy - 6);
+  armGradR.addColorStop(0, "#EA6C18");
+  armGradR.addColorStop(1, "#B84606");
+  ctx.fillStyle = armGradR;
+  ctx.beginPath();
+  ctx.roundRect(pRx - 14, pRy - 26, 28, 24, 8);
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.4;
+  ctx.stroke();
+
+  // Bàn tay lông kem với 3 múi ngón
+  const pawGradR = ctx.createRadialGradient(pRx, pRy + 2, 3, pRx, pRy + 3, 20);
+  pawGradR.addColorStop(0, "#FFF5E4");
+  pawGradR.addColorStop(0.65, "#FCE5C0");
+  pawGradR.addColorStop(1, "#DDBA8F");
+  ctx.fillStyle = pawGradR;
+
+  ctx.beginPath();
+  ctx.moveTo(pRx - 18, pRy - 6);
+  ctx.lineTo(pRx + 18, pRy - 6);
+  ctx.lineTo(pRx + 18, pRy + 8);
+  ctx.lineTo(pRx + 14, pRy + 18); // ngón 3
+  ctx.lineTo(pRx + 6,  pRy + 11);
+  ctx.lineTo(pRx,      pRy + 18); // ngón 2
+  ctx.lineTo(pRx - 6,  pRy + 11);
+  ctx.lineTo(pRx - 12, pRy + 18); // ngón 1
+  ctx.lineTo(pRx - 18, pRy + 8);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = "#381808";
+  ctx.lineWidth = 1.6;
+  ctx.stroke();
+
+  // Đệm lòng bàn tay phóng điện màu vàng phát sáng
+  ctx.save();
+  ctx.shadowColor = "#FFE600";
+  ctx.shadowBlur = 10;
+  const padGradR = ctx.createRadialGradient(pRx, pRy + 2, 1.5, pRx, pRy + 2, 10);
+  padGradR.addColorStop(0, "#FFF9A6");
+  padGradR.addColorStop(0.5, "#FFE600");
+  padGradR.addColorStop(1, "#F8D847");
+  ctx.fillStyle = padGradR;
+  ctx.beginPath();
+  ctx.ellipse(pRx, pRy + 2, 10.5, 6.2, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath();
+  ctx.arc(pRx, pRy + 2, 1.8, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  ctx.restore(); // restore layer 8
+
+  // 11. LAYER 9: XUNG ĐIỆN LÁCH TÁCH & TIA LỬA PLASMA (Electric Sparks)
+  drawElectricSpark(ctx, -68 - 18 + sparkF1, by + 38 + sparkF2, 1.2, "#F8D847");
+  drawElectricSpark(ctx, 38 + 18 + sparkF2, by + 38 + sparkF1, 1.2, "#F8D847");
+  drawElectricSpark(ctx, -64 - 10 + sparkF3, by - 56 - 18, 1.3, "#00F5D4");
+  drawElectricSpark(ctx, 48 + 18 + sparkF1, by + 78 + sparkF3, 1.1, "#FFE600");
+
+  ctx.restore(); // restore root
+}
+
+function drawPawmiEye(ctx, ex, ey, rx, ry, rot, blink) {
+  ctx.save();
+  ctx.translate(ex, ey);
+  ctx.rotate(rot);
+
+  if (blink) {
+    // Mí mắt nhắm cong hình lưỡi liềm ngọt ngào
+    ctx.strokeStyle = "#1A1115";
+    ctx.lineWidth = 3.2;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.arc(0, 3, rx * 0.85, Math.PI * 0.12, Math.PI * 0.88);
+    ctx.stroke();
+    // Khóe vểnh nhẹ
+    ctx.beginPath();
+    ctx.moveTo(rx * 0.7, 4); ctx.lineTo(rx * 1.1, 1);
+    ctx.moveTo(-rx * 0.7, 4); ctx.lineTo(-rx * 1.1, 1);
+    ctx.stroke();
+  } else {
+    // 1. Viền mí & hốc mắt đen tuyền
+    ctx.beginPath();
+    ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
+    ctx.fillStyle = "#1A1115";
+    ctx.fill();
+    ctx.strokeStyle = "#381808";
+    ctx.lineWidth = 1.6;
+    ctx.stroke();
+
+    // 2. Tròng mắt đen nhánh hạt pha lê
+    const eyeGrad = ctx.createLinearGradient(0, -ry, 0, ry);
+    eyeGrad.addColorStop(0, "#1A1115");
+    eyeGrad.addColorStop(0.5, "#25181E");
+    eyeGrad.addColorStop(0.78, "#3D252E");
+    eyeGrad.addColorStop(1, "#D97736");
+    ctx.beginPath();
+    ctx.ellipse(0, 0, rx - 1.2, ry - 1.2, 0, 0, Math.PI * 2);
+    ctx.fillStyle = eyeGrad;
+    ctx.fill();
+
+    // Vòm sáng caustic đáy mắt hổ phách
+    ctx.beginPath();
+    ctx.ellipse(0, ry * 0.38, rx * 0.68, ry * 0.44, 0, 0, Math.PI);
+    ctx.fillStyle = "rgba(245, 155, 66, 0.65)";
+    ctx.fill();
+
+    // 3. 3 ĐIỂM BẮT SÁNG PHA LÊ (3-Point Specular Highlights)
+    // Điểm 1: Primary Keylight Specular (Bầu dục lớn góc 11h)
+    ctx.fillStyle = "#FFFFFF";
+    ctx.beginPath();
+    ctx.ellipse(-rx * 0.22, -ry * 0.35, rx * 0.38, ry * 0.28, -0.25, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Điểm 2: Secondary Caustic Specular (Tròn vừa góc 5h)
+    ctx.fillStyle = "rgba(255, 245, 230, 0.95)";
+    ctx.beginPath();
+    ctx.arc(rx * 0.26, ry * 0.32, rx * 0.20, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Điểm 3: Tertiary Micro Glint (Tia sáng vi điểm mép ngoài)
+    ctx.fillStyle = "#FFFFFF";
+    ctx.beginPath();
+    ctx.arc(rx * 0.40, -ry * 0.05, rx * 0.12, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
+function drawElectricSpark(ctx, x, y, scale, color) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 10;
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(0, -7);
+  ctx.quadraticCurveTo(0, 0, 7, 0);
+  ctx.quadraticCurveTo(0, 0, 0, 7);
+  ctx.quadraticCurveTo(0, 0, -7, 0);
+  ctx.quadraticCurveTo(0, 0, 0, -7);
+  ctx.fill();
+  ctx.fillStyle = "#FFFFFF";
+  ctx.beginPath();
+  ctx.arc(0, 0, 2.0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+
+    const canvas = document.getElementById('pawmiCanvas');
+    const ctx = canvas.getContext('2d');
+    let startTime = performance.now();
+    let isPaused = false;
+    let manualBlink = false;
+    let pauseTime = 0;
+
+    function render(now) {
+      if (!isPaused) {
+        const t = (now - startTime) / 1000;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Vẽ Pawmi tại tâm canvas (cx = 120, cy = 145)
+        drawPawmiElectricBear(ctx, 120, 145, 1.0, t, manualBlink);
+      }
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+
+    document.getElementById('btnPause').addEventListener('click', function() {
+      isPaused = !isPaused;
+      this.textContent = isPaused ? 'Tiếp tục (Resume)' : 'Tạm dừng (Pause)';
+    });
+
+    document.getElementById('btnBlink').addEventListener('click', function() {
+      manualBlink = true;
+      setTimeout(() => { manualBlink = false; }, 250);
+    });
+
+    document.getElementById('btnReset').addEventListener('click', function() {
+      startTime = performance.now();
+      isPaused = false;
+      document.getElementById('btnPause').textContent = 'Tạm dừng (Pause)';
+    });
+  </script>
+</body>
+</html>
