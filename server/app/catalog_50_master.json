@@ -728,5 +728,40 @@
     "category": "Linh Thú Thần Thoại",
     "description": "Thần khuyển hỏa sư oai phong lẫm liệt, lông cam sọc hổ, bờm mây và đuôi mây khổng lồ cuồn cuộn trắng muốt.",
     "quote": "Lòng trung thành sắc son và trái tim dũng cảm như ngọn lửa bùng cháy."
+  },
+  {
+    "id": 90,
+    "name": "Silvally - Thần Thú Cơ Giáp Huyễn Tưởng",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Thần thú lai tạo dũng mãnh, mũ giáp lưỡi rìu bạc, bờm lông vũ trắng muốt, chân móng bò sát và vây đuôi cá lam cơ giáp.",
+    "quote": "Phá bỏ mọi giới hạn ràng buộc, niềm tin chuyển hóa thành sức mạnh vô song."
+  },
+  {
+    "id": 91,
+    "name": "Rapidash Galar - Bạch Mã Kỳ Lân Kẹo Bông",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Bạch mã kỳ lân trắng muốt quý phái, sừng xoắn tím huyền ảo, bờm và đuôi mây kẹo bông pastel tím lam bồng bềnh thướt tha.",
+    "quote": "Thế giới lung linh của những giấc mơ ngọt ngào luôn rộng mở."
+  },
+  {
+    "id": 92,
+    "name": "Hydreigon - Tam Đầu Hắc Long Quyền Năng",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Tam đầu hắc long dũng mãnh, 6 cánh đen tuyền bão táp, đầu chính lam ngọc vòng cổ cánh hoa đỏ, 2 đầu tay há to hung dữ.",
+    "quote": "Sức mạnh bão táp ba đầu, chinh phục mọi thử thách cam go."
+  },
+  {
+    "id": 93,
+    "name": "Morelull - Nấm Thần Phát Quang Dạ Cảnh",
+    "category": "Linh Thú Đáng Yêu",
+    "description": "Tinh linh nấm trắng kem đáng yêu, má xanh huỳnh quang, 3 cây nấm nón hồng và tím phát sáng huyền ảo trong đêm rừng.",
+    "quote": "Tỏa ánh sáng dịu êm sưởi ấm khu rừng huyền bí trong đêm lạnh."
+  },
+  {
+    "id": 94,
+    "name": "Ho-Oh - Phụng Hoàng Cầu Vồng Thần Thánh",
+    "category": "Thần Thoại Tối Thượng",
+    "description": "Phụng hoàng cầu vồng thần thánh, thân đỏ rực bụng trắng, sải cánh khổng lồ viền lông xanh cốm, mào vương miện và đuôi vàng óng ánh.",
+    "quote": "Bảy sắc cầu vồng ban phước lành cho những ai kiên định đi tìm ước mơ."
   }
 ]

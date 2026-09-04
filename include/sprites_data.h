@@ -70,6 +70,7 @@ struct ScaledCanvas {
 #include "session6_mythics_sprites.h"
 #include "session7_mythics_sprites.h"
 #include "session8_mythics_sprites.h"
+#include "session9_mythics_sprites.h"
 #include "phione_sprites.h"
 
 namespace SpriteRenderer {
@@ -81,7 +82,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 90) : 0;
+    id = (id >= 0) ? (id % 95) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -871,6 +872,31 @@ namespace SpriteRenderer {
       }
       case 89: { // Arcanine - Hỏa Sư Thần Khuyển Bờm Mây
         Session8Mythics::drawArcanineCloudLion(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      
+      // =============================================================
+      // SESSION 9: 5 THẦN THÚ THẦN THOẠI & PHỤNG HOÀNG (IDs 90 - 94)
+      // =============================================================
+      case 90: { // Silvally - Thần Thú Cơ Giáp Huyễn Tưởng
+        Session9Mythics::drawSilvallyChimeraGuardian(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 91: { // Rapidash Galar - Bạch Mã Kỳ Lân Kẹo Bông
+        Session9Mythics::drawRapidashPastelUnicorn(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 92: { // Hydreigon - Tam Đầu Hắc Long Quyền Năng
+        Session9Mythics::drawHydreigonThreeHeadedDragon(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 93: { // Morelull - Nấm Thần Phát Quang Dạ Cảnh
+        Session9Mythics::drawMorelullMushroomFairy(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 94: { // Ho-Oh - Phụng Hoàng Cầu Vồng Thần Thánh
+        Session9Mythics::drawHoOhRainbowPhoenix(spr, cx, cy, angle, blink);
         break;
       }
 
