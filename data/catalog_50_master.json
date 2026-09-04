@@ -763,5 +763,40 @@
     "category": "Thần Thoại Tối Thượng",
     "description": "Phụng hoàng cầu vồng thần thánh, thân đỏ rực bụng trắng, sải cánh khổng lồ viền lông xanh cốm, mào vương miện và đuôi vàng óng ánh.",
     "quote": "Bảy sắc cầu vồng ban phước lành cho những ai kiên định đi tìm ước mơ."
+  },
+  {
+    "id": 95,
+    "name": "Mantine - Cá Đuối Cánh Tiên Đại Dương",
+    "category": "Thủy Tộc Đại Dương",
+    "description": "Cá đuối khổng lồ hiền hòa, sải cánh tím chàm viền lam, 2 ăng-ten sừng mềm mại, bạn cá nhỏ Remoraid bơi bên cánh.",
+    "quote": "Lướt trên những con sóng ngàn dặm với tâm hồn tự do và thanh thản."
+  },
+  {
+    "id": 96,
+    "name": "Regice - Băng Cực Cổ Thần Cương Băng",
+    "category": "Cổ Thần Thần Thoại",
+    "description": "Thần hộ vệ tảng băng trôi vĩnh cửu, tinh thể băng lục giác phát quang cyan lam ngọc, 7 đốm mắt chữ thập cổ xưa lấp lánh.",
+    "quote": "Trái tim kiên định như tảng băng vĩnh cửu, không gì lay chuyển nổi."
+  },
+  {
+    "id": 97,
+    "name": "Noctowl - Cú Mèo Tri Thức Sừng Hoàng Kim",
+    "category": "Linh Thú Rừng Thiêng",
+    "description": "Cú mèo tri thức thông tuệ, bộ lông nâu hạt dẻ ấm áp, hàng lông mày sừng hoàng kim vươn cao kiêu hãnh, đôi mắt kính tròn xoe.",
+    "quote": "Bình tĩnh nhìn thấu màn đêm, tri thức là ngọn đèn dẫn lối tương lai."
+  },
+  {
+    "id": 98,
+    "name": "Kecleon - Kỳ Dông Biến Sắc Đuôi Xoắn",
+    "category": "Linh Thú Biến Ảo",
+    "description": "Kỳ dông xanh lục bảo đáng yêu, dải zíc zắc đỏ son rực rỡ quanh bụng, chiếc đuôi cuộn tròn ốc xoắn ngộ nghĩnh và mào gai ngọc.",
+    "quote": "Linh hoạt hòa mình vào cuộc sống, biến đổi để tỏa sáng rực rỡ nhất."
+  },
+  {
+    "id": 99,
+    "name": "Solgaleo - Thái Dương Thần Sư Mặt Trời",
+    "category": "Thần Thoại Tối Thượng",
+    "description": "Sứ giả mặt trời rực rỡ, toàn thân trắng ngọc vương giả, bờm hào quang thái dương cam vàng rực lửa, mặt nạ vũ trụ tinh vân huyền bí.",
+    "quote": "Hào quang thái dương xua tan bóng tối, soi sáng muôn loài bằng tình yêu và niềm tin."
   }
 ]

@@ -71,6 +71,7 @@ struct ScaledCanvas {
 #include "session7_mythics_sprites.h"
 #include "session8_mythics_sprites.h"
 #include "session9_mythics_sprites.h"
+#include "session10_mythics_sprites.h"
 #include "phione_sprites.h"
 
 namespace SpriteRenderer {
@@ -82,7 +83,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 95) : 0;
+    id = (id >= 0) ? (id % 100) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -897,6 +898,31 @@ namespace SpriteRenderer {
       }
       case 94: { // Ho-Oh - Phụng Hoàng Cầu Vồng Thần Thánh
         Session9Mythics::drawHoOhRainbowPhoenix(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      
+      // =============================================================
+      // SESSION 10: THE GRAND FINALE TO 100 MASTERPIECES (IDs 95 - 99)
+      // =============================================================
+      case 95: { // Mantine - Cá Đuối Cánh Tiên Đại Dương
+        Session10Mythics::drawMantineCelestialRay(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 96: { // Regice - Băng Cực Cổ Thần Cương Băng
+        Session10Mythics::drawRegiceGlacierGolem(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 97: { // Noctowl - Cú Mèo Tri Thức Sừng Hoàng Kim
+        Session10Mythics::drawNoctowlMysticOwl(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 98: { // Kecleon - Kỳ Dông Biến Sắc Đuôi Xoắn
+        Session10Mythics::drawKecleonChameleon(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 99: { // Solgaleo - Thái Dương Thần Sư Mặt Trời
+        Session10Mythics::drawSolgaleoSunLion(spr, cx, cy, angle, blink);
         break;
       }
 
