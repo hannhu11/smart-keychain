@@ -658,5 +658,40 @@
     "category": "Linh Thú Đáng Yêu",
     "description": "Búp bê vải bao bố xám be, tai gãy nguệch ngoạc nét sáp, đôi mắt thật đen láy hé nhìn dưới gấu váy rách.",
     "quote": "Khao khát được yêu thương, trái tim chân thành ẩn dưới lớp áo choàng."
+  },
+  {
+    "id": 80,
+    "name": "Arceus - Đấng Sáng Thế Vũ Trụ",
+    "category": "Thần Thoại Tối Thượng",
+    "description": "Thần thú tối cao bạch mã, Thánh Luân hoàng kim đính ngọc lục bảo bao quanh hông, mắt ngọc lục bảo uy nghiêm.",
+    "quote": "Ý chí kiên định sẽ kiến tạo nên vũ trụ của riêng bạn."
+  },
+  {
+    "id": 81,
+    "name": "Ninetales - Cửu Vĩ Kim Hồ Hoàng Gia",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Cửu vĩ hồ lông vàng kem quý phái, 9 chiếc đuôi uốn lượn hình quạt chóp cam rực rỡ, mắt phượng hồng ngọc kiêu sa.",
+    "quote": "Sự thanh lịch và quý phái toát ra từ nội tâm tĩnh lặng."
+  },
+  {
+    "id": 82,
+    "name": "Dratini - Tiểu Thanh Long Biển Sâu",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Thanh long con dáng uốn lượn chữ S màu lam ngọc pastel, bụng trắng, ngọc trai trán, cánh tai trắng vỗ nhịp đón gió.",
+    "quote": "Dù khởi đầu nhỏ bé, ước mơ rồng thiêng sẽ vươn tới trời xanh."
+  },
+  {
+    "id": 83,
+    "name": "Moltres - Chu Tước Hỏa Diễm Điểu",
+    "category": "Linh Thú Thần Thoại",
+    "description": "Hỏa điểu hoàng kim sải cánh lửa rực cháy đa sắc đỏ cam vàng, mào lửa bập bùng trên đỉnh đầu, tinh thần bất diệt.",
+    "quote": "Từ tàn tro của thử thách, ngọn lửa bất diệt sẽ tái sinh mạnh mẽ hơn."
+  },
+  {
+    "id": 84,
+    "name": "Torterra - Huyền Quy Đại Lục Bonsai",
+    "category": "Cổ Đại Thần Thoại",
+    "description": "Huyền quy đại lục đồ sộ vòm mai xanh rêu, mang trên lưng cổ thụ bonsai cùng 3 đỉnh núi đá bạc sừng sững.",
+    "quote": "Vững chãi như núi cao đại ngàn, nuôi dưỡng sự sống muôn nơi."
   }
 ]

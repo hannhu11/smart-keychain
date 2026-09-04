@@ -66,7 +66,7 @@ public:
 
 class DisplayEngine {
 public:
-  static const int TOTAL_THEMES = 80;
+  static const int TOTAL_THEMES = 85;
   LGFX tft;
   LGFX_Sprite sprite;
   ParticleSystem particles;

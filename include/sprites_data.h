@@ -68,6 +68,7 @@ struct ScaledCanvas {
 #include "session4_mythics_sprites.h"
 #include "session5_mythics_sprites.h"
 #include "session6_mythics_sprites.h"
+#include "session7_mythics_sprites.h"
 #include "phione_sprites.h"
 
 namespace SpriteRenderer {
@@ -79,7 +80,7 @@ namespace SpriteRenderer {
     ScaledCanvas* spr = &canvas;
     if (scale < 0.5f) scale = 0.5f;
     if (scale > 2.2f) scale = 2.2f;
-    id = (id >= 0) ? (id % 80) : 0;
+    id = (id >= 0) ? (id % 85) : 0;
     bool blink = (millis() % 3500 < 160);
 
     switch (id) {
@@ -819,6 +820,31 @@ namespace SpriteRenderer {
       }
       case 79: { // Mimikyu - Búp Bê Vải Rách Đôi Mắt Sâu
         Session6Mythics::drawMimikyuRagdollFairy(spr, cx, cy, angle, blink);
+        break;
+      }
+
+      
+      // =============================================================
+      // SESSION 7: 5 LINH THÚ THẦN THOẠI & CỔ ĐẠI (IDs 80 - 84)
+      // =============================================================
+      case 80: { // Arceus - Đấng Sáng Thế Vũ Trụ
+        Session7Mythics::drawArceusCreatorGod(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 81: { // Ninetales - Cửu Vĩ Kim Hồ Hoàng Gia
+        Session7Mythics::drawNinetalesMoonFox(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 82: { // Dratini - Tiểu Thanh Long Biển Sâu
+        Session7Mythics::drawDratiniAzureDragon(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 83: { // Moltres - Chu Tước Hỏa Diễm Điểu
+        Session7Mythics::drawMoltresFlamePhoenix(spr, cx, cy, angle, blink);
+        break;
+      }
+      case 84: { // Torterra - Huyền Quy Đại Lục Bonsai
+        Session7Mythics::drawTorterraContinentTortoise(spr, cx, cy, angle, blink);
         break;
       }
 
